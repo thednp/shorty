@@ -27,9 +27,13 @@ on(elementTarget,eventName,eventHandler,options)
 
 ```js 
 // EXAMPLES
-addClass(targetElement,'className')
-removeClass(targetElement,'className')
+import {addClass,removeClass,hasClass} from 'shorter-js'
 
+// add a class
+addClass(targetElement,'className')
+// remove a class
+removeClass(targetElement,'className')
+// check for a class
 if (hasClass(targetElement,'className')) {
   myAction()
 }
@@ -43,8 +47,19 @@ if (hasClass(targetElement,'className')) {
 * ***off*** - detach an event handler from a specific target *Element*
 * ***one*** - attach an event handler to a specific target *Element*, and detach when complete
 * ***supportPassive*** - a constant that checks and preserves the client browser for `passive` event capability
-* ***passiveHandler*** - a constant that preserves a standard handler `options` with passive event option used
+* ***passiveHandler*** - a constant that preserves a standard handler `options` with `passive: true event` option used
 
+```js 
+// EXAMPLES
+import {on,off,one,mouseEvents,touchEvents,passiveHandler} from 'shorter-js'
+
+// attach a passive mousedown eventHandler
+on(targetElement,mouseEvents.down,eventHandler,passiveHandler)
+// detach a passive mousedown eventHandler
+off(targetElement,mouseEvents.down,eventHandler,passiveHandler)
+// attach a single instance passive mousedown eventHandler
+one(targetElement,touchEvents.start,eventHandler,passiveHandler)
+```
 
 # Transition
 * ***supportTransform*** - checks and preserves the client browser capability for webKit `transform` 
@@ -53,6 +68,22 @@ if (hasClass(targetElement,'className')) {
 * ***transitionDuration*** - preserves the `transitionDuration` event property supported by the client browser 
 * ***getElementTransitionDuration*** - returns the `transitionDuration` property of a `transition` property
 * ***emulateTransitionEnd*** - utility to execute a callback function when `transitionend` event is triggered
+
+```js 
+// EXAMPLES
+import {on,supportTransitions,transitionEndEvent,emulateTransitionEnd} from 'shorter-js'
+
+// check if client supports transitions
+if (supportTransitions){
+  // attach transitionend handler
+  on(targetElement,transitionEndEvent,eventHandler,options)
+} else {
+  eventHandler()
+}
+
+// the above should be equivalent to a much shorter
+emulateTransitionEnd(targetElement,eventHandler)
+```
 
 
 # License

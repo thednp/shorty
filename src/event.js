@@ -21,11 +21,6 @@ export function one (element, event, handler, options) {
   }, options);
 }
 
-// custom events
-export function dispatchCustomEvent (customEvent){
-  this && this.dispatchEvent(customEvent);
-}
-
 // determine support for passive events
 export const supportPassive = (() => {
   // Test via a getter in the options object to see if the passive property is accessed
