@@ -1,0 +1,35 @@
+{
+  "name": "shorter-js",
+  "version": "0.0.1",
+  "description": "A small ES6/ES7 library with various JavaScript tools useful for creating light libraries.",
+  "main": "dist/shorter-js.js",
+  "module": "src/index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "rollup --environment FORMAT:umd,MIN:false -c",
+    "min": "rollup --environment FORMAT:umd,MIN:true -c"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/thednp/shorter-js.git"
+  },
+  "keywords": [
+    "shorter-js",
+    "javascript",
+    "vanilla js",
+    "vanilla javascript"
+  ],
+  "author": "dnp_theme",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/thednp/shorter-js/issues"
+  },
+  "homepage": "https://thednp.github.io/shorter-js/",
+  "devDependencies": {
+    "@rollup/plugin-buble": "^0.21.1",
+    "@rollup/plugin-json": "^4.0.2",
+    "rollup": "^1.31.1",
+    "rollup-plugin-cleanup": "^3.1.1",
+    "rollup-plugin-terser": "^5.2.0"
+  }
+}
