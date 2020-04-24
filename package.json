@@ -1,12 +1,12 @@
 {
   "name": "shorter-js",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "A small ES6/ES7 library with various JavaScript tools useful for creating light libraries.",
   "main": "dist/shorter-js.js",
   "module": "src/index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "rollup --environment FORMAT:umd,MIN:false -c",
+    "build": "rollup --environment FORMAT:umd,MIN:false -c && rollup --environment FORMAT:umd,MIN:true -c",
     "min": "rollup --environment FORMAT:umd,MIN:true -c"
   },
   "repository": {

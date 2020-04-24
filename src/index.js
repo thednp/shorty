@@ -1,3 +1,10 @@
+// strings FIRST
+export {mouseClickEvents}   from './strings/mouseClickEvents.js'
+export {mouseHoverEvents}   from './strings/mouseHoverEvents.js'
+export {touchEvents}        from './strings/touchEvents.js'
+export {transitionDuration} from './strings/transitionDuration.js'
+export {transitionEndEvent} from './strings/transitionEndEvent.js'
+
 // boolean
 export {support3DTransform} from './boolean/support3DTransform.js'
 export {supportPassive}     from './boolean/supportPassive.js'
@@ -13,13 +20,6 @@ export {hasClass}     from './class/hasClass.js'
 export {on}   from './event/on.js'
 export {off}  from './event/off.js'
 export {one}  from './event/one.js'
-
-// strings
-export {mouseClickEvents}   from './strings/mouseClickEvents.js'
-export {mouseHoverEvents}   from './strings/mouseHoverEvents.js'
-export {touchEvents}        from './strings/touchEvents.js'
-export {transitionDuration} from './strings/transitionDuration.js'
-export {transitionEndEvent} from './strings/transitionEndEvent.js'
 
 // misc
 export {emulateTransitionEnd}         from './misc/emulateTransitionEnd.js'
