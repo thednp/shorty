@@ -97,12 +97,12 @@ emulateTransitionEnd(targetElement,callback)
 
 ```js 
 // EXAMPLES
-import {on,off,one,mouseEvents,touchEvents,passiveHandler} from 'shorter-js'
+import {on,off,one,mouseClickEvents,touchEvents,passiveHandler} from 'shorter-js'
 
 // attach a passive mousedown eventHandler
-on(targetElement,mouseEvents.down,eventHandler,passiveHandler)
+on(targetElement,mouseClickEvents.down,eventHandler,passiveHandler)
 // detach a passive mousedown eventHandler
-off(targetElement,mouseEvents.down,eventHandler,passiveHandler)
+off(targetElement,mouseClickEvents.down,eventHandler,passiveHandler)
 // attach a single instance passive mousedown eventHandler
 one(targetElement,touchEvents.start,eventHandler,passiveHandler)
 ```
