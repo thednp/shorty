@@ -3,7 +3,7 @@
 Featured in [KUTE.js](https://github.com/thednp/kute.js), [BSN](https://github.com/thednp/bootstrap.native) and other libraries.**
 
 * The purpose if the library is to speed up the development workflow, minimize the size of larger libraries by providing a shorter syntax for most used JavaScript API methods, most used strings or other helpful utilities.
-* While the library comes with a working build in the `dist` folder mainly for build consistency testing.
+* While the library comes with a working build in the `dist` folder, that is mainly for build consistency testing.
 
 # npm
 ```
