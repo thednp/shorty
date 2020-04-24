@@ -1,10 +1,9 @@
 # shorter-js
-A small ES6/ES7 library with various JavaScript tools useful for creating light libraries.
-Featured in [KUTE.js](https://github.com/thednp/kute.js), [BSN](https://github.com/thednp/bootstrap.native) and other libraries.
+**A small ES6/ES7 library with various JavaScript tools useful for creating light libraries.
+Featured in [KUTE.js](https://github.com/thednp/kute.js), [BSN](https://github.com/thednp/bootstrap.native) and other libraries.**
 
-The purpose if the library is to speed up the development workflow, minimize the size of larger libraries by providing a shorter syntax for most used JavaScript API methods, most used strings or other helpful utilities.
-
-While the library comes with a working build in the `dist` folder, the main purpose of the library is mainly to be used in other libraries.
+* The purpose if the library is to speed up the development workflow, minimize the size of larger libraries by providing a shorter syntax for most used JavaScript API methods, most used strings or other helpful utilities.
+* While the library comes with a working build in the `dist` folder mainly for build consistency testing.
 
 # npm
 ```
@@ -14,13 +13,31 @@ npm install shorter-js
 # ES6/ES7 Base usage
 ```js
 // import the tool you need
-import {on} from 'shorter-js'
+import {supportTransform} from 'shorter-js'
 
 // use the tool in your ES6/ES7 sources
-on(elementTarget,eventName,eventHandler,options)
+if (supportTransform) {
+  doSomeAction()
+}
+```
+
+# boolean
+* ***support3DTransform*** - checks preserves the client browser capability for webKit `perspective` 
+* ***supportTransform*** - checks and preserves the client browser capability for webKit `transform` 
+* ***supportTransition*** - checks and preserves the client browser capability for webKit `transition` 
+* ***supportPassive*** - checks and preserves the client browser capability for `passive` event option
+
+```js 
+// EXAMPLES
+import {support3DTransform} from 'shorter-js'
+
+// filter myAction to supported browsers
+if (support3DTransform) {
+  myAction()
+}
 ```
 	
-# Class
+# class
 * ***addClass*** - add a class to a target *Element*
 * ***removeClass*** - remove a class from a target *Element*
 * ***hasClass*** - checks the existence of a class for a target *Element*
@@ -39,15 +56,44 @@ if (hasClass(targetElement,'className')) {
 }
 ```
 
-# Event
-* ***mouseEvents*** - preserves the pointer events from mouse actions: down: `mousedown`, up: `mouseup`
-* ***touchEvents*** - preserves the pointer events from touch actions: start: `touchstart`, end: `touchend`, move: `touchmove`, cancel: `touchcancel`
-* ***mouseHover*** - preserve browser specific mouse hover events: `mouseenter` and `mouseleave` OR `mouseover` and `mouseout`
+# event
 * ***on*** - attach an event handler to a specific target *Element*
 * ***off*** - detach an event handler from a specific target *Element*
 * ***one*** - attach an event handler to a specific target *Element*, and detach when complete
-* ***supportPassive*** - a constant that checks and preserves the client browser for `passive` event capability
+```js 
+// EXAMPLES
+import {on,off,one,passiveHandler} from 'shorter-js'
+
+// attach a passive mousedown eventHandler
+on(targetElement,'click',eventHandler,passiveHandler)
+// detach a passive mousedown eventHandler
+off(targetElement,'mouseup',eventHandler,passiveHandler)
+// attach a single instance passive mousedown eventHandler
+one(targetElement,'touchstart',eventHandler,passiveHandler)
+```
+
+# misc
+* ***emulateTransitionEnd*** - utility to execute a callback function when `transitionend` event is triggered, or execute the callback right after for legacy browsers
+* ***getElementTransitionDuration*** - returns the `transitionDuration` property of a `transition` property
 * ***passiveHandler*** - a constant that preserves a standard handler `options` with `passive: true event` option used
+* ***queryElement*** - a simple utility to check if a certain item is an *Element* or a selector string, and if a selector string find the FIRST *Element* and return it
+```js 
+// EXAMPLES
+import {queryElement,emulateTransitionEnd} from 'shorter-js'
+
+// get some target
+let targetElement = queryElement('.mySelectorClass');
+
+// emulateTransitionEnd for the above
+emulateTransitionEnd(targetElement,callback)
+```
+
+# strings
+* ***mouseClickEvents*** - preserves the pointer events from mouse actions: down: `mousedown`, up: `mouseup`
+* ***mouseHoverEvents*** - preserve browser specific mouse hover events: `mouseenter` and `mouseleave` OR `mouseover` and `mouseout`
+* ***touchEvents*** - preserves the pointer events from touch actions: start: `touchstart`, end: `touchend`, move: `touchmove`, cancel: `touchcancel`
+* ***transitionDuration*** - preserves the `transitionDuration` event property supported by the client browser 
+* ***transitionEndEvent*** - preserves the `transitionend` event name supported by the client browser 
 
 ```js 
 // EXAMPLES
@@ -60,31 +106,6 @@ off(targetElement,mouseEvents.down,eventHandler,passiveHandler)
 // attach a single instance passive mousedown eventHandler
 one(targetElement,touchEvents.start,eventHandler,passiveHandler)
 ```
-
-# Transition
-* ***supportTransform*** - checks and preserves the client browser capability for webKit `transform` 
-* ***supportTransitions*** - checks and preserves the client browser capability for webKit `transition` 
-* ***transitionEndEvent*** - preserves the `transitionend` event name supported by the client browser 
-* ***transitionDuration*** - preserves the `transitionDuration` event property supported by the client browser 
-* ***getElementTransitionDuration*** - returns the `transitionDuration` property of a `transition` property
-* ***emulateTransitionEnd*** - utility to execute a callback function when `transitionend` event is triggered
-
-```js 
-// EXAMPLES
-import {on,supportTransitions,transitionEndEvent,emulateTransitionEnd} from 'shorter-js'
-
-// check if client supports transitions
-if (supportTransitions){
-  // attach transitionend handler
-  on(targetElement,transitionEndEvent,eventHandler,options)
-} else {
-  eventHandler()
-}
-
-// the above should be equivalent to a much shorter
-emulateTransitionEnd(targetElement,eventHandler)
-```
-
 
 # License
 [MIT License](https://github.com/thednp/shorter-js/blob/master/LICENSE)

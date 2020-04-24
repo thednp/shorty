@@ -1,0 +1,1 @@
+export const supportTransform = 'webkitTransform' in document.body.style || 'transform' in document.body.style;

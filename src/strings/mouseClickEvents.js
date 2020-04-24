@@ -1,0 +1,1 @@
+export const mouseClickEvents = { down: 'mousedown', up: 'mouseup' }

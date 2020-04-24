@@ -1,0 +1,1 @@
+export const supportTransition = 'webkitTransition' in document.body.style || 'transition' in document.body.style;
