@@ -66,9 +66,9 @@ import {on,off,one,passiveHandler} from 'shorter-js'
 
 // attach a passive mousedown eventHandler
 on(targetElement,'click',eventHandler,passiveHandler)
-// detach a passive mousedown eventHandler
+// detach a passive mouseup eventHandler
 off(targetElement,'mouseup',eventHandler,passiveHandler)
-// attach a single instance passive mousedown eventHandler
+// attach a single instance passive touchstart eventHandler
 one(targetElement,'touchstart',eventHandler,passiveHandler)
 ```
 
@@ -103,7 +103,7 @@ import {on,off,one,mouseClickEvents,touchEvents,passiveHandler} from 'shorter-js
 on(targetElement,mouseClickEvents.down,eventHandler,passiveHandler)
 // detach a passive mousedown eventHandler
 off(targetElement,mouseClickEvents.down,eventHandler,passiveHandler)
-// attach a single instance passive mousedown eventHandler
+// attach a single instance passive touchstart eventHandler
 one(targetElement,touchEvents.start,eventHandler,passiveHandler)
 ```
 
