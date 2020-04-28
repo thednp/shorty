@@ -75,6 +75,8 @@ one(targetElement,'touchstart',eventHandler,passiveHandler)
 # misc
 * ***emulateTransitionEnd*** - utility to execute a callback function when `transitionend` event is triggered, or execute the callback right after for legacy browsers
 * ***getElementTransitionDuration*** - returns the `transitionDuration` property of a `transition` property
+* ***isElementInScrollRange*** - a quick utility that checks if a target *Element* surface is scrolled within the visible area of the window
+* ***isElementInViewport*** - a quick utility that checks if a target *Element* is scrolled fully into visible window area, might not be useful for elements larger in size than the window itself, the above might be more useful
 * ***passiveHandler*** - a constant that preserves a standard handler `options` with `passive: true event` option used
 * ***queryElement*** - a simple utility to check if a certain item is an *Element* or a selector string, and if a selector string find the FIRST *Element* and return it
 ```js 
@@ -86,6 +88,12 @@ let targetElement = queryElement('.mySelectorClass');
 
 // emulateTransitionEnd for the above
 emulateTransitionEnd(targetElement,callback)
+
+// check if element is in scroll range
+// emulateTransitionEnd for the above
+if (isElementInScrollRange(targetElement)){
+  doSomeAction()
+}
 ```
 
 # strings
@@ -105,6 +113,15 @@ on(targetElement,mouseClickEvents.down,eventHandler,passiveHandler)
 off(targetElement,mouseClickEvents.down,eventHandler,passiveHandler)
 // attach a single instance passive touchstart eventHandler
 one(targetElement,touchEvents.start,eventHandler,passiveHandler)
+```
+
+# Advanced Use
+To avoid adding un-necessary shorties into your code, you might want to import them directly from their location
+
+```js
+// Example
+import {on} from 'shorter-js/src/event/on.js'
+import {addClass} from 'shorter-js/src/class/addClass.js'
 ```
 
 # License

@@ -1,5 +1,5 @@
 /*!
-* shorter-js v0.0.3 (https://thednp.github.io/shorter-js/)
+* shorter-js v0.0.4 (https://thednp.github.io/shorter-js/)
 * Copyright 2019-2020 © dnp_theme
 * Licensed under MIT (https://github.com/thednp/shorter-js/blob/master/LICENSE)
 */
@@ -82,6 +82,22 @@
              : setTimeout(function() { !called && handler(), called = 1; }, 17);
   }
 
+  function isElementInScrollRange(element) {
+    var bcr = element.getBoundingClientRect(),
+        viewportHeight = window.innerHeight || document.documentElement.clientHeight;
+    return bcr.top <= viewportHeight && bcr.bottom >= 0;
+  }
+
+  function isElementInViewport(element) {
+    var bcr = element.getBoundingClientRect();
+    return (
+      bcr.top >= 0 &&
+      bcr.left >= 0 &&
+      bcr.bottom <= (window.innerHeight || document.documentElement.clientHeight) &&
+      bcr.right <= (window.innerWidth || document.documentElement.clientWidth)
+    )
+  }
+
   var passiveHandler = supportPassive ? { passive: true } : false;
 
   function queryElement (selector, parent) {
@@ -93,6 +109,8 @@
   exports.emulateTransitionEnd = emulateTransitionEnd;
   exports.getElementTransitionDuration = getElementTransitionDuration;
   exports.hasClass = hasClass;
+  exports.isElementInScrollRange = isElementInScrollRange;
+  exports.isElementInViewport = isElementInViewport;
   exports.mouseClickEvents = mouseClickEvents;
   exports.mouseHoverEvents = mouseHoverEvents;
   exports.off = off;

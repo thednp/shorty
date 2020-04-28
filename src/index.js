@@ -23,6 +23,8 @@ export {one}  from './event/one.js'
 
 // misc
 export {emulateTransitionEnd}         from './misc/emulateTransitionEnd.js'
+export {isElementInScrollRange}       from './misc/isElementInScrollRange.js'
+export {isElementInViewport}          from './misc/isElementInViewport.js'
 export {passiveHandler}               from './misc/passiveHandler.js'
 export {getElementTransitionDuration} from './misc/getElementTransitionDuration.js'
 export {queryElement}                 from './misc/queryElement.js'
