@@ -1,5 +1,5 @@
 /*!
-* shorter-js v0.0.4 (https://thednp.github.io/shorter-js/)
+* shorter-js v0.0.5 (https://thednp.github.io/shorter-js/)
 * Copyright 2019-2020 © dnp_theme
 * Licensed under MIT (https://github.com/thednp/shorter-js/blob/master/LICENSE)
 */
@@ -105,6 +105,13 @@
     return selector instanceof Element ? selector : lookUp.querySelector(selector);
   }
 
+  function tryWrapper (fn,origin){
+    try{ fn(); }
+    catch(e){
+      console.error((origin + ": " + e));
+    }
+  }
+
   exports.addClass = addClass;
   exports.emulateTransitionEnd = emulateTransitionEnd;
   exports.getElementTransitionDuration = getElementTransitionDuration;
@@ -126,6 +133,7 @@
   exports.touchEvents = touchEvents;
   exports.transitionDuration = transitionDuration;
   exports.transitionEndEvent = transitionEndEvent;
+  exports.tryWrapper = tryWrapper;
 
   Object.defineProperty(exports, '__esModule', { value: true });
 

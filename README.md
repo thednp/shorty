@@ -79,6 +79,7 @@ one(targetElement,'touchstart',eventHandler,passiveHandler)
 * ***isElementInViewport*** - a quick utility that checks if a target *Element* is scrolled fully into visible window area, might not be useful for elements larger in size than the window itself, the above might be more useful
 * ***passiveHandler*** - a constant that preserves a standard handler `options` with `passive: true event` option used
 * ***queryElement*** - a simple utility to check if a certain item is an *Element* or a selector string, and if a selector string find the FIRST *Element* and return it
+* ***tryWrapper*** - a simple `try()` and `catch()` wrapper for functions
 ```js 
 // EXAMPLES
 import {queryElement,emulateTransitionEnd} from 'shorter-js'
