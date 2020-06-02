@@ -1,5 +1,5 @@
 /*!
-* shorter-js v0.0.6 (https://thednp.github.io/shorter-js/)
+* shorter-js v0.0.7 (https://thednp.github.io/shorter-js/)
 * Copyright 2019-2020 © dnp_theme
 * Licensed under MIT (https://github.com/thednp/shorter-js/blob/master/LICENSE)
 */
@@ -15,7 +15,7 @@
 
   var touchEvents = { start: 'touchstart', end: 'touchend', move:'touchmove', cancel:'touchcancel' };
 
-  var mouseSwipeEvents = { start: 'mousedown', end: 'mouseup', move:'mousemove', cancel:'mouseup' };
+  var mouseSwipeEvents = { start: 'mousedown', end: 'mouseup', move:'mousemove', cancel:'mouseout' };
 
   var transitionDuration = 'webkitTransition' in document.body.style ? 'webkitTransitionDuration' : 'transitionDuration';
 
