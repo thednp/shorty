@@ -5,6 +5,10 @@
   "main": "dist/shorter-js.min.js",
   "module": "dist/shorter-js.esm.js",
   "jsnext": "src/index.js",
+  "files" :[
+    "dist/*.{js,map}",
+    "src/**/*.{js,map}"
+  ],  
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "npm run umd && npm run umdmin && npm run esm && npm run esmmin",
