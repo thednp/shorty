@@ -2,13 +2,16 @@
 export {mouseClickEvents}   from './strings/mouseClickEvents.js'
 export {mouseHoverEvents}   from './strings/mouseHoverEvents.js'
 export {touchEvents}        from './strings/touchEvents.js'
+export {mouseSwipeEvents}   from './strings/mouseSwipeEvents.js'
 export {transitionDuration} from './strings/transitionDuration.js'
 export {transitionEndEvent} from './strings/transitionEndEvent.js'
 
 // boolean
+export {isMobile}           from './boolean/isMobile.js'
 export {support3DTransform} from './boolean/support3DTransform.js'
 export {supportPassive}     from './boolean/supportPassive.js'
 export {supportTransform}   from './boolean/supportTransform.js'
+export {supportTouch}       from './boolean/supportTouch.js'
 export {supportTransition}  from './boolean/supportTransition.js'
 
 // class

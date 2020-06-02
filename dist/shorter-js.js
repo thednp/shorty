@@ -1,5 +1,5 @@
 /*!
-* shorter-js v0.0.5 (https://thednp.github.io/shorter-js/)
+* shorter-js v0.0.6 (https://thednp.github.io/shorter-js/)
 * Copyright 2019-2020 © dnp_theme
 * Licensed under MIT (https://github.com/thednp/shorter-js/blob/master/LICENSE)
 */
@@ -15,9 +15,13 @@
 
   var touchEvents = { start: 'touchstart', end: 'touchend', move:'touchmove', cancel:'touchcancel' };
 
+  var mouseSwipeEvents = { start: 'mousedown', end: 'mouseup', move:'mousemove', cancel:'mouseup' };
+
   var transitionDuration = 'webkitTransition' in document.body.style ? 'webkitTransitionDuration' : 'transitionDuration';
 
   var transitionEndEvent = 'webkitTransition' in document.body.style ? 'webkitTransitionEnd' : 'transitionend';
+
+  var isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
 
   var support3DTransform = 'webkitPerspective' in document.body.style || 'perspective' in document.body.style;
 
@@ -54,6 +58,8 @@
   })();
 
   var supportTransform = 'webkitTransform' in document.body.style || 'transform' in document.body.style;
+
+  var supportTouch = ('ontouchstart' in window || navigator.msMaxTouchPoints)||false;
 
   var supportTransition = 'webkitTransition' in document.body.style || 'transition' in document.body.style;
 
@@ -118,8 +124,10 @@
   exports.hasClass = hasClass;
   exports.isElementInScrollRange = isElementInScrollRange;
   exports.isElementInViewport = isElementInViewport;
+  exports.isMobile = isMobile;
   exports.mouseClickEvents = mouseClickEvents;
   exports.mouseHoverEvents = mouseHoverEvents;
+  exports.mouseSwipeEvents = mouseSwipeEvents;
   exports.off = off;
   exports.on = on;
   exports.one = one;
@@ -128,6 +136,7 @@
   exports.removeClass = removeClass;
   exports.support3DTransform = support3DTransform;
   exports.supportPassive = supportPassive;
+  exports.supportTouch = supportTouch;
   exports.supportTransform = supportTransform;
   exports.supportTransition = supportTransition;
   exports.touchEvents = touchEvents;

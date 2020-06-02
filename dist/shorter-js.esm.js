@@ -1,5 +1,5 @@
 /*!
-* shorter-js v0.0.5 (https://thednp.github.io/shorter-js/)
+* shorter-js v0.0.6 (https://thednp.github.io/shorter-js/)
 * Copyright 2019-2020 © dnp_theme
 * Licensed under MIT (https://github.com/thednp/shorter-js/blob/master/LICENSE)
 */
@@ -9,9 +9,13 @@ var mouseHoverEvents = ('onmouseleave' in document) ? [ 'mouseenter', 'mouseleav
 
 var touchEvents = { start: 'touchstart', end: 'touchend', move:'touchmove', cancel:'touchcancel' };
 
+var mouseSwipeEvents = { start: 'mousedown', end: 'mouseup', move:'mousemove', cancel:'mouseup' };
+
 var transitionDuration = 'webkitTransition' in document.body.style ? 'webkitTransitionDuration' : 'transitionDuration';
 
 var transitionEndEvent = 'webkitTransition' in document.body.style ? 'webkitTransitionEnd' : 'transitionend';
+
+var isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
 
 var support3DTransform = 'webkitPerspective' in document.body.style || 'perspective' in document.body.style;
 
@@ -48,6 +52,8 @@ var supportPassive = (function () {
 })();
 
 var supportTransform = 'webkitTransform' in document.body.style || 'transform' in document.body.style;
+
+var supportTouch = ('ontouchstart' in window || navigator.msMaxTouchPoints)||false;
 
 var supportTransition = 'webkitTransition' in document.body.style || 'transition' in document.body.style;
 
@@ -106,4 +112,4 @@ function tryWrapper (fn,origin){
   }
 }
 
-export { addClass, emulateTransitionEnd, getElementTransitionDuration, hasClass, isElementInScrollRange, isElementInViewport, mouseClickEvents, mouseHoverEvents, off, on, one, passiveHandler, queryElement, removeClass, support3DTransform, supportPassive, supportTransform, supportTransition, touchEvents, transitionDuration, transitionEndEvent, tryWrapper };
+export { addClass, emulateTransitionEnd, getElementTransitionDuration, hasClass, isElementInScrollRange, isElementInViewport, isMobile, mouseClickEvents, mouseHoverEvents, mouseSwipeEvents, off, on, one, passiveHandler, queryElement, removeClass, support3DTransform, supportPassive, supportTouch, supportTransform, supportTransition, touchEvents, transitionDuration, transitionEndEvent, tryWrapper };
