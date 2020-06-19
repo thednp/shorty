@@ -125,8 +125,8 @@ To avoid adding un-necessary shorties into your code, you might want to import t
 
 ```js
 // Example
-import {on} from 'shorter-js/src/event/on.js'
-import {addClass} from 'shorter-js/src/class/addClass.js'
+import on from 'shorter-js/src/event/on.js'
+import addClass from 'shorter-js/src/class/addClass.js'
 ```
 
 # License
