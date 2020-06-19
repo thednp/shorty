@@ -1,1 +1,1 @@
-export const supportTransform = 'webkitTransform' in document.body.style || 'transform' in document.body.style;
+export default 'webkitTransform' in document.body.style || 'transform' in document.body.style;

@@ -1,8 +1,8 @@
-import {on} from './on.js'
-import {off} from './off.js'
+import on from './on.js'
+import off from './off.js'
 
 // attach & detach handlers
-export function one (element, event, handler, options) {
+export default function(element, event, handler, options) {
   on(element, event, function handlerWrapper(e){
     if (e.target === element) {
       handler(e);

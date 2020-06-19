@@ -1,5 +1,5 @@
 // check if element is in viewport
-export function isElementInViewport(element) { 
+export default function(element) { 
   var bcr = element.getBoundingClientRect();
   return (
     bcr.top >= 0 &&

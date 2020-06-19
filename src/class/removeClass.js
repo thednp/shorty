@@ -1,3 +1,3 @@
-export function removeClass(element,classNAME) {
+export default function(element,classNAME) {
   element.classList.remove(classNAME)
 }

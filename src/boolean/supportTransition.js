@@ -1,1 +1,1 @@
-export const supportTransition = 'webkitTransition' in document.body.style || 'transition' in document.body.style;
+export default 'webkitTransition' in document.body.style || 'transition' in document.body.style;

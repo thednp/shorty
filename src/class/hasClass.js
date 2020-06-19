@@ -1,3 +1,3 @@
-export function hasClass(element,classNAME) {
+export default function(element,classNAME) {
   return element.classList.contains(classNAME)
 }

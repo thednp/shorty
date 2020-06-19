@@ -1,6 +1,6 @@
-export function tryWrapper (fn,origin){ 
+export default function(fn,origin){ 
   try{ fn() } 
   catch(e){
-    console.error(`${origin}: ${e}`)
+    console.error(`${origin} ${e}`)
   }
 }

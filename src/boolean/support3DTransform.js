@@ -1,1 +1,1 @@
-export const support3DTransform = 'webkitPerspective' in document.body.style || 'perspective' in document.body.style;
+export default 'webkitPerspective' in document.body.style || 'perspective' in document.body.style;

@@ -1,7 +1,5 @@
-import {one} from '../event/one.js'
-
 // determine support for passive events
-export const supportPassive = (() => {
+export default (() => {
   // Test via a getter in the options object to see if the passive property is accessed
   let result = false;
   try {
@@ -10,7 +8,9 @@ export const supportPassive = (() => {
         result = true;
       }
     });
-    one(document, 'DOMContentLoaded', ()=>{}, opts);
+    document.addEventListener('DOMContentLoaded', function wrap(){
+      document.removeEventListener('DOMContentLoaded', wrap, opts)
+    }, opts);
   } catch (e) {}
 
   return result;
