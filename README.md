@@ -27,6 +27,7 @@ if (supportTransform) {
 * ***supportTouch*** - checks and preserves the client browser capability for `touch` events
 * ***supportPassive*** - checks and preserves the client browser capability for `passive` event option
 * ***supportTransform*** - checks and preserves the client browser capability for webKit `transform` 
+* ***supportAnimation*** - checks and preserves the client browser capability for webKit keyframe `animation` 
 * ***supportTransition*** - checks and preserves the client browser capability for webKit `transition` 
 
 ```js 
@@ -75,6 +76,7 @@ one(targetElement,'touchstart',eventHandler,passiveHandler)
 ```
 
 # misc
+* ***emulateAnimationEnd*** - utility to execute a callback function when `animationend` event is triggered, or execute the callback right after for legacy browsers
 * ***emulateTransitionEnd*** - utility to execute a callback function when `transitionend` event is triggered, or execute the callback right after for legacy browsers
 * ***getElementTransitionDuration*** - returns the `transitionDuration` property of a `transition` property
 * ***isElementInScrollRange*** - a quick utility that checks if a target *Element* surface is scrolled within the visible area of the window
@@ -105,7 +107,9 @@ if (isElementInScrollRange(targetElement)){
 * ***mouseClickEvents*** - preserves the pointer events from mouse actions: down: `mousedown`, up: `mouseup`
 * ***mouseHoverEvents*** - preserve browser specific mouse hover events: `mouseenter` and `mouseleave` OR `mouseover` and `mouseout`
 * ***touchEvents*** - preserves the pointer events from touch actions: start: `touchstart`, end: `touchend`, move: `touchmove`, cancel: `touchcancel`
-* ***transitionDuration*** - preserves the `transitionDuration` event property supported by the client browser 
+* ***animationDuration*** - preserves the `animationDuration` property name supported by the client browser 
+* ***animationEndEvent*** - preserves the `animationEndEvent` event name supported by the client browser 
+* ***transitionDuration*** - preserves the `transitionDuration` property name supported by the client browser 
 * ***transitionEndEvent*** - preserves the `transitionend` event name supported by the client browser 
 
 ```js 

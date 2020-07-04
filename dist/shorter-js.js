@@ -1,5 +1,5 @@
 /*!
-* shorter-js v0.1.0 (https://thednp.github.io/shorter-js/)
+* shorter-js v0.1.1 (https://thednp.github.io/shorter-js/)
 * Copyright 2019-2020 © dnp_theme
 * Licensed under MIT (https://github.com/thednp/shorter-js/blob/master/LICENSE)
 */
@@ -16,6 +16,10 @@
   var touchEvents = { start: 'touchstart', end: 'touchend', move:'touchmove', cancel:'touchcancel' };
 
   var mouseSwipeEvents = { start: 'mousedown', end: 'mouseup', move:'mousemove', cancel:'mouseout' };
+
+  var animationDuration = 'webkitAnimationDuration' in document.body.style ? 'webkitAnimationDuration' : 'animationDuration';
+
+  var animationEndEvent = 'webkitAnimation' in document.body.style ? 'webkitAnimationEnd' : 'animationend';
 
   var transitionDuration = 'webkitTransition' in document.body.style ? 'webkitTransitionDuration' : 'transitionDuration';
 
@@ -43,6 +47,8 @@
   var supportTransform = 'webkitTransform' in document.body.style || 'transform' in document.body.style;
 
   var supportTouch = ('ontouchstart' in window || navigator.msMaxTouchPoints) || false;
+
+  var supportAnimation = 'webkitAnimation' in document.body.style || 'animation' in document.body.style;
 
   var supportTransition = 'webkitTransition' in document.body.style || 'transition' in document.body.style;
 
@@ -75,6 +81,21 @@
         off(element, event, handlerWrapper, options);
       }
     }, options);
+  }
+
+  function getElementAnimationDuration(element) {
+    var duration = supportAnimation ? parseFloat(getComputedStyle(element)[animationDuration]) : 0;
+    duration = typeof duration === 'number' && !isNaN(duration) ? duration * 1000 : 0;
+    return duration;
+  }
+
+  function emulateAnimationEnd(element,handler){
+    var called = 0, duration = getElementAnimationDuration(element);
+    duration ? element.addEventListener( animationEndEvent, function animationEndWrapper(e){
+                !called && handler(e), called = 1;
+                element.removeEventListener( animationEndEvent, animationEndWrapper);
+              })
+             : setTimeout(function() { !called && handler(), called = 1; }, 17);
   }
 
   function getElementTransitionDuration(element) {
@@ -127,13 +148,16 @@
     mouseHoverEvents: mouseHoverEvents,
     touchEvents: touchEvents,
     mouseSwipeEvents: mouseSwipeEvents,
+    animationDuration: animationDuration,
     transitionDuration: transitionDuration,
+    animationEndEvent: animationEndEvent,
     transitionEndEvent: transitionEndEvent,
     isMobile: isMobile,
     support3DTransform: support3DTransform,
     supportPassive: supportPassive,
     supportTransform: supportTransform,
     supportTouch: supportTouch,
+    supportAnimation: supportAnimation,
     supportTransition: supportTransition,
     addClass: addClass,
     removeClass: removeClass,
@@ -141,10 +165,12 @@
     on: on,
     off: off,
     one: one,
+    emulateAnimationEnd: emulateAnimationEnd,
     emulateTransitionEnd: emulateTransitionEnd,
     isElementInScrollRange: isElementInScrollRange,
     isElementInViewport: isElementInViewport,
     passiveHandler: passiveHandler,
+    getElementAnimationDuration: getElementAnimationDuration,
     getElementTransitionDuration: getElementTransitionDuration,
     queryElement: queryElement,
     tryWrapper: tryWrapper

@@ -1,0 +1,1 @@
+export default 'webkitAnimationDuration' in document.body.style ? 'webkitAnimationDuration' : 'animationDuration';
