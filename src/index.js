@@ -4,8 +4,10 @@ import mouseHoverEvents   from './strings/mouseHoverEvents.js'
 import touchEvents        from './strings/touchEvents.js'
 import mouseSwipeEvents   from './strings/mouseSwipeEvents.js'
 import animationDuration  from './strings/animationDuration.js'
+import animationDelay     from './strings/animationDelay.js'
 import animationEndEvent  from './strings/animationEndEvent.js'
 import transitionDuration from './strings/transitionDuration.js'
+import transitionDelay    from './strings/transitionDelay.js'
 import transitionEndEvent from './strings/transitionEndEvent.js'
 
 // boolean
@@ -34,7 +36,9 @@ import isElementInScrollRange       from './misc/isElementInScrollRange.js'
 import isElementInViewport          from './misc/isElementInViewport.js'
 import passiveHandler               from './misc/passiveHandler.js'
 import getElementAnimationDuration  from './misc/getElementAnimationDuration.js'
+import getElementAnimationDelay     from './misc/getElementAnimationDelay.js'
 import getElementTransitionDuration from './misc/getElementTransitionDuration.js'
+import getElementTransitionDelay    from './misc/getElementTransitionDelay.js'
 import queryElement                 from './misc/queryElement.js'
 import tryWrapper                   from './misc/tryWrapper.js'
 
@@ -44,7 +48,9 @@ export default {
   touchEvents,
   mouseSwipeEvents,
   animationDuration,
+  animationDelay,
   transitionDuration,
+  transitionDelay,
   animationEndEvent,
   transitionEndEvent,
   isMobile,
@@ -66,7 +72,9 @@ export default {
   isElementInViewport,
   passiveHandler,
   getElementAnimationDuration,
+  getElementAnimationDelay,
   getElementTransitionDuration,
+  getElementTransitionDelay,
   queryElement,
   tryWrapper
 }

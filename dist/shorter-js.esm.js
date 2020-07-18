@@ -1,5 +1,5 @@
 /*!
-* shorter-js v0.1.1 (https://thednp.github.io/shorter-js/)
+* shorter-js v0.1.2 (https://thednp.github.io/shorter-js/)
 * Copyright 2019-2020 © dnp_theme
 * Licensed under MIT (https://github.com/thednp/shorter-js/blob/master/LICENSE)
 */
@@ -13,9 +13,13 @@ var mouseSwipeEvents = { start: 'mousedown', end: 'mouseup', move:'mousemove', c
 
 var animationDuration = 'webkitAnimationDuration' in document.body.style ? 'webkitAnimationDuration' : 'animationDuration';
 
+var animationDelay = 'webkitAnimationDelay' in document.body.style ? 'webkitAnimationDelay' : 'animationDelay';
+
 var animationEndEvent = 'webkitAnimation' in document.body.style ? 'webkitAnimationEnd' : 'animationend';
 
-var transitionDuration = 'webkitTransition' in document.body.style ? 'webkitTransitionDuration' : 'transitionDuration';
+var transitionDuration$1 = 'webkitTransition' in document.body.style ? 'webkitTransitionDuration' : 'transitionDuration';
+
+var transitionDelay = 'webkitTransition' in document.body.style ? 'webkitTransitionDelay' : 'transitionDelay';
 
 var transitionEndEvent = 'webkitTransition' in document.body.style ? 'webkitTransitionEnd' : 'transitionend';
 
@@ -93,7 +97,7 @@ function emulateAnimationEnd(element,handler){
 }
 
 function getElementTransitionDuration(element) {
-  var duration = supportTransition ? parseFloat(getComputedStyle(element)[transitionDuration]) : 0;
+  var duration = supportTransition ? parseFloat(getComputedStyle(element)[transitionDuration$1]) : 0;
   duration = typeof duration === 'number' && !isNaN(duration) ? duration * 1000 : 0;
   return duration;
 }
@@ -125,6 +129,18 @@ function isElementInViewport(element) {
 
 var passiveHandler = supportPassive ? { passive: true } : false;
 
+function getElementAnimationDelay(element) {
+  var delay = supportAnimation ? parseFloat(getComputedStyle(element)[animationDelay]) : 0;
+  delay = typeof delay === 'number' && !isNaN(delay) ? delay * 1000 : 0;
+  return delay;
+}
+
+function getElementTransitionDelay(element) {
+  var duration = supportTransition ? parseFloat(getComputedStyle(element)[transitionDuration]) : 0;
+  duration = typeof duration === 'number' && !isNaN(duration) ? duration * 1000 : 0;
+  return duration;
+}
+
 function queryElement(selector, parent) {
   var lookUp = parent && parent instanceof Element ? parent : document;
   return selector instanceof Element ? selector : lookUp.querySelector(selector);
@@ -143,7 +159,9 @@ var index = {
   touchEvents: touchEvents,
   mouseSwipeEvents: mouseSwipeEvents,
   animationDuration: animationDuration,
-  transitionDuration: transitionDuration,
+  animationDelay: animationDelay,
+  transitionDuration: transitionDuration$1,
+  transitionDelay: transitionDelay,
   animationEndEvent: animationEndEvent,
   transitionEndEvent: transitionEndEvent,
   isMobile: isMobile,
@@ -165,7 +183,9 @@ var index = {
   isElementInViewport: isElementInViewport,
   passiveHandler: passiveHandler,
   getElementAnimationDuration: getElementAnimationDuration,
+  getElementAnimationDelay: getElementAnimationDelay,
   getElementTransitionDuration: getElementTransitionDuration,
+  getElementTransitionDelay: getElementTransitionDelay,
   queryElement: queryElement,
   tryWrapper: tryWrapper
 };

@@ -78,7 +78,10 @@ one(targetElement,'touchstart',eventHandler,passiveHandler)
 # misc
 * ***emulateAnimationEnd*** - utility to execute a callback function when `animationend` event is triggered, or execute the callback right after for legacy browsers
 * ***emulateTransitionEnd*** - utility to execute a callback function when `transitionend` event is triggered, or execute the callback right after for legacy browsers
+* ***getElementAnimationDuration*** - returns the `animationDuration` property of a `animation` property
+* ***getElementAnimationDelay*** - returns the `animationDelay` property of an `animation` property
 * ***getElementTransitionDuration*** - returns the `transitionDuration` property of a `transition` property
+* ***getElementTransitionDelay*** - returns the `transitionDelay` property of a `transition` property
 * ***isElementInScrollRange*** - a quick utility that checks if a target *Element* surface is scrolled within the visible area of the window
 * ***isElementInViewport*** - a quick utility that checks if a target *Element* is scrolled fully into visible window area, might not be useful for elements larger in size than the window itself, the above might be more useful
 * ***passiveHandler*** - a constant that preserves a standard handler `options` with `passive: true event` option used
@@ -108,8 +111,10 @@ if (isElementInScrollRange(targetElement)){
 * ***mouseHoverEvents*** - preserve browser specific mouse hover events: `mouseenter` and `mouseleave` OR `mouseover` and `mouseout`
 * ***touchEvents*** - preserves the pointer events from touch actions: start: `touchstart`, end: `touchend`, move: `touchmove`, cancel: `touchcancel`
 * ***animationDuration*** - preserves the `animationDuration` property name supported by the client browser 
+* ***animationDelay*** - preserves the `animationDelay` property name supported by the client browser 
 * ***animationEndEvent*** - preserves the `animationEndEvent` event name supported by the client browser 
 * ***transitionDuration*** - preserves the `transitionDuration` property name supported by the client browser 
+* ***transitionDelay*** - preserves the `transitionDelay` property name supported by the client browser 
 * ***transitionEndEvent*** - preserves the `transitionend` event name supported by the client browser 
 
 ```js 
