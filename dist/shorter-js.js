@@ -1,5 +1,5 @@
 /*!
-* shorter-js v0.1.2 (https://thednp.github.io/shorter-js/)
+* shorter-js v0.1.3 (https://thednp.github.io/shorter-js/)
 * Copyright 2019-2020 © dnp_theme
 * Licensed under MIT (https://github.com/thednp/shorter-js/blob/master/LICENSE)
 */
@@ -23,7 +23,7 @@
 
   var animationEndEvent = 'webkitAnimation' in document.body.style ? 'webkitAnimationEnd' : 'animationend';
 
-  var transitionDuration$1 = 'webkitTransition' in document.body.style ? 'webkitTransitionDuration' : 'transitionDuration';
+  var transitionDuration = 'webkitTransition' in document.body.style ? 'webkitTransitionDuration' : 'transitionDuration';
 
   var transitionDelay = 'webkitTransition' in document.body.style ? 'webkitTransitionDelay' : 'transitionDelay';
 
@@ -103,7 +103,7 @@
   }
 
   function getElementTransitionDuration(element) {
-    var duration = supportTransition ? parseFloat(getComputedStyle(element)[transitionDuration$1]) : 0;
+    var duration = supportTransition ? parseFloat(getComputedStyle(element)[transitionDuration]) : 0;
     duration = typeof duration === 'number' && !isNaN(duration) ? duration * 1000 : 0;
     return duration;
   }
@@ -142,7 +142,7 @@
   }
 
   function getElementTransitionDelay(element) {
-    var duration = supportTransition ? parseFloat(getComputedStyle(element)[transitionDuration]) : 0;
+    var duration = supportTransition ? parseFloat(getComputedStyle(element)[transitionDelay]) : 0;
     duration = typeof duration === 'number' && !isNaN(duration) ? duration * 1000 : 0;
     return duration;
   }
@@ -166,7 +166,7 @@
     mouseSwipeEvents: mouseSwipeEvents,
     animationDuration: animationDuration,
     animationDelay: animationDelay,
-    transitionDuration: transitionDuration$1,
+    transitionDuration: transitionDuration,
     transitionDelay: transitionDelay,
     animationEndEvent: animationEndEvent,
     transitionEndEvent: transitionEndEvent,
