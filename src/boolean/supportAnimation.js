@@ -1,1 +1,1 @@
-export default 'webkitAnimation' in document.body.style || 'animation' in document.body.style;
+export default 'webkitAnimation' in document.head.style || 'animation' in document.head.style;

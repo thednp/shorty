@@ -1,1 +1,1 @@
-export default 'webkitPerspective' in document.body.style || 'perspective' in document.body.style;
+export default 'webkitPerspective' in document.head.style || 'perspective' in document.head.style;

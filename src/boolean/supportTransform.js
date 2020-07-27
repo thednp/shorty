@@ -1,1 +1,1 @@
-export default 'webkitTransform' in document.body.style || 'transform' in document.body.style;
+export default 'webkitTransform' in document.head.style || 'transform' in document.head.style;

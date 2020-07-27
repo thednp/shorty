@@ -1,1 +1,1 @@
-export default 'webkitAnimationDelay' in document.body.style ? 'webkitAnimationDelay' : 'animationDelay';
+export default 'webkitAnimationDelay' in document.head.style ? 'webkitAnimationDelay' : 'animationDelay';

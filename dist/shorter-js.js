@@ -1,5 +1,5 @@
 /*!
-* shorter-js v0.1.3 (https://thednp.github.io/shorter-js/)
+* shorter-js v0.1.4 (https://thednp.github.io/shorter-js/)
 * Copyright 2019-2020 © dnp_theme
 * Licensed under MIT (https://github.com/thednp/shorter-js/blob/master/LICENSE)
 */
@@ -17,21 +17,21 @@
 
   var mouseSwipeEvents = { start: 'mousedown', end: 'mouseup', move:'mousemove', cancel:'mouseout' };
 
-  var animationDuration = 'webkitAnimationDuration' in document.body.style ? 'webkitAnimationDuration' : 'animationDuration';
+  var animationDuration = 'webkitAnimationDuration' in document.head.style ? 'webkitAnimationDuration' : 'animationDuration';
 
-  var animationDelay = 'webkitAnimationDelay' in document.body.style ? 'webkitAnimationDelay' : 'animationDelay';
+  var animationDelay = 'webkitAnimationDelay' in document.head.style ? 'webkitAnimationDelay' : 'animationDelay';
 
-  var animationEndEvent = 'webkitAnimation' in document.body.style ? 'webkitAnimationEnd' : 'animationend';
+  var animationEndEvent = 'webkitAnimation' in document.head.style ? 'webkitAnimationEnd' : 'animationend';
 
-  var transitionDuration = 'webkitTransition' in document.body.style ? 'webkitTransitionDuration' : 'transitionDuration';
+  var transitionDuration = 'webkitTransition' in document.head.style ? 'webkitTransitionDuration' : 'transitionDuration';
 
-  var transitionDelay = 'webkitTransition' in document.body.style ? 'webkitTransitionDelay' : 'transitionDelay';
+  var transitionDelay = 'webkitTransition' in document.head.style ? 'webkitTransitionDelay' : 'transitionDelay';
 
-  var transitionEndEvent = 'webkitTransition' in document.body.style ? 'webkitTransitionEnd' : 'transitionend';
+  var transitionEndEvent = 'webkitTransition' in document.head.style ? 'webkitTransitionEnd' : 'transitionend';
 
   var isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
 
-  var support3DTransform = 'webkitPerspective' in document.body.style || 'perspective' in document.body.style;
+  var support3DTransform = 'webkitPerspective' in document.head.style || 'perspective' in document.head.style;
 
   var supportPassive = (function () {
     var result = false;
@@ -48,13 +48,13 @@
     return result;
   })();
 
-  var supportTransform = 'webkitTransform' in document.body.style || 'transform' in document.body.style;
+  var supportTransform = 'webkitTransform' in document.head.style || 'transform' in document.head.style;
 
   var supportTouch = ('ontouchstart' in window || navigator.msMaxTouchPoints) || false;
 
-  var supportAnimation = 'webkitAnimation' in document.body.style || 'animation' in document.body.style;
+  var supportAnimation = 'webkitAnimation' in document.head.style || 'animation' in document.head.style;
 
-  var supportTransition = 'webkitTransition' in document.body.style || 'transition' in document.body.style;
+  var supportTransition = 'webkitTransition' in document.head.style || 'transition' in document.head.style;
 
   function addClass(element,classNAME) {
     element.classList.add(classNAME);

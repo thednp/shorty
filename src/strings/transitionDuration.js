@@ -1,1 +1,1 @@
-export default 'webkitTransition' in document.body.style ? 'webkitTransitionDuration' : 'transitionDuration';
+export default 'webkitTransition' in document.head.style ? 'webkitTransitionDuration' : 'transitionDuration';

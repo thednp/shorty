@@ -1,1 +1,1 @@
-export default 'webkitTransition' in document.body.style || 'transition' in document.body.style;
+export default 'webkitTransition' in document.head.style || 'transition' in document.head.style;

@@ -1,1 +1,1 @@
-export default 'webkitAnimationDuration' in document.body.style ? 'webkitAnimationDuration' : 'animationDuration';
+export default 'webkitAnimationDuration' in document.head.style ? 'webkitAnimationDuration' : 'animationDuration';

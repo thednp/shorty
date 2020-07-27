@@ -1,1 +1,1 @@
-export default 'webkitAnimation' in document.body.style ? 'webkitAnimationEnd' : 'animationend';
+export default 'webkitAnimation' in document.head.style ? 'webkitAnimationEnd' : 'animationend';
