@@ -6,7 +6,9 @@ import mouseSwipeEvents   from './strings/mouseSwipeEvents.js'
 import animationDuration  from './strings/animationDuration.js'
 import animationDelay     from './strings/animationDelay.js'
 import animationEndEvent  from './strings/animationEndEvent.js'
+import animationName      from './strings/animationName.js'
 import transitionDuration from './strings/transitionDuration.js'
+import transitionProperty from './strings/transitionProperty.js'
 import transitionDelay    from './strings/transitionDelay.js'
 import transitionEndEvent from './strings/transitionEndEvent.js'
 
@@ -49,10 +51,12 @@ export default {
   mouseSwipeEvents,
   animationDuration,
   animationDelay,
+  animationName,
+  animationEndEvent,
   transitionDuration,
   transitionDelay,
-  animationEndEvent,
   transitionEndEvent,
+  transitionProperty,
   isMobile,
   support3DTransform,
   supportPassive,

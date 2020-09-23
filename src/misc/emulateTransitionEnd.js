@@ -1,4 +1,3 @@
-// import one from '../event/one.js';
 import transitionEndEvent from '../strings/transitionEndEvent.js';
 import getElementTransitionDuration from './getElementTransitionDuration.js';
 

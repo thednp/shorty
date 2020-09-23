@@ -1,5 +1,5 @@
-assets/
-dist/
 .vscode/
-bower.json
-index.html
+node_modules/
+experiments/
+package-lock.json
+.gitignore

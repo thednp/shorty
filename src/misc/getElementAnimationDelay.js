@@ -1,8 +1,12 @@
 import supportAnimation from '../boolean/supportAnimation.js';
 import animationDelay from '../strings/animationDelay.js';
+import animationName from '../strings/animationName.js';
 
 export default function(element) {
-  let delay = supportAnimation ? parseFloat(getComputedStyle(element)[animationDelay]) : 0;
-  delay = typeof delay === 'number' && !isNaN(delay) ? delay * 1000 : 0;
-  return delay;
+  let computedStyle = getComputedStyle(element),
+      name = computedStyle[animationName],
+      delay = supportAnimation && name && name !== 'none'
+            ? parseFloat(computedStyle[animationDelay]) : 0;
+
+  return !isNaN(delay) ? delay * 1000 : 0;
 }

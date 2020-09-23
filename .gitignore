@@ -1,4 +1,5 @@
 .vscode/
+experiments/
 node_modules/
 package-lock.json
 .npmignore

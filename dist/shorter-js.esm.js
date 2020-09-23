@@ -1,5 +1,5 @@
 /*!
-* shorter-js v0.1.4 (https://thednp.github.io/shorter-js/)
+* shorter-js v0.1.5 (https://thednp.github.io/shorter-js/)
 * Copyright 2019-2020 © dnp_theme
 * Licensed under MIT (https://github.com/thednp/shorter-js/blob/master/LICENSE)
 */
@@ -11,13 +11,17 @@ var touchEvents = { start: 'touchstart', end: 'touchend', move:'touchmove', canc
 
 var mouseSwipeEvents = { start: 'mousedown', end: 'mouseup', move:'mousemove', cancel:'mouseout' };
 
-var animationDuration = 'webkitAnimationDuration' in document.head.style ? 'webkitAnimationDuration' : 'animationDuration';
+var animationDuration = 'webkitAnimation' in document.head.style ? 'webkitAnimationDuration' : 'animationDuration';
 
-var animationDelay = 'webkitAnimationDelay' in document.head.style ? 'webkitAnimationDelay' : 'animationDelay';
+var animationDelay = 'webkitAnimation' in document.head.style ? 'webkitAnimationDelay' : 'animationDelay';
 
 var animationEndEvent = 'webkitAnimation' in document.head.style ? 'webkitAnimationEnd' : 'animationend';
 
+var animationName = 'webkitAnimation' in document.head.style ? 'webkitAnimationName' : 'animationName';
+
 var transitionDuration = 'webkitTransition' in document.head.style ? 'webkitTransitionDuration' : 'transitionDuration';
+
+var transitionProperty = 'webkitTransition' in document.body.style ? 'webkitTransitionProperty' : 'transitionProperty';
 
 var transitionDelay = 'webkitTransition' in document.head.style ? 'webkitTransitionDelay' : 'transitionDelay';
 
@@ -82,9 +86,11 @@ function one(element, event, handler, options) {
 }
 
 function getElementAnimationDuration(element) {
-  var duration = supportAnimation ? parseFloat(getComputedStyle(element)[animationDuration]) : 0;
-  duration = typeof duration === 'number' && !isNaN(duration) ? duration * 1000 : 0;
-  return duration;
+  var computedStyle = getComputedStyle(element),
+      name = computedStyle[animationName],
+      duration = supportAnimation && name && name !== 'none'
+               ? parseFloat(computedStyle[animationDuration]) : 0;
+  return !isNaN(duration) ? duration * 1000 : 0
 }
 
 function emulateAnimationEnd(element,handler){
@@ -97,9 +103,11 @@ function emulateAnimationEnd(element,handler){
 }
 
 function getElementTransitionDuration(element) {
-  var duration = supportTransition ? parseFloat(getComputedStyle(element)[transitionDuration]) : 0;
-  duration = typeof duration === 'number' && !isNaN(duration) ? duration * 1000 : 0;
-  return duration;
+  var computedStyle = getComputedStyle(element),
+      property = computedStyle[transitionProperty],
+      duration = supportTransition && property && property !== 'none'
+               ? parseFloat(computedStyle[transitionDuration]) : 0;
+  return !isNaN(duration) ? duration * 1000 : 0;
 }
 
 function emulateTransitionEnd(element,handler){
@@ -130,9 +138,11 @@ function isElementInViewport(element) {
 var passiveHandler = supportPassive ? { passive: true } : false;
 
 function getElementAnimationDelay(element) {
-  var delay = supportAnimation ? parseFloat(getComputedStyle(element)[animationDelay]) : 0;
-  delay = typeof delay === 'number' && !isNaN(delay) ? delay * 1000 : 0;
-  return delay;
+  var computedStyle = getComputedStyle(element),
+      name = computedStyle[animationName],
+      delay = supportAnimation && name && name !== 'none'
+            ? parseFloat(computedStyle[animationDelay]) : 0;
+  return !isNaN(delay) ? delay * 1000 : 0;
 }
 
 function getElementTransitionDelay(element) {
@@ -160,10 +170,12 @@ var index = {
   mouseSwipeEvents: mouseSwipeEvents,
   animationDuration: animationDuration,
   animationDelay: animationDelay,
+  animationName: animationName,
+  animationEndEvent: animationEndEvent,
   transitionDuration: transitionDuration,
   transitionDelay: transitionDelay,
-  animationEndEvent: animationEndEvent,
   transitionEndEvent: transitionEndEvent,
+  transitionProperty: transitionProperty,
   isMobile: isMobile,
   support3DTransform: support3DTransform,
   supportPassive: supportPassive,
