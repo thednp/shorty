@@ -132,12 +132,16 @@ one(targetElement,touchEvents.start,eventHandler,passiveHandler)
 ```
 
 # Advanced Use
-To avoid adding un-necessary shorties into your code, you might want to import them directly from their location
+To avoid adding un-necessary shorties into your code, you might want to import them directly from their location.
 
 ```js
 // Example
 import on from 'shorter-js/src/event/on.js'
 import addClass from 'shorter-js/src/class/addClass.js'
+
+on(document.getElementById('my-elem'),'eventName',function(e){
+  addClass(document.getElementById('my-elem'),'my-className')
+})
 ```
 
 # License
