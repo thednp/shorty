@@ -1,5 +1,5 @@
 # shorter-js
-**A small ES6/ES7 library with various JavaScript tools useful for creating light libraries.
+**A small ES6+ library with various JavaScript tools useful for creating light libraries.
 Featured in [KUTE.js](https://github.com/thednp/kute.js), [BSN](https://github.com/thednp/bootstrap.native), [Navbar.js](https://github.com/thednp/navbar.js) and other libraries.**
 
 * The purpose if the library is to speed up the development workflow, minimize the size of larger libraries by providing a shorter syntax for most used JavaScript API methods, most used strings or other helpful utilities.
@@ -10,7 +10,7 @@ Featured in [KUTE.js](https://github.com/thednp/kute.js), [BSN](https://github.c
 npm install shorter-js
 ```
 
-# ES6/ES7 Base usage
+# ES6+ Base usage
 ```js
 // import the tool you need
 import {supportTransform} from 'shorter-js'
@@ -113,9 +113,11 @@ if (isElementInScrollRange(targetElement)){
 * ***animationDuration*** - preserves the `animationDuration` property name supported by the client browser 
 * ***animationDelay*** - preserves the `animationDelay` property name supported by the client browser 
 * ***animationEndEvent*** - preserves the `animationEndEvent` event name supported by the client browser 
+* ***animationName*** - preserves the `animationName` property name supported by the client browser 
 * ***transitionDuration*** - preserves the `transitionDuration` property name supported by the client browser 
 * ***transitionDelay*** - preserves the `transitionDelay` property name supported by the client browser 
 * ***transitionEndEvent*** - preserves the `transitionend` event name supported by the client browser 
+* ***transitionProperty*** - preserves the `transitionProperty` property name supported by the client browser 
 
 ```js 
 // EXAMPLES
