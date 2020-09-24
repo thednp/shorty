@@ -1,5 +1,5 @@
 /*!
-* shorter-js v0.1.6 (https://thednp.github.io/shorter-js/)
+* shorter-js v0.1.7 (https://thednp.github.io/shorter-js/)
 * Copyright 2019-2020 © dnp_theme
 * Licensed under MIT (https://github.com/thednp/shorter-js/blob/master/LICENSE)
 */
@@ -8,6 +8,8 @@ var mouseClickEvents = { down: 'mousedown', up: 'mouseup' };
 var mouseHoverEvents = ('onmouseleave' in document) ? [ 'mouseenter', 'mouseleave'] : [ 'mouseover', 'mouseout' ];
 
 var touchEvents = { start: 'touchstart', end: 'touchend', move:'touchmove', cancel:'touchcancel' };
+
+var focusEvents = { in: 'focusin', out: 'focusout' };
 
 var mouseSwipeEvents = { start: 'mousedown', end: 'mouseup', move:'mousemove', cancel:'mouseout' };
 
@@ -21,7 +23,7 @@ var animationName = 'webkitAnimation' in document.head.style ? 'webkitAnimationN
 
 var transitionDuration = 'webkitTransition' in document.head.style ? 'webkitTransitionDuration' : 'transitionDuration';
 
-var transitionProperty = 'webkitTransition' in document.body.style ? 'webkitTransitionProperty' : 'transitionProperty';
+var transitionProperty = 'webkitTransition' in document.head.style ? 'webkitTransitionProperty' : 'transitionProperty';
 
 var transitionDelay = 'webkitTransition' in document.head.style ? 'webkitTransitionDelay' : 'transitionDelay';
 
@@ -195,6 +197,7 @@ var index = {
   mouseClickEvents: mouseClickEvents,
   mouseHoverEvents: mouseHoverEvents,
   touchEvents: touchEvents,
+  focusEvents: focusEvents,
   mouseSwipeEvents: mouseSwipeEvents,
   bezierEasings: bezierEasings,
   animationDuration: animationDuration,

@@ -2,6 +2,7 @@
 import mouseClickEvents   from './strings/mouseClickEvents.js'
 import mouseHoverEvents   from './strings/mouseHoverEvents.js'
 import touchEvents        from './strings/touchEvents.js'
+import focusEvents        from './strings/focusEvents.js'
 import mouseSwipeEvents   from './strings/mouseSwipeEvents.js'
 import animationDuration  from './strings/animationDuration.js'
 import animationDelay     from './strings/animationDelay.js'
@@ -49,6 +50,7 @@ export default {
   mouseClickEvents,
   mouseHoverEvents,
   touchEvents,
+  focusEvents,
   mouseSwipeEvents,
   bezierEasings,
   animationDuration,

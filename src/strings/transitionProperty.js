@@ -1,1 +1,1 @@
-export default 'webkitTransition' in document.body.style ? 'webkitTransitionProperty' : 'transitionProperty';
+export default 'webkitTransition' in document.head.style ? 'webkitTransitionProperty' : 'transitionProperty';
