@@ -1,6 +1,6 @@
 # shorter-js
-**A small ES6+ library with various JavaScript tools useful for creating light libraries.
-Featured in [KUTE.js](https://github.com/thednp/kute.js), [BSN](https://github.com/thednp/bootstrap.native), [Navbar.js](https://github.com/thednp/navbar.js) and other libraries.**
+A small ES6+ library with various JavaScript tools useful for creating light libraries.
+Featured in [KUTE.js](https://github.com/thednp/kute.js), [BSN](https://github.com/thednp/bootstrap.native), [Navbar.js](https://github.com/thednp/navbar.js) and other libraries.
 
 * The purpose if the library is to speed up the development workflow, minimize the size of larger libraries by providing a shorter syntax for most used JavaScript API methods, most used strings or other helpful utilities.
 * While the library comes with a working build in the `dist` folder, that is mainly for build consistency testing.
@@ -106,6 +106,7 @@ if (isElementInScrollRange(targetElement)){
 ```
 
 # strings
+* ***bezierEasing*** - an *Object* comprised or a set of valid CSS `transition-timing-function` based on Cubic Bezier; EG: `cubic-bezier(0.215,0.61,0.355,1)` for `bezierEasing.easingCubicOut`
 * ***mouseSwipeEvents*** - preserves the pointer events from mouse actions: start: `mousedown`, end: `mouseup`, move: `mousemove`, cancel: `mouseout`
 * ***mouseClickEvents*** - preserves the pointer events from mouse actions: down: `mousedown`, up: `mouseup`
 * ***mouseHoverEvents*** - preserve browser specific mouse hover events: `mouseenter` and `mouseleave` OR `mouseover` and `mouseout`

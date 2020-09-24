@@ -11,6 +11,7 @@ import transitionDuration from './strings/transitionDuration.js'
 import transitionProperty from './strings/transitionProperty.js'
 import transitionDelay    from './strings/transitionDelay.js'
 import transitionEndEvent from './strings/transitionEndEvent.js'
+import bezierEasings      from './strings/bezierEasings.js'
 
 // boolean
 import isMobile           from './boolean/isMobile.js'
@@ -18,7 +19,7 @@ import support3DTransform from './boolean/support3DTransform.js'
 import supportPassive     from './boolean/supportPassive.js'
 import supportTransform   from './boolean/supportTransform.js'
 import supportTouch       from './boolean/supportTouch.js'
-import supportAnimation  from './boolean/supportAnimation.js'
+import supportAnimation   from './boolean/supportAnimation.js'
 import supportTransition  from './boolean/supportTransition.js'
 
 // class
@@ -49,6 +50,7 @@ export default {
   mouseHoverEvents,
   touchEvents,
   mouseSwipeEvents,
+  bezierEasings,
   animationDuration,
   animationDelay,
   animationName,
