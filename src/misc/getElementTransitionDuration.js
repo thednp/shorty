@@ -1,12 +1,14 @@
-import supportTransition from '../boolean/supportTransition.js';
-import transitionDuration from '../strings/transitionDuration.js';
-import transitionProperty from '../strings/transitionProperty.js';
+import supportTransition from '../boolean/supportTransition.js'
+import transitionDuration from '../strings/transitionDuration.js'
+import transitionProperty from '../strings/transitionProperty.js'
 
 export default function(element) {
   let computedStyle = getComputedStyle(element),
-      property = computedStyle[transitionProperty],
-      duration = supportTransition && property && property !== 'none' 
-               ? parseFloat(computedStyle[transitionDuration]) : 0;
+      propertyValue = computedStyle[transitionProperty],
+      durationValue = computedStyle[transitionDuration],
+      durationScale = durationValue.indexOf('ms') > -1 ? 1 : 1000,
+      duration = supportTransition && propertyValue && propertyValue !== 'none' 
+               ? parseFloat( durationValue ) * durationScale : 0
 
-  return !isNaN(duration) ? duration * 1000 : 0;
+  return !isNaN(duration) ? duration : 0
 }

@@ -1,5 +1,5 @@
 /*!
-* shorter-js v0.1.8 (https://thednp.github.io/shorter-js/)
+* shorter-js v0.1.9-alpha1 (https://thednp.github.io/shorter-js/)
 * Copyright 2019-2021 © dnp_theme
 * Licensed under MIT (https://github.com/thednp/shorter-js/blob/master/LICENSE)
 */
@@ -109,7 +109,7 @@ function off(element, event, handler, options) {
 function one(element, event, handler, options) {
   on(element, event, function handlerWrapper(e){
     if (e.target === element) {
-      handler(e);
+      handler.apply(element, [e]);
       off(element, event, handlerWrapper, options);
     }
   }, options);
@@ -117,36 +117,58 @@ function one(element, event, handler, options) {
 
 function getElementAnimationDuration(element) {
   var computedStyle = getComputedStyle(element),
-      name = computedStyle[animationName],
-      duration = supportAnimation && name && name !== 'none'
-               ? parseFloat(computedStyle[animationDuration]) : 0;
-  return !isNaN(duration) ? duration * 1000 : 0
+      propertyValue = computedStyle[animationName],
+      durationValue = computedStyle[animationDuration],
+      durationScale = durationValue.indexOf('ms') > -1 ? 1 : 1000,
+      duration = supportAnimation && propertyValue && propertyValue !== 'none'
+               ? parseFloat( durationValue ) * durationScale : 0;
+  return !isNaN(duration) ? duration : 0
 }
 
 function emulateAnimationEnd(element,handler){
-  var called = 0, duration = getElementAnimationDuration(element);
-  duration ? element.addEventListener( animationEndEvent, function animationEndWrapper(e){
-              !called && handler(e); called = 1;
-              element.removeEventListener( animationEndEvent, animationEndWrapper);
-            }) : handler();
-  setTimeout(function() { !called && handler(); called = 1; }, duration || 17);
+  var called = 0,
+      endEvent = new Event( animationEndEvent ),
+      duration = getElementAnimationDuration( element );
+  if ( duration ) {
+    element.addEventListener( animationEndEvent, function animationEndWrapper(e){
+      if ( e.target === element ) {
+        handler.apply( element, [e] );
+        element.removeEventListener( animationEndEvent, animationEndWrapper);
+        called = 1;
+      }
+    });
+    setTimeout(function() {
+      !called && element.dispatchEvent( endEvent );
+    }, duration + 17 );
+  } else { handler.apply( element, [endEvent]); }
 }
 
 function getElementTransitionDuration(element) {
   var computedStyle = getComputedStyle(element),
-      property = computedStyle[transitionProperty],
-      duration = supportTransition && property && property !== 'none'
-               ? parseFloat(computedStyle[transitionDuration]) : 0;
-  return !isNaN(duration) ? duration * 1000 : 0;
+      propertyValue = computedStyle[transitionProperty],
+      durationValue = computedStyle[transitionDuration],
+      durationScale = durationValue.indexOf('ms') > -1 ? 1 : 1000,
+      duration = supportTransition && propertyValue && propertyValue !== 'none'
+               ? parseFloat( durationValue ) * durationScale : 0;
+  return !isNaN(duration) ? duration : 0
 }
 
 function emulateTransitionEnd(element,handler){
-  var called = 0, duration = getElementTransitionDuration(element);
-  duration ? element.addEventListener( transitionEndEvent, function transitionEndWrapper(e){
-              handler.apply(element,[e]); called = 1;
-              element.removeEventListener( transitionEndEvent, transitionEndWrapper);
-            }) : handler();
-  setTimeout(function() { !called && handler(); called = 1; }, duration || 17);
+  var called = 0,
+      endEvent = new Event( transitionEndEvent ),
+      duration = getElementTransitionDuration(element);
+  if ( duration ) {
+    element.addEventListener( transitionEndEvent, function transitionEndWrapper(e){
+      if ( e.target === element ) {
+        handler.apply( element, [e] );
+        element.removeEventListener( transitionEndEvent, transitionEndWrapper);
+        called = 1;
+      }
+    });
+    setTimeout(function() {
+      !called && element.dispatchEvent( endEvent );
+    }, duration + 17 );
+  } else { handler.apply( element, [endEvent]); }
 }
 
 function isElementInScrollRange(element) {
@@ -169,16 +191,22 @@ var passiveHandler = supportPassive ? { passive: true } : false;
 
 function getElementAnimationDelay(element) {
   var computedStyle = getComputedStyle(element),
-      name = computedStyle[animationName],
-      delay = supportAnimation && name && name !== 'none'
-            ? parseFloat(computedStyle[animationDelay]) : 0;
-  return !isNaN(delay) ? delay * 1000 : 0;
+      propertyValue = computedStyle[animationName],
+      durationValue = computedStyle[animationDelay],
+      durationScale = durationValue.indexOf('ms') > -1 ? 1 : 1000,
+      duration = supportAnimation && propertyValue && propertyValue !== 'none'
+               ? parseFloat( durationValue ) * durationScale : 0;
+  return !isNaN(duration) ? duration : 0
 }
 
 function getElementTransitionDelay(element) {
-  var duration = supportTransition ? parseFloat(getComputedStyle(element)[transitionDelay]) : 0;
-  duration = typeof duration === 'number' && !isNaN(duration) ? duration * 1000 : 0;
-  return duration;
+  var computedStyle = getComputedStyle(element),
+      propertyValue = computedStyle[transitionProperty],
+      delayValue = computedStyle[transitionDelay],
+      delayScale = delayValue.indexOf('ms') > -1 ? 1 : 1000,
+      duration = supportTransition && propertyValue && propertyValue !== 'none'
+               ? parseFloat( delayValue ) * delayScale : 0;
+  return !isNaN(duration) ? duration : 0
 }
 
 function queryElement(selector, parent) {

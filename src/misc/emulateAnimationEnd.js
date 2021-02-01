@@ -3,10 +3,20 @@ import getElementAnimationDuration from './getElementAnimationDuration.js';
 
 // emulateTransitionEnd
 export default function(element,handler){ 
-  let called = 0, duration = getElementAnimationDuration(element);
-  duration ? element.addEventListener( animationEndEvent, function animationEndWrapper(e){ 
-              !called && handler(e); called = 1
-              element.removeEventListener( animationEndEvent, animationEndWrapper)
-            }) : handler()
-  setTimeout(function() { !called && handler(); called = 1 }, duration || 17)
+  let called = 0,
+      endEvent = new Event( animationEndEvent ),
+      duration = getElementAnimationDuration( element )
+
+  if ( duration ) {
+    element.addEventListener( animationEndEvent, function animationEndWrapper(e){ 
+      if ( e.target === element ) {
+        handler.apply( element, [e] )
+        element.removeEventListener( animationEndEvent, animationEndWrapper)
+        called = 1
+      }
+    })
+    setTimeout(function() { 
+      !called && element.dispatchEvent( endEvent )
+    }, duration + 17 )
+  } else { handler.apply( element, [endEvent]) }
 }

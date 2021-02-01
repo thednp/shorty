@@ -4,9 +4,11 @@ import animationName from '../strings/animationName.js';
 
 export default function(element) {
   let computedStyle = getComputedStyle(element),
-      name = computedStyle[animationName],
-      delay = supportAnimation && name && name !== 'none'
-            ? parseFloat(computedStyle[animationDelay]) : 0;
+      propertyValue = computedStyle[animationName],
+      durationValue = computedStyle[animationDelay],
+      durationScale = durationValue.indexOf('ms') > -1 ? 1 : 1000,
+      duration = supportAnimation && propertyValue && propertyValue !== 'none'
+               ? parseFloat( durationValue ) * durationScale : 0  
 
-  return !isNaN(delay) ? delay * 1000 : 0;
+  return !isNaN(duration) ? duration : 0
 }

@@ -5,7 +5,7 @@ import off from './off.js'
 export default function(element, event, handler, options) {
   on(element, event, function handlerWrapper(e){
     if (e.target === element) {
-      handler(e);
+      handler.apply(element, [e]);
       off(element, event, handlerWrapper, options);
     }
   }, options);
