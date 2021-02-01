@@ -1,6 +1,6 @@
 /*!
-* shorter-js v0.1.7 (https://thednp.github.io/shorter-js/)
-* Copyright 2019-2020 © dnp_theme
+* shorter-js v0.1.8 (https://thednp.github.io/shorter-js/)
+* Copyright 2019-2021 © dnp_theme
 * Licensed under MIT (https://github.com/thednp/shorter-js/blob/master/LICENSE)
 */
 (function (global, factory) {
@@ -132,10 +132,10 @@
   function emulateAnimationEnd(element,handler){
     var called = 0, duration = getElementAnimationDuration(element);
     duration ? element.addEventListener( animationEndEvent, function animationEndWrapper(e){
-                !called && handler(e), called = 1;
+                !called && handler(e); called = 1;
                 element.removeEventListener( animationEndEvent, animationEndWrapper);
-              })
-             : setTimeout(function() { !called && handler(), called = 1; }, 17);
+              }) : handler();
+    setTimeout(function() { !called && handler(); called = 1; }, duration || 17);
   }
 
   function getElementTransitionDuration(element) {
@@ -149,10 +149,10 @@
   function emulateTransitionEnd(element,handler){
     var called = 0, duration = getElementTransitionDuration(element);
     duration ? element.addEventListener( transitionEndEvent, function transitionEndWrapper(e){
-                !called && handler(e), called = 1;
+                handler.apply(element,[e]); called = 1;
                 element.removeEventListener( transitionEndEvent, transitionEndWrapper);
-              })
-             : setTimeout(function() { !called && handler(), called = 1; }, 17);
+              }) : handler();
+    setTimeout(function() { !called && handler(); called = 1; }, duration || 17);
   }
 
   function isElementInScrollRange(element) {

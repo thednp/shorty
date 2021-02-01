@@ -5,8 +5,8 @@ import getElementAnimationDuration from './getElementAnimationDuration.js';
 export default function(element,handler){ 
   let called = 0, duration = getElementAnimationDuration(element);
   duration ? element.addEventListener( animationEndEvent, function animationEndWrapper(e){ 
-              !called && handler(e), called = 1; 
+              !called && handler(e); called = 1
               element.removeEventListener( animationEndEvent, animationEndWrapper)
-            })
-           : setTimeout(function() { !called && handler(), called = 1; }, 17);
+            }) : handler()
+  setTimeout(function() { !called && handler(); called = 1 }, duration || 17)
 }
