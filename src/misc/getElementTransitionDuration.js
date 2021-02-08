@@ -6,7 +6,7 @@ export default function(element) {
   let computedStyle = getComputedStyle(element),
       propertyValue = computedStyle[transitionProperty],
       durationValue = computedStyle[transitionDuration],
-      durationScale = durationValue.indexOf('ms') > -1 ? 1 : 1000,
+      durationScale = durationValue.includes('ms') ? 1 : 1000,
       duration = supportTransition && propertyValue && propertyValue !== 'none' 
                ? parseFloat( durationValue ) * durationScale : 0
 

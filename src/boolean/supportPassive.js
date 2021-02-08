@@ -1,6 +1,7 @@
-// determine support for passive events
+import addEventListener from '../strings/addEventListener.js'
+import removeEventListener from '../strings/removeEventListener.js'
+
 export default (() => {
-  // Test via a getter in the options object to see if the passive property is accessed
   let result = false;
   try {
     const opts = Object.defineProperty({}, 'passive', {
@@ -8,8 +9,8 @@ export default (() => {
         result = true;
       }
     });
-    document.addEventListener('DOMContentLoaded', function wrap(){
-      document.removeEventListener('DOMContentLoaded', wrap, opts)
+    document[addEventListener]('DOMContentLoaded', function wrap(){
+      document[removeEventListener]('DOMContentLoaded', wrap, opts)
     }, opts);
   } catch (e) {}
 

@@ -6,7 +6,7 @@ export default function(element) {
   let computedStyle = getComputedStyle(element),
       propertyValue = computedStyle[animationName],
       durationValue = computedStyle[animationDelay],
-      durationScale = durationValue.indexOf('ms') > -1 ? 1 : 1000,
+      durationScale = durationValue.includes('ms') ? 1 : 1000,
       duration = supportAnimation && propertyValue && propertyValue !== 'none'
                ? parseFloat( durationValue ) * durationScale : 0  
 

@@ -1,7 +1,6 @@
 import transitionEndEvent from '../strings/transitionEndEvent.js';
 import getElementTransitionDuration from './getElementTransitionDuration.js';
 
-// emulateTransitionEnd
 export default function(element,handler){ 
   let called = 0, 
       endEvent = new Event( transitionEndEvent ),

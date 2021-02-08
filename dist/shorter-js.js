@@ -1,5 +1,5 @@
 /*!
-* shorter-js v0.1.9-alpha1 (https://thednp.github.io/shorter-js/)
+* shorter-js v0.1.10b (https://thednp.github.io/shorter-js/)
 * Copyright 2019-2021 © dnp_theme
 * Licensed under MIT (https://github.com/thednp/shorter-js/blob/master/LICENSE)
 */
@@ -63,6 +63,10 @@
     easingBackInOut: 'cubic-bezier(0.68,-0.55,0.265,1.55)'
   };
 
+  var addEventListener = 'addEventListener';
+
+  var removeEventListener = 'removeEventListener';
+
   var isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
 
   var support3DTransform = 'webkitPerspective' in document.head.style || 'perspective' in document.head.style;
@@ -75,8 +79,8 @@
           result = true;
         }
       });
-      document.addEventListener('DOMContentLoaded', function wrap(){
-        document.removeEventListener('DOMContentLoaded', wrap, opts);
+      document[addEventListener]('DOMContentLoaded', function wrap(){
+        document[removeEventListener]('DOMContentLoaded', wrap, opts);
       }, opts);
     } catch (e) {}
     return result;
@@ -125,7 +129,7 @@
     var computedStyle = getComputedStyle(element),
         propertyValue = computedStyle[animationName],
         durationValue = computedStyle[animationDuration],
-        durationScale = durationValue.indexOf('ms') > -1 ? 1 : 1000,
+        durationScale = durationValue.includes('ms') ? 1 : 1000,
         duration = supportAnimation && propertyValue && propertyValue !== 'none'
                  ? parseFloat( durationValue ) * durationScale : 0;
     return !isNaN(duration) ? duration : 0
@@ -153,7 +157,7 @@
     var computedStyle = getComputedStyle(element),
         propertyValue = computedStyle[transitionProperty],
         durationValue = computedStyle[transitionDuration],
-        durationScale = durationValue.indexOf('ms') > -1 ? 1 : 1000,
+        durationScale = durationValue.includes('ms') ? 1 : 1000,
         duration = supportTransition && propertyValue && propertyValue !== 'none'
                  ? parseFloat( durationValue ) * durationScale : 0;
     return !isNaN(duration) ? duration : 0
@@ -199,7 +203,7 @@
     var computedStyle = getComputedStyle(element),
         propertyValue = computedStyle[animationName],
         durationValue = computedStyle[animationDelay],
-        durationScale = durationValue.indexOf('ms') > -1 ? 1 : 1000,
+        durationScale = durationValue.includes('ms') ? 1 : 1000,
         duration = supportAnimation && propertyValue && propertyValue !== 'none'
                  ? parseFloat( durationValue ) * durationScale : 0;
     return !isNaN(duration) ? duration : 0
@@ -209,7 +213,7 @@
     var computedStyle = getComputedStyle(element),
         propertyValue = computedStyle[transitionProperty],
         delayValue = computedStyle[transitionDelay],
-        delayScale = delayValue.indexOf('ms') > -1 ? 1 : 1000,
+        delayScale = delayValue.includes('ms') ? 1 : 1000,
         duration = supportTransition && propertyValue && propertyValue !== 'none'
                  ? parseFloat( delayValue ) * delayScale : 0;
     return !isNaN(duration) ? duration : 0
@@ -218,6 +222,45 @@
   function queryElement(selector, parent) {
     var lookUp = parent && parent instanceof Element ? parent : document;
     return selector instanceof Element ? selector : lookUp.querySelector(selector);
+  }
+
+  function normalizeValue( value ) {
+    if ( value === 'true' ) {
+      return true
+    }
+    if ( value === 'false' ) {
+      return false
+    }
+    if ( !isNaN(value) ) {
+      return +value
+    }
+    if ( value === '' || value === 'null' ) {
+      return null
+    }
+    return value
+  }
+
+  function normalizeOptions( element, defaultOps, inputOps, ns ){
+    var normalOps = {}, dataOps = {},
+      data = Object.assign( {}, element.dataset );
+    Object.keys( data )
+      .map( function (k) {
+        var key = k.includes( ns )
+          ? k.replace( ns, '' ) .replace(/[A-Z]/, function (match) { return match.toLowerCase(); } )
+          : k;
+        dataOps[key] =  normalizeValue( data[k] );
+      });
+    Object.keys( inputOps )
+      .map( function (k) {
+        inputOps[k] = normalizeValue( inputOps[k] );
+      });
+    Object.keys( defaultOps )
+      .map( function (k) {
+        normalOps[k] = k in inputOps ? inputOps[k]
+          : k in dataOps ? dataOps[k]
+          : defaultOps[k];
+      });
+    return normalOps
   }
 
   function tryWrapper(fn,origin){
@@ -249,6 +292,8 @@
     supportTouch: supportTouch,
     supportAnimation: supportAnimation,
     supportTransition: supportTransition,
+    addEventListener: addEventListener,
+    removeEventListener: removeEventListener,
     addClass: addClass,
     removeClass: removeClass,
     hasClass: hasClass,
@@ -265,6 +310,8 @@
     getElementTransitionDuration: getElementTransitionDuration,
     getElementTransitionDelay: getElementTransitionDelay,
     queryElement: queryElement,
+    normalizeValue: normalizeValue,
+    normalizeOptions: normalizeOptions,
     tryWrapper: tryWrapper
   };
 

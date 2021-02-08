@@ -13,6 +13,8 @@ import transitionProperty from './strings/transitionProperty.js'
 import transitionDelay    from './strings/transitionDelay.js'
 import transitionEndEvent from './strings/transitionEndEvent.js'
 import bezierEasings      from './strings/bezierEasings.js'
+import addEventListener   from './strings/addEventListener.js'
+import removeEventListener from './strings/removeEventListener.js'
 
 // boolean
 import isMobile           from './boolean/isMobile.js'
@@ -44,6 +46,8 @@ import getElementAnimationDelay     from './misc/getElementAnimationDelay.js'
 import getElementTransitionDuration from './misc/getElementTransitionDuration.js'
 import getElementTransitionDelay    from './misc/getElementTransitionDelay.js'
 import queryElement                 from './misc/queryElement.js'
+import normalizeOptions             from './misc/normalizeOptions.js'
+import normalizeValue               from './misc/normalizeValue.js'
 import tryWrapper                   from './misc/tryWrapper.js'
 
 export default {
@@ -68,6 +72,8 @@ export default {
   supportTouch,
   supportAnimation,
   supportTransition,
+  addEventListener,
+  removeEventListener,
   addClass,
   removeClass,
   hasClass,
@@ -84,5 +90,7 @@ export default {
   getElementTransitionDuration,
   getElementTransitionDelay,
   queryElement,
+  normalizeValue,
+  normalizeOptions,
   tryWrapper
 }

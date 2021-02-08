@@ -86,11 +86,12 @@ one(targetElement,'touchstart',eventHandler,passiveHandler)
 * ***isElementInViewport*** - a quick utility that checks if a target *Element* is scrolled fully into visible window area, might not be useful for elements larger in size than the window itself, the above might be more useful
 * ***passiveHandler*** - a constant that preserves a standard handler `options` with `passive: true event` option used
 * ***queryElement*** - a simple utility to check if a certain item is an *Element* or a selector string, and if a selector string find the FIRST *Element* and return it
+* ***normalizeOptions*** - a cool utility to normalize and crosscheck JavaScript options and their DATA API counterparts for various web components; supports namespaced options like `data-NAMESPACE-option="value"`; priority: JavaScript options > DATA API options > default options
 * ***tryWrapper*** - a simple `try()` and `catch()` wrapper for functions, with option to preffix the error logs, poiting out the source of the errors
 
 ```js 
 // EXAMPLES
-import {queryElement,emulateTransitionEnd} from 'shorter-js'
+import {queryElement,emulateTransitionEnd,normalizeOptions} from 'shorter-js'
 
 // get some target
 let targetElement = queryElement('.mySelectorClass');
@@ -103,6 +104,14 @@ emulateTransitionEnd(targetElement,callback)
 if (isElementInScrollRange(targetElement)){
   doSomeAction()
 }
+
+// set component options
+const options = normalizeOptions( element, defaultOptions, inputOptions, namaSpace )
+// element - the component target, the owned of the DATA API attributes
+// defaultOptions - the component default options
+// inputOptions - the component JavaScript options
+// namaSpace - the DATA API namespace 
+// ..required to get the value of `data-NAMESPACE-option="value"`
 ```
 
 # strings
@@ -119,6 +128,8 @@ if (isElementInScrollRange(targetElement)){
 * ***transitionDelay*** - preserves the `transitionDelay` property name supported by the client browser 
 * ***transitionEndEvent*** - preserves the `transitionend` event name supported by the client browser 
 * ***transitionProperty*** - preserves the `transitionProperty` property name supported by the client browser 
+* ***addEventListener*** - preserves the `addEventListener` method name
+* ***removeEventListener*** - preserves the `removeEventListener` method name
 
 ```js 
 // EXAMPLES
