@@ -106,7 +106,7 @@ if (isElementInScrollRange(targetElement)){
 }
 
 // set component options
-const options = normalizeOptions( element, defaultOptions, inputOptions, namaSpace )
+const options = normalizeOptions( element, defaultOptions, inputOptions, nameSpace )
 // element - the component target, the owned of the DATA API attributes
 // defaultOptions - the component default options
 // inputOptions - the component JavaScript options
