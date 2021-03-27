@@ -1,7 +1,6 @@
 'use strict'
 import buble from '@rollup/plugin-buble'
 import {terser} from 'rollup-plugin-terser'
-import cleanup from 'rollup-plugin-cleanup'
 import json from '@rollup/plugin-json'
 import * as pkg from "./package.json"
 
@@ -26,14 +25,15 @@ const OUTPUT = {
 
 const PLUGINS = [
   json(),
-  buble(),
+  buble({
+    objectAssign: 'Object.assign'
+  }),
 ]
 
 if (MIN){
   PLUGINS.push(terser({output: {preamble: miniBanner}}));
 } else {
   OUTPUT.banner = banner;
-  PLUGINS.push(cleanup());
 }
 
 if (FORMAT!=='esm') {

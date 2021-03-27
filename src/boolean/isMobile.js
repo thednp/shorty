@@ -1,1 +1,1 @@
-export default /iPhone|iPad|iPod|Android/i.test(navigator.userAgent)
+export default /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);

@@ -1,3 +1,3 @@
-export default function(element,classNAME) {
-  element.classList.add(classNAME)
+export default function addClass(element, classNAME) {
+  element.classList.add(classNAME);
 }

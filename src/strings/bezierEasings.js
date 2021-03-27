@@ -23,5 +23,5 @@ export default {
   easingCircularInOut: 'cubic-bezier(0.785,0.135,0.15,0.86)',
   easingBackIn: 'cubic-bezier(0.6,-0.28,0.735,0.045)',
   easingBackOut: 'cubic-bezier(0.175,0.885,0.32,1.275)',
-  easingBackInOut: 'cubic-bezier(0.68,-0.55,0.265,1.55)'
-}
+  easingBackInOut: 'cubic-bezier(0.68,-0.55,0.265,1.55)',
+};

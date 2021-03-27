@@ -1,20 +1,20 @@
-export default function( value ) {
-  if ( value === 'true' ) {
-    return true
+export default function normalizeValue(value) {
+  if (value === 'true') {
+    return true;
   }
 
-  if ( value === 'false' ) {
-    return false
+  if (value === 'false') {
+    return false;
   }
 
-  if ( !isNaN(value) ) {
-    return +value
+  if (!Number.isNaN(value)) {
+    return +value;
   }
 
-  if ( value === '' || value === 'null' ) {
-    return null
+  if (value === '' || value === 'null') {
+    return null;
   }
 
   // string / function / Element / Object
-  return value
+  return value;
 }

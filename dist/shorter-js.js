@@ -1,5 +1,5 @@
 /*!
-* shorter-js v0.1.10b (https://thednp.github.io/shorter-js/)
+* shorter-js v0.2.0-alpha1 (https://thednp.github.io/shorter-js/)
 * Copyright 2019-2021 © dnp_theme
 * Licensed under MIT (https://github.com/thednp/shorter-js/blob/master/LICENSE)
 */
@@ -11,13 +11,17 @@
 
   var mouseClickEvents = { down: 'mousedown', up: 'mouseup' };
 
-  var mouseHoverEvents = ('onmouseleave' in document) ? [ 'mouseenter', 'mouseleave'] : [ 'mouseover', 'mouseout' ];
+  var mouseHoverEvents = ('onmouseleave' in document) ? ['mouseenter', 'mouseleave'] : ['mouseover', 'mouseout'];
 
-  var touchEvents = { start: 'touchstart', end: 'touchend', move:'touchmove', cancel:'touchcancel' };
+  var touchEvents = {
+    start: 'touchstart', end: 'touchend', move: 'touchmove', cancel: 'touchcancel',
+  };
 
   var focusEvents = { in: 'focusin', out: 'focusout' };
 
-  var mouseSwipeEvents = { start: 'mousedown', end: 'mouseup', move:'mousemove', cancel:'mouseout' };
+  var mouseSwipeEvents = {
+    start: 'mousedown', end: 'mouseup', move: 'mousemove', cancel: 'mouseout',
+  };
 
   var animationDuration = 'webkitAnimation' in document.head.style ? 'webkitAnimationDuration' : 'animationDuration';
 
@@ -60,7 +64,7 @@
     easingCircularInOut: 'cubic-bezier(0.785,0.135,0.15,0.86)',
     easingBackIn: 'cubic-bezier(0.6,-0.28,0.735,0.045)',
     easingBackOut: 'cubic-bezier(0.175,0.885,0.32,1.275)',
-    easingBackInOut: 'cubic-bezier(0.68,-0.55,0.265,1.55)'
+    easingBackInOut: 'cubic-bezier(0.68,-0.55,0.265,1.55)',
   };
 
   var addEventListener = 'addEventListener';
@@ -75,14 +79,18 @@
     var result = false;
     try {
       var opts = Object.defineProperty({}, 'passive', {
-        get: function() {
+        get: function get() {
           result = true;
-        }
+          return result;
+        },
       });
-      document[addEventListener]('DOMContentLoaded', function wrap(){
+      document[addEventListener]('DOMContentLoaded', function wrap() {
         document[removeEventListener]('DOMContentLoaded', wrap, opts);
       }, opts);
-    } catch (e) {}
+    } catch (e) {
+      throw Error('Passive events are not supported');
+    }
+
     return result;
   })();
 
@@ -94,30 +102,33 @@
 
   var supportTransition = 'webkitTransition' in document.head.style || 'transition' in document.head.style;
 
-  function addClass(element,classNAME) {
+  function addClass(element, classNAME) {
     element.classList.add(classNAME);
   }
 
-  function removeClass(element,classNAME) {
+  function removeClass(element, classNAME) {
     element.classList.remove(classNAME);
   }
 
-  function hasClass(element,classNAME) {
-    return element.classList.contains(classNAME)
+  function hasClass(element, classNAME) {
+    return element.classList.contains(classNAME);
   }
 
+  // attach handlers
   function on(element, event, handler, options) {
-    options = options || false;
-    element.addEventListener(event, handler, options);
+    var ops = options || false;
+    element.addEventListener(event, handler, ops);
   }
 
+  // detach handlers
   function off(element, event, handler, options) {
-    options = options || false;
-    element.removeEventListener(event, handler, options);
+    var ops = options || false;
+    element.removeEventListener(event, handler, ops);
   }
 
+  // attach & detach handlers
   function one(element, event, handler, options) {
-    on(element, event, function handlerWrapper(e){
+    on(element, event, function handlerWrapper(e) {
       if (e.target === element) {
         handler.apply(element, [e]);
         off(element, event, handlerWrapper, options);
@@ -126,97 +137,110 @@
   }
 
   function getElementAnimationDuration(element) {
-    var computedStyle = getComputedStyle(element),
-        propertyValue = computedStyle[animationName],
-        durationValue = computedStyle[animationDuration],
-        durationScale = durationValue.includes('ms') ? 1 : 1000,
-        duration = supportAnimation && propertyValue && propertyValue !== 'none'
-                 ? parseFloat( durationValue ) * durationScale : 0;
-    return !isNaN(duration) ? duration : 0
+    var computedStyle = getComputedStyle(element);
+    var propertyValue = computedStyle[animationName];
+    var durationValue = computedStyle[animationDuration];
+    var durationScale = durationValue.includes('ms') ? 1 : 1000;
+    var duration = supportAnimation && propertyValue && propertyValue !== 'none'
+      ? parseFloat(durationValue) * durationScale : 0;
+
+    return !Number.isNaN(duration) ? duration : 0;
   }
 
-  function emulateAnimationEnd(element,handler){
-    var called = 0,
-        endEvent = new Event( animationEndEvent ),
-        duration = getElementAnimationDuration( element );
-    if ( duration ) {
-      element.addEventListener( animationEndEvent, function animationEndWrapper(e){
-        if ( e.target === element ) {
-          handler.apply( element, [e] );
-          element.removeEventListener( animationEndEvent, animationEndWrapper);
+  function emulateAnimationEnd(element, handler) {
+    var called = 0;
+    var endEvent = new Event(animationEndEvent);
+    var duration = getElementAnimationDuration(element);
+
+    if (duration) {
+      element.addEventListener(animationEndEvent, function animationEndWrapper(e) {
+        if (e.target === element) {
+          handler.apply(element, [e]);
+          element.removeEventListener(animationEndEvent, animationEndWrapper);
           called = 1;
         }
       });
-      setTimeout(function() {
-        !called && element.dispatchEvent( endEvent );
-      }, duration + 17 );
-    } else { handler.apply( element, [endEvent]); }
+      setTimeout(function () {
+        if (!called) { element.dispatchEvent(endEvent); }
+      }, duration + 17);
+    } else {
+      handler.apply(element, [endEvent]);
+    }
   }
 
   function getElementTransitionDuration(element) {
-    var computedStyle = getComputedStyle(element),
-        propertyValue = computedStyle[transitionProperty],
-        durationValue = computedStyle[transitionDuration],
-        durationScale = durationValue.includes('ms') ? 1 : 1000,
-        duration = supportTransition && propertyValue && propertyValue !== 'none'
-                 ? parseFloat( durationValue ) * durationScale : 0;
-    return !isNaN(duration) ? duration : 0
+    var computedStyle = getComputedStyle(element);
+    var propertyValue = computedStyle[transitionProperty];
+    var durationValue = computedStyle[transitionDuration];
+    var durationScale = durationValue.includes('ms') ? 1 : 1000;
+    var duration = supportTransition && propertyValue && propertyValue !== 'none'
+      ? parseFloat(durationValue) * durationScale : 0;
+
+    return !Number.isNaN(duration) ? duration : 0;
   }
 
-  function emulateTransitionEnd(element,handler){
-    var called = 0,
-        endEvent = new Event( transitionEndEvent ),
-        duration = getElementTransitionDuration(element);
-    if ( duration ) {
-      element.addEventListener( transitionEndEvent, function transitionEndWrapper(e){
-        if ( e.target === element ) {
-          handler.apply( element, [e] );
-          element.removeEventListener( transitionEndEvent, transitionEndWrapper);
+  function emulateTransitionEnd(element, handler) {
+    var called = 0;
+    var endEvent = new Event(transitionEndEvent);
+    var duration = getElementTransitionDuration(element);
+
+    if (duration) {
+      element.addEventListener(transitionEndEvent, function transitionEndWrapper(e) {
+        if (e.target === element) {
+          handler.apply(element, [e]);
+          element.removeEventListener(transitionEndEvent, transitionEndWrapper);
           called = 1;
         }
       });
-      setTimeout(function() {
-        !called && element.dispatchEvent( endEvent );
-      }, duration + 17 );
-    } else { handler.apply( element, [endEvent]); }
+      setTimeout(function () {
+        if (!called) { element.dispatchEvent(endEvent); }
+      }, duration + 17);
+    } else {
+      handler.apply(element, [endEvent]);
+    }
   }
 
   function isElementInScrollRange(element) {
-    var bcr = element.getBoundingClientRect(),
-        viewportHeight = window.innerHeight || document.documentElement.clientHeight;
-    return bcr.top <= viewportHeight && bcr.bottom >= 0;
+    var bcr = element.getBoundingClientRect();
+    var viewportHeight = window.innerHeight || document.documentElement.clientHeight;
+    return bcr.top <= viewportHeight && bcr.bottom >= 0; // bottom && top
   }
 
+  // check if element is in viewport
   function isElementInViewport(element) {
     var bcr = element.getBoundingClientRect();
     return (
-      bcr.top >= 0 &&
-      bcr.left >= 0 &&
-      bcr.bottom <= (window.innerHeight || document.documentElement.clientHeight) &&
-      bcr.right <= (window.innerWidth || document.documentElement.clientWidth)
-    )
+      bcr.top >= 0
+      && bcr.left >= 0
+      && bcr.bottom <= (window.innerHeight || document.documentElement.clientHeight)
+      && bcr.right <= (window.innerWidth || document.documentElement.clientWidth)
+    );
   }
+
+  // general event options
 
   var passiveHandler = supportPassive ? { passive: true } : false;
 
   function getElementAnimationDelay(element) {
-    var computedStyle = getComputedStyle(element),
-        propertyValue = computedStyle[animationName],
-        durationValue = computedStyle[animationDelay],
-        durationScale = durationValue.includes('ms') ? 1 : 1000,
-        duration = supportAnimation && propertyValue && propertyValue !== 'none'
-                 ? parseFloat( durationValue ) * durationScale : 0;
-    return !isNaN(duration) ? duration : 0
+    var computedStyle = getComputedStyle(element);
+    var propertyValue = computedStyle[animationName];
+    var durationValue = computedStyle[animationDelay];
+    var durationScale = durationValue.includes('ms') ? 1 : 1000;
+    var duration = supportAnimation && propertyValue && propertyValue !== 'none'
+      ? parseFloat(durationValue) * durationScale : 0;
+
+    return !Number.isNaN(duration) ? duration : 0;
   }
 
   function getElementTransitionDelay(element) {
-    var computedStyle = getComputedStyle(element),
-        propertyValue = computedStyle[transitionProperty],
-        delayValue = computedStyle[transitionDelay],
-        delayScale = delayValue.includes('ms') ? 1 : 1000,
-        duration = supportTransition && propertyValue && propertyValue !== 'none'
-                 ? parseFloat( delayValue ) * delayScale : 0;
-    return !isNaN(duration) ? duration : 0
+    var computedStyle = getComputedStyle(element);
+    var propertyValue = computedStyle[transitionProperty];
+    var delayValue = computedStyle[transitionDelay];
+    var delayScale = delayValue.includes('ms') ? 1 : 1000;
+    var duration = supportTransition && propertyValue && propertyValue !== 'none'
+      ? parseFloat(delayValue) * delayScale : 0;
+
+    return !Number.isNaN(duration) ? duration : 0;
   }
 
   function queryElement(selector, parent) {
@@ -224,51 +248,67 @@
     return selector instanceof Element ? selector : lookUp.querySelector(selector);
   }
 
-  function normalizeValue( value ) {
-    if ( value === 'true' ) {
-      return true
+  function normalizeValue(value) {
+    if (value === 'true') {
+      return true;
     }
-    if ( value === 'false' ) {
-      return false
+
+    if (value === 'false') {
+      return false;
     }
-    if ( !isNaN(value) ) {
-      return +value
+
+    if (!Number.isNaN(value)) {
+      return +value;
     }
-    if ( value === '' || value === 'null' ) {
-      return null
+
+    if (value === '' || value === 'null') {
+      return null;
     }
-    return value
+
+    // string / function / Element / Object
+    return value;
   }
 
-  function normalizeOptions( element, defaultOps, inputOps, ns ){
-    var normalOps = {}, dataOps = {},
-      data = Object.assign( {}, element.dataset );
-    Object.keys( data )
-      .map( function (k) {
-        var key = k.includes( ns )
-          ? k.replace( ns, '' ) .replace(/[A-Z]/, function (match) { return match.toLowerCase(); } )
+  function normalizeOptions(element, defaultOps, inputOps, ns) {
+    var normalOps = {};
+    var dataOps = {};
+    var data = Object.assign({}, element.dataset);
+
+    Object.keys(data)
+      .forEach(function (k) {
+        var key = k.includes(ns)
+          ? k.replace(ns, '').replace(/[A-Z]/, function (match) { return match.toLowerCase(); })
           : k;
-        dataOps[key] =  normalizeValue( data[k] );
+
+        dataOps[key] = normalizeValue(data[k]);
       });
-    Object.keys( inputOps )
-      .map( function (k) {
-        inputOps[k] = normalizeValue( inputOps[k] );
+
+    Object.keys(inputOps)
+      .forEach(function (k) {
+        inputOps[k] = normalizeValue(inputOps[k]);
       });
-    Object.keys( defaultOps )
-      .map( function (k) {
-        normalOps[k] = k in inputOps ? inputOps[k]
-          : k in dataOps ? dataOps[k]
-          : defaultOps[k];
+
+    Object.keys(defaultOps)
+      .forEach(function (k) {
+        if (k in inputOps) {
+          normalOps[k] = inputOps[k];
+        } else if (k in dataOps) {
+          normalOps[k] = dataOps[k];
+        } else {
+          normalOps[k] = defaultOps[k];
+        }
       });
-    return normalOps
+
+    return normalOps;
   }
 
-  function tryWrapper(fn,origin){
-    try{ fn(); }
-    catch(e){
-      console.error((origin + " " + e));
+  function tryWrapper(fn, origin) {
+    try { fn(); } catch (e) {
+      throw TypeError((origin + " " + e));
     }
   }
+
+  // strings FIRST
 
   var index = {
     mouseClickEvents: mouseClickEvents,
@@ -312,7 +352,7 @@
     queryElement: queryElement,
     normalizeValue: normalizeValue,
     normalizeOptions: normalizeOptions,
-    tryWrapper: tryWrapper
+    tryWrapper: tryWrapper,
   };
 
   return index;

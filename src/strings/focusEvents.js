@@ -1,1 +1,1 @@
-export default { in: 'focusin', out: 'focusout' }
+export default { in: 'focusin', out: 'focusout' };

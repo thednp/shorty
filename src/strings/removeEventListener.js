@@ -1,1 +1,1 @@
-export default 'removeEventListener'
+export default 'removeEventListener';

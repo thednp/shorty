@@ -1,1 +1,1 @@
-export default { down: 'mousedown', up: 'mouseup' }
+export default { down: 'mousedown', up: 'mouseup' };

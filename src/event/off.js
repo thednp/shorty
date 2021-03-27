@@ -1,5 +1,5 @@
 // detach handlers
-export default function(element, event, handler, options) {
-  options = options || false;
-  element.removeEventListener(event, handler, options);
+export default function off(element, event, handler, options) {
+  const ops = options || false;
+  element.removeEventListener(event, handler, ops);
 }

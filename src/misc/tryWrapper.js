@@ -1,6 +1,5 @@
-export default function(fn,origin){ 
-  try{ fn() } 
-  catch(e){
-    console.error(`${origin} ${e}`)
+export default function tryWrapper(fn, origin) {
+  try { fn(); } catch (e) {
+    throw TypeError(`${origin} ${e}`);
   }
 }

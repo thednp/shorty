@@ -1,18 +1,21 @@
-import addEventListener from '../strings/addEventListener.js'
-import removeEventListener from '../strings/removeEventListener.js'
+import addEventListener from '../strings/addEventListener.js';
+import removeEventListener from '../strings/removeEventListener.js';
 
 export default (() => {
   let result = false;
   try {
     const opts = Object.defineProperty({}, 'passive', {
-      get: function() {
+      get() {
         result = true;
-      }
+        return result;
+      },
     });
-    document[addEventListener]('DOMContentLoaded', function wrap(){
-      document[removeEventListener]('DOMContentLoaded', wrap, opts)
+    document[addEventListener]('DOMContentLoaded', function wrap() {
+      document[removeEventListener]('DOMContentLoaded', wrap, opts);
     }, opts);
-  } catch (e) {}
+  } catch (e) {
+    throw Error('Passive events are not supported');
+  }
 
   return result;
 })();
