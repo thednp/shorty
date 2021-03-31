@@ -49,6 +49,7 @@ import queryElement from './misc/queryElement.js';
 import normalizeOptions from './misc/normalizeOptions.js';
 import normalizeValue from './misc/normalizeValue.js';
 import tryWrapper from './misc/tryWrapper.js';
+import reflow from './misc/reflow.js';
 
 export default {
   mouseClickEvents,
@@ -93,4 +94,5 @@ export default {
   normalizeValue,
   normalizeOptions,
   tryWrapper,
+  reflow,
 };
