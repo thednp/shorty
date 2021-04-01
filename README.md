@@ -1,5 +1,5 @@
 # shorter-js
-A small ES6+ library with various JavaScript tools useful for creating light libraries.
+A small ES6+ library with various JavaScript tools, all ESLint valid, useful for creating light libraries.
 Featured in [KUTE.js](https://github.com/thednp/kute.js), [BSN](https://github.com/thednp/bootstrap.native), [Navbar.js](https://github.com/thednp/navbar.js) and other libraries.
 
 * The purpose if the library is to speed up the development workflow, minimize the size of larger libraries by providing a shorter syntax for most used JavaScript API methods, most used strings or other helpful utilities.
@@ -88,6 +88,7 @@ one(targetElement,'touchstart',eventHandler,passiveHandler)
 * ***queryElement*** - a simple utility to check if a certain item is an *Element* or a selector string, and if a selector string find the FIRST *Element* and return it
 * ***normalizeOptions*** - a cool utility to normalize and crosscheck JavaScript options and their DATA API counterparts for various web components; supports namespaced options like `data-NAMESPACE-option="value"`; priority: JavaScript options > DATA API options > default options
 * ***tryWrapper*** - a simple `try()` and `catch()` wrapper for functions, with option to preffix the error logs, poiting out the source of the errors
+* ***reflow*** - because `element.offsetHeight;` won't validate on ESLint.
 
 ```js 
 // EXAMPLES

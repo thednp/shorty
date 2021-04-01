@@ -7,7 +7,7 @@ export default function normalizeValue(value) {
     return false;
   }
 
-  if (!Number.isNaN(value)) {
+  if (!Number.isNaN(+value)) {
     return +value;
   }
 
