@@ -1,1 +1,2 @@
-export default 'webkitTransition' in document.head.style ? 'webkitTransitionProperty' : 'transitionProperty';
+const transitionProperty = 'webkitTransition' in document.head.style ? 'webkitTransitionProperty' : 'transitionProperty';
+export default transitionProperty;

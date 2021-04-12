@@ -1,1 +1,2 @@
-export default 'webkitAnimation' in document.head.style ? 'webkitAnimationEnd' : 'animationend';
+const animationEndEvent = 'webkitAnimation' in document.head.style ? 'webkitAnimationEnd' : 'animationend';
+export default animationEndEvent;

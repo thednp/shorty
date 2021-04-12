@@ -1,1 +1,2 @@
-export default 'addEventListener';
+const addEventListener = 'addEventListener';
+export default addEventListener;

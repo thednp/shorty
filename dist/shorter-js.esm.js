@@ -1,39 +1,39 @@
 /*!
-* shorter-js v0.2.0-alpha3 (https://github.com/thednp/shorter-js)
+* shorter-js v0.2.0-alpha4 (https://github.com/thednp/shorter-js)
 * Copyright 2019-2021 © dnp_theme
 * Licensed under MIT (https://github.com/thednp/shorter-js/blob/master/LICENSE)
 */
-var mouseClickEvents = { down: 'mousedown', up: 'mouseup' };
+const mouseClickEvents = { down: 'mousedown', up: 'mouseup' };
 
-var mouseHoverEvents = ('onmouseleave' in document) ? ['mouseenter', 'mouseleave'] : ['mouseover', 'mouseout'];
+const mouseHoverEvents = ('onmouseleave' in document) ? ['mouseenter', 'mouseleave'] : ['mouseover', 'mouseout'];
 
-var touchEvents = {
+const touchEvents = {
   start: 'touchstart', end: 'touchend', move: 'touchmove', cancel: 'touchcancel',
 };
 
-var focusEvents = { in: 'focusin', out: 'focusout' };
+const focusEvents = { in: 'focusin', out: 'focusout' };
 
-var mouseSwipeEvents = {
+const mouseSwipeEvents = {
   start: 'mousedown', end: 'mouseup', move: 'mousemove', cancel: 'mouseout',
 };
 
-var animationDuration = 'webkitAnimation' in document.head.style ? 'webkitAnimationDuration' : 'animationDuration';
+const animationDuration = 'webkitAnimation' in document.head.style ? 'webkitAnimationDuration' : 'animationDuration';
 
-var animationDelay = 'webkitAnimation' in document.head.style ? 'webkitAnimationDelay' : 'animationDelay';
+const animationDelay = 'webkitAnimation' in document.head.style ? 'webkitAnimationDelay' : 'animationDelay';
 
-var animationEndEvent = 'webkitAnimation' in document.head.style ? 'webkitAnimationEnd' : 'animationend';
+const animationEndEvent = 'webkitAnimation' in document.head.style ? 'webkitAnimationEnd' : 'animationend';
 
-var animationName = 'webkitAnimation' in document.head.style ? 'webkitAnimationName' : 'animationName';
+const animationName = 'webkitAnimation' in document.head.style ? 'webkitAnimationName' : 'animationName';
 
-var transitionDuration = 'webkitTransition' in document.head.style ? 'webkitTransitionDuration' : 'transitionDuration';
+const transitionDuration = 'webkitTransition' in document.head.style ? 'webkitTransitionDuration' : 'transitionDuration';
 
-var transitionProperty = 'webkitTransition' in document.head.style ? 'webkitTransitionProperty' : 'transitionProperty';
+const transitionProperty = 'webkitTransition' in document.head.style ? 'webkitTransitionProperty' : 'transitionProperty';
 
-var transitionDelay = 'webkitTransition' in document.head.style ? 'webkitTransitionDelay' : 'transitionDelay';
+const transitionDelay = 'webkitTransition' in document.head.style ? 'webkitTransitionDelay' : 'transitionDelay';
 
-var transitionEndEvent = 'webkitTransition' in document.head.style ? 'webkitTransitionEnd' : 'transitionend';
+const transitionEndEvent = 'webkitTransition' in document.head.style ? 'webkitTransitionEnd' : 'transitionend';
 
-var bezierEasings = {
+const bezierEasings = {
   linear: 'linear',
   easingSinusoidalIn: 'cubic-bezier(0.47,0,0.745,0.715)',
   easingSinusoidalOut: 'cubic-bezier(0.39,0.575,0.565,1)',
@@ -61,19 +61,19 @@ var bezierEasings = {
   easingBackInOut: 'cubic-bezier(0.68,-0.55,0.265,1.55)',
 };
 
-var addEventListener = 'addEventListener';
+const addEventListener = 'addEventListener';
 
-var removeEventListener = 'removeEventListener';
+const removeEventListener = 'removeEventListener';
 
-var isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
+const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
 
-var support3DTransform = 'webkitPerspective' in document.head.style || 'perspective' in document.head.style;
+const support3DTransform = 'webkitPerspective' in document.head.style || 'perspective' in document.head.style;
 
-var supportPassive = (function () {
-  var result = false;
+const supportPassive = (() => {
+  let result = false;
   try {
-    var opts = Object.defineProperty({}, 'passive', {
-      get: function get() {
+    const opts = Object.defineProperty({}, 'passive', {
+      get() {
         result = true;
         return result;
       },
@@ -88,13 +88,13 @@ var supportPassive = (function () {
   return result;
 })();
 
-var supportTransform = 'webkitTransform' in document.head.style || 'transform' in document.head.style;
+const supportTransform = 'webkitTransform' in document.head.style || 'transform' in document.head.style;
 
-var supportTouch = ('ontouchstart' in window || navigator.msMaxTouchPoints) || false;
+const supportTouch = ('ontouchstart' in window || navigator.msMaxTouchPoints) || false;
 
 var supportAnimation = 'webkitAnimation' in document.head.style || 'animation' in document.head.style;
 
-var supportTransition = 'webkitTransition' in document.head.style || 'transition' in document.head.style;
+const supportTransition = 'webkitTransition' in document.head.style || 'transition' in document.head.style;
 
 function addClass(element, classNAME) {
   element.classList.add(classNAME);
@@ -110,13 +110,13 @@ function hasClass(element, classNAME) {
 
 // attach handlers
 function on(element, event, handler, options) {
-  var ops = options || false;
+  const ops = options || false;
   element.addEventListener(event, handler, ops);
 }
 
 // detach handlers
 function off(element, event, handler, options) {
-  var ops = options || false;
+  const ops = options || false;
   element.removeEventListener(event, handler, ops);
 }
 
@@ -131,20 +131,20 @@ function one(element, event, handler, options) {
 }
 
 function getElementAnimationDuration(element) {
-  var computedStyle = getComputedStyle(element);
-  var propertyValue = computedStyle[animationName];
-  var durationValue = computedStyle[animationDuration];
-  var durationScale = durationValue.includes('ms') ? 1 : 1000;
-  var duration = supportAnimation && propertyValue && propertyValue !== 'none'
+  const computedStyle = getComputedStyle(element);
+  const propertyValue = computedStyle[animationName];
+  const durationValue = computedStyle[animationDuration];
+  const durationScale = durationValue.includes('ms') ? 1 : 1000;
+  const duration = supportAnimation && propertyValue && propertyValue !== 'none'
     ? parseFloat(durationValue) * durationScale : 0;
 
   return !Number.isNaN(duration) ? duration : 0;
 }
 
 function emulateAnimationEnd(element, handler) {
-  var called = 0;
-  var endEvent = new Event(animationEndEvent);
-  var duration = getElementAnimationDuration(element);
+  let called = 0;
+  const endEvent = new Event(animationEndEvent);
+  const duration = getElementAnimationDuration(element);
 
   if (duration) {
     element.addEventListener(animationEndEvent, function animationEndWrapper(e) {
@@ -154,8 +154,8 @@ function emulateAnimationEnd(element, handler) {
         called = 1;
       }
     });
-    setTimeout(function () {
-      if (!called) { element.dispatchEvent(endEvent); }
+    setTimeout(() => {
+      if (!called) element.dispatchEvent(endEvent);
     }, duration + 17);
   } else {
     handler.apply(element, [endEvent]);
@@ -163,20 +163,20 @@ function emulateAnimationEnd(element, handler) {
 }
 
 function getElementTransitionDuration(element) {
-  var computedStyle = getComputedStyle(element);
-  var propertyValue = computedStyle[transitionProperty];
-  var durationValue = computedStyle[transitionDuration];
-  var durationScale = durationValue.includes('ms') ? 1 : 1000;
-  var duration = supportTransition && propertyValue && propertyValue !== 'none'
+  const computedStyle = getComputedStyle(element);
+  const propertyValue = computedStyle[transitionProperty];
+  const durationValue = computedStyle[transitionDuration];
+  const durationScale = durationValue.includes('ms') ? 1 : 1000;
+  const duration = supportTransition && propertyValue && propertyValue !== 'none'
     ? parseFloat(durationValue) * durationScale : 0;
 
   return !Number.isNaN(duration) ? duration : 0;
 }
 
 function emulateTransitionEnd(element, handler) {
-  var called = 0;
-  var endEvent = new Event(transitionEndEvent);
-  var duration = getElementTransitionDuration(element);
+  let called = 0;
+  const endEvent = new Event(transitionEndEvent);
+  const duration = getElementTransitionDuration(element);
 
   if (duration) {
     element.addEventListener(transitionEndEvent, function transitionEndWrapper(e) {
@@ -186,8 +186,8 @@ function emulateTransitionEnd(element, handler) {
         called = 1;
       }
     });
-    setTimeout(function () {
-      if (!called) { element.dispatchEvent(endEvent); }
+    setTimeout(() => {
+      if (!called) element.dispatchEvent(endEvent);
     }, duration + 17);
   } else {
     handler.apply(element, [endEvent]);
@@ -195,14 +195,14 @@ function emulateTransitionEnd(element, handler) {
 }
 
 function isElementInScrollRange(element) {
-  var bcr = element.getBoundingClientRect();
-  var viewportHeight = window.innerHeight || document.documentElement.clientHeight;
+  const bcr = element.getBoundingClientRect();
+  const viewportHeight = window.innerHeight || document.documentElement.clientHeight;
   return bcr.top <= viewportHeight && bcr.bottom >= 0; // bottom && top
 }
 
 // check if element is in viewport
 function isElementInViewport(element) {
-  var bcr = element.getBoundingClientRect();
+  const bcr = element.getBoundingClientRect();
   return (
     bcr.top >= 0
     && bcr.left >= 0
@@ -216,29 +216,29 @@ function isElementInViewport(element) {
 var passiveHandler = supportPassive ? { passive: true } : false;
 
 function getElementAnimationDelay(element) {
-  var computedStyle = getComputedStyle(element);
-  var propertyValue = computedStyle[animationName];
-  var durationValue = computedStyle[animationDelay];
-  var durationScale = durationValue.includes('ms') ? 1 : 1000;
-  var duration = supportAnimation && propertyValue && propertyValue !== 'none'
+  const computedStyle = getComputedStyle(element);
+  const propertyValue = computedStyle[animationName];
+  const durationValue = computedStyle[animationDelay];
+  const durationScale = durationValue.includes('ms') ? 1 : 1000;
+  const duration = supportAnimation && propertyValue && propertyValue !== 'none'
     ? parseFloat(durationValue) * durationScale : 0;
 
   return !Number.isNaN(duration) ? duration : 0;
 }
 
 function getElementTransitionDelay(element) {
-  var computedStyle = getComputedStyle(element);
-  var propertyValue = computedStyle[transitionProperty];
-  var delayValue = computedStyle[transitionDelay];
-  var delayScale = delayValue.includes('ms') ? 1 : 1000;
-  var duration = supportTransition && propertyValue && propertyValue !== 'none'
+  const computedStyle = getComputedStyle(element);
+  const propertyValue = computedStyle[transitionProperty];
+  const delayValue = computedStyle[transitionDelay];
+  const delayScale = delayValue.includes('ms') ? 1 : 1000;
+  const duration = supportTransition && propertyValue && propertyValue !== 'none'
     ? parseFloat(delayValue) * delayScale : 0;
 
   return !Number.isNaN(duration) ? duration : 0;
 }
 
 function queryElement(selector, parent) {
-  var lookUp = parent && parent instanceof Element ? parent : document;
+  const lookUp = parent && parent instanceof Element ? parent : document;
   return selector instanceof Element ? selector : lookUp.querySelector(selector);
 }
 
@@ -264,26 +264,26 @@ function normalizeValue(value) {
 }
 
 function normalizeOptions(element, defaultOps, inputOps, ns) {
-  var normalOps = {};
-  var dataOps = {};
-  var data = Object.assign({}, element.dataset);
+  const normalOps = {};
+  const dataOps = {};
+  const data = { ...element.dataset };
 
   Object.keys(data)
-    .forEach(function (k) {
-      var key = k.includes(ns)
-        ? k.replace(ns, '').replace(/[A-Z]/, function (match) { return match.toLowerCase(); })
+    .forEach((k) => {
+      const key = k.includes(ns)
+        ? k.replace(ns, '').replace(/[A-Z]/, (match) => match.toLowerCase())
         : k;
 
       dataOps[key] = normalizeValue(data[k]);
     });
 
   Object.keys(inputOps)
-    .forEach(function (k) {
+    .forEach((k) => {
       inputOps[k] = normalizeValue(inputOps[k]);
     });
 
   Object.keys(defaultOps)
-    .forEach(function (k) {
+    .forEach((k) => {
       if (k in inputOps) {
         normalOps[k] = inputOps[k];
       } else if (k in dataOps) {
@@ -298,7 +298,7 @@ function normalizeOptions(element, defaultOps, inputOps, ns) {
 
 function tryWrapper(fn, origin) {
   try { fn(); } catch (e) {
-    throw TypeError((origin + " " + e));
+    throw TypeError(`${origin} ${e}`);
   }
 }
 
@@ -309,49 +309,49 @@ function reflow(element) {
 // strings FIRST
 
 var index = {
-  mouseClickEvents: mouseClickEvents,
-  mouseHoverEvents: mouseHoverEvents,
-  touchEvents: touchEvents,
-  focusEvents: focusEvents,
-  mouseSwipeEvents: mouseSwipeEvents,
-  bezierEasings: bezierEasings,
-  animationDuration: animationDuration,
-  animationDelay: animationDelay,
-  animationName: animationName,
-  animationEndEvent: animationEndEvent,
-  transitionDuration: transitionDuration,
-  transitionDelay: transitionDelay,
-  transitionEndEvent: transitionEndEvent,
-  transitionProperty: transitionProperty,
-  isMobile: isMobile,
-  support3DTransform: support3DTransform,
-  supportPassive: supportPassive,
-  supportTransform: supportTransform,
-  supportTouch: supportTouch,
-  supportAnimation: supportAnimation,
-  supportTransition: supportTransition,
-  addEventListener: addEventListener,
-  removeEventListener: removeEventListener,
-  addClass: addClass,
-  removeClass: removeClass,
-  hasClass: hasClass,
-  on: on,
-  off: off,
-  one: one,
-  emulateAnimationEnd: emulateAnimationEnd,
-  emulateTransitionEnd: emulateTransitionEnd,
-  isElementInScrollRange: isElementInScrollRange,
-  isElementInViewport: isElementInViewport,
-  passiveHandler: passiveHandler,
-  getElementAnimationDuration: getElementAnimationDuration,
-  getElementAnimationDelay: getElementAnimationDelay,
-  getElementTransitionDuration: getElementTransitionDuration,
-  getElementTransitionDelay: getElementTransitionDelay,
-  queryElement: queryElement,
-  normalizeValue: normalizeValue,
-  normalizeOptions: normalizeOptions,
-  tryWrapper: tryWrapper,
-  reflow: reflow,
+  mouseClickEvents,
+  mouseHoverEvents,
+  touchEvents,
+  focusEvents,
+  mouseSwipeEvents,
+  bezierEasings,
+  animationDuration,
+  animationDelay,
+  animationName,
+  animationEndEvent,
+  transitionDuration,
+  transitionDelay,
+  transitionEndEvent,
+  transitionProperty,
+  isMobile,
+  support3DTransform,
+  supportPassive,
+  supportTransform,
+  supportTouch,
+  supportAnimation,
+  supportTransition,
+  addEventListener,
+  removeEventListener,
+  addClass,
+  removeClass,
+  hasClass,
+  on,
+  off,
+  one,
+  emulateAnimationEnd,
+  emulateTransitionEnd,
+  isElementInScrollRange,
+  isElementInViewport,
+  passiveHandler,
+  getElementAnimationDuration,
+  getElementAnimationDelay,
+  getElementTransitionDuration,
+  getElementTransitionDelay,
+  queryElement,
+  normalizeValue,
+  normalizeOptions,
+  tryWrapper,
+  reflow,
 };
 
 export default index;

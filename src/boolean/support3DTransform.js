@@ -1,1 +1,2 @@
-export default 'webkitPerspective' in document.head.style || 'perspective' in document.head.style;
+const support3DTransform = 'webkitPerspective' in document.head.style || 'perspective' in document.head.style;
+export default support3DTransform;

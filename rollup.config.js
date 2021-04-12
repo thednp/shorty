@@ -24,11 +24,12 @@ const OUTPUT = {
 }
 
 const PLUGINS = [
-  json(),
-  buble({
-    objectAssign: 'Object.assign'
-  }),
+  json()
 ]
+
+if (FORMAT!=='esm') {
+  PLUGINS.push(buble({objectAssign: 'Object.assign'}));
+}
 
 if (MIN){
   PLUGINS.push(terser({output: {preamble: miniBanner}}));

@@ -1,1 +1,2 @@
-export default { down: 'mousedown', up: 'mouseup' };
+const mouseClickEvents = { down: 'mousedown', up: 'mouseup' };
+export default mouseClickEvents;

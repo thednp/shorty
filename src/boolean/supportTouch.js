@@ -1,1 +1,2 @@
-export default ('ontouchstart' in window || navigator.msMaxTouchPoints) || false;
+const supportTouch = ('ontouchstart' in window || navigator.msMaxTouchPoints) || false;
+export default supportTouch;

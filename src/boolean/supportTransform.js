@@ -1,1 +1,2 @@
-export default 'webkitTransform' in document.head.style || 'transform' in document.head.style;
+const supportTransform = 'webkitTransform' in document.head.style || 'transform' in document.head.style;
+export default supportTransform;

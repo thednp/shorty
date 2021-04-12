@@ -1,1 +1,2 @@
-export default 'removeEventListener';
+const removeEventListener = 'removeEventListener';
+export default removeEventListener;

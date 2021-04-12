@@ -1,1 +1,2 @@
-export default 'webkitAnimation' in document.head.style ? 'webkitAnimationDelay' : 'animationDelay';
+const animationDelay = 'webkitAnimation' in document.head.style ? 'webkitAnimationDelay' : 'animationDelay';
+export default animationDelay;

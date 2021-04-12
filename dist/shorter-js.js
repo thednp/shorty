@@ -1,5 +1,5 @@
 /*!
-* shorter-js v0.2.0-alpha3 (https://github.com/thednp/shorter-js)
+* shorter-js v0.2.0-alpha4 (https://github.com/thednp/shorter-js)
 * Copyright 2019-2021 © dnp_theme
 * Licensed under MIT (https://github.com/thednp/shorter-js/blob/master/LICENSE)
 */

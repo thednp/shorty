@@ -1,7 +1,7 @@
 import addEventListener from '../strings/addEventListener.js';
 import removeEventListener from '../strings/removeEventListener.js';
 
-export default (() => {
+const supportPassive = (() => {
   let result = false;
   try {
     const opts = Object.defineProperty({}, 'passive', {
@@ -19,3 +19,4 @@ export default (() => {
 
   return result;
 })();
+export default supportPassive;

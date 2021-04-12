@@ -1,1 +1,2 @@
-export default 'webkitTransition' in document.head.style || 'transition' in document.head.style;
+const supportTransition = 'webkitTransition' in document.head.style || 'transition' in document.head.style;
+export default supportTransition;
