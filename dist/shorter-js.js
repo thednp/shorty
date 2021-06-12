@@ -1,5 +1,5 @@
 /*!
-* shorter-js v0.2.0-alpha4 (https://github.com/thednp/shorter-js)
+* shorter-js v0.2.1 (https://github.com/thednp/shorter-js)
 * Copyright 2019-2021 © dnp_theme
 * Licensed under MIT (https://github.com/thednp/shorter-js/blob/master/LICENSE)
 */
@@ -71,7 +71,10 @@
 
   var removeEventListener = 'removeEventListener';
 
-  var isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
+  var mobileBrands = /iPhone|iPad|iPod|Android/i;
+  var isMobile = navigator.userAgentData
+    ? navigator.userAgentData.brands.some(function (x) { return mobileBrands.test(x.brand); })
+    : mobileBrands.test(navigator.userAgent);
 
   var support3DTransform = 'webkitPerspective' in document.head.style || 'perspective' in document.head.style;
 

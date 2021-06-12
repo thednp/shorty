@@ -1,5 +1,5 @@
 /*!
-* shorter-js v0.2.0-alpha4 (https://github.com/thednp/shorter-js)
+* shorter-js v0.2.1 (https://github.com/thednp/shorter-js)
 * Copyright 2019-2021 © dnp_theme
 * Licensed under MIT (https://github.com/thednp/shorter-js/blob/master/LICENSE)
 */
@@ -65,7 +65,10 @@ const addEventListener = 'addEventListener';
 
 const removeEventListener = 'removeEventListener';
 
-const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
+const mobileBrands = /iPhone|iPad|iPod|Android/i;
+const isMobile = navigator.userAgentData
+  ? navigator.userAgentData.brands.some((x) => mobileBrands.test(x.brand))
+  : mobileBrands.test(navigator.userAgent);
 
 const support3DTransform = 'webkitPerspective' in document.head.style || 'perspective' in document.head.style;
 
