@@ -1,5 +1,5 @@
 /*!
-* shorter-js v0.2.1 (https://github.com/thednp/shorter-js)
+* shorter-js v0.2.2 (https://github.com/thednp/shorter-js)
 * Copyright 2019-2021 © dnp_theme
 * Licensed under MIT (https://github.com/thednp/shorter-js/blob/master/LICENSE)
 */
@@ -309,9 +309,11 @@ function reflow(element) {
   return element.offsetHeight;
 }
 
+var version = "0.2.2";
+
 // strings FIRST
 
-var index = {
+const SHORTER = {
   mouseClickEvents,
   mouseHoverEvents,
   touchEvents,
@@ -355,6 +357,7 @@ var index = {
   normalizeOptions,
   tryWrapper,
   reflow,
+  Version: version,
 };
 
-export default index;
+export default SHORTER;

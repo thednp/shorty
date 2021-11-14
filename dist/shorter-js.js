@@ -1,5 +1,5 @@
 /*!
-* shorter-js v0.2.1 (https://github.com/thednp/shorter-js)
+* shorter-js v0.2.2 (https://github.com/thednp/shorter-js)
 * Copyright 2019-2021 © dnp_theme
 * Licensed under MIT (https://github.com/thednp/shorter-js/blob/master/LICENSE)
 */
@@ -315,9 +315,11 @@
     return element.offsetHeight;
   }
 
+  var version = "0.2.2";
+
   // strings FIRST
 
-  var index = {
+  var SHORTER = {
     mouseClickEvents: mouseClickEvents,
     mouseHoverEvents: mouseHoverEvents,
     touchEvents: touchEvents,
@@ -361,8 +363,9 @@
     normalizeOptions: normalizeOptions,
     tryWrapper: tryWrapper,
     reflow: reflow,
+    Version: version,
   };
 
-  return index;
+  return SHORTER;
 
 })));

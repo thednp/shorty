@@ -51,7 +51,9 @@ import normalizeValue from './misc/normalizeValue.js';
 import tryWrapper from './misc/tryWrapper.js';
 import reflow from './misc/reflow.js';
 
-export default {
+import Version from './misc/version.js';
+
+const SHORTER = {
   mouseClickEvents,
   mouseHoverEvents,
   touchEvents,
@@ -95,4 +97,7 @@ export default {
   normalizeOptions,
   tryWrapper,
   reflow,
+  Version,
 };
+
+export default SHORTER;

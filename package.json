@@ -1,18 +1,22 @@
 {
   "name": "shorter-js",
-  "version": "0.2.1",
+  "version": "0.2.2",
   "description": "A small ES6+ library with various JavaScript tools useful for creating light libraries.",
   "main": "dist/shorter-js.min.js",
   "module": "dist/shorter-js.esm.js",
   "jsnext": "src/index.js",
+  "types": "types/index.d.ts",
   "files": [
     "dist/*.{js,map}",
-    "src/**/*.{js,map}"
+    "src/**/*.{js,map}",
+    "types/**/*.{ts,map}",
+    "types/*.{ts,map}"
   ],
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "fix:js": "eslint src/ --config .eslintrc --fix",
     "lint:js": "eslint src/ --config .eslintrc",
+    "build-ts": "tsc -d",
     "build": "npm run lint:js && npm run umd && npm run umdmin && npm run esm && npm run esmmin",
     "umd": "rollup --environment FORMAT:umd,MIN:false -c",
     "umdmin": "rollup --environment FORMAT:umd,MIN:true -c",
@@ -43,6 +47,7 @@
     "eslint-plugin-import": "^2.22.1",
     "eslint-plugin-vue": "^7.7.0",
     "rollup": "^1.31.1",
-    "rollup-plugin-terser": "^5.2.0"
+    "rollup-plugin-terser": "^5.2.0",
+    "typescript": "^4.4.4"
   }
 }
