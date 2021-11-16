@@ -1,2 +1,6 @@
 export default animationName;
-declare const animationName: "webkitAnimationName" | "animationName";
+/**
+ * A global namespace for 'animationName' string.
+ * @type {string}
+ */
+declare const animationName: string;

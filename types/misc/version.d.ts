@@ -1,2 +1,6 @@
 export default Version;
-import { version as Version } from "../../package.json";
+/**
+ * A global namespace for library version.
+ * @type {string}
+ */
+declare const Version: string;

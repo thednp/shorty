@@ -1,2 +1,6 @@
 export default transitionDuration;
-declare const transitionDuration: "webkitTransitionDuration" | "transitionDuration";
+/**
+ * A global namespace for 'transitionDuration' string.
+ * @type {string}
+ */
+declare const transitionDuration: string;

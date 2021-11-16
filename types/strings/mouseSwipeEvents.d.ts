@@ -1,7 +1,6 @@
 export default mouseSwipeEvents;
-declare namespace mouseSwipeEvents {
-    const start: string;
-    const end: string;
-    const move: string;
-    const cancel: string;
-}
+/**
+ * A global namespace for mouse events equivalent with touch events.
+ * @type {object}
+ */
+declare const mouseSwipeEvents: object;

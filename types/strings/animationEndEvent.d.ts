@@ -1,2 +1,6 @@
 export default animationEndEvent;
-declare const animationEndEvent: "animationend" | "webkitAnimationEnd";
+/**
+ * A global namespace for 'animationend' string.
+ * @type {string}
+ */
+declare const animationEndEvent: string;

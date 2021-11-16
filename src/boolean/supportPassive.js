@@ -1,6 +1,10 @@
 import addEventListener from '../strings/addEventListener.js';
 import removeEventListener from '../strings/removeEventListener.js';
 
+/**
+ * A global namespace for passive events support.
+ * @type {boolean}
+ */
 const supportPassive = (() => {
   let result = false;
   try {
@@ -19,4 +23,5 @@ const supportPassive = (() => {
 
   return result;
 })();
+
 export default supportPassive;

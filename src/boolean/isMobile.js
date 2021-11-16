@@ -9,6 +9,10 @@ if (navigator[userAgentStr]) {
   isMobileCheck = mobileBrands.test(navigator.userAgent);
 }
 
+/**
+ * A global namespace for mobile detection.
+ * @type {boolean}
+ */
 const isMobile = isMobileCheck;
 
 export default isMobile;

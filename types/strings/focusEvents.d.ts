@@ -1,6 +1,6 @@
 export default focusEvents;
-declare namespace focusEvents {
-    const _in: string;
-    export { _in as in };
-    export const out: string;
-}
+/**
+ * A global namespace for focus event names.
+ * @type {object}
+ */
+declare const focusEvents: object;

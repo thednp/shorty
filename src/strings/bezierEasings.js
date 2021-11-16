@@ -1,3 +1,8 @@
+/**
+ * A global namespace for predefined
+ * CSS3 'cubic-bezier()' easing functions.
+ * @type {object}
+ */
 const bezierEasings = {
   linear: 'linear',
   easingSinusoidalIn: 'cubic-bezier(0.47,0,0.745,0.715)',

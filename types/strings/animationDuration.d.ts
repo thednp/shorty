@@ -1,2 +1,6 @@
 export default animationDuration;
-declare const animationDuration: "webkitAnimationDuration" | "animationDuration";
+/**
+ * A global namespace for 'animationDuration' string.
+ * @type {string}
+ */
+declare const animationDuration: string;

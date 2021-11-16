@@ -1,2 +1,6 @@
 export default transitionEndEvent;
-declare const transitionEndEvent: "transitionend" | "webkitTransitionEnd";
+/**
+ * A global namespace for 'transitionend' string.
+ * @type {string}
+ */
+declare const transitionEndEvent: string;

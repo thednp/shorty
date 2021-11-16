@@ -1,7 +1,6 @@
 export default touchEvents;
-declare namespace touchEvents {
-    const start: string;
-    const end: string;
-    const move: string;
-    const cancel: string;
-}
+/**
+ * A global namespace for touch events.
+ * @type {object}
+ */
+declare const touchEvents: object;

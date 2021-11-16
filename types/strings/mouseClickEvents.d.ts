@@ -1,5 +1,6 @@
 export default mouseClickEvents;
-declare namespace mouseClickEvents {
-    const down: string;
-    const up: string;
-}
+/**
+ * A global namespace for mouse click events.
+ * @type {object}
+ */
+declare const mouseClickEvents: object;

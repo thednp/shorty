@@ -1,5 +1,5 @@
 /*!
-* shorter-js v0.2.2 (https://github.com/thednp/shorter-js)
+* shorter-js v0.2.3 (https://github.com/thednp/shorter-js)
 * Copyright 2019-2021 © dnp_theme
 * Licensed under MIT (https://github.com/thednp/shorter-js/blob/master/LICENSE)
 */
@@ -9,36 +9,93 @@
   (global = global || self, global.SHORTER = factory());
 }(this, (function () { 'use strict';
 
+  /**
+   * A global namespace for mouse click events.
+   * @type {object}
+   */
   var mouseClickEvents = { down: 'mousedown', up: 'mouseup' };
 
+  /**
+   * A global namespace for mouse hover events.
+   * @type {string[]}
+   */
   var mouseHoverEvents = ('onmouseleave' in document) ? ['mouseenter', 'mouseleave'] : ['mouseover', 'mouseout'];
 
+  /**
+   * A global namespace for touch events.
+   * @type {object}
+   */
   var touchEvents = {
     start: 'touchstart', end: 'touchend', move: 'touchmove', cancel: 'touchcancel',
   };
 
+  /**
+   * A global namespace for focus event names.
+   * @type {object}
+   */
   var focusEvents = { in: 'focusin', out: 'focusout' };
 
+  /**
+   * A global namespace for mouse events equivalent with touch events.
+   * @type {object}
+   */
   var mouseSwipeEvents = {
     start: 'mousedown', end: 'mouseup', move: 'mousemove', cancel: 'mouseout',
   };
 
+  /**
+   * A global namespace for 'animationDuration' string.
+   * @type {string}
+   */
   var animationDuration = 'webkitAnimation' in document.head.style ? 'webkitAnimationDuration' : 'animationDuration';
 
+  /**
+   * A global namespace for 'animationDelay' string.
+   * @type {string}
+   */
   var animationDelay = 'webkitAnimation' in document.head.style ? 'webkitAnimationDelay' : 'animationDelay';
 
+  /**
+   * A global namespace for 'animationend' string.
+   * @type {string}
+   */
   var animationEndEvent = 'webkitAnimation' in document.head.style ? 'webkitAnimationEnd' : 'animationend';
 
+  /**
+   * A global namespace for 'animationName' string.
+   * @type {string}
+   */
   var animationName = 'webkitAnimation' in document.head.style ? 'webkitAnimationName' : 'animationName';
 
+  /**
+   * A global namespace for 'transitionDuration' string.
+   * @type {string}
+   */
   var transitionDuration = 'webkitTransition' in document.head.style ? 'webkitTransitionDuration' : 'transitionDuration';
 
-  var transitionProperty = 'webkitTransition' in document.head.style ? 'webkitTransitionProperty' : 'transitionProperty';
+  /**
+   * A global namespace for 'transition' string.
+   * @type {string}
+   */
+  var transitionProperty = 'webkitTransition' in document.head.style ? 'webkitTransition' : 'transition';
 
+  /**
+   * A global namespace for 'transitionDelay' string.
+   * @type {string}
+   */
   var transitionDelay = 'webkitTransition' in document.head.style ? 'webkitTransitionDelay' : 'transitionDelay';
 
+  /**
+   * A global namespace for 'transitionend' string.
+   * @type {string}
+   */
   var transitionEndEvent = 'webkitTransition' in document.head.style ? 'webkitTransitionEnd' : 'transitionend';
 
+  /**
+   * A global namespace for predefined
+   * CSS3 'cubic-bezier()' easing functions.
+   * @type {object}
+   */
   var bezierEasings = {
     linear: 'linear',
     easingSinusoidalIn: 'cubic-bezier(0.47,0,0.745,0.715)',
@@ -67,8 +124,16 @@
     easingBackInOut: 'cubic-bezier(0.68,-0.55,0.265,1.55)',
   };
 
+  /**
+   * A global namespace for 'addEventListener' string.
+   * @type {string}
+   */
   var addEventListener = 'addEventListener';
 
+  /**
+   * A global namespace for 'removeEventListener' string.
+   * @type {string}
+   */
   var removeEventListener = 'removeEventListener';
 
   var mobileBrands = /iPhone|iPad|iPod|Android/i;
@@ -82,10 +147,22 @@
     isMobileCheck = mobileBrands.test(navigator.userAgent);
   }
 
+  /**
+   * A global namespace for mobile detection.
+   * @type {boolean}
+   */
   var isMobile = isMobileCheck;
 
+  /**
+   * A global namespace for CSS3 3D transform support.
+   * @type {boolean}
+   */
   var support3DTransform = 'webkitPerspective' in document.head.style || 'perspective' in document.head.style;
 
+  /**
+   * A global namespace for passive events support.
+   * @type {boolean}
+   */
   var supportPassive = (function () {
     var result = false;
     try {
@@ -105,12 +182,28 @@
     return result;
   })();
 
+  /**
+   * A global namespace for CSS3 transform support.
+   * @type {boolean}
+   */
   var supportTransform = 'webkitTransform' in document.head.style || 'transform' in document.head.style;
 
+  /**
+   * A global namespace for touch events support.
+   * @type {boolean}
+   */
   var supportTouch = 'ontouchstart' in window || 'msMaxTouchPoints' in navigator;
 
+  /**
+   * A global namespace for CSS3 animation support.
+   * @type {boolean}
+   */
   var supportAnimation = 'webkitAnimation' in document.head.style || 'animation' in document.head.style;
 
+  /**
+   * A global namespace for CSS3 transition support.
+   * @type {boolean}
+   */
   var supportTransition = 'webkitTransition' in document.head.style || 'transition' in document.head.style;
 
   /**
@@ -194,6 +287,24 @@
   }
 
   /**
+   * Utility to get the computed animationDelay
+   * from Element in miliseconds.
+   *
+   * @param {Element} element target
+   * @return {Number} the value in miliseconds
+   */
+  function getElementAnimationDelay(element) {
+    var computedStyle = getComputedStyle(element);
+    var propertyValue = computedStyle[animationName];
+    var durationValue = computedStyle[animationDelay];
+    var durationScale = durationValue.includes('ms') ? 1 : 1000;
+    var duration = supportAnimation && propertyValue && propertyValue !== 'none'
+      ? parseFloat(durationValue) * durationScale : 0;
+
+    return !Number.isNaN(duration) ? duration : 0;
+  }
+
+  /**
    * Utility to get the computed animationDuration
    * from Element in miliseconds.
    *
@@ -222,21 +333,45 @@
     var called = 0;
     var endEvent = new Event(animationEndEvent);
     var duration = getElementAnimationDuration(element);
+    var delay = getElementAnimationDelay(element);
 
     if (duration) {
-      element.addEventListener(animationEndEvent, function animationEndWrapper(e) {
+      /**
+       * Wrap the handler in on -> off callback
+       * @param {object | Event} e Event object
+       */
+      var animationEndWrapper = function (e) {
         if (e.target === element) {
           handler.apply(element, [e]);
           element.removeEventListener(animationEndEvent, animationEndWrapper);
           called = 1;
         }
-      });
+      };
+      element.addEventListener(animationEndEvent, animationEndWrapper);
       setTimeout(function () {
         if (!called) { element.dispatchEvent(endEvent); }
-      }, duration + 17);
+      }, duration + delay + 17);
     } else {
       handler.apply(element, [endEvent]);
     }
+  }
+
+  /**
+   * Utility to get the computed transitionDelay
+   * from Element in miliseconds.
+   *
+   * @param {Element} element target
+   * @return {Number} the value in miliseconds
+   */
+  function getElementTransitionDelay(element) {
+    var computedStyle = getComputedStyle(element);
+    var propertyValue = computedStyle[transitionProperty];
+    var delayValue = computedStyle[transitionDelay];
+    var delayScale = delayValue.includes('ms') ? 1 : 1000;
+    var duration = supportTransition && propertyValue && propertyValue !== 'none'
+      ? parseFloat(delayValue) * delayScale : 0;
+
+    return !Number.isNaN(duration) ? duration : 0;
   }
 
   /**
@@ -268,18 +403,24 @@
     var called = 0;
     var endEvent = new Event(transitionEndEvent);
     var duration = getElementTransitionDuration(element);
+    var delay = getElementTransitionDelay(element);
 
     if (duration) {
-      element.addEventListener(transitionEndEvent, function transitionEndWrapper(e) {
+      /**
+       * Wrap the handler in on -> off callback
+       * @param {object | Event} e Event object
+       */
+      var transitionEndWrapper = function (e) {
         if (e.target === element) {
           handler.apply(element, [e]);
           element.removeEventListener(transitionEndEvent, transitionEndWrapper);
           called = 1;
         }
-      });
+      };
+      element.addEventListener(transitionEndEvent, transitionEndWrapper);
       setTimeout(function () {
         if (!called) { element.dispatchEvent(endEvent); }
-      }, duration + 17);
+      }, duration + delay + 17);
     } else {
       handler.apply(element, [endEvent]);
     }
@@ -318,42 +459,6 @@
   // general event options
 
   var passiveHandler = supportPassive ? { passive: true } : false;
-
-  /**
-   * Utility to get the computed animationDelay
-   * from Element in miliseconds.
-   *
-   * @param {Element} element target
-   * @return {Number} the value in miliseconds
-   */
-  function getElementAnimationDelay(element) {
-    var computedStyle = getComputedStyle(element);
-    var propertyValue = computedStyle[animationName];
-    var durationValue = computedStyle[animationDelay];
-    var durationScale = durationValue.includes('ms') ? 1 : 1000;
-    var duration = supportAnimation && propertyValue && propertyValue !== 'none'
-      ? parseFloat(durationValue) * durationScale : 0;
-
-    return !Number.isNaN(duration) ? duration : 0;
-  }
-
-  /**
-   * Utility to get the computed transitionDelay
-   * from Element in miliseconds.
-   *
-   * @param {Element} element target
-   * @return {Number} the value in miliseconds
-   */
-  function getElementTransitionDelay(element) {
-    var computedStyle = getComputedStyle(element);
-    var propertyValue = computedStyle[transitionProperty];
-    var delayValue = computedStyle[transitionDelay];
-    var delayScale = delayValue.includes('ms') ? 1 : 1000;
-    var duration = supportTransition && propertyValue && propertyValue !== 'none'
-      ? parseFloat(delayValue) * delayScale : 0;
-
-    return !Number.isNaN(duration) ? duration : 0;
-  }
 
   /**
    * Utility to check if target is typeof Element
@@ -462,9 +567,15 @@
     return element.offsetHeight;
   }
 
-  var version = "0.2.2";
+  var version = "0.2.3";
 
   // @ts-ignore
+
+  /**
+   * A global namespace for library version.
+   * @type {string}
+   */
+  var Version = version;
 
   // strings FIRST
 
@@ -512,7 +623,7 @@
     normalizeOptions: normalizeOptions,
     tryWrapper: tryWrapper,
     reflow: reflow,
-    Version: version,
+    Version: Version,
   };
 
   return SHORTER;

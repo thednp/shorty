@@ -1,38 +1,95 @@
 /*!
-* shorter-js v0.2.2 (https://github.com/thednp/shorter-js)
+* shorter-js v0.2.3 (https://github.com/thednp/shorter-js)
 * Copyright 2019-2021 © dnp_theme
 * Licensed under MIT (https://github.com/thednp/shorter-js/blob/master/LICENSE)
 */
+/**
+ * A global namespace for mouse click events.
+ * @type {object}
+ */
 const mouseClickEvents = { down: 'mousedown', up: 'mouseup' };
 
+/**
+ * A global namespace for mouse hover events.
+ * @type {string[]}
+ */
 const mouseHoverEvents = ('onmouseleave' in document) ? ['mouseenter', 'mouseleave'] : ['mouseover', 'mouseout'];
 
+/**
+ * A global namespace for touch events.
+ * @type {object}
+ */
 const touchEvents = {
   start: 'touchstart', end: 'touchend', move: 'touchmove', cancel: 'touchcancel',
 };
 
+/**
+ * A global namespace for focus event names.
+ * @type {object}
+ */
 const focusEvents = { in: 'focusin', out: 'focusout' };
 
+/**
+ * A global namespace for mouse events equivalent with touch events.
+ * @type {object}
+ */
 const mouseSwipeEvents = {
   start: 'mousedown', end: 'mouseup', move: 'mousemove', cancel: 'mouseout',
 };
 
+/**
+ * A global namespace for 'animationDuration' string.
+ * @type {string}
+ */
 const animationDuration = 'webkitAnimation' in document.head.style ? 'webkitAnimationDuration' : 'animationDuration';
 
+/**
+ * A global namespace for 'animationDelay' string.
+ * @type {string}
+ */
 const animationDelay = 'webkitAnimation' in document.head.style ? 'webkitAnimationDelay' : 'animationDelay';
 
+/**
+ * A global namespace for 'animationend' string.
+ * @type {string}
+ */
 const animationEndEvent = 'webkitAnimation' in document.head.style ? 'webkitAnimationEnd' : 'animationend';
 
+/**
+ * A global namespace for 'animationName' string.
+ * @type {string}
+ */
 const animationName = 'webkitAnimation' in document.head.style ? 'webkitAnimationName' : 'animationName';
 
+/**
+ * A global namespace for 'transitionDuration' string.
+ * @type {string}
+ */
 const transitionDuration = 'webkitTransition' in document.head.style ? 'webkitTransitionDuration' : 'transitionDuration';
 
-const transitionProperty = 'webkitTransition' in document.head.style ? 'webkitTransitionProperty' : 'transitionProperty';
+/**
+ * A global namespace for 'transition' string.
+ * @type {string}
+ */
+const transitionProperty = 'webkitTransition' in document.head.style ? 'webkitTransition' : 'transition';
 
+/**
+ * A global namespace for 'transitionDelay' string.
+ * @type {string}
+ */
 const transitionDelay = 'webkitTransition' in document.head.style ? 'webkitTransitionDelay' : 'transitionDelay';
 
+/**
+ * A global namespace for 'transitionend' string.
+ * @type {string}
+ */
 const transitionEndEvent = 'webkitTransition' in document.head.style ? 'webkitTransitionEnd' : 'transitionend';
 
+/**
+ * A global namespace for predefined
+ * CSS3 'cubic-bezier()' easing functions.
+ * @type {object}
+ */
 const bezierEasings = {
   linear: 'linear',
   easingSinusoidalIn: 'cubic-bezier(0.47,0,0.745,0.715)',
@@ -61,8 +118,16 @@ const bezierEasings = {
   easingBackInOut: 'cubic-bezier(0.68,-0.55,0.265,1.55)',
 };
 
+/**
+ * A global namespace for 'addEventListener' string.
+ * @type {string}
+ */
 const addEventListener = 'addEventListener';
 
+/**
+ * A global namespace for 'removeEventListener' string.
+ * @type {string}
+ */
 const removeEventListener = 'removeEventListener';
 
 const mobileBrands = /iPhone|iPad|iPod|Android/i;
@@ -76,10 +141,22 @@ if (navigator[userAgentStr]) {
   isMobileCheck = mobileBrands.test(navigator.userAgent);
 }
 
+/**
+ * A global namespace for mobile detection.
+ * @type {boolean}
+ */
 const isMobile = isMobileCheck;
 
+/**
+ * A global namespace for CSS3 3D transform support.
+ * @type {boolean}
+ */
 const support3DTransform = 'webkitPerspective' in document.head.style || 'perspective' in document.head.style;
 
+/**
+ * A global namespace for passive events support.
+ * @type {boolean}
+ */
 const supportPassive = (() => {
   let result = false;
   try {
@@ -99,12 +176,28 @@ const supportPassive = (() => {
   return result;
 })();
 
+/**
+ * A global namespace for CSS3 transform support.
+ * @type {boolean}
+ */
 const supportTransform = 'webkitTransform' in document.head.style || 'transform' in document.head.style;
 
+/**
+ * A global namespace for touch events support.
+ * @type {boolean}
+ */
 const supportTouch = 'ontouchstart' in window || 'msMaxTouchPoints' in navigator;
 
+/**
+ * A global namespace for CSS3 animation support.
+ * @type {boolean}
+ */
 const supportAnimation = 'webkitAnimation' in document.head.style || 'animation' in document.head.style;
 
+/**
+ * A global namespace for CSS3 transition support.
+ * @type {boolean}
+ */
 const supportTransition = 'webkitTransition' in document.head.style || 'transition' in document.head.style;
 
 /**
@@ -188,6 +281,24 @@ function one(element, eventName, handler, options) {
 }
 
 /**
+ * Utility to get the computed animationDelay
+ * from Element in miliseconds.
+ *
+ * @param {Element} element target
+ * @return {Number} the value in miliseconds
+ */
+function getElementAnimationDelay(element) {
+  const computedStyle = getComputedStyle(element);
+  const propertyValue = computedStyle[animationName];
+  const durationValue = computedStyle[animationDelay];
+  const durationScale = durationValue.includes('ms') ? 1 : 1000;
+  const duration = supportAnimation && propertyValue && propertyValue !== 'none'
+    ? parseFloat(durationValue) * durationScale : 0;
+
+  return !Number.isNaN(duration) ? duration : 0;
+}
+
+/**
  * Utility to get the computed animationDuration
  * from Element in miliseconds.
  *
@@ -216,21 +327,45 @@ function emulateAnimationEnd(element, handler) {
   let called = 0;
   const endEvent = new Event(animationEndEvent);
   const duration = getElementAnimationDuration(element);
+  const delay = getElementAnimationDelay(element);
 
   if (duration) {
-    element.addEventListener(animationEndEvent, function animationEndWrapper(e) {
+    /**
+     * Wrap the handler in on -> off callback
+     * @param {object | Event} e Event object
+     */
+    const animationEndWrapper = (e) => {
       if (e.target === element) {
         handler.apply(element, [e]);
         element.removeEventListener(animationEndEvent, animationEndWrapper);
         called = 1;
       }
-    });
+    };
+    element.addEventListener(animationEndEvent, animationEndWrapper);
     setTimeout(() => {
       if (!called) element.dispatchEvent(endEvent);
-    }, duration + 17);
+    }, duration + delay + 17);
   } else {
     handler.apply(element, [endEvent]);
   }
+}
+
+/**
+ * Utility to get the computed transitionDelay
+ * from Element in miliseconds.
+ *
+ * @param {Element} element target
+ * @return {Number} the value in miliseconds
+ */
+function getElementTransitionDelay(element) {
+  const computedStyle = getComputedStyle(element);
+  const propertyValue = computedStyle[transitionProperty];
+  const delayValue = computedStyle[transitionDelay];
+  const delayScale = delayValue.includes('ms') ? 1 : 1000;
+  const duration = supportTransition && propertyValue && propertyValue !== 'none'
+    ? parseFloat(delayValue) * delayScale : 0;
+
+  return !Number.isNaN(duration) ? duration : 0;
 }
 
 /**
@@ -262,18 +397,24 @@ function emulateTransitionEnd(element, handler) {
   let called = 0;
   const endEvent = new Event(transitionEndEvent);
   const duration = getElementTransitionDuration(element);
+  const delay = getElementTransitionDelay(element);
 
   if (duration) {
-    element.addEventListener(transitionEndEvent, function transitionEndWrapper(e) {
+    /**
+     * Wrap the handler in on -> off callback
+     * @param {object | Event} e Event object
+     */
+    const transitionEndWrapper = (e) => {
       if (e.target === element) {
         handler.apply(element, [e]);
         element.removeEventListener(transitionEndEvent, transitionEndWrapper);
         called = 1;
       }
-    });
+    };
+    element.addEventListener(transitionEndEvent, transitionEndWrapper);
     setTimeout(() => {
       if (!called) element.dispatchEvent(endEvent);
-    }, duration + 17);
+    }, duration + delay + 17);
   } else {
     handler.apply(element, [endEvent]);
   }
@@ -312,42 +453,6 @@ function isElementInViewport(element) {
 // general event options
 
 const passiveHandler = supportPassive ? { passive: true } : false;
-
-/**
- * Utility to get the computed animationDelay
- * from Element in miliseconds.
- *
- * @param {Element} element target
- * @return {Number} the value in miliseconds
- */
-function getElementAnimationDelay(element) {
-  const computedStyle = getComputedStyle(element);
-  const propertyValue = computedStyle[animationName];
-  const durationValue = computedStyle[animationDelay];
-  const durationScale = durationValue.includes('ms') ? 1 : 1000;
-  const duration = supportAnimation && propertyValue && propertyValue !== 'none'
-    ? parseFloat(durationValue) * durationScale : 0;
-
-  return !Number.isNaN(duration) ? duration : 0;
-}
-
-/**
- * Utility to get the computed transitionDelay
- * from Element in miliseconds.
- *
- * @param {Element} element target
- * @return {Number} the value in miliseconds
- */
-function getElementTransitionDelay(element) {
-  const computedStyle = getComputedStyle(element);
-  const propertyValue = computedStyle[transitionProperty];
-  const delayValue = computedStyle[transitionDelay];
-  const delayScale = delayValue.includes('ms') ? 1 : 1000;
-  const duration = supportTransition && propertyValue && propertyValue !== 'none'
-    ? parseFloat(delayValue) * delayScale : 0;
-
-  return !Number.isNaN(duration) ? duration : 0;
-}
 
 /**
  * Utility to check if target is typeof Element
@@ -456,9 +561,15 @@ function reflow(element) {
   return element.offsetHeight;
 }
 
-var version = "0.2.2";
+var version = "0.2.3";
 
 // @ts-ignore
+
+/**
+ * A global namespace for library version.
+ * @type {string}
+ */
+const Version = version;
 
 // strings FIRST
 
@@ -506,7 +617,7 @@ const SHORTER = {
   normalizeOptions,
   tryWrapper,
   reflow,
-  Version: version,
+  Version,
 };
 
 export default SHORTER;
