@@ -1,4 +1,4 @@
-declare var _default: false | {
+export default passiveHandler;
+declare const passiveHandler: false | {
     passive: boolean;
 };
-export default _default;

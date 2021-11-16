@@ -1,5 +1,12 @@
-// detach handlers
-export default function off(element, event, handler, options) {
+/**
+ * Remove eventListener from Element
+ *
+ * @param {Element} element target
+ * @param {string} eventName name
+ * @param {object | Function} handler callback
+ * @param {object | Boolean | undefined} options other event options
+ */
+export default function off(element, eventName, handler, options) {
   const ops = options || false;
-  element.removeEventListener(event, handler, ops);
+  element.removeEventListener(eventName, handler, ops);
 }

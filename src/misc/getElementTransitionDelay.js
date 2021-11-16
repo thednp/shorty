@@ -2,6 +2,13 @@ import supportTransition from '../boolean/supportTransition.js';
 import transitionDelay from '../strings/transitionDelay.js';
 import transitionProperty from '../strings/transitionProperty.js';
 
+/**
+ * Utility to get the computed transitionDelay
+ * from Element in miliseconds.
+ *
+ * @param {Element} element target
+ * @return {Number} the value in miliseconds
+ */
 export default function getElementTransitionDelay(element) {
   const computedStyle = getComputedStyle(element);
   const propertyValue = computedStyle[transitionProperty];

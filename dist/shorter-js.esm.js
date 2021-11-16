@@ -66,9 +66,17 @@ const addEventListener = 'addEventListener';
 const removeEventListener = 'removeEventListener';
 
 const mobileBrands = /iPhone|iPad|iPod|Android/i;
-const isMobile = navigator.userAgentData
-  ? navigator.userAgentData.brands.some((x) => mobileBrands.test(x.brand))
-  : mobileBrands.test(navigator.userAgent);
+const userAgentStr = 'userAgentData';
+
+let isMobileCheck = false;
+
+if (navigator[userAgentStr]) {
+  isMobileCheck = navigator[userAgentStr].brands.some((x) => mobileBrands.test(x.brand));
+} else {
+  isMobileCheck = mobileBrands.test(navigator.userAgent);
+}
+
+const isMobile = isMobileCheck;
 
 const support3DTransform = 'webkitPerspective' in document.head.style || 'perspective' in document.head.style;
 
@@ -93,46 +101,99 @@ const supportPassive = (() => {
 
 const supportTransform = 'webkitTransform' in document.head.style || 'transform' in document.head.style;
 
-const supportTouch = ('ontouchstart' in window || navigator.msMaxTouchPoints) || false;
+const supportTouch = 'ontouchstart' in window || 'msMaxTouchPoints' in navigator;
 
-var supportAnimation = 'webkitAnimation' in document.head.style || 'animation' in document.head.style;
+const supportAnimation = 'webkitAnimation' in document.head.style || 'animation' in document.head.style;
 
 const supportTransition = 'webkitTransition' in document.head.style || 'transition' in document.head.style;
 
+/**
+ * Add class to Element.classList
+ *
+ * @param {Element} element target
+ * @param {string} classNAME to add
+ */
 function addClass(element, classNAME) {
   element.classList.add(classNAME);
 }
 
+/**
+ * Remove class from Element.classList
+ *
+ * @param {Element} element target
+ * @param {string} classNAME to remove
+ */
 function removeClass(element, classNAME) {
   element.classList.remove(classNAME);
 }
 
+/**
+ * Check class in Element.classList
+ *
+ * @param {Element} element target
+ * @param {string} classNAME to check
+ * @return {boolean}
+ */
 function hasClass(element, classNAME) {
   return element.classList.contains(classNAME);
 }
 
-// attach handlers
-function on(element, event, handler, options) {
+/**
+ * Add eventListener to Element
+ *
+ * @param {Element} element target
+ * @param {string} eventName name
+ * @param {object | Function} handler callback
+ * @param {object | Boolean | undefined} options other event options
+ */
+function on(element, eventName, handler, options) {
   const ops = options || false;
-  element.addEventListener(event, handler, ops);
+  element.addEventListener(eventName, handler, ops);
 }
 
-// detach handlers
-function off(element, event, handler, options) {
+/**
+ * Remove eventListener from Element
+ *
+ * @param {Element} element target
+ * @param {string} eventName name
+ * @param {object | Function} handler callback
+ * @param {object | Boolean | undefined} options other event options
+ */
+function off(element, eventName, handler, options) {
   const ops = options || false;
-  element.removeEventListener(event, handler, ops);
+  element.removeEventListener(eventName, handler, ops);
 }
 
-// attach & detach handlers
-function one(element, event, handler, options) {
-  on(element, event, function handlerWrapper(e) {
+/**
+ * Add an eventListener to Element
+ * and remove it once callback is called.
+ *
+ * @param {Element} element target
+ * @param {string} eventName name of the event
+ * @param {object | Function} handler callback
+ * @param {object | Boolean | undefined} options other event options
+ */
+function one(element, eventName, handler, options) {
+/**
+ * Wrap the handler for easy on -> off
+ * @param {Event} e the Event object
+ */
+  function handlerWrapper(e) {
     if (e.target === element) {
       handler.apply(element, [e]);
-      off(element, event, handlerWrapper, options);
+      off(element, eventName, handlerWrapper, options);
     }
-  }, options);
+  }
+  on(element, eventName, handlerWrapper, options);
 }
 
+/**
+ * Utility to get the computed animationDuration
+ * from Element in miliseconds.
+ *
+ * @param {Element} element target
+ * @return {Number} the value in miliseconds
+ */
 function getElementAnimationDuration(element) {
   const computedStyle = getComputedStyle(element);
   const propertyValue = computedStyle[animationName];
@@ -144,6 +205,13 @@ function getElementAnimationDuration(element) {
   return !Number.isNaN(duration) ? duration : 0;
 }
 
+/**
+ * Utility to make sure callbacks are consistently
+ * called when animation ends.
+ *
+ * @param {Element} element target
+ * @param {Function} handler callback
+ */
 function emulateAnimationEnd(element, handler) {
   let called = 0;
   const endEvent = new Event(animationEndEvent);
@@ -165,6 +233,13 @@ function emulateAnimationEnd(element, handler) {
   }
 }
 
+/**
+ * Utility to get the computed transitionDuration
+ * from Element in miliseconds.
+ *
+ * @param {Element} element target
+ * @return {Number} the value in miliseconds
+ */
 function getElementTransitionDuration(element) {
   const computedStyle = getComputedStyle(element);
   const propertyValue = computedStyle[transitionProperty];
@@ -176,6 +251,13 @@ function getElementTransitionDuration(element) {
   return !Number.isNaN(duration) ? duration : 0;
 }
 
+/**
+ * Utility to make sure callbacks are consistently
+ * called when transition ends.
+ *
+ * @param {Element} element target
+ * @param {Function} handler callback
+ */
 function emulateTransitionEnd(element, handler) {
   let called = 0;
   const endEvent = new Event(transitionEndEvent);
@@ -197,13 +279,26 @@ function emulateTransitionEnd(element, handler) {
   }
 }
 
+/**
+ * Utility to determine if an Element
+ * is partially visible in viewport.
+ *
+ * @param {Element} element target
+ * @return {Boolean}
+ */
 function isElementInScrollRange(element) {
   const bcr = element.getBoundingClientRect();
   const viewportHeight = window.innerHeight || document.documentElement.clientHeight;
   return bcr.top <= viewportHeight && bcr.bottom >= 0; // bottom && top
 }
 
-// check if element is in viewport
+/**
+ * Utility to determine if an Element
+ * is fully visible in the viewport.
+ *
+ * @param {Element} element target
+ * @return {Boolean}
+ */
 function isElementInViewport(element) {
   const bcr = element.getBoundingClientRect();
   return (
@@ -216,8 +311,15 @@ function isElementInViewport(element) {
 
 // general event options
 
-var passiveHandler = supportPassive ? { passive: true } : false;
+const passiveHandler = supportPassive ? { passive: true } : false;
 
+/**
+ * Utility to get the computed animationDelay
+ * from Element in miliseconds.
+ *
+ * @param {Element} element target
+ * @return {Number} the value in miliseconds
+ */
 function getElementAnimationDelay(element) {
   const computedStyle = getComputedStyle(element);
   const propertyValue = computedStyle[animationName];
@@ -229,6 +331,13 @@ function getElementAnimationDelay(element) {
   return !Number.isNaN(duration) ? duration : 0;
 }
 
+/**
+ * Utility to get the computed transitionDelay
+ * from Element in miliseconds.
+ *
+ * @param {Element} element target
+ * @return {Number} the value in miliseconds
+ */
 function getElementTransitionDelay(element) {
   const computedStyle = getComputedStyle(element);
   const propertyValue = computedStyle[transitionProperty];
@@ -240,11 +349,25 @@ function getElementTransitionDelay(element) {
   return !Number.isNaN(duration) ? duration : 0;
 }
 
+/**
+ * Utility to check if target is typeof Element
+ * or find one that matches a selector.
+ *
+ * @param {string | Element} selector the input selector or target element
+ * @param {undefined | Element} parent optional Element to look into
+ * @return {null | Element} the Element
+ */
 function queryElement(selector, parent) {
   const lookUp = parent && parent instanceof Element ? parent : document;
   return selector instanceof Element ? selector : lookUp.querySelector(selector);
 }
 
+/**
+ * Utility to normalize component options
+ *
+ * @param {string | Function | Element | object} value the input value
+ * @return {string | Function | Element | object} the normalized value
+ */
 function normalizeValue(value) {
   if (value === 'true') {
     return true;
@@ -266,9 +389,19 @@ function normalizeValue(value) {
   return value;
 }
 
+/**
+ * Utility to normalize component options
+ *
+ * @param {Element} element target
+ * @param {object} defaultOps component default options
+ * @param {object} inputOps component instance options
+ * @param {string} ns component namespace
+ * @return {object} normalized component options object
+ */
 function normalizeOptions(element, defaultOps, inputOps, ns) {
   const normalOps = {};
   const dataOps = {};
+  // @ts-ignore
   const data = { ...element.dataset };
 
   Object.keys(data)
@@ -299,17 +432,33 @@ function normalizeOptions(element, defaultOps, inputOps, ns) {
   return normalOps;
 }
 
+/**
+ * Utility to wrap a callback
+ * in a try() catch(e)
+ *
+ * @param {Function} fn callback
+ * @param {string} origin callback context description
+ */
 function tryWrapper(fn, origin) {
   try { fn(); } catch (e) {
     throw TypeError(`${origin} ${e}`);
   }
 }
 
+/**
+ * Utility to force re-paint of an Element
+ *
+ * @param {Element} element is the target
+ * @return {Number} the Element.offsetHeight value
+ */
 function reflow(element) {
+  // @ts-ignore
   return element.offsetHeight;
 }
 
 var version = "0.2.2";
+
+// @ts-ignore
 
 // strings FIRST
 

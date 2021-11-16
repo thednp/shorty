@@ -2,6 +2,13 @@ import supportAnimation from '../boolean/supportAnimation.js';
 import animationDelay from '../strings/animationDelay.js';
 import animationName from '../strings/animationName.js';
 
+/**
+ * Utility to get the computed animationDelay
+ * from Element in miliseconds.
+ *
+ * @param {Element} element target
+ * @return {Number} the value in miliseconds
+ */
 export default function getElementAnimationDelay(element) {
   const computedStyle = getComputedStyle(element);
   const propertyValue = computedStyle[animationName];

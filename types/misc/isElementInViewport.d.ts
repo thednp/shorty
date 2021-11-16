@@ -1,1 +1,8 @@
-export default function isElementInViewport(element: any): boolean;
+/**
+ * Utility to determine if an Element
+ * is fully visible in the viewport.
+ *
+ * @param {Element} element target
+ * @return {Boolean}
+ */
+export default function isElementInViewport(element: Element): boolean;

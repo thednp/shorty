@@ -1,2 +1,2 @@
 export default supportTouch;
-declare const supportTouch: any;
+declare const supportTouch: boolean;
