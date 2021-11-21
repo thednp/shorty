@@ -1,8 +1,22 @@
 /**
+ * The raw value or a given component option.
+ *
+ * @typedef rawValue
+ * @type {string | Function | Element | Boolean | object}
+ */
+
+/**
+ * The raw value or a given component option.
+ *
+ * @typedef niceValue
+ * @type {string | Function | Element | object | Number | Boolean}
+ */
+
+/**
  * Utility to normalize component options
  *
- * @param {string | Function | Element | object} value the input value
- * @return {string | Function | Element | object} the normalized value
+ * @param {rawValue} value the input value
+ * @return {niceValue} the normalized value
  */
 export default function normalizeValue(value) {
   if (value === 'true') {

@@ -1,5 +1,5 @@
 /*!
-* shorter-js v0.2.3 (https://github.com/thednp/shorter-js)
+* shorter-js v0.2.4 (https://github.com/thednp/shorter-js)
 * Copyright 2019-2021 © dnp_theme
 * Licensed under MIT (https://github.com/thednp/shorter-js/blob/master/LICENSE)
 */
@@ -240,10 +240,10 @@
   /**
    * Add eventListener to Element
    *
-   * @param {Element} element target
-   * @param {string} eventName name
+   * @param {Element} element event.target
+   * @param {String} eventName event.type
    * @param {object | Function} handler callback
-   * @param {object | Boolean | undefined} options other event options
+   * @param {object | Boolean | null} options other event options
    */
   function on(element, eventName, handler, options) {
     var ops = options || false;
@@ -253,10 +253,10 @@
   /**
    * Remove eventListener from Element
    *
-   * @param {Element} element target
-   * @param {string} eventName name
+   * @param {Element} element event.target
+   * @param {String} eventName event.type
    * @param {object | Function} handler callback
-   * @param {object | Boolean | undefined} options other event options
+   * @param {object | Boolean | null} options other event options
    */
   function off(element, eventName, handler, options) {
     var ops = options || false;
@@ -267,10 +267,10 @@
    * Add an eventListener to Element
    * and remove it once callback is called.
    *
-   * @param {Element} element target
-   * @param {string} eventName name of the event
+   * @param {Element} element event.target
+   * @param {String} eventName event.type
    * @param {object | Function} handler callback
-   * @param {object | Boolean | undefined} options other event options
+   * @param {object | Boolean | null} options other event options
    */
   function one(element, eventName, handler, options) {
   /**
@@ -327,7 +327,7 @@
    * called when animation ends.
    *
    * @param {Element} element target
-   * @param {Function} handler callback
+   * @param {Function} handler `animationend` callback
    */
   function emulateAnimationEnd(element, handler) {
     var called = 0;
@@ -397,7 +397,7 @@
    * called when transition ends.
    *
    * @param {Element} element target
-   * @param {Function} handler callback
+   * @param {Function} handler `transitionend` callback
    */
   function emulateTransitionEnd(element, handler) {
     var called = 0;
@@ -427,11 +427,11 @@
   }
 
   /**
-   * Utility to determine if an Element
+   * Utility to determine if an `Element`
    * is partially visible in viewport.
    *
    * @param {Element} element target
-   * @return {Boolean}
+   * @return {Boolean} Boolean
    */
   function isElementInScrollRange(element) {
     var bcr = element.getBoundingClientRect();
@@ -440,11 +440,11 @@
   }
 
   /**
-   * Utility to determine if an Element
+   * Utility to determine if an `Element`
    * is fully visible in the viewport.
    *
    * @param {Element} element target
-   * @return {Boolean}
+   * @return {Boolean} Boolean
    */
   function isElementInViewport(element) {
     var bcr = element.getBoundingClientRect();
@@ -458,6 +458,9 @@
 
   // general event options
 
+  /**
+   * A global namespace for most scroll event listeners.
+   */
   var passiveHandler = supportPassive ? { passive: true } : false;
 
   /**
@@ -465,8 +468,8 @@
    * or find one that matches a selector.
    *
    * @param {string | Element} selector the input selector or target element
-   * @param {undefined | Element} parent optional Element to look into
-   * @return {null | Element} the Element
+   * @param {?Element} parent optional Element to look into
+   * @return {null | Element} the Element or result of the querySelector
    */
   function queryElement(selector, parent) {
     var lookUp = parent && parent instanceof Element ? parent : document;
@@ -474,10 +477,24 @@
   }
 
   /**
+   * The raw value or a given component option.
+   *
+   * @typedef rawValue
+   * @type {string | Function | Element | Boolean | object}
+   */
+
+  /**
+   * The raw value or a given component option.
+   *
+   * @typedef niceValue
+   * @type {string | Function | Element | object | Number | Boolean}
+   */
+
+  /**
    * Utility to normalize component options
    *
-   * @param {string | Function | Element | object} value the input value
-   * @return {string | Function | Element | object} the normalized value
+   * @param {rawValue} value the input value
+   * @return {niceValue} the normalized value
    */
   function normalizeValue(value) {
     if (value === 'true') {
@@ -544,8 +561,7 @@
   }
 
   /**
-   * Utility to wrap a callback
-   * in a try() catch(e)
+   * Utility to wrap a callback in a try() catch(e)
    *
    * @param {Function} fn callback
    * @param {string} origin callback context description
@@ -567,7 +583,7 @@
     return element.offsetHeight;
   }
 
-  var version = "0.2.3";
+  var version = "0.2.4";
 
   // @ts-ignore
 

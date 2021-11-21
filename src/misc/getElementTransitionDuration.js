@@ -1,6 +1,6 @@
-import supportTransition from '../boolean/supportTransition.js';
-import transitionDuration from '../strings/transitionDuration.js';
-import transitionProperty from '../strings/transitionProperty.js';
+import supportTransition from '../boolean/supportTransition';
+import transitionDuration from '../strings/transitionDuration';
+import transitionProperty from '../strings/transitionProperty';
 
 /**
  * Utility to get the computed transitionDuration

@@ -1,57 +1,57 @@
 // strings FIRST
-import mouseClickEvents from './strings/mouseClickEvents.js';
-import mouseHoverEvents from './strings/mouseHoverEvents.js';
-import touchEvents from './strings/touchEvents.js';
-import focusEvents from './strings/focusEvents.js';
-import mouseSwipeEvents from './strings/mouseSwipeEvents.js';
-import animationDuration from './strings/animationDuration.js';
-import animationDelay from './strings/animationDelay.js';
-import animationEndEvent from './strings/animationEndEvent.js';
-import animationName from './strings/animationName.js';
-import transitionDuration from './strings/transitionDuration.js';
-import transitionProperty from './strings/transitionProperty.js';
-import transitionDelay from './strings/transitionDelay.js';
-import transitionEndEvent from './strings/transitionEndEvent.js';
-import bezierEasings from './strings/bezierEasings.js';
-import addEventListener from './strings/addEventListener.js';
-import removeEventListener from './strings/removeEventListener.js';
+import mouseClickEvents from './strings/mouseClickEvents';
+import mouseHoverEvents from './strings/mouseHoverEvents';
+import touchEvents from './strings/touchEvents';
+import focusEvents from './strings/focusEvents';
+import mouseSwipeEvents from './strings/mouseSwipeEvents';
+import animationDuration from './strings/animationDuration';
+import animationDelay from './strings/animationDelay';
+import animationEndEvent from './strings/animationEndEvent';
+import animationName from './strings/animationName';
+import transitionDuration from './strings/transitionDuration';
+import transitionProperty from './strings/transitionProperty';
+import transitionDelay from './strings/transitionDelay';
+import transitionEndEvent from './strings/transitionEndEvent';
+import bezierEasings from './strings/bezierEasings';
+import addEventListener from './strings/addEventListener';
+import removeEventListener from './strings/removeEventListener';
 
 // boolean
-import isMobile from './boolean/isMobile.js';
-import support3DTransform from './boolean/support3DTransform.js';
-import supportPassive from './boolean/supportPassive.js';
-import supportTransform from './boolean/supportTransform.js';
-import supportTouch from './boolean/supportTouch.js';
-import supportAnimation from './boolean/supportAnimation.js';
-import supportTransition from './boolean/supportTransition.js';
+import isMobile from './boolean/isMobile';
+import support3DTransform from './boolean/support3DTransform';
+import supportPassive from './boolean/supportPassive';
+import supportTransform from './boolean/supportTransform';
+import supportTouch from './boolean/supportTouch';
+import supportAnimation from './boolean/supportAnimation';
+import supportTransition from './boolean/supportTransition';
 
 // class
-import addClass from './class/addClass.js';
-import removeClass from './class/removeClass.js';
-import hasClass from './class/hasClass.js';
+import addClass from './class/addClass';
+import removeClass from './class/removeClass';
+import hasClass from './class/hasClass';
 
 // event
-import on from './event/on.js';
-import off from './event/off.js';
-import one from './event/one.js';
+import on from './event/on';
+import off from './event/off';
+import one from './event/one';
 
 // misc
-import emulateAnimationEnd from './misc/emulateAnimationEnd.js';
-import emulateTransitionEnd from './misc/emulateTransitionEnd.js';
-import isElementInScrollRange from './misc/isElementInScrollRange.js';
-import isElementInViewport from './misc/isElementInViewport.js';
-import passiveHandler from './misc/passiveHandler.js';
-import getElementAnimationDuration from './misc/getElementAnimationDuration.js';
-import getElementAnimationDelay from './misc/getElementAnimationDelay.js';
-import getElementTransitionDuration from './misc/getElementTransitionDuration.js';
-import getElementTransitionDelay from './misc/getElementTransitionDelay.js';
-import queryElement from './misc/queryElement.js';
-import normalizeOptions from './misc/normalizeOptions.js';
-import normalizeValue from './misc/normalizeValue.js';
-import tryWrapper from './misc/tryWrapper.js';
-import reflow from './misc/reflow.js';
+import emulateAnimationEnd from './misc/emulateAnimationEnd';
+import emulateTransitionEnd from './misc/emulateTransitionEnd';
+import isElementInScrollRange from './misc/isElementInScrollRange';
+import isElementInViewport from './misc/isElementInViewport';
+import passiveHandler from './misc/passiveHandler';
+import getElementAnimationDuration from './misc/getElementAnimationDuration';
+import getElementAnimationDelay from './misc/getElementAnimationDelay';
+import getElementTransitionDuration from './misc/getElementTransitionDuration';
+import getElementTransitionDelay from './misc/getElementTransitionDelay';
+import queryElement from './misc/queryElement';
+import normalizeOptions from './misc/normalizeOptions';
+import normalizeValue from './misc/normalizeValue';
+import tryWrapper from './misc/tryWrapper';
+import reflow from './misc/reflow';
 
-import Version from './misc/version.js';
+import Version from './misc/version';
 
 const SHORTER = {
   mouseClickEvents,

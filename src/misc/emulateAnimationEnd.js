@@ -1,13 +1,13 @@
-import animationEndEvent from '../strings/animationEndEvent.js';
-import getElementAnimationDelay from './getElementAnimationDelay.js';
-import getElementAnimationDuration from './getElementAnimationDuration.js';
+import animationEndEvent from '../strings/animationEndEvent';
+import getElementAnimationDelay from './getElementAnimationDelay';
+import getElementAnimationDuration from './getElementAnimationDuration';
 
 /**
  * Utility to make sure callbacks are consistently
  * called when animation ends.
  *
  * @param {Element} element target
- * @param {Function} handler callback
+ * @param {Function} handler `animationend` callback
  */
 export default function emulateAnimationEnd(element, handler) {
   let called = 0;

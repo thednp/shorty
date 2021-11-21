@@ -1,14 +1,14 @@
-import on from './on.js';
-import off from './off.js';
+import on from './on';
+import off from './off';
 
 /**
  * Add an eventListener to Element
  * and remove it once callback is called.
  *
- * @param {Element} element target
- * @param {string} eventName name of the event
+ * @param {Element} element event.target
+ * @param {String} eventName event.type
  * @param {object | Function} handler callback
- * @param {object | Boolean | undefined} options other event options
+ * @param {object | Boolean | null} options other event options
  */
 export default function one(element, eventName, handler, options) {
 /**

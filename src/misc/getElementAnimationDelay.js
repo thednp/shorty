@@ -1,6 +1,6 @@
-import supportAnimation from '../boolean/supportAnimation.js';
-import animationDelay from '../strings/animationDelay.js';
-import animationName from '../strings/animationName.js';
+import supportAnimation from '../boolean/supportAnimation';
+import animationDelay from '../strings/animationDelay';
+import animationName from '../strings/animationName';
 
 /**
  * Utility to get the computed animationDelay

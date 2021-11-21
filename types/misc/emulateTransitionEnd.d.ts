@@ -3,6 +3,6 @@
  * called when transition ends.
  *
  * @param {Element} element target
- * @param {Function} handler callback
+ * @param {Function} handler `transitionend` callback
  */
 export default function emulateTransitionEnd(element: Element, handler: Function): void;

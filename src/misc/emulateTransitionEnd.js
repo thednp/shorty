@@ -1,13 +1,13 @@
-import transitionEndEvent from '../strings/transitionEndEvent.js';
-import getElementTransitionDelay from './getElementTransitionDelay.js';
-import getElementTransitionDuration from './getElementTransitionDuration.js';
+import transitionEndEvent from '../strings/transitionEndEvent';
+import getElementTransitionDelay from './getElementTransitionDelay';
+import getElementTransitionDuration from './getElementTransitionDuration';
 
 /**
  * Utility to make sure callbacks are consistently
  * called when transition ends.
  *
  * @param {Element} element target
- * @param {Function} handler callback
+ * @param {Function} handler `transitionend` callback
  */
 export default function emulateTransitionEnd(element, handler) {
   let called = 0;

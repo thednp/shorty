@@ -3,7 +3,7 @@
  * or find one that matches a selector.
  *
  * @param {string | Element} selector the input selector or target element
- * @param {undefined | Element} parent optional Element to look into
- * @return {null | Element} the Element
+ * @param {?Element} parent optional Element to look into
+ * @return {null | Element} the Element or result of the querySelector
  */
-export default function queryElement(selector: string | Element, parent: undefined | Element): null | Element;
+export default function queryElement(selector: string | Element, parent: Element | null): null | Element;

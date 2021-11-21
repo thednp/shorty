@@ -1,4 +1,4 @@
-import normalizeValue from './normalizeValue.js';
+import normalizeValue from './normalizeValue';
 
 /**
  * Utility to normalize component options

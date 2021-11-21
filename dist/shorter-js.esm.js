@@ -1,5 +1,5 @@
 /*!
-* shorter-js v0.2.3 (https://github.com/thednp/shorter-js)
+* shorter-js v0.2.4 (https://github.com/thednp/shorter-js)
 * Copyright 2019-2021 © dnp_theme
 * Licensed under MIT (https://github.com/thednp/shorter-js/blob/master/LICENSE)
 */
@@ -234,10 +234,10 @@ function hasClass(element, classNAME) {
 /**
  * Add eventListener to Element
  *
- * @param {Element} element target
- * @param {string} eventName name
+ * @param {Element} element event.target
+ * @param {String} eventName event.type
  * @param {object | Function} handler callback
- * @param {object | Boolean | undefined} options other event options
+ * @param {object | Boolean | null} options other event options
  */
 function on(element, eventName, handler, options) {
   const ops = options || false;
@@ -247,10 +247,10 @@ function on(element, eventName, handler, options) {
 /**
  * Remove eventListener from Element
  *
- * @param {Element} element target
- * @param {string} eventName name
+ * @param {Element} element event.target
+ * @param {String} eventName event.type
  * @param {object | Function} handler callback
- * @param {object | Boolean | undefined} options other event options
+ * @param {object | Boolean | null} options other event options
  */
 function off(element, eventName, handler, options) {
   const ops = options || false;
@@ -261,10 +261,10 @@ function off(element, eventName, handler, options) {
  * Add an eventListener to Element
  * and remove it once callback is called.
  *
- * @param {Element} element target
- * @param {string} eventName name of the event
+ * @param {Element} element event.target
+ * @param {String} eventName event.type
  * @param {object | Function} handler callback
- * @param {object | Boolean | undefined} options other event options
+ * @param {object | Boolean | null} options other event options
  */
 function one(element, eventName, handler, options) {
 /**
@@ -321,7 +321,7 @@ function getElementAnimationDuration(element) {
  * called when animation ends.
  *
  * @param {Element} element target
- * @param {Function} handler callback
+ * @param {Function} handler `animationend` callback
  */
 function emulateAnimationEnd(element, handler) {
   let called = 0;
@@ -391,7 +391,7 @@ function getElementTransitionDuration(element) {
  * called when transition ends.
  *
  * @param {Element} element target
- * @param {Function} handler callback
+ * @param {Function} handler `transitionend` callback
  */
 function emulateTransitionEnd(element, handler) {
   let called = 0;
@@ -421,11 +421,11 @@ function emulateTransitionEnd(element, handler) {
 }
 
 /**
- * Utility to determine if an Element
+ * Utility to determine if an `Element`
  * is partially visible in viewport.
  *
  * @param {Element} element target
- * @return {Boolean}
+ * @return {Boolean} Boolean
  */
 function isElementInScrollRange(element) {
   const bcr = element.getBoundingClientRect();
@@ -434,11 +434,11 @@ function isElementInScrollRange(element) {
 }
 
 /**
- * Utility to determine if an Element
+ * Utility to determine if an `Element`
  * is fully visible in the viewport.
  *
  * @param {Element} element target
- * @return {Boolean}
+ * @return {Boolean} Boolean
  */
 function isElementInViewport(element) {
   const bcr = element.getBoundingClientRect();
@@ -452,6 +452,9 @@ function isElementInViewport(element) {
 
 // general event options
 
+/**
+ * A global namespace for most scroll event listeners.
+ */
 const passiveHandler = supportPassive ? { passive: true } : false;
 
 /**
@@ -459,8 +462,8 @@ const passiveHandler = supportPassive ? { passive: true } : false;
  * or find one that matches a selector.
  *
  * @param {string | Element} selector the input selector or target element
- * @param {undefined | Element} parent optional Element to look into
- * @return {null | Element} the Element
+ * @param {?Element} parent optional Element to look into
+ * @return {null | Element} the Element or result of the querySelector
  */
 function queryElement(selector, parent) {
   const lookUp = parent && parent instanceof Element ? parent : document;
@@ -468,10 +471,24 @@ function queryElement(selector, parent) {
 }
 
 /**
+ * The raw value or a given component option.
+ *
+ * @typedef rawValue
+ * @type {string | Function | Element | Boolean | object}
+ */
+
+/**
+ * The raw value or a given component option.
+ *
+ * @typedef niceValue
+ * @type {string | Function | Element | object | Number | Boolean}
+ */
+
+/**
  * Utility to normalize component options
  *
- * @param {string | Function | Element | object} value the input value
- * @return {string | Function | Element | object} the normalized value
+ * @param {rawValue} value the input value
+ * @return {niceValue} the normalized value
  */
 function normalizeValue(value) {
   if (value === 'true') {
@@ -538,8 +555,7 @@ function normalizeOptions(element, defaultOps, inputOps, ns) {
 }
 
 /**
- * Utility to wrap a callback
- * in a try() catch(e)
+ * Utility to wrap a callback in a try() catch(e)
  *
  * @param {Function} fn callback
  * @param {string} origin callback context description
@@ -561,7 +577,7 @@ function reflow(element) {
   return element.offsetHeight;
 }
 
-var version = "0.2.3";
+var version = "0.2.4";
 
 // @ts-ignore
 
