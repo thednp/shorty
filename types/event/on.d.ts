@@ -1,9 +1,9 @@
 /**
  * Add eventListener to Element
  *
- * @param {Element} element event.target
- * @param {String} eventName event.type
- * @param {object | Function} handler callback
- * @param {object | Boolean | null} options other event options
+ * @param {HTMLElement} element event.target
+ * @param {string} eventName event.type
+ * @param {EventListener} handler callback
+ * @param {EventListenerOptions | boolean | null} options other event options
  */
-export default function on(element: Element, eventName: string, handler: object | Function, options: object | boolean | null): void;
+export default function on(element: HTMLElement, eventName: string, handler: EventListener, options: EventListenerOptions | boolean | null): void;
