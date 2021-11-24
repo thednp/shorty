@@ -1,27 +1,16 @@
 /**
  * The raw value or a given component option.
  *
- * @typedef rawValue
- * @type {string | Function | Element | Boolean | object}
- */
-/**
- * The raw value or a given component option.
- *
- * @typedef niceValue
- * @type {string | Function | Element | object | Number | Boolean}
+ * @typedef {string | Element | Function | number | boolean | null} niceValue
  */
 /**
  * Utility to normalize component options
  *
- * @param {rawValue} value the input value
+ * @param {any} value the input value
  * @return {niceValue} the normalized value
  */
-export default function normalizeValue(value: rawValue): niceValue;
+export default function normalizeValue(value: any): niceValue;
 /**
  * The raw value or a given component option.
  */
-export type rawValue = string | Function | Element | boolean | object;
-/**
- * The raw value or a given component option.
- */
-export type niceValue = string | Function | Element | object | number | boolean;
+export type niceValue = string | Element | Function | number | boolean | null;

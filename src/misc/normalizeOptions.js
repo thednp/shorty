@@ -3,25 +3,24 @@ import normalizeValue from './normalizeValue';
 /**
  * Utility to normalize component options
  *
- * @param {Element} element target
+ * @param {HTMLElement} element target
  * @param {object} defaultOps component default options
  * @param {object} inputOps component instance options
  * @param {string} ns component namespace
  * @return {object} normalized component options object
  */
 export default function normalizeOptions(element, defaultOps, inputOps, ns) {
+  const { ...dataset } = element;
   const normalOps = {};
   const dataOps = {};
-  // @ts-ignore
-  const data = { ...element.dataset };
 
-  Object.keys(data)
+  Object.keys(dataset)
     .forEach((k) => {
       const key = k.includes(ns)
         ? k.replace(ns, '').replace(/[A-Z]/, (match) => match.toLowerCase())
         : k;
 
-      dataOps[key] = normalizeValue(data[k]);
+      dataOps[key] = normalizeValue(dataset[k]);
     });
 
   Object.keys(inputOps)

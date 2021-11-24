@@ -1,5 +1,5 @@
 /*!
-* shorter-js v0.2.4 (https://github.com/thednp/shorter-js)
+* shorter-js v0.2.5 (https://github.com/thednp/shorter-js)
 * Copyright 2019-2021 © dnp_theme
 * Licensed under MIT (https://github.com/thednp/shorter-js/blob/master/LICENSE)
 */
@@ -234,10 +234,10 @@ function hasClass(element, classNAME) {
 /**
  * Add eventListener to Element
  *
- * @param {Element} element event.target
- * @param {String} eventName event.type
- * @param {object | Function} handler callback
- * @param {object | Boolean | null} options other event options
+ * @param {HTMLElement} element event.target
+ * @param {string} eventName event.type
+ * @param {EventListener} handler callback
+ * @param {EventListenerOptions | boolean | null} options other event options
  */
 function on(element, eventName, handler, options) {
   const ops = options || false;
@@ -247,10 +247,10 @@ function on(element, eventName, handler, options) {
 /**
  * Remove eventListener from Element
  *
- * @param {Element} element event.target
- * @param {String} eventName event.type
- * @param {object | Function} handler callback
- * @param {object | Boolean | null} options other event options
+ * @param {HTMLElement} element event.target
+ * @param {string} eventName event.type
+ * @param {EventListener} handler callback
+ * @param {EventListenerOptions | boolean | null} options other event options
  */
 function off(element, eventName, handler, options) {
   const ops = options || false;
@@ -261,10 +261,10 @@ function off(element, eventName, handler, options) {
  * Add an eventListener to Element
  * and remove it once callback is called.
  *
- * @param {Element} element event.target
- * @param {String} eventName event.type
- * @param {object | Function} handler callback
- * @param {object | Boolean | null} options other event options
+ * @param {HTMLElement} element event.target
+ * @param {string} eventName event.type
+ * @param {EventListener} handler callback
+ * @param {EventListenerOptions | boolean | null} options other event options
  */
 function one(element, eventName, handler, options) {
 /**
@@ -284,8 +284,8 @@ function one(element, eventName, handler, options) {
  * Utility to get the computed animationDelay
  * from Element in miliseconds.
  *
- * @param {Element} element target
- * @return {Number} the value in miliseconds
+ * @param {HTMLElement} element target
+ * @return {number} the value in miliseconds
  */
 function getElementAnimationDelay(element) {
   const computedStyle = getComputedStyle(element);
@@ -302,8 +302,8 @@ function getElementAnimationDelay(element) {
  * Utility to get the computed animationDuration
  * from Element in miliseconds.
  *
- * @param {Element} element target
- * @return {Number} the value in miliseconds
+ * @param {HTMLElement} element target
+ * @return {number} the value in miliseconds
  */
 function getElementAnimationDuration(element) {
   const computedStyle = getComputedStyle(element);
@@ -320,8 +320,8 @@ function getElementAnimationDuration(element) {
  * Utility to make sure callbacks are consistently
  * called when animation ends.
  *
- * @param {Element} element target
- * @param {Function} handler `animationend` callback
+ * @param {HTMLElement} element target
+ * @param {function} handler `animationend` callback
  */
 function emulateAnimationEnd(element, handler) {
   let called = 0;
@@ -332,7 +332,8 @@ function emulateAnimationEnd(element, handler) {
   if (duration) {
     /**
      * Wrap the handler in on -> off callback
-     * @param {object | Event} e Event object
+     * @param {object} e Event object
+     * @callback
      */
     const animationEndWrapper = (e) => {
       if (e.target === element) {
@@ -354,8 +355,8 @@ function emulateAnimationEnd(element, handler) {
  * Utility to get the computed transitionDelay
  * from Element in miliseconds.
  *
- * @param {Element} element target
- * @return {Number} the value in miliseconds
+ * @param {HTMLElement} element target
+ * @return {number} the value in miliseconds
  */
 function getElementTransitionDelay(element) {
   const computedStyle = getComputedStyle(element);
@@ -372,8 +373,8 @@ function getElementTransitionDelay(element) {
  * Utility to get the computed transitionDuration
  * from Element in miliseconds.
  *
- * @param {Element} element target
- * @return {Number} the value in miliseconds
+ * @param {HTMLElement} element target
+ * @return {number} the value in miliseconds
  */
 function getElementTransitionDuration(element) {
   const computedStyle = getComputedStyle(element);
@@ -390,8 +391,8 @@ function getElementTransitionDuration(element) {
  * Utility to make sure callbacks are consistently
  * called when transition ends.
  *
- * @param {Element} element target
- * @param {Function} handler `transitionend` callback
+ * @param {HTMLElement} element target
+ * @param {function} handler `transitionend` callback
  */
 function emulateTransitionEnd(element, handler) {
   let called = 0;
@@ -402,7 +403,8 @@ function emulateTransitionEnd(element, handler) {
   if (duration) {
     /**
      * Wrap the handler in on -> off callback
-     * @param {object | Event} e Event object
+     * @param {object} e Event object
+     * @callback
      */
     const transitionEndWrapper = (e) => {
       if (e.target === element) {
@@ -424,8 +426,8 @@ function emulateTransitionEnd(element, handler) {
  * Utility to determine if an `Element`
  * is partially visible in viewport.
  *
- * @param {Element} element target
- * @return {Boolean} Boolean
+ * @param {HTMLElement} element target
+ * @return {boolean} Boolean
  */
 function isElementInScrollRange(element) {
   const bcr = element.getBoundingClientRect();
@@ -437,8 +439,8 @@ function isElementInScrollRange(element) {
  * Utility to determine if an `Element`
  * is fully visible in the viewport.
  *
- * @param {Element} element target
- * @return {Boolean} Boolean
+ * @param {HTMLElement} element target
+ * @return {boolean} Boolean
  */
 function isElementInViewport(element) {
   const bcr = element.getBoundingClientRect();
@@ -461,78 +463,69 @@ const passiveHandler = supportPassive ? { passive: true } : false;
  * Utility to check if target is typeof Element
  * or find one that matches a selector.
  *
- * @param {string | Element} selector the input selector or target element
- * @param {?Element} parent optional Element to look into
- * @return {null | Element} the Element or result of the querySelector
+ * @param {HTMLElement | string} selector the input selector or target element
+ * @param {HTMLElement | null} parent optional Element to look into
+ * @return {HTMLElement | null} the Element or result of the querySelector
  */
 function queryElement(selector, parent) {
-  const lookUp = parent && parent instanceof Element ? parent : document;
-  return selector instanceof Element ? selector : lookUp.querySelector(selector);
+  const lookUp = parent && parent instanceof HTMLElement ? parent : document;
+  return selector instanceof HTMLElement ? selector : lookUp.querySelector(selector);
 }
 
 /**
  * The raw value or a given component option.
  *
- * @typedef rawValue
- * @type {string | Function | Element | Boolean | object}
- */
-
-/**
- * The raw value or a given component option.
- *
- * @typedef niceValue
- * @type {string | Function | Element | object | Number | Boolean}
+ * @typedef {string | Element | Function | number | boolean | null} niceValue
  */
 
 /**
  * Utility to normalize component options
  *
- * @param {rawValue} value the input value
+ * @param {any} value the input value
  * @return {niceValue} the normalized value
  */
 function normalizeValue(value) {
-  if (value === 'true') {
+  if (value === 'true') { // boolean
     return true;
   }
 
-  if (value === 'false') {
+  if (value === 'false') { // boolean
     return false;
   }
 
-  if (!Number.isNaN(+value)) {
+  if (!Number.isNaN(+value)) { // number
     return +value;
   }
 
-  if (value === '' || value === 'null') {
+  if (value === '' || value === 'null') { // null
     return null;
   }
 
-  // string / function / Element / Object
+  // string / function / Element / object
   return value;
 }
 
 /**
  * Utility to normalize component options
  *
- * @param {Element} element target
+ * @param {HTMLElement} element target
  * @param {object} defaultOps component default options
  * @param {object} inputOps component instance options
  * @param {string} ns component namespace
  * @return {object} normalized component options object
  */
 function normalizeOptions(element, defaultOps, inputOps, ns) {
+  const { ...dataset } = element;
   const normalOps = {};
   const dataOps = {};
-  // @ts-ignore
-  const data = { ...element.dataset };
 
-  Object.keys(data)
+  Object.keys(dataset)
     .forEach((k) => {
       const key = k.includes(ns)
         ? k.replace(ns, '').replace(/[A-Z]/, (match) => match.toLowerCase())
         : k;
 
-      dataOps[key] = normalizeValue(data[k]);
+      dataOps[key] = normalizeValue(dataset[k]);
     });
 
   Object.keys(inputOps)
@@ -569,15 +562,14 @@ function tryWrapper(fn, origin) {
 /**
  * Utility to force re-paint of an Element
  *
- * @param {Element} element is the target
- * @return {Number} the Element.offsetHeight value
+ * @param {HTMLElement} element is the target
+ * @return {number} the Element.offsetHeight value
  */
 function reflow(element) {
-  // @ts-ignore
   return element.offsetHeight;
 }
 
-var version = "0.2.4";
+var version = "0.2.5";
 
 // @ts-ignore
 

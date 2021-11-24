@@ -2,7 +2,7 @@
  * Utility to make sure callbacks are consistently
  * called when transition ends.
  *
- * @param {Element} element target
- * @param {Function} handler `transitionend` callback
+ * @param {HTMLElement} element target
+ * @param {function} handler `transitionend` callback
  */
-export default function emulateTransitionEnd(element: Element, handler: Function): void;
+export default function emulateTransitionEnd(element: HTMLElement, handler: Function): void;

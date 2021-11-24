@@ -2,7 +2,7 @@
  * Utility to make sure callbacks are consistently
  * called when animation ends.
  *
- * @param {Element} element target
- * @param {Function} handler `animationend` callback
+ * @param {HTMLElement} element target
+ * @param {function} handler `animationend` callback
  */
-export default function emulateAnimationEnd(element: Element, handler: Function): void;
+export default function emulateAnimationEnd(element: HTMLElement, handler: Function): void;

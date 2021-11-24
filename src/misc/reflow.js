@@ -1,10 +1,9 @@
 /**
  * Utility to force re-paint of an Element
  *
- * @param {Element} element is the target
- * @return {Number} the Element.offsetHeight value
+ * @param {HTMLElement} element is the target
+ * @return {number} the Element.offsetHeight value
  */
 export default function reflow(element) {
-  // @ts-ignore
   return element.offsetHeight;
 }

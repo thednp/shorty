@@ -6,8 +6,8 @@ import getElementAnimationDuration from './getElementAnimationDuration';
  * Utility to make sure callbacks are consistently
  * called when animation ends.
  *
- * @param {Element} element target
- * @param {Function} handler `animationend` callback
+ * @param {HTMLElement} element target
+ * @param {function} handler `animationend` callback
  */
 export default function emulateAnimationEnd(element, handler) {
   let called = 0;
@@ -18,7 +18,8 @@ export default function emulateAnimationEnd(element, handler) {
   if (duration) {
     /**
      * Wrap the handler in on -> off callback
-     * @param {object | Event} e Event object
+     * @param {object} e Event object
+     * @callback
      */
     const animationEndWrapper = (e) => {
       if (e.target === element) {

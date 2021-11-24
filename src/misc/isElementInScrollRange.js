@@ -2,8 +2,8 @@
  * Utility to determine if an `Element`
  * is partially visible in viewport.
  *
- * @param {Element} element target
- * @return {Boolean} Boolean
+ * @param {HTMLElement} element target
+ * @return {boolean} Boolean
  */
 export default function isElementInScrollRange(element) {
   const bcr = element.getBoundingClientRect();

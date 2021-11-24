@@ -6,8 +6,8 @@ import getElementTransitionDuration from './getElementTransitionDuration';
  * Utility to make sure callbacks are consistently
  * called when transition ends.
  *
- * @param {Element} element target
- * @param {Function} handler `transitionend` callback
+ * @param {HTMLElement} element target
+ * @param {function} handler `transitionend` callback
  */
 export default function emulateTransitionEnd(element, handler) {
   let called = 0;
@@ -18,7 +18,8 @@ export default function emulateTransitionEnd(element, handler) {
   if (duration) {
     /**
      * Wrap the handler in on -> off callback
-     * @param {object | Event} e Event object
+     * @param {object} e Event object
+     * @callback
      */
     const transitionEndWrapper = (e) => {
       if (e.target === element) {

@@ -6,8 +6,8 @@ import animationName from '../strings/animationName';
  * Utility to get the computed animationDelay
  * from Element in miliseconds.
  *
- * @param {Element} element target
- * @return {Number} the value in miliseconds
+ * @param {HTMLElement} element target
+ * @return {number} the value in miliseconds
  */
 export default function getElementAnimationDelay(element) {
   const computedStyle = getComputedStyle(element);

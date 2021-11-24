@@ -2,8 +2,8 @@
  * Utility to determine if an `Element`
  * is fully visible in the viewport.
  *
- * @param {Element} element target
- * @return {Boolean} Boolean
+ * @param {HTMLElement} element target
+ * @return {boolean} Boolean
  */
 export default function isElementInViewport(element) {
   const bcr = element.getBoundingClientRect();

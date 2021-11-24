@@ -6,8 +6,8 @@ import transitionProperty from '../strings/transitionProperty';
  * Utility to get the computed transitionDuration
  * from Element in miliseconds.
  *
- * @param {Element} element target
- * @return {Number} the value in miliseconds
+ * @param {HTMLElement} element target
+ * @return {number} the value in miliseconds
  */
 export default function getElementTransitionDuration(element) {
   const computedStyle = getComputedStyle(element);
