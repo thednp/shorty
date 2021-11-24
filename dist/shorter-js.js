@@ -1,5 +1,5 @@
 /*!
-* shorter-js v0.2.5 (https://github.com/thednp/shorter-js)
+* shorter-js v0.2.6 (https://github.com/thednp/shorter-js)
 * Copyright 2019-2021 © dnp_theme
 * Licensed under MIT (https://github.com/thednp/shorter-js/blob/master/LICENSE)
 */
@@ -74,10 +74,10 @@
   var transitionDuration = 'webkitTransition' in document.head.style ? 'webkitTransitionDuration' : 'transitionDuration';
 
   /**
-   * A global namespace for 'transition' string.
+   * A global namespace for 'transitionProperty' string.
    * @type {string}
    */
-  var transitionProperty = 'webkitTransition' in document.head.style ? 'webkitTransition' : 'transition';
+  var transitionProperty = 'webkitTransition' in document.head.style ? 'webkitTransitionProperty' : 'transitionProperty';
 
   /**
    * A global namespace for 'transitionDelay' string.
@@ -578,7 +578,7 @@
     return element.offsetHeight;
   }
 
-  var version = "0.2.5";
+  var version = "0.2.6";
 
   // @ts-ignore
 

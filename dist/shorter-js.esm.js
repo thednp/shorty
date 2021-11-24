@@ -1,5 +1,5 @@
 /*!
-* shorter-js v0.2.5 (https://github.com/thednp/shorter-js)
+* shorter-js v0.2.6 (https://github.com/thednp/shorter-js)
 * Copyright 2019-2021 © dnp_theme
 * Licensed under MIT (https://github.com/thednp/shorter-js/blob/master/LICENSE)
 */
@@ -68,10 +68,10 @@ const animationName = 'webkitAnimation' in document.head.style ? 'webkitAnimatio
 const transitionDuration = 'webkitTransition' in document.head.style ? 'webkitTransitionDuration' : 'transitionDuration';
 
 /**
- * A global namespace for 'transition' string.
+ * A global namespace for 'transitionProperty' string.
  * @type {string}
  */
-const transitionProperty = 'webkitTransition' in document.head.style ? 'webkitTransition' : 'transition';
+const transitionProperty = 'webkitTransition' in document.head.style ? 'webkitTransitionProperty' : 'transitionProperty';
 
 /**
  * A global namespace for 'transitionDelay' string.
@@ -569,7 +569,7 @@ function reflow(element) {
   return element.offsetHeight;
 }
 
-var version = "0.2.5";
+var version = "0.2.6";
 
 // @ts-ignore
 
