@@ -1,7 +1,7 @@
 /**
  * Utility to force re-paint of an Element
  *
- * @param {HTMLElement} element is the target
+ * @param {Element | HTMLElement} element is the target
  * @return {number} the Element.offsetHeight value
  */
-export default function reflow(element: HTMLElement): number;
+export default function reflow(element: Element | HTMLElement): number;

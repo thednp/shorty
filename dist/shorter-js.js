@@ -1,5 +1,5 @@
 /*!
-* shorter-js v0.2.6 (https://github.com/thednp/shorter-js)
+* shorter-js v0.2.7 (https://github.com/thednp/shorter-js)
 * Copyright 2019-2021 © dnp_theme
 * Licensed under MIT (https://github.com/thednp/shorter-js/blob/master/LICENSE)
 */
@@ -240,7 +240,7 @@
   /**
    * Add eventListener to Element
    *
-   * @param {HTMLElement} element event.target
+   * @param {Element} element event.target
    * @param {string} eventName event.type
    * @param {EventListener} handler callback
    * @param {EventListenerOptions | boolean | null} options other event options
@@ -253,7 +253,7 @@
   /**
    * Remove eventListener from Element
    *
-   * @param {HTMLElement} element event.target
+   * @param {Element} element event.target
    * @param {string} eventName event.type
    * @param {EventListener} handler callback
    * @param {EventListenerOptions | boolean | null} options other event options
@@ -267,7 +267,7 @@
    * Add an eventListener to Element
    * and remove it once callback is called.
    *
-   * @param {HTMLElement} element event.target
+   * @param {Element} element event.target
    * @param {string} eventName event.type
    * @param {EventListener} handler callback
    * @param {EventListenerOptions | boolean | null} options other event options
@@ -290,7 +290,7 @@
    * Utility to get the computed animationDelay
    * from Element in miliseconds.
    *
-   * @param {HTMLElement} element target
+   * @param {Element} element target
    * @return {number} the value in miliseconds
    */
   function getElementAnimationDelay(element) {
@@ -308,7 +308,7 @@
    * Utility to get the computed animationDuration
    * from Element in miliseconds.
    *
-   * @param {HTMLElement} element target
+   * @param {Element} element target
    * @return {number} the value in miliseconds
    */
   function getElementAnimationDuration(element) {
@@ -326,7 +326,7 @@
    * Utility to make sure callbacks are consistently
    * called when animation ends.
    *
-   * @param {HTMLElement} element target
+   * @param {Element} element target
    * @param {function} handler `animationend` callback
    */
   function emulateAnimationEnd(element, handler) {
@@ -361,7 +361,7 @@
    * Utility to get the computed transitionDelay
    * from Element in miliseconds.
    *
-   * @param {HTMLElement} element target
+   * @param {Element} element target
    * @return {number} the value in miliseconds
    */
   function getElementTransitionDelay(element) {
@@ -379,7 +379,7 @@
    * Utility to get the computed transitionDuration
    * from Element in miliseconds.
    *
-   * @param {HTMLElement} element target
+   * @param {Element} element target
    * @return {number} the value in miliseconds
    */
   function getElementTransitionDuration(element) {
@@ -397,7 +397,7 @@
    * Utility to make sure callbacks are consistently
    * called when transition ends.
    *
-   * @param {HTMLElement} element target
+   * @param {Element} element target
    * @param {function} handler `transitionend` callback
    */
   function emulateTransitionEnd(element, handler) {
@@ -432,7 +432,7 @@
    * Utility to determine if an `Element`
    * is partially visible in viewport.
    *
-   * @param {HTMLElement} element target
+   * @param {Element} element target
    * @return {boolean} Boolean
    */
   function isElementInScrollRange(element) {
@@ -445,7 +445,7 @@
    * Utility to determine if an `Element`
    * is fully visible in the viewport.
    *
-   * @param {HTMLElement} element target
+   * @param {Element} element target
    * @return {boolean} Boolean
    */
   function isElementInViewport(element) {
@@ -469,13 +469,13 @@
    * Utility to check if target is typeof Element
    * or find one that matches a selector.
    *
-   * @param {HTMLElement | string} selector the input selector or target element
-   * @param {HTMLElement | null} parent optional Element to look into
-   * @return {HTMLElement | null} the Element or result of the querySelector
+   * @param {Element | string} selector the input selector or target element
+   * @param {Element | null} parent optional Element to look into
+   * @return {Element | null} the Element or result of the querySelector
    */
   function queryElement(selector, parent) {
-    var lookUp = parent && parent instanceof HTMLElement ? parent : document;
-    return selector instanceof HTMLElement ? selector : lookUp.querySelector(selector);
+    var lookUp = parent && parent instanceof Element ? parent : document;
+    return selector instanceof Element ? selector : lookUp.querySelector(selector);
   }
 
   /**
@@ -516,7 +516,7 @@
   /**
    * Utility to normalize component options
    *
-   * @param {HTMLElement} element target
+   * @param {Element} element target
    * @param {object} defaultOps component default options
    * @param {object} inputOps component instance options
    * @param {string} ns component namespace
@@ -571,14 +571,15 @@
   /**
    * Utility to force re-paint of an Element
    *
-   * @param {HTMLElement} element is the target
+   * @param {Element | HTMLElement} element is the target
    * @return {number} the Element.offsetHeight value
    */
   function reflow(element) {
+    // @ts-ignore
     return element.offsetHeight;
   }
 
-  var version = "0.2.6";
+  var version = "0.2.7";
 
   // @ts-ignore
 

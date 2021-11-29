@@ -3,7 +3,7 @@ import normalizeValue from './normalizeValue';
 /**
  * Utility to normalize component options
  *
- * @param {HTMLElement} element target
+ * @param {Element} element target
  * @param {object} defaultOps component default options
  * @param {object} inputOps component instance options
  * @param {string} ns component namespace

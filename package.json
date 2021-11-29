@@ -1,6 +1,6 @@
 {
   "name": "shorter-js",
-  "version": "0.2.6",
+  "version": "0.2.7",
   "description": "A small ES6+ library with various JavaScript tools useful for creating light libraries.",
   "main": "dist/shorter-js.min.js",
   "module": "dist/shorter-js.esm.js",
@@ -16,7 +16,7 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "fix:js": "eslint src/ --config .eslintrc --fix",
     "lint:js": "eslint src/ --config .eslintrc",
-    "build-ts": "tsc -d",
+    "build:ts": "tsc -d",
     "build": "npm run lint:js && npm run umd && npm run umdmin && npm run esm && npm run esmmin",
     "umd": "rollup --environment FORMAT:umd,MIN:false -c",
     "umdmin": "rollup --environment FORMAT:umd,MIN:true -c",
