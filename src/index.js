@@ -6,6 +6,7 @@ import ariaHidden from './strings/ariaHidden';
 import ariaLabel from './strings/ariaLabel';
 import ariaLabelledBy from './strings/ariaLabelledBy';
 import ariaModal from './strings/ariaModal';
+import ariaPressed from './strings/ariaPressed';
 import ariaSelected from './strings/ariaSelected';
 
 import mouseClickEvents from './strings/mouseClickEvents';
@@ -70,6 +71,7 @@ const SHORTER = {
   ariaLabel,
   ariaLabelledBy,
   ariaModal,
+  ariaPressed,
   ariaSelected,
   mouseClickEvents,
   mouseHoverEvents,

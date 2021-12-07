@@ -5,6 +5,7 @@ export { default as ariaHidden } from "../../src/strings/ariaHidden";
 export { default as ariaLabel } from "../../src/strings/ariaLabel";
 export { default as ariaLabelledBy } from "../../src/strings/ariaLabelledBy";
 export { default as ariaModal } from "../../src/strings/ariaModal";
+export { default as ariaPressed } from "../../src/strings/ariaPressed";
 export { default as ariaSelected } from "../../src/strings/ariaSelected";
 export { default as mouseClickEvents } from "../../src/strings/mouseClickEvents";
 export { default as mouseHoverEvents } from "../../src/strings/mouseHoverEvents";

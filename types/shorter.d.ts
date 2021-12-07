@@ -54,6 +54,14 @@ declare module "shorter-js/src/strings/ariaModal" {
      */
     const ariaModal: string;
 }
+declare module "shorter-js/src/strings/ariaPressed" {
+    export default ariaPressed;
+    /**
+     * A global namespace for aria-pressed.
+     * @type {string}
+     */
+    const ariaPressed: string;
+}
 declare module "shorter-js/src/strings/ariaSelected" {
     export default ariaSelected;
     /**
