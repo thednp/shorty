@@ -10,17 +10,18 @@ import normalizeValue from './normalizeValue';
  * @return {object} normalized component options object
  */
 export default function normalizeOptions(element, defaultOps, inputOps, ns) {
-  const { ...dataset } = element;
+  // @ts-ignore
+  const data = { ...element.dataset };
   const normalOps = {};
   const dataOps = {};
 
-  Object.keys(dataset)
+  Object.keys(data)
     .forEach((k) => {
       const key = k.includes(ns)
         ? k.replace(ns, '').replace(/[A-Z]/, (match) => match.toLowerCase())
         : k;
 
-      dataOps[key] = normalizeValue(dataset[k]);
+      dataOps[key] = normalizeValue(data[k]);
     });
 
   Object.keys(inputOps)

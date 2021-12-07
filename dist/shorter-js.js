@@ -1,5 +1,5 @@
 /*!
-* shorter-js v0.2.8 (https://github.com/thednp/shorter-js)
+* shorter-js v0.2.9 (https://github.com/thednp/shorter-js)
 * Copyright 2019-2021 © dnp_theme
 * Licensed under MIT (https://github.com/thednp/shorter-js/blob/master/LICENSE)
 */
@@ -386,7 +386,7 @@
     if (duration) {
       /**
        * Wrap the handler in on -> off callback
-       * @param {object} e Event object
+       * @param {Event} e Event object
        * @callback
        */
       var animationEndWrapper = function (e) {
@@ -457,7 +457,7 @@
     if (duration) {
       /**
        * Wrap the handler in on -> off callback
-       * @param {object} e Event object
+       * @param {Event} e Event object
        * @callback
        */
       var transitionEndWrapper = function (e) {
@@ -559,8 +559,6 @@
     return value;
   }
 
-  function objectWithoutProperties (obj, exclude) { var target = {}; for (var k in obj) if (Object.prototype.hasOwnProperty.call(obj, k) && exclude.indexOf(k) === -1) target[k] = obj[k]; return target; }
-
   /**
    * Utility to normalize component options
    *
@@ -571,18 +569,18 @@
    * @return {object} normalized component options object
    */
   function normalizeOptions(element, defaultOps, inputOps, ns) {
-    var rest = objectWithoutProperties( element, [] );
-    var dataset = rest;
+    // @ts-ignore
+    var data = Object.assign({}, element.dataset);
     var normalOps = {};
     var dataOps = {};
 
-    Object.keys(dataset)
+    Object.keys(data)
       .forEach(function (k) {
         var key = k.includes(ns)
           ? k.replace(ns, '').replace(/[A-Z]/, function (match) { return match.toLowerCase(); })
           : k;
 
-        dataOps[key] = normalizeValue(dataset[k]);
+        dataOps[key] = normalizeValue(data[k]);
       });
 
     Object.keys(inputOps)
@@ -627,7 +625,7 @@
     return element.offsetHeight;
   }
 
-  var version = "0.2.8";
+  var version = "0.2.9";
 
   // @ts-ignore
 

@@ -1,5 +1,5 @@
 /*!
-* shorter-js v0.2.8 (https://github.com/thednp/shorter-js)
+* shorter-js v0.2.9 (https://github.com/thednp/shorter-js)
 * Copyright 2019-2021 © dnp_theme
 * Licensed under MIT (https://github.com/thednp/shorter-js/blob/master/LICENSE)
 */
@@ -380,7 +380,7 @@ function emulateAnimationEnd(element, handler) {
   if (duration) {
     /**
      * Wrap the handler in on -> off callback
-     * @param {object} e Event object
+     * @param {Event} e Event object
      * @callback
      */
     const animationEndWrapper = (e) => {
@@ -451,7 +451,7 @@ function emulateTransitionEnd(element, handler) {
   if (duration) {
     /**
      * Wrap the handler in on -> off callback
-     * @param {object} e Event object
+     * @param {Event} e Event object
      * @callback
      */
     const transitionEndWrapper = (e) => {
@@ -563,17 +563,18 @@ function normalizeValue(value) {
  * @return {object} normalized component options object
  */
 function normalizeOptions(element, defaultOps, inputOps, ns) {
-  const { ...dataset } = element;
+  // @ts-ignore
+  const data = { ...element.dataset };
   const normalOps = {};
   const dataOps = {};
 
-  Object.keys(dataset)
+  Object.keys(data)
     .forEach((k) => {
       const key = k.includes(ns)
         ? k.replace(ns, '').replace(/[A-Z]/, (match) => match.toLowerCase())
         : k;
 
-      dataOps[key] = normalizeValue(dataset[k]);
+      dataOps[key] = normalizeValue(data[k]);
     });
 
   Object.keys(inputOps)
@@ -618,7 +619,7 @@ function reflow(element) {
   return element.offsetHeight;
 }
 
-var version = "0.2.8";
+var version = "0.2.9";
 
 // @ts-ignore
 
