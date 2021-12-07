@@ -11,9 +11,13 @@
     "noUnusedParameters": true,               /* Report errors on unused parameters. */
     "noImplicitReturns": true,                /* Report error when not all code paths in function return a value. */
     "noFallthroughCasesInSwitch": true,       /* Report errors for fallthrough cases in switch statement. */
-    "rootDir": "src",
+    "rootDir": "../",
+    // "outFile": "types/shorter.d.ts",
     "outDir": "types"
   },
-  "include": ["src/**/*"],
-  "exclude": ["dist", "node_modules", "types"]
+  "files": [
+    "types/index.d.ts",
+    "types/shorter.d.ts", // comment to generate, delete file
+    "types/module/shorter.ts",
+  ],
 }

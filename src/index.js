@@ -1,4 +1,13 @@
 // strings FIRST
+import ariaChecked from './strings/ariaChecked';
+import ariaDescribedBy from './strings/ariaDescribedBy';
+import ariaExpanded from './strings/ariaExpanded';
+import ariaHidden from './strings/ariaHidden';
+import ariaLabel from './strings/ariaLabel';
+import ariaLabelledBy from './strings/ariaLabelledBy';
+import ariaModal from './strings/ariaModal';
+import ariaSelected from './strings/ariaSelected';
+
 import mouseClickEvents from './strings/mouseClickEvents';
 import mouseHoverEvents from './strings/mouseHoverEvents';
 import touchEvents from './strings/touchEvents';
@@ -54,6 +63,14 @@ import reflow from './misc/reflow';
 import Version from './misc/version';
 
 const SHORTER = {
+  ariaChecked,
+  ariaDescribedBy,
+  ariaExpanded,
+  ariaHidden,
+  ariaLabel,
+  ariaLabelledBy,
+  ariaModal,
+  ariaSelected,
   mouseClickEvents,
   mouseHoverEvents,
   touchEvents,

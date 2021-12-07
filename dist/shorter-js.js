@@ -1,5 +1,5 @@
 /*!
-* shorter-js v0.2.7 (https://github.com/thednp/shorter-js)
+* shorter-js v0.2.8 (https://github.com/thednp/shorter-js)
 * Copyright 2019-2021 © dnp_theme
 * Licensed under MIT (https://github.com/thednp/shorter-js/blob/master/LICENSE)
 */
@@ -10,14 +10,62 @@
 }(this, (function () { 'use strict';
 
   /**
+   * A global namespace for aria-checked.
+   * @type {string}
+   */
+  var ariaChecked = 'aria-checked';
+
+  /**
+   * A global namespace for aria-describedby.
+   * @type {string}
+   */
+  var ariaDescribedBy = 'aria-describedby';
+
+  /**
+   * A global namespace for aria-expanded.
+   * @type {string}
+   */
+  var ariaExpanded = 'aria-expanded';
+
+  /**
+   * A global namespace for aria-hidden.
+   * @type {string}
+   */
+  var ariaHidden = 'aria-hidden';
+
+  /**
+   * A global namespace for aria-label.
+   * @type {string}
+   */
+  var ariaLabel = 'aria-label';
+
+  /**
+   * A global namespace for aria-labelledby.
+   * @type {string}
+   */
+  var ariaLabelledBy = 'aria-labelledby';
+
+  /**
+   * A global namespace for aria-modal.
+   * @type {string}
+   */
+  var ariaModal = 'aria-modal';
+
+  /**
+   * A global namespace for aria-selected.
+   * @type {string}
+   */
+  var ariaSelected = 'aria-selected';
+
+  /**
    * A global namespace for mouse click events.
-   * @type {object}
+   * @type {{down: string, up: string}}
    */
   var mouseClickEvents = { down: 'mousedown', up: 'mouseup' };
 
   /**
    * A global namespace for mouse hover events.
-   * @type {string[]}
+   * @type {[string, string]}
    */
   var mouseHoverEvents = ('onmouseleave' in document) ? ['mouseenter', 'mouseleave'] : ['mouseover', 'mouseout'];
 
@@ -31,13 +79,13 @@
 
   /**
    * A global namespace for focus event names.
-   * @type {object}
+   * @type {{in: string, out: string}}
    */
   var focusEvents = { in: 'focusin', out: 'focusout' };
 
   /**
    * A global namespace for mouse events equivalent with touch events.
-   * @type {object}
+   * @type {{start: string, end: string, move: string, cancel: string}}
    */
   var mouseSwipeEvents = {
     start: 'mousedown', end: 'mouseup', move: 'mousemove', cancel: 'mouseout',
@@ -579,7 +627,7 @@
     return element.offsetHeight;
   }
 
-  var version = "0.2.7";
+  var version = "0.2.8";
 
   // @ts-ignore
 
@@ -592,6 +640,14 @@
   // strings FIRST
 
   var SHORTER = {
+    ariaChecked: ariaChecked,
+    ariaDescribedBy: ariaDescribedBy,
+    ariaExpanded: ariaExpanded,
+    ariaHidden: ariaHidden,
+    ariaLabel: ariaLabel,
+    ariaLabelledBy: ariaLabelledBy,
+    ariaModal: ariaModal,
+    ariaSelected: ariaSelected,
     mouseClickEvents: mouseClickEvents,
     mouseHoverEvents: mouseHoverEvents,
     touchEvents: touchEvents,

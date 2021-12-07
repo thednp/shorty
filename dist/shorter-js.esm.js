@@ -1,17 +1,65 @@
 /*!
-* shorter-js v0.2.7 (https://github.com/thednp/shorter-js)
+* shorter-js v0.2.8 (https://github.com/thednp/shorter-js)
 * Copyright 2019-2021 © dnp_theme
 * Licensed under MIT (https://github.com/thednp/shorter-js/blob/master/LICENSE)
 */
 /**
+ * A global namespace for aria-checked.
+ * @type {string}
+ */
+const ariaChecked = 'aria-checked';
+
+/**
+ * A global namespace for aria-describedby.
+ * @type {string}
+ */
+const ariaDescribedBy = 'aria-describedby';
+
+/**
+ * A global namespace for aria-expanded.
+ * @type {string}
+ */
+const ariaExpanded = 'aria-expanded';
+
+/**
+ * A global namespace for aria-hidden.
+ * @type {string}
+ */
+const ariaHidden = 'aria-hidden';
+
+/**
+ * A global namespace for aria-label.
+ * @type {string}
+ */
+const ariaLabel = 'aria-label';
+
+/**
+ * A global namespace for aria-labelledby.
+ * @type {string}
+ */
+const ariaLabelledBy = 'aria-labelledby';
+
+/**
+ * A global namespace for aria-modal.
+ * @type {string}
+ */
+const ariaModal = 'aria-modal';
+
+/**
+ * A global namespace for aria-selected.
+ * @type {string}
+ */
+const ariaSelected = 'aria-selected';
+
+/**
  * A global namespace for mouse click events.
- * @type {object}
+ * @type {{down: string, up: string}}
  */
 const mouseClickEvents = { down: 'mousedown', up: 'mouseup' };
 
 /**
  * A global namespace for mouse hover events.
- * @type {string[]}
+ * @type {[string, string]}
  */
 const mouseHoverEvents = ('onmouseleave' in document) ? ['mouseenter', 'mouseleave'] : ['mouseover', 'mouseout'];
 
@@ -25,13 +73,13 @@ const touchEvents = {
 
 /**
  * A global namespace for focus event names.
- * @type {object}
+ * @type {{in: string, out: string}}
  */
 const focusEvents = { in: 'focusin', out: 'focusout' };
 
 /**
  * A global namespace for mouse events equivalent with touch events.
- * @type {object}
+ * @type {{start: string, end: string, move: string, cancel: string}}
  */
 const mouseSwipeEvents = {
   start: 'mousedown', end: 'mouseup', move: 'mousemove', cancel: 'mouseout',
@@ -570,7 +618,7 @@ function reflow(element) {
   return element.offsetHeight;
 }
 
-var version = "0.2.7";
+var version = "0.2.8";
 
 // @ts-ignore
 
@@ -583,6 +631,14 @@ const Version = version;
 // strings FIRST
 
 const SHORTER = {
+  ariaChecked,
+  ariaDescribedBy,
+  ariaExpanded,
+  ariaHidden,
+  ariaLabel,
+  ariaLabelledBy,
+  ariaModal,
+  ariaSelected,
   mouseClickEvents,
   mouseHoverEvents,
   touchEvents,
