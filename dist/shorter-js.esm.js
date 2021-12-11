@@ -1,5 +1,5 @@
 /*!
-* shorter-js v0.2.9 (https://github.com/thednp/shorter-js)
+* shorter-js v0.2.10 (https://github.com/thednp/shorter-js)
 * Copyright 2019-2021 © dnp_theme
 * Licensed under MIT (https://github.com/thednp/shorter-js/blob/master/LICENSE)
 */
@@ -44,6 +44,12 @@ const ariaLabelledBy = 'aria-labelledby';
  * @type {string}
  */
 const ariaModal = 'aria-modal';
+
+/**
+ * A global namespace for aria-pressed.
+ * @type {string}
+ */
+const ariaPressed = 'aria-pressed';
 
 /**
  * A global namespace for aria-selected.
@@ -619,7 +625,7 @@ function reflow(element) {
   return element.offsetHeight;
 }
 
-var version = "0.2.9";
+var version = "0.2.10";
 
 // @ts-ignore
 
@@ -639,6 +645,7 @@ const SHORTER = {
   ariaLabel,
   ariaLabelledBy,
   ariaModal,
+  ariaPressed,
   ariaSelected,
   mouseClickEvents,
   mouseHoverEvents,

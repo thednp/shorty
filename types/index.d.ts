@@ -1,6 +1,5 @@
 export as namespace SHORTER;
 
-import './shorter'
 export { default as mouseClickEvents } from "shorter-js/src/strings/mouseClickEvents";
 export { default as mouseHoverEvents } from "shorter-js/src/strings/mouseHoverEvents";
 export { default as touchEvents } from "shorter-js/src/strings/touchEvents";
@@ -30,10 +29,12 @@ export { default as hasClass } from "shorter-js/src/class/hasClass";
 export { default as on } from "shorter-js/src/event/on";
 export { default as off } from "shorter-js/src/event/off";
 export { default as one } from "shorter-js/src/event/one";
+export { default as Data } from "shorter-js/src/misc/data";
 export { default as emulateAnimationEnd } from "shorter-js/src/misc/emulateAnimationEnd";
 export { default as emulateTransitionEnd } from "shorter-js/src/misc/emulateTransitionEnd";
 export { default as isElementInScrollRange } from "shorter-js/src/misc/isElementInScrollRange";
 export { default as isElementInViewport } from "shorter-js/src/misc/isElementInViewport";
+export { default as isRTL } from "shorter-js/src/misc/isRTL";
 export { default as passiveHandler } from "shorter-js/src/misc/passiveHandler";
 export { default as getElementAnimationDuration } from "shorter-js/src/misc/getElementAnimationDuration";
 export { default as getElementAnimationDelay } from "shorter-js/src/misc/getElementAnimationDelay";

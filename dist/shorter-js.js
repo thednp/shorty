@@ -1,5 +1,5 @@
 /*!
-* shorter-js v0.2.9 (https://github.com/thednp/shorter-js)
+* shorter-js v0.2.10 (https://github.com/thednp/shorter-js)
 * Copyright 2019-2021 © dnp_theme
 * Licensed under MIT (https://github.com/thednp/shorter-js/blob/master/LICENSE)
 */
@@ -50,6 +50,12 @@
    * @type {string}
    */
   var ariaModal = 'aria-modal';
+
+  /**
+   * A global namespace for aria-pressed.
+   * @type {string}
+   */
+  var ariaPressed = 'aria-pressed';
 
   /**
    * A global namespace for aria-selected.
@@ -625,7 +631,7 @@
     return element.offsetHeight;
   }
 
-  var version = "0.2.9";
+  var version = "0.2.10";
 
   // @ts-ignore
 
@@ -645,6 +651,7 @@
     ariaLabel: ariaLabel,
     ariaLabelledBy: ariaLabelledBy,
     ariaModal: ariaModal,
+    ariaPressed: ariaPressed,
     ariaSelected: ariaSelected,
     mouseClickEvents: mouseClickEvents,
     mouseHoverEvents: mouseHoverEvents,

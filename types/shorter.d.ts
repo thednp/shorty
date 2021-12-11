@@ -328,6 +328,16 @@ declare module "shorter-js/src/event/one" {
      */
     export default function one(element: Element, eventName: string, handler: EventListener, options: EventListenerOptions | boolean | null): void;
 }
+declare module "shorter-js/src/misc/data" {
+    export function getInstance(element: Element, component: string): any | null;
+    export default Data;
+    namespace Data {
+        function set(element: Element, component: string, instance: any): void;
+        function getAllFor(component: string): any;
+        function get(element: Element, component: string): any;
+        function remove(element: Element, component: string): void;
+    }
+}
 declare module "shorter-js/src/misc/getElementAnimationDelay" {
     /**
      * Utility to get the computed animationDelay
@@ -407,6 +417,14 @@ declare module "shorter-js/src/misc/isElementInViewport" {
      * @return {boolean} Boolean
      */
     export default function isElementInViewport(element: Element): boolean;
+}
+declare module "shorter-js/src/misc/isRTL" {
+    export default isRTL;
+    /**
+     * Stores a global namespace for Right To Left pages.
+     * @returns {boolean} the query result
+     */
+    function isRTL(): boolean;
 }
 declare module "shorter-js/src/misc/passiveHandler" {
     export default passiveHandler;
@@ -492,6 +510,7 @@ declare module "shorter-js/types/module/shorter" {
     export { default as ariaLabel } from "shorter-js/src/strings/ariaLabel";
     export { default as ariaLabelledBy } from "shorter-js/src/strings/ariaLabelledBy";
     export { default as ariaModal } from "shorter-js/src/strings/ariaModal";
+    export { default as ariaPressed } from "shorter-js/src/strings/ariaPressed";
     export { default as ariaSelected } from "shorter-js/src/strings/ariaSelected";
     export { default as mouseClickEvents } from "shorter-js/src/strings/mouseClickEvents";
     export { default as mouseHoverEvents } from "shorter-js/src/strings/mouseHoverEvents";
@@ -522,10 +541,12 @@ declare module "shorter-js/types/module/shorter" {
     export { default as on } from "shorter-js/src/event/on";
     export { default as off } from "shorter-js/src/event/off";
     export { default as one } from "shorter-js/src/event/one";
+    export { default as Data } from "shorter-js/src/misc/data";
     export { default as emulateAnimationEnd } from "shorter-js/src/misc/emulateAnimationEnd";
     export { default as emulateTransitionEnd } from "shorter-js/src/misc/emulateTransitionEnd";
     export { default as isElementInScrollRange } from "shorter-js/src/misc/isElementInScrollRange";
     export { default as isElementInViewport } from "shorter-js/src/misc/isElementInViewport";
+    export { default as isRTL } from "shorter-js/src/misc/isRTL";
     export { default as passiveHandler } from "shorter-js/src/misc/passiveHandler";
     export { default as getElementAnimationDuration } from "shorter-js/src/misc/getElementAnimationDuration";
     export { default as getElementAnimationDelay } from "shorter-js/src/misc/getElementAnimationDelay";
