@@ -1,5 +1,5 @@
 /*!
-* shorter-js v0.2.10 (https://github.com/thednp/shorter-js)
+* shorter-js v0.2.11 (https://github.com/thednp/shorter-js)
 * Copyright 2019-2021 © dnp_theme
 * Licensed under MIT (https://github.com/thednp/shorter-js/blob/master/LICENSE)
 */
@@ -625,7 +625,7 @@ function reflow(element) {
   return element.offsetHeight;
 }
 
-var version = "0.2.10";
+var version = "0.2.11";
 
 // @ts-ignore
 

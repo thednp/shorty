@@ -1,5 +1,6 @@
 export as namespace SHORTER;
 
+import './shorter';
 export { default as mouseClickEvents } from "shorter-js/src/strings/mouseClickEvents";
 export { default as mouseHoverEvents } from "shorter-js/src/strings/mouseHoverEvents";
 export { default as touchEvents } from "shorter-js/src/strings/touchEvents";

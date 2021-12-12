@@ -17,7 +17,7 @@
   },
   "files": [
     "types/index.d.ts",
-    "types/shorter.d.ts", // comment to generate, delete file
+    // "types/shorter.d.ts", // comment to generate, delete file
     "types/module/shorter.ts",
   ],
 }
