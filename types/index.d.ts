@@ -30,7 +30,7 @@ export { default as hasClass } from "shorter-js/src/class/hasClass";
 export { default as on } from "shorter-js/src/event/on";
 export { default as off } from "shorter-js/src/event/off";
 export { default as one } from "shorter-js/src/event/one";
-export { default as Data } from "shorter-js/src/misc/data";
+export { default as Data, getInstance } from "shorter-js/src/misc/data";
 export { default as emulateAnimationEnd } from "shorter-js/src/misc/emulateAnimationEnd";
 export { default as emulateTransitionEnd } from "shorter-js/src/misc/emulateTransitionEnd";
 export { default as isElementInScrollRange } from "shorter-js/src/misc/isElementInScrollRange";
@@ -47,3 +47,11 @@ export { default as normalizeOptions } from "shorter-js/src/misc/normalizeOption
 export { default as tryWrapper } from "shorter-js/src/misc/tryWrapper";
 export { default as reflow } from "shorter-js/src/misc/reflow";
 export { default as Version } from "shorter-js/src/misc/version";
+
+export type Component = {
+  element: Element,
+  options?: Record<string, any>,
+  [x:string]: any
+};
+
+export type getInstance<T, C> = (element: Element, component: C) => T | null;

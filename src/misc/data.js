@@ -65,9 +65,7 @@ const Data = {
 
 /**
  * Shortcut for `Data.get(a, b)` to setup usable component static method.
- * @param {Element} element target
- * @param {string} component
- * @returns {?any} a component associated with the target
+ * @type {SHORTER.getInstance<SHORTER.Component, string>}
  */
 export const getInstance = (element, component) => Data.get(element, component);
 

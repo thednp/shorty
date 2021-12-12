@@ -329,7 +329,11 @@ declare module "shorter-js/src/event/one" {
     export default function one(element: Element, eventName: string, handler: EventListener, options: EventListenerOptions | boolean | null): void;
 }
 declare module "shorter-js/src/misc/data" {
-    export function getInstance(element: Element, component: string): any | null;
+    /**
+     * Shortcut for `Data.get(a, b)` to setup usable component static method.
+     * @type {SHORTER.getInstance<SHORTER.Component, string>}
+     */
+    export const getInstance: SHORTER.getInstance<SHORTER.Component, string>;
     export default Data;
     namespace Data {
         function set(element: Element, component: string, instance: any): void;
@@ -398,6 +402,15 @@ declare module "shorter-js/src/misc/emulateTransitionEnd" {
      */
     export default function emulateTransitionEnd(element: Element, handler: Function): void;
 }
+declare module "shorter-js/src/misc/isElement" {
+    /**
+     * Checks if an element is an `Element`.
+     *
+     * @param {any} element the target element
+     * @returns {boolean} the query result
+     */
+    export default function isElement(element: any): boolean;
+}
 declare module "shorter-js/src/misc/isElementInScrollRange" {
     /**
      * Utility to determine if an `Element`
@@ -417,6 +430,24 @@ declare module "shorter-js/src/misc/isElementInViewport" {
      * @return {boolean} Boolean
      */
     export default function isElementInViewport(element: Element): boolean;
+}
+declare module "shorter-js/src/misc/isHTMLElement" {
+    /**
+     * Checks if an element is an `HTMLElement`.
+     *
+     * @param {any} element the target element
+     * @returns {boolean} the query result
+     */
+    export default function isHTMLElement(element: any): boolean;
+}
+declare module "shorter-js/src/misc/isMedia" {
+    /**
+     * Checks if an element is an `<svg>`, `<img>` or `<video>`.
+     * *Tooltip* / *Popover* works different with media elements.
+     * @param {Element} element the target element
+     * @returns {boolean} the query result
+     */
+    export default function isMedia(element: Element): boolean;
 }
 declare module "shorter-js/src/misc/isRTL" {
     export default isRTL;
@@ -541,11 +572,14 @@ declare module "shorter-js/types/module/shorter" {
     export { default as on } from "shorter-js/src/event/on";
     export { default as off } from "shorter-js/src/event/off";
     export { default as one } from "shorter-js/src/event/one";
-    export { default as Data } from "shorter-js/src/misc/data";
+    export { default as Data, getInstance } from "shorter-js/src/misc/data";
     export { default as emulateAnimationEnd } from "shorter-js/src/misc/emulateAnimationEnd";
     export { default as emulateTransitionEnd } from "shorter-js/src/misc/emulateTransitionEnd";
+    export { default as isElement } from "shorter-js/src/misc/isElement";
     export { default as isElementInScrollRange } from "shorter-js/src/misc/isElementInScrollRange";
     export { default as isElementInViewport } from "shorter-js/src/misc/isElementInViewport";
+    export { default as isHTMLElement } from "shorter-js/src/misc/isHTMLElement";
+    export { default as isMedia } from "shorter-js/src/misc/isMedia";
     export { default as isRTL } from "shorter-js/src/misc/isRTL";
     export { default as passiveHandler } from "shorter-js/src/misc/passiveHandler";
     export { default as getElementAnimationDuration } from "shorter-js/src/misc/getElementAnimationDuration";

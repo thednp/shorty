@@ -50,6 +50,10 @@ import emulateAnimationEnd from './misc/emulateAnimationEnd';
 import emulateTransitionEnd from './misc/emulateTransitionEnd';
 import isElementInScrollRange from './misc/isElementInScrollRange';
 import isElementInViewport from './misc/isElementInViewport';
+import isHTMLElement from './misc/isHTMLElement';
+import isElement from './misc/isElement';
+import isMedia from './misc/isMedia';
+import isRTL from './misc/isRTL';
 import passiveHandler from './misc/passiveHandler';
 import getElementAnimationDuration from './misc/getElementAnimationDuration';
 import getElementAnimationDelay from './misc/getElementAnimationDelay';
@@ -111,6 +115,10 @@ const SHORTER = {
   getElementAnimationDelay,
   getElementTransitionDuration,
   getElementTransitionDelay,
+  isElement,
+  isHTMLElement,
+  isMedia,
+  isRTL,
   queryElement,
   normalizeValue,
   normalizeOptions,

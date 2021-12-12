@@ -1,5 +1,5 @@
 /*!
-* shorter-js v0.2.11 (https://github.com/thednp/shorter-js)
+* shorter-js v0.2.12 (https://github.com/thednp/shorter-js)
 * Copyright 2019-2021 © dnp_theme
 * Licensed under MIT (https://github.com/thednp/shorter-js/blob/master/LICENSE)
 */
@@ -512,6 +512,43 @@
     );
   }
 
+  /**
+   * Checks if an element is an `HTMLElement`.
+   *
+   * @param {any} element the target element
+   * @returns {boolean} the query result
+   */
+  function isHTMLElement(element) {
+    return element instanceof HTMLElement;
+  }
+
+  /**
+   * Checks if an element is an `Element`.
+   *
+   * @param {any} element the target element
+   * @returns {boolean} the query result
+   */
+  function isElement(element) {
+    return element instanceof Element;
+  }
+
+  /**
+   * Checks if an element is an `<svg>`, `<img>` or `<video>`.
+   * *Tooltip* / *Popover* works different with media elements.
+   * @param {Element} element the target element
+   * @returns {boolean} the query result
+   */
+  function isMedia(element) {
+    return [SVGElement, HTMLImageElement, HTMLVideoElement]
+      .some(function (mediaType) { return element instanceof mediaType; });
+  }
+
+  /**
+   * Stores a global namespace for Right To Left pages.
+   * @returns {boolean} the query result
+   */
+  var isRTL = function () { return document.documentElement.dir === 'rtl'; };
+
   // general event options
 
   /**
@@ -631,7 +668,7 @@
     return element.offsetHeight;
   }
 
-  var version = "0.2.11";
+  var version = "0.2.12";
 
   // @ts-ignore
 
@@ -691,6 +728,10 @@
     getElementAnimationDelay: getElementAnimationDelay,
     getElementTransitionDuration: getElementTransitionDuration,
     getElementTransitionDelay: getElementTransitionDelay,
+    isElement: isElement,
+    isHTMLElement: isHTMLElement,
+    isMedia: isMedia,
+    isRTL: isRTL,
     queryElement: queryElement,
     normalizeValue: normalizeValue,
     normalizeOptions: normalizeOptions,
