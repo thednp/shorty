@@ -48,10 +48,9 @@ export { default as tryWrapper } from "shorter-js/src/misc/tryWrapper";
 export { default as reflow } from "shorter-js/src/misc/reflow";
 export { default as Version } from "shorter-js/src/misc/version";
 
-export type Component = {
+export interface Component {
   element: Element,
   options?: Record<string, any>,
-  [x:string]: any
-};
+}
 
 export type getInstance<T, C> = (element: Element, component: C) => T | null;
