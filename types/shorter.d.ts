@@ -420,7 +420,7 @@ declare module "shorter-js/src/misc/emulateTransitionEnd" {
 }
 declare module "shorter-js/src/boolean/isApple" {
     export default isApple;
-    const isApple: any;
+    const isApple: boolean;
 }
 declare module "shorter-js/src/misc/isElementInScrollRange" {
     /**
