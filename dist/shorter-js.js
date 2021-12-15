@@ -1,5 +1,5 @@
 /*!
-* shorter-js v0.2.13 (https://github.com/thednp/shorter-js)
+* shorter-js v0.2.14 (https://github.com/thednp/shorter-js)
 * Copyright 2019-2021 © dnp_theme
 * Licensed under MIT (https://github.com/thednp/shorter-js/blob/master/LICENSE)
 */
@@ -207,6 +207,16 @@
    */
   var isMobile = isMobileCheck;
 
+  var appleBrands = /(iPhone|iPod|iPad)/;
+
+  /**
+   * A global namespace for Apple browsers.
+   */
+  // @ts-ignore
+  var userAgentData = navigator.userAgentData;
+  var isApple = !userAgentData ? appleBrands.test(navigator.userAgent)
+    : userAgentData.brands.some(function (x) { return appleBrands.test(x.brand); });
+
   /**
    * A global namespace for CSS3 3D transform support.
    * @type {boolean}
@@ -339,6 +349,107 @@
     }
     on(element, eventName, handlerWrapper, options);
   }
+
+  /**
+   * Checks if an element is an `Element`.
+   *
+   * @param {any} element the target element
+   * @returns {boolean} the query result
+   */
+  function isElement(element) {
+    return element instanceof Element;
+  }
+
+  /**
+   * Utility to check if target is typeof Element
+   * or find one that matches a selector.
+   *
+   * @param {Element | string} selector the input selector or target element
+   * @param {Element=} parent optional Element to look into
+   * @return {Element?} the Element or `querySelector` result
+   */
+  function queryElement(selector, parent) {
+    var lookUp = parent && isElement(parent) ? parent : document;
+    // @ts-ignore
+    return isElement(selector) ? selector : lookUp.querySelector(selector);
+  }
+
+  var componentData = new Map();
+  /**
+   * An interface for web components background data.
+   * @see https://github.com/thednp/bootstrap.native/blob/master/src/components/base-component.js
+   */
+  var Data = {
+    /**
+     * Sets web components data.
+     * @param {Element | string} element target element
+     * @param {string} component the component's name or a unique key
+     * @param {Record<string, any>} instance the component instance
+     */
+    set: function (element, component, instance) {
+      var ELEMENT = queryElement(element);
+      if (!isElement(ELEMENT)) { return; }
+
+      if (!componentData.has(component)) {
+        componentData.set(component, new Map());
+      }
+
+      var instanceMap = componentData.get(component);
+      instanceMap.set(ELEMENT, instance);
+    },
+
+    /**
+     * Returns all instances for specified component.
+     * @param {string} component the component's name or a unique key
+     * @returns {any?} all the component instances
+     */
+    getAllFor: function (component) {
+      if (componentData.has(component)) {
+        return componentData.get(component);
+      }
+      return null;
+    },
+
+    /**
+     * Returns the instance associated with the target.
+     * @param {Element | string} element target element
+     * @param {string} component the component's name or a unique key
+     * @returns {any?} the instance
+     */
+    get: function (element, component) {
+      var ELEMENT = queryElement(element);
+
+      var allForC = Data.getAllFor(component);
+      if (allForC && isElement(ELEMENT) && allForC.has(ELEMENT)) {
+        return allForC.get(ELEMENT);
+      }
+      return null;
+    },
+
+    /**
+     * Removes web components data.
+     * @param {Element} element target element
+     * @param {string} component the component's name or a unique key
+     */
+    remove: function (element, component) {
+      if (!componentData.has(component)) { return; }
+
+      var instanceMap = componentData.get(component);
+      instanceMap.delete(element);
+
+      if (instanceMap.size === 0) {
+        componentData.delete(component);
+      }
+    },
+  };
+
+  /**
+   * An alias for `Data.get()`.
+   * @param {Element} element target element
+   * @param {string} component the component's name or a unique key
+   * @returns {any} the request result
+   */
+  var getInstance = function (element, component) { return Data.get(element, component); };
 
   /**
    * Utility to get the computed animationDelay
@@ -523,16 +634,6 @@
   }
 
   /**
-   * Checks if an element is an `Element`.
-   *
-   * @param {any} element the target element
-   * @returns {boolean} the query result
-   */
-  function isElement(element) {
-    return element instanceof Element;
-  }
-
-  /**
    * Checks if an element is an `<svg>`, `<img>` or `<video>`.
    * *Tooltip* / *Popover* works different with media elements.
    * @param {Element} element the target element
@@ -555,19 +656,6 @@
    * A global namespace for most scroll event listeners.
    */
   var passiveHandler = supportPassive ? { passive: true } : false;
-
-  /**
-   * Utility to check if target is typeof Element
-   * or find one that matches a selector.
-   *
-   * @param {Element | string} selector the input selector or target element
-   * @param {Element | null} parent optional Element to look into
-   * @return {Element | null} the Element or result of the querySelector
-   */
-  function queryElement(selector, parent) {
-    var lookUp = parent && parent instanceof Element ? parent : document;
-    return selector instanceof Element ? selector : lookUp.querySelector(selector);
-  }
 
   /**
    * The raw value or a given component option.
@@ -668,7 +756,7 @@
     return element.offsetHeight;
   }
 
-  var version = "0.2.13";
+  var version = "0.2.14";
 
   // @ts-ignore
 
@@ -705,6 +793,7 @@
     transitionEndEvent: transitionEndEvent,
     transitionProperty: transitionProperty,
     isMobile: isMobile,
+    isApple: isApple,
     support3DTransform: support3DTransform,
     supportPassive: supportPassive,
     supportTransform: supportTransform,
@@ -719,6 +808,8 @@
     on: on,
     off: off,
     one: one,
+    Data: Data,
+    getInstance: getInstance,
     emulateAnimationEnd: emulateAnimationEnd,
     emulateTransitionEnd: emulateTransitionEnd,
     isElementInScrollRange: isElementInScrollRange,

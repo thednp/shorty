@@ -328,17 +328,33 @@ declare module "shorter-js/src/event/one" {
      */
     export default function one(element: Element, eventName: string, handler: EventListener, options: EventListenerOptions | boolean | null): void;
 }
-declare module "shorter-js/src/misc/data" {
+declare module "shorter-js/src/misc/isElement" {
     /**
-     * Shortcut for `Data.get(a, b)` to setup usable component static method.
-     * @type {SHORTER.getInstance<SHORTER.Component, string>}
+     * Checks if an element is an `Element`.
+     *
+     * @param {any} element the target element
+     * @returns {boolean} the query result
      */
-    export const getInstance: SHORTER.getInstance<SHORTER.Component, string>;
+    export default function isElement(element: any): boolean;
+}
+declare module "shorter-js/src/misc/queryElement" {
+    /**
+     * Utility to check if target is typeof Element
+     * or find one that matches a selector.
+     *
+     * @param {Element | string} selector the input selector or target element
+     * @param {Element=} parent optional Element to look into
+     * @return {Element?} the Element or `querySelector` result
+     */
+    export default function queryElement(selector: Element | string, parent?: Element | undefined): Element | null;
+}
+declare module "shorter-js/src/misc/data" {
+    export function getInstance(element: Element, component: string): any;
     export default Data;
     namespace Data {
-        function set(element: Element, component: string, instance: any): void;
+        function set(element: string | Element, component: string, instance: any): void;
         function getAllFor(component: string): any;
-        function get(element: Element, component: string): any;
+        function get(element: string | Element, component: string): any;
         function remove(element: Element, component: string): void;
     }
 }
@@ -402,14 +418,9 @@ declare module "shorter-js/src/misc/emulateTransitionEnd" {
      */
     export default function emulateTransitionEnd(element: Element, handler: Function): void;
 }
-declare module "shorter-js/src/misc/isElement" {
-    /**
-     * Checks if an element is an `Element`.
-     *
-     * @param {any} element the target element
-     * @returns {boolean} the query result
-     */
-    export default function isElement(element: any): boolean;
+declare module "shorter-js/src/boolean/isApple" {
+    export default isApple;
+    const isApple: any;
 }
 declare module "shorter-js/src/misc/isElementInScrollRange" {
     /**
@@ -465,17 +476,6 @@ declare module "shorter-js/src/misc/passiveHandler" {
     const passiveHandler: false | {
         passive: boolean;
     };
-}
-declare module "shorter-js/src/misc/queryElement" {
-    /**
-     * Utility to check if target is typeof Element
-     * or find one that matches a selector.
-     *
-     * @param {Element | string} selector the input selector or target element
-     * @param {Element | null} parent optional Element to look into
-     * @return {Element | null} the Element or result of the querySelector
-     */
-    export default function queryElement(selector: Element | string, parent: Element | null): Element | null;
 }
 declare module "shorter-js/src/misc/normalizeValue" {
     /**
@@ -575,6 +575,7 @@ declare module "shorter-js/types/module/shorter" {
     export { default as Data, getInstance } from "shorter-js/src/misc/data";
     export { default as emulateAnimationEnd } from "shorter-js/src/misc/emulateAnimationEnd";
     export { default as emulateTransitionEnd } from "shorter-js/src/misc/emulateTransitionEnd";
+    export { default as isApple } from "shorter-js/src/boolean/isApple";
     export { default as isElement } from "shorter-js/src/misc/isElement";
     export { default as isElementInScrollRange } from "shorter-js/src/misc/isElementInScrollRange";
     export { default as isElementInViewport } from "shorter-js/src/misc/isElementInViewport";

@@ -16,6 +16,7 @@ export { default as transitionDelay } from "shorter-js/src/strings/transitionDel
 export { default as transitionEndEvent } from "shorter-js/src/strings/transitionEndEvent";
 export { default as transitionProperty } from "shorter-js/src/strings/transitionProperty";
 export { default as isMobile } from "shorter-js/src/boolean/isMobile";
+export { default as isApple } from "shorter-js/src/boolean/isApple";
 export { default as support3DTransform } from "shorter-js/src/boolean/support3DTransform";
 export { default as supportPassive } from "shorter-js/src/boolean/supportPassive";
 export { default as supportTransform } from "shorter-js/src/boolean/supportTransform";
@@ -47,10 +48,3 @@ export { default as normalizeOptions } from "shorter-js/src/misc/normalizeOption
 export { default as tryWrapper } from "shorter-js/src/misc/tryWrapper";
 export { default as reflow } from "shorter-js/src/misc/reflow";
 export { default as Version } from "shorter-js/src/misc/version";
-
-export interface Component {
-  element: Element,
-  options?: Record<string, any>,
-}
-
-export type getInstance<T, C> = (element: Element, component: C) => T | null;

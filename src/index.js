@@ -28,6 +28,7 @@ import removeEventListener from './strings/removeEventListener';
 
 // boolean
 import isMobile from './boolean/isMobile';
+import isApple from './boolean/isApple';
 import support3DTransform from './boolean/support3DTransform';
 import supportPassive from './boolean/supportPassive';
 import supportTransform from './boolean/supportTransform';
@@ -46,6 +47,7 @@ import off from './event/off';
 import one from './event/one';
 
 // misc
+import Data, { getInstance } from './misc/data';
 import emulateAnimationEnd from './misc/emulateAnimationEnd';
 import emulateTransitionEnd from './misc/emulateTransitionEnd';
 import isElementInScrollRange from './misc/isElementInScrollRange';
@@ -92,6 +94,7 @@ const SHORTER = {
   transitionEndEvent,
   transitionProperty,
   isMobile,
+  isApple,
   support3DTransform,
   supportPassive,
   supportTransform,
@@ -106,6 +109,8 @@ const SHORTER = {
   on,
   off,
   one,
+  Data,
+  getInstance,
   emulateAnimationEnd,
   emulateTransitionEnd,
   isElementInScrollRange,

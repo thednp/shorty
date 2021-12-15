@@ -22,6 +22,7 @@ export { default as transitionDelay } from "../../src/strings/transitionDelay";
 export { default as transitionEndEvent } from "../../src/strings/transitionEndEvent";
 export { default as transitionProperty } from "../../src/strings/transitionProperty";
 export { default as isMobile } from "../../src/boolean/isMobile";
+export { default as isApple } from "../../src/boolean/isApple";
 export { default as support3DTransform } from "../../src/boolean/support3DTransform";
 export { default as supportPassive } from "../../src/boolean/supportPassive";
 export { default as supportTransform } from "../../src/boolean/supportTransform";

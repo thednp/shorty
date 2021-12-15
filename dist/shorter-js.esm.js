@@ -1,5 +1,5 @@
 /*!
-* shorter-js v0.2.13 (https://github.com/thednp/shorter-js)
+* shorter-js v0.2.14 (https://github.com/thednp/shorter-js)
 * Copyright 2019-2021 © dnp_theme
 * Licensed under MIT (https://github.com/thednp/shorter-js/blob/master/LICENSE)
 */
@@ -201,6 +201,16 @@ if (navigator[userAgentStr]) {
  */
 const isMobile = isMobileCheck;
 
+const appleBrands = /(iPhone|iPod|iPad)/;
+
+/**
+ * A global namespace for Apple browsers.
+ */
+// @ts-ignore
+const { userAgentData } = navigator;
+const isApple = !userAgentData ? appleBrands.test(navigator.userAgent)
+  : userAgentData.brands.some((x) => appleBrands.test(x.brand));
+
 /**
  * A global namespace for CSS3 3D transform support.
  * @type {boolean}
@@ -333,6 +343,107 @@ function one(element, eventName, handler, options) {
   }
   on(element, eventName, handlerWrapper, options);
 }
+
+/**
+ * Checks if an element is an `Element`.
+ *
+ * @param {any} element the target element
+ * @returns {boolean} the query result
+ */
+function isElement(element) {
+  return element instanceof Element;
+}
+
+/**
+ * Utility to check if target is typeof Element
+ * or find one that matches a selector.
+ *
+ * @param {Element | string} selector the input selector or target element
+ * @param {Element=} parent optional Element to look into
+ * @return {Element?} the Element or `querySelector` result
+ */
+function queryElement(selector, parent) {
+  const lookUp = parent && isElement(parent) ? parent : document;
+  // @ts-ignore
+  return isElement(selector) ? selector : lookUp.querySelector(selector);
+}
+
+const componentData = new Map();
+/**
+ * An interface for web components background data.
+ * @see https://github.com/thednp/bootstrap.native/blob/master/src/components/base-component.js
+ */
+const Data = {
+  /**
+   * Sets web components data.
+   * @param {Element | string} element target element
+   * @param {string} component the component's name or a unique key
+   * @param {Record<string, any>} instance the component instance
+   */
+  set: (element, component, instance) => {
+    const ELEMENT = queryElement(element);
+    if (!isElement(ELEMENT)) return;
+
+    if (!componentData.has(component)) {
+      componentData.set(component, new Map());
+    }
+
+    const instanceMap = componentData.get(component);
+    instanceMap.set(ELEMENT, instance);
+  },
+
+  /**
+   * Returns all instances for specified component.
+   * @param {string} component the component's name or a unique key
+   * @returns {any?} all the component instances
+   */
+  getAllFor: (component) => {
+    if (componentData.has(component)) {
+      return componentData.get(component);
+    }
+    return null;
+  },
+
+  /**
+   * Returns the instance associated with the target.
+   * @param {Element | string} element target element
+   * @param {string} component the component's name or a unique key
+   * @returns {any?} the instance
+   */
+  get: (element, component) => {
+    const ELEMENT = queryElement(element);
+
+    const allForC = Data.getAllFor(component);
+    if (allForC && isElement(ELEMENT) && allForC.has(ELEMENT)) {
+      return allForC.get(ELEMENT);
+    }
+    return null;
+  },
+
+  /**
+   * Removes web components data.
+   * @param {Element} element target element
+   * @param {string} component the component's name or a unique key
+   */
+  remove: (element, component) => {
+    if (!componentData.has(component)) return;
+
+    const instanceMap = componentData.get(component);
+    instanceMap.delete(element);
+
+    if (instanceMap.size === 0) {
+      componentData.delete(component);
+    }
+  },
+};
+
+/**
+ * An alias for `Data.get()`.
+ * @param {Element} element target element
+ * @param {string} component the component's name or a unique key
+ * @returns {any} the request result
+ */
+const getInstance = (element, component) => Data.get(element, component);
 
 /**
  * Utility to get the computed animationDelay
@@ -517,16 +628,6 @@ function isHTMLElement(element) {
 }
 
 /**
- * Checks if an element is an `Element`.
- *
- * @param {any} element the target element
- * @returns {boolean} the query result
- */
-function isElement(element) {
-  return element instanceof Element;
-}
-
-/**
  * Checks if an element is an `<svg>`, `<img>` or `<video>`.
  * *Tooltip* / *Popover* works different with media elements.
  * @param {Element} element the target element
@@ -549,19 +650,6 @@ const isRTL = () => document.documentElement.dir === 'rtl';
  * A global namespace for most scroll event listeners.
  */
 const passiveHandler = supportPassive ? { passive: true } : false;
-
-/**
- * Utility to check if target is typeof Element
- * or find one that matches a selector.
- *
- * @param {Element | string} selector the input selector or target element
- * @param {Element | null} parent optional Element to look into
- * @return {Element | null} the Element or result of the querySelector
- */
-function queryElement(selector, parent) {
-  const lookUp = parent && parent instanceof Element ? parent : document;
-  return selector instanceof Element ? selector : lookUp.querySelector(selector);
-}
 
 /**
  * The raw value or a given component option.
@@ -662,7 +750,7 @@ function reflow(element) {
   return element.offsetHeight;
 }
 
-var version = "0.2.13";
+var version = "0.2.14";
 
 // @ts-ignore
 
@@ -699,6 +787,7 @@ const SHORTER = {
   transitionEndEvent,
   transitionProperty,
   isMobile,
+  isApple,
   support3DTransform,
   supportPassive,
   supportTransform,
@@ -713,6 +802,8 @@ const SHORTER = {
   on,
   off,
   one,
+  Data,
+  getInstance,
   emulateAnimationEnd,
   emulateTransitionEnd,
   isElementInScrollRange,
