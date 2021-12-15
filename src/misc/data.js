@@ -72,7 +72,7 @@ const Data = {
 
 /**
  * An alias for `Data.get()`.
- * @param {Element} element target element
+ * @param {Element | string} element target element
  * @param {string} component the component's name or a unique key
  * @returns {any} the request result
  */

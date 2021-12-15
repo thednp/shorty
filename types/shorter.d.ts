@@ -349,7 +349,7 @@ declare module "shorter-js/src/misc/queryElement" {
     export default function queryElement(selector: Element | string, parent?: Element | undefined): Element | null;
 }
 declare module "shorter-js/src/misc/data" {
-    export function getInstance(element: Element, component: string): any;
+    export function getInstance(element: Element | string, component: string): any;
     export default Data;
     namespace Data {
         function set(element: string | Element, component: string, instance: any): void;

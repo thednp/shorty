@@ -1,5 +1,5 @@
 /*!
-* shorter-js v0.2.14 (https://github.com/thednp/shorter-js)
+* shorter-js v0.2.15 (https://github.com/thednp/shorter-js)
 * Copyright 2019-2021 © dnp_theme
 * Licensed under MIT (https://github.com/thednp/shorter-js/blob/master/LICENSE)
 */
@@ -207,13 +207,14 @@
    */
   var isMobile = isMobileCheck;
 
+  // @ts-ignore
+  var userAgentData = navigator.userAgentData;
   var appleBrands = /(iPhone|iPod|iPad)/;
 
   /**
    * A global namespace for Apple browsers.
+   * @type {boolean}
    */
-  // @ts-ignore
-  var userAgentData = navigator.userAgentData;
   var isApple = !userAgentData ? appleBrands.test(navigator.userAgent)
     : userAgentData.brands.some(function (x) { return appleBrands.test(x.brand); });
 
@@ -384,7 +385,7 @@
      * Sets web components data.
      * @param {Element | string} element target element
      * @param {string} component the component's name or a unique key
-     * @param {Record<string, any>} instance the component instance
+     * @param {any} instance the component instance
      */
     set: function (element, component, instance) {
       var ELEMENT = queryElement(element);
@@ -445,7 +446,7 @@
 
   /**
    * An alias for `Data.get()`.
-   * @param {Element} element target element
+   * @param {Element | string} element target element
    * @param {string} component the component's name or a unique key
    * @returns {any} the request result
    */
@@ -756,7 +757,7 @@
     return element.offsetHeight;
   }
 
-  var version = "0.2.14";
+  var version = "0.2.15";
 
   // @ts-ignore
 

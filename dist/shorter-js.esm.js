@@ -1,5 +1,5 @@
 /*!
-* shorter-js v0.2.14 (https://github.com/thednp/shorter-js)
+* shorter-js v0.2.15 (https://github.com/thednp/shorter-js)
 * Copyright 2019-2021 © dnp_theme
 * Licensed under MIT (https://github.com/thednp/shorter-js/blob/master/LICENSE)
 */
@@ -201,13 +201,14 @@ if (navigator[userAgentStr]) {
  */
 const isMobile = isMobileCheck;
 
+// @ts-ignore
+const { userAgentData } = navigator;
 const appleBrands = /(iPhone|iPod|iPad)/;
 
 /**
  * A global namespace for Apple browsers.
+ * @type {boolean}
  */
-// @ts-ignore
-const { userAgentData } = navigator;
 const isApple = !userAgentData ? appleBrands.test(navigator.userAgent)
   : userAgentData.brands.some((x) => appleBrands.test(x.brand));
 
@@ -378,7 +379,7 @@ const Data = {
    * Sets web components data.
    * @param {Element | string} element target element
    * @param {string} component the component's name or a unique key
-   * @param {Record<string, any>} instance the component instance
+   * @param {any} instance the component instance
    */
   set: (element, component, instance) => {
     const ELEMENT = queryElement(element);
@@ -439,7 +440,7 @@ const Data = {
 
 /**
  * An alias for `Data.get()`.
- * @param {Element} element target element
+ * @param {Element | string} element target element
  * @param {string} component the component's name or a unique key
  * @returns {any} the request result
  */
@@ -750,7 +751,7 @@ function reflow(element) {
   return element.offsetHeight;
 }
 
-var version = "0.2.14";
+var version = "0.2.15";
 
 // @ts-ignore
 
