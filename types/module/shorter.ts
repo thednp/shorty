@@ -49,6 +49,7 @@ export { default as keyCapsLock } from "../../src/strings/keyCapsLock";
 export { default as keyControl } from "../../src/strings/keyControl";
 export { default as keyDelete } from "../../src/strings/keyDelete";
 export { default as keyEnter } from "../../src/strings/keyEnter";
+export { default as keyEscape } from "../../src/strings/keyEscape";
 export { default as keyInsert } from "../../src/strings/keyInsert";
 export { default as keyMeta } from "../../src/strings/keyMeta";
 export { default as keyPause } from "../../src/strings/keyPause";

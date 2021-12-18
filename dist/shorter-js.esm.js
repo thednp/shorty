@@ -1,5 +1,5 @@
 /*!
-* shorter-js v0.2.16 (https://github.com/thednp/shorter-js)
+* shorter-js v0.2.17 (https://github.com/thednp/shorter-js)
 * Copyright 2019-2021 © dnp_theme
 * Licensed under MIT (https://github.com/thednp/shorter-js/blob/master/LICENSE)
 */
@@ -335,6 +335,12 @@ const keyDelete = 'Delete';
  * @type {string} e.which = 13 equivalent
  */
 const keyEnter = 'Enter';
+
+/**
+ * A global namespace for `Escape` key.
+ * @type {string} e.which = 27 equivalent
+ */
+const keyEscape = 'Escape';
 
 /**
  * A global namespace for `Insert` key.
@@ -943,7 +949,7 @@ function reflow(element) {
   return element.offsetHeight;
 }
 
-var version = "0.2.16";
+var version = "0.2.17";
 
 // @ts-ignore
 
@@ -1011,6 +1017,7 @@ const SHORTER = {
   keyControl,
   keyDelete,
   keyEnter,
+  keyEscape,
   keyInsert,
   keyMeta,
   keyPause,

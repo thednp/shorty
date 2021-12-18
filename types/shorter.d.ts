@@ -74,12 +74,9 @@ declare module "shorter-js/src/strings/mouseClickEvents" {
     export default mouseClickEvents;
     /**
      * A global namespace for mouse click events.
-     * @type {{down: string, up: string}}
+     * @type {Record<string, string>}
      */
-    const mouseClickEvents: {
-        down: string;
-        up: string;
-    };
+    const mouseClickEvents: Record<string, string>;
 }
 declare module "shorter-js/src/strings/mouseclickEvent" {
     export default mouseclickEvent;
@@ -380,6 +377,14 @@ declare module "shorter-js/src/strings/keyEnter" {
      * @type {string} e.which = 13 equivalent
      */
     const keyEnter: string;
+}
+declare module "shorter-js/src/strings/keyEscape" {
+    export default keyEscape;
+    /**
+     * A global namespace for `Escape` key.
+     * @type {string} e.which = 27 equivalent
+     */
+    const keyEscape: string;
 }
 declare module "shorter-js/src/strings/keyInsert" {
     export default keyInsert;
@@ -812,6 +817,7 @@ declare module "shorter-js/types/module/shorter" {
     export { default as keyControl } from "shorter-js/src/strings/keyControl";
     export { default as keyDelete } from "shorter-js/src/strings/keyDelete";
     export { default as keyEnter } from "shorter-js/src/strings/keyEnter";
+    export { default as keyEscape } from "shorter-js/src/strings/keyEscape";
     export { default as keyInsert } from "shorter-js/src/strings/keyInsert";
     export { default as keyMeta } from "shorter-js/src/strings/keyMeta";
     export { default as keyPause } from "shorter-js/src/strings/keyPause";

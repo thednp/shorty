@@ -49,6 +49,7 @@ import keyCapsLock from './strings/keyCapsLock';
 import keyControl from './strings/keyControl';
 import keyDelete from './strings/keyDelete';
 import keyEnter from './strings/keyEnter';
+import keyEscape from './strings/keyEscape';
 import keyInsert from './strings/keyInsert';
 import keyMeta from './strings/keyMeta';
 import keyPause from './strings/keyPause';
@@ -156,6 +157,7 @@ const SHORTER = {
   keyControl,
   keyDelete,
   keyEnter,
+  keyEscape,
   keyInsert,
   keyMeta,
   keyPause,

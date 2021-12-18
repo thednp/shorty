@@ -48,6 +48,7 @@ export { default as keyCapsLock } from "shorter-js/src/strings/keyCapsLock";
 export { default as keyControl } from "shorter-js/src/strings/keyControl";
 export { default as keyDelete } from "shorter-js/src/strings/keyDelete";
 export { default as keyEnter } from "shorter-js/src/strings/keyEnter";
+export { default as keyEscape } from "shorter-js/src/strings/keyEscape";
 export { default as keyInsert } from "shorter-js/src/strings/keyInsert";
 export { default as keyMeta } from "shorter-js/src/strings/keyMeta";
 export { default as keyPause } from "shorter-js/src/strings/keyPause";
