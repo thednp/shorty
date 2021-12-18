@@ -3,7 +3,7 @@ import transitionDelay from '../strings/transitionDelay';
 import transitionProperty from '../strings/transitionProperty';
 
 /**
- * Utility to get the computed transitionDelay
+ * Utility to get the computed `transitionDelay`
  * from Element in miliseconds.
  *
  * @param {Element} element target

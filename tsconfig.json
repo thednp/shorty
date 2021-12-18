@@ -12,7 +12,7 @@
     "noImplicitReturns": true,                /* Report error when not all code paths in function return a value. */
     "noFallthroughCasesInSwitch": true,       /* Report errors for fallthrough cases in switch statement. */
     "rootDir": "../",
-    "outFile": "types/shorter.d.ts", // UN-comment to generate
+    // "outFile": "types/shorter.d.ts", // UN-comment to generate
     "outDir": "types"
   },
   "files": [

@@ -1,7 +1,7 @@
 /**
  * A global namespace for predefined
  * CSS3 'cubic-bezier()' easing functions.
- * @type {object}
+ * @type {Record<string, string>}
  */
 const bezierEasings = {
   linear: 'linear',

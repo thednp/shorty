@@ -3,7 +3,7 @@ import animationDuration from '../strings/animationDuration';
 import animationName from '../strings/animationName';
 
 /**
- * Utility to get the computed animationDuration
+ * Utility to get the computed `animationDuration`
  * from Element in miliseconds.
  *
  * @param {Element} element target

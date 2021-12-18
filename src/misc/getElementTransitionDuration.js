@@ -3,7 +3,7 @@ import transitionDuration from '../strings/transitionDuration';
 import transitionProperty from '../strings/transitionProperty';
 
 /**
- * Utility to get the computed transitionDuration
+ * Utility to get the computed `transitionDuration`
  * from Element in miliseconds.
  *
  * @param {Element} element target

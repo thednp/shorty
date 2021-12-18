@@ -1,5 +1,5 @@
 /*!
-* shorter-js v0.2.15 (https://github.com/thednp/shorter-js)
+* shorter-js v0.2.16 (https://github.com/thednp/shorter-js)
 * Copyright 2019-2021 © dnp_theme
 * Licensed under MIT (https://github.com/thednp/shorter-js/blob/master/LICENSE)
 */
@@ -65,9 +65,27 @@
 
   /**
    * A global namespace for mouse click events.
-   * @type {{down: string, up: string}}
+   * @type {Record<string, string>}
    */
   var mouseClickEvents = { down: 'mousedown', up: 'mouseup' };
+
+  /**
+   * A global namespace for `click` event.
+   * @type {string}
+   */
+  var mouseclickEvent = 'click';
+
+  /**
+   * A global namespace for `mousedown` event.
+   * @type {string}
+   */
+  var mousedownEvent = 'mousedown';
+
+  /**
+   * A global namespace for `mouseup` event.
+   * @type {string}
+   */
+  var mouseupEvent = 'mouseup';
 
   /**
    * A global namespace for mouse hover events.
@@ -76,12 +94,48 @@
   var mouseHoverEvents = ('onmouseleave' in document) ? ['mouseenter', 'mouseleave'] : ['mouseover', 'mouseout'];
 
   /**
+   * A global namespace for `mouseenter` event.
+   * @type {string}
+   */
+  var mouseenterEvent = 'mouseenter';
+
+  /**
+   * A global namespace for `mouseleave` event.
+   * @type {string}
+   */
+  var mouseleaveEvent = 'mouseleave';
+
+  /**
    * A global namespace for touch events.
-   * @type {object}
+   * @type {Record<string, string>}
    */
   var touchEvents = {
     start: 'touchstart', end: 'touchend', move: 'touchmove', cancel: 'touchcancel',
   };
+
+  /**
+   * A global namespace for `touchstart` event.
+   * @type {string}
+   */
+  var touchstartEvent = 'touchstart';
+
+  /**
+   * A global namespace for `touchmove` event.
+   * @type {string}
+   */
+  var touchmoveEvent = 'touchmove';
+
+  /**
+   * A global namespace for `touchcancel` event.
+   * @type {string}
+   */
+  var touchcancelEvent = 'touchcancel';
+
+  /**
+   * A global namespace for `touchend` event.
+   * @type {string}
+   */
+  var touchendEvent = 'touchend';
 
   /**
    * A global namespace for focus event names.
@@ -90,11 +144,23 @@
   var focusEvents = { in: 'focusin', out: 'focusout' };
 
   /**
-   * A global namespace for mouse events equivalent with touch events.
-   * @type {{start: string, end: string, move: string, cancel: string}}
+   * A global namespace for `focusin` event.
+   * @type {string}
+   */
+  var focusinEvent = 'focusin';
+
+  /**
+   * A global namespace for `focusout` event.
+   * @type {string}
+   */
+  var focusoutEvent = 'focusout';
+
+  /**
+   * A global namespace for mouse events equivalent to touch events.
+   * @type {Record<string, string>}
    */
   var mouseSwipeEvents = {
-    start: 'mousedown', end: 'mouseup', move: 'mousemove', cancel: 'mouseout',
+    start: 'mousedown', end: 'mouseup', move: 'mousemove', cancel: 'mouseleave',
   };
 
   /**
@@ -148,7 +214,7 @@
   /**
    * A global namespace for predefined
    * CSS3 'cubic-bezier()' easing functions.
-   * @type {object}
+   * @type {Record<string, string>}
    */
   var bezierEasings = {
     linear: 'linear',
@@ -189,6 +255,134 @@
    * @type {string}
    */
   var removeEventListener = 'removeEventListener';
+
+  /**
+   * A global namespace for keyboard event keys.
+   * @type {Record<string, string>}
+   */
+  var keyboardEventKeys = {
+    Backspace: 'Backspace', //  8
+    Tab: 'Tab', //  9
+    Enter: 'Enter', // 13
+    Shift: 'Shift', // 16
+    Control: 'Control', // 17
+    Alt: 'Alt', // 18
+    Pause: 'Pause', // 19
+    CapsLock: 'CapsLock', // 20
+    Escape: 'Escape', // 27
+    Scape: 'Space', // 32
+    ArrowLeft: 'ArrowLeft', // 37
+    ArrowUp: 'ArrowUp', // 38
+    ArrowRight: 'ArrowRight', // 39
+    ArrowDown: 'ArrowDown', // 40
+    Insert: 'Insert', // 45
+    Delete: 'Delete', // 46
+    Meta: 'Meta', // 91 windows key
+    ContextMenu: 'ContextMenu', // 93
+    ScrollLock: 'ScrollLock', // 145
+  };
+
+  /**
+   * A global namespace for `Alt` key.
+   * @type {string} e.which = 18
+   */
+  var keyAlt = 'Alt';
+
+  /**
+   * A global namespace for `ArrowDown` key.
+   * @type {string} e.which = 40 equivalent
+   */
+  var keyArrowDown = 'ArrowDown';
+
+  /**
+   * A global namespace for `ArrowUp` key.
+   * @type {string} e.which = 38 equivalent
+   */
+  var keyArrowUp = 'ArrowUp';
+
+  /**
+   * A global namespace for `ArrowLeft` key.
+   * @type {string} e.which = 37 equivalent
+   */
+  var keyArrowLeft = 'ArrowLeft';
+
+  /**
+   * A global namespace for `ArrowRight` key.
+   * @type {string} e.which = 39 equivalent
+   */
+  var keyArrowRight = 'ArrowRight';
+
+  /**
+   * A global namespace for `Backspace` key.
+   * @type {string} e.which === 8 equivalent
+   */
+  var keyBackspace = 'Backspace';
+
+  /**
+   * A global namespace for `CapsLock` key.
+   * @type {string} e.which = 20 equivalent
+   */
+  var keyCapsLock = 'CapsLock';
+
+  /**
+   * A global namespace for `Control` key.
+   * @type {string} e.which = 17
+   */
+  var keyControl = 'Control';
+
+  /**
+   * A global namespace for `Delete` key.
+   * @type {string} e.which = 46 equivalent
+   */
+  var keyDelete = 'Delete';
+
+  /**
+   * A global namespace for `Enter` key.
+   * @type {string} e.which = 13 equivalent
+   */
+  var keyEnter = 'Enter';
+
+  /**
+   * A global namespace for `Insert` key.
+   * @type {string} e.which = 45 equivalent
+   */
+  var keyInsert = 'Insert';
+
+  /**
+   * A global namespace for `Meta` key.
+   * @type {string} e.which = 93 equivalent
+   */
+  var keyMeta = 'Meta';
+
+  /**
+   * A global namespace for `Pause` key.
+   * @type {string} e.which = 19
+   */
+  var keyPause = 'Pause';
+
+  /**
+   * A global namespace for `ScrollLock` key.
+   * @type {string} e.which = 145 equivalent
+   */
+  var keyScrollLock = 'ScrollLock';
+
+  /**
+   * A global namespace for `Shift` key.
+   * @type {string} e.which = 16
+   */
+  var keyShift = 'Shift';
+
+  /**
+   * A global namespace for `Space` key.
+   * @type {string} e.which = 32 equivalent
+   */
+  var keySpace = 'Space';
+
+  /**
+   * A global namespace for `Tab` key.
+   * @type {string} e.which = 9 equivalent
+   */
+  var keyTab = 'Tab';
 
   var mobileBrands = /iPhone|iPad|iPod|Android/i;
   var userAgentStr = 'userAgentData';
@@ -352,9 +546,9 @@
   }
 
   /**
-   * Checks if an element is an `Element`.
+   * Checks if an object is an `Element`.
    *
-   * @param {any} element the target element
+   * @param {any} element the target object
    * @returns {boolean} the query result
    */
   function isElement(element) {
@@ -362,7 +556,7 @@
   }
 
   /**
-   * Utility to check if target is typeof Element
+   * Utility to check if target is typeof `Element`
    * or find one that matches a selector.
    *
    * @param {Element | string} selector the input selector or target element
@@ -371,7 +565,7 @@
    */
   function queryElement(selector, parent) {
     var lookUp = parent && isElement(parent) ? parent : document;
-    // @ts-ignore
+    // @ts-ignore -- `isElement` is just as good
     return isElement(selector) ? selector : lookUp.querySelector(selector);
   }
 
@@ -453,7 +647,7 @@
   var getInstance = function (element, component) { return Data.get(element, component); };
 
   /**
-   * Utility to get the computed animationDelay
+   * Utility to get the computed `animationDelay`
    * from Element in miliseconds.
    *
    * @param {Element} element target
@@ -471,7 +665,7 @@
   }
 
   /**
-   * Utility to get the computed animationDuration
+   * Utility to get the computed `animationDuration`
    * from Element in miliseconds.
    *
    * @param {Element} element target
@@ -493,7 +687,7 @@
    * called when animation ends.
    *
    * @param {Element} element target
-   * @param {function} handler `animationend` callback
+   * @param {EventListener} handler `animationend` callback
    */
   function emulateAnimationEnd(element, handler) {
     var called = 0;
@@ -505,7 +699,6 @@
       /**
        * Wrap the handler in on -> off callback
        * @param {Event} e Event object
-       * @callback
        */
       var animationEndWrapper = function (e) {
         if (e.target === element) {
@@ -524,7 +717,7 @@
   }
 
   /**
-   * Utility to get the computed transitionDelay
+   * Utility to get the computed `transitionDelay`
    * from Element in miliseconds.
    *
    * @param {Element} element target
@@ -542,7 +735,7 @@
   }
 
   /**
-   * Utility to get the computed transitionDuration
+   * Utility to get the computed `transitionDuration`
    * from Element in miliseconds.
    *
    * @param {Element} element target
@@ -564,7 +757,7 @@
    * called when transition ends.
    *
    * @param {Element} element target
-   * @param {function} handler `transitionend` callback
+   * @param {EventListener} handler `transitionend` callback
    */
   function emulateTransitionEnd(element, handler) {
     var called = 0;
@@ -576,7 +769,6 @@
       /**
        * Wrap the handler in on -> off callback
        * @param {Event} e Event object
-       * @callback
        */
       var transitionEndWrapper = function (e) {
         if (e.target === element) {
@@ -627,7 +819,7 @@
   /**
    * Checks if an element is an `HTMLElement`.
    *
-   * @param {any} element the target element
+   * @param {any} element the target object
    * @returns {boolean} the query result
    */
   function isHTMLElement(element) {
@@ -637,7 +829,7 @@
   /**
    * Checks if an element is an `<svg>`, `<img>` or `<video>`.
    * *Tooltip* / *Popover* works different with media elements.
-   * @param {Element} element the target element
+   * @param {any} element the target element
    * @returns {boolean} the query result
    */
   function isMedia(element) {
@@ -646,7 +838,7 @@
   }
 
   /**
-   * Stores a global namespace for Right To Left pages.
+   * Checks if a page is Right To Left.
    * @returns {boolean} the query result
    */
   var isRTL = function () { return document.documentElement.dir === 'rtl'; };
@@ -695,20 +887,20 @@
    * Utility to normalize component options
    *
    * @param {Element} element target
-   * @param {object} defaultOps component default options
-   * @param {object} inputOps component instance options
-   * @param {string} ns component namespace
-   * @return {object} normalized component options object
+   * @param {Record<string, any>} defaultOps component default options
+   * @param {Record<string, any>} inputOps component instance options
+   * @param {string=} ns component namespace
+   * @return {Record<string, any>} normalized component options object
    */
   function normalizeOptions(element, defaultOps, inputOps, ns) {
-    // @ts-ignore
+    // @ts-ignore -- usually our `Element` is `HTMLElement` as well
     var data = Object.assign({}, element.dataset);
     var normalOps = {};
     var dataOps = {};
 
     Object.keys(data)
       .forEach(function (k) {
-        var key = k.includes(ns)
+        var key = ns && k.includes(ns)
           ? k.replace(ns, '').replace(/[A-Z]/, function (match) { return match.toLowerCase(); })
           : k;
 
@@ -747,17 +939,17 @@
   }
 
   /**
-   * Utility to force re-paint of an Element
+   * Utility to force re-paint of an `Element` target.
    *
    * @param {Element | HTMLElement} element is the target
-   * @return {number} the Element.offsetHeight value
+   * @return {number} the `Element.offsetHeight` value
    */
   function reflow(element) {
-    // @ts-ignore
+    // @ts-ignore -- our `Element` is always an `HTMLElement`
     return element.offsetHeight;
   }
 
-  var version = "0.2.15";
+  var version = "0.2.16";
 
   // @ts-ignore
 
@@ -780,9 +972,20 @@
     ariaPressed: ariaPressed,
     ariaSelected: ariaSelected,
     mouseClickEvents: mouseClickEvents,
+    mouseclickEvent: mouseclickEvent,
+    mousedownEvent: mousedownEvent,
+    mouseupEvent: mouseupEvent,
     mouseHoverEvents: mouseHoverEvents,
+    mouseenterEvent: mouseenterEvent,
+    mouseleaveEvent: mouseleaveEvent,
     touchEvents: touchEvents,
+    touchstartEvent: touchstartEvent,
+    touchmoveEvent: touchmoveEvent,
+    touchcancelEvent: touchcancelEvent,
+    touchendEvent: touchendEvent,
     focusEvents: focusEvents,
+    focusinEvent: focusinEvent,
+    focusoutEvent: focusoutEvent,
     mouseSwipeEvents: mouseSwipeEvents,
     bezierEasings: bezierEasings,
     animationDuration: animationDuration,
@@ -803,6 +1006,24 @@
     supportTransition: supportTransition,
     addEventListener: addEventListener,
     removeEventListener: removeEventListener,
+    keyboardEventKeys: keyboardEventKeys,
+    keyAlt: keyAlt,
+    keyArrowDown: keyArrowDown,
+    keyArrowLeft: keyArrowLeft,
+    keyArrowRight: keyArrowRight,
+    keyArrowUp: keyArrowUp,
+    keyBackspace: keyBackspace,
+    keyCapsLock: keyCapsLock,
+    keyControl: keyControl,
+    keyDelete: keyDelete,
+    keyEnter: keyEnter,
+    keyInsert: keyInsert,
+    keyMeta: keyMeta,
+    keyPause: keyPause,
+    keyScrollLock: keyScrollLock,
+    keyShift: keyShift,
+    keySpace: keySpace,
+    keyTab: keyTab,
     addClass: addClass,
     removeClass: removeClass,
     hasClass: hasClass,

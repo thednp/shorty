@@ -1,5 +1,5 @@
 /**
- * Stores a global namespace for Right To Left pages.
+ * Checks if a page is Right To Left.
  * @returns {boolean} the query result
  */
 const isRTL = () => document.documentElement.dir === 'rtl';

@@ -81,6 +81,30 @@ declare module "shorter-js/src/strings/mouseClickEvents" {
         up: string;
     };
 }
+declare module "shorter-js/src/strings/mouseclickEvent" {
+    export default mouseclickEvent;
+    /**
+     * A global namespace for `click` event.
+     * @type {string}
+     */
+    const mouseclickEvent: string;
+}
+declare module "shorter-js/src/strings/mousedownEvent" {
+    export default mousedownEvent;
+    /**
+     * A global namespace for `mousedown` event.
+     * @type {string}
+     */
+    const mousedownEvent: string;
+}
+declare module "shorter-js/src/strings/mouseupEvent" {
+    export default mouseupEvent;
+    /**
+     * A global namespace for `mouseup` event.
+     * @type {string}
+     */
+    const mouseupEvent: string;
+}
 declare module "shorter-js/src/strings/mouseHoverEvents" {
     export default mouseHoverEvents;
     /**
@@ -89,13 +113,61 @@ declare module "shorter-js/src/strings/mouseHoverEvents" {
      */
     const mouseHoverEvents: [string, string];
 }
+declare module "shorter-js/src/strings/mouseenterEvent" {
+    export default mouseenterEvent;
+    /**
+     * A global namespace for `mouseenter` event.
+     * @type {string}
+     */
+    const mouseenterEvent: string;
+}
+declare module "shorter-js/src/strings/mouseleaveEvent" {
+    export default mouseleaveEvent;
+    /**
+     * A global namespace for `mouseleave` event.
+     * @type {string}
+     */
+    const mouseleaveEvent: string;
+}
 declare module "shorter-js/src/strings/touchEvents" {
     export default touchEvents;
     /**
      * A global namespace for touch events.
-     * @type {object}
+     * @type {Record<string, string>}
      */
-    const touchEvents: object;
+    const touchEvents: Record<string, string>;
+}
+declare module "shorter-js/src/strings/touchstartEvent" {
+    export default touchstartEvent;
+    /**
+     * A global namespace for `touchstart` event.
+     * @type {string}
+     */
+    const touchstartEvent: string;
+}
+declare module "shorter-js/src/strings/touchmoveEvent" {
+    export default touchmoveEvent;
+    /**
+     * A global namespace for `touchmove` event.
+     * @type {string}
+     */
+    const touchmoveEvent: string;
+}
+declare module "shorter-js/src/strings/touchcancelEvent" {
+    export default touchcancelEvent;
+    /**
+     * A global namespace for `touchcancel` event.
+     * @type {string}
+     */
+    const touchcancelEvent: string;
+}
+declare module "shorter-js/src/strings/touchendEvent" {
+    export default touchendEvent;
+    /**
+     * A global namespace for `touchend` event.
+     * @type {string}
+     */
+    const touchendEvent: string;
 }
 declare module "shorter-js/src/strings/focusEvents" {
     export default focusEvents;
@@ -108,27 +180,29 @@ declare module "shorter-js/src/strings/focusEvents" {
         out: string;
     };
 }
+declare module "shorter-js/src/strings/focusinEvent" {
+    export default focusinEvent;
+    /**
+     * A global namespace for `focusin` event.
+     * @type {string}
+     */
+    const focusinEvent: string;
+}
+declare module "shorter-js/src/strings/focusoutEvent" {
+    export default focusoutEvent;
+    /**
+     * A global namespace for `focusout` event.
+     * @type {string}
+     */
+    const focusoutEvent: string;
+}
 declare module "shorter-js/src/strings/mouseSwipeEvents" {
     export default mouseSwipeEvents;
     /**
-     * A global namespace for mouse events equivalent with touch events.
-     * @type {{start: string, end: string, move: string, cancel: string}}
+     * A global namespace for mouse events equivalent to touch events.
+     * @type {Record<string, string>}
      */
-    const mouseSwipeEvents: {
-        start: string;
-        end: string;
-        move: string;
-        cancel: string;
-    };
-}
-declare module "shorter-js/src/strings/bezierEasings" {
-    export default bezierEasings;
-    /**
-     * A global namespace for predefined
-     * CSS3 'cubic-bezier()' easing functions.
-     * @type {object}
-     */
-    const bezierEasings: object;
+    const mouseSwipeEvents: Record<string, string>;
 }
 declare module "shorter-js/src/strings/animationDuration" {
     export default animationDuration;
@@ -194,21 +268,14 @@ declare module "shorter-js/src/strings/transitionProperty" {
      */
     const transitionProperty: string;
 }
-declare module "shorter-js/src/boolean/isMobile" {
-    export default isMobile;
+declare module "shorter-js/src/strings/bezierEasings" {
+    export default bezierEasings;
     /**
-     * A global namespace for mobile detection.
-     * @type {boolean}
+     * A global namespace for predefined
+     * CSS3 'cubic-bezier()' easing functions.
+     * @type {Record<string, string>}
      */
-    const isMobile: boolean;
-}
-declare module "shorter-js/src/boolean/support3DTransform" {
-    export default support3DTransform;
-    /**
-     * A global namespace for CSS3 3D transform support.
-     * @type {boolean}
-     */
-    const support3DTransform: boolean;
+    const bezierEasings: Record<string, string>;
 }
 declare module "shorter-js/src/strings/addEventListener" {
     export default addEventListener;
@@ -225,6 +292,174 @@ declare module "shorter-js/src/strings/removeEventListener" {
      * @type {string}
      */
     const removeEventListener: string;
+}
+declare module "shorter-js/src/strings/keyboardEventKeys" {
+    export default keyboardEventKeys;
+    /**
+     * A global namespace for keyboard event keys.
+     * @type {Record<string, string>}
+     */
+    const keyboardEventKeys: Record<string, string>;
+}
+declare module "shorter-js/src/strings/keyAlt" {
+    export default keyAlt;
+    /**
+     * A global namespace for `Alt` key.
+     * @type {string} e.which = 18
+     */
+    const keyAlt: string;
+}
+declare module "shorter-js/src/strings/keyArrowDown" {
+    export default keyArrowDown;
+    /**
+     * A global namespace for `ArrowDown` key.
+     * @type {string} e.which = 40 equivalent
+     */
+    const keyArrowDown: string;
+}
+declare module "shorter-js/src/strings/keyArrowUp" {
+    export default keyArrowUp;
+    /**
+     * A global namespace for `ArrowUp` key.
+     * @type {string} e.which = 38 equivalent
+     */
+    const keyArrowUp: string;
+}
+declare module "shorter-js/src/strings/keyArrowLeft" {
+    export default keyArrowLeft;
+    /**
+     * A global namespace for `ArrowLeft` key.
+     * @type {string} e.which = 37 equivalent
+     */
+    const keyArrowLeft: string;
+}
+declare module "shorter-js/src/strings/keyArrowRight" {
+    export default keyArrowRight;
+    /**
+     * A global namespace for `ArrowRight` key.
+     * @type {string} e.which = 39 equivalent
+     */
+    const keyArrowRight: string;
+}
+declare module "shorter-js/src/strings/keyBackspace" {
+    export default keyBackspace;
+    /**
+     * A global namespace for `Backspace` key.
+     * @type {string} e.which === 8 equivalent
+     */
+    const keyBackspace: string;
+}
+declare module "shorter-js/src/strings/keyCapsLock" {
+    export default keyCapsLock;
+    /**
+     * A global namespace for `CapsLock` key.
+     * @type {string} e.which = 20 equivalent
+     */
+    const keyCapsLock: string;
+}
+declare module "shorter-js/src/strings/keyControl" {
+    export default keyControl;
+    /**
+     * A global namespace for `Control` key.
+     * @type {string} e.which = 17
+     */
+    const keyControl: string;
+}
+declare module "shorter-js/src/strings/keyDelete" {
+    export default keyDelete;
+    /**
+     * A global namespace for `Delete` key.
+     * @type {string} e.which = 46 equivalent
+     */
+    const keyDelete: string;
+}
+declare module "shorter-js/src/strings/keyEnter" {
+    export default keyEnter;
+    /**
+     * A global namespace for `Enter` key.
+     * @type {string} e.which = 13 equivalent
+     */
+    const keyEnter: string;
+}
+declare module "shorter-js/src/strings/keyInsert" {
+    export default keyInsert;
+    /**
+     * A global namespace for `Insert` key.
+     * @type {string} e.which = 45 equivalent
+     */
+    const keyInsert: string;
+}
+declare module "shorter-js/src/strings/keyMeta" {
+    export default keyMeta;
+    /**
+     * A global namespace for `Meta` key.
+     * @type {string} e.which = 93 equivalent
+     */
+    const keyMeta: string;
+}
+declare module "shorter-js/src/strings/keyPause" {
+    export default keyPause;
+    /**
+     * A global namespace for `Pause` key.
+     * @type {string} e.which = 19
+     */
+    const keyPause: string;
+}
+declare module "shorter-js/src/strings/keyScrollLock" {
+    export default keyScrollLock;
+    /**
+     * A global namespace for `ScrollLock` key.
+     * @type {string} e.which = 145 equivalent
+     */
+    const keyScrollLock: string;
+}
+declare module "shorter-js/src/strings/keyShift" {
+    export default keyShift;
+    /**
+     * A global namespace for `Shift` key.
+     * @type {string} e.which = 16
+     */
+    const keyShift: string;
+}
+declare module "shorter-js/src/strings/keySpace" {
+    export default keySpace;
+    /**
+     * A global namespace for `Space` key.
+     * @type {string} e.which = 32 equivalent
+     */
+    const keySpace: string;
+}
+declare module "shorter-js/src/strings/keyTab" {
+    export default keyTab;
+    /**
+     * A global namespace for `Tab` key.
+     * @type {string} e.which = 9 equivalent
+     */
+    const keyTab: string;
+}
+declare module "shorter-js/src/boolean/isMobile" {
+    export default isMobile;
+    /**
+     * A global namespace for mobile detection.
+     * @type {boolean}
+     */
+    const isMobile: boolean;
+}
+declare module "shorter-js/src/boolean/isApple" {
+    export default isApple;
+    /**
+     * A global namespace for Apple browsers.
+     * @type {boolean}
+     */
+    const isApple: boolean;
+}
+declare module "shorter-js/src/boolean/support3DTransform" {
+    export default support3DTransform;
+    /**
+     * A global namespace for CSS3 3D transform support.
+     * @type {boolean}
+     */
+    const support3DTransform: boolean;
 }
 declare module "shorter-js/src/boolean/supportPassive" {
     export default supportPassive;
@@ -330,16 +565,16 @@ declare module "shorter-js/src/event/one" {
 }
 declare module "shorter-js/src/misc/isElement" {
     /**
-     * Checks if an element is an `Element`.
+     * Checks if an object is an `Element`.
      *
-     * @param {any} element the target element
+     * @param {any} element the target object
      * @returns {boolean} the query result
      */
     export default function isElement(element: any): boolean;
 }
 declare module "shorter-js/src/misc/queryElement" {
     /**
-     * Utility to check if target is typeof Element
+     * Utility to check if target is typeof `Element`
      * or find one that matches a selector.
      *
      * @param {Element | string} selector the input selector or target element
@@ -360,7 +595,7 @@ declare module "shorter-js/src/misc/data" {
 }
 declare module "shorter-js/src/misc/getElementAnimationDelay" {
     /**
-     * Utility to get the computed animationDelay
+     * Utility to get the computed `animationDelay`
      * from Element in miliseconds.
      *
      * @param {Element} element target
@@ -370,7 +605,7 @@ declare module "shorter-js/src/misc/getElementAnimationDelay" {
 }
 declare module "shorter-js/src/misc/getElementAnimationDuration" {
     /**
-     * Utility to get the computed animationDuration
+     * Utility to get the computed `animationDuration`
      * from Element in miliseconds.
      *
      * @param {Element} element target
@@ -384,13 +619,13 @@ declare module "shorter-js/src/misc/emulateAnimationEnd" {
      * called when animation ends.
      *
      * @param {Element} element target
-     * @param {function} handler `animationend` callback
+     * @param {EventListener} handler `animationend` callback
      */
-    export default function emulateAnimationEnd(element: Element, handler: Function): void;
+    export default function emulateAnimationEnd(element: Element, handler: EventListener): void;
 }
 declare module "shorter-js/src/misc/getElementTransitionDelay" {
     /**
-     * Utility to get the computed transitionDelay
+     * Utility to get the computed `transitionDelay`
      * from Element in miliseconds.
      *
      * @param {Element} element target
@@ -400,7 +635,7 @@ declare module "shorter-js/src/misc/getElementTransitionDelay" {
 }
 declare module "shorter-js/src/misc/getElementTransitionDuration" {
     /**
-     * Utility to get the computed transitionDuration
+     * Utility to get the computed `transitionDuration`
      * from Element in miliseconds.
      *
      * @param {Element} element target
@@ -414,13 +649,9 @@ declare module "shorter-js/src/misc/emulateTransitionEnd" {
      * called when transition ends.
      *
      * @param {Element} element target
-     * @param {function} handler `transitionend` callback
+     * @param {EventListener} handler `transitionend` callback
      */
-    export default function emulateTransitionEnd(element: Element, handler: Function): void;
-}
-declare module "shorter-js/src/boolean/isApple" {
-    export default isApple;
-    const isApple: boolean;
+    export default function emulateTransitionEnd(element: Element, handler: EventListener): void;
 }
 declare module "shorter-js/src/misc/isElementInScrollRange" {
     /**
@@ -446,7 +677,7 @@ declare module "shorter-js/src/misc/isHTMLElement" {
     /**
      * Checks if an element is an `HTMLElement`.
      *
-     * @param {any} element the target element
+     * @param {any} element the target object
      * @returns {boolean} the query result
      */
     export default function isHTMLElement(element: any): boolean;
@@ -455,15 +686,15 @@ declare module "shorter-js/src/misc/isMedia" {
     /**
      * Checks if an element is an `<svg>`, `<img>` or `<video>`.
      * *Tooltip* / *Popover* works different with media elements.
-     * @param {Element} element the target element
+     * @param {any} element the target element
      * @returns {boolean} the query result
      */
-    export default function isMedia(element: Element): boolean;
+    export default function isMedia(element: any): boolean;
 }
 declare module "shorter-js/src/misc/isRTL" {
     export default isRTL;
     /**
-     * Stores a global namespace for Right To Left pages.
+     * Checks if a page is Right To Left.
      * @returns {boolean} the query result
      */
     function isRTL(): boolean;
@@ -500,12 +731,12 @@ declare module "shorter-js/src/misc/normalizeOptions" {
      * Utility to normalize component options
      *
      * @param {Element} element target
-     * @param {object} defaultOps component default options
-     * @param {object} inputOps component instance options
-     * @param {string} ns component namespace
-     * @return {object} normalized component options object
+     * @param {Record<string, any>} defaultOps component default options
+     * @param {Record<string, any>} inputOps component instance options
+     * @param {string=} ns component namespace
+     * @return {Record<string, any>} normalized component options object
      */
-    export default function normalizeOptions(element: Element, defaultOps: object, inputOps: object, ns: string): object;
+    export default function normalizeOptions(element: Element, defaultOps: Record<string, any>, inputOps: Record<string, any>, ns?: string | undefined): Record<string, any>;
 }
 declare module "shorter-js/src/misc/tryWrapper" {
     /**
@@ -518,10 +749,10 @@ declare module "shorter-js/src/misc/tryWrapper" {
 }
 declare module "shorter-js/src/misc/reflow" {
     /**
-     * Utility to force re-paint of an Element
+     * Utility to force re-paint of an `Element` target.
      *
      * @param {Element | HTMLElement} element is the target
-     * @return {number} the Element.offsetHeight value
+     * @return {number} the `Element.offsetHeight` value
      */
     export default function reflow(element: Element | HTMLElement): number;
 }
@@ -544,11 +775,21 @@ declare module "shorter-js/types/module/shorter" {
     export { default as ariaPressed } from "shorter-js/src/strings/ariaPressed";
     export { default as ariaSelected } from "shorter-js/src/strings/ariaSelected";
     export { default as mouseClickEvents } from "shorter-js/src/strings/mouseClickEvents";
+    export { default as mouseclickEvent } from "shorter-js/src/strings/mouseclickEvent";
+    export { default as mousedownEvent } from "shorter-js/src/strings/mousedownEvent";
+    export { default as mouseupEvent } from "shorter-js/src/strings/mouseupEvent";
     export { default as mouseHoverEvents } from "shorter-js/src/strings/mouseHoverEvents";
+    export { default as mouseenterEvent } from "shorter-js/src/strings/mouseenterEvent";
+    export { default as mouseleaveEvent } from "shorter-js/src/strings/mouseleaveEvent";
     export { default as touchEvents } from "shorter-js/src/strings/touchEvents";
+    export { default as touchstartEvent } from "shorter-js/src/strings/touchstartEvent";
+    export { default as touchmoveEvent } from "shorter-js/src/strings/touchmoveEvent";
+    export { default as touchcancelEvent } from "shorter-js/src/strings/touchcancelEvent";
+    export { default as touchendEvent } from "shorter-js/src/strings/touchendEvent";
     export { default as focusEvents } from "shorter-js/src/strings/focusEvents";
+    export { default as focusinEvent } from "shorter-js/src/strings/focusinEvent";
+    export { default as focusoutEvent } from "shorter-js/src/strings/focusoutEvent";
     export { default as mouseSwipeEvents } from "shorter-js/src/strings/mouseSwipeEvents";
-    export { default as bezierEasings } from "shorter-js/src/strings/bezierEasings";
     export { default as animationDuration } from "shorter-js/src/strings/animationDuration";
     export { default as animationDelay } from "shorter-js/src/strings/animationDelay";
     export { default as animationName } from "shorter-js/src/strings/animationName";
@@ -557,15 +798,35 @@ declare module "shorter-js/types/module/shorter" {
     export { default as transitionDelay } from "shorter-js/src/strings/transitionDelay";
     export { default as transitionEndEvent } from "shorter-js/src/strings/transitionEndEvent";
     export { default as transitionProperty } from "shorter-js/src/strings/transitionProperty";
+    export { default as bezierEasings } from "shorter-js/src/strings/bezierEasings";
+    export { default as addEventListener } from "shorter-js/src/strings/addEventListener";
+    export { default as removeEventListener } from "shorter-js/src/strings/removeEventListener";
+    export { default as keyboardEventKeys } from "shorter-js/src/strings/keyboardEventKeys";
+    export { default as keyAlt } from "shorter-js/src/strings/keyAlt";
+    export { default as keyArrowDown } from "shorter-js/src/strings/keyArrowDown";
+    export { default as keyArrowUp } from "shorter-js/src/strings/keyArrowUp";
+    export { default as keyArrowLeft } from "shorter-js/src/strings/keyArrowLeft";
+    export { default as keyArrowRight } from "shorter-js/src/strings/keyArrowRight";
+    export { default as keyBackspace } from "shorter-js/src/strings/keyBackspace";
+    export { default as keyCapsLock } from "shorter-js/src/strings/keyCapsLock";
+    export { default as keyControl } from "shorter-js/src/strings/keyControl";
+    export { default as keyDelete } from "shorter-js/src/strings/keyDelete";
+    export { default as keyEnter } from "shorter-js/src/strings/keyEnter";
+    export { default as keyInsert } from "shorter-js/src/strings/keyInsert";
+    export { default as keyMeta } from "shorter-js/src/strings/keyMeta";
+    export { default as keyPause } from "shorter-js/src/strings/keyPause";
+    export { default as keyScrollLock } from "shorter-js/src/strings/keyScrollLock";
+    export { default as keyShift } from "shorter-js/src/strings/keyShift";
+    export { default as keySpace } from "shorter-js/src/strings/keySpace";
+    export { default as keyTab } from "shorter-js/src/strings/keyTab";
     export { default as isMobile } from "shorter-js/src/boolean/isMobile";
+    export { default as isApple } from "shorter-js/src/boolean/isApple";
     export { default as support3DTransform } from "shorter-js/src/boolean/support3DTransform";
     export { default as supportPassive } from "shorter-js/src/boolean/supportPassive";
     export { default as supportTransform } from "shorter-js/src/boolean/supportTransform";
     export { default as supportTouch } from "shorter-js/src/boolean/supportTouch";
     export { default as supportAnimation } from "shorter-js/src/boolean/supportAnimation";
     export { default as supportTransition } from "shorter-js/src/boolean/supportTransition";
-    export { default as addEventListener } from "shorter-js/src/strings/addEventListener";
-    export { default as removeEventListener } from "shorter-js/src/strings/removeEventListener";
     export { default as addClass } from "shorter-js/src/class/addClass";
     export { default as removeClass } from "shorter-js/src/class/removeClass";
     export { default as hasClass } from "shorter-js/src/class/hasClass";
@@ -575,7 +836,6 @@ declare module "shorter-js/types/module/shorter" {
     export { default as Data, getInstance } from "shorter-js/src/misc/data";
     export { default as emulateAnimationEnd } from "shorter-js/src/misc/emulateAnimationEnd";
     export { default as emulateTransitionEnd } from "shorter-js/src/misc/emulateTransitionEnd";
-    export { default as isApple } from "shorter-js/src/boolean/isApple";
     export { default as isElement } from "shorter-js/src/misc/isElement";
     export { default as isElementInScrollRange } from "shorter-js/src/misc/isElementInScrollRange";
     export { default as isElementInViewport } from "shorter-js/src/misc/isElementInViewport";

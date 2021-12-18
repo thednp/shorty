@@ -7,7 +7,7 @@ import getElementAnimationDuration from './getElementAnimationDuration';
  * called when animation ends.
  *
  * @param {Element} element target
- * @param {function} handler `animationend` callback
+ * @param {EventListener} handler `animationend` callback
  */
 export default function emulateAnimationEnd(element, handler) {
   let called = 0;
@@ -19,7 +19,6 @@ export default function emulateAnimationEnd(element, handler) {
     /**
      * Wrap the handler in on -> off callback
      * @param {Event} e Event object
-     * @callback
      */
     const animationEndWrapper = (e) => {
       if (e.target === element) {

@@ -1,7 +1,7 @@
 import isElement from './isElement';
 
 /**
- * Utility to check if target is typeof Element
+ * Utility to check if target is typeof `Element`
  * or find one that matches a selector.
  *
  * @param {Element | string} selector the input selector or target element
@@ -10,6 +10,6 @@ import isElement from './isElement';
  */
 export default function queryElement(selector, parent) {
   const lookUp = parent && isElement(parent) ? parent : document;
-  // @ts-ignore
+  // @ts-ignore -- `isElement` is just as good
   return isElement(selector) ? selector : lookUp.querySelector(selector);
 }

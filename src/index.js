@@ -10,10 +10,22 @@ import ariaPressed from './strings/ariaPressed';
 import ariaSelected from './strings/ariaSelected';
 
 import mouseClickEvents from './strings/mouseClickEvents';
+import mouseclickEvent from './strings/mouseclickEvent';
+import mousedownEvent from './strings/mousedownEvent';
+import mouseupEvent from './strings/mouseupEvent';
 import mouseHoverEvents from './strings/mouseHoverEvents';
+import mouseenterEvent from './strings/mouseenterEvent';
+import mouseleaveEvent from './strings/mouseleaveEvent';
 import touchEvents from './strings/touchEvents';
+import touchstartEvent from './strings/touchstartEvent';
+import touchmoveEvent from './strings/touchmoveEvent';
+import touchcancelEvent from './strings/touchcancelEvent';
+import touchendEvent from './strings/touchendEvent';
 import focusEvents from './strings/focusEvents';
+import focusinEvent from './strings/focusinEvent';
+import focusoutEvent from './strings/focusoutEvent';
 import mouseSwipeEvents from './strings/mouseSwipeEvents';
+
 import animationDuration from './strings/animationDuration';
 import animationDelay from './strings/animationDelay';
 import animationEndEvent from './strings/animationEndEvent';
@@ -25,6 +37,25 @@ import transitionEndEvent from './strings/transitionEndEvent';
 import bezierEasings from './strings/bezierEasings';
 import addEventListener from './strings/addEventListener';
 import removeEventListener from './strings/removeEventListener';
+
+import keyboardEventKeys from './strings/keyboardEventKeys';
+import keyAlt from './strings/keyAlt';
+import keyArrowDown from './strings/keyArrowDown';
+import keyArrowUp from './strings/keyArrowUp';
+import keyArrowLeft from './strings/keyArrowLeft';
+import keyArrowRight from './strings/keyArrowRight';
+import keyBackspace from './strings/keyBackspace';
+import keyCapsLock from './strings/keyCapsLock';
+import keyControl from './strings/keyControl';
+import keyDelete from './strings/keyDelete';
+import keyEnter from './strings/keyEnter';
+import keyInsert from './strings/keyInsert';
+import keyMeta from './strings/keyMeta';
+import keyPause from './strings/keyPause';
+import keyScrollLock from './strings/keyScrollLock';
+import keyShift from './strings/keyShift';
+import keySpace from './strings/keySpace';
+import keyTab from './strings/keyTab';
 
 // boolean
 import isMobile from './boolean/isMobile';
@@ -80,9 +111,20 @@ const SHORTER = {
   ariaPressed,
   ariaSelected,
   mouseClickEvents,
+  mouseclickEvent,
+  mousedownEvent,
+  mouseupEvent,
   mouseHoverEvents,
+  mouseenterEvent,
+  mouseleaveEvent,
   touchEvents,
+  touchstartEvent,
+  touchmoveEvent,
+  touchcancelEvent,
+  touchendEvent,
   focusEvents,
+  focusinEvent,
+  focusoutEvent,
   mouseSwipeEvents,
   bezierEasings,
   animationDuration,
@@ -103,6 +145,24 @@ const SHORTER = {
   supportTransition,
   addEventListener,
   removeEventListener,
+  keyboardEventKeys,
+  keyAlt,
+  keyArrowDown,
+  keyArrowLeft,
+  keyArrowRight,
+  keyArrowUp,
+  keyBackspace,
+  keyCapsLock,
+  keyControl,
+  keyDelete,
+  keyEnter,
+  keyInsert,
+  keyMeta,
+  keyPause,
+  keyScrollLock,
+  keyShift,
+  keySpace,
+  keyTab,
   addClass,
   removeClass,
   hasClass,

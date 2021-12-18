@@ -1,7 +1,7 @@
 /**
- * Checks if an element is an `Element`.
+ * Checks if an object is an `Element`.
  *
- * @param {any} element the target element
+ * @param {any} element the target object
  * @returns {boolean} the query result
  */
 export default function isElement(element) {

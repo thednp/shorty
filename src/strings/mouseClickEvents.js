@@ -1,6 +1,6 @@
 /**
  * A global namespace for mouse click events.
- * @type {{down: string, up: string}}
+ * @type {Record<string, string>}
  */
 const mouseClickEvents = { down: 'mousedown', up: 'mouseup' };
 export default mouseClickEvents;
