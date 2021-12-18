@@ -1,5 +1,5 @@
 /*!
-* shorter-js v0.2.18 (https://github.com/thednp/shorter-js)
+* shorter-js v0.2.19 (https://github.com/thednp/shorter-js)
 * Copyright 2019-2021 © dnp_theme
 * Licensed under MIT (https://github.com/thednp/shorter-js/blob/master/LICENSE)
 */
@@ -150,6 +150,12 @@
    * @type {string}
    */
   var resetEvent = 'reset';
+
+  /**
+   * A global namespace for `resize` event.
+   * @type {string}
+   */
+  var resizeEvent = 'resize';
 
   /**
    * A global namespace for `scroll` event.
@@ -1303,7 +1309,7 @@
       : computedStyle;
   }
 
-  var version = "0.2.18";
+  var version = "0.2.19";
 
   // @ts-ignore
 
@@ -1332,6 +1338,7 @@
     changeEvent: changeEvent,
     errorEvent: errorEvent,
     resetEvent: resetEvent,
+    resizeEvent: resizeEvent,
     scrollEvent: scrollEvent,
     submitEvent: submitEvent,
     loadEvent: loadEvent,

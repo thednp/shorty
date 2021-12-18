@@ -17,6 +17,7 @@ export { default as moveEvent } from "shorter-js/src/strings/moveEvent";
 export { default as changeEvent } from "shorter-js/src/strings/changeEvent";
 export { default as errorEvent } from "shorter-js/src/strings/errorEvent";
 export { default as resetEvent } from "shorter-js/src/strings/resetEvent";
+export { default as resizeEvent } from "shorter-js/src/strings/resizeEvent";
 export { default as scrollEvent } from "shorter-js/src/strings/scrollEvent";
 export { default as submitEvent } from "shorter-js/src/strings/submitEvent";
 export { default as loadEvent } from "shorter-js/src/strings/loadEvent";

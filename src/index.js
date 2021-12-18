@@ -16,6 +16,7 @@ import moveEvent from './strings/moveEvent';
 import changeEvent from './strings/changeEvent';
 import errorEvent from './strings/errorEvent';
 import resetEvent from './strings/resetEvent';
+import resizeEvent from './strings/resizeEvent';
 import scrollEvent from './strings/scrollEvent';
 import submitEvent from './strings/submitEvent';
 import loadEvent from './strings/loadEvent';
@@ -174,6 +175,7 @@ const SHORTER = {
   changeEvent,
   errorEvent,
   resetEvent,
+  resizeEvent,
   scrollEvent,
   submitEvent,
   loadEvent,

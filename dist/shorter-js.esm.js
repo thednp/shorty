@@ -1,5 +1,5 @@
 /*!
-* shorter-js v0.2.18 (https://github.com/thednp/shorter-js)
+* shorter-js v0.2.19 (https://github.com/thednp/shorter-js)
 * Copyright 2019-2021 © dnp_theme
 * Licensed under MIT (https://github.com/thednp/shorter-js/blob/master/LICENSE)
 */
@@ -145,6 +145,12 @@ const errorEvent = 'error';
  * @type {string}
  */
 const resetEvent = 'reset';
+
+/**
+ * A global namespace for `resize` event.
+ * @type {string}
+ */
+const resizeEvent = 'resize';
 
 /**
  * A global namespace for `scroll` event.
@@ -1298,7 +1304,7 @@ function getElementStyle(element, property) {
     : computedStyle;
 }
 
-var version = "0.2.18";
+var version = "0.2.19";
 
 // @ts-ignore
 
@@ -1327,6 +1333,7 @@ const SHORTER = {
   changeEvent,
   errorEvent,
   resetEvent,
+  resizeEvent,
   scrollEvent,
   submitEvent,
   loadEvent,

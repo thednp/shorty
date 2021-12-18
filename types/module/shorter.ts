@@ -16,6 +16,7 @@ export { default as moveEvent } from "../../src/strings/moveEvent";
 export { default as changeEvent } from "../../src/strings/changeEvent";
 export { default as errorEvent } from "../../src/strings/errorEvent";
 export { default as resetEvent } from "../../src/strings/resetEvent";
+export { default as resizeEvent } from "../../src/strings/resizeEvent";
 export { default as scrollEvent } from "../../src/strings/scrollEvent";
 export { default as submitEvent } from "../../src/strings/submitEvent";
 export { default as loadEvent } from "../../src/strings/loadEvent";
