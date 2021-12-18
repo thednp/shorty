@@ -1,5 +1,5 @@
 /*!
-* shorter-js v0.2.17 (https://github.com/thednp/shorter-js)
+* shorter-js v0.2.18 (https://github.com/thednp/shorter-js)
 * Copyright 2019-2021 © dnp_theme
 * Licensed under MIT (https://github.com/thednp/shorter-js/blob/master/LICENSE)
 */
@@ -58,6 +58,181 @@ const ariaPressed = 'aria-pressed';
 const ariaSelected = 'aria-selected';
 
 /**
+ * A global namespace for all browser native events.
+ * @type {string[]}
+ */
+const nativeEvents = [
+  'click',
+  'dblclick',
+  'mouseup',
+  'mousedown',
+  'contextmenu',
+  'mousewheel',
+  'DOMMouseScroll',
+  'mouseover',
+  'mouseout',
+  'mousemove',
+  'selectstart',
+  'selectend',
+  'keydown',
+  'keypress',
+  'keyup',
+  'orientationchange',
+  'touchstart',
+  'touchmove',
+  'touchend',
+  'touchcancel',
+  'pointercancel',
+  'pointerdown',
+  'pointerleave',
+  'pointermove',
+  'pointerup',
+  'gesturestart',
+  'gesturechange',
+  'gestureend',
+  'focus',
+  'blur',
+  'change',
+  'reset',
+  'select',
+  'submit',
+  'focusin',
+  'focusout',
+  'load',
+  'unload',
+  'beforeunload',
+  'resize',
+  'move',
+  'DOMContentLoaded',
+  'readystatechange',
+  'error',
+  'abort',
+  'scroll',
+];
+
+/**
+ * A global namespace for `abort` event.
+ * @type {string}
+ */
+const abortEvent = 'abort';
+
+/**
+ * A global namespace for `blur` event.
+ * @type {string}
+ */
+const blurEvent = 'blur';
+
+/**
+ * A global namespace for `move` event.
+ * @type {string}
+ */
+const moveEvent = 'move';
+
+/**
+ * A global namespace for `change` event.
+ * @type {string}
+ */
+const changeEvent = 'change';
+
+/**
+ * A global namespace for `error` event.
+ * @type {string}
+ */
+const errorEvent = 'error';
+
+/**
+ * A global namespace for `reset` event.
+ * @type {string}
+ */
+const resetEvent = 'reset';
+
+/**
+ * A global namespace for `scroll` event.
+ * @type {string}
+ */
+const scrollEvent = 'scroll';
+
+/**
+ * A global namespace for `submit` event.
+ * @type {string}
+ */
+const submitEvent = 'submit';
+
+/**
+ * A global namespace for `load` event.
+ * @type {string}
+ */
+const loadEvent = 'load';
+
+/**
+ * A global namespace for `unload` event.
+ * @type {string}
+ */
+const unloadEvent = 'unload';
+
+/**
+ * A global namespace for `readystatechange` event.
+ * @type {string}
+ */
+const readystatechangeEvent = 'readystatechange';
+
+/**
+ * A global namespace for `beforeunload` event.
+ * @type {string}
+ */
+const beforeunloadEvent = 'beforeunload';
+
+/**
+ * A global namespace for `orientationchange` event.
+ * @type {string}
+ */
+const orientationchangeEvent = 'orientationchange';
+
+/**
+ * A global namespace for `contextmenu` event.
+ * @type {string}
+ */
+const contextmenuEvent = 'contextmenu';
+
+/**
+ * A global namespace for `DOMContentLoaded` event.
+ * @type {string}
+ */
+const DOMContentLoadedEvent = 'DOMContentLoaded';
+
+/**
+ * A global namespace for `DOMMouseScroll` event.
+ * @type {string}
+ */
+const DOMMouseScrollEvent = 'DOMMouseScroll';
+
+/**
+ * A global namespace for `select` event.
+ * @type {string}
+ */
+const selectEvent = 'select';
+
+/**
+ * A global namespace for the `selectend` event.
+ * @type {string}
+ */
+const selectendEvent = 'selectend';
+
+/**
+ * A global namespace for the `selectstart` event.
+ * @type {string}
+ */
+const selectstartEvent = 'selectstart';
+
+/**
+ * A global namespace for mouse events equivalent to touch events.
+ * @type {Record<string, string>}
+ */
+const mouseSwipeEvents = {
+  start: 'mousedown', end: 'mouseup', move: 'mousemove', cancel: 'mouseleave',
+};
+
+/**
  * A global namespace for mouse click events.
  * @type {Record<string, string>}
  */
@@ -68,6 +243,12 @@ const mouseClickEvents = { down: 'mousedown', up: 'mouseup' };
  * @type {string}
  */
 const mouseclickEvent = 'click';
+
+/**
+ * A global namespace for `dblclick` event.
+ * @type {string}
+ */
+const mousedblclickEvent = 'dblclick';
 
 /**
  * A global namespace for `mousedown` event.
@@ -98,6 +279,24 @@ const mouseenterEvent = 'mouseenter';
  * @type {string}
  */
 const mouseleaveEvent = 'mouseleave';
+
+/**
+ * A global namespace for `mousein` event.
+ * @type {string}
+ */
+const mouseinEvent = 'mousein';
+
+/**
+ * A global namespace for `mouseout` event.
+ * @type {string}
+ */
+const mouseoutEvent = 'mouseout';
+
+/**
+ * A global namespace for `mousewheel` event.
+ * @type {string}
+ */
+const mousewheelEvent = 'mousewheel';
 
 /**
  * A global namespace for touch events.
@@ -132,10 +331,46 @@ const touchcancelEvent = 'touchcancel';
 const touchendEvent = 'touchend';
 
 /**
+ * A global namespace for `pointercancel` event.
+ * @type {string}
+ */
+const pointercancelEvent = 'pointercancel';
+
+/**
+ * A global namespace for `pointerdown` event.
+ * @type {string}
+ */
+const pointerdownEvent = 'pointerdown';
+
+/**
+ * A global namespace for `pointerleave` event.
+ * @type {string}
+ */
+const pointerleaveEvent = 'pointerleave';
+
+/**
+ * A global namespace for `pointermove` event.
+ * @type {string}
+ */
+const pointermoveEvent = 'pointermove';
+
+/**
+ * A global namespace for `pointerup` event.
+ * @type {string}
+ */
+const pointerupEvent = 'pointerup';
+
+/**
  * A global namespace for focus event names.
  * @type {{in: string, out: string}}
  */
 const focusEvents = { in: 'focusin', out: 'focusout' };
+
+/**
+ * A global namespace for `focus` event.
+ * @type {string}
+ */
+const focusEvent = 'focus';
 
 /**
  * A global namespace for `focusin` event.
@@ -150,105 +385,22 @@ const focusinEvent = 'focusin';
 const focusoutEvent = 'focusout';
 
 /**
- * A global namespace for mouse events equivalent to touch events.
- * @type {Record<string, string>}
- */
-const mouseSwipeEvents = {
-  start: 'mousedown', end: 'mouseup', move: 'mousemove', cancel: 'mouseleave',
-};
-
-/**
- * A global namespace for 'animationDuration' string.
+ * A global namespace for `gesturechange` event.
  * @type {string}
  */
-const animationDuration = 'webkitAnimation' in document.head.style ? 'webkitAnimationDuration' : 'animationDuration';
+const gesturechangeEvent = 'gesturechange';
 
 /**
- * A global namespace for 'animationDelay' string.
+ * A global namespace for `gestureend` event.
  * @type {string}
  */
-const animationDelay = 'webkitAnimation' in document.head.style ? 'webkitAnimationDelay' : 'animationDelay';
+const gestureendEvent = 'gestureend';
 
 /**
- * A global namespace for 'animationend' string.
+ * A global namespace for `gesturestart` event.
  * @type {string}
  */
-const animationEndEvent = 'webkitAnimation' in document.head.style ? 'webkitAnimationEnd' : 'animationend';
-
-/**
- * A global namespace for 'animationName' string.
- * @type {string}
- */
-const animationName = 'webkitAnimation' in document.head.style ? 'webkitAnimationName' : 'animationName';
-
-/**
- * A global namespace for 'transitionDuration' string.
- * @type {string}
- */
-const transitionDuration = 'webkitTransition' in document.head.style ? 'webkitTransitionDuration' : 'transitionDuration';
-
-/**
- * A global namespace for 'transitionProperty' string.
- * @type {string}
- */
-const transitionProperty = 'webkitTransition' in document.head.style ? 'webkitTransitionProperty' : 'transitionProperty';
-
-/**
- * A global namespace for 'transitionDelay' string.
- * @type {string}
- */
-const transitionDelay = 'webkitTransition' in document.head.style ? 'webkitTransitionDelay' : 'transitionDelay';
-
-/**
- * A global namespace for 'transitionend' string.
- * @type {string}
- */
-const transitionEndEvent = 'webkitTransition' in document.head.style ? 'webkitTransitionEnd' : 'transitionend';
-
-/**
- * A global namespace for predefined
- * CSS3 'cubic-bezier()' easing functions.
- * @type {Record<string, string>}
- */
-const bezierEasings = {
-  linear: 'linear',
-  easingSinusoidalIn: 'cubic-bezier(0.47,0,0.745,0.715)',
-  easingSinusoidalOut: 'cubic-bezier(0.39,0.575,0.565,1)',
-  easingSinusoidalInOut: 'cubic-bezier(0.445,0.05,0.55,0.95)',
-  easingQuadraticIn: 'cubic-bezier(0.550,0.085,0.680,0.530)',
-  easingQuadraticOut: 'cubic-bezier(0.250,0.460,0.450,0.940)',
-  easingQuadraticInOut: 'cubic-bezier(0.455,0.030,0.515,0.955)',
-  easingCubicIn: 'cubic-bezier(0.55,0.055,0.675,0.19)',
-  easingCubicOut: 'cubic-bezier(0.215,0.61,0.355,1)',
-  easingCubicInOut: 'cubic-bezier(0.645,0.045,0.355,1)',
-  easingQuarticIn: 'cubic-bezier(0.895,0.03,0.685,0.22)',
-  easingQuarticOut: 'cubic-bezier(0.165,0.84,0.44,1)',
-  easingQuarticInOut: 'cubic-bezier(0.77,0,0.175,1)',
-  easingQuinticIn: 'cubic-bezier(0.755,0.05,0.855,0.06)',
-  easingQuinticOut: 'cubic-bezier(0.23,1,0.32,1)',
-  easingQuinticInOut: 'cubic-bezier(0.86,0,0.07,1)',
-  easingExponentialIn: 'cubic-bezier(0.95,0.05,0.795,0.035)',
-  easingExponentialOut: 'cubic-bezier(0.19,1,0.22,1)',
-  easingExponentialInOut: 'cubic-bezier(1,0,0,1)',
-  easingCircularIn: 'cubic-bezier(0.6,0.04,0.98,0.335)',
-  easingCircularOut: 'cubic-bezier(0.075,0.82,0.165,1)',
-  easingCircularInOut: 'cubic-bezier(0.785,0.135,0.15,0.86)',
-  easingBackIn: 'cubic-bezier(0.6,-0.28,0.735,0.045)',
-  easingBackOut: 'cubic-bezier(0.175,0.885,0.32,1.275)',
-  easingBackInOut: 'cubic-bezier(0.68,-0.55,0.265,1.55)',
-};
-
-/**
- * A global namespace for 'addEventListener' string.
- * @type {string}
- */
-const addEventListener = 'addEventListener';
-
-/**
- * A global namespace for 'removeEventListener' string.
- * @type {string}
- */
-const removeEventListener = 'removeEventListener';
+const gesturestartEvent = 'gesturestart';
 
 /**
  * A global namespace for keyboard event keys.
@@ -275,6 +427,24 @@ const keyboardEventKeys = {
   ContextMenu: 'ContextMenu', // 93
   ScrollLock: 'ScrollLock', // 145
 };
+
+/**
+ * A global namespace for `keydown` event.
+ * @type {string}
+ */
+const keydownEvent = 'keydown';
+
+/**
+ * A global namespace for `keyup` event.
+ * @type {string}
+ */
+const keyupEvent = 'keyup';
+
+/**
+ * A global namespace for `keypress` event.
+ * @type {string}
+ */
+const keypressEvent = 'keypress';
 
 /**
  * A global namespace for `Alt` key.
@@ -383,6 +553,123 @@ const keySpace = 'Space';
  * @type {string} e.which = 9 equivalent
  */
 const keyTab = 'Tab';
+
+/**
+ * A global namespace for 'animationDuration' string.
+ * @type {string}
+ */
+const animationDuration = 'webkitAnimation' in document.head.style ? 'webkitAnimationDuration' : 'animationDuration';
+
+/**
+ * A global namespace for 'animationDelay' string.
+ * @type {string}
+ */
+const animationDelay = 'webkitAnimation' in document.head.style ? 'webkitAnimationDelay' : 'animationDelay';
+
+/**
+ * A global namespace for 'animationName' string.
+ * @type {string}
+ */
+const animationName = 'webkitAnimation' in document.head.style ? 'webkitAnimationName' : 'animationName';
+
+/**
+ * A global namespace for 'animationend' string.
+ * @type {string}
+ */
+const animationEndEvent = 'webkitAnimation' in document.head.style ? 'webkitAnimationEnd' : 'animationend';
+
+/**
+ * A global namespace for 'transitionDuration' string.
+ * @type {string}
+ */
+const transitionDuration = 'webkitTransition' in document.head.style ? 'webkitTransitionDuration' : 'transitionDuration';
+
+/**
+ * A global namespace for 'transitionDelay' string.
+ * @type {string}
+ */
+const transitionDelay = 'webkitTransition' in document.head.style ? 'webkitTransitionDelay' : 'transitionDelay';
+
+/**
+ * A global namespace for 'transitionend' string.
+ * @type {string}
+ */
+const transitionEndEvent = 'webkitTransition' in document.head.style ? 'webkitTransitionEnd' : 'transitionend';
+
+/**
+ * A global namespace for 'transitionProperty' string.
+ * @type {string}
+ */
+const transitionProperty = 'webkitTransition' in document.head.style ? 'webkitTransitionProperty' : 'transitionProperty';
+
+/**
+ * A global namespace for 'addEventListener' string.
+ * @type {string}
+ */
+const addEventListener = 'addEventListener';
+
+/**
+ * A global namespace for 'removeEventListener' string.
+ * @type {string}
+ */
+const removeEventListener = 'removeEventListener';
+
+/**
+ * A global namespace for predefined
+ * CSS3 'cubic-bezier()' easing functions.
+ * @type {Record<string, string>}
+ */
+const bezierEasings = {
+  linear: 'linear',
+  easingSinusoidalIn: 'cubic-bezier(0.47,0,0.745,0.715)',
+  easingSinusoidalOut: 'cubic-bezier(0.39,0.575,0.565,1)',
+  easingSinusoidalInOut: 'cubic-bezier(0.445,0.05,0.55,0.95)',
+  easingQuadraticIn: 'cubic-bezier(0.550,0.085,0.680,0.530)',
+  easingQuadraticOut: 'cubic-bezier(0.250,0.460,0.450,0.940)',
+  easingQuadraticInOut: 'cubic-bezier(0.455,0.030,0.515,0.955)',
+  easingCubicIn: 'cubic-bezier(0.55,0.055,0.675,0.19)',
+  easingCubicOut: 'cubic-bezier(0.215,0.61,0.355,1)',
+  easingCubicInOut: 'cubic-bezier(0.645,0.045,0.355,1)',
+  easingQuarticIn: 'cubic-bezier(0.895,0.03,0.685,0.22)',
+  easingQuarticOut: 'cubic-bezier(0.165,0.84,0.44,1)',
+  easingQuarticInOut: 'cubic-bezier(0.77,0,0.175,1)',
+  easingQuinticIn: 'cubic-bezier(0.755,0.05,0.855,0.06)',
+  easingQuinticOut: 'cubic-bezier(0.23,1,0.32,1)',
+  easingQuinticInOut: 'cubic-bezier(0.86,0,0.07,1)',
+  easingExponentialIn: 'cubic-bezier(0.95,0.05,0.795,0.035)',
+  easingExponentialOut: 'cubic-bezier(0.19,1,0.22,1)',
+  easingExponentialInOut: 'cubic-bezier(1,0,0,1)',
+  easingCircularIn: 'cubic-bezier(0.6,0.04,0.98,0.335)',
+  easingCircularOut: 'cubic-bezier(0.075,0.82,0.165,1)',
+  easingCircularInOut: 'cubic-bezier(0.785,0.135,0.15,0.86)',
+  easingBackIn: 'cubic-bezier(0.6,-0.28,0.735,0.045)',
+  easingBackOut: 'cubic-bezier(0.175,0.885,0.32,1.275)',
+  easingBackInOut: 'cubic-bezier(0.68,-0.55,0.265,1.55)',
+};
+
+/**
+ * A global namespace for `offsetHeight` property.
+ * @type {string}
+ */
+const offsetHeight = 'offsetHeight';
+
+/**
+ * A global namespace for `offsetWidth` property.
+ * @type {string}
+ */
+const offsetWidth = 'offsetWidth';
+
+/**
+ * A global namespace for `scrollHeight` property.
+ * @type {string}
+ */
+const scrollHeight = 'scrollHeight';
+
+/**
+ * A global namespace for `scrollWidth` property.
+ * @type {string}
+ */
+const scrollWidth = 'scrollWidth';
 
 const mobileBrands = /iPhone|iPad|iPod|Android/i;
 const userAgentStr = 'userAgentData';
@@ -949,7 +1236,69 @@ function reflow(element) {
   return element.offsetHeight;
 }
 
-var version = "0.2.17";
+/**
+ * Shortcut for `Array.from()` static method.
+ * @param  {any[]} arr iterable object value
+ * @returns {Array}
+ */
+const ArrayFrom = (arr) => Array.from(arr);
+
+/**
+ * Shortcut for `Float32Array.from()` static method.
+ * @param  {any[]} arr iterable object value
+ * @returns {Float32Array}
+ */
+const Float32ArrayFrom = (arr) => Float32Array.from(arr);
+
+/**
+ * Shortcut for `Float64Array.from()` static method.
+ * @param  {any[]} arr iterable object value
+ * @returns {Float64Array}
+ */
+const Float64ArrayFrom = (arr) => Float64Array.from(arr);
+
+/**
+ * Shortcut for `Object.assign()` static method.
+ * @param  {Record<string, any>} obj a target object
+ * @param  {Record<string, any>} source a source object
+ */
+const ObjectAssign = (obj, source) => Object.assign(obj, source);
+
+/**
+ * Shortcut for `Object.keys()` static method.
+ * @param  {Record<string, any>} obj a target object
+ * @returns {string[]}
+ */
+const ObjectKeys = (obj) => Object.keys(obj);
+
+/**
+ * Shortcut for `Object.values()` static method.
+ * @param  {Record<string, any>} obj a target object
+ * @returns {any[]}
+ */
+const ObjectValues = (obj) => Object.values(obj);
+
+/**
+ * Shortcut for `window.getComputedStyle(element).propertyName`
+ * static method.
+ * * If `element` parameter is not an `Element`, `getComputedStyle`
+ * throws a `ReferenceError`.
+ * * If no property is defined, the entire `CSSStyleDeclaration`
+ * instance is returned.
+ *
+ * @param {Element} element target
+ * @param {string=} property the css property
+ * @return {string} the css property value
+ */
+function getElementStyle(element, property) {
+  const computedStyle = getComputedStyle(element);
+
+  return property && property in computedStyle
+    ? computedStyle[property]
+    : computedStyle;
+}
+
+var version = "0.2.18";
 
 // @ts-ignore
 
@@ -959,7 +1308,7 @@ var version = "0.2.17";
  */
 const Version = version;
 
-// strings FIRST
+// strings
 
 const SHORTER = {
   ariaChecked,
@@ -971,22 +1320,55 @@ const SHORTER = {
   ariaModal,
   ariaPressed,
   ariaSelected,
+  nativeEvents,
+  abortEvent,
+  blurEvent,
+  moveEvent,
+  changeEvent,
+  errorEvent,
+  resetEvent,
+  scrollEvent,
+  submitEvent,
+  loadEvent,
+  unloadEvent,
+  readystatechangeEvent,
+  beforeunloadEvent,
+  orientationchangeEvent,
+  contextmenuEvent,
+  DOMContentLoadedEvent,
+  DOMMouseScrollEvent,
+  selectEvent,
+  selectendEvent,
+  selectstartEvent,
   mouseClickEvents,
   mouseclickEvent,
+  mousedblclickEvent,
   mousedownEvent,
   mouseupEvent,
   mouseHoverEvents,
   mouseenterEvent,
   mouseleaveEvent,
+  mouseinEvent,
+  mouseoutEvent,
+  mousewheelEvent,
+  mouseSwipeEvents,
   touchEvents,
   touchstartEvent,
   touchmoveEvent,
   touchcancelEvent,
   touchendEvent,
+  pointercancelEvent,
+  pointerdownEvent,
+  pointerleaveEvent,
+  pointermoveEvent,
+  pointerupEvent,
   focusEvents,
+  focusEvent,
   focusinEvent,
   focusoutEvent,
-  mouseSwipeEvents,
+  gesturechangeEvent,
+  gestureendEvent,
+  gesturestartEvent,
   bezierEasings,
   animationDuration,
   animationDelay,
@@ -1007,6 +1389,9 @@ const SHORTER = {
   addEventListener,
   removeEventListener,
   keyboardEventKeys,
+  keydownEvent,
+  keypressEvent,
+  keyupEvent,
   keyAlt,
   keyArrowDown,
   keyArrowLeft,
@@ -1025,6 +1410,10 @@ const SHORTER = {
   keyShift,
   keySpace,
   keyTab,
+  offsetHeight,
+  offsetWidth,
+  scrollHeight,
+  scrollWidth,
   addClass,
   removeClass,
   hasClass,
@@ -1051,6 +1440,13 @@ const SHORTER = {
   normalizeOptions,
   tryWrapper,
   reflow,
+  ArrayFrom,
+  Float32ArrayFrom,
+  Float64ArrayFrom,
+  ObjectAssign,
+  ObjectKeys,
+  ObjectValues,
+  getElementStyle,
   Version,
 };
 

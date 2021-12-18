@@ -1,4 +1,4 @@
-// strings FIRST
+// strings
 import ariaChecked from './strings/ariaChecked';
 import ariaDescribedBy from './strings/ariaDescribedBy';
 import ariaExpanded from './strings/ariaExpanded';
@@ -9,36 +9,66 @@ import ariaModal from './strings/ariaModal';
 import ariaPressed from './strings/ariaPressed';
 import ariaSelected from './strings/ariaSelected';
 
+import nativeEvents from './strings/nativeEvents';
+import abortEvent from './strings/abortEvent';
+import blurEvent from './strings/blurEvent';
+import moveEvent from './strings/moveEvent';
+import changeEvent from './strings/changeEvent';
+import errorEvent from './strings/errorEvent';
+import resetEvent from './strings/resetEvent';
+import scrollEvent from './strings/scrollEvent';
+import submitEvent from './strings/submitEvent';
+import loadEvent from './strings/loadEvent';
+import unloadEvent from './strings/unloadEvent';
+import readystatechangeEvent from './strings/readystatechangeEvent';
+import beforeunloadEvent from './strings/beforeunloadEvent';
+import orientationchangeEvent from './strings/orientationchangeEvent';
+import contextmenuEvent from './strings/contextmenuEvent';
+import DOMContentLoadedEvent from './strings/DOMContentLoadedEvent';
+import DOMMouseScrollEvent from './strings/DOMMouseScrollEvent';
+
+import selectEvent from './strings/selectEvent';
+import selectendEvent from './strings/selectendEvent';
+import selectstartEvent from './strings/selectstartEvent';
+
+import mouseSwipeEvents from './strings/mouseSwipeEvents';
 import mouseClickEvents from './strings/mouseClickEvents';
 import mouseclickEvent from './strings/mouseclickEvent';
+import mousedblclickEvent from './strings/mousedblclickEvent';
 import mousedownEvent from './strings/mousedownEvent';
 import mouseupEvent from './strings/mouseupEvent';
 import mouseHoverEvents from './strings/mouseHoverEvents';
 import mouseenterEvent from './strings/mouseenterEvent';
 import mouseleaveEvent from './strings/mouseleaveEvent';
+import mouseinEvent from './strings/mouseinEvent';
+import mouseoutEvent from './strings/mouseoutEvent';
+import mousewheelEvent from './strings/mousewheelEvent';
+
 import touchEvents from './strings/touchEvents';
 import touchstartEvent from './strings/touchstartEvent';
 import touchmoveEvent from './strings/touchmoveEvent';
 import touchcancelEvent from './strings/touchcancelEvent';
 import touchendEvent from './strings/touchendEvent';
+
+import pointercancelEvent from './strings/pointercancelEvent';
+import pointerdownEvent from './strings/pointerdownEvent';
+import pointerleaveEvent from './strings/pointerleaveEvent';
+import pointermoveEvent from './strings/pointermoveEvent';
+import pointerupEvent from './strings/pointerupEvent';
+
 import focusEvents from './strings/focusEvents';
+import focusEvent from './strings/focusEvent';
 import focusinEvent from './strings/focusinEvent';
 import focusoutEvent from './strings/focusoutEvent';
-import mouseSwipeEvents from './strings/mouseSwipeEvents';
 
-import animationDuration from './strings/animationDuration';
-import animationDelay from './strings/animationDelay';
-import animationEndEvent from './strings/animationEndEvent';
-import animationName from './strings/animationName';
-import transitionDuration from './strings/transitionDuration';
-import transitionProperty from './strings/transitionProperty';
-import transitionDelay from './strings/transitionDelay';
-import transitionEndEvent from './strings/transitionEndEvent';
-import bezierEasings from './strings/bezierEasings';
-import addEventListener from './strings/addEventListener';
-import removeEventListener from './strings/removeEventListener';
+import gesturechangeEvent from './strings/gesturechangeEvent';
+import gestureendEvent from './strings/gestureendEvent';
+import gesturestartEvent from './strings/gesturestartEvent';
 
 import keyboardEventKeys from './strings/keyboardEventKeys';
+import keydownEvent from './strings/keydownEvent';
+import keyupEvent from './strings/keyupEvent';
+import keypressEvent from './strings/keypressEvent';
 import keyAlt from './strings/keyAlt';
 import keyArrowDown from './strings/keyArrowDown';
 import keyArrowUp from './strings/keyArrowUp';
@@ -57,6 +87,24 @@ import keyScrollLock from './strings/keyScrollLock';
 import keyShift from './strings/keyShift';
 import keySpace from './strings/keySpace';
 import keyTab from './strings/keyTab';
+
+import animationDuration from './strings/animationDuration';
+import animationDelay from './strings/animationDelay';
+import animationName from './strings/animationName';
+import animationEndEvent from './strings/animationEndEvent';
+import transitionDuration from './strings/transitionDuration';
+import transitionDelay from './strings/transitionDelay';
+import transitionEndEvent from './strings/transitionEndEvent';
+import transitionProperty from './strings/transitionProperty';
+import addEventListener from './strings/addEventListener';
+import removeEventListener from './strings/removeEventListener';
+
+import bezierEasings from './strings/bezierEasings';
+
+import offsetHeight from './strings/offsetHeight';
+import offsetWidth from './strings/offsetWidth';
+import scrollHeight from './strings/scrollHeight';
+import scrollWidth from './strings/scrollWidth';
 
 // boolean
 import isMobile from './boolean/isMobile';
@@ -82,10 +130,10 @@ import one from './event/one';
 import Data, { getInstance } from './misc/data';
 import emulateAnimationEnd from './misc/emulateAnimationEnd';
 import emulateTransitionEnd from './misc/emulateTransitionEnd';
+import isElement from './misc/isElement';
 import isElementInScrollRange from './misc/isElementInScrollRange';
 import isElementInViewport from './misc/isElementInViewport';
 import isHTMLElement from './misc/isHTMLElement';
-import isElement from './misc/isElement';
 import isMedia from './misc/isMedia';
 import isRTL from './misc/isRTL';
 import passiveHandler from './misc/passiveHandler';
@@ -94,10 +142,18 @@ import getElementAnimationDelay from './misc/getElementAnimationDelay';
 import getElementTransitionDuration from './misc/getElementTransitionDuration';
 import getElementTransitionDelay from './misc/getElementTransitionDelay';
 import queryElement from './misc/queryElement';
-import normalizeOptions from './misc/normalizeOptions';
 import normalizeValue from './misc/normalizeValue';
+import normalizeOptions from './misc/normalizeOptions';
 import tryWrapper from './misc/tryWrapper';
 import reflow from './misc/reflow';
+
+import ArrayFrom from './misc/ArrayFrom';
+import Float32ArrayFrom from './misc/Float32ArrayFrom';
+import Float64ArrayFrom from './misc/Float64ArrayFrom';
+import ObjectAssign from './misc/ObjectAssign';
+import ObjectKeys from './misc/ObjectKeys';
+import ObjectValues from './misc/ObjectValues';
+import getElementStyle from './misc/getElementStyle';
 
 import Version from './misc/version';
 
@@ -111,22 +167,55 @@ const SHORTER = {
   ariaModal,
   ariaPressed,
   ariaSelected,
+  nativeEvents,
+  abortEvent,
+  blurEvent,
+  moveEvent,
+  changeEvent,
+  errorEvent,
+  resetEvent,
+  scrollEvent,
+  submitEvent,
+  loadEvent,
+  unloadEvent,
+  readystatechangeEvent,
+  beforeunloadEvent,
+  orientationchangeEvent,
+  contextmenuEvent,
+  DOMContentLoadedEvent,
+  DOMMouseScrollEvent,
+  selectEvent,
+  selectendEvent,
+  selectstartEvent,
   mouseClickEvents,
   mouseclickEvent,
+  mousedblclickEvent,
   mousedownEvent,
   mouseupEvent,
   mouseHoverEvents,
   mouseenterEvent,
   mouseleaveEvent,
+  mouseinEvent,
+  mouseoutEvent,
+  mousewheelEvent,
+  mouseSwipeEvents,
   touchEvents,
   touchstartEvent,
   touchmoveEvent,
   touchcancelEvent,
   touchendEvent,
+  pointercancelEvent,
+  pointerdownEvent,
+  pointerleaveEvent,
+  pointermoveEvent,
+  pointerupEvent,
   focusEvents,
+  focusEvent,
   focusinEvent,
   focusoutEvent,
-  mouseSwipeEvents,
+  gesturechangeEvent,
+  gestureendEvent,
+  gesturestartEvent,
   bezierEasings,
   animationDuration,
   animationDelay,
@@ -147,6 +236,9 @@ const SHORTER = {
   addEventListener,
   removeEventListener,
   keyboardEventKeys,
+  keydownEvent,
+  keypressEvent,
+  keyupEvent,
   keyAlt,
   keyArrowDown,
   keyArrowLeft,
@@ -165,6 +257,10 @@ const SHORTER = {
   keyShift,
   keySpace,
   keyTab,
+  offsetHeight,
+  offsetWidth,
+  scrollHeight,
+  scrollWidth,
   addClass,
   removeClass,
   hasClass,
@@ -191,6 +287,13 @@ const SHORTER = {
   normalizeOptions,
   tryWrapper,
   reflow,
+  ArrayFrom,
+  Float32ArrayFrom,
+  Float64ArrayFrom,
+  ObjectAssign,
+  ObjectKeys,
+  ObjectValues,
+  getElementStyle,
   Version,
 };
 

@@ -1,5 +1,5 @@
 /*!
-* shorter-js v0.2.17 (https://github.com/thednp/shorter-js)
+* shorter-js v0.2.18 (https://github.com/thednp/shorter-js)
 * Copyright 2019-2021 © dnp_theme
 * Licensed under MIT (https://github.com/thednp/shorter-js/blob/master/LICENSE)
 */
@@ -64,6 +64,180 @@
   var ariaSelected = 'aria-selected';
 
   /**
+   * A global namespace for all browser native events.
+   * @type {string[]}
+   */
+  var nativeEvents = [
+    'click',
+    'dblclick',
+    'mouseup',
+    'mousedown',
+    'contextmenu',
+    'mousewheel',
+    'DOMMouseScroll',
+    'mouseover',
+    'mouseout',
+    'mousemove',
+    'selectstart',
+    'selectend',
+    'keydown',
+    'keypress',
+    'keyup',
+    'orientationchange',
+    'touchstart',
+    'touchmove',
+    'touchend',
+    'touchcancel',
+    'pointercancel',
+    'pointerdown',
+    'pointerleave',
+    'pointermove',
+    'pointerup',
+    'gesturestart',
+    'gesturechange',
+    'gestureend',
+    'focus',
+    'blur',
+    'change',
+    'reset',
+    'select',
+    'submit',
+    'focusin',
+    'focusout',
+    'load',
+    'unload',
+    'beforeunload',
+    'resize',
+    'move',
+    'DOMContentLoaded',
+    'readystatechange',
+    'error',
+    'abort',
+    'scroll' ];
+
+  /**
+   * A global namespace for `abort` event.
+   * @type {string}
+   */
+  var abortEvent = 'abort';
+
+  /**
+   * A global namespace for `blur` event.
+   * @type {string}
+   */
+  var blurEvent = 'blur';
+
+  /**
+   * A global namespace for `move` event.
+   * @type {string}
+   */
+  var moveEvent = 'move';
+
+  /**
+   * A global namespace for `change` event.
+   * @type {string}
+   */
+  var changeEvent = 'change';
+
+  /**
+   * A global namespace for `error` event.
+   * @type {string}
+   */
+  var errorEvent = 'error';
+
+  /**
+   * A global namespace for `reset` event.
+   * @type {string}
+   */
+  var resetEvent = 'reset';
+
+  /**
+   * A global namespace for `scroll` event.
+   * @type {string}
+   */
+  var scrollEvent = 'scroll';
+
+  /**
+   * A global namespace for `submit` event.
+   * @type {string}
+   */
+  var submitEvent = 'submit';
+
+  /**
+   * A global namespace for `load` event.
+   * @type {string}
+   */
+  var loadEvent = 'load';
+
+  /**
+   * A global namespace for `unload` event.
+   * @type {string}
+   */
+  var unloadEvent = 'unload';
+
+  /**
+   * A global namespace for `readystatechange` event.
+   * @type {string}
+   */
+  var readystatechangeEvent = 'readystatechange';
+
+  /**
+   * A global namespace for `beforeunload` event.
+   * @type {string}
+   */
+  var beforeunloadEvent = 'beforeunload';
+
+  /**
+   * A global namespace for `orientationchange` event.
+   * @type {string}
+   */
+  var orientationchangeEvent = 'orientationchange';
+
+  /**
+   * A global namespace for `contextmenu` event.
+   * @type {string}
+   */
+  var contextmenuEvent = 'contextmenu';
+
+  /**
+   * A global namespace for `DOMContentLoaded` event.
+   * @type {string}
+   */
+  var DOMContentLoadedEvent = 'DOMContentLoaded';
+
+  /**
+   * A global namespace for `DOMMouseScroll` event.
+   * @type {string}
+   */
+  var DOMMouseScrollEvent = 'DOMMouseScroll';
+
+  /**
+   * A global namespace for `select` event.
+   * @type {string}
+   */
+  var selectEvent = 'select';
+
+  /**
+   * A global namespace for the `selectend` event.
+   * @type {string}
+   */
+  var selectendEvent = 'selectend';
+
+  /**
+   * A global namespace for the `selectstart` event.
+   * @type {string}
+   */
+  var selectstartEvent = 'selectstart';
+
+  /**
+   * A global namespace for mouse events equivalent to touch events.
+   * @type {Record<string, string>}
+   */
+  var mouseSwipeEvents = {
+    start: 'mousedown', end: 'mouseup', move: 'mousemove', cancel: 'mouseleave',
+  };
+
+  /**
    * A global namespace for mouse click events.
    * @type {Record<string, string>}
    */
@@ -74,6 +248,12 @@
    * @type {string}
    */
   var mouseclickEvent = 'click';
+
+  /**
+   * A global namespace for `dblclick` event.
+   * @type {string}
+   */
+  var mousedblclickEvent = 'dblclick';
 
   /**
    * A global namespace for `mousedown` event.
@@ -104,6 +284,24 @@
    * @type {string}
    */
   var mouseleaveEvent = 'mouseleave';
+
+  /**
+   * A global namespace for `mousein` event.
+   * @type {string}
+   */
+  var mouseinEvent = 'mousein';
+
+  /**
+   * A global namespace for `mouseout` event.
+   * @type {string}
+   */
+  var mouseoutEvent = 'mouseout';
+
+  /**
+   * A global namespace for `mousewheel` event.
+   * @type {string}
+   */
+  var mousewheelEvent = 'mousewheel';
 
   /**
    * A global namespace for touch events.
@@ -138,10 +336,46 @@
   var touchendEvent = 'touchend';
 
   /**
+   * A global namespace for `pointercancel` event.
+   * @type {string}
+   */
+  var pointercancelEvent = 'pointercancel';
+
+  /**
+   * A global namespace for `pointerdown` event.
+   * @type {string}
+   */
+  var pointerdownEvent = 'pointerdown';
+
+  /**
+   * A global namespace for `pointerleave` event.
+   * @type {string}
+   */
+  var pointerleaveEvent = 'pointerleave';
+
+  /**
+   * A global namespace for `pointermove` event.
+   * @type {string}
+   */
+  var pointermoveEvent = 'pointermove';
+
+  /**
+   * A global namespace for `pointerup` event.
+   * @type {string}
+   */
+  var pointerupEvent = 'pointerup';
+
+  /**
    * A global namespace for focus event names.
    * @type {{in: string, out: string}}
    */
   var focusEvents = { in: 'focusin', out: 'focusout' };
+
+  /**
+   * A global namespace for `focus` event.
+   * @type {string}
+   */
+  var focusEvent = 'focus';
 
   /**
    * A global namespace for `focusin` event.
@@ -156,105 +390,22 @@
   var focusoutEvent = 'focusout';
 
   /**
-   * A global namespace for mouse events equivalent to touch events.
-   * @type {Record<string, string>}
-   */
-  var mouseSwipeEvents = {
-    start: 'mousedown', end: 'mouseup', move: 'mousemove', cancel: 'mouseleave',
-  };
-
-  /**
-   * A global namespace for 'animationDuration' string.
+   * A global namespace for `gesturechange` event.
    * @type {string}
    */
-  var animationDuration = 'webkitAnimation' in document.head.style ? 'webkitAnimationDuration' : 'animationDuration';
+  var gesturechangeEvent = 'gesturechange';
 
   /**
-   * A global namespace for 'animationDelay' string.
+   * A global namespace for `gestureend` event.
    * @type {string}
    */
-  var animationDelay = 'webkitAnimation' in document.head.style ? 'webkitAnimationDelay' : 'animationDelay';
+  var gestureendEvent = 'gestureend';
 
   /**
-   * A global namespace for 'animationend' string.
+   * A global namespace for `gesturestart` event.
    * @type {string}
    */
-  var animationEndEvent = 'webkitAnimation' in document.head.style ? 'webkitAnimationEnd' : 'animationend';
-
-  /**
-   * A global namespace for 'animationName' string.
-   * @type {string}
-   */
-  var animationName = 'webkitAnimation' in document.head.style ? 'webkitAnimationName' : 'animationName';
-
-  /**
-   * A global namespace for 'transitionDuration' string.
-   * @type {string}
-   */
-  var transitionDuration = 'webkitTransition' in document.head.style ? 'webkitTransitionDuration' : 'transitionDuration';
-
-  /**
-   * A global namespace for 'transitionProperty' string.
-   * @type {string}
-   */
-  var transitionProperty = 'webkitTransition' in document.head.style ? 'webkitTransitionProperty' : 'transitionProperty';
-
-  /**
-   * A global namespace for 'transitionDelay' string.
-   * @type {string}
-   */
-  var transitionDelay = 'webkitTransition' in document.head.style ? 'webkitTransitionDelay' : 'transitionDelay';
-
-  /**
-   * A global namespace for 'transitionend' string.
-   * @type {string}
-   */
-  var transitionEndEvent = 'webkitTransition' in document.head.style ? 'webkitTransitionEnd' : 'transitionend';
-
-  /**
-   * A global namespace for predefined
-   * CSS3 'cubic-bezier()' easing functions.
-   * @type {Record<string, string>}
-   */
-  var bezierEasings = {
-    linear: 'linear',
-    easingSinusoidalIn: 'cubic-bezier(0.47,0,0.745,0.715)',
-    easingSinusoidalOut: 'cubic-bezier(0.39,0.575,0.565,1)',
-    easingSinusoidalInOut: 'cubic-bezier(0.445,0.05,0.55,0.95)',
-    easingQuadraticIn: 'cubic-bezier(0.550,0.085,0.680,0.530)',
-    easingQuadraticOut: 'cubic-bezier(0.250,0.460,0.450,0.940)',
-    easingQuadraticInOut: 'cubic-bezier(0.455,0.030,0.515,0.955)',
-    easingCubicIn: 'cubic-bezier(0.55,0.055,0.675,0.19)',
-    easingCubicOut: 'cubic-bezier(0.215,0.61,0.355,1)',
-    easingCubicInOut: 'cubic-bezier(0.645,0.045,0.355,1)',
-    easingQuarticIn: 'cubic-bezier(0.895,0.03,0.685,0.22)',
-    easingQuarticOut: 'cubic-bezier(0.165,0.84,0.44,1)',
-    easingQuarticInOut: 'cubic-bezier(0.77,0,0.175,1)',
-    easingQuinticIn: 'cubic-bezier(0.755,0.05,0.855,0.06)',
-    easingQuinticOut: 'cubic-bezier(0.23,1,0.32,1)',
-    easingQuinticInOut: 'cubic-bezier(0.86,0,0.07,1)',
-    easingExponentialIn: 'cubic-bezier(0.95,0.05,0.795,0.035)',
-    easingExponentialOut: 'cubic-bezier(0.19,1,0.22,1)',
-    easingExponentialInOut: 'cubic-bezier(1,0,0,1)',
-    easingCircularIn: 'cubic-bezier(0.6,0.04,0.98,0.335)',
-    easingCircularOut: 'cubic-bezier(0.075,0.82,0.165,1)',
-    easingCircularInOut: 'cubic-bezier(0.785,0.135,0.15,0.86)',
-    easingBackIn: 'cubic-bezier(0.6,-0.28,0.735,0.045)',
-    easingBackOut: 'cubic-bezier(0.175,0.885,0.32,1.275)',
-    easingBackInOut: 'cubic-bezier(0.68,-0.55,0.265,1.55)',
-  };
-
-  /**
-   * A global namespace for 'addEventListener' string.
-   * @type {string}
-   */
-  var addEventListener = 'addEventListener';
-
-  /**
-   * A global namespace for 'removeEventListener' string.
-   * @type {string}
-   */
-  var removeEventListener = 'removeEventListener';
+  var gesturestartEvent = 'gesturestart';
 
   /**
    * A global namespace for keyboard event keys.
@@ -281,6 +432,24 @@
     ContextMenu: 'ContextMenu', // 93
     ScrollLock: 'ScrollLock', // 145
   };
+
+  /**
+   * A global namespace for `keydown` event.
+   * @type {string}
+   */
+  var keydownEvent = 'keydown';
+
+  /**
+   * A global namespace for `keyup` event.
+   * @type {string}
+   */
+  var keyupEvent = 'keyup';
+
+  /**
+   * A global namespace for `keypress` event.
+   * @type {string}
+   */
+  var keypressEvent = 'keypress';
 
   /**
    * A global namespace for `Alt` key.
@@ -389,6 +558,123 @@
    * @type {string} e.which = 9 equivalent
    */
   var keyTab = 'Tab';
+
+  /**
+   * A global namespace for 'animationDuration' string.
+   * @type {string}
+   */
+  var animationDuration = 'webkitAnimation' in document.head.style ? 'webkitAnimationDuration' : 'animationDuration';
+
+  /**
+   * A global namespace for 'animationDelay' string.
+   * @type {string}
+   */
+  var animationDelay = 'webkitAnimation' in document.head.style ? 'webkitAnimationDelay' : 'animationDelay';
+
+  /**
+   * A global namespace for 'animationName' string.
+   * @type {string}
+   */
+  var animationName = 'webkitAnimation' in document.head.style ? 'webkitAnimationName' : 'animationName';
+
+  /**
+   * A global namespace for 'animationend' string.
+   * @type {string}
+   */
+  var animationEndEvent = 'webkitAnimation' in document.head.style ? 'webkitAnimationEnd' : 'animationend';
+
+  /**
+   * A global namespace for 'transitionDuration' string.
+   * @type {string}
+   */
+  var transitionDuration = 'webkitTransition' in document.head.style ? 'webkitTransitionDuration' : 'transitionDuration';
+
+  /**
+   * A global namespace for 'transitionDelay' string.
+   * @type {string}
+   */
+  var transitionDelay = 'webkitTransition' in document.head.style ? 'webkitTransitionDelay' : 'transitionDelay';
+
+  /**
+   * A global namespace for 'transitionend' string.
+   * @type {string}
+   */
+  var transitionEndEvent = 'webkitTransition' in document.head.style ? 'webkitTransitionEnd' : 'transitionend';
+
+  /**
+   * A global namespace for 'transitionProperty' string.
+   * @type {string}
+   */
+  var transitionProperty = 'webkitTransition' in document.head.style ? 'webkitTransitionProperty' : 'transitionProperty';
+
+  /**
+   * A global namespace for 'addEventListener' string.
+   * @type {string}
+   */
+  var addEventListener = 'addEventListener';
+
+  /**
+   * A global namespace for 'removeEventListener' string.
+   * @type {string}
+   */
+  var removeEventListener = 'removeEventListener';
+
+  /**
+   * A global namespace for predefined
+   * CSS3 'cubic-bezier()' easing functions.
+   * @type {Record<string, string>}
+   */
+  var bezierEasings = {
+    linear: 'linear',
+    easingSinusoidalIn: 'cubic-bezier(0.47,0,0.745,0.715)',
+    easingSinusoidalOut: 'cubic-bezier(0.39,0.575,0.565,1)',
+    easingSinusoidalInOut: 'cubic-bezier(0.445,0.05,0.55,0.95)',
+    easingQuadraticIn: 'cubic-bezier(0.550,0.085,0.680,0.530)',
+    easingQuadraticOut: 'cubic-bezier(0.250,0.460,0.450,0.940)',
+    easingQuadraticInOut: 'cubic-bezier(0.455,0.030,0.515,0.955)',
+    easingCubicIn: 'cubic-bezier(0.55,0.055,0.675,0.19)',
+    easingCubicOut: 'cubic-bezier(0.215,0.61,0.355,1)',
+    easingCubicInOut: 'cubic-bezier(0.645,0.045,0.355,1)',
+    easingQuarticIn: 'cubic-bezier(0.895,0.03,0.685,0.22)',
+    easingQuarticOut: 'cubic-bezier(0.165,0.84,0.44,1)',
+    easingQuarticInOut: 'cubic-bezier(0.77,0,0.175,1)',
+    easingQuinticIn: 'cubic-bezier(0.755,0.05,0.855,0.06)',
+    easingQuinticOut: 'cubic-bezier(0.23,1,0.32,1)',
+    easingQuinticInOut: 'cubic-bezier(0.86,0,0.07,1)',
+    easingExponentialIn: 'cubic-bezier(0.95,0.05,0.795,0.035)',
+    easingExponentialOut: 'cubic-bezier(0.19,1,0.22,1)',
+    easingExponentialInOut: 'cubic-bezier(1,0,0,1)',
+    easingCircularIn: 'cubic-bezier(0.6,0.04,0.98,0.335)',
+    easingCircularOut: 'cubic-bezier(0.075,0.82,0.165,1)',
+    easingCircularInOut: 'cubic-bezier(0.785,0.135,0.15,0.86)',
+    easingBackIn: 'cubic-bezier(0.6,-0.28,0.735,0.045)',
+    easingBackOut: 'cubic-bezier(0.175,0.885,0.32,1.275)',
+    easingBackInOut: 'cubic-bezier(0.68,-0.55,0.265,1.55)',
+  };
+
+  /**
+   * A global namespace for `offsetHeight` property.
+   * @type {string}
+   */
+  var offsetHeight = 'offsetHeight';
+
+  /**
+   * A global namespace for `offsetWidth` property.
+   * @type {string}
+   */
+  var offsetWidth = 'offsetWidth';
+
+  /**
+   * A global namespace for `scrollHeight` property.
+   * @type {string}
+   */
+  var scrollHeight = 'scrollHeight';
+
+  /**
+   * A global namespace for `scrollWidth` property.
+   * @type {string}
+   */
+  var scrollWidth = 'scrollWidth';
 
   var mobileBrands = /iPhone|iPad|iPod|Android/i;
   var userAgentStr = 'userAgentData';
@@ -955,7 +1241,69 @@
     return element.offsetHeight;
   }
 
-  var version = "0.2.17";
+  /**
+   * Shortcut for `Array.from()` static method.
+   * @param  {any[]} arr iterable object value
+   * @returns {Array}
+   */
+  var ArrayFrom = function (arr) { return Array.from(arr); };
+
+  /**
+   * Shortcut for `Float32Array.from()` static method.
+   * @param  {any[]} arr iterable object value
+   * @returns {Float32Array}
+   */
+  var Float32ArrayFrom = function (arr) { return Float32Array.from(arr); };
+
+  /**
+   * Shortcut for `Float64Array.from()` static method.
+   * @param  {any[]} arr iterable object value
+   * @returns {Float64Array}
+   */
+  var Float64ArrayFrom = function (arr) { return Float64Array.from(arr); };
+
+  /**
+   * Shortcut for `Object.assign()` static method.
+   * @param  {Record<string, any>} obj a target object
+   * @param  {Record<string, any>} source a source object
+   */
+  var ObjectAssign = function (obj, source) { return Object.assign(obj, source); };
+
+  /**
+   * Shortcut for `Object.keys()` static method.
+   * @param  {Record<string, any>} obj a target object
+   * @returns {string[]}
+   */
+  var ObjectKeys = function (obj) { return Object.keys(obj); };
+
+  /**
+   * Shortcut for `Object.values()` static method.
+   * @param  {Record<string, any>} obj a target object
+   * @returns {any[]}
+   */
+  var ObjectValues = function (obj) { return Object.values(obj); };
+
+  /**
+   * Shortcut for `window.getComputedStyle(element).propertyName`
+   * static method.
+   * * If `element` parameter is not an `Element`, `getComputedStyle`
+   * throws a `ReferenceError`.
+   * * If no property is defined, the entire `CSSStyleDeclaration`
+   * instance is returned.
+   *
+   * @param {Element} element target
+   * @param {string=} property the css property
+   * @return {string} the css property value
+   */
+  function getElementStyle(element, property) {
+    var computedStyle = getComputedStyle(element);
+
+    return property && property in computedStyle
+      ? computedStyle[property]
+      : computedStyle;
+  }
+
+  var version = "0.2.18";
 
   // @ts-ignore
 
@@ -965,7 +1313,7 @@
    */
   var Version = version;
 
-  // strings FIRST
+  // strings
 
   var SHORTER = {
     ariaChecked: ariaChecked,
@@ -977,22 +1325,55 @@
     ariaModal: ariaModal,
     ariaPressed: ariaPressed,
     ariaSelected: ariaSelected,
+    nativeEvents: nativeEvents,
+    abortEvent: abortEvent,
+    blurEvent: blurEvent,
+    moveEvent: moveEvent,
+    changeEvent: changeEvent,
+    errorEvent: errorEvent,
+    resetEvent: resetEvent,
+    scrollEvent: scrollEvent,
+    submitEvent: submitEvent,
+    loadEvent: loadEvent,
+    unloadEvent: unloadEvent,
+    readystatechangeEvent: readystatechangeEvent,
+    beforeunloadEvent: beforeunloadEvent,
+    orientationchangeEvent: orientationchangeEvent,
+    contextmenuEvent: contextmenuEvent,
+    DOMContentLoadedEvent: DOMContentLoadedEvent,
+    DOMMouseScrollEvent: DOMMouseScrollEvent,
+    selectEvent: selectEvent,
+    selectendEvent: selectendEvent,
+    selectstartEvent: selectstartEvent,
     mouseClickEvents: mouseClickEvents,
     mouseclickEvent: mouseclickEvent,
+    mousedblclickEvent: mousedblclickEvent,
     mousedownEvent: mousedownEvent,
     mouseupEvent: mouseupEvent,
     mouseHoverEvents: mouseHoverEvents,
     mouseenterEvent: mouseenterEvent,
     mouseleaveEvent: mouseleaveEvent,
+    mouseinEvent: mouseinEvent,
+    mouseoutEvent: mouseoutEvent,
+    mousewheelEvent: mousewheelEvent,
+    mouseSwipeEvents: mouseSwipeEvents,
     touchEvents: touchEvents,
     touchstartEvent: touchstartEvent,
     touchmoveEvent: touchmoveEvent,
     touchcancelEvent: touchcancelEvent,
     touchendEvent: touchendEvent,
+    pointercancelEvent: pointercancelEvent,
+    pointerdownEvent: pointerdownEvent,
+    pointerleaveEvent: pointerleaveEvent,
+    pointermoveEvent: pointermoveEvent,
+    pointerupEvent: pointerupEvent,
     focusEvents: focusEvents,
+    focusEvent: focusEvent,
     focusinEvent: focusinEvent,
     focusoutEvent: focusoutEvent,
-    mouseSwipeEvents: mouseSwipeEvents,
+    gesturechangeEvent: gesturechangeEvent,
+    gestureendEvent: gestureendEvent,
+    gesturestartEvent: gesturestartEvent,
     bezierEasings: bezierEasings,
     animationDuration: animationDuration,
     animationDelay: animationDelay,
@@ -1013,6 +1394,9 @@
     addEventListener: addEventListener,
     removeEventListener: removeEventListener,
     keyboardEventKeys: keyboardEventKeys,
+    keydownEvent: keydownEvent,
+    keypressEvent: keypressEvent,
+    keyupEvent: keyupEvent,
     keyAlt: keyAlt,
     keyArrowDown: keyArrowDown,
     keyArrowLeft: keyArrowLeft,
@@ -1031,6 +1415,10 @@
     keyShift: keyShift,
     keySpace: keySpace,
     keyTab: keyTab,
+    offsetHeight: offsetHeight,
+    offsetWidth: offsetWidth,
+    scrollHeight: scrollHeight,
+    scrollWidth: scrollWidth,
     addClass: addClass,
     removeClass: removeClass,
     hasClass: hasClass,
@@ -1057,6 +1445,13 @@
     normalizeOptions: normalizeOptions,
     tryWrapper: tryWrapper,
     reflow: reflow,
+    ArrayFrom: ArrayFrom,
+    Float32ArrayFrom: Float32ArrayFrom,
+    Float64ArrayFrom: Float64ArrayFrom,
+    ObjectAssign: ObjectAssign,
+    ObjectKeys: ObjectKeys,
+    ObjectValues: ObjectValues,
+    getElementStyle: getElementStyle,
     Version: Version,
   };
 
