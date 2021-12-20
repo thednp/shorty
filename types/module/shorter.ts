@@ -131,10 +131,8 @@ export { default as one } from "../../src/event/one";
 export { default as Data, getInstance } from "../../src/misc/data";
 export { default as emulateAnimationEnd } from "../../src/misc/emulateAnimationEnd";
 export { default as emulateTransitionEnd } from "../../src/misc/emulateTransitionEnd";
-export { default as isElement } from "../../src/misc/isElement";
 export { default as isElementInScrollRange } from "../../src/misc/isElementInScrollRange";
 export { default as isElementInViewport } from "../../src/misc/isElementInViewport";
-export { default as isHTMLElement } from "../../src/misc/isHTMLElement";
 export { default as isMedia } from "../../src/misc/isMedia";
 export { default as isRTL } from "../../src/misc/isRTL";
 export { default as passiveHandler } from "../../src/misc/passiveHandler";
@@ -142,7 +140,6 @@ export { default as getElementAnimationDuration } from "../../src/misc/getElemen
 export { default as getElementAnimationDelay } from "../../src/misc/getElementAnimationDelay";
 export { default as getElementTransitionDuration } from "../../src/misc/getElementTransitionDuration";
 export { default as getElementTransitionDelay } from "../../src/misc/getElementTransitionDelay";
-export { default as queryElement } from "../../src/misc/queryElement";
 export { default as normalizeValue } from "../../src/misc/normalizeValue";
 export { default as normalizeOptions } from "../../src/misc/normalizeOptions";
 export { default as tryWrapper } from "../../src/misc/tryWrapper";
@@ -155,5 +152,21 @@ export { default as ObjectKeys } from '../../src/misc/ObjectKeys';
 export { default as ObjectValues } from '../../src/misc/ObjectValues';
 export { default as ObjectAssign } from '../../src/misc/ObjectAssign';
 export { default as getElementStyle } from '../../src/misc/getElementStyle';
+export { default as getAttribute } from '../../src/misc/getAttribute';
+export { default as setAttribute } from '../../src/misc/setAttribute';
+export { default as removeAttribute } from '../../src/misc/removeAttribute';
+
+export { default as isHTMLElement } from "../../src/misc/isHTMLElement";
+export { default as isArray } from "../../src/misc/isArray";
+export { default as isElement } from "../../src/misc/isElement";
+export { default as isNodeList } from "../../src/misc/isNodeList";
+export { default as isHTMLCollection } from "../../src/misc/isHTMLCollection";
+export { default as isElementsArray } from "../../src/misc/isElementsArray";
+
+export { default as queryElement } from "../../src/misc/queryElement";
+export { default as querySelector } from "../../src/misc/querySelector";
+export { default as querySelectorAll } from "../../src/misc/querySelectorAll";
+export { default as getElementsByTagName } from "../../src/misc/getElementsByTagName";
+export { default as getElementsByClassName } from "../../src/misc/getElementsByClassName";
 
 export { default as Version } from "../../src/misc/version";

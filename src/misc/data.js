@@ -1,4 +1,4 @@
-import queryElement from './queryElement';
+import querySelector from './querySelector';
 import isElement from './isElement';
 
 const componentData = new Map();
@@ -14,7 +14,7 @@ const Data = {
    * @param {any} instance the component instance
    */
   set: (element, component, instance) => {
-    const ELEMENT = queryElement(element);
+    const ELEMENT = querySelector(element);
     if (!isElement(ELEMENT)) return;
 
     if (!componentData.has(component)) {
@@ -44,7 +44,7 @@ const Data = {
    * @returns {any?} the instance
    */
   get: (element, component) => {
-    const ELEMENT = queryElement(element);
+    const ELEMENT = querySelector(element);
 
     const allForC = Data.getAllFor(component);
     if (allForC && isElement(ELEMENT) && allForC.has(ELEMENT)) {

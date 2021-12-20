@@ -905,7 +905,7 @@ declare module "shorter-js/src/misc/isElement" {
      */
     export default function isElement(element: any): boolean;
 }
-declare module "shorter-js/src/misc/queryElement" {
+declare module "shorter-js/src/misc/querySelector" {
     /**
      * Utility to check if target is typeof `Element`
      * or find one that matches a selector.
@@ -914,7 +914,7 @@ declare module "shorter-js/src/misc/queryElement" {
      * @param {Element=} parent optional Element to look into
      * @return {Element?} the Element or `querySelector` result
      */
-    export default function queryElement(selector: Element | string, parent?: Element | undefined): Element | null;
+    export default function querySelector(selector: Element | string, parent?: Element | undefined): Element | null;
 }
 declare module "shorter-js/src/misc/data" {
     export function getInstance(element: Element | string, component: string): any;
@@ -1006,15 +1006,6 @@ declare module "shorter-js/src/misc/isElementInViewport" {
      */
     export default function isElementInViewport(element: Element): boolean;
 }
-declare module "shorter-js/src/misc/isHTMLElement" {
-    /**
-     * Checks if an element is an `HTMLElement`.
-     *
-     * @param {any} element the target object
-     * @returns {boolean} the query result
-     */
-    export default function isHTMLElement(element: any): boolean;
-}
 declare module "shorter-js/src/misc/isMedia" {
     /**
      * Checks if an element is an `<svg>`, `<img>` or `<video>`.
@@ -1093,28 +1084,29 @@ declare module "shorter-js/src/misc/ArrayFrom" {
     export default ArrayFrom;
     /**
      * Shortcut for `Array.from()` static method.
-     * @param  {any[]} arr iterable object value
+     *
+     * @param  {any[] | HTMLCollection | NodeList} arr array-like iterable object
      * @returns {Array}
      */
-    function ArrayFrom(arr: any[]): any[];
+    function ArrayFrom(arr: any[] | HTMLCollection | NodeList): any[];
 }
 declare module "shorter-js/src/misc/Float32ArrayFrom" {
     export default Float32ArrayFrom;
     /**
      * Shortcut for `Float32Array.from()` static method.
-     * @param  {any[]} arr iterable object value
+     * @param  {any[] | HTMLCollection | NodeList} arr array-like iterable object
      * @returns {Float32Array}
      */
-    function Float32ArrayFrom(arr: any[]): Float32Array;
+    function Float32ArrayFrom(arr: any[] | HTMLCollection | NodeList): Float32Array;
 }
 declare module "shorter-js/src/misc/Float64ArrayFrom" {
     export default Float64ArrayFrom;
     /**
      * Shortcut for `Float64Array.from()` static method.
-     * @param  {any[]} arr iterable object value
+     * @param  {any[] | HTMLCollection | NodeList} arr array-like iterable object
      * @returns {Float64Array}
      */
-    function Float64ArrayFrom(arr: any[]): Float64Array;
+    function Float64ArrayFrom(arr: any[] | HTMLCollection | NodeList): Float64Array;
 }
 declare module "shorter-js/src/misc/ObjectKeys" {
     export default ObjectKeys;
@@ -1157,6 +1149,123 @@ declare module "shorter-js/src/misc/getElementStyle" {
      * @return {string} the css property value
      */
     export default function getElementStyle(element: Element, property?: string | undefined): string;
+}
+declare module "shorter-js/src/misc/getAttribute" {
+    export default getAttribute;
+    /**
+     * Shortcut for `Element.getAttribute()` method.
+     * @param  {Element} element target element
+     * @param  {string} attribute attribute name
+     */
+    function getAttribute(element: Element, attribute: string): string | null;
+}
+declare module "shorter-js/src/misc/setAttribute" {
+    export default setAttribute;
+    /**
+     * Shortcut for `Element.setAttribute()` method.
+     * @param  {Element} element target element
+     * @param  {string} attribute attribute name
+     * @param  {string} value attribute value
+     */
+    function setAttribute(element: Element, attribute: string, value: string): void;
+}
+declare module "shorter-js/src/misc/removeAttribute" {
+    export default removeAttribute;
+    /**
+     * Shortcut for `Element.removeAttribute()` method.
+     * @param  {Element} element target element
+     * @param  {string} attribute attribute name
+     */
+    function removeAttribute(element: Element, attribute: string): void;
+}
+declare module "shorter-js/src/misc/isHTMLElement" {
+    /**
+     * Checks if an element is an `HTMLElement`.
+     *
+     * @param {any} element the target object
+     * @returns {boolean} the query result
+     */
+    export default function isHTMLElement(element: any): boolean;
+}
+declare module "shorter-js/src/misc/isArray" {
+    export default isArray;
+    /**
+     * Shortcut for `Array.isArray()` static method.
+     *
+     * @param  {any} arr array-like iterable object
+     * @returns {boolean} the query result
+     */
+    function isArray(arr: any): boolean;
+}
+declare module "shorter-js/src/misc/isNodeList" {
+    /**
+     * Checks if an object is a `NodeList`.
+     *
+     * @param {any} object the target object
+     * @returns {boolean} the query result
+     */
+    export default function isNodeList(object: any): boolean;
+}
+declare module "shorter-js/src/misc/isHTMLCollection" {
+    /**
+     * Checks if an object is an `HTMLCollection`.
+     *
+     * @param {any} object the target object
+     * @returns {boolean} the query result
+     */
+    export default function isHTMLCollection(object: any): boolean;
+}
+declare module "shorter-js/src/misc/isElementsArray" {
+    /**
+     * Checks if an object is an `Array` in which all items are `Element`.
+     *
+     * @param {any} object the target object
+     * @returns {boolean} the query result
+     */
+    export default function isElementsArray(object: any): boolean;
+}
+declare module "shorter-js/src/misc/queryElement" {
+    /**
+     * Utility to check if target is typeof `Element`
+     * or find one that matches a selector.
+     *
+     * @deprecated
+     *
+     * @param {Element | string} selector the input selector or target element
+     * @param {Element=} parent optional Element to look into
+     * @return {Element?} the Element or `querySelector` result
+     */
+    export default function queryElement(selector: Element | string, parent?: Element | undefined): Element | null;
+}
+declare module "shorter-js/src/misc/querySelectorAll" {
+    /**
+     * A shortcut for `(document|Element).querySelectorAll`.
+     *
+     * @param {string} selector the input selector
+     * @param {ParentNode=} parent optional Element to look into
+     * @return {NodeList} the query result
+     */
+    export default function querySelectorAll(selector: string, parent?: ParentNode | undefined): NodeList;
+}
+declare module "shorter-js/src/misc/getElementsByTagName" {
+    /**
+     * Shortcut for `Element.getElementsByTagName` method.
+     *
+     * @param {string} selector the tag name
+     * @param {Element=} parent optional Element to look into
+     * @return {HTMLCollection} the 'HTMLCollection'
+     */
+    export default function getElementsByTagName(selector: string, parent?: Element | undefined): HTMLCollection;
+}
+declare module "shorter-js/src/misc/getElementsByClassName" {
+    /**
+     * Shortcut for `Element.getElementsByClassName` method.
+     *
+     * @param {string} selector the class name
+     * @param {Element=} parent optional Element to look into
+     * @return {HTMLCollection} the 'HTMLCollection'
+     */
+    export default function getElementsByClassName(selector: string, parent?: Element | undefined): HTMLCollection;
 }
 declare module "shorter-js/src/misc/version" {
     export default Version;
@@ -1280,18 +1389,14 @@ declare module "shorter-js/types/module/shorter" {
     export { default as Data, getInstance } from "shorter-js/src/misc/data";
     export { default as emulateAnimationEnd } from "shorter-js/src/misc/emulateAnimationEnd";
     export { default as emulateTransitionEnd } from "shorter-js/src/misc/emulateTransitionEnd";
-    export { default as isElement } from "shorter-js/src/misc/isElement";
     export { default as isElementInScrollRange } from "shorter-js/src/misc/isElementInScrollRange";
     export { default as isElementInViewport } from "shorter-js/src/misc/isElementInViewport";
-    export { default as isHTMLElement } from "shorter-js/src/misc/isHTMLElement";
-    export { default as isMedia } from "shorter-js/src/misc/isMedia";
     export { default as isRTL } from "shorter-js/src/misc/isRTL";
     export { default as passiveHandler } from "shorter-js/src/misc/passiveHandler";
     export { default as getElementAnimationDuration } from "shorter-js/src/misc/getElementAnimationDuration";
     export { default as getElementAnimationDelay } from "shorter-js/src/misc/getElementAnimationDelay";
     export { default as getElementTransitionDuration } from "shorter-js/src/misc/getElementTransitionDuration";
     export { default as getElementTransitionDelay } from "shorter-js/src/misc/getElementTransitionDelay";
-    export { default as queryElement } from "shorter-js/src/misc/queryElement";
     export { default as normalizeValue } from "shorter-js/src/misc/normalizeValue";
     export { default as normalizeOptions } from "shorter-js/src/misc/normalizeOptions";
     export { default as tryWrapper } from "shorter-js/src/misc/tryWrapper";
@@ -1303,5 +1408,20 @@ declare module "shorter-js/types/module/shorter" {
     export { default as ObjectValues } from "shorter-js/src/misc/ObjectValues";
     export { default as ObjectAssign } from "shorter-js/src/misc/ObjectAssign";
     export { default as getElementStyle } from "shorter-js/src/misc/getElementStyle";
+    export { default as getAttribute } from "shorter-js/src/misc/getAttribute";
+    export { default as setAttribute } from "shorter-js/src/misc/setAttribute";
+    export { default as removeAttribute } from "shorter-js/src/misc/removeAttribute";
+    export { default as isHTMLElement } from "shorter-js/src/misc/isHTMLElement";
+    export { default as isArray } from "shorter-js/src/misc/isArray";
+    export { default as isMedia } from "shorter-js/src/misc/isMedia";
+    export { default as isElement } from "shorter-js/src/misc/isElement";
+    export { default as isNodeList } from "shorter-js/src/misc/isNodeList";
+    export { default as isHTMLCollection } from "shorter-js/src/misc/isHTMLCollection";
+    export { default as isElementsArray } from "shorter-js/src/misc/isElementsArray";
+    export { default as queryElement } from "shorter-js/src/misc/queryElement";
+    export { default as querySelector } from "shorter-js/src/misc/querySelector";
+    export { default as querySelectorAll } from "shorter-js/src/misc/querySelectorAll";
+    export { default as getElementsByTagName } from "shorter-js/src/misc/getElementsByTagName";
+    export { default as getElementsByClassName } from "shorter-js/src/misc/getElementsByClassName";
     export { default as Version } from "shorter-js/src/misc/version";
 }

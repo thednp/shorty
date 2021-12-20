@@ -131,10 +131,8 @@ import one from './event/one';
 import Data, { getInstance } from './misc/data';
 import emulateAnimationEnd from './misc/emulateAnimationEnd';
 import emulateTransitionEnd from './misc/emulateTransitionEnd';
-import isElement from './misc/isElement';
 import isElementInScrollRange from './misc/isElementInScrollRange';
 import isElementInViewport from './misc/isElementInViewport';
-import isHTMLElement from './misc/isHTMLElement';
 import isMedia from './misc/isMedia';
 import isRTL from './misc/isRTL';
 import passiveHandler from './misc/passiveHandler';
@@ -142,7 +140,6 @@ import getElementAnimationDuration from './misc/getElementAnimationDuration';
 import getElementAnimationDelay from './misc/getElementAnimationDelay';
 import getElementTransitionDuration from './misc/getElementTransitionDuration';
 import getElementTransitionDelay from './misc/getElementTransitionDelay';
-import queryElement from './misc/queryElement';
 import normalizeValue from './misc/normalizeValue';
 import normalizeOptions from './misc/normalizeOptions';
 import tryWrapper from './misc/tryWrapper';
@@ -155,6 +152,23 @@ import ObjectAssign from './misc/ObjectAssign';
 import ObjectKeys from './misc/ObjectKeys';
 import ObjectValues from './misc/ObjectValues';
 import getElementStyle from './misc/getElementStyle';
+
+import getAttribute from './misc/getAttribute';
+import setAttribute from './misc/setAttribute';
+import removeAttribute from './misc/removeAttribute';
+
+import isArray from './misc/isArray';
+import isElement from './misc/isElement';
+import isHTMLElement from './misc/isHTMLElement';
+import isHTMLCollection from './misc/isHTMLCollection';
+import isNodeList from './misc/isNodeList';
+import isElementsArray from './misc/isElementsArray';
+
+import queryElement from './misc/queryElement';
+import querySelector from './misc/querySelector';
+import querySelectorAll from './misc/querySelectorAll';
+import getElementsByTagName from './misc/getElementsByTagName';
+import getElementsByClassName from './misc/getElementsByClassName';
 
 import Version from './misc/version';
 
@@ -280,11 +294,19 @@ const SHORTER = {
   getElementAnimationDelay,
   getElementTransitionDuration,
   getElementTransitionDelay,
+  isArray,
   isElement,
   isHTMLElement,
+  isNodeList,
+  isHTMLCollection,
+  isElementsArray,
   isMedia,
   isRTL,
   queryElement,
+  querySelector,
+  querySelectorAll,
+  getElementsByClassName,
+  getElementsByTagName,
   normalizeValue,
   normalizeOptions,
   tryWrapper,
@@ -296,6 +318,9 @@ const SHORTER = {
   ObjectKeys,
   ObjectValues,
   getElementStyle,
+  getAttribute,
+  setAttribute,
+  removeAttribute,
   Version,
 };
 

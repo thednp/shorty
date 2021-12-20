@@ -1,5 +1,5 @@
 /*!
-* shorter-js v0.2.19 (https://github.com/thednp/shorter-js)
+* shorter-js v0.2.20 (https://github.com/thednp/shorter-js)
 * Copyright 2019-2021 © dnp_theme
 * Licensed under MIT (https://github.com/thednp/shorter-js/blob/master/LICENSE)
 */
@@ -861,7 +861,7 @@
    * @param {Element=} parent optional Element to look into
    * @return {Element?} the Element or `querySelector` result
    */
-  function queryElement(selector, parent) {
+  function querySelector(selector, parent) {
     var lookUp = parent && isElement(parent) ? parent : document;
     // @ts-ignore -- `isElement` is just as good
     return isElement(selector) ? selector : lookUp.querySelector(selector);
@@ -880,7 +880,7 @@
      * @param {any} instance the component instance
      */
     set: function (element, component, instance) {
-      var ELEMENT = queryElement(element);
+      var ELEMENT = querySelector(element);
       if (!isElement(ELEMENT)) { return; }
 
       if (!componentData.has(component)) {
@@ -910,7 +910,7 @@
      * @returns {any?} the instance
      */
     get: function (element, component) {
-      var ELEMENT = queryElement(element);
+      var ELEMENT = querySelector(element);
 
       var allForC = Data.getAllFor(component);
       if (allForC && isElement(ELEMENT) && allForC.has(ELEMENT)) {
@@ -1115,16 +1115,6 @@
   }
 
   /**
-   * Checks if an element is an `HTMLElement`.
-   *
-   * @param {any} element the target object
-   * @returns {boolean} the query result
-   */
-  function isHTMLElement(element) {
-    return element instanceof HTMLElement;
-  }
-
-  /**
    * Checks if an element is an `<svg>`, `<img>` or `<video>`.
    * *Tooltip* / *Popover* works different with media elements.
    * @param {any} element the target element
@@ -1249,24 +1239,31 @@
 
   /**
    * Shortcut for `Array.from()` static method.
-   * @param  {any[]} arr iterable object value
+   *
+   * @param  {any[] | HTMLCollection | NodeList} arr array-like iterable object
    * @returns {Array}
    */
   var ArrayFrom = function (arr) { return Array.from(arr); };
 
   /**
    * Shortcut for `Float32Array.from()` static method.
-   * @param  {any[]} arr iterable object value
+   * @param  {any[] | HTMLCollection | NodeList} arr array-like iterable object
    * @returns {Float32Array}
    */
-  var Float32ArrayFrom = function (arr) { return Float32Array.from(arr); };
+  var Float32ArrayFrom = function (arr) {
+    var array = Array.from(arr);
+    return Float32Array.from(array);
+  };
 
   /**
    * Shortcut for `Float64Array.from()` static method.
-   * @param  {any[]} arr iterable object value
+   * @param  {any[] | HTMLCollection | NodeList} arr array-like iterable object
    * @returns {Float64Array}
    */
-  var Float64ArrayFrom = function (arr) { return Float64Array.from(arr); };
+  var Float64ArrayFrom = function (arr) {
+    var array = Array.from(arr);
+    return Float64Array.from(array);
+  };
 
   /**
    * Shortcut for `Object.assign()` static method.
@@ -1309,7 +1306,127 @@
       : computedStyle;
   }
 
-  var version = "0.2.19";
+  /**
+   * Shortcut for `Element.getAttribute()` method.
+   * @param  {Element} element target element
+   * @param  {string} attribute attribute name
+   */
+  var getAttribute = function (element, attribute) { return element.getAttribute(attribute); };
+
+  /**
+   * Shortcut for `Element.setAttribute()` method.
+   * @param  {Element} element target element
+   * @param  {string} attribute attribute name
+   * @param  {string} value attribute value
+   */
+  var setAttribute = function (element, attribute, value) { return element.setAttribute(attribute, value); };
+
+  /**
+   * Shortcut for `Element.removeAttribute()` method.
+   * @param  {Element} element target element
+   * @param  {string} attribute attribute name
+   */
+  var removeAttribute = function (element, attribute) { return element.removeAttribute(attribute); };
+
+  /**
+   * Shortcut for `Array.isArray()` static method.
+   *
+   * @param  {any} arr array-like iterable object
+   * @returns {boolean} the query result
+   */
+  var isArray = function (arr) { return Array.isArray(arr); };
+
+  /**
+   * Checks if an element is an `HTMLElement`.
+   *
+   * @param {any} element the target object
+   * @returns {boolean} the query result
+   */
+  function isHTMLElement(element) {
+    return element instanceof HTMLElement;
+  }
+
+  /**
+   * Checks if an object is an `HTMLCollection`.
+   *
+   * @param {any} object the target object
+   * @returns {boolean} the query result
+   */
+  function isHTMLCollection(object) {
+    return object instanceof HTMLCollection;
+  }
+
+  /**
+   * Checks if an object is a `NodeList`.
+   *
+   * @param {any} object the target object
+   * @returns {boolean} the query result
+   */
+  function isNodeList(object) {
+    return object instanceof NodeList;
+  }
+
+  /**
+   * Checks if an object is an `Array` in which all items are `Element`.
+   *
+   * @param {any} object the target object
+   * @returns {boolean} the query result
+   */
+  function isElementsArray(object) {
+    return Array.isArray(object) && object.every(function (el) { return isElement(el); });
+  }
+
+  /**
+   * Utility to check if target is typeof `Element`
+   * or find one that matches a selector.
+   *
+   * @deprecated
+   *
+   * @param {Element | string} selector the input selector or target element
+   * @param {Element=} parent optional Element to look into
+   * @return {Element?} the Element or `querySelector` result
+   */
+  function queryElement(selector, parent) {
+    return querySelector(selector, parent);
+  }
+
+  /**
+   * A shortcut for `(document|Element).querySelectorAll`.
+   *
+   * @param {string} selector the input selector
+   * @param {ParentNode=} parent optional Element to look into
+   * @return {NodeList} the query result
+   */
+  function querySelectorAll(selector, parent) {
+    var lookUp = parent && isElement(parent) ? parent : document;
+    return lookUp.querySelectorAll(selector);
+  }
+
+  /**
+   * Shortcut for `Element.getElementsByTagName` method.
+   *
+   * @param {string} selector the tag name
+   * @param {Element=} parent optional Element to look into
+   * @return {HTMLCollection} the 'HTMLCollection'
+   */
+  function getElementsByTagName(selector, parent) {
+    var lookUp = parent && isElement(parent) ? parent : document;
+    return lookUp.getElementsByTagName(selector);
+  }
+
+  /**
+   * Shortcut for `Element.getElementsByClassName` method.
+   *
+   * @param {string} selector the class name
+   * @param {Element=} parent optional Element to look into
+   * @return {HTMLCollection} the 'HTMLCollection'
+   */
+  function getElementsByClassName(selector, parent) {
+    var lookUp = parent && isElement(parent) ? parent : document;
+    return lookUp.getElementsByClassName(selector);
+  }
+
+  var version = "0.2.20";
 
   // @ts-ignore
 
@@ -1443,11 +1560,19 @@
     getElementAnimationDelay: getElementAnimationDelay,
     getElementTransitionDuration: getElementTransitionDuration,
     getElementTransitionDelay: getElementTransitionDelay,
+    isArray: isArray,
     isElement: isElement,
     isHTMLElement: isHTMLElement,
+    isNodeList: isNodeList,
+    isHTMLCollection: isHTMLCollection,
+    isElementsArray: isElementsArray,
     isMedia: isMedia,
     isRTL: isRTL,
     queryElement: queryElement,
+    querySelector: querySelector,
+    querySelectorAll: querySelectorAll,
+    getElementsByClassName: getElementsByClassName,
+    getElementsByTagName: getElementsByTagName,
     normalizeValue: normalizeValue,
     normalizeOptions: normalizeOptions,
     tryWrapper: tryWrapper,
@@ -1459,6 +1584,9 @@
     ObjectKeys: ObjectKeys,
     ObjectValues: ObjectValues,
     getElementStyle: getElementStyle,
+    getAttribute: getAttribute,
+    setAttribute: setAttribute,
+    removeAttribute: removeAttribute,
     Version: Version,
   };
 
