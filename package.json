@@ -1,6 +1,6 @@
 {
   "name": "shorter-js",
-  "version": "0.2.20",
+  "version": "0.2.21",
   "description": "A small ES6+ library with various JavaScript tools useful for creating light libraries.",
   "main": "dist/shorter-js.min.js",
   "module": "dist/shorter-js.esm.js",

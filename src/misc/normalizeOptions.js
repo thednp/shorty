@@ -1,4 +1,5 @@
 import normalizeValue from './normalizeValue';
+import ObjectKeys from './ObjectKeys';
 
 /**
  * Utility to normalize component options
@@ -15,30 +16,27 @@ export default function normalizeOptions(element, defaultOps, inputOps, ns) {
   const normalOps = {};
   const dataOps = {};
 
-  Object.keys(data)
-    .forEach((k) => {
-      const key = ns && k.includes(ns)
-        ? k.replace(ns, '').replace(/[A-Z]/, (match) => match.toLowerCase())
-        : k;
+  ObjectKeys(data).forEach((k) => {
+    const key = ns && k.includes(ns)
+      ? k.replace(ns, '').replace(/[A-Z]/, (match) => match.toLowerCase())
+      : k;
 
-      dataOps[key] = normalizeValue(data[k]);
-    });
+    dataOps[key] = normalizeValue(data[k]);
+  });
 
-  Object.keys(inputOps)
-    .forEach((k) => {
-      inputOps[k] = normalizeValue(inputOps[k]);
-    });
+  ObjectKeys(inputOps).forEach((k) => {
+    inputOps[k] = normalizeValue(inputOps[k]);
+  });
 
-  Object.keys(defaultOps)
-    .forEach((k) => {
-      if (k in inputOps) {
-        normalOps[k] = inputOps[k];
-      } else if (k in dataOps) {
-        normalOps[k] = dataOps[k];
-      } else {
-        normalOps[k] = defaultOps[k];
-      }
-    });
+  ObjectKeys(defaultOps).forEach((k) => {
+    if (k in inputOps) {
+      normalOps[k] = inputOps[k];
+    } else if (k in dataOps) {
+      normalOps[k] = dataOps[k];
+    } else {
+      normalOps[k] = defaultOps[k];
+    }
+  });
 
   return normalOps;
 }

@@ -1,5 +1,5 @@
 /*!
-* shorter-js v0.2.20 (https://github.com/thednp/shorter-js)
+* shorter-js v0.2.21 (https://github.com/thednp/shorter-js)
 * Copyright 2019-2021 © dnp_theme
 * Licensed under MIT (https://github.com/thednp/shorter-js/blob/master/LICENSE)
 */
@@ -1172,6 +1172,13 @@
   }
 
   /**
+   * Shortcut for `Object.keys()` static method.
+   * @param  {Record<string, any>} obj a target object
+   * @returns {string[]}
+   */
+  var ObjectKeys = function (obj) { return Object.keys(obj); };
+
+  /**
    * Utility to normalize component options
    *
    * @param {Element} element target
@@ -1186,30 +1193,27 @@
     var normalOps = {};
     var dataOps = {};
 
-    Object.keys(data)
-      .forEach(function (k) {
-        var key = ns && k.includes(ns)
-          ? k.replace(ns, '').replace(/[A-Z]/, function (match) { return match.toLowerCase(); })
-          : k;
+    ObjectKeys(data).forEach(function (k) {
+      var key = ns && k.includes(ns)
+        ? k.replace(ns, '').replace(/[A-Z]/, function (match) { return match.toLowerCase(); })
+        : k;
 
-        dataOps[key] = normalizeValue(data[k]);
-      });
+      dataOps[key] = normalizeValue(data[k]);
+    });
 
-    Object.keys(inputOps)
-      .forEach(function (k) {
-        inputOps[k] = normalizeValue(inputOps[k]);
-      });
+    ObjectKeys(inputOps).forEach(function (k) {
+      inputOps[k] = normalizeValue(inputOps[k]);
+    });
 
-    Object.keys(defaultOps)
-      .forEach(function (k) {
-        if (k in inputOps) {
-          normalOps[k] = inputOps[k];
-        } else if (k in dataOps) {
-          normalOps[k] = dataOps[k];
-        } else {
-          normalOps[k] = defaultOps[k];
-        }
-      });
+    ObjectKeys(defaultOps).forEach(function (k) {
+      if (k in inputOps) {
+        normalOps[k] = inputOps[k];
+      } else if (k in dataOps) {
+        normalOps[k] = dataOps[k];
+      } else {
+        normalOps[k] = defaultOps[k];
+      }
+    });
 
     return normalOps;
   }
@@ -1271,13 +1275,6 @@
    * @param  {Record<string, any>} source a source object
    */
   var ObjectAssign = function (obj, source) { return Object.assign(obj, source); };
-
-  /**
-   * Shortcut for `Object.keys()` static method.
-   * @param  {Record<string, any>} obj a target object
-   * @returns {string[]}
-   */
-  var ObjectKeys = function (obj) { return Object.keys(obj); };
 
   /**
    * Shortcut for `Object.values()` static method.
@@ -1426,7 +1423,7 @@
     return lookUp.getElementsByClassName(selector);
   }
 
-  var version = "0.2.20";
+  var version = "0.2.21";
 
   // @ts-ignore
 

@@ -1,5 +1,5 @@
 /*!
-* shorter-js v0.2.20 (https://github.com/thednp/shorter-js)
+* shorter-js v0.2.21 (https://github.com/thednp/shorter-js)
 * Copyright 2019-2021 © dnp_theme
 * Licensed under MIT (https://github.com/thednp/shorter-js/blob/master/LICENSE)
 */
@@ -1167,6 +1167,13 @@ function normalizeValue(value) {
 }
 
 /**
+ * Shortcut for `Object.keys()` static method.
+ * @param  {Record<string, any>} obj a target object
+ * @returns {string[]}
+ */
+const ObjectKeys = (obj) => Object.keys(obj);
+
+/**
  * Utility to normalize component options
  *
  * @param {Element} element target
@@ -1181,30 +1188,27 @@ function normalizeOptions(element, defaultOps, inputOps, ns) {
   const normalOps = {};
   const dataOps = {};
 
-  Object.keys(data)
-    .forEach((k) => {
-      const key = ns && k.includes(ns)
-        ? k.replace(ns, '').replace(/[A-Z]/, (match) => match.toLowerCase())
-        : k;
+  ObjectKeys(data).forEach((k) => {
+    const key = ns && k.includes(ns)
+      ? k.replace(ns, '').replace(/[A-Z]/, (match) => match.toLowerCase())
+      : k;
 
-      dataOps[key] = normalizeValue(data[k]);
-    });
+    dataOps[key] = normalizeValue(data[k]);
+  });
 
-  Object.keys(inputOps)
-    .forEach((k) => {
-      inputOps[k] = normalizeValue(inputOps[k]);
-    });
+  ObjectKeys(inputOps).forEach((k) => {
+    inputOps[k] = normalizeValue(inputOps[k]);
+  });
 
-  Object.keys(defaultOps)
-    .forEach((k) => {
-      if (k in inputOps) {
-        normalOps[k] = inputOps[k];
-      } else if (k in dataOps) {
-        normalOps[k] = dataOps[k];
-      } else {
-        normalOps[k] = defaultOps[k];
-      }
-    });
+  ObjectKeys(defaultOps).forEach((k) => {
+    if (k in inputOps) {
+      normalOps[k] = inputOps[k];
+    } else if (k in dataOps) {
+      normalOps[k] = dataOps[k];
+    } else {
+      normalOps[k] = defaultOps[k];
+    }
+  });
 
   return normalOps;
 }
@@ -1266,13 +1270,6 @@ const Float64ArrayFrom = (arr) => {
  * @param  {Record<string, any>} source a source object
  */
 const ObjectAssign = (obj, source) => Object.assign(obj, source);
-
-/**
- * Shortcut for `Object.keys()` static method.
- * @param  {Record<string, any>} obj a target object
- * @returns {string[]}
- */
-const ObjectKeys = (obj) => Object.keys(obj);
 
 /**
  * Shortcut for `Object.values()` static method.
@@ -1421,7 +1418,7 @@ function getElementsByClassName(selector, parent) {
   return lookUp.getElementsByClassName(selector);
 }
 
-var version = "0.2.20";
+var version = "0.2.21";
 
 // @ts-ignore
 
