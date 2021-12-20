@@ -304,6 +304,12 @@
   var mouseoutEvent = 'mouseout';
 
   /**
+   * A global namespace for `mousemove` event.
+   * @type {string}
+   */
+  var mousemoveEvent = 'mousemove';
+
+  /**
    * A global namespace for `mousewheel` event.
    * @type {string}
    */
@@ -1476,6 +1482,7 @@
     mouseleaveEvent: mouseleaveEvent,
     mouseinEvent: mouseinEvent,
     mouseoutEvent: mouseoutEvent,
+    mousemoveEvent: mousemoveEvent,
     mousewheelEvent: mousewheelEvent,
     mouseSwipeEvents: mouseSwipeEvents,
     touchEvents: touchEvents,

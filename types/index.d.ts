@@ -42,6 +42,7 @@ export { default as mouseenterEvent } from "shorter-js/src/strings/mouseenterEve
 export { default as mouseleaveEvent } from "shorter-js/src/strings/mouseleaveEvent";
 export { default as mouseinEvent } from "shorter-js/src/strings/mouseinEvent";
 export { default as mouseoutEvent } from "shorter-js/src/strings/mouseoutEvent";
+export { default as mousemoveEvent } from "shorter-js/src/strings/mousemoveEvent";
 export { default as mousewheelEvent } from "shorter-js/src/strings/mousewheelEvent";
 export { default as touchEvents } from "shorter-js/src/strings/touchEvents";
 export { default as touchstartEvent } from "shorter-js/src/strings/touchstartEvent";

@@ -43,6 +43,7 @@ export { default as mouseenterEvent } from "../../src/strings/mouseenterEvent";
 export { default as mouseleaveEvent } from "../../src/strings/mouseleaveEvent";
 export { default as mouseinEvent } from "../../src/strings/mouseinEvent";
 export { default as mouseoutEvent } from "../../src/strings/mouseoutEvent";
+export { default as mousemoveEvent } from "../../src/strings/mousemoveEvent";
 export { default as mousewheelEvent } from "../../src/strings/mousewheelEvent";
 
 export { default as touchEvents } from "../../src/strings/touchEvents";

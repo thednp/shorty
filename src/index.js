@@ -43,6 +43,7 @@ import mouseenterEvent from './strings/mouseenterEvent';
 import mouseleaveEvent from './strings/mouseleaveEvent';
 import mouseinEvent from './strings/mouseinEvent';
 import mouseoutEvent from './strings/mouseoutEvent';
+import mousemoveEvent from './strings/mousemoveEvent';
 import mousewheelEvent from './strings/mousewheelEvent';
 
 import touchEvents from './strings/touchEvents';
@@ -213,6 +214,7 @@ const SHORTER = {
   mouseleaveEvent,
   mouseinEvent,
   mouseoutEvent,
+  mousemoveEvent,
   mousewheelEvent,
   mouseSwipeEvents,
   touchEvents,

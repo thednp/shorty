@@ -299,6 +299,12 @@ const mouseinEvent = 'mousein';
 const mouseoutEvent = 'mouseout';
 
 /**
+ * A global namespace for `mousemove` event.
+ * @type {string}
+ */
+const mousemoveEvent = 'mousemove';
+
+/**
  * A global namespace for `mousewheel` event.
  * @type {string}
  */
@@ -1471,6 +1477,7 @@ const SHORTER = {
   mouseleaveEvent,
   mouseinEvent,
   mouseoutEvent,
+  mousemoveEvent,
   mousewheelEvent,
   mouseSwipeEvents,
   touchEvents,

@@ -326,6 +326,14 @@ declare module "shorter-js/src/strings/mouseoutEvent" {
      */
     const mouseoutEvent: string;
 }
+declare module "shorter-js/src/strings/mousemoveEvent" {
+    export default mousemoveEvent;
+    /**
+     * A global namespace for `mousemove` event.
+     * @type {string}
+     */
+    const mousemoveEvent: string;
+}
 declare module "shorter-js/src/strings/mousewheelEvent" {
     export default mousewheelEvent;
     /**
@@ -1050,6 +1058,15 @@ declare module "shorter-js/src/misc/normalizeValue" {
      */
     export type niceValue = string | Element | Function | number | boolean | null;
 }
+declare module "shorter-js/src/misc/ObjectKeys" {
+    export default ObjectKeys;
+    /**
+     * Shortcut for `Object.keys()` static method.
+     * @param  {Record<string, any>} obj a target object
+     * @returns {string[]}
+     */
+    function ObjectKeys(obj: Record<string, any>): string[];
+}
 declare module "shorter-js/src/misc/normalizeOptions" {
     /**
      * Utility to normalize component options
@@ -1107,15 +1124,6 @@ declare module "shorter-js/src/misc/Float64ArrayFrom" {
      * @returns {Float64Array}
      */
     function Float64ArrayFrom(arr: any[] | HTMLCollection | NodeList): Float64Array;
-}
-declare module "shorter-js/src/misc/ObjectKeys" {
-    export default ObjectKeys;
-    /**
-     * Shortcut for `Object.keys()` static method.
-     * @param  {Record<string, any>} obj a target object
-     * @returns {string[]}
-     */
-    function ObjectKeys(obj: Record<string, any>): string[];
 }
 declare module "shorter-js/src/misc/ObjectValues" {
     export default ObjectValues;
@@ -1317,6 +1325,7 @@ declare module "shorter-js/types/module/shorter" {
     export { default as mouseleaveEvent } from "shorter-js/src/strings/mouseleaveEvent";
     export { default as mouseinEvent } from "shorter-js/src/strings/mouseinEvent";
     export { default as mouseoutEvent } from "shorter-js/src/strings/mouseoutEvent";
+    export { default as mousemoveEvent } from "shorter-js/src/strings/mousemoveEvent";
     export { default as mousewheelEvent } from "shorter-js/src/strings/mousewheelEvent";
     export { default as touchEvents } from "shorter-js/src/strings/touchEvents";
     export { default as touchstartEvent } from "shorter-js/src/strings/touchstartEvent";
@@ -1391,6 +1400,7 @@ declare module "shorter-js/types/module/shorter" {
     export { default as emulateTransitionEnd } from "shorter-js/src/misc/emulateTransitionEnd";
     export { default as isElementInScrollRange } from "shorter-js/src/misc/isElementInScrollRange";
     export { default as isElementInViewport } from "shorter-js/src/misc/isElementInViewport";
+    export { default as isMedia } from "shorter-js/src/misc/isMedia";
     export { default as isRTL } from "shorter-js/src/misc/isRTL";
     export { default as passiveHandler } from "shorter-js/src/misc/passiveHandler";
     export { default as getElementAnimationDuration } from "shorter-js/src/misc/getElementAnimationDuration";
@@ -1413,7 +1423,6 @@ declare module "shorter-js/types/module/shorter" {
     export { default as removeAttribute } from "shorter-js/src/misc/removeAttribute";
     export { default as isHTMLElement } from "shorter-js/src/misc/isHTMLElement";
     export { default as isArray } from "shorter-js/src/misc/isArray";
-    export { default as isMedia } from "shorter-js/src/misc/isMedia";
     export { default as isElement } from "shorter-js/src/misc/isElement";
     export { default as isNodeList } from "shorter-js/src/misc/isNodeList";
     export { default as isHTMLCollection } from "shorter-js/src/misc/isHTMLCollection";
