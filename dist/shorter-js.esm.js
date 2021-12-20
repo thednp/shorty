@@ -1,5 +1,5 @@
 /*!
-* shorter-js v0.2.21 (https://github.com/thednp/shorter-js)
+* shorter-js v0.2.22 (https://github.com/thednp/shorter-js)
 * Copyright 2019-2021 © dnp_theme
 * Licensed under MIT (https://github.com/thednp/shorter-js/blob/master/LICENSE)
 */
@@ -267,6 +267,12 @@ const mousedownEvent = 'mousedown';
  * @type {string}
  */
 const mouseupEvent = 'mouseup';
+
+/**
+ * A global namespace for `hover` event.
+ * @type {string}
+ */
+const mousehoverEvent = 'hover';
 
 /**
  * A global namespace for mouse hover events.
@@ -1424,7 +1430,7 @@ function getElementsByClassName(selector, parent) {
   return lookUp.getElementsByClassName(selector);
 }
 
-var version = "0.2.21";
+var version = "0.2.22";
 
 // @ts-ignore
 
@@ -1472,6 +1478,7 @@ const SHORTER = {
   mousedblclickEvent,
   mousedownEvent,
   mouseupEvent,
+  mousehoverEvent,
   mouseHoverEvents,
   mouseenterEvent,
   mouseleaveEvent,

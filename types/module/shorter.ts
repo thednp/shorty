@@ -38,6 +38,7 @@ export { default as mouseclickEvent } from "../../src/strings/mouseclickEvent";
 export { default as mousedblclickEvent } from "../../src/strings/mousedblclickEvent";
 export { default as mousedownEvent } from "../../src/strings/mousedownEvent";
 export { default as mouseupEvent } from "../../src/strings/mouseupEvent";
+export { default as mousehoverEvent } from "../../src/strings/mousehoverEvent";
 export { default as mouseHoverEvents } from "../../src/strings/mouseHoverEvents";
 export { default as mouseenterEvent } from "../../src/strings/mouseenterEvent";
 export { default as mouseleaveEvent } from "../../src/strings/mouseleaveEvent";

@@ -286,6 +286,14 @@ declare module "shorter-js/src/strings/mouseupEvent" {
      */
     const mouseupEvent: string;
 }
+declare module "shorter-js/src/strings/mousehoverEvent" {
+    export default mousehoverEvent;
+    /**
+     * A global namespace for `hover` event.
+     * @type {string}
+     */
+    const mousehoverEvent: string;
+}
 declare module "shorter-js/src/strings/mouseHoverEvents" {
     export default mouseHoverEvents;
     /**
@@ -1320,6 +1328,7 @@ declare module "shorter-js/types/module/shorter" {
     export { default as mousedblclickEvent } from "shorter-js/src/strings/mousedblclickEvent";
     export { default as mousedownEvent } from "shorter-js/src/strings/mousedownEvent";
     export { default as mouseupEvent } from "shorter-js/src/strings/mouseupEvent";
+    export { default as mousehoverEvent } from "shorter-js/src/strings/mousehoverEvent";
     export { default as mouseHoverEvents } from "shorter-js/src/strings/mouseHoverEvents";
     export { default as mouseenterEvent } from "shorter-js/src/strings/mouseenterEvent";
     export { default as mouseleaveEvent } from "shorter-js/src/strings/mouseleaveEvent";
