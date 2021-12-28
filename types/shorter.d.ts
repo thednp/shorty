@@ -942,6 +942,14 @@ declare module "shorter-js/src/misc/data" {
         function remove(element: Element, component: string): void;
     }
 }
+declare module "shorter-js/src/misc/timer" {
+    export default Timer;
+    namespace Timer {
+        function set(target: string | Element, callback: any, delay: number, key?: string | undefined): void;
+        function get(target: string | Element, key?: string | undefined): Map<Element, TimerHandler> | null;
+        function clear(target: Element, key?: string | undefined): void;
+    }
+}
 declare module "shorter-js/src/misc/getElementAnimationDelay" {
     /**
      * Utility to get the computed `animationDelay`
@@ -1405,6 +1413,7 @@ declare module "shorter-js/types/module/shorter" {
     export { default as off } from "shorter-js/src/event/off";
     export { default as one } from "shorter-js/src/event/one";
     export { default as Data, getInstance } from "shorter-js/src/misc/data";
+    export { default as Timer } from "shorter-js/src/misc/timer";
     export { default as emulateAnimationEnd } from "shorter-js/src/misc/emulateAnimationEnd";
     export { default as emulateTransitionEnd } from "shorter-js/src/misc/emulateTransitionEnd";
     export { default as isElementInScrollRange } from "shorter-js/src/misc/isElementInScrollRange";

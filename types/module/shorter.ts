@@ -131,6 +131,7 @@ export { default as one } from "../../src/event/one";
 
 // misc
 export { default as Data, getInstance } from "../../src/misc/data";
+export { default as Timer } from "../../src/misc/timer";
 export { default as emulateAnimationEnd } from "../../src/misc/emulateAnimationEnd";
 export { default as emulateTransitionEnd } from "../../src/misc/emulateTransitionEnd";
 export { default as isElementInScrollRange } from "../../src/misc/isElementInScrollRange";

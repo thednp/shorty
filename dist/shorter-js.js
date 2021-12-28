@@ -1,5 +1,5 @@
 /*!
-* shorter-js v0.2.22 (https://github.com/thednp/shorter-js)
+* shorter-js v0.2.23 (https://github.com/thednp/shorter-js)
 * Copyright 2019-2021 © dnp_theme
 * Licensed under MIT (https://github.com/thednp/shorter-js/blob/master/LICENSE)
 */
@@ -879,6 +879,79 @@
     return isElement(selector) ? selector : lookUp.querySelector(selector);
   }
 
+  var TimeCache = new Map();
+
+  var Timer = {
+    /**
+     * Sets a new timeout timer for an element, or element -> key association.
+     * @param {Element | string} target target element
+     * @param {ReturnType<TimerHandler>} callback the callback
+     * @param {number} delay the execution delay
+     * @param {string=} key a unique
+     */
+    set: function (target, callback, delay, key) {
+      var element = querySelector(target);
+      if (!isElement(element)) { return; }
+
+      if (typeof key === 'string' && key.length) {
+        if (!TimeCache.has(element)) {
+          TimeCache.set(element, new Map());
+        }
+        var keyTimers = TimeCache.get(element);
+        keyTimers.set(key, setTimeout(callback, delay));
+      } else {
+        TimeCache.set(element, setTimeout(callback, delay));
+      }
+    },
+
+    /**
+     * Returns the timer associated with the target.
+     * @param {Element | string} target target element
+     * @param {string=} key a unique
+     * @returns {Map<Element, TimerHandler>?} the timer
+     */
+    get: function (target, key) {
+      var element = querySelector(target);
+      if (!isElement(element)) { return null; }
+
+      if (typeof key === 'string' && key.length) {
+        if (!TimeCache.has(element)) {
+          TimeCache.set(element, new Map());
+        }
+        var keyTimers = TimeCache.get(element);
+        if (keyTimers.has(key)) {
+          return keyTimers.get(key);
+        }
+      } else if (TimeCache.has(element)) {
+        return TimeCache.get(element);
+      }
+      return null;
+    },
+
+    /**
+     * Clears the element's timer.
+     * @param {Element} target target element
+     * @param {string=} key a unique
+     */
+    clear: function (target, key) {
+      var element = querySelector(target);
+
+      if (!isElement(element) || !TimeCache.has(element)) { return; }
+
+      if (typeof key === 'string' && key.length) {
+        var keyTimers = TimeCache.get(element);
+
+        if (keyTimers && keyTimers.has(key)) {
+          clearTimeout(keyTimers.get(key));
+          keyTimers.delete(key);
+        }
+      } else if (TimeCache.has(element)) {
+        clearTimeout(TimeCache.get(element));
+        TimeCache.delete(element);
+      }
+    },
+  };
+
   var componentData = new Map();
   /**
    * An interface for web components background data.
@@ -1435,7 +1508,7 @@
     return lookUp.getElementsByClassName(selector);
   }
 
-  var version = "0.2.22";
+  var version = "0.2.23";
 
   // @ts-ignore
 
@@ -1561,6 +1634,7 @@
     off: off,
     one: one,
     Data: Data,
+    Timer: Timer,
     getInstance: getInstance,
     emulateAnimationEnd: emulateAnimationEnd,
     emulateTransitionEnd: emulateTransitionEnd,

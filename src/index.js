@@ -130,6 +130,7 @@ import off from './event/off';
 import one from './event/one';
 
 // misc
+import Timer from './misc/timer';
 import Data, { getInstance } from './misc/data';
 import emulateAnimationEnd from './misc/emulateAnimationEnd';
 import emulateTransitionEnd from './misc/emulateTransitionEnd';
@@ -288,6 +289,7 @@ const SHORTER = {
   off,
   one,
   Data,
+  Timer,
   getInstance,
   emulateAnimationEnd,
   emulateTransitionEnd,
