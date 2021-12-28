@@ -875,7 +875,10 @@ function querySelector(selector, parent) {
 }
 
 const TimeCache = new Map();
-
+/**
+ * An interface for one or more `TimerHandler`s per `Element`.
+ * @see https://github.com/thednp/navbar.js/
+ */
 const Timer = {
   /**
    * Sets a new timeout timer for an element, or element -> key association.

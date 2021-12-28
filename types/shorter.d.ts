@@ -943,7 +943,7 @@ declare module "shorter-js/src/misc/data" {
     }
 }
 declare module "shorter-js/src/misc/timer" {
-    export default Timer;
+    export default Timer; 
     namespace Timer {
         function set(target: string | Element, callback: any, delay: number, key?: string | undefined): void;
         function get(target: string | Element, key?: string | undefined): Map<Element, TimerHandler> | null;
