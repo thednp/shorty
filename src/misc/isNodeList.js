@@ -4,6 +4,5 @@
  * @param {any} object the target object
  * @returns {boolean} the query result
  */
-export default function isNodeList(object) {
-  return object instanceof NodeList;
-}
+const isNodeList = (object) => object instanceof NodeList;
+export default isNodeList;

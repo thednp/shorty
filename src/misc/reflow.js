@@ -1,10 +1,8 @@
 /**
- * Utility to force re-paint of an `Element` target.
+ * Utility to force re-paint of an `HTMLElement` target.
  *
- * @param {Element | HTMLElement} element is the target
+ * @param {HTMLElement} element is the target
  * @return {number} the `Element.offsetHeight` value
  */
-export default function reflow(element) {
-  // @ts-ignore -- our `Element` is always an `HTMLElement`
-  return element.offsetHeight;
-}
+const reflow = (element) => element.offsetHeight;
+export default reflow;

@@ -1,5 +1,5 @@
 import querySelector from './querySelector';
-import isElement from './isElement';
+import isHTMLElement from './isHTMLElement';
 
 const componentData = new Map();
 /**
@@ -9,20 +9,20 @@ const componentData = new Map();
 const Data = {
   /**
    * Sets web components data.
-   * @param {Element | string} element target element
+   * @param {HTMLElement | string} target target element
    * @param {string} component the component's name or a unique key
    * @param {any} instance the component instance
    */
-  set: (element, component, instance) => {
-    const ELEMENT = querySelector(element);
-    if (!isElement(ELEMENT)) return;
+  set: (target, component, instance) => {
+    const element = querySelector(target);
+    if (!isHTMLElement(element)) return;
 
     if (!componentData.has(component)) {
       componentData.set(component, new Map());
     }
 
     const instanceMap = componentData.get(component);
-    instanceMap.set(ELEMENT, instance);
+    instanceMap.set(element, instance);
   },
 
   /**
@@ -39,27 +39,28 @@ const Data = {
 
   /**
    * Returns the instance associated with the target.
-   * @param {Element | string} element target element
+   * @param {HTMLElement | string} target target element
    * @param {string} component the component's name or a unique key
    * @returns {any?} the instance
    */
-  get: (element, component) => {
-    const ELEMENT = querySelector(element);
+  get: (target, component) => {
+    const element = querySelector(target);
 
     const allForC = Data.getAllFor(component);
-    if (allForC && isElement(ELEMENT) && allForC.has(ELEMENT)) {
-      return allForC.get(ELEMENT);
+    if (allForC && isHTMLElement(element) && allForC.has(element)) {
+      return allForC.get(element);
     }
     return null;
   },
 
   /**
    * Removes web components data.
-   * @param {Element} element target element
+   * @param {HTMLElement | string} target target element
    * @param {string} component the component's name or a unique key
    */
-  remove: (element, component) => {
-    if (!componentData.has(component)) return;
+  remove: (target, component) => {
+    const element = querySelector(target);
+    if (!componentData.has(component) || !element) return;
 
     const instanceMap = componentData.get(component);
     instanceMap.delete(element);
@@ -72,10 +73,10 @@ const Data = {
 
 /**
  * An alias for `Data.get()`.
- * @param {Element | string} element target element
+ * @param {HTMLElement | string} target target element
  * @param {string} component the component's name or a unique key
- * @returns {any} the request result
+ * @returns {Record<string, any>?} the request result
  */
-export const getInstance = (element, component) => Data.get(element, component);
+export const getInstance = (target, component) => Data.get(target, component);
 
 export default Data;

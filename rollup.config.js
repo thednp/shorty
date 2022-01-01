@@ -2,6 +2,7 @@
 import buble from '@rollup/plugin-buble'
 import {terser} from 'rollup-plugin-terser'
 import json from '@rollup/plugin-json'
+import typescript from '@rollup/plugin-typescript'
 import * as pkg from "./package.json"
 
 const MIN = process.env.MIN === 'true' // true/false|unset
@@ -24,7 +25,8 @@ const OUTPUT = {
 }
 
 const PLUGINS = [
-  json()
+  json(),
+  typescript({lib: ["es5", "es6", "dom"], target: "esnext"})
 ]
 
 if (FORMAT!=='esm') {

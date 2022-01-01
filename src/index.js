@@ -92,13 +92,22 @@ import keySpace from './strings/keySpace';
 import keyTab from './strings/keyTab';
 
 import animationDuration from './strings/animationDuration';
+import animationDurationLegacy from './strings/animationDurationLegacy';
 import animationDelay from './strings/animationDelay';
+import animationDelayLegacy from './strings/animationDelayLegacy';
 import animationName from './strings/animationName';
+import animationNameLegacy from './strings/animationNameLegacy';
 import animationEndEvent from './strings/animationEndEvent';
+import animationEndEventLegacy from './strings/animationEndEventLegacy';
 import transitionDuration from './strings/transitionDuration';
+import transitionDurationLegacy from './strings/transitionDurationLegacy';
 import transitionDelay from './strings/transitionDelay';
+import transitionDelayLegacy from './strings/transitionDelayLegacy';
 import transitionEndEvent from './strings/transitionEndEvent';
+import transitionEndEventLegacy from './strings/transitionEndEventLegacy';
 import transitionProperty from './strings/transitionProperty';
+import transitionPropertyLegacy from './strings/transitionPropertyLegacy';
+
 import addEventListener from './strings/addEventListener';
 import removeEventListener from './strings/removeEventListener';
 
@@ -108,6 +117,8 @@ import offsetHeight from './strings/offsetHeight';
 import offsetWidth from './strings/offsetWidth';
 import scrollHeight from './strings/scrollHeight';
 import scrollWidth from './strings/scrollWidth';
+
+import userAgentData from './strings/userAgentData';
 
 // boolean
 import isMobile from './boolean/isMobile';
@@ -133,16 +144,19 @@ import one from './event/one';
 import Timer from './misc/timer';
 import Data, { getInstance } from './misc/data';
 import emulateAnimationEnd from './misc/emulateAnimationEnd';
+import emulateAnimationEndLegacy from './misc/emulateAnimationEndLegacy';
 import emulateTransitionEnd from './misc/emulateTransitionEnd';
-import isElementInScrollRange from './misc/isElementInScrollRange';
-import isElementInViewport from './misc/isElementInViewport';
-import isMedia from './misc/isMedia';
-import isRTL from './misc/isRTL';
+import emulateTransitionEndLegacy from './misc/emulateTransitionEndLegacy';
+
 import passiveHandler from './misc/passiveHandler';
 import getElementAnimationDuration from './misc/getElementAnimationDuration';
+import getElementAnimationDurationLegacy from './misc/getElementAnimationDurationLegacy';
 import getElementAnimationDelay from './misc/getElementAnimationDelay';
+import getElementAnimationDelayLegacy from './misc/getElementAnimationDelayLegacy';
 import getElementTransitionDuration from './misc/getElementTransitionDuration';
+import getElementTransitionDurationLegacy from './misc/getElementTransitionDurationLegacy';
 import getElementTransitionDelay from './misc/getElementTransitionDelay';
+import getElementTransitionDelayLegacy from './misc/getElementTransitionDelayLegacy';
 import normalizeValue from './misc/normalizeValue';
 import normalizeOptions from './misc/normalizeOptions';
 import tryWrapper from './misc/tryWrapper';
@@ -159,7 +173,13 @@ import getElementStyle from './misc/getElementStyle';
 import getAttribute from './misc/getAttribute';
 import setAttribute from './misc/setAttribute';
 import removeAttribute from './misc/removeAttribute';
+import setElementStyle from './misc/setElementStyle';
 
+import isElementInScrollRange from './misc/isElementInScrollRange';
+import isElementInViewport from './misc/isElementInViewport';
+import isMedia from './misc/isMedia';
+import isRTL from './misc/isRTL';
+import isString from './misc/isString';
 import isArray from './misc/isArray';
 import isElement from './misc/isElement';
 import isHTMLElement from './misc/isHTMLElement';
@@ -167,8 +187,8 @@ import isHTMLCollection from './misc/isHTMLCollection';
 import isNodeList from './misc/isNodeList';
 import isElementsArray from './misc/isElementsArray';
 
-import queryElement from './misc/queryElement';
 import querySelector from './misc/querySelector';
+import queryElement from './misc/queryElement';
 import querySelectorAll from './misc/querySelectorAll';
 import getElementsByTagName from './misc/getElementsByTagName';
 import getElementsByClassName from './misc/getElementsByClassName';
@@ -239,13 +259,21 @@ const SHORTER = {
   gesturestartEvent,
   bezierEasings,
   animationDuration,
+  animationDurationLegacy,
   animationDelay,
+  animationDelayLegacy,
   animationName,
+  animationNameLegacy,
   animationEndEvent,
+  animationEndEventLegacy,
   transitionDuration,
+  transitionDurationLegacy,
   transitionDelay,
+  transitionDelayLegacy,
   transitionEndEvent,
+  transitionEndEventLegacy,
   transitionProperty,
+  transitionPropertyLegacy,
   isMobile,
   isApple,
   support3DTransform,
@@ -282,6 +310,7 @@ const SHORTER = {
   offsetWidth,
   scrollHeight,
   scrollWidth,
+  userAgentData,
   addClass,
   removeClass,
   hasClass,
@@ -292,15 +321,22 @@ const SHORTER = {
   Timer,
   getInstance,
   emulateAnimationEnd,
+  emulateAnimationEndLegacy,
   emulateTransitionEnd,
+  emulateTransitionEndLegacy,
   isElementInScrollRange,
   isElementInViewport,
   passiveHandler,
   getElementAnimationDuration,
+  getElementAnimationDurationLegacy,
   getElementAnimationDelay,
+  getElementAnimationDelayLegacy,
   getElementTransitionDuration,
+  getElementTransitionDurationLegacy,
   getElementTransitionDelay,
+  getElementTransitionDelayLegacy,
   isArray,
+  isString,
   isElement,
   isHTMLElement,
   isNodeList,
@@ -324,6 +360,7 @@ const SHORTER = {
   ObjectKeys,
   ObjectValues,
   getElementStyle,
+  setElementStyle,
   getAttribute,
   setAttribute,
   removeAttribute,

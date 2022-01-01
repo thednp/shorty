@@ -1,8 +1,8 @@
 /**
- * Utility to determine if an `Element`
+ * Utility to determine if an `HTMLElement`
  * is partially visible in viewport.
  *
- * @param {Element} element target
+ * @param {HTMLElement} element target
  * @return {boolean} Boolean
  */
 export default function isElementInScrollRange(element) {

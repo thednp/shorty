@@ -3,8 +3,5 @@
  * @param  {any[] | HTMLCollection | NodeList} arr array-like iterable object
  * @returns {Float64Array}
  */
-const Float64ArrayFrom = (arr) => {
-  const array = Array.from(arr);
-  return Float64Array.from(array);
-};
+const Float64ArrayFrom = (arr) => Float64Array.from(Array.from(arr));
 export default Float64ArrayFrom;

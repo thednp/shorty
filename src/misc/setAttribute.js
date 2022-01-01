@@ -1,6 +1,6 @@
 /**
- * Shortcut for `Element.setAttribute()` method.
- * @param  {Element} element target element
+ * Shortcut for `HTMLElement.setAttribute()` method.
+ * @param  {HTMLElement} element target element
  * @param  {string} attribute attribute name
  * @param  {string} value attribute value
  */

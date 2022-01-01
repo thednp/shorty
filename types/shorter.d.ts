@@ -673,7 +673,23 @@ declare module "shorter-js/src/strings/animationDuration" {
      */
     const animationDuration: string;
 }
+declare module "shorter-js/src/strings/animationDurationLegacy" {
+    export default animationDuration;
+    /**
+     * A global namespace for 'animationDuration' string.
+     * @type {string}
+     */
+    const animationDuration: string;
+}
 declare module "shorter-js/src/strings/animationDelay" {
+    export default animationDelay;
+    /**
+     * A global namespace for 'animationDelay' string.
+     * @type {string}
+     */
+    const animationDelay: string;
+}
+declare module "shorter-js/src/strings/animationDelayLegacy" {
     export default animationDelay;
     /**
      * A global namespace for 'animationDelay' string.
@@ -689,7 +705,23 @@ declare module "shorter-js/src/strings/animationName" {
      */
     const animationName: string;
 }
+declare module "shorter-js/src/strings/animationNameLegacy" {
+    export default animationName;
+    /**
+     * A global namespace for 'animationName' string.
+     * @type {string}
+     */
+    const animationName: string;
+}
 declare module "shorter-js/src/strings/animationEndEvent" {
+    export default animationEndEvent;
+    /**
+     * A global namespace for 'animationend' string.
+     * @type {string}
+     */
+    const animationEndEvent: string;
+}
+declare module "shorter-js/src/strings/animationEndEventLegacy" {
     export default animationEndEvent;
     /**
      * A global namespace for 'animationend' string.
@@ -705,7 +737,23 @@ declare module "shorter-js/src/strings/transitionDuration" {
      */
     const transitionDuration: string;
 }
+declare module "shorter-js/src/strings/transitionDurationLegacy" {
+    export default transitionDuration;
+    /**
+     * A global namespace for 'transitionDuration' string.
+     * @type {string}
+     */
+    const transitionDuration: string;
+}
 declare module "shorter-js/src/strings/transitionDelay" {
+    export default transitionDelay;
+    /**
+     * A global namespace for 'transitionDelay' string.
+     * @type {string}
+     */
+    const transitionDelay: string;
+}
+declare module "shorter-js/src/strings/transitionDelayLegacy" {
     export default transitionDelay;
     /**
      * A global namespace for 'transitionDelay' string.
@@ -721,7 +769,23 @@ declare module "shorter-js/src/strings/transitionEndEvent" {
      */
     const transitionEndEvent: string;
 }
+declare module "shorter-js/src/strings/transitionEndEventLegacy" {
+    export default transitionEndEvent;
+    /**
+     * A global namespace for 'transitionend' string.
+     * @type {string}
+     */
+    const transitionEndEvent: string;
+}
 declare module "shorter-js/src/strings/transitionProperty" {
+    export default transitionProperty;
+    /**
+     * A global namespace for 'transitionProperty' string.
+     * @type {string}
+     */
+    const transitionProperty: string;
+}
+declare module "shorter-js/src/strings/transitionPropertyLegacy" {
     export default transitionProperty;
     /**
      * A global namespace for 'transitionProperty' string.
@@ -786,6 +850,14 @@ declare module "shorter-js/src/strings/scrollWidth" {
      */
     const scrollWidth: string;
 }
+declare module "shorter-js/src/strings/userAgentData" {
+    export default userAgentData;
+    /**
+     * A global namespace for `userAgentData` event.
+     * @type {string}
+     */
+    const userAgentData: string;
+}
 declare module "shorter-js/src/boolean/isMobile" {
     export default isMobile;
     /**
@@ -797,7 +869,7 @@ declare module "shorter-js/src/boolean/isMobile" {
 declare module "shorter-js/src/boolean/isApple" {
     export default isApple;
     /**
-     * A global namespace for Apple browsers.
+     * A global boolean for Apple browsers.
      * @type {boolean}
      */
     const isApple: boolean;
@@ -805,10 +877,44 @@ declare module "shorter-js/src/boolean/isApple" {
 declare module "shorter-js/src/boolean/support3DTransform" {
     export default support3DTransform;
     /**
-     * A global namespace for CSS3 3D transform support.
+     * A global `boolean` for CSS3 3D transform support.
      * @type {boolean}
      */
     const support3DTransform: boolean;
+}
+declare module "shorter-js/src/event/on" {
+    /**
+     * Add eventListener to an `HTMLElement` | `Document` target.
+     *
+     * @param {HTMLElement | Document} element event.target
+     * @param {string} eventName event.type
+     * @param {EventListener} handler callback
+     * @param {EventListenerOptions | boolean | undefined} options other event options
+     */
+    export default function on(element: HTMLElement | Document, eventName: string, handler: EventListener, options: EventListenerOptions | boolean | undefined): void;
+}
+declare module "shorter-js/src/event/off" {
+    /**
+     * Remove eventListener from an `HTMLElement` | `Document` target.
+     *
+     * @param {HTMLElement | Document} element event.target
+     * @param {string} eventName event.type
+     * @param {EventListener} handler callback
+     * @param {EventListenerOptions | boolean | undefined} options other event options
+     */
+    export default function off(element: HTMLElement | Document, eventName: string, handler: EventListener, options: EventListenerOptions | boolean | undefined): void;
+}
+declare module "shorter-js/src/event/one" {
+    /**
+     * Add an `eventListener` to an `HTMLElement` | `Document` target
+     * and remove it once callback is called.
+     *
+     * @param {HTMLElement | Document} element event.target
+     * @param {string} eventName event.type
+     * @param {EventListener} handler callback
+     * @param {EventListenerOptions | boolean | undefined} options other event options
+     */
+    export default function one(element: HTMLElement | Document, eventName: string, handler: EventListener, options: EventListenerOptions | boolean | undefined): void;
 }
 declare module "shorter-js/src/boolean/supportPassive" {
     export default supportPassive;
@@ -837,7 +943,7 @@ declare module "shorter-js/src/boolean/supportTouch" {
 declare module "shorter-js/src/boolean/supportAnimation" {
     export default supportAnimation;
     /**
-     * A global namespace for CSS3 animation support.
+     * A global `boolean` for CSS3 animation support.
      * @type {boolean}
      */
     const supportAnimation: boolean;
@@ -878,166 +984,208 @@ declare module "shorter-js/src/class/hasClass" {
      */
     export default function hasClass(element: Element, classNAME: string): boolean;
 }
-declare module "shorter-js/src/event/on" {
+declare module "shorter-js/src/misc/isHTMLElement" {
+    export default isHTMLElement;
     /**
-     * Add eventListener to Element
-     *
-     * @param {Element} element event.target
-     * @param {string} eventName event.type
-     * @param {EventListener} handler callback
-     * @param {EventListenerOptions | boolean | null} options other event options
-     */
-    export default function on(element: Element, eventName: string, handler: EventListener, options: EventListenerOptions | boolean | null): void;
-}
-declare module "shorter-js/src/event/off" {
-    /**
-     * Remove eventListener from Element
-     *
-     * @param {Element} element event.target
-     * @param {string} eventName event.type
-     * @param {EventListener} handler callback
-     * @param {EventListenerOptions | boolean | null} options other event options
-     */
-    export default function off(element: Element, eventName: string, handler: EventListener, options: EventListenerOptions | boolean | null): void;
-}
-declare module "shorter-js/src/event/one" {
-    /**
-     * Add an eventListener to Element
-     * and remove it once callback is called.
-     *
-     * @param {Element} element event.target
-     * @param {string} eventName event.type
-     * @param {EventListener} handler callback
-     * @param {EventListenerOptions | boolean | null} options other event options
-     */
-    export default function one(element: Element, eventName: string, handler: EventListener, options: EventListenerOptions | boolean | null): void;
-}
-declare module "shorter-js/src/misc/isElement" {
-    /**
-     * Checks if an object is an `Element`.
+     * Checks if an element is an `HTMLElement`.
      *
      * @param {any} element the target object
      * @returns {boolean} the query result
      */
-    export default function isElement(element: any): boolean;
+    function isHTMLElement(element: any): boolean;
 }
 declare module "shorter-js/src/misc/querySelector" {
     /**
-     * Utility to check if target is typeof `Element`
+     * Utility to check if target is typeof `HTMLElement`
      * or find one that matches a selector.
      *
-     * @param {Element | string} selector the input selector or target element
-     * @param {Element=} parent optional Element to look into
-     * @return {Element?} the Element or `querySelector` result
+     * @param {HTMLElement | string} selector the input selector or target element
+     * @param {(ParentNode | HTMLElement)=} parent optional `HTMLElement` to look into
+     * @return {HTMLElement?} the `HTMLElement` or `querySelector` result
      */
-    export default function querySelector(selector: Element | string, parent?: Element | undefined): Element | null;
+    export default function querySelector(selector: HTMLElement | string, parent?: (ParentNode | HTMLElement) | undefined): HTMLElement | null;
 }
 declare module "shorter-js/src/misc/data" {
-    export function getInstance(element: Element | string, component: string): any;
+    export function getInstance(target: HTMLElement | string, component: string): Record<string, any> | null;
     export default Data;
     namespace Data {
-        function set(element: string | Element, component: string, instance: any): void;
+        function set(target: string | HTMLElement, component: string, instance: any): void;
         function getAllFor(component: string): any;
-        function get(element: string | Element, component: string): any;
-        function remove(element: Element, component: string): void;
+        function get(target: string | HTMLElement, component: string): any;
+        function remove(target: string | HTMLElement, component: string): void;
     }
 }
 declare module "shorter-js/src/misc/timer" {
-    export default Timer; 
+    export default Timer;
     namespace Timer {
-        function set(target: string | Element, callback: any, delay: number, key?: string | undefined): void;
-        function get(target: string | Element, key?: string | undefined): Map<Element, TimerHandler> | null;
-        function clear(target: Element, key?: string | undefined): void;
+        function set(target: string | HTMLElement, callback: any, delay: number, key?: string | undefined): void;
+        function get(target: string | HTMLElement, key?: string | undefined): Map<Element, TimerHandler> | null;
+        function clear(target: HTMLElement, key?: string | undefined): void;
     }
+}
+declare module "shorter-js/src/misc/getElementStyle" {
+    /**
+     * Shortcut for `window.getComputedStyle(element).propertyName`
+     * static method.
+     *
+     * * If `element` parameter is not an `HTMLElement`, `getComputedStyle`
+     * throws a `ReferenceError`.
+     *
+     * @param {HTMLElement} element target
+     * @param {string=} property the css property
+     * @return {string} the css property value
+     */
+    export default function getElementStyle(element: HTMLElement, property?: string | undefined): string;
 }
 declare module "shorter-js/src/misc/getElementAnimationDelay" {
     /**
      * Utility to get the computed `animationDelay`
      * from Element in miliseconds.
      *
-     * @param {Element} element target
+     * @param {HTMLElement} element target
      * @return {number} the value in miliseconds
      */
-    export default function getElementAnimationDelay(element: Element): number;
+    export default function getElementAnimationDelay(element: HTMLElement): number;
 }
 declare module "shorter-js/src/misc/getElementAnimationDuration" {
     /**
      * Utility to get the computed `animationDuration`
-     * from Element in miliseconds.
+     * from `HTMLElement` in miliseconds.
      *
-     * @param {Element} element target
+     * @param {HTMLElement} element target
      * @return {number} the value in miliseconds
      */
-    export default function getElementAnimationDuration(element: Element): number;
+    export default function getElementAnimationDuration(element: HTMLElement): number;
 }
 declare module "shorter-js/src/misc/emulateAnimationEnd" {
     /**
      * Utility to make sure callbacks are consistently
      * called when animation ends.
      *
-     * @param {Element} element target
+     * @param {HTMLElement} element target
      * @param {EventListener} handler `animationend` callback
      */
-    export default function emulateAnimationEnd(element: Element, handler: EventListener): void;
+    export default function emulateAnimationEnd(element: HTMLElement, handler: EventListener): void;
+}
+declare module "shorter-js/src/misc/getElementAnimationDelayLegacy" {
+    /**
+     * Utility to get the computed `animationDelay`
+     * from Element in miliseconds.
+     *
+     * @param {HTMLElement} element target
+     * @return {number} the value in miliseconds
+     */
+    export default function getElementAnimationDelay(element: HTMLElement): number;
+}
+declare module "shorter-js/src/misc/getElementAnimationDurationLegacy" {
+    /**
+     * Utility to get the computed `animationDuration`
+     * from `HTMLElement` in miliseconds.
+     *
+     * @param {HTMLElement} element target
+     * @return {number} the value in miliseconds
+     */
+    export default function getElementAnimationDuration(element: HTMLElement): number;
+}
+declare module "shorter-js/src/misc/emulateAnimationEndLegacy" {
+    /**
+     * Utility to make sure callbacks are consistently
+     * called when animation ends.
+     *
+     * @param {HTMLElement} element target
+     * @param {EventListener} handler `animationend` callback
+     */
+    export default function emulateAnimationEnd(element: HTMLElement, handler: EventListener): void;
 }
 declare module "shorter-js/src/misc/getElementTransitionDelay" {
     /**
      * Utility to get the computed `transitionDelay`
      * from Element in miliseconds.
      *
-     * @param {Element} element target
+     * @param {HTMLElement} element target
      * @return {number} the value in miliseconds
      */
-    export default function getElementTransitionDelay(element: Element): number;
+    export default function getElementTransitionDelay(element: HTMLElement): number;
 }
 declare module "shorter-js/src/misc/getElementTransitionDuration" {
     /**
      * Utility to get the computed `transitionDuration`
      * from Element in miliseconds.
      *
-     * @param {Element} element target
+     * @param {HTMLElement} element target
      * @return {number} the value in miliseconds
      */
-    export default function getElementTransitionDuration(element: Element): number;
+    export default function getElementTransitionDuration(element: HTMLElement): number;
 }
 declare module "shorter-js/src/misc/emulateTransitionEnd" {
     /**
      * Utility to make sure callbacks are consistently
      * called when transition ends.
      *
-     * @param {Element} element target
+     * @param {HTMLElement} element target
      * @param {EventListener} handler `transitionend` callback
      */
-    export default function emulateTransitionEnd(element: Element, handler: EventListener): void;
+    export default function emulateTransitionEnd(element: HTMLElement, handler: EventListener): void;
+}
+declare module "shorter-js/src/misc/getElementTransitionDelayLegacy" {
+    /**
+     * Utility to get the computed `transitionDelay`
+     * from Element in miliseconds.
+     *
+     * @param {HTMLElement} element target
+     * @return {number} the value in miliseconds
+     */
+    export default function getElementTransitionDelay(element: HTMLElement): number;
+}
+declare module "shorter-js/src/misc/getElementTransitionDurationLegacy" {
+    /**
+     * Utility to get the computed `transitionDuration`
+     * from Element in miliseconds.
+     *
+     * @param {HTMLElement} element target
+     * @return {number} the value in miliseconds
+     */
+    export default function getElementTransitionDuration(element: HTMLElement): number;
+}
+declare module "shorter-js/src/misc/emulateTransitionEndLegacy" {
+    /**
+     * Utility to make sure callbacks are consistently
+     * called when transition ends.
+     *
+     * @param {HTMLElement} element target
+     * @param {EventListener} handler `transitionend` callback
+     */
+    export default function emulateTransitionEnd(element: HTMLElement, handler: EventListener): void;
 }
 declare module "shorter-js/src/misc/isElementInScrollRange" {
     /**
-     * Utility to determine if an `Element`
+     * Utility to determine if an `HTMLElement`
      * is partially visible in viewport.
      *
-     * @param {Element} element target
+     * @param {HTMLElement} element target
      * @return {boolean} Boolean
      */
-    export default function isElementInScrollRange(element: Element): boolean;
+    export default function isElementInScrollRange(element: HTMLElement): boolean;
 }
 declare module "shorter-js/src/misc/isElementInViewport" {
     /**
-     * Utility to determine if an `Element`
+     * Utility to determine if an `HTMLElement`
      * is fully visible in the viewport.
      *
-     * @param {Element} element target
+     * @param {HTMLElement} element target
      * @return {boolean} Boolean
      */
-    export default function isElementInViewport(element: Element): boolean;
+    export default function isElementInViewport(element: HTMLElement): boolean;
 }
 declare module "shorter-js/src/misc/isMedia" {
+    export default isMedia;
     /**
      * Checks if an element is an `<svg>`, `<img>` or `<video>`.
      * *Tooltip* / *Popover* works different with media elements.
      * @param {any} element the target element
      * @returns {boolean} the query result
      */
-    export default function isMedia(element: any): boolean;
+    function isMedia(element: any): boolean;
 }
 declare module "shorter-js/src/misc/isRTL" {
     export default isRTL;
@@ -1060,7 +1208,7 @@ declare module "shorter-js/src/misc/normalizeValue" {
     /**
      * The raw value or a given component option.
      *
-     * @typedef {string | Element | Function | number | boolean | null} niceValue
+     * @typedef {string | HTMLElement | Function | number | boolean | null} niceValue
      */
     /**
      * Utility to normalize component options
@@ -1072,7 +1220,7 @@ declare module "shorter-js/src/misc/normalizeValue" {
     /**
      * The raw value or a given component option.
      */
-    export type niceValue = string | Element | Function | number | boolean | null;
+    export type niceValue = string | HTMLElement | Function | number | boolean | null;
 }
 declare module "shorter-js/src/misc/ObjectKeys" {
     export default ObjectKeys;
@@ -1087,13 +1235,13 @@ declare module "shorter-js/src/misc/normalizeOptions" {
     /**
      * Utility to normalize component options
      *
-     * @param {Element} element target
+     * @param {HTMLElement} element target
      * @param {Record<string, any>} defaultOps component default options
      * @param {Record<string, any>} inputOps component instance options
      * @param {string=} ns component namespace
      * @return {Record<string, any>} normalized component options object
      */
-    export default function normalizeOptions(element: Element, defaultOps: Record<string, any>, inputOps: Record<string, any>, ns?: string | undefined): Record<string, any>;
+    export default function normalizeOptions(element: HTMLElement, defaultOps: Record<string, any>, inputOps: Record<string, any>, ns?: string | undefined): Record<string, any>;
 }
 declare module "shorter-js/src/misc/tryWrapper" {
     /**
@@ -1105,13 +1253,14 @@ declare module "shorter-js/src/misc/tryWrapper" {
     export default function tryWrapper(fn: Function, origin: string): void;
 }
 declare module "shorter-js/src/misc/reflow" {
+    export default reflow;
     /**
-     * Utility to force re-paint of an `Element` target.
+     * Utility to force re-paint of an `HTMLElement` target.
      *
-     * @param {Element | HTMLElement} element is the target
+     * @param {HTMLElement} element is the target
      * @return {number} the `Element.offsetHeight` value
      */
-    export default function reflow(element: Element | HTMLElement): number;
+    function reflow(element: HTMLElement): number;
 }
 declare module "shorter-js/src/misc/ArrayFrom" {
     export default ArrayFrom;
@@ -1119,9 +1268,9 @@ declare module "shorter-js/src/misc/ArrayFrom" {
      * Shortcut for `Array.from()` static method.
      *
      * @param  {any[] | HTMLCollection | NodeList} arr array-like iterable object
-     * @returns {Array}
+     * @returns {Array<any>}
      */
-    function ArrayFrom(arr: any[] | HTMLCollection | NodeList): any[];
+    function ArrayFrom(arr: any[] | HTMLCollection | NodeList): Array<any>;
 }
 declare module "shorter-js/src/misc/Float32ArrayFrom" {
     export default Float32ArrayFrom;
@@ -1159,57 +1308,42 @@ declare module "shorter-js/src/misc/ObjectAssign" {
      */
     function ObjectAssign(obj: Record<string, any>, source: Record<string, any>): Record<string, any>;
 }
-declare module "shorter-js/src/misc/getElementStyle" {
-    /**
-     * Shortcut for `window.getComputedStyle(element).propertyName`
-     * static method.
-     * * If `element` parameter is not an `Element`, `getComputedStyle`
-     * throws a `ReferenceError`.
-     * * If no property is defined, the entire `CSSStyleDeclaration`
-     * instance is returned.
-     *
-     * @param {Element} element target
-     * @param {string=} property the css property
-     * @return {string} the css property value
-     */
-    export default function getElementStyle(element: Element, property?: string | undefined): string;
-}
 declare module "shorter-js/src/misc/getAttribute" {
     export default getAttribute;
     /**
-     * Shortcut for `Element.getAttribute()` method.
-     * @param  {Element} element target element
+     * Shortcut for `HTMLElement.getAttribute()` method.
+     * @param  {HTMLElement} element target element
      * @param  {string} attribute attribute name
      */
-    function getAttribute(element: Element, attribute: string): string | null;
+    function getAttribute(element: HTMLElement, attribute: string): string | null;
 }
 declare module "shorter-js/src/misc/setAttribute" {
     export default setAttribute;
     /**
-     * Shortcut for `Element.setAttribute()` method.
-     * @param  {Element} element target element
+     * Shortcut for `HTMLElement.setAttribute()` method.
+     * @param  {HTMLElement} element target element
      * @param  {string} attribute attribute name
      * @param  {string} value attribute value
      */
-    function setAttribute(element: Element, attribute: string, value: string): void;
+    function setAttribute(element: HTMLElement, attribute: string, value: string): void;
 }
 declare module "shorter-js/src/misc/removeAttribute" {
     export default removeAttribute;
     /**
-     * Shortcut for `Element.removeAttribute()` method.
-     * @param  {Element} element target element
+     * Shortcut for `HTMLElement.removeAttribute()` method.
+     * @param  {HTMLElement} element target element
      * @param  {string} attribute attribute name
      */
-    function removeAttribute(element: Element, attribute: string): void;
+    function removeAttribute(element: HTMLElement, attribute: string): void;
 }
-declare module "shorter-js/src/misc/isHTMLElement" {
+declare module "shorter-js/src/misc/setElementStyle" {
+    export default setElementStyle;
     /**
-     * Checks if an element is an `HTMLElement`.
-     *
-     * @param {any} element the target object
-     * @returns {boolean} the query result
+     * Shortcut for `HTMLElement.style.propertyName` method.
+     * @param  {HTMLElement} element target element
+     * @param  {Record<string, string>} styles attribute value
      */
-    export default function isHTMLElement(element: any): boolean;
+    function setElementStyle(element: HTMLElement, styles: Record<string, string>): Record<string, any>;
 }
 declare module "shorter-js/src/misc/isArray" {
     export default isArray;
@@ -1221,75 +1355,98 @@ declare module "shorter-js/src/misc/isArray" {
      */
     function isArray(arr: any): boolean;
 }
+declare module "shorter-js/src/misc/isString" {
+    export default isString;
+    /**
+     * Shortcut for `typeof` static method.
+     *
+     * @param  {any} str array-like iterable object
+     * @returns {boolean} the query result
+     */
+    function isString(str: any): boolean;
+}
+declare module "shorter-js/src/misc/isElement" {
+    export default isElement;
+    /**
+     * Checks if an object is an `Element`.
+     *
+     * @param {any} element the target object
+     * @returns {boolean} the query result
+     */
+    function isElement(element: any): boolean;
+}
 declare module "shorter-js/src/misc/isNodeList" {
+    export default isNodeList;
     /**
      * Checks if an object is a `NodeList`.
      *
      * @param {any} object the target object
      * @returns {boolean} the query result
      */
-    export default function isNodeList(object: any): boolean;
+    function isNodeList(object: any): boolean;
 }
 declare module "shorter-js/src/misc/isHTMLCollection" {
+    export default isHTMLCollection;
     /**
      * Checks if an object is an `HTMLCollection`.
      *
      * @param {any} object the target object
      * @returns {boolean} the query result
      */
-    export default function isHTMLCollection(object: any): boolean;
+    function isHTMLCollection(object: any): boolean;
 }
 declare module "shorter-js/src/misc/isElementsArray" {
+    export default isElementsArray;
     /**
      * Checks if an object is an `Array` in which all items are `Element`.
      *
      * @param {any} object the target object
      * @returns {boolean} the query result
      */
-    export default function isElementsArray(object: any): boolean;
+    function isElementsArray(object: any): boolean;
 }
 declare module "shorter-js/src/misc/queryElement" {
     /**
-     * Utility to check if target is typeof `Element`
+     * Utility to check if target is typeof `HTMLElement`
      * or find one that matches a selector.
      *
      * @deprecated
      *
-     * @param {Element | string} selector the input selector or target element
-     * @param {Element=} parent optional Element to look into
-     * @return {Element?} the Element or `querySelector` result
+     * @param {HTMLElement | string} selector the input selector or target element
+     * @param {(ParentNode | HTMLElement)=} parent optional `HTMLElement` to look into
+     * @return {HTMLElement?} the Element or `querySelector` result
      */
-    export default function queryElement(selector: Element | string, parent?: Element | undefined): Element | null;
+    export default function queryElement(selector: HTMLElement | string, parent?: (ParentNode | HTMLElement) | undefined): HTMLElement | null;
 }
 declare module "shorter-js/src/misc/querySelectorAll" {
     /**
      * A shortcut for `(document|Element).querySelectorAll`.
      *
      * @param {string} selector the input selector
-     * @param {ParentNode=} parent optional Element to look into
-     * @return {NodeList} the query result
+     * @param {(HTMLElement | ParentNode)=} parent optional Element to look into
+     * @return {NodeListOf<HTMLElement>} the query result
      */
-    export default function querySelectorAll(selector: string, parent?: ParentNode | undefined): NodeList;
+    export default function querySelectorAll(selector: string, parent?: (HTMLElement | ParentNode) | undefined): NodeListOf<HTMLElement>;
 }
 declare module "shorter-js/src/misc/getElementsByTagName" {
     /**
-     * Shortcut for `Element.getElementsByTagName` method.
+     * Shortcut for `HTMLElement.getElementsByTagName` method.
      *
      * @param {string} selector the tag name
-     * @param {Element=} parent optional Element to look into
-     * @return {HTMLCollection} the 'HTMLCollection'
+     * @param {HTMLElement=} parent optional Element to look into
+     * @return {HTMLCollectionOf<Element | HTMLElement>} the 'HTMLCollection'
      */
-    export default function getElementsByTagName(selector: string, parent?: Element | undefined): HTMLCollection;
+    export default function getElementsByTagName(selector: string, parent?: HTMLElement | undefined): HTMLCollectionOf<Element | HTMLElement>;
 }
 declare module "shorter-js/src/misc/getElementsByClassName" {
     /**
-     * Shortcut for `Element.getElementsByClassName` method.
+     * Shortcut for `HTMLElement.getElementsByClassName` method.
      *
      * @param {string} selector the class name
-     * @param {Element=} parent optional Element to look into
-     * @return {HTMLCollection} the 'HTMLCollection'
+     * @param {(HTMLElement)=} parent optional Element to look into
+     * @return {HTMLCollectionOf<HTMLElement | Element>} the 'HTMLCollection'
      */
-    export default function getElementsByClassName(selector: string, parent?: Element | undefined): HTMLCollection;
+    export default function getElementsByClassName(selector: string, parent?: (HTMLElement) | undefined): HTMLCollectionOf<HTMLElement | Element>;
 }
 declare module "shorter-js/src/misc/version" {
     export default Version;
@@ -1384,13 +1541,21 @@ declare module "shorter-js/types/module/shorter" {
     export { default as keySpace } from "shorter-js/src/strings/keySpace";
     export { default as keyTab } from "shorter-js/src/strings/keyTab";
     export { default as animationDuration } from "shorter-js/src/strings/animationDuration";
+    export { default as animationDurationLegacy } from "shorter-js/src/strings/animationDurationLegacy";
     export { default as animationDelay } from "shorter-js/src/strings/animationDelay";
+    export { default as animationDelayLegacy } from "shorter-js/src/strings/animationDelayLegacy";
     export { default as animationName } from "shorter-js/src/strings/animationName";
+    export { default as animationNameLegacy } from "shorter-js/src/strings/animationNameLegacy";
     export { default as animationEndEvent } from "shorter-js/src/strings/animationEndEvent";
+    export { default as animationEndEventLegacy } from "shorter-js/src/strings/animationEndEventLegacy";
     export { default as transitionDuration } from "shorter-js/src/strings/transitionDuration";
+    export { default as transitionDurationLegacy } from "shorter-js/src/strings/transitionDurationLegacy";
     export { default as transitionDelay } from "shorter-js/src/strings/transitionDelay";
+    export { default as transitionDelayLegacy } from "shorter-js/src/strings/transitionDelayLegacy";
     export { default as transitionEndEvent } from "shorter-js/src/strings/transitionEndEvent";
+    export { default as transitionEndEventLegacy } from "shorter-js/src/strings/transitionEndEventLegacy";
     export { default as transitionProperty } from "shorter-js/src/strings/transitionProperty";
+    export { default as transitionPropertyLegacy } from "shorter-js/src/strings/transitionPropertyLegacy";
     export { default as addEventListener } from "shorter-js/src/strings/addEventListener";
     export { default as removeEventListener } from "shorter-js/src/strings/removeEventListener";
     export { default as bezierEasings } from "shorter-js/src/strings/bezierEasings";
@@ -1415,16 +1580,22 @@ declare module "shorter-js/types/module/shorter" {
     export { default as Data, getInstance } from "shorter-js/src/misc/data";
     export { default as Timer } from "shorter-js/src/misc/timer";
     export { default as emulateAnimationEnd } from "shorter-js/src/misc/emulateAnimationEnd";
+    export { default as emulateAnimationEndLegacy } from "shorter-js/src/misc/emulateAnimationEndLegacy";
     export { default as emulateTransitionEnd } from "shorter-js/src/misc/emulateTransitionEnd";
+    export { default as emulateTransitionEndLegacy } from "shorter-js/src/misc/emulateTransitionEndLegacy";
     export { default as isElementInScrollRange } from "shorter-js/src/misc/isElementInScrollRange";
     export { default as isElementInViewport } from "shorter-js/src/misc/isElementInViewport";
     export { default as isMedia } from "shorter-js/src/misc/isMedia";
     export { default as isRTL } from "shorter-js/src/misc/isRTL";
     export { default as passiveHandler } from "shorter-js/src/misc/passiveHandler";
     export { default as getElementAnimationDuration } from "shorter-js/src/misc/getElementAnimationDuration";
+    export { default as getElementAnimationDurationLegacy } from "shorter-js/src/misc/getElementAnimationDurationLegacy";
     export { default as getElementAnimationDelay } from "shorter-js/src/misc/getElementAnimationDelay";
+    export { default as getElementAnimationDelayLegacy } from "shorter-js/src/misc/getElementAnimationDelayLegacy";
     export { default as getElementTransitionDuration } from "shorter-js/src/misc/getElementTransitionDuration";
+    export { default as getElementTransitionDurationLegacy } from "shorter-js/src/misc/getElementTransitionDurationLegacy";
     export { default as getElementTransitionDelay } from "shorter-js/src/misc/getElementTransitionDelay";
+    export { default as getElementTransitionDelayLegacy } from "shorter-js/src/misc/getElementTransitionDelayLegacy";
     export { default as normalizeValue } from "shorter-js/src/misc/normalizeValue";
     export { default as normalizeOptions } from "shorter-js/src/misc/normalizeOptions";
     export { default as tryWrapper } from "shorter-js/src/misc/tryWrapper";
@@ -1435,14 +1606,16 @@ declare module "shorter-js/types/module/shorter" {
     export { default as ObjectKeys } from "shorter-js/src/misc/ObjectKeys";
     export { default as ObjectValues } from "shorter-js/src/misc/ObjectValues";
     export { default as ObjectAssign } from "shorter-js/src/misc/ObjectAssign";
-    export { default as getElementStyle } from "shorter-js/src/misc/getElementStyle";
     export { default as getAttribute } from "shorter-js/src/misc/getAttribute";
     export { default as setAttribute } from "shorter-js/src/misc/setAttribute";
     export { default as removeAttribute } from "shorter-js/src/misc/removeAttribute";
-    export { default as isHTMLElement } from "shorter-js/src/misc/isHTMLElement";
+    export { default as getElementStyle } from "shorter-js/src/misc/getElementStyle";
+    export { default as setElementStyle } from "shorter-js/src/misc/setElementStyle";
     export { default as isArray } from "shorter-js/src/misc/isArray";
+    export { default as isString } from "shorter-js/src/misc/isString";
     export { default as isElement } from "shorter-js/src/misc/isElement";
     export { default as isNodeList } from "shorter-js/src/misc/isNodeList";
+    export { default as isHTMLElement } from "shorter-js/src/misc/isHTMLElement";
     export { default as isHTMLCollection } from "shorter-js/src/misc/isHTMLCollection";
     export { default as isElementsArray } from "shorter-js/src/misc/isElementsArray";
     export { default as queryElement } from "shorter-js/src/misc/queryElement";

@@ -2,5 +2,5 @@
  * A global namespace for 'animationDelay' string.
  * @type {string}
  */
-const animationDelay = 'webkitAnimation' in document.head.style ? 'webkitAnimationDelay' : 'animationDelay';
+const animationDelay = 'animationDelay';
 export default animationDelay;

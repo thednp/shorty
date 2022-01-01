@@ -1,4 +1,4 @@
-import isElement from './isElement';
+import isHTMLElement from './isHTMLElement';
 
 /**
  * Checks if an object is an `Array` in which all items are `Element`.
@@ -6,6 +6,7 @@ import isElement from './isElement';
  * @param {any} object the target object
  * @returns {boolean} the query result
  */
-export default function isElementsArray(object) {
-  return Array.isArray(object) && object.every((el) => isElement(el));
-}
+const isElementsArray = (object) => Array.isArray(object)
+  && object.every((el) => isHTMLElement(el));
+
+export default isElementsArray;

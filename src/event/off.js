@@ -1,10 +1,10 @@
 /**
- * Remove eventListener from Element
+ * Remove eventListener from an `HTMLElement` | `Document` target.
  *
- * @param {Element} element event.target
+ * @param {HTMLElement | Document} element event.target
  * @param {string} eventName event.type
  * @param {EventListener} handler callback
- * @param {EventListenerOptions | boolean | null} options other event options
+ * @param {EventListenerOptions | boolean | undefined} options other event options
  */
 export default function off(element, eventName, handler, options) {
   const ops = options || false;

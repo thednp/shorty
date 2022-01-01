@@ -1,8 +1,8 @@
 /**
- * Utility to determine if an `Element`
+ * Utility to determine if an `HTMLElement`
  * is fully visible in the viewport.
  *
- * @param {Element} element target
+ * @param {HTMLElement} element target
  * @return {boolean} Boolean
  */
 export default function isElementInViewport(element) {

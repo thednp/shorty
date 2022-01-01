@@ -3,8 +3,5 @@
  * @param  {any[] | HTMLCollection | NodeList} arr array-like iterable object
  * @returns {Float32Array}
  */
-const Float32ArrayFrom = (arr) => {
-  const array = Array.from(arr);
-  return Float32Array.from(array);
-};
+const Float32ArrayFrom = (arr) => Float32Array.from(Array.from(arr));
 export default Float32ArrayFrom;

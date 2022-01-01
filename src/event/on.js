@@ -1,10 +1,10 @@
 /**
- * Add eventListener to Element
+ * Add eventListener to an `HTMLElement` | `Document` target.
  *
- * @param {Element} element event.target
+ * @param {HTMLElement | Document} element event.target
  * @param {string} eventName event.type
  * @param {EventListener} handler callback
- * @param {EventListenerOptions | boolean | null} options other event options
+ * @param {EventListenerOptions | boolean | undefined} options other event options
  */
 export default function on(element, eventName, handler, options) {
   const ops = options || false;

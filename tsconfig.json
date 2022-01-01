@@ -1,18 +1,15 @@
 {
   "compilerOptions": {
+    "target": "ESNext",
+    "moduleResolution": "Node",
     "declaration": true,
     "resolveJsonModule": true,
     "emitDeclarationOnly": true,
-    "noImplicitAny": false,
+    "strict": true,
     "allowJs": true,
     "checkJs": true,
-    "strict": true,                           /* Enable all strict type-checking options. */
-    "noUnusedLocals": true,                   /* Report errors on unused locals. */
-    "noUnusedParameters": true,               /* Report errors on unused parameters. */
-    "noImplicitReturns": true,                /* Report error when not all code paths in function return a value. */
-    "noFallthroughCasesInSwitch": true,       /* Report errors for fallthrough cases in switch statement. */
     "rootDir": "../",
-    "outFile": "types/shorter.d.ts", // UN-comment to generate
+    // "outFile": "types/shorter.d.ts", // UN-comment to generate
     "outDir": "types"
   },
   "files": [

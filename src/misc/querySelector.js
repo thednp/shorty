@@ -1,15 +1,14 @@
-import isElement from './isElement';
+import isHTMLElement from './isHTMLElement';
 
 /**
- * Utility to check if target is typeof `Element`
+ * Utility to check if target is typeof `HTMLElement`
  * or find one that matches a selector.
  *
- * @param {Element | string} selector the input selector or target element
- * @param {Element=} parent optional Element to look into
- * @return {Element?} the Element or `querySelector` result
+ * @param {HTMLElement | string} selector the input selector or target element
+ * @param {(ParentNode | HTMLElement)=} parent optional `HTMLElement` to look into
+ * @return {HTMLElement?} the `HTMLElement` or `querySelector` result
  */
 export default function querySelector(selector, parent) {
-  const lookUp = parent && isElement(parent) ? parent : document;
-  // @ts-ignore -- `isElement` is just as good
-  return isElement(selector) ? selector : lookUp.querySelector(selector);
+  const lookUp = parent && isHTMLElement(parent) ? parent : document;
+  return typeof selector === 'object' ? selector : lookUp.querySelector(selector);
 }

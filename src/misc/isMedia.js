@@ -4,7 +4,7 @@
  * @param {any} element the target element
  * @returns {boolean} the query result
  */
-export default function isMedia(element) {
-  return [SVGElement, HTMLImageElement, HTMLVideoElement]
+const isMedia = (element) => typeof element === 'object'
+  && [SVGElement, HTMLImageElement, HTMLVideoElement]
     .some((mediaType) => element instanceof mediaType);
-}
+export default isMedia;

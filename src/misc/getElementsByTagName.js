@@ -1,13 +1,13 @@
-import isElement from './isElement';
+import isHTMLElement from './isHTMLElement';
 
 /**
- * Shortcut for `Element.getElementsByTagName` method.
+ * Shortcut for `HTMLElement.getElementsByTagName` method.
  *
  * @param {string} selector the tag name
- * @param {Element=} parent optional Element to look into
- * @return {HTMLCollection} the 'HTMLCollection'
+ * @param {HTMLElement=} parent optional Element to look into
+ * @return {HTMLCollectionOf<Element | HTMLElement>} the 'HTMLCollection'
  */
 export default function getElementsByTagName(selector, parent) {
-  const lookUp = parent && isElement(parent) ? parent : document;
+  const lookUp = parent && isHTMLElement(parent) ? parent : document;
   return lookUp.getElementsByTagName(selector);
 }

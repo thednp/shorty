@@ -1,20 +1,19 @@
-import supportAnimation from '../boolean/supportAnimation';
 import animationDuration from '../strings/animationDuration';
 import animationName from '../strings/animationName';
+import getElementStyle from './getElementStyle';
 
 /**
  * Utility to get the computed `animationDuration`
- * from Element in miliseconds.
+ * from `HTMLElement` in miliseconds.
  *
- * @param {Element} element target
+ * @param {HTMLElement} element target
  * @return {number} the value in miliseconds
  */
 export default function getElementAnimationDuration(element) {
-  const computedStyle = getComputedStyle(element);
-  const propertyValue = computedStyle[animationName];
-  const durationValue = computedStyle[animationDuration];
+  const propertyValue = getElementStyle(element, animationName);
+  const durationValue = getElementStyle(element, animationDuration);
   const durationScale = durationValue.includes('ms') ? 1 : 1000;
-  const duration = supportAnimation && propertyValue && propertyValue !== 'none'
+  const duration = propertyValue && propertyValue !== 'none'
     ? parseFloat(durationValue) * durationScale : 0;
 
   return !Number.isNaN(duration) ? duration : 0;

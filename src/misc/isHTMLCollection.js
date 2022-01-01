@@ -4,6 +4,5 @@
  * @param {any} object the target object
  * @returns {boolean} the query result
  */
-export default function isHTMLCollection(object) {
-  return object instanceof HTMLCollection;
-}
+const isHTMLCollection = (object) => object instanceof HTMLCollection;
+export default isHTMLCollection;

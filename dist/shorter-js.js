@@ -1,13 +1,13 @@
 /*!
-* shorter-js v0.2.23 (https://github.com/thednp/shorter-js)
-* Copyright 2019-2021 © dnp_theme
+* shorter-js v0.2.24 (https://github.com/thednp/shorter-js)
+* Copyright 2019-2022 © dnp_theme
 * Licensed under MIT (https://github.com/thednp/shorter-js/blob/master/LICENSE)
 */
 (function (global, factory) {
   typeof exports === 'object' && typeof module !== 'undefined' ? module.exports = factory() :
   typeof define === 'function' && define.amd ? define(factory) :
-  (global = global || self, global.SHORTER = factory());
-}(this, (function () { 'use strict';
+  (global = typeof globalThis !== 'undefined' ? globalThis : global || self, global.SHORTER = factory());
+})(this, (function () { 'use strict';
 
   /**
    * A global namespace for aria-checked.
@@ -581,7 +581,19 @@
    * A global namespace for 'animationDuration' string.
    * @type {string}
    */
+  var animationDuration$1 = 'animationDuration';
+
+  /**
+   * A global namespace for 'animationDuration' string.
+   * @type {string}
+   */
   var animationDuration = 'webkitAnimation' in document.head.style ? 'webkitAnimationDuration' : 'animationDuration';
+
+  /**
+   * A global namespace for 'animationDelay' string.
+   * @type {string}
+   */
+  var animationDelay$1 = 'animationDelay';
 
   /**
    * A global namespace for 'animationDelay' string.
@@ -593,7 +605,19 @@
    * A global namespace for 'animationName' string.
    * @type {string}
    */
+  var animationName$1 = 'animationName';
+
+  /**
+   * A global namespace for 'animationName' string.
+   * @type {string}
+   */
   var animationName = 'webkitAnimation' in document.head.style ? 'webkitAnimationName' : 'animationName';
+
+  /**
+   * A global namespace for 'animationend' string.
+   * @type {string}
+   */
+  var animationEndEvent$1 = 'animationend';
 
   /**
    * A global namespace for 'animationend' string.
@@ -605,7 +629,19 @@
    * A global namespace for 'transitionDuration' string.
    * @type {string}
    */
+  var transitionDuration$1 = 'transitionDuration';
+
+  /**
+   * A global namespace for 'transitionDuration' string.
+   * @type {string}
+   */
   var transitionDuration = 'webkitTransition' in document.head.style ? 'webkitTransitionDuration' : 'transitionDuration';
+
+  /**
+   * A global namespace for 'transitionDelay' string.
+   * @type {string}
+   */
+  var transitionDelay$1 = 'transitionDelay';
 
   /**
    * A global namespace for 'transitionDelay' string.
@@ -617,7 +653,19 @@
    * A global namespace for 'transitionend' string.
    * @type {string}
    */
+  var transitionEndEvent$1 = 'transitionend';
+
+  /**
+   * A global namespace for 'transitionend' string.
+   * @type {string}
+   */
   var transitionEndEvent = 'webkitTransition' in document.head.style ? 'webkitTransitionEnd' : 'transitionend';
+
+  /**
+   * A global namespace for 'transitionProperty' string.
+   * @type {string}
+   */
+  var transitionProperty$1 = 'transitionProperty';
 
   /**
    * A global namespace for 'transitionProperty' string.
@@ -694,13 +742,19 @@
    */
   var scrollWidth = 'scrollWidth';
 
-  var mobileBrands = /iPhone|iPad|iPod|Android/i;
-  var userAgentStr = 'userAgentData';
+  /**
+   * A global namespace for `userAgentData` event.
+   * @type {string}
+   */
+  var userAgentData = 'userAgentData';
 
+  var mobileBrands = /iPhone|iPad|iPod|Android/i;
   var isMobileCheck = false;
 
-  if (navigator[userAgentStr]) {
-    isMobileCheck = navigator[userAgentStr].brands.some(function (x) { return mobileBrands.test(x.brand); });
+  // @ts-ignore
+  if (navigator[userAgentData]) {
+    // @ts-ignore
+    isMobileCheck = navigator[userAgentData].brands.some(function (x) { return mobileBrands.test(x.brand); });
   } else {
     isMobileCheck = mobileBrands.test(navigator.userAgent);
   }
@@ -711,22 +765,72 @@
    */
   var isMobile = isMobileCheck;
 
+  /** @type {Record<string, any>} */
   // @ts-ignore
-  var userAgentData = navigator.userAgentData;
+  var agentData = navigator[userAgentData];
   var appleBrands = /(iPhone|iPod|iPad)/;
 
   /**
-   * A global namespace for Apple browsers.
+   * A global boolean for Apple browsers.
    * @type {boolean}
    */
-  var isApple = !userAgentData ? appleBrands.test(navigator.userAgent)
-    : userAgentData.brands.some(function (x) { return appleBrands.test(x.brand); });
+  var isApple = !agentData ? appleBrands.test(navigator.userAgent)
+    : agentData.brands.some(function (/** @type {Record<string, any>} */x) { return appleBrands.test(x.brand); });
 
   /**
-   * A global namespace for CSS3 3D transform support.
+   * A global `boolean` for CSS3 3D transform support.
    * @type {boolean}
    */
   var support3DTransform = 'webkitPerspective' in document.head.style || 'perspective' in document.head.style;
+
+  /**
+   * Add eventListener to an `HTMLElement` | `Document` target.
+   *
+   * @param {HTMLElement | Document} element event.target
+   * @param {string} eventName event.type
+   * @param {EventListener} handler callback
+   * @param {EventListenerOptions | boolean | undefined} options other event options
+   */
+  function on(element, eventName, handler, options) {
+    var ops = options || false;
+    element.addEventListener(eventName, handler, ops);
+  }
+
+  /**
+   * Remove eventListener from an `HTMLElement` | `Document` target.
+   *
+   * @param {HTMLElement | Document} element event.target
+   * @param {string} eventName event.type
+   * @param {EventListener} handler callback
+   * @param {EventListenerOptions | boolean | undefined} options other event options
+   */
+  function off(element, eventName, handler, options) {
+    var ops = options || false;
+    element.removeEventListener(eventName, handler, ops);
+  }
+
+  /**
+   * Add an `eventListener` to an `HTMLElement` | `Document` target
+   * and remove it once callback is called.
+   *
+   * @param {HTMLElement | Document} element event.target
+   * @param {string} eventName event.type
+   * @param {EventListener} handler callback
+   * @param {EventListenerOptions | boolean | undefined} options other event options
+   */
+  function one(element, eventName, handler, options) {
+  /**
+   * Wrap the handler for easy on -> off
+   * @param {Event} e the Event object
+   */
+    function handlerWrapper(e) {
+      if (e.target === element) {
+        handler.apply(element, [e]);
+        off(element, eventName, handlerWrapper, options);
+      }
+    }
+    on(element, eventName, handlerWrapper, options);
+  }
 
   /**
    * A global namespace for passive events support.
@@ -741,9 +845,7 @@
           return result;
         },
       });
-      document[addEventListener]('DOMContentLoaded', function wrap() {
-        document[removeEventListener]('DOMContentLoaded', wrap, opts);
-      }, opts);
+      one(document, DOMContentLoadedEvent, function () {}, opts);
     } catch (e) {
       throw Error('Passive events are not supported');
     }
@@ -764,7 +866,7 @@
   var supportTouch = 'ontouchstart' in window || 'msMaxTouchPoints' in navigator;
 
   /**
-   * A global namespace for CSS3 animation support.
+   * A global `boolean` for CSS3 animation support.
    * @type {boolean}
    */
   var supportAnimation = 'webkitAnimation' in document.head.style || 'animation' in document.head.style;
@@ -807,76 +909,24 @@
   }
 
   /**
-   * Add eventListener to Element
-   *
-   * @param {Element} element event.target
-   * @param {string} eventName event.type
-   * @param {EventListener} handler callback
-   * @param {EventListenerOptions | boolean | null} options other event options
-   */
-  function on(element, eventName, handler, options) {
-    var ops = options || false;
-    element.addEventListener(eventName, handler, ops);
-  }
-
-  /**
-   * Remove eventListener from Element
-   *
-   * @param {Element} element event.target
-   * @param {string} eventName event.type
-   * @param {EventListener} handler callback
-   * @param {EventListenerOptions | boolean | null} options other event options
-   */
-  function off(element, eventName, handler, options) {
-    var ops = options || false;
-    element.removeEventListener(eventName, handler, ops);
-  }
-
-  /**
-   * Add an eventListener to Element
-   * and remove it once callback is called.
-   *
-   * @param {Element} element event.target
-   * @param {string} eventName event.type
-   * @param {EventListener} handler callback
-   * @param {EventListenerOptions | boolean | null} options other event options
-   */
-  function one(element, eventName, handler, options) {
-  /**
-   * Wrap the handler for easy on -> off
-   * @param {Event} e the Event object
-   */
-    function handlerWrapper(e) {
-      if (e.target === element) {
-        handler.apply(element, [e]);
-        off(element, eventName, handlerWrapper, options);
-      }
-    }
-    on(element, eventName, handlerWrapper, options);
-  }
-
-  /**
-   * Checks if an object is an `Element`.
+   * Checks if an element is an `HTMLElement`.
    *
    * @param {any} element the target object
    * @returns {boolean} the query result
    */
-  function isElement(element) {
-    return element instanceof Element;
-  }
+  var isHTMLElement = function (element) { return typeof element === 'object' && element instanceof HTMLElement; };
 
   /**
-   * Utility to check if target is typeof `Element`
+   * Utility to check if target is typeof `HTMLElement`
    * or find one that matches a selector.
    *
-   * @param {Element | string} selector the input selector or target element
-   * @param {Element=} parent optional Element to look into
-   * @return {Element?} the Element or `querySelector` result
+   * @param {HTMLElement | string} selector the input selector or target element
+   * @param {(ParentNode | HTMLElement)=} parent optional `HTMLElement` to look into
+   * @return {HTMLElement?} the `HTMLElement` or `querySelector` result
    */
   function querySelector(selector, parent) {
-    var lookUp = parent && isElement(parent) ? parent : document;
-    // @ts-ignore -- `isElement` is just as good
-    return isElement(selector) ? selector : lookUp.querySelector(selector);
+    var lookUp = parent && isHTMLElement(parent) ? parent : document;
+    return typeof selector === 'object' ? selector : lookUp.querySelector(selector);
   }
 
   var TimeCache = new Map();
@@ -887,16 +937,17 @@
   var Timer = {
     /**
      * Sets a new timeout timer for an element, or element -> key association.
-     * @param {Element | string} target target element
+     * @param {HTMLElement | string} target target element
      * @param {ReturnType<TimerHandler>} callback the callback
      * @param {number} delay the execution delay
      * @param {string=} key a unique
      */
     set: function (target, callback, delay, key) {
       var element = querySelector(target);
-      if (!isElement(element)) { return; }
 
-      if (typeof key === 'string' && key.length) {
+      if (!isHTMLElement(element)) { return; }
+
+      if (key && key.length) {
         if (!TimeCache.has(element)) {
           TimeCache.set(element, new Map());
         }
@@ -909,15 +960,16 @@
 
     /**
      * Returns the timer associated with the target.
-     * @param {Element | string} target target element
+     * @param {HTMLElement | string} target target element
      * @param {string=} key a unique
      * @returns {Map<Element, TimerHandler>?} the timer
      */
     get: function (target, key) {
       var element = querySelector(target);
-      if (!isElement(element)) { return null; }
 
-      if (typeof key === 'string' && key.length) {
+      if (!isHTMLElement(element)) { return null; }
+
+      if (key && key.length) {
         if (!TimeCache.has(element)) {
           TimeCache.set(element, new Map());
         }
@@ -933,15 +985,15 @@
 
     /**
      * Clears the element's timer.
-     * @param {Element} target target element
+     * @param {HTMLElement} target target element
      * @param {string=} key a unique
      */
     clear: function (target, key) {
       var element = querySelector(target);
 
-      if (!isElement(element) || !TimeCache.has(element)) { return; }
+      if (!isHTMLElement(element) || !TimeCache.has(element)) { return; }
 
-      if (typeof key === 'string' && key.length) {
+      if (key && key.length) {
         var keyTimers = TimeCache.get(element);
 
         if (keyTimers && keyTimers.has(key)) {
@@ -963,20 +1015,20 @@
   var Data = {
     /**
      * Sets web components data.
-     * @param {Element | string} element target element
+     * @param {HTMLElement | string} target target element
      * @param {string} component the component's name or a unique key
      * @param {any} instance the component instance
      */
-    set: function (element, component, instance) {
-      var ELEMENT = querySelector(element);
-      if (!isElement(ELEMENT)) { return; }
+    set: function (target, component, instance) {
+      var element = querySelector(target);
+      if (!isHTMLElement(element)) { return; }
 
       if (!componentData.has(component)) {
         componentData.set(component, new Map());
       }
 
       var instanceMap = componentData.get(component);
-      instanceMap.set(ELEMENT, instance);
+      instanceMap.set(element, instance);
     },
 
     /**
@@ -993,27 +1045,28 @@
 
     /**
      * Returns the instance associated with the target.
-     * @param {Element | string} element target element
+     * @param {HTMLElement | string} target target element
      * @param {string} component the component's name or a unique key
      * @returns {any?} the instance
      */
-    get: function (element, component) {
-      var ELEMENT = querySelector(element);
+    get: function (target, component) {
+      var element = querySelector(target);
 
       var allForC = Data.getAllFor(component);
-      if (allForC && isElement(ELEMENT) && allForC.has(ELEMENT)) {
-        return allForC.get(ELEMENT);
+      if (allForC && isHTMLElement(element) && allForC.has(element)) {
+        return allForC.get(element);
       }
       return null;
     },
 
     /**
      * Removes web components data.
-     * @param {Element} element target element
+     * @param {HTMLElement | string} target target element
      * @param {string} component the component's name or a unique key
      */
-    remove: function (element, component) {
-      if (!componentData.has(component)) { return; }
+    remove: function (target, component) {
+      var element = querySelector(target);
+      if (!componentData.has(component) || !element) { return; }
 
       var instanceMap = componentData.get(component);
       instanceMap.delete(element);
@@ -1026,23 +1079,110 @@
 
   /**
    * An alias for `Data.get()`.
-   * @param {Element | string} element target element
+   * @param {HTMLElement | string} target target element
    * @param {string} component the component's name or a unique key
-   * @returns {any} the request result
+   * @returns {Record<string, any>?} the request result
    */
-  var getInstance = function (element, component) { return Data.get(element, component); };
+  var getInstance = function (target, component) { return Data.get(target, component); };
+
+  /**
+   * Shortcut for `window.getComputedStyle(element).propertyName`
+   * static method.
+   *
+   * * If `element` parameter is not an `HTMLElement`, `getComputedStyle`
+   * throws a `ReferenceError`.
+   *
+   * @param {HTMLElement} element target
+   * @param {string=} property the css property
+   * @return {string} the css property value
+   */
+  function getElementStyle(element, property) {
+    var computedStyle = getComputedStyle(element);
+
+    return property && property in computedStyle
+      ? computedStyle.getPropertyValue(property)
+      : '';
+  }
 
   /**
    * Utility to get the computed `animationDelay`
    * from Element in miliseconds.
    *
-   * @param {Element} element target
+   * @param {HTMLElement} element target
+   * @return {number} the value in miliseconds
+   */
+  function getElementAnimationDelay$1(element) {
+    var propertyValue = getElementStyle(element, animationName$1);
+    var durationValue = getElementStyle(element, animationDelay$1);
+
+    var durationScale = durationValue.includes('ms') ? 1 : 1000;
+    var duration = propertyValue && propertyValue !== 'none'
+      ? parseFloat(durationValue) * durationScale : 0;
+
+    return !Number.isNaN(duration) ? duration : 0;
+  }
+
+  /**
+   * Utility to get the computed `animationDuration`
+   * from `HTMLElement` in miliseconds.
+   *
+   * @param {HTMLElement} element target
+   * @return {number} the value in miliseconds
+   */
+  function getElementAnimationDuration$1(element) {
+    var propertyValue = getElementStyle(element, animationName$1);
+    var durationValue = getElementStyle(element, animationDuration$1);
+    var durationScale = durationValue.includes('ms') ? 1 : 1000;
+    var duration = propertyValue && propertyValue !== 'none'
+      ? parseFloat(durationValue) * durationScale : 0;
+
+    return !Number.isNaN(duration) ? duration : 0;
+  }
+
+  /**
+   * Utility to make sure callbacks are consistently
+   * called when animation ends.
+   *
+   * @param {HTMLElement} element target
+   * @param {EventListener} handler `animationend` callback
+   */
+  function emulateAnimationEnd$1(element, handler) {
+    var called = 0;
+    var endEvent = new Event(animationEndEvent$1);
+    var duration = getElementAnimationDuration$1(element);
+    var delay = getElementAnimationDelay$1(element);
+
+    if (duration) {
+      /**
+       * Wrap the handler in on -> off callback
+       * @param {Event} e Event object
+       */
+      var animationEndWrapper = function (e) {
+        if (e.target === element) {
+          handler.apply(element, [e]);
+          element.removeEventListener(animationEndEvent$1, animationEndWrapper);
+          called = 1;
+        }
+      };
+      element.addEventListener(animationEndEvent$1, animationEndWrapper);
+      setTimeout(function () {
+        if (!called) { element.dispatchEvent(endEvent); }
+      }, duration + delay + 17);
+    } else {
+      handler.apply(element, [endEvent]);
+    }
+  }
+
+  /**
+   * Utility to get the computed `animationDelay`
+   * from Element in miliseconds.
+   *
+   * @param {HTMLElement} element target
    * @return {number} the value in miliseconds
    */
   function getElementAnimationDelay(element) {
-    var computedStyle = getComputedStyle(element);
-    var propertyValue = computedStyle[animationName];
-    var durationValue = computedStyle[animationDelay];
+    var propertyValue = getElementStyle(element, animationName);
+    var durationValue = getElementStyle(element, animationDelay);
     var durationScale = durationValue.includes('ms') ? 1 : 1000;
     var duration = supportAnimation && propertyValue && propertyValue !== 'none'
       ? parseFloat(durationValue) * durationScale : 0;
@@ -1052,15 +1192,14 @@
 
   /**
    * Utility to get the computed `animationDuration`
-   * from Element in miliseconds.
+   * from `HTMLElement` in miliseconds.
    *
-   * @param {Element} element target
+   * @param {HTMLElement} element target
    * @return {number} the value in miliseconds
    */
   function getElementAnimationDuration(element) {
-    var computedStyle = getComputedStyle(element);
-    var propertyValue = computedStyle[animationName];
-    var durationValue = computedStyle[animationDuration];
+    var propertyValue = getElementStyle(element, animationName);
+    var durationValue = getElementStyle(element, animationDuration);
     var durationScale = durationValue.includes('ms') ? 1 : 1000;
     var duration = supportAnimation && propertyValue && propertyValue !== 'none'
       ? parseFloat(durationValue) * durationScale : 0;
@@ -1072,7 +1211,7 @@
    * Utility to make sure callbacks are consistently
    * called when animation ends.
    *
-   * @param {Element} element target
+   * @param {HTMLElement} element target
    * @param {EventListener} handler `animationend` callback
    */
   function emulateAnimationEnd(element, handler) {
@@ -1081,7 +1220,7 @@
     var duration = getElementAnimationDuration(element);
     var delay = getElementAnimationDelay(element);
 
-    if (duration) {
+    if (supportAnimation && duration) {
       /**
        * Wrap the handler in on -> off callback
        * @param {Event} e Event object
@@ -1106,13 +1245,81 @@
    * Utility to get the computed `transitionDelay`
    * from Element in miliseconds.
    *
-   * @param {Element} element target
+   * @param {HTMLElement} element target
+   * @return {number} the value in miliseconds
+   */
+  function getElementTransitionDelay$1(element) {
+    var propertyValue = getElementStyle(element, transitionProperty$1);
+    var delayValue = getElementStyle(element, transitionDelay$1);
+
+    var delayScale = delayValue.includes('ms') ? 1 : 1000;
+    var duration = propertyValue && propertyValue !== 'none'
+      ? parseFloat(delayValue) * delayScale : 0;
+
+    return !Number.isNaN(duration) ? duration : 0;
+  }
+
+  /**
+   * Utility to get the computed `transitionDuration`
+   * from Element in miliseconds.
+   *
+   * @param {HTMLElement} element target
+   * @return {number} the value in miliseconds
+   */
+  function getElementTransitionDuration$1(element) {
+    var propertyValue = getElementStyle(element, transitionProperty$1);
+    var durationValue = getElementStyle(element, transitionDuration$1);
+    var durationScale = durationValue.includes('ms') ? 1 : 1000;
+    var duration = propertyValue && propertyValue !== 'none'
+      ? parseFloat(durationValue) * durationScale : 0;
+
+    return !Number.isNaN(duration) ? duration : 0;
+  }
+
+  /**
+   * Utility to make sure callbacks are consistently
+   * called when transition ends.
+   *
+   * @param {HTMLElement} element target
+   * @param {EventListener} handler `transitionend` callback
+   */
+  function emulateTransitionEnd$1(element, handler) {
+    var called = 0;
+    var endEvent = new Event(transitionEndEvent$1);
+    var duration = getElementTransitionDuration$1(element);
+    var delay = getElementTransitionDelay$1(element);
+
+    if (duration) {
+      /**
+       * Wrap the handler in on -> off callback
+       * @param {Event} e Event object
+       */
+      var transitionEndWrapper = function (e) {
+        if (e.target === element) {
+          handler.apply(element, [e]);
+          element.removeEventListener(transitionEndEvent$1, transitionEndWrapper);
+          called = 1;
+        }
+      };
+      element.addEventListener(transitionEndEvent$1, transitionEndWrapper);
+      setTimeout(function () {
+        if (!called) { element.dispatchEvent(endEvent); }
+      }, duration + delay + 17);
+    } else {
+      handler.apply(element, [endEvent]);
+    }
+  }
+
+  /**
+   * Utility to get the computed `transitionDelay`
+   * from Element in miliseconds.
+   *
+   * @param {HTMLElement} element target
    * @return {number} the value in miliseconds
    */
   function getElementTransitionDelay(element) {
-    var computedStyle = getComputedStyle(element);
-    var propertyValue = computedStyle[transitionProperty];
-    var delayValue = computedStyle[transitionDelay];
+    var propertyValue = getElementStyle(element, transitionProperty);
+    var delayValue = getElementStyle(element, transitionDelay);
     var delayScale = delayValue.includes('ms') ? 1 : 1000;
     var duration = supportTransition && propertyValue && propertyValue !== 'none'
       ? parseFloat(delayValue) * delayScale : 0;
@@ -1124,13 +1331,12 @@
    * Utility to get the computed `transitionDuration`
    * from Element in miliseconds.
    *
-   * @param {Element} element target
+   * @param {HTMLElement} element target
    * @return {number} the value in miliseconds
    */
   function getElementTransitionDuration(element) {
-    var computedStyle = getComputedStyle(element);
-    var propertyValue = computedStyle[transitionProperty];
-    var durationValue = computedStyle[transitionDuration];
+    var propertyValue = getElementStyle(element, transitionProperty);
+    var durationValue = getElementStyle(element, transitionDuration);
     var durationScale = durationValue.includes('ms') ? 1 : 1000;
     var duration = supportTransition && propertyValue && propertyValue !== 'none'
       ? parseFloat(durationValue) * durationScale : 0;
@@ -1142,7 +1348,7 @@
    * Utility to make sure callbacks are consistently
    * called when transition ends.
    *
-   * @param {Element} element target
+   * @param {HTMLElement} element target
    * @param {EventListener} handler `transitionend` callback
    */
   function emulateTransitionEnd(element, handler) {
@@ -1151,7 +1357,7 @@
     var duration = getElementTransitionDuration(element);
     var delay = getElementTransitionDelay(element);
 
-    if (duration) {
+    if (supportTransition && duration) {
       /**
        * Wrap the handler in on -> off callback
        * @param {Event} e Event object
@@ -1172,53 +1378,6 @@
     }
   }
 
-  /**
-   * Utility to determine if an `Element`
-   * is partially visible in viewport.
-   *
-   * @param {Element} element target
-   * @return {boolean} Boolean
-   */
-  function isElementInScrollRange(element) {
-    var bcr = element.getBoundingClientRect();
-    var viewportHeight = window.innerHeight || document.documentElement.clientHeight;
-    return bcr.top <= viewportHeight && bcr.bottom >= 0; // bottom && top
-  }
-
-  /**
-   * Utility to determine if an `Element`
-   * is fully visible in the viewport.
-   *
-   * @param {Element} element target
-   * @return {boolean} Boolean
-   */
-  function isElementInViewport(element) {
-    var bcr = element.getBoundingClientRect();
-    return (
-      bcr.top >= 0
-      && bcr.left >= 0
-      && bcr.bottom <= (window.innerHeight || document.documentElement.clientHeight)
-      && bcr.right <= (window.innerWidth || document.documentElement.clientWidth)
-    );
-  }
-
-  /**
-   * Checks if an element is an `<svg>`, `<img>` or `<video>`.
-   * *Tooltip* / *Popover* works different with media elements.
-   * @param {any} element the target element
-   * @returns {boolean} the query result
-   */
-  function isMedia(element) {
-    return [SVGElement, HTMLImageElement, HTMLVideoElement]
-      .some(function (mediaType) { return element instanceof mediaType; });
-  }
-
-  /**
-   * Checks if a page is Right To Left.
-   * @returns {boolean} the query result
-   */
-  var isRTL = function () { return document.documentElement.dir === 'rtl'; };
-
   // general event options
 
   /**
@@ -1229,7 +1388,7 @@
   /**
    * The raw value or a given component option.
    *
-   * @typedef {string | Element | Function | number | boolean | null} niceValue
+   * @typedef {string | HTMLElement | Function | number | boolean | null} niceValue
    */
 
   /**
@@ -1255,7 +1414,7 @@
       return null;
     }
 
-    // string / function / Element / object
+    // string / function / HTMLElement / object
     return value;
   }
 
@@ -1269,16 +1428,17 @@
   /**
    * Utility to normalize component options
    *
-   * @param {Element} element target
+   * @param {HTMLElement} element target
    * @param {Record<string, any>} defaultOps component default options
    * @param {Record<string, any>} inputOps component instance options
    * @param {string=} ns component namespace
    * @return {Record<string, any>} normalized component options object
    */
   function normalizeOptions(element, defaultOps, inputOps, ns) {
-    // @ts-ignore -- usually our `Element` is `HTMLElement` as well
     var data = Object.assign({}, element.dataset);
+    /** @type {Record<string, any>} */
     var normalOps = {};
+    /** @type {Record<string, any>} */
     var dataOps = {};
 
     ObjectKeys(data).forEach(function (k) {
@@ -1319,21 +1479,18 @@
   }
 
   /**
-   * Utility to force re-paint of an `Element` target.
+   * Utility to force re-paint of an `HTMLElement` target.
    *
-   * @param {Element | HTMLElement} element is the target
+   * @param {HTMLElement} element is the target
    * @return {number} the `Element.offsetHeight` value
    */
-  function reflow(element) {
-    // @ts-ignore -- our `Element` is always an `HTMLElement`
-    return element.offsetHeight;
-  }
+  var reflow = function (element) { return element.offsetHeight; };
 
   /**
    * Shortcut for `Array.from()` static method.
    *
    * @param  {any[] | HTMLCollection | NodeList} arr array-like iterable object
-   * @returns {Array}
+   * @returns {Array<any>}
    */
   var ArrayFrom = function (arr) { return Array.from(arr); };
 
@@ -1342,20 +1499,14 @@
    * @param  {any[] | HTMLCollection | NodeList} arr array-like iterable object
    * @returns {Float32Array}
    */
-  var Float32ArrayFrom = function (arr) {
-    var array = Array.from(arr);
-    return Float32Array.from(array);
-  };
+  var Float32ArrayFrom = function (arr) { return Float32Array.from(Array.from(arr)); };
 
   /**
    * Shortcut for `Float64Array.from()` static method.
    * @param  {any[] | HTMLCollection | NodeList} arr array-like iterable object
    * @returns {Float64Array}
    */
-  var Float64ArrayFrom = function (arr) {
-    var array = Array.from(arr);
-    return Float64Array.from(array);
-  };
+  var Float64ArrayFrom = function (arr) { return Float64Array.from(Array.from(arr)); };
 
   /**
    * Shortcut for `Object.assign()` static method.
@@ -1372,46 +1523,87 @@
   var ObjectValues = function (obj) { return Object.values(obj); };
 
   /**
-   * Shortcut for `window.getComputedStyle(element).propertyName`
-   * static method.
-   * * If `element` parameter is not an `Element`, `getComputedStyle`
-   * throws a `ReferenceError`.
-   * * If no property is defined, the entire `CSSStyleDeclaration`
-   * instance is returned.
-   *
-   * @param {Element} element target
-   * @param {string=} property the css property
-   * @return {string} the css property value
-   */
-  function getElementStyle(element, property) {
-    var computedStyle = getComputedStyle(element);
-
-    return property && property in computedStyle
-      ? computedStyle[property]
-      : computedStyle;
-  }
-
-  /**
-   * Shortcut for `Element.getAttribute()` method.
-   * @param  {Element} element target element
+   * Shortcut for `HTMLElement.getAttribute()` method.
+   * @param  {HTMLElement} element target element
    * @param  {string} attribute attribute name
    */
   var getAttribute = function (element, attribute) { return element.getAttribute(attribute); };
 
   /**
-   * Shortcut for `Element.setAttribute()` method.
-   * @param  {Element} element target element
+   * Shortcut for `HTMLElement.setAttribute()` method.
+   * @param  {HTMLElement} element target element
    * @param  {string} attribute attribute name
    * @param  {string} value attribute value
    */
   var setAttribute = function (element, attribute, value) { return element.setAttribute(attribute, value); };
 
   /**
-   * Shortcut for `Element.removeAttribute()` method.
-   * @param  {Element} element target element
+   * Shortcut for `HTMLElement.removeAttribute()` method.
+   * @param  {HTMLElement} element target element
    * @param  {string} attribute attribute name
    */
   var removeAttribute = function (element, attribute) { return element.removeAttribute(attribute); };
+
+  /**
+   * Shortcut for `HTMLElement.style.propertyName` method.
+   * @param  {HTMLElement} element target element
+   * @param  {Record<string, string>} styles attribute value
+   */
+  var setElementStyle = function (element, styles) { return ObjectAssign(element.style, styles); };
+
+  /**
+   * Utility to determine if an `HTMLElement`
+   * is partially visible in viewport.
+   *
+   * @param {HTMLElement} element target
+   * @return {boolean} Boolean
+   */
+  function isElementInScrollRange(element) {
+    var bcr = element.getBoundingClientRect();
+    var viewportHeight = window.innerHeight || document.documentElement.clientHeight;
+    return bcr.top <= viewportHeight && bcr.bottom >= 0; // bottom && top
+  }
+
+  /**
+   * Utility to determine if an `HTMLElement`
+   * is fully visible in the viewport.
+   *
+   * @param {HTMLElement} element target
+   * @return {boolean} Boolean
+   */
+  function isElementInViewport(element) {
+    var bcr = element.getBoundingClientRect();
+    return (
+      bcr.top >= 0
+      && bcr.left >= 0
+      && bcr.bottom <= (window.innerHeight || document.documentElement.clientHeight)
+      && bcr.right <= (window.innerWidth || document.documentElement.clientWidth)
+    );
+  }
+
+  /**
+   * Checks if an element is an `<svg>`, `<img>` or `<video>`.
+   * *Tooltip* / *Popover* works different with media elements.
+   * @param {any} element the target element
+   * @returns {boolean} the query result
+   */
+  var isMedia = function (element) { return typeof element === 'object'
+    && [SVGElement, HTMLImageElement, HTMLVideoElement]
+      .some(function (mediaType) { return element instanceof mediaType; }); };
+
+  /**
+   * Checks if a page is Right To Left.
+   * @returns {boolean} the query result
+   */
+  var isRTL = function () { return document.documentElement.dir === 'rtl'; };
+
+  /**
+   * Shortcut for `typeof` static method.
+   *
+   * @param  {any} str array-like iterable object
+   * @returns {boolean} the query result
+   */
+  var isString = function (str) { return str && typeof str === 'string'; };
 
   /**
    * Shortcut for `Array.isArray()` static method.
@@ -1422,14 +1614,12 @@
   var isArray = function (arr) { return Array.isArray(arr); };
 
   /**
-   * Checks if an element is an `HTMLElement`.
+   * Checks if an object is an `Element`.
    *
    * @param {any} element the target object
    * @returns {boolean} the query result
    */
-  function isHTMLElement(element) {
-    return element instanceof HTMLElement;
-  }
+  var isElement = function (element) { return element && element instanceof Element; };
 
   /**
    * Checks if an object is an `HTMLCollection`.
@@ -1437,9 +1627,7 @@
    * @param {any} object the target object
    * @returns {boolean} the query result
    */
-  function isHTMLCollection(object) {
-    return object instanceof HTMLCollection;
-  }
+  var isHTMLCollection = function (object) { return object instanceof HTMLCollection; };
 
   /**
    * Checks if an object is a `NodeList`.
@@ -1447,9 +1635,7 @@
    * @param {any} object the target object
    * @returns {boolean} the query result
    */
-  function isNodeList(object) {
-    return object instanceof NodeList;
-  }
+  var isNodeList = function (object) { return object instanceof NodeList; };
 
   /**
    * Checks if an object is an `Array` in which all items are `Element`.
@@ -1457,19 +1643,18 @@
    * @param {any} object the target object
    * @returns {boolean} the query result
    */
-  function isElementsArray(object) {
-    return Array.isArray(object) && object.every(function (el) { return isElement(el); });
-  }
+  var isElementsArray = function (object) { return Array.isArray(object)
+    && object.every(function (el) { return isHTMLElement(el); }); };
 
   /**
-   * Utility to check if target is typeof `Element`
+   * Utility to check if target is typeof `HTMLElement`
    * or find one that matches a selector.
    *
    * @deprecated
    *
-   * @param {Element | string} selector the input selector or target element
-   * @param {Element=} parent optional Element to look into
-   * @return {Element?} the Element or `querySelector` result
+   * @param {HTMLElement | string} selector the input selector or target element
+   * @param {(ParentNode | HTMLElement)=} parent optional `HTMLElement` to look into
+   * @return {HTMLElement?} the Element or `querySelector` result
    */
   function queryElement(selector, parent) {
     return querySelector(selector, parent);
@@ -1479,39 +1664,39 @@
    * A shortcut for `(document|Element).querySelectorAll`.
    *
    * @param {string} selector the input selector
-   * @param {ParentNode=} parent optional Element to look into
-   * @return {NodeList} the query result
+   * @param {(HTMLElement | ParentNode)=} parent optional Element to look into
+   * @return {NodeListOf<HTMLElement>} the query result
    */
   function querySelectorAll(selector, parent) {
-    var lookUp = parent && isElement(parent) ? parent : document;
+    var lookUp = parent && isHTMLElement(parent) ? parent : document;
     return lookUp.querySelectorAll(selector);
   }
 
   /**
-   * Shortcut for `Element.getElementsByTagName` method.
+   * Shortcut for `HTMLElement.getElementsByTagName` method.
    *
    * @param {string} selector the tag name
-   * @param {Element=} parent optional Element to look into
-   * @return {HTMLCollection} the 'HTMLCollection'
+   * @param {HTMLElement=} parent optional Element to look into
+   * @return {HTMLCollectionOf<Element | HTMLElement>} the 'HTMLCollection'
    */
   function getElementsByTagName(selector, parent) {
-    var lookUp = parent && isElement(parent) ? parent : document;
+    var lookUp = parent && isHTMLElement(parent) ? parent : document;
     return lookUp.getElementsByTagName(selector);
   }
 
   /**
-   * Shortcut for `Element.getElementsByClassName` method.
+   * Shortcut for `HTMLElement.getElementsByClassName` method.
    *
    * @param {string} selector the class name
-   * @param {Element=} parent optional Element to look into
-   * @return {HTMLCollection} the 'HTMLCollection'
+   * @param {(HTMLElement)=} parent optional Element to look into
+   * @return {HTMLCollectionOf<HTMLElement | Element>} the 'HTMLCollection'
    */
   function getElementsByClassName(selector, parent) {
-    var lookUp = parent && isElement(parent) ? parent : document;
+    var lookUp = parent && isHTMLElement(parent) ? parent : document;
     return lookUp.getElementsByClassName(selector);
   }
 
-  var version = "0.2.23";
+  var version = "0.2.24";
 
   // @ts-ignore
 
@@ -1586,14 +1771,22 @@
     gestureendEvent: gestureendEvent,
     gesturestartEvent: gesturestartEvent,
     bezierEasings: bezierEasings,
-    animationDuration: animationDuration,
-    animationDelay: animationDelay,
-    animationName: animationName,
-    animationEndEvent: animationEndEvent,
-    transitionDuration: transitionDuration,
-    transitionDelay: transitionDelay,
-    transitionEndEvent: transitionEndEvent,
-    transitionProperty: transitionProperty,
+    animationDuration: animationDuration$1,
+    animationDurationLegacy: animationDuration,
+    animationDelay: animationDelay$1,
+    animationDelayLegacy: animationDelay,
+    animationName: animationName$1,
+    animationNameLegacy: animationName,
+    animationEndEvent: animationEndEvent$1,
+    animationEndEventLegacy: animationEndEvent,
+    transitionDuration: transitionDuration$1,
+    transitionDurationLegacy: transitionDuration,
+    transitionDelay: transitionDelay$1,
+    transitionDelayLegacy: transitionDelay,
+    transitionEndEvent: transitionEndEvent$1,
+    transitionEndEventLegacy: transitionEndEvent,
+    transitionProperty: transitionProperty$1,
+    transitionPropertyLegacy: transitionProperty,
     isMobile: isMobile,
     isApple: isApple,
     support3DTransform: support3DTransform,
@@ -1630,6 +1823,7 @@
     offsetWidth: offsetWidth,
     scrollHeight: scrollHeight,
     scrollWidth: scrollWidth,
+    userAgentData: userAgentData,
     addClass: addClass,
     removeClass: removeClass,
     hasClass: hasClass,
@@ -1639,16 +1833,23 @@
     Data: Data,
     Timer: Timer,
     getInstance: getInstance,
-    emulateAnimationEnd: emulateAnimationEnd,
-    emulateTransitionEnd: emulateTransitionEnd,
+    emulateAnimationEnd: emulateAnimationEnd$1,
+    emulateAnimationEndLegacy: emulateAnimationEnd,
+    emulateTransitionEnd: emulateTransitionEnd$1,
+    emulateTransitionEndLegacy: emulateTransitionEnd,
     isElementInScrollRange: isElementInScrollRange,
     isElementInViewport: isElementInViewport,
     passiveHandler: passiveHandler,
-    getElementAnimationDuration: getElementAnimationDuration,
-    getElementAnimationDelay: getElementAnimationDelay,
-    getElementTransitionDuration: getElementTransitionDuration,
-    getElementTransitionDelay: getElementTransitionDelay,
+    getElementAnimationDuration: getElementAnimationDuration$1,
+    getElementAnimationDurationLegacy: getElementAnimationDuration,
+    getElementAnimationDelay: getElementAnimationDelay$1,
+    getElementAnimationDelayLegacy: getElementAnimationDelay,
+    getElementTransitionDuration: getElementTransitionDuration$1,
+    getElementTransitionDurationLegacy: getElementTransitionDuration,
+    getElementTransitionDelay: getElementTransitionDelay$1,
+    getElementTransitionDelayLegacy: getElementTransitionDelay,
     isArray: isArray,
+    isString: isString,
     isElement: isElement,
     isHTMLElement: isHTMLElement,
     isNodeList: isNodeList,
@@ -1672,6 +1873,7 @@
     ObjectKeys: ObjectKeys,
     ObjectValues: ObjectValues,
     getElementStyle: getElementStyle,
+    setElementStyle: setElementStyle,
     getAttribute: getAttribute,
     setAttribute: setAttribute,
     removeAttribute: removeAttribute,
@@ -1680,4 +1882,4 @@
 
   return SHORTER;
 
-})));
+}));

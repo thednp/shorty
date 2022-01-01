@@ -1,10 +1,12 @@
-const mobileBrands = /iPhone|iPad|iPod|Android/i;
-const userAgentStr = 'userAgentData';
+import userAgentData from '../strings/userAgentData';
 
+const mobileBrands = /iPhone|iPad|iPod|Android/i;
 let isMobileCheck = false;
 
-if (navigator[userAgentStr]) {
-  isMobileCheck = navigator[userAgentStr].brands.some((x) => mobileBrands.test(x.brand));
+// @ts-ignore
+if (navigator[userAgentData]) {
+  // @ts-ignore
+  isMobileCheck = navigator[userAgentData].brands.some((x) => mobileBrands.test(x.brand));
 } else {
   isMobileCheck = mobileBrands.test(navigator.userAgent);
 }

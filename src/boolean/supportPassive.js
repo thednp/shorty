@@ -1,5 +1,5 @@
-import addEventListener from '../strings/addEventListener.js';
-import removeEventListener from '../strings/removeEventListener.js';
+import DOMContentLoadedEvent from '../strings/DOMContentLoadedEvent';
+import one from '../event/one';
 
 /**
  * A global namespace for passive events support.
@@ -14,9 +14,7 @@ const supportPassive = (() => {
         return result;
       },
     });
-    document[addEventListener]('DOMContentLoaded', function wrap() {
-      document[removeEventListener]('DOMContentLoaded', wrap, opts);
-    }, opts);
+    one(document, DOMContentLoadedEvent, () => {}, opts);
   } catch (e) {
     throw Error('Passive events are not supported');
   }

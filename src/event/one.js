@@ -2,13 +2,13 @@ import on from './on';
 import off from './off';
 
 /**
- * Add an eventListener to Element
+ * Add an `eventListener` to an `HTMLElement` | `Document` target
  * and remove it once callback is called.
  *
- * @param {Element} element event.target
+ * @param {HTMLElement | Document} element event.target
  * @param {string} eventName event.type
  * @param {EventListener} handler callback
- * @param {EventListenerOptions | boolean | null} options other event options
+ * @param {EventListenerOptions | boolean | undefined} options other event options
  */
 export default function one(element, eventName, handler, options) {
 /**

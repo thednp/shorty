@@ -1,7 +1,7 @@
 /**
  * The raw value or a given component option.
  *
- * @typedef {string | Element | Function | number | boolean | null} niceValue
+ * @typedef {string | HTMLElement | Function | number | boolean | null} niceValue
  */
 
 /**
@@ -27,6 +27,6 @@ export default function normalizeValue(value) {
     return null;
   }
 
-  // string / function / Element / object
+  // string / function / HTMLElement / object
   return value;
 }

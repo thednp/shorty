@@ -1,12 +1,15 @@
+import userAgentData from '../strings/userAgentData';
+
+/** @type {Record<string, any>} */
 // @ts-ignore
-const { userAgentData } = navigator;
+const agentData = navigator[userAgentData];
 const appleBrands = /(iPhone|iPod|iPad)/;
 
 /**
- * A global namespace for Apple browsers.
+ * A global boolean for Apple browsers.
  * @type {boolean}
  */
-const isApple = !userAgentData ? appleBrands.test(navigator.userAgent)
-  : userAgentData.brands.some((x) => appleBrands.test(x.brand));
+const isApple = !agentData ? appleBrands.test(navigator.userAgent)
+  : agentData.brands.some((/** @type {Record<string, any>} */x) => appleBrands.test(x.brand));
 
 export default isApple;

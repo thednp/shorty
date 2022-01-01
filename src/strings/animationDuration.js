@@ -2,5 +2,5 @@
  * A global namespace for 'animationDuration' string.
  * @type {string}
  */
-const animationDuration = 'webkitAnimation' in document.head.style ? 'webkitAnimationDuration' : 'animationDuration';
+const animationDuration = 'animationDuration';
 export default animationDuration;

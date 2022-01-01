@@ -1,6 +1,6 @@
 {
   "name": "shorter-js",
-  "version": "0.2.23",
+  "version": "0.2.24",
   "description": "A small ES6+ library with various JavaScript tools useful for creating light libraries.",
   "main": "dist/shorter-js.min.js",
   "module": "dist/shorter-js.esm.js",
@@ -16,7 +16,8 @@
     "fix:js": "eslint src/ --config .eslintrc --fix",
     "lint:js": "eslint src/ --config .eslintrc",
     "build:ts": "tsc -d",
-    "build": "npm run lint:js && npm run umd && npm run umdmin && npm run esm && npm run esmmin",
+    
+    "build": "npm run lint:js && npm-run-all --parallel umd umdmin esm esmmin",
     "umd": "rollup --environment FORMAT:umd,MIN:false -c",
     "umdmin": "rollup --environment FORMAT:umd,MIN:true -c",
     "esm": "rollup --environment FORMAT:esm,MIN:false -c",
@@ -39,14 +40,17 @@
   },
   "homepage": "https://github.com/thednp/shorter-js",
   "devDependencies": {
-    "@rollup/plugin-buble": "^0.21.1",
-    "@rollup/plugin-json": "^4.0.2",
+    "@rollup/plugin-buble": "^0.21.3",
+    "@rollup/plugin-json": "^4.1.0",
+    "@rollup/plugin-node-resolve": "^7.1.0",
+    "@rollup/plugin-typescript": "^8.3.0",
+    "npm-run-all": "^4.1.5",
     "eslint": "^7.22.0",
     "eslint-config-airbnb-base": "^14.2.1",
     "eslint-plugin-import": "^2.22.1",
     "eslint-plugin-vue": "^7.7.0",
-    "rollup": "^1.31.1",
-    "rollup-plugin-terser": "^5.2.0",
+    "rollup": "^2.38.5",
+    "rollup-plugin-terser": "^5.3.1",
     "typescript": "^4.5.2"
   }
 }

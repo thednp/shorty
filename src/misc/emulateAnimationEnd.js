@@ -6,7 +6,7 @@ import getElementAnimationDuration from './getElementAnimationDuration';
  * Utility to make sure callbacks are consistently
  * called when animation ends.
  *
- * @param {Element} element target
+ * @param {HTMLElement} element target
  * @param {EventListener} handler `animationend` callback
  */
 export default function emulateAnimationEnd(element, handler) {
