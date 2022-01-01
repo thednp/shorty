@@ -1,5 +1,5 @@
 /*!
-* shorter-js v0.2.24 (https://github.com/thednp/shorter-js)
+* shorter-js v0.2.25alpha1 (https://github.com/thednp/shorter-js)
 * Copyright 2019-2022 © dnp_theme
 * Licensed under MIT (https://github.com/thednp/shorter-js/blob/master/LICENSE)
 */
@@ -878,9 +878,9 @@
   var supportTransition = 'webkitTransition' in document.head.style || 'transition' in document.head.style;
 
   /**
-   * Add class to Element.classList
+   * Add class to `HTMLElement.classList`.
    *
-   * @param {Element} element target
+   * @param {HTMLElement} element target
    * @param {string} classNAME to add
    */
   function addClass(element, classNAME) {
@@ -888,9 +888,9 @@
   }
 
   /**
-   * Remove class from Element.classList
+   * Remove class from `HTMLElement.classList`.
    *
-   * @param {Element} element target
+   * @param {HTMLElement} element target
    * @param {string} classNAME to remove
    */
   function removeClass(element, classNAME) {
@@ -898,9 +898,9 @@
   }
 
   /**
-   * Check class in Element.classList
+   * Check class in `HTMLElement.classList`.
    *
-   * @param {Element} element target
+   * @param {HTMLElement} element target
    * @param {string} classNAME to check
    * @return {boolean}
    */
@@ -1007,6 +1007,7 @@
     },
   };
 
+  /** @type {Map<string, Map<HTMLElement, SHORTER.Component>>} */
   var componentData = new Map();
   /**
    * An interface for web components background data.
@@ -1017,24 +1018,25 @@
      * Sets web components data.
      * @param {HTMLElement | string} target target element
      * @param {string} component the component's name or a unique key
-     * @param {any} instance the component instance
+     * @param {SHORTER.Component} instance the component instance
      */
     set: function (target, component, instance) {
       var element = querySelector(target);
-      if (!isHTMLElement(element)) { return; }
+      if (!element || !isHTMLElement(element)) { return; }
 
       if (!componentData.has(component)) {
         componentData.set(component, new Map());
       }
 
       var instanceMap = componentData.get(component);
+      // @ts-ignore - not undefined, but defined right above
       instanceMap.set(element, instance);
     },
 
     /**
      * Returns all instances for specified component.
      * @param {string} component the component's name or a unique key
-     * @returns {any?} all the component instances
+     * @returns {Map<HTMLElement, SHORTER.Component> | null | undefined} all the component instances
      */
     getAllFor: function (component) {
       if (componentData.has(component)) {
@@ -1047,13 +1049,13 @@
      * Returns the instance associated with the target.
      * @param {HTMLElement | string} target target element
      * @param {string} component the component's name or a unique key
-     * @returns {any?} the instance
+     * @returns {SHORTER.Component | null | undefined} the instance
      */
     get: function (target, component) {
       var element = querySelector(target);
 
       var allForC = Data.getAllFor(component);
-      if (allForC && isHTMLElement(element) && allForC.has(element)) {
+      if (allForC && element && isHTMLElement(element) && allForC.has(element)) {
         return allForC.get(element);
       }
       return null;
@@ -1066,9 +1068,9 @@
      */
     remove: function (target, component) {
       var element = querySelector(target);
-      if (!componentData.has(component) || !element) { return; }
-
       var instanceMap = componentData.get(component);
+      if (!instanceMap || !element) { return; }
+
       instanceMap.delete(element);
 
       if (instanceMap.size === 0) {
@@ -1079,9 +1081,7 @@
 
   /**
    * An alias for `Data.get()`.
-   * @param {HTMLElement | string} target target element
-   * @param {string} component the component's name or a unique key
-   * @returns {Record<string, any>?} the request result
+   * @type {SHORTER.getInstance<any>}
    */
   var getInstance = function (target, component) { return Data.get(target, component); };
 
@@ -1696,7 +1696,7 @@
     return lookUp.getElementsByClassName(selector);
   }
 
-  var version = "0.2.24";
+  var version = "0.2.25alpha1";
 
   // @ts-ignore
 

@@ -121,7 +121,7 @@ export { default as hasClass } from "shorter-js/src/class/hasClass";
 export { default as on } from "shorter-js/src/event/on";
 export { default as off } from "shorter-js/src/event/off";
 export { default as one } from "shorter-js/src/event/one";
-export { default as Data, getInstance } from "shorter-js/src/misc/data";
+export { default as Data } from "shorter-js/src/misc/data";
 export { default as Timer } from "shorter-js/src/misc/timer";
 export { default as emulateAnimationEnd } from "shorter-js/src/misc/emulateAnimationEnd";
 export { default as emulateAnimationEndLegacy } from "shorter-js/src/misc/emulateAnimationEndLegacy";
@@ -168,3 +168,8 @@ export { default as querySelectorAll } from "shorter-js/src/misc/querySelectorAl
 export { default as getElementsByTagName } from "shorter-js/src/misc/getElementsByTagName";
 export { default as getElementsByClassName } from "shorter-js/src/misc/getElementsByClassName";
 export { default as Version } from "shorter-js/src/misc/version";
+
+export {
+  Component,
+  getInstance
+} from './module/types'

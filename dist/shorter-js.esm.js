@@ -1,5 +1,5 @@
 /*!
-* shorter-js v0.2.24 (https://github.com/thednp/shorter-js)
+* shorter-js v0.2.25alpha1 (https://github.com/thednp/shorter-js)
 * Copyright 2019-2022 © dnp_theme
 * Licensed under MIT (https://github.com/thednp/shorter-js/blob/master/LICENSE)
 */
@@ -873,9 +873,9 @@ const supportAnimation = 'webkitAnimation' in document.head.style || 'animation'
 const supportTransition = 'webkitTransition' in document.head.style || 'transition' in document.head.style;
 
 /**
- * Add class to Element.classList
+ * Add class to `HTMLElement.classList`.
  *
- * @param {Element} element target
+ * @param {HTMLElement} element target
  * @param {string} classNAME to add
  */
 function addClass(element, classNAME) {
@@ -883,9 +883,9 @@ function addClass(element, classNAME) {
 }
 
 /**
- * Remove class from Element.classList
+ * Remove class from `HTMLElement.classList`.
  *
- * @param {Element} element target
+ * @param {HTMLElement} element target
  * @param {string} classNAME to remove
  */
 function removeClass(element, classNAME) {
@@ -893,9 +893,9 @@ function removeClass(element, classNAME) {
 }
 
 /**
- * Check class in Element.classList
+ * Check class in `HTMLElement.classList`.
  *
- * @param {Element} element target
+ * @param {HTMLElement} element target
  * @param {string} classNAME to check
  * @return {boolean}
  */
@@ -1002,6 +1002,7 @@ const Timer = {
   },
 };
 
+/** @type {Map<string, Map<HTMLElement, SHORTER.Component>>} */
 const componentData = new Map();
 /**
  * An interface for web components background data.
@@ -1012,24 +1013,25 @@ const Data = {
    * Sets web components data.
    * @param {HTMLElement | string} target target element
    * @param {string} component the component's name or a unique key
-   * @param {any} instance the component instance
+   * @param {SHORTER.Component} instance the component instance
    */
   set: (target, component, instance) => {
     const element = querySelector(target);
-    if (!isHTMLElement(element)) return;
+    if (!element || !isHTMLElement(element)) return;
 
     if (!componentData.has(component)) {
       componentData.set(component, new Map());
     }
 
     const instanceMap = componentData.get(component);
+    // @ts-ignore - not undefined, but defined right above
     instanceMap.set(element, instance);
   },
 
   /**
    * Returns all instances for specified component.
    * @param {string} component the component's name or a unique key
-   * @returns {any?} all the component instances
+   * @returns {Map<HTMLElement, SHORTER.Component> | null | undefined} all the component instances
    */
   getAllFor: (component) => {
     if (componentData.has(component)) {
@@ -1042,13 +1044,13 @@ const Data = {
    * Returns the instance associated with the target.
    * @param {HTMLElement | string} target target element
    * @param {string} component the component's name or a unique key
-   * @returns {any?} the instance
+   * @returns {SHORTER.Component | null | undefined} the instance
    */
   get: (target, component) => {
     const element = querySelector(target);
 
     const allForC = Data.getAllFor(component);
-    if (allForC && isHTMLElement(element) && allForC.has(element)) {
+    if (allForC && element && isHTMLElement(element) && allForC.has(element)) {
       return allForC.get(element);
     }
     return null;
@@ -1061,9 +1063,9 @@ const Data = {
    */
   remove: (target, component) => {
     const element = querySelector(target);
-    if (!componentData.has(component) || !element) return;
-
     const instanceMap = componentData.get(component);
+    if (!instanceMap || !element) return;
+
     instanceMap.delete(element);
 
     if (instanceMap.size === 0) {
@@ -1074,9 +1076,7 @@ const Data = {
 
 /**
  * An alias for `Data.get()`.
- * @param {HTMLElement | string} target target element
- * @param {string} component the component's name or a unique key
- * @returns {Record<string, any>?} the request result
+ * @type {SHORTER.getInstance<any>}
  */
 const getInstance = (target, component) => Data.get(target, component);
 
@@ -1691,7 +1691,7 @@ function getElementsByClassName(selector, parent) {
   return lookUp.getElementsByClassName(selector);
 }
 
-var version = "0.2.24";
+var version = "0.2.25alpha1";
 
 // @ts-ignore
 

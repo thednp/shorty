@@ -1,7 +1,7 @@
 /**
- * Check class in Element.classList
+ * Check class in `HTMLElement.classList`.
  *
- * @param {Element} element target
+ * @param {HTMLElement} element target
  * @param {string} classNAME to check
  * @return {boolean}
  */

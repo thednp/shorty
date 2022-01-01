@@ -958,31 +958,31 @@ declare module "shorter-js/src/boolean/supportTransition" {
 }
 declare module "shorter-js/src/class/addClass" {
     /**
-     * Add class to Element.classList
+     * Add class to `HTMLElement.classList`.
      *
-     * @param {Element} element target
+     * @param {HTMLElement} element target
      * @param {string} classNAME to add
      */
-    export default function addClass(element: Element, classNAME: string): void;
+    export default function addClass(element: HTMLElement, classNAME: string): void;
 }
 declare module "shorter-js/src/class/removeClass" {
     /**
-     * Remove class from Element.classList
+     * Remove class from `HTMLElement.classList`.
      *
-     * @param {Element} element target
+     * @param {HTMLElement} element target
      * @param {string} classNAME to remove
      */
-    export default function removeClass(element: Element, classNAME: string): void;
+    export default function removeClass(element: HTMLElement, classNAME: string): void;
 }
 declare module "shorter-js/src/class/hasClass" {
     /**
-     * Check class in Element.classList
+     * Check class in `HTMLElement.classList`.
      *
-     * @param {Element} element target
+     * @param {HTMLElement} element target
      * @param {string} classNAME to check
      * @return {boolean}
      */
-    export default function hasClass(element: Element, classNAME: string): boolean;
+    export default function hasClass(element: HTMLElement, classNAME: string): boolean;
 }
 declare module "shorter-js/src/misc/isHTMLElement" {
     export default isHTMLElement;
@@ -1006,7 +1006,11 @@ declare module "shorter-js/src/misc/querySelector" {
     export default function querySelector(selector: HTMLElement | string, parent?: (ParentNode | HTMLElement) | undefined): HTMLElement | null;
 }
 declare module "shorter-js/src/misc/data" {
-    export function getInstance(target: HTMLElement | string, component: string): Record<string, any> | null;
+    /**
+     * An alias for `Data.get()`.
+     * @type {SHORTER.getInstance<any>}
+     */
+    export const getInstance: SHORTER.getInstance<any>;
     export default Data;
     namespace Data {
         function set(target: string | HTMLElement, component: string, instance: any): void;
