@@ -1,5 +1,5 @@
 /*!
-* shorter-js v0.2.25alpha1 (https://github.com/thednp/shorter-js)
+* shorter-js v0.2.25alpha2 (https://github.com/thednp/shorter-js)
 * Copyright 2019-2022 © dnp_theme
 * Licensed under MIT (https://github.com/thednp/shorter-js/blob/master/LICENSE)
 */
@@ -914,7 +914,7 @@
    * @param {any} element the target object
    * @returns {boolean} the query result
    */
-  var isHTMLElement = function (element) { return typeof element === 'object' && element instanceof HTMLElement; };
+  var isHTMLElement = function (element) { return element && element instanceof HTMLElement; };
 
   /**
    * Utility to check if target is typeof `HTMLElement`
@@ -1547,7 +1547,7 @@
   /**
    * Shortcut for `HTMLElement.style.propertyName` method.
    * @param  {HTMLElement} element target element
-   * @param  {Record<string, string>} styles attribute value
+   * @param  {Partial<CSSStyleDeclaration>} styles attribute value
    */
   var setElementStyle = function (element, styles) { return ObjectAssign(element.style, styles); };
 
@@ -1587,7 +1587,7 @@
    * @param {any} element the target element
    * @returns {boolean} the query result
    */
-  var isMedia = function (element) { return typeof element === 'object'
+  var isMedia = function (element) { return element
     && [SVGElement, HTMLImageElement, HTMLVideoElement]
       .some(function (mediaType) { return element instanceof mediaType; }); };
 
@@ -1696,7 +1696,7 @@
     return lookUp.getElementsByClassName(selector);
   }
 
-  var version = "0.2.25alpha1";
+  var version = "0.2.25alpha2";
 
   // @ts-ignore
 

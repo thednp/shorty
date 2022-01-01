@@ -1,5 +1,5 @@
 /*!
-* shorter-js v0.2.25alpha1 (https://github.com/thednp/shorter-js)
+* shorter-js v0.2.25alpha2 (https://github.com/thednp/shorter-js)
 * Copyright 2019-2022 © dnp_theme
 * Licensed under MIT (https://github.com/thednp/shorter-js/blob/master/LICENSE)
 */
@@ -909,7 +909,7 @@ function hasClass(element, classNAME) {
  * @param {any} element the target object
  * @returns {boolean} the query result
  */
-const isHTMLElement = (element) => typeof element === 'object' && element instanceof HTMLElement;
+const isHTMLElement = (element) => element && element instanceof HTMLElement;
 
 /**
  * Utility to check if target is typeof `HTMLElement`
@@ -1542,7 +1542,7 @@ const removeAttribute = (element, attribute) => element.removeAttribute(attribut
 /**
  * Shortcut for `HTMLElement.style.propertyName` method.
  * @param  {HTMLElement} element target element
- * @param  {Record<string, string>} styles attribute value
+ * @param  {Partial<CSSStyleDeclaration>} styles attribute value
  */
 const setElementStyle = (element, styles) => ObjectAssign(element.style, styles);
 
@@ -1582,7 +1582,7 @@ function isElementInViewport(element) {
  * @param {any} element the target element
  * @returns {boolean} the query result
  */
-const isMedia = (element) => typeof element === 'object'
+const isMedia = (element) => element
   && [SVGElement, HTMLImageElement, HTMLVideoElement]
     .some((mediaType) => element instanceof mediaType);
 
@@ -1691,7 +1691,7 @@ function getElementsByClassName(selector, parent) {
   return lookUp.getElementsByClassName(selector);
 }
 
-var version = "0.2.25alpha1";
+var version = "0.2.25alpha2";
 
 // @ts-ignore
 
