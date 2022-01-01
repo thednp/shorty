@@ -994,16 +994,16 @@ declare module "shorter-js/src/misc/isHTMLElement" {
      */
     function isHTMLElement(element: any): boolean;
 }
-declare module "shorter-js/src/misc/querySelector" {
+declare module "shorter-js/src/selectors/querySelector" {
     /**
      * Utility to check if target is typeof `HTMLElement`
      * or find one that matches a selector.
      *
      * @param {HTMLElement | string} selector the input selector or target element
-     * @param {(ParentNode | HTMLElement)=} parent optional `HTMLElement` to look into
+     * @param {HTMLElement=} parent optional `HTMLElement` to look into
      * @return {HTMLElement?} the `HTMLElement` or `querySelector` result
      */
-    export default function querySelector(selector: HTMLElement | string, parent?: (ParentNode | HTMLElement) | undefined): HTMLElement | null;
+    export default function querySelector(selector: HTMLElement | string, parent?: HTMLElement | undefined): HTMLElement | null;
 }
 declare module "shorter-js/src/misc/data" {
     /**
@@ -1014,8 +1014,8 @@ declare module "shorter-js/src/misc/data" {
     export default Data;
     namespace Data {
         function set(target: string | HTMLElement, component: string, instance: SHORTER.Component): void;
-        function getAllFor(component: string): Map<HTMLElement, SHORTER.Component> | null | undefined;
-        function get(target: string | HTMLElement, component: string): SHORTER.Component | null | undefined;
+        function getAllFor(component: string): Map<HTMLElement, SHORTER.Component> | null;
+        function get(target: string | HTMLElement, component: string): SHORTER.Component | null;
         function remove(target: string | HTMLElement, component: string): void;
     }
 }
@@ -1023,11 +1023,11 @@ declare module "shorter-js/src/misc/timer" {
     export default Timer;
     namespace Timer {
         function set(target: string | HTMLElement, callback: any, delay: number, key?: string | undefined): void;
-        function get(target: string | HTMLElement, key?: string | undefined): Map<Element, TimerHandler> | null;
+        function get(target: string | HTMLElement, key?: string | undefined): any;
         function clear(target: HTMLElement, key?: string | undefined): void;
     }
 }
-declare module "shorter-js/src/misc/getElementStyle" {
+declare module "shorter-js/src/manipulate/getElementStyle" {
     /**
      * Shortcut for `window.getComputedStyle(element).propertyName`
      * static method.
@@ -1321,7 +1321,7 @@ declare module "shorter-js/src/misc/ObjectAssign" {
      */
     function ObjectAssign(obj: Record<string, any>, source: Record<string, any>): Record<string, any>;
 }
-declare module "shorter-js/src/misc/getAttribute" {
+declare module "shorter-js/src/manipulate/getAttribute" {
     export default getAttribute;
     /**
      * Shortcut for `HTMLElement.getAttribute()` method.
@@ -1330,7 +1330,7 @@ declare module "shorter-js/src/misc/getAttribute" {
      */
     function getAttribute(element: HTMLElement, attribute: string): string | null;
 }
-declare module "shorter-js/src/misc/setAttribute" {
+declare module "shorter-js/src/manipulate/setAttribute" {
     export default setAttribute;
     /**
      * Shortcut for `HTMLElement.setAttribute()` method.
@@ -1340,7 +1340,7 @@ declare module "shorter-js/src/misc/setAttribute" {
      */
     function setAttribute(element: HTMLElement, attribute: string, value: string): void;
 }
-declare module "shorter-js/src/misc/removeAttribute" {
+declare module "shorter-js/src/manipulate/removeAttribute" {
     export default removeAttribute;
     /**
      * Shortcut for `HTMLElement.removeAttribute()` method.
@@ -1349,7 +1349,7 @@ declare module "shorter-js/src/misc/removeAttribute" {
      */
     function removeAttribute(element: HTMLElement, attribute: string): void;
 }
-declare module "shorter-js/src/misc/setElementStyle" {
+declare module "shorter-js/src/manipulate/setElementStyle" {
     export default setElementStyle;
     /**
      * Shortcut for `HTMLElement.style.propertyName` method.
@@ -1418,48 +1418,45 @@ declare module "shorter-js/src/misc/isElementsArray" {
      */
     function isElementsArray(object: any): boolean;
 }
-declare module "shorter-js/src/misc/queryElement" {
+declare module "shorter-js/src/selectors/closest" {
     /**
-     * Utility to check if target is typeof `HTMLElement`
-     * or find one that matches a selector.
+     * Shortcut for `HTMLElement.closest` method.
      *
-     * @deprecated
-     *
-     * @param {HTMLElement | string} selector the input selector or target element
-     * @param {(ParentNode | HTMLElement)=} parent optional `HTMLElement` to look into
-     * @return {HTMLElement?} the Element or `querySelector` result
+     * @param {HTMLElement} element optional Element to look into
+     * @param {string} selector the selector name
+     * @return {HTMLElement?} the query result
      */
-    export default function queryElement(selector: HTMLElement | string, parent?: (ParentNode | HTMLElement) | undefined): HTMLElement | null;
+    export default function closest(element: HTMLElement, selector: string): HTMLElement | null;
 }
-declare module "shorter-js/src/misc/querySelectorAll" {
+declare module "shorter-js/src/selectors/querySelectorAll" {
     /**
      * A shortcut for `(document|Element).querySelectorAll`.
      *
      * @param {string} selector the input selector
-     * @param {(HTMLElement | ParentNode)=} parent optional Element to look into
+     * @param {HTMLElement=} parent optional Element to look into
      * @return {NodeListOf<HTMLElement>} the query result
      */
-    export default function querySelectorAll(selector: string, parent?: (HTMLElement | ParentNode) | undefined): NodeListOf<HTMLElement>;
+    export default function querySelectorAll(selector: string, parent?: HTMLElement | undefined): NodeListOf<HTMLElement>;
 }
-declare module "shorter-js/src/misc/getElementsByTagName" {
+declare module "shorter-js/src/selectors/getElementsByTagName" {
     /**
      * Shortcut for `HTMLElement.getElementsByTagName` method.
      *
      * @param {string} selector the tag name
      * @param {HTMLElement=} parent optional Element to look into
-     * @return {HTMLCollectionOf<Element | HTMLElement>} the 'HTMLCollection'
+     * @return {HTMLCollectionOf<HTMLElement>} the 'HTMLCollection'
      */
-    export default function getElementsByTagName(selector: string, parent?: HTMLElement | undefined): HTMLCollectionOf<Element | HTMLElement>;
+    export default function getElementsByTagName(selector: string, parent?: HTMLElement | undefined): HTMLCollectionOf<HTMLElement>;
 }
-declare module "shorter-js/src/misc/getElementsByClassName" {
+declare module "shorter-js/src/selectors/getElementsByClassName" {
     /**
      * Shortcut for `HTMLElement.getElementsByClassName` method.
      *
      * @param {string} selector the class name
      * @param {(HTMLElement)=} parent optional Element to look into
-     * @return {HTMLCollectionOf<HTMLElement | Element>} the 'HTMLCollection'
+     * @return {HTMLCollectionOf<HTMLElement>} the 'HTMLCollection'
      */
-    export default function getElementsByClassName(selector: string, parent?: (HTMLElement) | undefined): HTMLCollectionOf<HTMLElement | Element>;
+    export default function getElementsByClassName(selector: string, parent?: (HTMLElement) | undefined): HTMLCollectionOf<HTMLElement>;
 }
 declare module "shorter-js/src/misc/version" {
     export default Version;
@@ -1620,11 +1617,11 @@ declare module "shorter-js/types/module/shorter" {
     export { default as ObjectKeys } from "shorter-js/src/misc/ObjectKeys";
     export { default as ObjectValues } from "shorter-js/src/misc/ObjectValues";
     export { default as ObjectAssign } from "shorter-js/src/misc/ObjectAssign";
-    export { default as getAttribute } from "shorter-js/src/misc/getAttribute";
-    export { default as setAttribute } from "shorter-js/src/misc/setAttribute";
-    export { default as removeAttribute } from "shorter-js/src/misc/removeAttribute";
-    export { default as getElementStyle } from "shorter-js/src/misc/getElementStyle";
-    export { default as setElementStyle } from "shorter-js/src/misc/setElementStyle";
+    export { default as getAttribute } from "shorter-js/src/manipulate/getAttribute";
+    export { default as setAttribute } from "shorter-js/src/manipulate/setAttribute";
+    export { default as removeAttribute } from "shorter-js/src/manipulate/removeAttribute";
+    export { default as getElementStyle } from "shorter-js/src/manipulate/getElementStyle";
+    export { default as setElementStyle } from "shorter-js/src/manipulate/setElementStyle";
     export { default as isArray } from "shorter-js/src/misc/isArray";
     export { default as isString } from "shorter-js/src/misc/isString";
     export { default as isElement } from "shorter-js/src/misc/isElement";
@@ -1632,10 +1629,10 @@ declare module "shorter-js/types/module/shorter" {
     export { default as isHTMLElement } from "shorter-js/src/misc/isHTMLElement";
     export { default as isHTMLCollection } from "shorter-js/src/misc/isHTMLCollection";
     export { default as isElementsArray } from "shorter-js/src/misc/isElementsArray";
-    export { default as queryElement } from "shorter-js/src/misc/queryElement";
-    export { default as querySelector } from "shorter-js/src/misc/querySelector";
-    export { default as querySelectorAll } from "shorter-js/src/misc/querySelectorAll";
-    export { default as getElementsByTagName } from "shorter-js/src/misc/getElementsByTagName";
-    export { default as getElementsByClassName } from "shorter-js/src/misc/getElementsByClassName";
+    export { default as closest } from "shorter-js/src/selectors/closest";
+    export { default as querySelector } from "shorter-js/src/selectors/querySelector";
+    export { default as querySelectorAll } from "shorter-js/src/selectors/querySelectorAll";
+    export { default as getElementsByTagName } from "shorter-js/src/selectors/getElementsByTagName";
+    export { default as getElementsByClassName } from "shorter-js/src/selectors/getElementsByClassName";
     export { default as Version } from "shorter-js/src/misc/version";
 }

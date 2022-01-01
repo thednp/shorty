@@ -1,6 +1,6 @@
 import animationDelay from '../strings/animationDelay';
 import animationName from '../strings/animationName';
-import getElementStyle from './getElementStyle';
+import getElementStyle from '../manipulate/getElementStyle';
 
 /**
  * Utility to get the computed `animationDelay`

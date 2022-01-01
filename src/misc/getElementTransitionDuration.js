@@ -1,6 +1,6 @@
 import transitionDuration from '../strings/transitionDuration';
 import transitionProperty from '../strings/transitionProperty';
-import getElementStyle from './getElementStyle';
+import getElementStyle from '../manipulate/getElementStyle';
 
 /**
  * Utility to get the computed `transitionDuration`

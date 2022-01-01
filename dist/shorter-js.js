@@ -1,5 +1,5 @@
 /*!
-* shorter-js v0.2.25alpha2 (https://github.com/thednp/shorter-js)
+* shorter-js v0.3.0alpha1 (https://github.com/thednp/shorter-js)
 * Copyright 2019-2022 © dnp_theme
 * Licensed under MIT (https://github.com/thednp/shorter-js/blob/master/LICENSE)
 */
@@ -921,7 +921,7 @@
    * or find one that matches a selector.
    *
    * @param {HTMLElement | string} selector the input selector or target element
-   * @param {(ParentNode | HTMLElement)=} parent optional `HTMLElement` to look into
+   * @param {HTMLElement=} parent optional `HTMLElement` to look into
    * @return {HTMLElement?} the `HTMLElement` or `querySelector` result
    */
   function querySelector(selector, parent) {
@@ -929,6 +929,7 @@
     return typeof selector === 'object' ? selector : lookUp.querySelector(selector);
   }
 
+  /** @type {Map<HTMLElement, any>} */
   var TimeCache = new Map();
   /**
    * An interface for one or more `TimerHandler`s per `Element`.
@@ -945,7 +946,7 @@
     set: function (target, callback, delay, key) {
       var element = querySelector(target);
 
-      if (!isHTMLElement(element)) { return; }
+      if (!element) { return; }
 
       if (key && key.length) {
         if (!TimeCache.has(element)) {
@@ -962,12 +963,12 @@
      * Returns the timer associated with the target.
      * @param {HTMLElement | string} target target element
      * @param {string=} key a unique
-     * @returns {Map<Element, TimerHandler>?} the timer
+     * @returns {ReturnType<TimerHandler>?} the timer
      */
     get: function (target, key) {
       var element = querySelector(target);
 
-      if (!isHTMLElement(element)) { return null; }
+      if (!element) { return null; }
 
       if (key && key.length) {
         if (!TimeCache.has(element)) {
@@ -990,18 +991,17 @@
      */
     clear: function (target, key) {
       var element = querySelector(target);
+      var timers = element && TimeCache.get(element);
 
-      if (!isHTMLElement(element) || !TimeCache.has(element)) { return; }
+      if (!timers) { return; }
 
       if (key && key.length) {
-        var keyTimers = TimeCache.get(element);
-
-        if (keyTimers && keyTimers.has(key)) {
-          clearTimeout(keyTimers.get(key));
-          keyTimers.delete(key);
+        if (timers.has(key)) {
+          clearTimeout(timers.get(key));
+          timers.delete(key);
         }
-      } else if (TimeCache.has(element)) {
-        clearTimeout(TimeCache.get(element));
+      } else {
+        clearTimeout(timers);
         TimeCache.delete(element);
       }
     },
@@ -1022,7 +1022,7 @@
      */
     set: function (target, component, instance) {
       var element = querySelector(target);
-      if (!element || !isHTMLElement(element)) { return; }
+      if (!element) { return; }
 
       if (!componentData.has(component)) {
         componentData.set(component, new Map());
@@ -1036,12 +1036,12 @@
     /**
      * Returns all instances for specified component.
      * @param {string} component the component's name or a unique key
-     * @returns {Map<HTMLElement, SHORTER.Component> | null | undefined} all the component instances
+     * @returns {Map<HTMLElement, SHORTER.Component> | null} all the component instances
      */
     getAllFor: function (component) {
-      if (componentData.has(component)) {
-        return componentData.get(component);
-      }
+      var instanceMap = componentData.get(component);
+
+      if (instanceMap) { return instanceMap; }
       return null;
     },
 
@@ -1049,15 +1049,14 @@
      * Returns the instance associated with the target.
      * @param {HTMLElement | string} target target element
      * @param {string} component the component's name or a unique key
-     * @returns {SHORTER.Component | null | undefined} the instance
+     * @returns {SHORTER.Component | null} the instance
      */
     get: function (target, component) {
       var element = querySelector(target);
-
       var allForC = Data.getAllFor(component);
-      if (allForC && element && isHTMLElement(element) && allForC.has(element)) {
-        return allForC.get(element);
-      }
+      var instance = element && allForC && allForC.get(element);
+
+      if (instance) { return instance; }
       return null;
     },
 
@@ -1487,6 +1486,13 @@
   var reflow = function (element) { return element.offsetHeight; };
 
   /**
+   * Utility to focus an `HTMLElement` target.
+   *
+   * @param {HTMLElement} element is the target
+   */
+  var focus = function (element) { return element.focus(); };
+
+  /**
    * Shortcut for `Array.from()` static method.
    *
    * @param  {any[] | HTMLCollection | NodeList} arr array-like iterable object
@@ -1647,24 +1653,10 @@
     && object.every(function (el) { return isHTMLElement(el); }); };
 
   /**
-   * Utility to check if target is typeof `HTMLElement`
-   * or find one that matches a selector.
-   *
-   * @deprecated
-   *
-   * @param {HTMLElement | string} selector the input selector or target element
-   * @param {(ParentNode | HTMLElement)=} parent optional `HTMLElement` to look into
-   * @return {HTMLElement?} the Element or `querySelector` result
-   */
-  function queryElement(selector, parent) {
-    return querySelector(selector, parent);
-  }
-
-  /**
    * A shortcut for `(document|Element).querySelectorAll`.
    *
    * @param {string} selector the input selector
-   * @param {(HTMLElement | ParentNode)=} parent optional Element to look into
+   * @param {HTMLElement=} parent optional Element to look into
    * @return {NodeListOf<HTMLElement>} the query result
    */
   function querySelectorAll(selector, parent) {
@@ -1677,10 +1669,11 @@
    *
    * @param {string} selector the tag name
    * @param {HTMLElement=} parent optional Element to look into
-   * @return {HTMLCollectionOf<Element | HTMLElement>} the 'HTMLCollection'
+   * @return {HTMLCollectionOf<HTMLElement>} the 'HTMLCollection'
    */
   function getElementsByTagName(selector, parent) {
     var lookUp = parent && isHTMLElement(parent) ? parent : document;
+    // @ts-ignore
     return lookUp.getElementsByTagName(selector);
   }
 
@@ -1688,15 +1681,16 @@
    * Shortcut for `HTMLElement.getElementsByClassName` method.
    *
    * @param {string} selector the class name
-   * @param {(HTMLElement)=} parent optional Element to look into
-   * @return {HTMLCollectionOf<HTMLElement | Element>} the 'HTMLCollection'
+   * @param {HTMLElement=} parent optional Element to look into
+   * @return {HTMLCollectionOf<HTMLElement>} the 'HTMLCollection'
    */
   function getElementsByClassName(selector, parent) {
     var lookUp = parent && isHTMLElement(parent) ? parent : document;
+    // @ts-ignore
     return lookUp.getElementsByClassName(selector);
   }
 
-  var version = "0.2.25alpha2";
+  var version = "0.3.0alpha1";
 
   // @ts-ignore
 
@@ -1857,7 +1851,6 @@
     isElementsArray: isElementsArray,
     isMedia: isMedia,
     isRTL: isRTL,
-    queryElement: queryElement,
     querySelector: querySelector,
     querySelectorAll: querySelectorAll,
     getElementsByClassName: getElementsByClassName,
@@ -1866,6 +1859,7 @@
     normalizeOptions: normalizeOptions,
     tryWrapper: tryWrapper,
     reflow: reflow,
+    focus: focus,
     ArrayFrom: ArrayFrom,
     Float32ArrayFrom: Float32ArrayFrom,
     Float64ArrayFrom: Float64ArrayFrom,

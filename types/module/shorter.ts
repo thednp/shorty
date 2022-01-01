@@ -171,12 +171,11 @@ export { default as ObjectKeys } from '../../src/misc/ObjectKeys';
 export { default as ObjectValues } from '../../src/misc/ObjectValues';
 export { default as ObjectAssign } from '../../src/misc/ObjectAssign';
 
-export { default as getAttribute } from '../../src/misc/getAttribute';
-export { default as setAttribute } from '../../src/misc/setAttribute';
-export { default as removeAttribute } from '../../src/misc/removeAttribute';
-
-export { default as getElementStyle } from '../../src/misc/getElementStyle';
-export { default as setElementStyle } from '../../src/misc/setElementStyle';
+export { default as getAttribute } from '../../src/manipulate/getAttribute';
+export { default as setAttribute } from '../../src/manipulate/setAttribute';
+export { default as removeAttribute } from '../../src/manipulate/removeAttribute';
+export { default as getElementStyle } from '../../src/manipulate/getElementStyle';
+export { default as setElementStyle } from '../../src/manipulate/setElementStyle';
 
 export { default as isArray } from "../../src/misc/isArray";
 export { default as isString } from "../../src/misc/isString";
@@ -186,10 +185,10 @@ export { default as isHTMLElement } from "../../src/misc/isHTMLElement";
 export { default as isHTMLCollection } from "../../src/misc/isHTMLCollection";
 export { default as isElementsArray } from "../../src/misc/isElementsArray";
 
-export { default as queryElement } from "../../src/misc/queryElement";
-export { default as querySelector } from "../../src/misc/querySelector";
-export { default as querySelectorAll } from "../../src/misc/querySelectorAll";
-export { default as getElementsByTagName } from "../../src/misc/getElementsByTagName";
-export { default as getElementsByClassName } from "../../src/misc/getElementsByClassName";
+export { default as closest } from "../../src/selectors/closest";
+export { default as querySelector } from "../../src/selectors/querySelector";
+export { default as querySelectorAll } from "../../src/selectors/querySelectorAll";
+export { default as getElementsByTagName } from "../../src/selectors/getElementsByTagName";
+export { default as getElementsByClassName } from "../../src/selectors/getElementsByClassName";
 
 export { default as Version } from "../../src/misc/version";

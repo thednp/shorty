@@ -1,6 +1,6 @@
 import animationDuration from '../strings/animationDuration';
 import animationName from '../strings/animationName';
-import getElementStyle from './getElementStyle';
+import getElementStyle from '../manipulate/getElementStyle';
 
 /**
  * Utility to get the computed `animationDuration`

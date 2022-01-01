@@ -1,7 +1,7 @@
 import supportAnimation from '../boolean/supportAnimation';
 import animationDelay from '../strings/animationDelayLegacy';
 import animationName from '../strings/animationNameLegacy';
-import getElementStyle from './getElementStyle';
+import getElementStyle from '../manipulate/getElementStyle';
 
 /**
  * Utility to get the computed `animationDelay`

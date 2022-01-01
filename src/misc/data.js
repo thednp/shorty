@@ -1,5 +1,4 @@
-import querySelector from './querySelector';
-import isHTMLElement from './isHTMLElement';
+import querySelector from '../selectors/querySelector';
 
 /** @type {Map<string, Map<HTMLElement, SHORTER.Component>>} */
 const componentData = new Map();
@@ -16,7 +15,7 @@ const Data = {
    */
   set: (target, component, instance) => {
     const element = querySelector(target);
-    if (!element || !isHTMLElement(element)) return;
+    if (!element) return;
 
     if (!componentData.has(component)) {
       componentData.set(component, new Map());
@@ -30,12 +29,12 @@ const Data = {
   /**
    * Returns all instances for specified component.
    * @param {string} component the component's name or a unique key
-   * @returns {Map<HTMLElement, SHORTER.Component> | null | undefined} all the component instances
+   * @returns {Map<HTMLElement, SHORTER.Component> | null} all the component instances
    */
   getAllFor: (component) => {
-    if (componentData.has(component)) {
-      return componentData.get(component);
-    }
+    const instanceMap = componentData.get(component);
+
+    if (instanceMap) return instanceMap;
     return null;
   },
 
@@ -43,15 +42,14 @@ const Data = {
    * Returns the instance associated with the target.
    * @param {HTMLElement | string} target target element
    * @param {string} component the component's name or a unique key
-   * @returns {SHORTER.Component | null | undefined} the instance
+   * @returns {SHORTER.Component | null} the instance
    */
   get: (target, component) => {
     const element = querySelector(target);
-
     const allForC = Data.getAllFor(component);
-    if (allForC && element && isHTMLElement(element) && allForC.has(element)) {
-      return allForC.get(element);
-    }
+    const instance = element && allForC && allForC.get(element);
+
+    if (instance) return instance;
     return null;
   },
 

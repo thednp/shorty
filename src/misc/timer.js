@@ -1,6 +1,6 @@
-import isHTMLElement from './isHTMLElement';
-import querySelector from './querySelector';
+import querySelector from '../selectors/querySelector';
 
+/** @type {Map<HTMLElement, any>} */
 const TimeCache = new Map();
 /**
  * An interface for one or more `TimerHandler`s per `Element`.
@@ -17,7 +17,7 @@ const Timer = {
   set: (target, callback, delay, key) => {
     const element = querySelector(target);
 
-    if (!isHTMLElement(element)) return;
+    if (!element) return;
 
     if (key && key.length) {
       if (!TimeCache.has(element)) {
@@ -34,12 +34,12 @@ const Timer = {
    * Returns the timer associated with the target.
    * @param {HTMLElement | string} target target element
    * @param {string=} key a unique
-   * @returns {Map<Element, TimerHandler>?} the timer
+   * @returns {ReturnType<TimerHandler>?} the timer
    */
   get: (target, key) => {
     const element = querySelector(target);
 
-    if (!isHTMLElement(element)) return null;
+    if (!element) return null;
 
     if (key && key.length) {
       if (!TimeCache.has(element)) {
@@ -62,18 +62,17 @@ const Timer = {
    */
   clear: (target, key) => {
     const element = querySelector(target);
+    const timers = element && TimeCache.get(element);
 
-    if (!isHTMLElement(element) || !TimeCache.has(element)) return;
+    if (!timers) return;
 
     if (key && key.length) {
-      const keyTimers = TimeCache.get(element);
-
-      if (keyTimers && keyTimers.has(key)) {
-        clearTimeout(keyTimers.get(key));
-        keyTimers.delete(key);
+      if (timers.has(key)) {
+        clearTimeout(timers.get(key));
+        timers.delete(key);
       }
-    } else if (TimeCache.has(element)) {
-      clearTimeout(TimeCache.get(element));
+    } else {
+      clearTimeout(timers);
       TimeCache.delete(element);
     }
   },

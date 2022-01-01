@@ -151,11 +151,11 @@ export { default as Float64ArrayFrom } from "shorter-js/src/misc/Float64ArrayFro
 export { default as ObjectKeys } from "shorter-js/src/misc/ObjectKeys";
 export { default as ObjectValues } from "shorter-js/src/misc/ObjectValues";
 export { default as ObjectAssign } from "shorter-js/src/misc/ObjectAssign";
-export { default as getAttribute } from "shorter-js/src/misc/getAttribute";
-export { default as setAttribute } from "shorter-js/src/misc/setAttribute";
-export { default as removeAttribute } from "shorter-js/src/misc/removeAttribute";
-export { default as getElementStyle } from "shorter-js/src/misc/getElementStyle";
-export { default as setElementStyle } from "shorter-js/src/misc/setElementStyle";
+export { default as getAttribute } from "shorter-js/src/manipulate/getAttribute";
+export { default as setAttribute } from "shorter-js/src/manipulate/setAttribute";
+export { default as removeAttribute } from "shorter-js/src/manipulate/removeAttribute";
+export { default as getElementStyle } from "shorter-js/src/manipulate/getElementStyle";
+export { default as setElementStyle } from "shorter-js/src/manipulate/setElementStyle";
 export { default as isArray } from "shorter-js/src/misc/isArray";
 export { default as isString } from "shorter-js/src/misc/isString";
 export { default as isElement } from "shorter-js/src/misc/isElement";
@@ -163,14 +163,14 @@ export { default as isNodeList } from "shorter-js/src/misc/isNodeList";
 export { default as isHTMLElement } from "shorter-js/src/misc/isHTMLElement";
 export { default as isHTMLCollection } from "shorter-js/src/misc/isHTMLCollection";
 export { default as isElementsArray } from "shorter-js/src/misc/isElementsArray";
-export { default as queryElement } from "shorter-js/src/misc/queryElement";
-export { default as querySelector } from "shorter-js/src/misc/querySelector";
-export { default as querySelectorAll } from "shorter-js/src/misc/querySelectorAll";
-export { default as getElementsByTagName } from "shorter-js/src/misc/getElementsByTagName";
-export { default as getElementsByClassName } from "shorter-js/src/misc/getElementsByClassName";
+export { default as closest } from "shorter-js/src/selectors/closest";
+export { default as querySelector } from "shorter-js/src/selectors/querySelector";
+export { default as querySelectorAll } from "shorter-js/src/selectors/querySelectorAll";
+export { default as getElementsByTagName } from "shorter-js/src/selectors/getElementsByTagName";
+export { default as getElementsByClassName } from "shorter-js/src/selectors/getElementsByClassName";
 export { default as Version } from "shorter-js/src/misc/version";
 
 export {
   Component,
-  getInstance
+  getInstance,
 } from './module/types'

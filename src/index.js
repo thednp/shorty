@@ -161,6 +161,7 @@ import normalizeValue from './misc/normalizeValue';
 import normalizeOptions from './misc/normalizeOptions';
 import tryWrapper from './misc/tryWrapper';
 import reflow from './misc/reflow';
+import focus from './misc/focus';
 
 import ArrayFrom from './misc/ArrayFrom';
 import Float32ArrayFrom from './misc/Float32ArrayFrom';
@@ -168,12 +169,12 @@ import Float64ArrayFrom from './misc/Float64ArrayFrom';
 import ObjectAssign from './misc/ObjectAssign';
 import ObjectKeys from './misc/ObjectKeys';
 import ObjectValues from './misc/ObjectValues';
-import getElementStyle from './misc/getElementStyle';
 
-import getAttribute from './misc/getAttribute';
-import setAttribute from './misc/setAttribute';
-import removeAttribute from './misc/removeAttribute';
-import setElementStyle from './misc/setElementStyle';
+import getAttribute from './manipulate/getAttribute';
+import setAttribute from './manipulate/setAttribute';
+import removeAttribute from './manipulate/removeAttribute';
+import getElementStyle from './manipulate/getElementStyle';
+import setElementStyle from './manipulate/setElementStyle';
 
 import isElementInScrollRange from './misc/isElementInScrollRange';
 import isElementInViewport from './misc/isElementInViewport';
@@ -187,11 +188,10 @@ import isHTMLCollection from './misc/isHTMLCollection';
 import isNodeList from './misc/isNodeList';
 import isElementsArray from './misc/isElementsArray';
 
-import querySelector from './misc/querySelector';
-import queryElement from './misc/queryElement';
-import querySelectorAll from './misc/querySelectorAll';
-import getElementsByTagName from './misc/getElementsByTagName';
-import getElementsByClassName from './misc/getElementsByClassName';
+import querySelector from './selectors/querySelector';
+import querySelectorAll from './selectors/querySelectorAll';
+import getElementsByTagName from './selectors/getElementsByTagName';
+import getElementsByClassName from './selectors/getElementsByClassName';
 
 import Version from './misc/version';
 
@@ -344,7 +344,6 @@ const SHORTER = {
   isElementsArray,
   isMedia,
   isRTL,
-  queryElement,
   querySelector,
   querySelectorAll,
   getElementsByClassName,
@@ -353,6 +352,7 @@ const SHORTER = {
   normalizeOptions,
   tryWrapper,
   reflow,
+  focus,
   ArrayFrom,
   Float32ArrayFrom,
   Float64ArrayFrom,

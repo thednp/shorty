@@ -1,4 +1,4 @@
-import ObjectAssign from './ObjectAssign';
+import ObjectAssign from '../misc/ObjectAssign';
 
 /**
  * Shortcut for `HTMLElement.style.propertyName` method.
