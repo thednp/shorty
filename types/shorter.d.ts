@@ -1013,9 +1013,9 @@ declare module "shorter-js/src/misc/data" {
     export const getInstance: SHORTER.getInstance<any>;
     export default Data;
     namespace Data {
-        function set(target: string | HTMLElement, component: string, instance: any): void;
-        function getAllFor(component: string): any;
-        function get(target: string | HTMLElement, component: string): any;
+        function set(target: string | HTMLElement, component: string, instance: SHORTER.Component): void;
+        function getAllFor(component: string): Map<HTMLElement, SHORTER.Component> | null | undefined;
+        function get(target: string | HTMLElement, component: string): SHORTER.Component | null | undefined;
         function remove(target: string | HTMLElement, component: string): void;
     }
 }
@@ -1266,6 +1266,15 @@ declare module "shorter-js/src/misc/reflow" {
      */
     function reflow(element: HTMLElement): number;
 }
+declare module "shorter-js/src/misc/focus" {
+    export default focus;
+    /**
+     * Utility to focus an `HTMLElement` target.
+     *
+     * @param {HTMLElement} element is the target
+     */
+    function focus(element: HTMLElement): void;
+}
 declare module "shorter-js/src/misc/ArrayFrom" {
     export default ArrayFrom;
     /**
@@ -1345,9 +1354,9 @@ declare module "shorter-js/src/misc/setElementStyle" {
     /**
      * Shortcut for `HTMLElement.style.propertyName` method.
      * @param  {HTMLElement} element target element
-     * @param  {Record<string, string>} styles attribute value
+     * @param  {Partial<CSSStyleDeclaration>} styles attribute value
      */
-    function setElementStyle(element: HTMLElement, styles: Record<string, string>): Record<string, any>;
+    function setElementStyle(element: HTMLElement, styles: Partial<CSSStyleDeclaration>): Record<string, any>;
 }
 declare module "shorter-js/src/misc/isArray" {
     export default isArray;
@@ -1604,6 +1613,7 @@ declare module "shorter-js/types/module/shorter" {
     export { default as normalizeOptions } from "shorter-js/src/misc/normalizeOptions";
     export { default as tryWrapper } from "shorter-js/src/misc/tryWrapper";
     export { default as reflow } from "shorter-js/src/misc/reflow";
+    export { default as focus } from "shorter-js/src/misc/focus";
     export { default as ArrayFrom } from "shorter-js/src/misc/ArrayFrom";
     export { default as Float32ArrayFrom } from "shorter-js/src/misc/Float32ArrayFrom";
     export { default as Float64ArrayFrom } from "shorter-js/src/misc/Float64ArrayFrom";

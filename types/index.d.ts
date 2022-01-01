@@ -144,6 +144,7 @@ export { default as normalizeValue } from "shorter-js/src/misc/normalizeValue";
 export { default as normalizeOptions } from "shorter-js/src/misc/normalizeOptions";
 export { default as tryWrapper } from "shorter-js/src/misc/tryWrapper";
 export { default as reflow } from "shorter-js/src/misc/reflow";
+export { default as focus } from "shorter-js/src/misc/focus";
 export { default as ArrayFrom } from "shorter-js/src/misc/ArrayFrom";
 export { default as Float32ArrayFrom } from "shorter-js/src/misc/Float32ArrayFrom";
 export { default as Float64ArrayFrom } from "shorter-js/src/misc/Float64ArrayFrom";

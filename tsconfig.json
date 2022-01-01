@@ -9,7 +9,7 @@
     "allowJs": true,
     "checkJs": true,
     "rootDir": "../",
-    // "outFile": "types/shorter.d.ts", // UN-comment to generate
+    "outFile": "types/shorter.d.ts", // UN-comment to generate
     "outDir": "types"
   },
   "files": [
