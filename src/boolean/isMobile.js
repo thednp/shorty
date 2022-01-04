@@ -1,4 +1,5 @@
 import userAgentData from '../strings/userAgentData';
+import userAgent from '../strings/userAgent';
 
 const mobileBrands = /iPhone|iPad|iPod|Android/i;
 let isMobileCheck = false;
@@ -8,11 +9,11 @@ if (navigator[userAgentData]) {
   // @ts-ignore
   isMobileCheck = navigator[userAgentData].brands.some((x) => mobileBrands.test(x.brand));
 } else {
-  isMobileCheck = mobileBrands.test(navigator.userAgent);
+  isMobileCheck = mobileBrands.test(userAgent);
 }
 
 /**
- * A global namespace for mobile detection.
+ * A global `boolean` for mobile detection.
  * @type {boolean}
  */
 const isMobile = isMobileCheck;

@@ -1,6 +1,6 @@
 import animationEndEvent from '../strings/animationEndEvent';
-import getElementAnimationDelay from './getElementAnimationDelay';
-import getElementAnimationDuration from './getElementAnimationDuration';
+import getElementAnimationDelay from '../get/getElementAnimationDelay';
+import getElementAnimationDuration from '../get/getElementAnimationDuration';
 
 /**
  * Utility to make sure callbacks are consistently

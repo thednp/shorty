@@ -6,13 +6,13 @@
  * throws a `ReferenceError`.
  *
  * @param {HTMLElement} element target
- * @param {string=} property the css property
+ * @param {string} property the css property
  * @return {string} the css property value
  */
 export default function getElementStyle(element, property) {
   const computedStyle = getComputedStyle(element);
 
-  return property && property in computedStyle
-    ? computedStyle.getPropertyValue(property)
-    : '';
+  // @ts-ignore -- must use camelcase strings,
+  // or non-camelcase strings with `getPropertyValue`
+  return property in computedStyle ? computedStyle[property] : '';
 }

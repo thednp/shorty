@@ -1,4 +1,4 @@
-import isHTMLElement from '../misc/isHTMLElement';
+import isHTMLElement from '../is/isHTMLElement';
 
 /**
  * Shortcut for `HTMLElement.getElementsByTagName` method.

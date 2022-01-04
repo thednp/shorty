@@ -1,7 +1,7 @@
 import supportTransition from '../boolean/supportTransition';
 import transitionDuration from '../strings/transitionDurationLegacy';
 import transitionProperty from '../strings/transitionPropertyLegacy';
-import getElementStyle from '../manipulate/getElementStyle';
+import getElementStyle from './getElementStyle';
 
 /**
  * Utility to get the computed `transitionDuration`

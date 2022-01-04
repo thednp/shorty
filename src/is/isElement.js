@@ -4,6 +4,6 @@
  * @param {any} element the target object
  * @returns {boolean} the query result
  */
-const isElement = (element) => element && element instanceof Element;
+const isElement = (element) => element instanceof Element;
 
 export default isElement;

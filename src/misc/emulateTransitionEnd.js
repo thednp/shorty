@@ -1,6 +1,6 @@
 import transitionEndEvent from '../strings/transitionEndEvent';
-import getElementTransitionDelay from './getElementTransitionDelay';
-import getElementTransitionDuration from './getElementTransitionDuration';
+import getElementTransitionDelay from '../get/getElementTransitionDelay';
+import getElementTransitionDuration from '../get/getElementTransitionDuration';
 
 /**
  * Utility to make sure callbacks are consistently

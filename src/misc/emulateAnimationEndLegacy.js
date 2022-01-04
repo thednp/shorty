@@ -1,7 +1,7 @@
 import supportAnimation from '../boolean/supportAnimation';
 import animationEndEvent from '../strings/animationEndEventLegacy';
-import getElementAnimationDelay from './getElementAnimationDelayLegacy';
-import getElementAnimationDuration from './getElementAnimationDurationLegacy';
+import getElementAnimationDelay from '../get/getElementAnimationDelayLegacy';
+import getElementAnimationDuration from '../get/getElementAnimationDurationLegacy';
 
 /**
  * Utility to make sure callbacks are consistently

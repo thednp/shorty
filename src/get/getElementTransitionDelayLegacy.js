@@ -1,6 +1,7 @@
-import transitionDelay from '../strings/transitionDelay';
-import transitionProperty from '../strings/transitionProperty';
-import getElementStyle from '../manipulate/getElementStyle';
+import supportTransition from '../boolean/supportTransition';
+import transitionDelay from '../strings/transitionDelayLegacy';
+import transitionProperty from '../strings/transitionPropertyLegacy';
+import getElementStyle from './getElementStyle';
 
 /**
  * Utility to get the computed `transitionDelay`
@@ -12,9 +13,8 @@ import getElementStyle from '../manipulate/getElementStyle';
 export default function getElementTransitionDelay(element) {
   const propertyValue = getElementStyle(element, transitionProperty);
   const delayValue = getElementStyle(element, transitionDelay);
-
   const delayScale = delayValue.includes('ms') ? 1 : 1000;
-  const duration = propertyValue && propertyValue !== 'none'
+  const duration = supportTransition && propertyValue && propertyValue !== 'none'
     ? parseFloat(delayValue) * delayScale : 0;
 
   return !Number.isNaN(duration) ? duration : 0;

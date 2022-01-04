@@ -1,7 +1,7 @@
 import ObjectAssign from '../misc/ObjectAssign';
 
 /**
- * Shortcut for `HTMLElement.style.propertyName` method.
+ * Shortcut for multiple uses of `HTMLElement.style.propertyName` method.
  * @param  {HTMLElement} element target element
  * @param  {Partial<CSSStyleDeclaration>} styles attribute value
  */

@@ -1,7 +1,7 @@
 import supportTransition from '../boolean/supportTransition';
 import transitionEndEvent from '../strings/transitionEndEventLegacy';
-import getElementTransitionDelay from './getElementTransitionDelayLegacy';
-import getElementTransitionDuration from './getElementTransitionDurationLegacy';
+import getElementTransitionDelay from '../get/getElementTransitionDelayLegacy';
+import getElementTransitionDuration from '../get/getElementTransitionDurationLegacy';
 
 /**
  * Utility to make sure callbacks are consistently

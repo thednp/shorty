@@ -1,5 +1,5 @@
 /**
- * A global namespace for touch events support.
+ * A global `boolean` for touch events support.
  * @type {boolean}
  */
 const supportTouch = 'ontouchstart' in window || 'msMaxTouchPoints' in navigator;

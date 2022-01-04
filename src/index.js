@@ -119,10 +119,12 @@ import scrollHeight from './strings/scrollHeight';
 import scrollWidth from './strings/scrollWidth';
 
 import userAgentData from './strings/userAgentData';
+import userAgent from './strings/userAgent';
 
 // boolean
 import isMobile from './boolean/isMobile';
 import isApple from './boolean/isApple';
+import isFirefox from './boolean/isFirefox';
 import support3DTransform from './boolean/support3DTransform';
 import supportPassive from './boolean/supportPassive';
 import supportTransform from './boolean/supportTransform';
@@ -141,54 +143,76 @@ import off from './event/off';
 import one from './event/one';
 
 // misc
-import Timer from './misc/timer';
+import ArrayFrom from './misc/ArrayFrom';
 import Data, { getInstance } from './misc/data';
 import emulateAnimationEnd from './misc/emulateAnimationEnd';
 import emulateAnimationEndLegacy from './misc/emulateAnimationEndLegacy';
 import emulateTransitionEnd from './misc/emulateTransitionEnd';
 import emulateTransitionEndLegacy from './misc/emulateTransitionEndLegacy';
-
-import passiveHandler from './misc/passiveHandler';
-import getElementAnimationDuration from './misc/getElementAnimationDuration';
-import getElementAnimationDurationLegacy from './misc/getElementAnimationDurationLegacy';
-import getElementAnimationDelay from './misc/getElementAnimationDelay';
-import getElementAnimationDelayLegacy from './misc/getElementAnimationDelayLegacy';
-import getElementTransitionDuration from './misc/getElementTransitionDuration';
-import getElementTransitionDurationLegacy from './misc/getElementTransitionDurationLegacy';
-import getElementTransitionDelay from './misc/getElementTransitionDelay';
-import getElementTransitionDelayLegacy from './misc/getElementTransitionDelayLegacy';
-import normalizeValue from './misc/normalizeValue';
-import normalizeOptions from './misc/normalizeOptions';
-import tryWrapper from './misc/tryWrapper';
-import reflow from './misc/reflow';
-import focus from './misc/focus';
-
-import ArrayFrom from './misc/ArrayFrom';
 import Float32ArrayFrom from './misc/Float32ArrayFrom';
 import Float64ArrayFrom from './misc/Float64ArrayFrom';
+import focus from './misc/focus';
+import normalizeOptions from './misc/normalizeOptions';
+import normalizeValue from './misc/normalizeValue';
 import ObjectAssign from './misc/ObjectAssign';
 import ObjectKeys from './misc/ObjectKeys';
 import ObjectValues from './misc/ObjectValues';
+import passiveHandler from './misc/passiveHandler';
+import reflow from './misc/reflow';
+import Timer from './misc/timer';
+import tryWrapper from './misc/tryWrapper';
 
-import getAttribute from './manipulate/getAttribute';
+// get
+import getAttribute from './get/getAttribute';
+import getAttributeNS from './get/getAttributeNS';
+import getBoundingClientRect from './get/getBoundingClientRect';
+import getDocumentElement from './get/getDocumentElement';
+import getElementAnimationDuration from './get/getElementAnimationDuration';
+import getElementAnimationDurationLegacy from './get/getElementAnimationDurationLegacy';
+import getElementAnimationDelayLegacy from './get/getElementAnimationDelayLegacy';
+import getElementAnimationDelay from './get/getElementAnimationDelay';
+import getElementStyle from './get/getElementStyle';
+import getElementTransitionDuration from './get/getElementTransitionDuration';
+import getElementTransitionDurationLegacy from './get/getElementTransitionDurationLegacy';
+import getElementTransitionDelay from './get/getElementTransitionDelay';
+import getElementTransitionDelayLegacy from './get/getElementTransitionDelayLegacy';
+import getNodeScroll from './get/getNodeScroll';
+import getOffsetParent from './get/getOffsetParent';
+import getParentNode from './get/getParentNode';
+import getRectRelativeToOffsetParent from './get/getRectRelativeToOffsetParent';
+import getWindow from './get/getWindow';
+
+// manipulate
 import setAttribute from './manipulate/setAttribute';
+import setAttributeNS from './manipulate/setAttributeNS';
 import removeAttribute from './manipulate/removeAttribute';
-import getElementStyle from './manipulate/getElementStyle';
+import removeAttributeNS from './manipulate/removeAttributeNS';
 import setElementStyle from './manipulate/setElementStyle';
 
-import isElementInScrollRange from './misc/isElementInScrollRange';
-import isElementInViewport from './misc/isElementInViewport';
-import isMedia from './misc/isMedia';
-import isRTL from './misc/isRTL';
-import isString from './misc/isString';
-import isArray from './misc/isArray';
-import isElement from './misc/isElement';
-import isHTMLElement from './misc/isHTMLElement';
-import isHTMLCollection from './misc/isHTMLCollection';
-import isNodeList from './misc/isNodeList';
-import isElementsArray from './misc/isElementsArray';
+// is
+import isArray from './is/isArray';
+import isElement from './is/isElement';
+import isElementInScrollRange from './is/isElementInScrollRange';
+import isElementInViewport from './is/isElementInViewport';
+import isElementsArray from './is/isElementsArray';
+import isHTMLCollection from './is/isHTMLCollection';
+import isHTMLElement from './is/isHTMLElement';
+import isHTMLImageElement from './is/isHTMLImageElement';
+import isMedia from './is/isMedia';
+import isNode from './is/isNode';
+import isNodeList from './is/isNodeList';
+import isRTL from './is/isRTL';
+import isScaledElement from './is/isScaledElement';
+import isShadowRoot from './is/isShadowRoot';
+import isString from './is/isString';
+import isSVGElement from './is/isSVGElement';
+import isTableElement from './is/isTableElement';
+import isWindow from './is/isWindow';
 
+// selectors
+import closest from './selectors/closest';
 import querySelector from './selectors/querySelector';
+import getCustomElements from './selectors/getCustomElements';
 import querySelectorAll from './selectors/querySelectorAll';
 import getElementsByTagName from './selectors/getElementsByTagName';
 import getElementsByClassName from './selectors/getElementsByClassName';
@@ -276,6 +300,7 @@ const SHORTER = {
   transitionPropertyLegacy,
   isMobile,
   isApple,
+  isFirefox,
   support3DTransform,
   supportPassive,
   supportTransform,
@@ -311,6 +336,7 @@ const SHORTER = {
   scrollHeight,
   scrollWidth,
   userAgentData,
+  userAgent,
   addClass,
   removeClass,
   hasClass,
@@ -335,16 +361,30 @@ const SHORTER = {
   getElementTransitionDurationLegacy,
   getElementTransitionDelay,
   getElementTransitionDelayLegacy,
+  getNodeScroll,
+  getOffsetParent,
+  getParentNode,
+  getRectRelativeToOffsetParent,
+  getWindow,
   isArray,
   isString,
   isElement,
+  isNode,
   isHTMLElement,
+  isHTMLImageElement,
+  isSVGElement,
   isNodeList,
   isHTMLCollection,
+  isScaledElement,
+  isTableElement,
+  isShadowRoot,
   isElementsArray,
+  isWindow,
   isMedia,
   isRTL,
+  closest,
   querySelector,
+  getCustomElements,
   querySelectorAll,
   getElementsByClassName,
   getElementsByTagName,
@@ -359,11 +399,16 @@ const SHORTER = {
   ObjectAssign,
   ObjectKeys,
   ObjectValues,
+  getBoundingClientRect,
+  getDocumentElement,
   getElementStyle,
   setElementStyle,
   getAttribute,
+  getAttributeNS,
   setAttribute,
+  setAttributeNS,
   removeAttribute,
+  removeAttributeNS,
   Version,
 };
 

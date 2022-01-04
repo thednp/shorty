@@ -2,7 +2,7 @@ import normalizeValue from './normalizeValue';
 import ObjectKeys from './ObjectKeys';
 
 /**
- * Utility to normalize component options
+ * Utility to normalize component options.
  *
  * @param {HTMLElement} element target
  * @param {Record<string, any>} defaultOps component default options

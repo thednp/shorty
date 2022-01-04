@@ -1,5 +1,5 @@
 /*!
-* shorter-js v0.3.0alpha1 (https://github.com/thednp/shorter-js)
+* shorter-js v0.3.0alpha2 (https://github.com/thednp/shorter-js)
 * Copyright 2019-2022 © dnp_theme
 * Licensed under MIT (https://github.com/thednp/shorter-js/blob/master/LICENSE)
 */
@@ -662,13 +662,19 @@
   var transitionEndEvent = 'webkitTransition' in document.head.style ? 'webkitTransitionEnd' : 'transitionend';
 
   /**
-   * A global namespace for 'transitionProperty' string.
+   * A global namespace for:
+   * * `transitionProperty` string for Firefox,
+   * * `transition` property for all other browsers.
+   *
    * @type {string}
    */
   var transitionProperty$1 = 'transitionProperty';
 
   /**
-   * A global namespace for 'transitionProperty' string.
+   * A global namespace for:
+   * * `transitionProperty` string for Firefox,
+   * * `webkitTransition` for older Chrome / Safari browsers,
+   * * `transition` property for all other browsers.
    * @type {string}
    */
   var transitionProperty = 'webkitTransition' in document.head.style ? 'webkitTransitionProperty' : 'transitionProperty';
@@ -748,6 +754,14 @@
    */
   var userAgentData = 'userAgentData';
 
+  var userAgentString = navigator.userAgent;
+
+  /**
+   * A global namespace for `navigator.userAgent` string.
+   * @type {string}
+   */
+  var userAgent = userAgentString;
+
   var mobileBrands = /iPhone|iPad|iPod|Android/i;
   var isMobileCheck = false;
 
@@ -756,11 +770,11 @@
     // @ts-ignore
     isMobileCheck = navigator[userAgentData].brands.some(function (x) { return mobileBrands.test(x.brand); });
   } else {
-    isMobileCheck = mobileBrands.test(navigator.userAgent);
+    isMobileCheck = mobileBrands.test(userAgent);
   }
 
   /**
-   * A global namespace for mobile detection.
+   * A global `boolean` for mobile detection.
    * @type {boolean}
    */
   var isMobile = isMobileCheck;
@@ -771,11 +785,16 @@
   var appleBrands = /(iPhone|iPod|iPad)/;
 
   /**
-   * A global boolean for Apple browsers.
+   * A global `boolean` for Apple browsers.
    * @type {boolean}
    */
   var isApple = !agentData ? appleBrands.test(navigator.userAgent)
     : agentData.brands.some(function (/** @type {Record<string, any>} */x) { return appleBrands.test(x.brand); });
+
+  /**
+   * A global boolean for Gecko browsers.
+   */
+  var isFirefox = userAgent ? userAgent.includes('Firefox') : false;
 
   /**
    * A global `boolean` for CSS3 3D transform support.
@@ -833,7 +852,10 @@
   }
 
   /**
-   * A global namespace for passive events support.
+   * A global `boolean` for passive events support,
+   * in general event options are not suited for scroll prevention.
+   *
+   * @see https://github.com/WICG/EventListenerOptions/blob/gh-pages/explainer.md#feature-detection
    * @type {boolean}
    */
   var supportPassive = (function () {
@@ -854,13 +876,13 @@
   })();
 
   /**
-   * A global namespace for CSS3 transform support.
+   * A global `boolean` for CSS3 transform support.
    * @type {boolean}
    */
   var supportTransform = 'webkitTransform' in document.head.style || 'transform' in document.head.style;
 
   /**
-   * A global namespace for touch events support.
+   * A global `boolean` for touch events support.
    * @type {boolean}
    */
   var supportTouch = 'ontouchstart' in window || 'msMaxTouchPoints' in navigator;
@@ -872,7 +894,7 @@
   var supportAnimation = 'webkitAnimation' in document.head.style || 'animation' in document.head.style;
 
   /**
-   * A global namespace for CSS3 transition support.
+   * A global `boolean` for CSS3 transition support.
    * @type {boolean}
    */
   var supportTransition = 'webkitTransition' in document.head.style || 'transition' in document.head.style;
@@ -909,103 +931,29 @@
   }
 
   /**
-   * Checks if an element is an `HTMLElement`.
+   * Shortcut for `Array.from()` static method.
    *
-   * @param {any} element the target object
-   * @returns {boolean} the query result
+   * @param  {any[] | HTMLCollection | NodeList} arr array-like iterable object
+   * @returns {Array<any>}
    */
-  var isHTMLElement = function (element) { return element && element instanceof HTMLElement; };
+  var ArrayFrom = function (arr) { return Array.from(arr); };
 
   /**
-   * Utility to check if target is typeof `HTMLElement`
+   * Utility to check if target is typeof `HTMLElement`, `Element`, `Node`
    * or find one that matches a selector.
    *
    * @param {HTMLElement | string} selector the input selector or target element
-   * @param {HTMLElement=} parent optional `HTMLElement` to look into
+   * @param {(Node | Element | HTMLElement)=} parent optional node to look into
    * @return {HTMLElement?} the `HTMLElement` or `querySelector` result
    */
   function querySelector(selector, parent) {
-    var lookUp = parent && isHTMLElement(parent) ? parent : document;
-    return typeof selector === 'object' ? selector : lookUp.querySelector(selector);
+    var nodeTypes = [HTMLElement, Element, Node];
+    var lookUp = parent && nodeTypes.some(function (x) { return parent instanceof x; }) ? parent : document;
+
+    return nodeTypes.some(function (x) { return selector instanceof x; })
+      // @ts-ignore -- we must include ShadowRoot Node
+      ? selector : lookUp.querySelector(selector);
   }
-
-  /** @type {Map<HTMLElement, any>} */
-  var TimeCache = new Map();
-  /**
-   * An interface for one or more `TimerHandler`s per `Element`.
-   * @see https://github.com/thednp/navbar.js/
-   */
-  var Timer = {
-    /**
-     * Sets a new timeout timer for an element, or element -> key association.
-     * @param {HTMLElement | string} target target element
-     * @param {ReturnType<TimerHandler>} callback the callback
-     * @param {number} delay the execution delay
-     * @param {string=} key a unique
-     */
-    set: function (target, callback, delay, key) {
-      var element = querySelector(target);
-
-      if (!element) { return; }
-
-      if (key && key.length) {
-        if (!TimeCache.has(element)) {
-          TimeCache.set(element, new Map());
-        }
-        var keyTimers = TimeCache.get(element);
-        keyTimers.set(key, setTimeout(callback, delay));
-      } else {
-        TimeCache.set(element, setTimeout(callback, delay));
-      }
-    },
-
-    /**
-     * Returns the timer associated with the target.
-     * @param {HTMLElement | string} target target element
-     * @param {string=} key a unique
-     * @returns {ReturnType<TimerHandler>?} the timer
-     */
-    get: function (target, key) {
-      var element = querySelector(target);
-
-      if (!element) { return null; }
-
-      if (key && key.length) {
-        if (!TimeCache.has(element)) {
-          TimeCache.set(element, new Map());
-        }
-        var keyTimers = TimeCache.get(element);
-        if (keyTimers.has(key)) {
-          return keyTimers.get(key);
-        }
-      } else if (TimeCache.has(element)) {
-        return TimeCache.get(element);
-      }
-      return null;
-    },
-
-    /**
-     * Clears the element's timer.
-     * @param {HTMLElement} target target element
-     * @param {string=} key a unique
-     */
-    clear: function (target, key) {
-      var element = querySelector(target);
-      var timers = element && TimeCache.get(element);
-
-      if (!timers) { return; }
-
-      if (key && key.length) {
-        if (timers.has(key)) {
-          clearTimeout(timers.get(key));
-          timers.delete(key);
-        }
-      } else {
-        clearTimeout(timers);
-        TimeCache.delete(element);
-      }
-    },
-  };
 
   /** @type {Map<string, Map<HTMLElement, SHORTER.Component>>} */
   var componentData = new Map();
@@ -1092,15 +1040,15 @@
    * throws a `ReferenceError`.
    *
    * @param {HTMLElement} element target
-   * @param {string=} property the css property
+   * @param {string} property the css property
    * @return {string} the css property value
    */
   function getElementStyle(element, property) {
     var computedStyle = getComputedStyle(element);
 
-    return property && property in computedStyle
-      ? computedStyle.getPropertyValue(property)
-      : '';
+    // @ts-ignore -- must use camelcase strings,
+    // or non-camelcase strings with `getPropertyValue`
+    return property in computedStyle ? computedStyle[property] : '';
   }
 
   /**
@@ -1377,12 +1325,26 @@
     }
   }
 
-  // general event options
+  /**
+   * Shortcut for `Float32Array.from()` static method.
+   * @param  {any[] | HTMLCollection | NodeList} arr array-like iterable object
+   * @returns {Float32Array}
+   */
+  var Float32ArrayFrom = function (arr) { return Float32Array.from(Array.from(arr)); };
 
   /**
-   * A global namespace for most scroll event listeners.
+   * Shortcut for `Float64Array.from()` static method.
+   * @param  {any[] | HTMLCollection | NodeList} arr array-like iterable object
+   * @returns {Float64Array}
    */
-  var passiveHandler = supportPassive ? { passive: true } : false;
+  var Float64ArrayFrom = function (arr) { return Float64Array.from(Array.from(arr)); };
+
+  /**
+   * Utility to focus an `HTMLElement` target.
+   *
+   * @param {HTMLElement} element is the target
+   */
+  var focus = function (element) { return element.focus(); };
 
   /**
    * The raw value or a given component option.
@@ -1425,7 +1387,7 @@
   var ObjectKeys = function (obj) { return Object.keys(obj); };
 
   /**
-   * Utility to normalize component options
+   * Utility to normalize component options.
    *
    * @param {HTMLElement} element target
    * @param {Record<string, any>} defaultOps component default options
@@ -1466,55 +1428,6 @@
   }
 
   /**
-   * Utility to wrap a callback in a try() catch(e)
-   *
-   * @param {Function} fn callback
-   * @param {string} origin callback context description
-   */
-  function tryWrapper(fn, origin) {
-    try { fn(); } catch (e) {
-      throw TypeError((origin + " " + e));
-    }
-  }
-
-  /**
-   * Utility to force re-paint of an `HTMLElement` target.
-   *
-   * @param {HTMLElement} element is the target
-   * @return {number} the `Element.offsetHeight` value
-   */
-  var reflow = function (element) { return element.offsetHeight; };
-
-  /**
-   * Utility to focus an `HTMLElement` target.
-   *
-   * @param {HTMLElement} element is the target
-   */
-  var focus = function (element) { return element.focus(); };
-
-  /**
-   * Shortcut for `Array.from()` static method.
-   *
-   * @param  {any[] | HTMLCollection | NodeList} arr array-like iterable object
-   * @returns {Array<any>}
-   */
-  var ArrayFrom = function (arr) { return Array.from(arr); };
-
-  /**
-   * Shortcut for `Float32Array.from()` static method.
-   * @param  {any[] | HTMLCollection | NodeList} arr array-like iterable object
-   * @returns {Float32Array}
-   */
-  var Float32ArrayFrom = function (arr) { return Float32Array.from(Array.from(arr)); };
-
-  /**
-   * Shortcut for `Float64Array.from()` static method.
-   * @param  {any[] | HTMLCollection | NodeList} arr array-like iterable object
-   * @returns {Float64Array}
-   */
-  var Float64ArrayFrom = function (arr) { return Float64Array.from(Array.from(arr)); };
-
-  /**
    * Shortcut for `Object.assign()` static method.
    * @param  {Record<string, any>} obj a target object
    * @param  {Record<string, any>} source a source object
@@ -1529,11 +1442,387 @@
   var ObjectValues = function (obj) { return Object.values(obj); };
 
   /**
+   * A global namespace for most scroll event listeners.
+   */
+  var passiveHandler = supportPassive ? { passive: true } : false;
+
+  /**
+   * Utility to force re-paint of an `HTMLElement` target.
+   *
+   * @param {HTMLElement} element is the target
+   * @return {number} the `Element.offsetHeight` value
+   */
+  var reflow = function (element) { return element.offsetHeight; };
+
+  /** @type {Map<HTMLElement, any>} */
+  var TimeCache = new Map();
+  /**
+   * An interface for one or more `TimerHandler`s per `Element`.
+   * @see https://github.com/thednp/navbar.js/
+   */
+  var Timer = {
+    /**
+     * Sets a new timeout timer for an element, or element -> key association.
+     * @param {HTMLElement | string} target target element
+     * @param {ReturnType<TimerHandler>} callback the callback
+     * @param {number} delay the execution delay
+     * @param {string=} key a unique
+     */
+    set: function (target, callback, delay, key) {
+      var element = querySelector(target);
+
+      if (!element) { return; }
+
+      if (key && key.length) {
+        if (!TimeCache.has(element)) {
+          TimeCache.set(element, new Map());
+        }
+        var keyTimers = TimeCache.get(element);
+        keyTimers.set(key, setTimeout(callback, delay));
+      } else {
+        TimeCache.set(element, setTimeout(callback, delay));
+      }
+    },
+
+    /**
+     * Returns the timer associated with the target.
+     * @param {HTMLElement | string} target target element
+     * @param {string=} key a unique
+     * @returns {ReturnType<TimerHandler>?} the timer
+     */
+    get: function (target, key) {
+      var element = querySelector(target);
+
+      if (!element) { return null; }
+
+      if (key && key.length) {
+        if (!TimeCache.has(element)) {
+          TimeCache.set(element, new Map());
+        }
+        var keyTimers = TimeCache.get(element);
+        if (keyTimers.has(key)) {
+          return keyTimers.get(key);
+        }
+      } else if (TimeCache.has(element)) {
+        return TimeCache.get(element);
+      }
+      return null;
+    },
+
+    /**
+     * Clears the element's timer.
+     * @param {HTMLElement} target target element
+     * @param {string=} key a unique
+     */
+    clear: function (target, key) {
+      var element = querySelector(target);
+      var timers = element && TimeCache.get(element);
+
+      if (!timers) { return; }
+
+      if (key && key.length) {
+        if (timers.has(key)) {
+          clearTimeout(timers.get(key));
+          timers.delete(key);
+        }
+      } else {
+        clearTimeout(timers);
+        TimeCache.delete(element);
+      }
+    },
+  };
+
+  /**
+   * Utility to wrap a callback in a try() catch(e)
+   *
+   * @param {Function} fn callback
+   * @param {string} origin callback context description
+   */
+  function tryWrapper(fn, origin) {
+    try { fn(); } catch (e) {
+      throw TypeError((origin + " " + e));
+    }
+  }
+
+  /**
    * Shortcut for `HTMLElement.getAttribute()` method.
    * @param  {HTMLElement} element target element
    * @param  {string} attribute attribute name
    */
   var getAttribute = function (element, attribute) { return element.getAttribute(attribute); };
+
+  /**
+   * Shortcut for `SVGElement.getAttributeNS()` method.
+   * @param  {HTMLElement} element target element
+   * @param  {string} attribute attribute name
+   * @param  {string=} ns attribute namespace
+   */
+  var getAttributeNS = function (element, attribute, ns) { return element.getAttributeNS(ns || null, attribute); };
+
+  /**
+   * Checks if an element is an `HTMLElement`.
+   *
+   * @param {any} element the target object
+   * @returns {boolean} the query result
+   */
+  var isHTMLElement = function (element) { return element instanceof HTMLElement; };
+
+  /**
+   * Returns the bounding client rect of a target `HTMLElement`.
+   *
+   * @see https://github.com/floating-ui/floating-ui
+   *
+   * @param {HTMLElement} element target
+   * @param {boolean=} includeScale when *true*, the target scale is also computed
+   * @returns {SHORTER.BoundingClientRect} the bounding client rect object
+   */
+  function getBoundingClientRect(element, includeScale) {
+    var clientRect = element.getBoundingClientRect();
+    var scaleX = 1;
+    var scaleY = 1;
+
+    if (includeScale && isHTMLElement(element)) {
+      scaleX = element.offsetWidth > 0
+        ? Math.round(clientRect.width) / element.offsetWidth || 1 : 1;
+      scaleY = element.offsetHeight > 0
+        ? Math.round(clientRect.height) / element.offsetHeight || 1 : 1;
+    }
+
+    return {
+      width: clientRect.width / scaleX,
+      height: clientRect.height / scaleY,
+      top: clientRect.top / scaleY,
+      right: clientRect.right / scaleX,
+      bottom: clientRect.bottom / scaleY,
+      left: clientRect.left / scaleX,
+      x: clientRect.left / scaleX,
+      y: clientRect.top / scaleY,
+    };
+  }
+
+  /**
+   * Returns the `document.documentElement` or the `<html>` element.
+   * @see https://github.com/floating-ui/floating-ui
+   * @param {Node | Window} node
+   * @returns {HTMLElement}
+   */
+  function getDocumentElement(node) {
+    var doc = (node instanceof Node ? node.ownerDocument : node.document) || window.document;
+    return doc.documentElement;
+  }
+
+  /**
+   * Returns an `{x,y}` object with the target
+   * `Element` / `Node` scroll position.
+   *
+   * @see https://github.com/floating-ui/floating-ui
+   *
+   * @param {HTMLElement | Window} element target node / element
+   * @returns {{x: number, y: number}} the scroll tuple
+   */
+  function getNodeScroll(element) {
+    var isWin = 'scrollX' in element;
+    var x = isWin ? element.scrollX : element.scrollLeft;
+    var y = isWin ? element.scrollY : element.scrollTop;
+
+    return { x: x, y: y };
+  }
+
+  /**
+   * Check if a target element is a `<table>`, `<td>` or `<th>`.
+   * @param {any} element the target element
+   * @returns {boolean} the query result
+   */
+  var isTableElement = function (element) { return ['TABLE', 'TD', 'TH'].includes(element.tagName); };
+
+  /**
+   * Check if target is a `ShadowRoot`.
+   *
+   * @param {HTMLElement} element target
+   * @returns {boolean} the query result
+   */
+  var isShadowRoot = function (element) {
+    // eslint-disable-next-line no-restricted-globals
+    var OwnElement = (self || window).ShadowRoot;
+    return element instanceof OwnElement || element instanceof ShadowRoot;
+  };
+
+  /**
+   * Returns the `parentNode` also going through `ShadowRoot`.
+   * @see https://github.com/floating-ui/floating-ui
+   *
+   * @param {Node | Element} node the target node
+   * @returns {Node} the apropriate parent node
+   */
+  function getParentNode(node) {
+    if (node.nodeName === 'HTML') {
+      return node;
+    }
+
+    return (// this is a quicker (but less type safe) way to save quite some bytes from the bundle
+      // @ts-ignore
+      node.assignedSlot // step into the shadow DOM of the parent of a slotted node
+      || node.parentNode
+      || (// @ts-ignore DOM Element detected
+        isShadowRoot(node) ? node.host : null) // ShadowRoot detected
+      || getDocumentElement(node) // fallback
+    );
+  }
+
+  /**
+   * Check if a target node is `window`.
+   *
+   * @param {any} node the target node
+   * @returns {boolean} the query result
+   */
+  function isWindow(node) {
+    // eslint-disable-next-line no-restricted-globals
+    return [self, window].includes(node);
+  }
+
+  /**
+   * Returns the `Window` object.
+   * @see https://github.com/floating-ui/floating-ui
+   *
+   * @param {(Node | Element)=} node target node
+   * @returns {Window} the `Window` object
+   */
+  function getWindow(node) {
+    if (node == null) {
+      return window;
+    }
+
+    if (!isWindow(node)) {
+      var ownerDocument = node.ownerDocument;
+      return ownerDocument ? ownerDocument.defaultView || window : window;
+    }
+
+    // @ts-ignore
+    return node;
+  }
+
+  /**
+   * @param {Node} element
+   * @returns {boolean}
+   */
+  function isContainingBlock(element) {
+    // TODO: Try and use feature detection here instead
+    var ref = getComputedStyle(element);
+    var transform = ref.transform;
+    var perspective = ref.perspective;
+    var contain = ref.contain;
+    var willChange = ref.willChange;
+    var filter = ref.filter;
+    // This is non-exhaustive but covers the most common CSS properties that
+    // create a containing block.
+    // https://developer.mozilla.org/en-US/docs/Web/CSS/Containing_block#identifying_the_containing_block
+
+    return transform !== 'none'
+      || perspective !== 'none'
+      || contain === 'paint'
+      || ['transform', 'perspective'].includes(willChange)
+      || (isFirefox && willChange === 'filter')
+      || (isFirefox && (filter ? filter !== 'none' : false));
+  }
+
+  /**
+   * @param {Node} element
+   * @returns {(Node | ParentNode)?}
+   */
+  function getContainingBlock(element) {
+    var currentNode = getParentNode(element);
+
+    while (isHTMLElement(currentNode) && !['HTML', 'BODY'].includes(currentNode.nodeName)) {
+      if (isContainingBlock(currentNode)) {
+        return currentNode;
+      }
+      // @ts-ignore
+      currentNode = currentNode.parentNode;
+    }
+
+    return null;
+  }
+
+  /**
+   * @param {HTMLElement} element
+   * @returns {HTMLElement?}
+   */
+  function getTrueOffsetParent(element) {
+    if (!isHTMLElement(element) || getElementStyle(element, 'position') === 'fixed') {
+      return null;
+    }
+
+    // @ts-ignore
+    return element.offsetParent;
+  }
+
+  /**
+   * Returns the best possible container for offsets computation.
+   * @see https://github.com/floating-ui/floating-ui
+   *
+   * @param {HTMLElement} element target element
+   * @returns {HTMLElement | Window | Node} the best `Node` / `Element` match
+   */
+  function getOffsetParent(element) {
+    // eslint-disable-next-line no-restricted-globals
+    var win = getWindow(element);
+    var offsetParent = getTrueOffsetParent(element);
+
+    while (offsetParent && isTableElement(offsetParent)
+      && getElementStyle(offsetParent, 'position') === 'static') {
+      offsetParent = getTrueOffsetParent(offsetParent);
+    }
+
+    if (offsetParent
+      && (['HTML', 'BODY'].includes(offsetParent.tagName)
+        && getElementStyle(offsetParent, 'position') === 'static'
+          && !isContainingBlock(offsetParent))) {
+      return win;
+    }
+
+    return offsetParent || getContainingBlock(element) || win;
+  }
+
+  /**
+   * Checks if a target `HTMLElement` is affected by scale.
+   * @see https://github.com/floating-ui/floating-ui
+   *
+   * @param {HTMLElement} element target
+   * @returns {boolean} the query result
+   */
+  function isScaledElement(element) {
+    var rect = getBoundingClientRect(element);
+    return Math.round(rect.width) !== element.offsetWidth
+      || Math.round(rect.height) !== element.offsetHeight;
+  }
+
+  /**
+   * Returns the rect relative to an offset parent.
+   * @see https://github.com/floating-ui/floating-ui
+   *
+   * @param {HTMLElement} element target
+   * @param {HTMLElement} offsetParent the container / offset parent
+   * @param {{x: number, y: number}} scroll
+   * @returns {Record<string, number>}
+   */
+  function getRectRelativeToOffsetParent(element, offsetParent, scroll) {
+    var isParentAnElement = isHTMLElement(offsetParent);
+    var rect = getBoundingClientRect(element, isParentAnElement && isScaledElement(offsetParent));
+    var offsets = { x: 0, y: 0 };
+
+    if (isParentAnElement) {
+      var offsetRect = getBoundingClientRect(offsetParent, true);
+      offsets.x = offsetRect.x + offsetParent.clientLeft;
+      offsets.y = offsetRect.y + offsetParent.clientTop;
+    }
+
+    return {
+      x: rect.left + scroll.x - offsets.x,
+      y: rect.top + scroll.y - offsets.y,
+      width: rect.width,
+      height: rect.height,
+    };
+  }
 
   /**
    * Shortcut for `HTMLElement.setAttribute()` method.
@@ -1544,6 +1833,15 @@
   var setAttribute = function (element, attribute, value) { return element.setAttribute(attribute, value); };
 
   /**
+   * Shortcut for `SVGElement.setAttributeNS()` method.
+   * @param  {HTMLElement} element target element
+   * @param  {string} att attribute name
+   * @param  {string} value attribute value
+   * @param  {string=} ns attribute namespace
+   */
+  var setAttributeNS = function (element, att, value, ns) { return element.setAttributeNS(ns || null, att, value); };
+
+  /**
    * Shortcut for `HTMLElement.removeAttribute()` method.
    * @param  {HTMLElement} element target element
    * @param  {string} attribute attribute name
@@ -1551,65 +1849,19 @@
   var removeAttribute = function (element, attribute) { return element.removeAttribute(attribute); };
 
   /**
-   * Shortcut for `HTMLElement.style.propertyName` method.
+   * Shortcut for `HTMLElement.removeAttributeNS()` method.
+   * @param  {HTMLElement} element target element
+   * @param  {string} att attribute name
+   * @param  {string=} ns attribute namespace
+   */
+  var removeAttributeNS = function (element, att, ns) { return element.removeAttributeNS(ns || null, att); };
+
+  /**
+   * Shortcut for multiple uses of `HTMLElement.style.propertyName` method.
    * @param  {HTMLElement} element target element
    * @param  {Partial<CSSStyleDeclaration>} styles attribute value
    */
   var setElementStyle = function (element, styles) { return ObjectAssign(element.style, styles); };
-
-  /**
-   * Utility to determine if an `HTMLElement`
-   * is partially visible in viewport.
-   *
-   * @param {HTMLElement} element target
-   * @return {boolean} Boolean
-   */
-  function isElementInScrollRange(element) {
-    var bcr = element.getBoundingClientRect();
-    var viewportHeight = window.innerHeight || document.documentElement.clientHeight;
-    return bcr.top <= viewportHeight && bcr.bottom >= 0; // bottom && top
-  }
-
-  /**
-   * Utility to determine if an `HTMLElement`
-   * is fully visible in the viewport.
-   *
-   * @param {HTMLElement} element target
-   * @return {boolean} Boolean
-   */
-  function isElementInViewport(element) {
-    var bcr = element.getBoundingClientRect();
-    return (
-      bcr.top >= 0
-      && bcr.left >= 0
-      && bcr.bottom <= (window.innerHeight || document.documentElement.clientHeight)
-      && bcr.right <= (window.innerWidth || document.documentElement.clientWidth)
-    );
-  }
-
-  /**
-   * Checks if an element is an `<svg>`, `<img>` or `<video>`.
-   * *Tooltip* / *Popover* works different with media elements.
-   * @param {any} element the target element
-   * @returns {boolean} the query result
-   */
-  var isMedia = function (element) { return element
-    && [SVGElement, HTMLImageElement, HTMLVideoElement]
-      .some(function (mediaType) { return element instanceof mediaType; }); };
-
-  /**
-   * Checks if a page is Right To Left.
-   * @returns {boolean} the query result
-   */
-  var isRTL = function () { return document.documentElement.dir === 'rtl'; };
-
-  /**
-   * Shortcut for `typeof` static method.
-   *
-   * @param  {any} str array-like iterable object
-   * @returns {boolean} the query result
-   */
-  var isString = function (str) { return str && typeof str === 'string'; };
 
   /**
    * Shortcut for `Array.isArray()` static method.
@@ -1625,23 +1877,37 @@
    * @param {any} element the target object
    * @returns {boolean} the query result
    */
-  var isElement = function (element) { return element && element instanceof Element; };
+  var isElement = function (element) { return element instanceof Element; };
 
   /**
-   * Checks if an object is an `HTMLCollection`.
+   * Utility to determine if an `HTMLElement`
+   * is partially visible in viewport.
    *
-   * @param {any} object the target object
-   * @returns {boolean} the query result
+   * @param {HTMLElement} element target
+   * @return {boolean} the query result
    */
-  var isHTMLCollection = function (object) { return object instanceof HTMLCollection; };
+  var isElementInScrollRange = function (element) {
+    var bcr = element.getBoundingClientRect();
+    var viewportHeight = window.innerHeight || document.documentElement.clientHeight;
+    return bcr.top <= viewportHeight && bcr.bottom >= 0; // bottom && top
+  };
 
   /**
-   * Checks if an object is a `NodeList`.
+   * Utility to determine if an `HTMLElement`
+   * is fully visible in the viewport.
    *
-   * @param {any} object the target object
-   * @returns {boolean} the query result
+   * @param {HTMLElement} element target
+   * @return {boolean} the query result
    */
-  var isNodeList = function (object) { return object instanceof NodeList; };
+  var isElementInViewport = function (element) {
+    var bcr = getBoundingClientRect(element, true);
+    return (
+      bcr.top >= 0
+      && bcr.left >= 0
+      && bcr.bottom <= (window.innerHeight || document.documentElement.clientHeight)
+      && bcr.right <= (window.innerWidth || document.documentElement.clientWidth)
+    );
+  };
 
   /**
    * Checks if an object is an `Array` in which all items are `Element`.
@@ -1653,14 +1919,109 @@
     && object.every(function (el) { return isHTMLElement(el); }); };
 
   /**
+   * Checks if an object is an `HTMLCollection`.
+   *
+   * @param {any} object the target object
+   * @returns {boolean} the query result
+   */
+  var isHTMLCollection = function (object) { return object instanceof HTMLCollection; };
+
+  /**
+   * Check if a target element is an `<img>`.
+   * @param {any} element the target element
+   * @returns {boolean} the query result
+   */
+  var isHTMLImageElement = function (element) { return element instanceof HTMLImageElement; };
+
+  /**
+   * Checks if an element is an `<svg>` (or any type of SVG element),
+   * `<img>` or `<video>`.
+   *
+   * *Tooltip* / *Popover* works different with media elements.
+   * @param {any} element the target element
+   * @returns {boolean} the query result
+   */
+  var isMedia = function (element) { return element
+    && [SVGElement, HTMLImageElement, HTMLVideoElement]
+      .some(function (mediaType) { return element instanceof mediaType; }); };
+
+  /**
+   * Checks if an object is a `Node`.
+   *
+   * @param {any} node the target object
+   * @returns {boolean} the query result
+   */
+  var isNode = function (node) { return node instanceof Node; };
+
+  /**
+   * Checks if an object is a `NodeList`.
+   *
+   * @param {any} object the target object
+   * @returns {boolean} the query result
+   */
+  var isNodeList = function (object) { return object instanceof NodeList; };
+
+  /**
+   * Checks if a page is Right To Left.
+   * @returns {boolean} the query result
+   */
+  var isRTL = function () { return [
+    document.body,
+    document.documentElement ].some(function (el) { return el.dir === 'rtl'; }); };
+
+  /**
+   * Shortcut for `typeof SOMETHING === string` static method.
+   *
+   * @param  {any} str array-like iterable object
+   * @returns {boolean} the query result
+   */
+  var isString = function (str) { return typeof str === 'string'; };
+
+  /**
+   * Check if an element is an `<svg>` or any other SVG element.
+   * @param {any} element the target element
+   * @returns {boolean} the query result
+   */
+  var isSVGElement = function (element) { return element instanceof SVGElement; };
+
+  /**
+   * Shortcut for `HTMLElement.closest` method.
+   *
+   * @param {HTMLElement} element optional Element to look into
+   * @param {string} selector the selector name
+   * @return {HTMLElement?} the query result
+   */
+  function closest(element, selector) {
+    if (element && selector) { return element.closest(selector); }
+    return null;
+  }
+
+  /**
+   * Returns an `Array` of `Node` elements that are registered as
+   * `CustomElement`.
+   * @see https://stackoverflow.com/questions/27334365/how-to-get-list-of-registered-custom-elements
+   *
+   *
+   * @param {HTMLElement=} parent parent to look into
+   * @returns {Node[]} the query result
+   */
+  function getCustomElements(parent) {
+    var lookUp = parent && isHTMLElement(parent) ? parent : document;
+    return [].concat( lookUp.querySelectorAll('*') )
+      .filter(function (x) { return customElements.get(x.nodeName.toLowerCase()); });
+  }
+
+  /**
    * A shortcut for `(document|Element).querySelectorAll`.
    *
    * @param {string} selector the input selector
-   * @param {HTMLElement=} parent optional Element to look into
+   * @param {(Node | Element | HTMLElement)=} parent optional node to look into
    * @return {NodeListOf<HTMLElement>} the query result
    */
   function querySelectorAll(selector, parent) {
-    var lookUp = parent && isHTMLElement(parent) ? parent : document;
+    var lookUp = parent && [HTMLElement, Element, Node]
+      .some(function (x) { return parent instanceof x; }) ? parent : document;
+    // @ts-ignore -- we must include ShadowRoot Node
     return lookUp.querySelectorAll(selector);
   }
 
@@ -1690,7 +2051,7 @@
     return lookUp.getElementsByClassName(selector);
   }
 
-  var version = "0.3.0alpha1";
+  var version = "0.3.0alpha2";
 
   // @ts-ignore
 
@@ -1783,6 +2144,7 @@
     transitionPropertyLegacy: transitionProperty,
     isMobile: isMobile,
     isApple: isApple,
+    isFirefox: isFirefox,
     support3DTransform: support3DTransform,
     supportPassive: supportPassive,
     supportTransform: supportTransform,
@@ -1818,6 +2180,7 @@
     scrollHeight: scrollHeight,
     scrollWidth: scrollWidth,
     userAgentData: userAgentData,
+    userAgent: userAgent,
     addClass: addClass,
     removeClass: removeClass,
     hasClass: hasClass,
@@ -1842,16 +2205,30 @@
     getElementTransitionDurationLegacy: getElementTransitionDuration,
     getElementTransitionDelay: getElementTransitionDelay$1,
     getElementTransitionDelayLegacy: getElementTransitionDelay,
+    getNodeScroll: getNodeScroll,
+    getOffsetParent: getOffsetParent,
+    getParentNode: getParentNode,
+    getRectRelativeToOffsetParent: getRectRelativeToOffsetParent,
+    getWindow: getWindow,
     isArray: isArray,
     isString: isString,
     isElement: isElement,
+    isNode: isNode,
     isHTMLElement: isHTMLElement,
+    isHTMLImageElement: isHTMLImageElement,
+    isSVGElement: isSVGElement,
     isNodeList: isNodeList,
     isHTMLCollection: isHTMLCollection,
+    isScaledElement: isScaledElement,
+    isTableElement: isTableElement,
+    isShadowRoot: isShadowRoot,
     isElementsArray: isElementsArray,
+    isWindow: isWindow,
     isMedia: isMedia,
     isRTL: isRTL,
+    closest: closest,
     querySelector: querySelector,
+    getCustomElements: getCustomElements,
     querySelectorAll: querySelectorAll,
     getElementsByClassName: getElementsByClassName,
     getElementsByTagName: getElementsByTagName,
@@ -1866,11 +2243,16 @@
     ObjectAssign: ObjectAssign,
     ObjectKeys: ObjectKeys,
     ObjectValues: ObjectValues,
+    getBoundingClientRect: getBoundingClientRect,
+    getDocumentElement: getDocumentElement,
     getElementStyle: getElementStyle,
     setElementStyle: setElementStyle,
     getAttribute: getAttribute,
+    getAttributeNS: getAttributeNS,
     setAttribute: setAttribute,
+    setAttributeNS: setAttributeNS,
     removeAttribute: removeAttribute,
+    removeAttributeNS: removeAttributeNS,
     Version: Version,
   };
 

@@ -780,7 +780,10 @@ declare module "shorter-js/src/strings/transitionEndEventLegacy" {
 declare module "shorter-js/src/strings/transitionProperty" {
     export default transitionProperty;
     /**
-     * A global namespace for 'transitionProperty' string.
+     * A global namespace for:
+     * * `transitionProperty` string for Firefox,
+     * * `transition` property for all other browsers.
+     *
      * @type {string}
      */
     const transitionProperty: string;
@@ -788,7 +791,10 @@ declare module "shorter-js/src/strings/transitionProperty" {
 declare module "shorter-js/src/strings/transitionPropertyLegacy" {
     export default transitionProperty;
     /**
-     * A global namespace for 'transitionProperty' string.
+     * A global namespace for:
+     * * `transitionProperty` string for Firefox,
+     * * `webkitTransition` for older Chrome / Safari browsers,
+     * * `transition` property for all other browsers.
      * @type {string}
      */
     const transitionProperty: string;
@@ -858,21 +864,36 @@ declare module "shorter-js/src/strings/userAgentData" {
      */
     const userAgentData: string;
 }
-declare module "shorter-js/src/boolean/isMobile" {
-    export default isMobile;
+declare module "shorter-js/src/strings/userAgent" {
+    export default userAgent;
     /**
-     * A global namespace for mobile detection.
-     * @type {boolean}
+     * A global namespace for `navigator.userAgent` string.
+     * @type {string}
      */
-    const isMobile: boolean;
+    const userAgent: string;
 }
 declare module "shorter-js/src/boolean/isApple" {
     export default isApple;
     /**
-     * A global boolean for Apple browsers.
+     * A global `boolean` for Apple browsers.
      * @type {boolean}
      */
     const isApple: boolean;
+}
+declare module "shorter-js/src/boolean/isFirefox" {
+    export default isFirefox;
+    /**
+     * A global boolean for Gecko browsers.
+     */
+    const isFirefox: boolean;
+}
+declare module "shorter-js/src/boolean/isMobile" {
+    export default isMobile;
+    /**
+     * A global `boolean` for mobile detection.
+     * @type {boolean}
+     */
+    const isMobile: boolean;
 }
 declare module "shorter-js/src/boolean/support3DTransform" {
     export default support3DTransform;
@@ -881,6 +902,14 @@ declare module "shorter-js/src/boolean/support3DTransform" {
      * @type {boolean}
      */
     const support3DTransform: boolean;
+}
+declare module "shorter-js/src/boolean/supportAnimation" {
+    export default supportAnimation;
+    /**
+     * A global `boolean` for CSS3 animation support.
+     * @type {boolean}
+     */
+    const supportAnimation: boolean;
 }
 declare module "shorter-js/src/event/on" {
     /**
@@ -919,42 +948,279 @@ declare module "shorter-js/src/event/one" {
 declare module "shorter-js/src/boolean/supportPassive" {
     export default supportPassive;
     /**
-     * A global namespace for passive events support.
+     * A global `boolean` for passive events support,
+     * in general event options are not suited for scroll prevention.
+     *
+     * @see https://github.com/WICG/EventListenerOptions/blob/gh-pages/explainer.md#feature-detection
      * @type {boolean}
      */
     const supportPassive: boolean;
 }
-declare module "shorter-js/src/boolean/supportTransform" {
-    export default supportTransform;
-    /**
-     * A global namespace for CSS3 transform support.
-     * @type {boolean}
-     */
-    const supportTransform: boolean;
-}
 declare module "shorter-js/src/boolean/supportTouch" {
     export default supportTouch;
     /**
-     * A global namespace for touch events support.
+     * A global `boolean` for touch events support.
      * @type {boolean}
      */
     const supportTouch: boolean;
 }
-declare module "shorter-js/src/boolean/supportAnimation" {
-    export default supportAnimation;
+declare module "shorter-js/src/boolean/supportTransform" {
+    export default supportTransform;
     /**
-     * A global `boolean` for CSS3 animation support.
+     * A global `boolean` for CSS3 transform support.
      * @type {boolean}
      */
-    const supportAnimation: boolean;
+    const supportTransform: boolean;
 }
 declare module "shorter-js/src/boolean/supportTransition" {
     export default supportTransition;
     /**
-     * A global namespace for CSS3 transition support.
+     * A global `boolean` for CSS3 transition support.
      * @type {boolean}
      */
     const supportTransition: boolean;
+}
+declare module "shorter-js/src/get/getAttribute" {
+    export default getAttribute;
+    /**
+     * Shortcut for `HTMLElement.getAttribute()` method.
+     * @param  {HTMLElement} element target element
+     * @param  {string} attribute attribute name
+     */
+    function getAttribute(element: HTMLElement, attribute: string): string | null;
+}
+declare module "shorter-js/src/get/getAttributeNS" {
+    export default getAttributeNS;
+    /**
+     * Shortcut for `SVGElement.getAttributeNS()` method.
+     * @param  {HTMLElement} element target element
+     * @param  {string} attribute attribute name
+     * @param  {string=} ns attribute namespace
+     */
+    function getAttributeNS(element: HTMLElement, attribute: string, ns?: string | undefined): string | null;
+}
+declare module "shorter-js/src/is/isHTMLElement" {
+    export default isHTMLElement;
+    /**
+     * Checks if an element is an `HTMLElement`.
+     *
+     * @param {any} element the target object
+     * @returns {boolean} the query result
+     */
+    function isHTMLElement(element: any): boolean;
+}
+declare module "shorter-js/src/get/getBoundingClientRect" {
+    /**
+     * Returns the bounding client rect of a target `HTMLElement`.
+     *
+     * @see https://github.com/floating-ui/floating-ui
+     *
+     * @param {HTMLElement} element target
+     * @param {boolean=} includeScale when *true*, the target scale is also computed
+     * @returns {SHORTER.BoundingClientRect} the bounding client rect object
+     */
+    export default function getBoundingClientRect(element: HTMLElement, includeScale?: boolean | undefined): SHORTER.BoundingClientRect;
+}
+declare module "shorter-js/src/get/getDocumentElement" {
+    /**
+     * Returns the `document.documentElement` or the `<html>` element.
+     * @see https://github.com/floating-ui/floating-ui
+     * @param {Node | Window} node
+     * @returns {HTMLElement}
+     */
+    export default function getDocumentElement(node: Node | Window): HTMLElement;
+}
+declare module "shorter-js/src/get/getElementStyle" {
+    /**
+     * Shortcut for `window.getComputedStyle(element).propertyName`
+     * static method.
+     *
+     * * If `element` parameter is not an `HTMLElement`, `getComputedStyle`
+     * throws a `ReferenceError`.
+     *
+     * @param {HTMLElement} element target
+     * @param {string} property the css property
+     * @return {string} the css property value
+     */
+    export default function getElementStyle(element: HTMLElement, property: string): string;
+}
+declare module "shorter-js/src/get/getElementAnimationDuration" {
+    /**
+     * Utility to get the computed `animationDuration`
+     * from `HTMLElement` in miliseconds.
+     *
+     * @param {HTMLElement} element target
+     * @return {number} the value in miliseconds
+     */
+    export default function getElementAnimationDuration(element: HTMLElement): number;
+}
+declare module "shorter-js/src/get/getElementAnimationDurationLegacy" {
+    /**
+     * Utility to get the computed `animationDuration`
+     * from `HTMLElement` in miliseconds.
+     *
+     * @param {HTMLElement} element target
+     * @return {number} the value in miliseconds
+     */
+    export default function getElementAnimationDuration(element: HTMLElement): number;
+}
+declare module "shorter-js/src/get/getElementAnimationDelay" {
+    /**
+     * Utility to get the computed `animationDelay`
+     * from Element in miliseconds.
+     *
+     * @param {HTMLElement} element target
+     * @return {number} the value in miliseconds
+     */
+    export default function getElementAnimationDelay(element: HTMLElement): number;
+}
+declare module "shorter-js/src/get/getElementAnimationDelayLegacy" {
+    /**
+     * Utility to get the computed `animationDelay`
+     * from Element in miliseconds.
+     *
+     * @param {HTMLElement} element target
+     * @return {number} the value in miliseconds
+     */
+    export default function getElementAnimationDelay(element: HTMLElement): number;
+}
+declare module "shorter-js/src/get/getElementTransitionDuration" {
+    /**
+     * Utility to get the computed `transitionDuration`
+     * from Element in miliseconds.
+     *
+     * @param {HTMLElement} element target
+     * @return {number} the value in miliseconds
+     */
+    export default function getElementTransitionDuration(element: HTMLElement): number;
+}
+declare module "shorter-js/src/get/getElementTransitionDurationLegacy" {
+    /**
+     * Utility to get the computed `transitionDuration`
+     * from Element in miliseconds.
+     *
+     * @param {HTMLElement} element target
+     * @return {number} the value in miliseconds
+     */
+    export default function getElementTransitionDuration(element: HTMLElement): number;
+}
+declare module "shorter-js/src/get/getElementTransitionDelay" {
+    /**
+     * Utility to get the computed `transitionDelay`
+     * from Element in miliseconds.
+     *
+     * @param {HTMLElement} element target
+     * @return {number} the value in miliseconds
+     */
+    export default function getElementTransitionDelay(element: HTMLElement): number;
+}
+declare module "shorter-js/src/get/getElementTransitionDelayLegacy" {
+    /**
+     * Utility to get the computed `transitionDelay`
+     * from Element in miliseconds.
+     *
+     * @param {HTMLElement} element target
+     * @return {number} the value in miliseconds
+     */
+    export default function getElementTransitionDelay(element: HTMLElement): number;
+}
+declare module "shorter-js/src/get/getNodeScroll" {
+    /**
+     * Returns an `{x,y}` object with the target
+     * `Element` / `Node` scroll position.
+     *
+     * @see https://github.com/floating-ui/floating-ui
+     *
+     * @param {HTMLElement | Window} element target node / element
+     * @returns {{x: number, y: number}} the scroll tuple
+     */
+    export default function getNodeScroll(element: HTMLElement | Window): {
+        x: number;
+        y: number;
+    };
+}
+declare module "shorter-js/src/is/isTableElement" {
+    export default isTableElement;
+    /**
+     * Check if a target element is a `<table>`, `<td>` or `<th>`.
+     * @param {any} element the target element
+     * @returns {boolean} the query result
+     */
+    function isTableElement(element: any): boolean;
+}
+declare module "shorter-js/src/is/isShadowRoot" {
+    export default isShadowRoot;
+    /**
+     * Check if target is a `ShadowRoot`.
+     *
+     * @param {HTMLElement} element target
+     * @returns {boolean} the query result
+     */
+    function isShadowRoot(element: HTMLElement): boolean;
+}
+declare module "shorter-js/src/get/getParentNode" {
+    /**
+     * Returns the `parentNode` also going through `ShadowRoot`.
+     * @see https://github.com/floating-ui/floating-ui
+     *
+     * @param {Node | Element} node the target node
+     * @returns {Node} the apropriate parent node
+     */
+    export default function getParentNode(node: Node | Element): Node;
+}
+declare module "shorter-js/src/is/isWindow" {
+    /**
+     * Check if a target node is `window`.
+     *
+     * @param {any} node the target node
+     * @returns {boolean} the query result
+     */
+    export default function isWindow(node: any): boolean;
+}
+declare module "shorter-js/src/get/getWindow" {
+    /**
+     * Returns the `Window` object.
+     * @see https://github.com/floating-ui/floating-ui
+     *
+     * @param {(Node | Element)=} node target node
+     * @returns {Window} the `Window` object
+     */
+    export default function getWindow(node?: (Node | Element) | undefined): Window;
+}
+declare module "shorter-js/src/get/getOffsetParent" {
+    /**
+     * Returns the best possible container for offsets computation.
+     * @see https://github.com/floating-ui/floating-ui
+     *
+     * @param {HTMLElement} element target element
+     * @returns {HTMLElement | Window | Node} the best `Node` / `Element` match
+     */
+    export default function getOffsetParent(element: HTMLElement): HTMLElement | Window | Node;
+}
+declare module "shorter-js/src/is/isScaledElement" {
+    /**
+     * Checks if a target `HTMLElement` is affected by scale.
+     * @see https://github.com/floating-ui/floating-ui
+     *
+     * @param {HTMLElement} element target
+     * @returns {boolean} the query result
+     */
+    export default function isScaledElement(element: HTMLElement): boolean;
+}
+declare module "shorter-js/src/get/getRectRelativeToOffsetParent" {
+    /**
+     * Returns the rect relative to an offset parent.
+     * @see https://github.com/floating-ui/floating-ui
+     *
+     * @param {HTMLElement} element target
+     * @param {HTMLElement} offsetParent the container / offset parent
+     * @param {{x: number, y: number}} scroll
+     * @returns {Record<string, number>}
+     */
+    export default function getRectRelativeToOffsetParent(element: HTMLElement, offsetParent: HTMLElement, scroll: {
+        x: number;
+        y: number;
+    }): Record<string, number>;
 }
 declare module "shorter-js/src/class/addClass" {
     /**
@@ -984,26 +1250,16 @@ declare module "shorter-js/src/class/hasClass" {
      */
     export default function hasClass(element: HTMLElement, classNAME: string): boolean;
 }
-declare module "shorter-js/src/misc/isHTMLElement" {
-    export default isHTMLElement;
-    /**
-     * Checks if an element is an `HTMLElement`.
-     *
-     * @param {any} element the target object
-     * @returns {boolean} the query result
-     */
-    function isHTMLElement(element: any): boolean;
-}
 declare module "shorter-js/src/selectors/querySelector" {
     /**
-     * Utility to check if target is typeof `HTMLElement`
+     * Utility to check if target is typeof `HTMLElement`, `Element`, `Node`
      * or find one that matches a selector.
      *
      * @param {HTMLElement | string} selector the input selector or target element
-     * @param {HTMLElement=} parent optional `HTMLElement` to look into
+     * @param {(Node | Element | HTMLElement)=} parent optional node to look into
      * @return {HTMLElement?} the `HTMLElement` or `querySelector` result
      */
-    export default function querySelector(selector: HTMLElement | string, parent?: HTMLElement | undefined): HTMLElement | null;
+    export default function querySelector(selector: HTMLElement | string, parent?: (Node | Element | HTMLElement) | undefined): HTMLElement | null;
 }
 declare module "shorter-js/src/misc/data" {
     /**
@@ -1013,9 +1269,9 @@ declare module "shorter-js/src/misc/data" {
     export const getInstance: SHORTER.getInstance<any>;
     export default Data;
     namespace Data {
-        function set(target: string | HTMLElement, component: string, instance: SHORTER.Component): void;
-        function getAllFor(component: string): Map<HTMLElement, SHORTER.Component> | null;
-        function get(target: string | HTMLElement, component: string): SHORTER.Component | null;
+        function set(target: string | HTMLElement, component: string, instance: import("shorter-js/types").Component): void;
+        function getAllFor(component: string): Map<HTMLElement, import("shorter-js/types").Component> | null;
+        function get(target: string | HTMLElement, component: string): import("shorter-js/types").Component | null;
         function remove(target: string | HTMLElement, component: string): void;
     }
 }
@@ -1027,40 +1283,6 @@ declare module "shorter-js/src/misc/timer" {
         function clear(target: HTMLElement, key?: string | undefined): void;
     }
 }
-declare module "shorter-js/src/manipulate/getElementStyle" {
-    /**
-     * Shortcut for `window.getComputedStyle(element).propertyName`
-     * static method.
-     *
-     * * If `element` parameter is not an `HTMLElement`, `getComputedStyle`
-     * throws a `ReferenceError`.
-     *
-     * @param {HTMLElement} element target
-     * @param {string=} property the css property
-     * @return {string} the css property value
-     */
-    export default function getElementStyle(element: HTMLElement, property?: string | undefined): string;
-}
-declare module "shorter-js/src/misc/getElementAnimationDelay" {
-    /**
-     * Utility to get the computed `animationDelay`
-     * from Element in miliseconds.
-     *
-     * @param {HTMLElement} element target
-     * @return {number} the value in miliseconds
-     */
-    export default function getElementAnimationDelay(element: HTMLElement): number;
-}
-declare module "shorter-js/src/misc/getElementAnimationDuration" {
-    /**
-     * Utility to get the computed `animationDuration`
-     * from `HTMLElement` in miliseconds.
-     *
-     * @param {HTMLElement} element target
-     * @return {number} the value in miliseconds
-     */
-    export default function getElementAnimationDuration(element: HTMLElement): number;
-}
 declare module "shorter-js/src/misc/emulateAnimationEnd" {
     /**
      * Utility to make sure callbacks are consistently
@@ -1070,26 +1292,6 @@ declare module "shorter-js/src/misc/emulateAnimationEnd" {
      * @param {EventListener} handler `animationend` callback
      */
     export default function emulateAnimationEnd(element: HTMLElement, handler: EventListener): void;
-}
-declare module "shorter-js/src/misc/getElementAnimationDelayLegacy" {
-    /**
-     * Utility to get the computed `animationDelay`
-     * from Element in miliseconds.
-     *
-     * @param {HTMLElement} element target
-     * @return {number} the value in miliseconds
-     */
-    export default function getElementAnimationDelay(element: HTMLElement): number;
-}
-declare module "shorter-js/src/misc/getElementAnimationDurationLegacy" {
-    /**
-     * Utility to get the computed `animationDuration`
-     * from `HTMLElement` in miliseconds.
-     *
-     * @param {HTMLElement} element target
-     * @return {number} the value in miliseconds
-     */
-    export default function getElementAnimationDuration(element: HTMLElement): number;
 }
 declare module "shorter-js/src/misc/emulateAnimationEndLegacy" {
     /**
@@ -1101,26 +1303,6 @@ declare module "shorter-js/src/misc/emulateAnimationEndLegacy" {
      */
     export default function emulateAnimationEnd(element: HTMLElement, handler: EventListener): void;
 }
-declare module "shorter-js/src/misc/getElementTransitionDelay" {
-    /**
-     * Utility to get the computed `transitionDelay`
-     * from Element in miliseconds.
-     *
-     * @param {HTMLElement} element target
-     * @return {number} the value in miliseconds
-     */
-    export default function getElementTransitionDelay(element: HTMLElement): number;
-}
-declare module "shorter-js/src/misc/getElementTransitionDuration" {
-    /**
-     * Utility to get the computed `transitionDuration`
-     * from Element in miliseconds.
-     *
-     * @param {HTMLElement} element target
-     * @return {number} the value in miliseconds
-     */
-    export default function getElementTransitionDuration(element: HTMLElement): number;
-}
 declare module "shorter-js/src/misc/emulateTransitionEnd" {
     /**
      * Utility to make sure callbacks are consistently
@@ -1131,26 +1313,6 @@ declare module "shorter-js/src/misc/emulateTransitionEnd" {
      */
     export default function emulateTransitionEnd(element: HTMLElement, handler: EventListener): void;
 }
-declare module "shorter-js/src/misc/getElementTransitionDelayLegacy" {
-    /**
-     * Utility to get the computed `transitionDelay`
-     * from Element in miliseconds.
-     *
-     * @param {HTMLElement} element target
-     * @return {number} the value in miliseconds
-     */
-    export default function getElementTransitionDelay(element: HTMLElement): number;
-}
-declare module "shorter-js/src/misc/getElementTransitionDurationLegacy" {
-    /**
-     * Utility to get the computed `transitionDuration`
-     * from Element in miliseconds.
-     *
-     * @param {HTMLElement} element target
-     * @return {number} the value in miliseconds
-     */
-    export default function getElementTransitionDuration(element: HTMLElement): number;
-}
 declare module "shorter-js/src/misc/emulateTransitionEndLegacy" {
     /**
      * Utility to make sure callbacks are consistently
@@ -1160,44 +1322,6 @@ declare module "shorter-js/src/misc/emulateTransitionEndLegacy" {
      * @param {EventListener} handler `transitionend` callback
      */
     export default function emulateTransitionEnd(element: HTMLElement, handler: EventListener): void;
-}
-declare module "shorter-js/src/misc/isElementInScrollRange" {
-    /**
-     * Utility to determine if an `HTMLElement`
-     * is partially visible in viewport.
-     *
-     * @param {HTMLElement} element target
-     * @return {boolean} Boolean
-     */
-    export default function isElementInScrollRange(element: HTMLElement): boolean;
-}
-declare module "shorter-js/src/misc/isElementInViewport" {
-    /**
-     * Utility to determine if an `HTMLElement`
-     * is fully visible in the viewport.
-     *
-     * @param {HTMLElement} element target
-     * @return {boolean} Boolean
-     */
-    export default function isElementInViewport(element: HTMLElement): boolean;
-}
-declare module "shorter-js/src/misc/isMedia" {
-    export default isMedia;
-    /**
-     * Checks if an element is an `<svg>`, `<img>` or `<video>`.
-     * *Tooltip* / *Popover* works different with media elements.
-     * @param {any} element the target element
-     * @returns {boolean} the query result
-     */
-    function isMedia(element: any): boolean;
-}
-declare module "shorter-js/src/misc/isRTL" {
-    export default isRTL;
-    /**
-     * Checks if a page is Right To Left.
-     * @returns {boolean} the query result
-     */
-    function isRTL(): boolean;
 }
 declare module "shorter-js/src/misc/passiveHandler" {
     export default passiveHandler;
@@ -1237,7 +1361,7 @@ declare module "shorter-js/src/misc/ObjectKeys" {
 }
 declare module "shorter-js/src/misc/normalizeOptions" {
     /**
-     * Utility to normalize component options
+     * Utility to normalize component options.
      *
      * @param {HTMLElement} element target
      * @param {Record<string, any>} defaultOps component default options
@@ -1321,15 +1445,6 @@ declare module "shorter-js/src/misc/ObjectAssign" {
      */
     function ObjectAssign(obj: Record<string, any>, source: Record<string, any>): Record<string, any>;
 }
-declare module "shorter-js/src/manipulate/getAttribute" {
-    export default getAttribute;
-    /**
-     * Shortcut for `HTMLElement.getAttribute()` method.
-     * @param  {HTMLElement} element target element
-     * @param  {string} attribute attribute name
-     */
-    function getAttribute(element: HTMLElement, attribute: string): string | null;
-}
 declare module "shorter-js/src/manipulate/setAttribute" {
     export default setAttribute;
     /**
@@ -1340,6 +1455,17 @@ declare module "shorter-js/src/manipulate/setAttribute" {
      */
     function setAttribute(element: HTMLElement, attribute: string, value: string): void;
 }
+declare module "shorter-js/src/manipulate/setAttributeNS" {
+    export default setAttributeNS;
+    /**
+     * Shortcut for `SVGElement.setAttributeNS()` method.
+     * @param  {HTMLElement} element target element
+     * @param  {string} att attribute name
+     * @param  {string} value attribute value
+     * @param  {string=} ns attribute namespace
+     */
+    function setAttributeNS(element: HTMLElement, att: string, value: string, ns?: string | undefined): void;
+}
 declare module "shorter-js/src/manipulate/removeAttribute" {
     export default removeAttribute;
     /**
@@ -1349,16 +1475,26 @@ declare module "shorter-js/src/manipulate/removeAttribute" {
      */
     function removeAttribute(element: HTMLElement, attribute: string): void;
 }
+declare module "shorter-js/src/manipulate/removeAttributeNS" {
+    export default removeAttributeNS;
+    /**
+     * Shortcut for `HTMLElement.removeAttributeNS()` method.
+     * @param  {HTMLElement} element target element
+     * @param  {string} att attribute name
+     * @param  {string=} ns attribute namespace
+     */
+    function removeAttributeNS(element: HTMLElement, att: string, ns?: string | undefined): void;
+}
 declare module "shorter-js/src/manipulate/setElementStyle" {
     export default setElementStyle;
     /**
-     * Shortcut for `HTMLElement.style.propertyName` method.
+     * Shortcut for multiple uses of `HTMLElement.style.propertyName` method.
      * @param  {HTMLElement} element target element
      * @param  {Partial<CSSStyleDeclaration>} styles attribute value
      */
     function setElementStyle(element: HTMLElement, styles: Partial<CSSStyleDeclaration>): Record<string, any>;
 }
-declare module "shorter-js/src/misc/isArray" {
+declare module "shorter-js/src/is/isArray" {
     export default isArray;
     /**
      * Shortcut for `Array.isArray()` static method.
@@ -1368,17 +1504,7 @@ declare module "shorter-js/src/misc/isArray" {
      */
     function isArray(arr: any): boolean;
 }
-declare module "shorter-js/src/misc/isString" {
-    export default isString;
-    /**
-     * Shortcut for `typeof` static method.
-     *
-     * @param  {any} str array-like iterable object
-     * @returns {boolean} the query result
-     */
-    function isString(str: any): boolean;
-}
-declare module "shorter-js/src/misc/isElement" {
+declare module "shorter-js/src/is/isElement" {
     export default isElement;
     /**
      * Checks if an object is an `Element`.
@@ -1388,17 +1514,39 @@ declare module "shorter-js/src/misc/isElement" {
      */
     function isElement(element: any): boolean;
 }
-declare module "shorter-js/src/misc/isNodeList" {
-    export default isNodeList;
+declare module "shorter-js/src/is/isElementInScrollRange" {
+    export default isElementInScrollRange;
     /**
-     * Checks if an object is a `NodeList`.
+     * Utility to determine if an `HTMLElement`
+     * is partially visible in viewport.
+     *
+     * @param {HTMLElement} element target
+     * @return {boolean} the query result
+     */
+    function isElementInScrollRange(element: HTMLElement): boolean;
+}
+declare module "shorter-js/src/is/isElementInViewport" {
+    export default isElementInViewport;
+    /**
+     * Utility to determine if an `HTMLElement`
+     * is fully visible in the viewport.
+     *
+     * @param {HTMLElement} element target
+     * @return {boolean} the query result
+     */
+    function isElementInViewport(element: HTMLElement): boolean;
+}
+declare module "shorter-js/src/is/isElementsArray" {
+    export default isElementsArray;
+    /**
+     * Checks if an object is an `Array` in which all items are `Element`.
      *
      * @param {any} object the target object
      * @returns {boolean} the query result
      */
-    function isNodeList(object: any): boolean;
+    function isElementsArray(object: any): boolean;
 }
-declare module "shorter-js/src/misc/isHTMLCollection" {
+declare module "shorter-js/src/is/isHTMLCollection" {
     export default isHTMLCollection;
     /**
      * Checks if an object is an `HTMLCollection`.
@@ -1408,15 +1556,73 @@ declare module "shorter-js/src/misc/isHTMLCollection" {
      */
     function isHTMLCollection(object: any): boolean;
 }
-declare module "shorter-js/src/misc/isElementsArray" {
-    export default isElementsArray;
+declare module "shorter-js/src/is/isHTMLImageElement" {
+    export default isHTMLImageElement;
     /**
-     * Checks if an object is an `Array` in which all items are `Element`.
+     * Check if a target element is an `<img>`.
+     * @param {any} element the target element
+     * @returns {boolean} the query result
+     */
+    function isHTMLImageElement(element: any): boolean;
+}
+declare module "shorter-js/src/is/isMedia" {
+    export default isMedia;
+    /**
+     * Checks if an element is an `<svg>` (or any type of SVG element),
+     * `<img>` or `<video>`.
+     *
+     * *Tooltip* / *Popover* works different with media elements.
+     * @param {any} element the target element
+     * @returns {boolean} the query result
+     */
+    function isMedia(element: any): boolean;
+}
+declare module "shorter-js/src/is/isNode" {
+    export default isNode;
+    /**
+     * Checks if an object is a `Node`.
+     *
+     * @param {any} node the target object
+     * @returns {boolean} the query result
+     */
+    function isNode(node: any): boolean;
+}
+declare module "shorter-js/src/is/isNodeList" {
+    export default isNodeList;
+    /**
+     * Checks if an object is a `NodeList`.
      *
      * @param {any} object the target object
      * @returns {boolean} the query result
      */
-    function isElementsArray(object: any): boolean;
+    function isNodeList(object: any): boolean;
+}
+declare module "shorter-js/src/is/isRTL" {
+    export default isRTL;
+    /**
+     * Checks if a page is Right To Left.
+     * @returns {boolean} the query result
+     */
+    function isRTL(): boolean;
+}
+declare module "shorter-js/src/is/isString" {
+    export default isString;
+    /**
+     * Shortcut for `typeof SOMETHING === string` static method.
+     *
+     * @param  {any} str array-like iterable object
+     * @returns {boolean} the query result
+     */
+    function isString(str: any): boolean;
+}
+declare module "shorter-js/src/is/isSVGElement" {
+    export default isSVGElement;
+    /**
+     * Check if an element is an `<svg>` or any other SVG element.
+     * @param {any} element the target element
+     * @returns {boolean} the query result
+     */
+    function isSVGElement(element: any): boolean;
 }
 declare module "shorter-js/src/selectors/closest" {
     /**
@@ -1428,15 +1634,27 @@ declare module "shorter-js/src/selectors/closest" {
      */
     export default function closest(element: HTMLElement, selector: string): HTMLElement | null;
 }
+declare module "shorter-js/src/selectors/getCustomElements" {
+    /**
+     * Returns an `Array` of `Node` elements that are registered as
+     * `CustomElement`.
+     * @see https://stackoverflow.com/questions/27334365/how-to-get-list-of-registered-custom-elements
+     *
+     *
+     * @param {HTMLElement=} parent parent to look into
+     * @returns {Node[]} the query result
+     */
+    export default function getCustomElements(parent?: HTMLElement | undefined): Node[];
+}
 declare module "shorter-js/src/selectors/querySelectorAll" {
     /**
      * A shortcut for `(document|Element).querySelectorAll`.
      *
      * @param {string} selector the input selector
-     * @param {HTMLElement=} parent optional Element to look into
+     * @param {(Node | Element | HTMLElement)=} parent optional node to look into
      * @return {NodeListOf<HTMLElement>} the query result
      */
-    export default function querySelectorAll(selector: string, parent?: HTMLElement | undefined): NodeListOf<HTMLElement>;
+    export default function querySelectorAll(selector: string, parent?: (Node | Element | HTMLElement) | undefined): NodeListOf<HTMLElement>;
 }
 declare module "shorter-js/src/selectors/getElementsByTagName" {
     /**
@@ -1453,10 +1671,10 @@ declare module "shorter-js/src/selectors/getElementsByClassName" {
      * Shortcut for `HTMLElement.getElementsByClassName` method.
      *
      * @param {string} selector the class name
-     * @param {(HTMLElement)=} parent optional Element to look into
+     * @param {HTMLElement=} parent optional Element to look into
      * @return {HTMLCollectionOf<HTMLElement>} the 'HTMLCollection'
      */
-    export default function getElementsByClassName(selector: string, parent?: (HTMLElement) | undefined): HTMLCollectionOf<HTMLElement>;
+    export default function getElementsByClassName(selector: string, parent?: HTMLElement | undefined): HTMLCollectionOf<HTMLElement>;
 }
 declare module "shorter-js/src/misc/version" {
     export default Version;
@@ -1573,14 +1791,35 @@ declare module "shorter-js/types/module/shorter" {
     export { default as offsetWidth } from "shorter-js/src/strings/offsetWidth";
     export { default as scrollHeight } from "shorter-js/src/strings/scrollHeight";
     export { default as scrollWidth } from "shorter-js/src/strings/scrollWidth";
-    export { default as isMobile } from "shorter-js/src/boolean/isMobile";
+    export { default as userAgentData } from "shorter-js/src/strings/userAgentData";
+    export { default as userAgent } from "shorter-js/src/strings/userAgent";
     export { default as isApple } from "shorter-js/src/boolean/isApple";
+    export { default as isFirefox } from "shorter-js/src/boolean/isFirefox";
+    export { default as isMobile } from "shorter-js/src/boolean/isMobile";
     export { default as support3DTransform } from "shorter-js/src/boolean/support3DTransform";
-    export { default as supportPassive } from "shorter-js/src/boolean/supportPassive";
-    export { default as supportTransform } from "shorter-js/src/boolean/supportTransform";
-    export { default as supportTouch } from "shorter-js/src/boolean/supportTouch";
     export { default as supportAnimation } from "shorter-js/src/boolean/supportAnimation";
+    export { default as supportPassive } from "shorter-js/src/boolean/supportPassive";
+    export { default as supportTouch } from "shorter-js/src/boolean/supportTouch";
+    export { default as supportTransform } from "shorter-js/src/boolean/supportTransform";
     export { default as supportTransition } from "shorter-js/src/boolean/supportTransition";
+    export { default as getAttribute } from "shorter-js/src/get/getAttribute";
+    export { default as getAttributeNS } from "shorter-js/src/get/getAttributeNS";
+    export { default as getBoundingClientRect } from "shorter-js/src/get/getBoundingClientRect";
+    export { default as getDocumentElement } from "shorter-js/src/get/getDocumentElement";
+    export { default as getElementAnimationDuration } from "shorter-js/src/get/getElementAnimationDuration";
+    export { default as getElementAnimationDurationLegacy } from "shorter-js/src/get/getElementAnimationDurationLegacy";
+    export { default as getElementAnimationDelay } from "shorter-js/src/get/getElementAnimationDelay";
+    export { default as getElementAnimationDelayLegacy } from "shorter-js/src/get/getElementAnimationDelayLegacy";
+    export { default as getElementStyle } from "shorter-js/src/get/getElementStyle";
+    export { default as getElementTransitionDuration } from "shorter-js/src/get/getElementTransitionDuration";
+    export { default as getElementTransitionDurationLegacy } from "shorter-js/src/get/getElementTransitionDurationLegacy";
+    export { default as getElementTransitionDelay } from "shorter-js/src/get/getElementTransitionDelay";
+    export { default as getElementTransitionDelayLegacy } from "shorter-js/src/get/getElementTransitionDelayLegacy";
+    export { default as getNodeScroll } from "shorter-js/src/get/getNodeScroll";
+    export { default as getOffsetParent } from "shorter-js/src/get/getOffsetParent";
+    export { default as getParentNode } from "shorter-js/src/get/getParentNode";
+    export { default as getRectRelativeToOffsetParent } from "shorter-js/src/get/getRectRelativeToOffsetParent";
+    export { default as getWindow } from "shorter-js/src/get/getWindow";
     export { default as addClass } from "shorter-js/src/class/addClass";
     export { default as removeClass } from "shorter-js/src/class/removeClass";
     export { default as hasClass } from "shorter-js/src/class/hasClass";
@@ -1593,19 +1832,7 @@ declare module "shorter-js/types/module/shorter" {
     export { default as emulateAnimationEndLegacy } from "shorter-js/src/misc/emulateAnimationEndLegacy";
     export { default as emulateTransitionEnd } from "shorter-js/src/misc/emulateTransitionEnd";
     export { default as emulateTransitionEndLegacy } from "shorter-js/src/misc/emulateTransitionEndLegacy";
-    export { default as isElementInScrollRange } from "shorter-js/src/misc/isElementInScrollRange";
-    export { default as isElementInViewport } from "shorter-js/src/misc/isElementInViewport";
-    export { default as isMedia } from "shorter-js/src/misc/isMedia";
-    export { default as isRTL } from "shorter-js/src/misc/isRTL";
     export { default as passiveHandler } from "shorter-js/src/misc/passiveHandler";
-    export { default as getElementAnimationDuration } from "shorter-js/src/misc/getElementAnimationDuration";
-    export { default as getElementAnimationDurationLegacy } from "shorter-js/src/misc/getElementAnimationDurationLegacy";
-    export { default as getElementAnimationDelay } from "shorter-js/src/misc/getElementAnimationDelay";
-    export { default as getElementAnimationDelayLegacy } from "shorter-js/src/misc/getElementAnimationDelayLegacy";
-    export { default as getElementTransitionDuration } from "shorter-js/src/misc/getElementTransitionDuration";
-    export { default as getElementTransitionDurationLegacy } from "shorter-js/src/misc/getElementTransitionDurationLegacy";
-    export { default as getElementTransitionDelay } from "shorter-js/src/misc/getElementTransitionDelay";
-    export { default as getElementTransitionDelayLegacy } from "shorter-js/src/misc/getElementTransitionDelayLegacy";
     export { default as normalizeValue } from "shorter-js/src/misc/normalizeValue";
     export { default as normalizeOptions } from "shorter-js/src/misc/normalizeOptions";
     export { default as tryWrapper } from "shorter-js/src/misc/tryWrapper";
@@ -1617,19 +1844,31 @@ declare module "shorter-js/types/module/shorter" {
     export { default as ObjectKeys } from "shorter-js/src/misc/ObjectKeys";
     export { default as ObjectValues } from "shorter-js/src/misc/ObjectValues";
     export { default as ObjectAssign } from "shorter-js/src/misc/ObjectAssign";
-    export { default as getAttribute } from "shorter-js/src/manipulate/getAttribute";
     export { default as setAttribute } from "shorter-js/src/manipulate/setAttribute";
+    export { default as setAttributeNS } from "shorter-js/src/manipulate/setAttributeNS";
     export { default as removeAttribute } from "shorter-js/src/manipulate/removeAttribute";
-    export { default as getElementStyle } from "shorter-js/src/manipulate/getElementStyle";
+    export { default as removeAttributeNS } from "shorter-js/src/manipulate/removeAttributeNS";
     export { default as setElementStyle } from "shorter-js/src/manipulate/setElementStyle";
-    export { default as isArray } from "shorter-js/src/misc/isArray";
-    export { default as isString } from "shorter-js/src/misc/isString";
-    export { default as isElement } from "shorter-js/src/misc/isElement";
-    export { default as isNodeList } from "shorter-js/src/misc/isNodeList";
-    export { default as isHTMLElement } from "shorter-js/src/misc/isHTMLElement";
-    export { default as isHTMLCollection } from "shorter-js/src/misc/isHTMLCollection";
-    export { default as isElementsArray } from "shorter-js/src/misc/isElementsArray";
+    export { default as isArray } from "shorter-js/src/is/isArray";
+    export { default as isElement } from "shorter-js/src/is/isElement";
+    export { default as isElementInScrollRange } from "shorter-js/src/is/isElementInScrollRange";
+    export { default as isElementInViewport } from "shorter-js/src/is/isElementInViewport";
+    export { default as isElementsArray } from "shorter-js/src/is/isElementsArray";
+    export { default as isHTMLCollection } from "shorter-js/src/is/isHTMLCollection";
+    export { default as isHTMLElement } from "shorter-js/src/is/isHTMLElement";
+    export { default as isHTMLImageElement } from "shorter-js/src/is/isHTMLImageElement";
+    export { default as isMedia } from "shorter-js/src/is/isMedia";
+    export { default as isNode } from "shorter-js/src/is/isNode";
+    export { default as isNodeList } from "shorter-js/src/is/isNodeList";
+    export { default as isRTL } from "shorter-js/src/is/isRTL";
+    export { default as isScaledElement } from "shorter-js/src/is/isScaledElement";
+    export { default as isShadowRoot } from "shorter-js/src/is/isShadowRoot";
+    export { default as isString } from "shorter-js/src/is/isString";
+    export { default as isSVGElement } from "shorter-js/src/is/isSVGElement";
+    export { default as isTableElement } from "shorter-js/src/is/isTableElement";
+    export { default as isWindow } from "shorter-js/src/is/isWindow";
     export { default as closest } from "shorter-js/src/selectors/closest";
+    export { default as getCustomElements } from "shorter-js/src/selectors/getCustomElements";
     export { default as querySelector } from "shorter-js/src/selectors/querySelector";
     export { default as querySelectorAll } from "shorter-js/src/selectors/querySelectorAll";
     export { default as getElementsByTagName } from "shorter-js/src/selectors/getElementsByTagName";

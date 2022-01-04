@@ -118,15 +118,39 @@ export { default as offsetWidth } from "../../src/strings/offsetWidth";
 export { default as scrollHeight } from "../../src/strings/scrollHeight";
 export { default as scrollWidth } from "../../src/strings/scrollWidth";
 
+export { default as userAgentData } from "../../src/strings/userAgentData";
+export { default as userAgent } from "../../src/strings/userAgent";
+
 // boolean
-export { default as isMobile } from "../../src/boolean/isMobile";
 export { default as isApple } from "../../src/boolean/isApple";
+export { default as isFirefox } from "../../src/boolean/isFirefox";
+export { default as isMobile } from "../../src/boolean/isMobile";
 export { default as support3DTransform } from "../../src/boolean/support3DTransform";
-export { default as supportPassive } from "../../src/boolean/supportPassive";
-export { default as supportTransform } from "../../src/boolean/supportTransform";
-export { default as supportTouch } from "../../src/boolean/supportTouch";
 export { default as supportAnimation } from "../../src/boolean/supportAnimation";
+export { default as supportPassive } from "../../src/boolean/supportPassive";
+export { default as supportTouch } from "../../src/boolean/supportTouch";
+export { default as supportTransform } from "../../src/boolean/supportTransform";
 export { default as supportTransition } from "../../src/boolean/supportTransition";
+
+// get
+export { default as getAttribute } from '../../src/get/getAttribute';
+export { default as getAttributeNS } from '../../src/get/getAttributeNS';
+export { default as getBoundingClientRect } from '../../src/get/getBoundingClientRect';
+export { default as getDocumentElement } from '../../src/get/getDocumentElement';
+export { default as getElementAnimationDuration } from "../../src/get/getElementAnimationDuration";
+export { default as getElementAnimationDurationLegacy } from "../../src/get/getElementAnimationDurationLegacy";
+export { default as getElementAnimationDelay } from "../../src/get/getElementAnimationDelay";
+export { default as getElementAnimationDelayLegacy } from "../../src/get/getElementAnimationDelayLegacy";
+export { default as getElementStyle } from '../../src/get/getElementStyle';
+export { default as getElementTransitionDuration } from "../../src/get/getElementTransitionDuration";
+export { default as getElementTransitionDurationLegacy } from "../../src/get/getElementTransitionDurationLegacy";
+export { default as getElementTransitionDelay } from "../../src/get/getElementTransitionDelay";
+export { default as getElementTransitionDelayLegacy } from "../../src/get/getElementTransitionDelayLegacy";
+export { default as getNodeScroll } from "../../src/get/getNodeScroll";
+export { default as getOffsetParent } from "../../src/get/getOffsetParent";
+export { default as getParentNode } from "../../src/get/getParentNode";
+export { default as getRectRelativeToOffsetParent } from "../../src/get/getRectRelativeToOffsetParent";
+export { default as getWindow } from "../../src/get/getWindow";
 
 // class
 export { default as addClass } from "../../src/class/addClass";
@@ -141,23 +165,13 @@ export { default as one } from "../../src/event/one";
 // misc
 export { default as Data, getInstance } from "../../src/misc/data";
 export { default as Timer } from "../../src/misc/timer";
+
 export { default as emulateAnimationEnd } from "../../src/misc/emulateAnimationEnd";
 export { default as emulateAnimationEndLegacy } from "../../src/misc/emulateAnimationEndLegacy";
 export { default as emulateTransitionEnd } from "../../src/misc/emulateTransitionEnd";
 export { default as emulateTransitionEndLegacy } from "../../src/misc/emulateTransitionEndLegacy";
-export { default as isElementInScrollRange } from "../../src/misc/isElementInScrollRange";
-export { default as isElementInViewport } from "../../src/misc/isElementInViewport";
-export { default as isMedia } from "../../src/misc/isMedia";
-export { default as isRTL } from "../../src/misc/isRTL";
 export { default as passiveHandler } from "../../src/misc/passiveHandler";
-export { default as getElementAnimationDuration } from "../../src/misc/getElementAnimationDuration";
-export { default as getElementAnimationDurationLegacy } from "../../src/misc/getElementAnimationDurationLegacy";
-export { default as getElementAnimationDelay } from "../../src/misc/getElementAnimationDelay";
-export { default as getElementAnimationDelayLegacy } from "../../src/misc/getElementAnimationDelayLegacy";
-export { default as getElementTransitionDuration } from "../../src/misc/getElementTransitionDuration";
-export { default as getElementTransitionDurationLegacy } from "../../src/misc/getElementTransitionDurationLegacy";
-export { default as getElementTransitionDelay } from "../../src/misc/getElementTransitionDelay";
-export { default as getElementTransitionDelayLegacy } from "../../src/misc/getElementTransitionDelayLegacy";
+
 export { default as normalizeValue } from "../../src/misc/normalizeValue";
 export { default as normalizeOptions } from "../../src/misc/normalizeOptions";
 export { default as tryWrapper } from "../../src/misc/tryWrapper";
@@ -171,21 +185,36 @@ export { default as ObjectKeys } from '../../src/misc/ObjectKeys';
 export { default as ObjectValues } from '../../src/misc/ObjectValues';
 export { default as ObjectAssign } from '../../src/misc/ObjectAssign';
 
-export { default as getAttribute } from '../../src/manipulate/getAttribute';
+// manipulate
 export { default as setAttribute } from '../../src/manipulate/setAttribute';
+export { default as setAttributeNS } from '../../src/manipulate/setAttributeNS';
 export { default as removeAttribute } from '../../src/manipulate/removeAttribute';
-export { default as getElementStyle } from '../../src/manipulate/getElementStyle';
+export { default as removeAttributeNS } from '../../src/manipulate/removeAttributeNS';
 export { default as setElementStyle } from '../../src/manipulate/setElementStyle';
 
-export { default as isArray } from "../../src/misc/isArray";
-export { default as isString } from "../../src/misc/isString";
-export { default as isElement } from "../../src/misc/isElement";
-export { default as isNodeList } from "../../src/misc/isNodeList";
-export { default as isHTMLElement } from "../../src/misc/isHTMLElement";
-export { default as isHTMLCollection } from "../../src/misc/isHTMLCollection";
-export { default as isElementsArray } from "../../src/misc/isElementsArray";
+// is
+export { default as isArray } from "../../src/is/isArray";
+export { default as isElement } from "../../src/is/isElement";
+export { default as isElementInScrollRange } from "../../src/is/isElementInScrollRange";
+export { default as isElementInViewport } from "../../src/is/isElementInViewport";
+export { default as isElementsArray } from "../../src/is/isElementsArray";
+export { default as isHTMLCollection } from "../../src/is/isHTMLCollection";
+export { default as isHTMLElement } from "../../src/is/isHTMLElement";
+export { default as isHTMLImageElement } from "../../src/is/isHTMLImageElement";
+export { default as isMedia } from "../../src/is/isMedia";
+export { default as isNode } from "../../src/is/isNode";
+export { default as isNodeList } from "../../src/is/isNodeList";
+export { default as isRTL } from "../../src/is/isRTL";
+export { default as isScaledElement } from "../../src/is/isScaledElement";
+export { default as isShadowRoot } from "../../src/is/isShadowRoot";
+export { default as isString } from "../../src/is/isString";
+export { default as isSVGElement } from "../../src/is/isSVGElement";
+export { default as isTableElement } from "../../src/is/isTableElement";
+export { default as isWindow } from "../../src/is/isWindow";
 
+// selectors
 export { default as closest } from "../../src/selectors/closest";
+export { default as getCustomElements } from "../../src/selectors/getCustomElements";
 export { default as querySelector } from "../../src/selectors/querySelector";
 export { default as querySelectorAll } from "../../src/selectors/querySelectorAll";
 export { default as getElementsByTagName } from "../../src/selectors/getElementsByTagName";

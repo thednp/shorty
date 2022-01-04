@@ -4,5 +4,5 @@
  * @param {any} element the target object
  * @returns {boolean} the query result
  */
-const isHTMLElement = (element) => element && element instanceof HTMLElement;
+const isHTMLElement = (element) => element instanceof HTMLElement;
 export default isHTMLElement;

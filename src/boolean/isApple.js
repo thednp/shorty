@@ -6,7 +6,7 @@ const agentData = navigator[userAgentData];
 const appleBrands = /(iPhone|iPod|iPad)/;
 
 /**
- * A global boolean for Apple browsers.
+ * A global `boolean` for Apple browsers.
  * @type {boolean}
  */
 const isApple = !agentData ? appleBrands.test(navigator.userAgent)
