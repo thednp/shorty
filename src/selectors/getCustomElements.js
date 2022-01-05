@@ -5,7 +5,6 @@ import isHTMLElement from '../is/isHTMLElement';
  * `CustomElement`.
  * @see https://stackoverflow.com/questions/27334365/how-to-get-list-of-registered-custom-elements
  *
- *
  * @param {HTMLElement=} parent parent to look into
  * @returns {Node[]} the query result
  */

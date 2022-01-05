@@ -1,6 +1,8 @@
+// @ts-ignore
+const { userAgentData: userAgentDATA } = navigator;
+
 /**
  * A global namespace for `userAgentData` event.
- * @type {string}
  */
-const userAgentData = 'userAgentData';
+const userAgentData = userAgentDATA;
 export default userAgentData;

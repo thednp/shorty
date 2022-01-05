@@ -1,7 +1,7 @@
 /**
  * Check if target is a `ShadowRoot`.
  *
- * @param {HTMLElement} element target
+ * @param {any} element target
  * @returns {boolean} the query result
  */
 const isShadowRoot = (element) => {

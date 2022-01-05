@@ -132,9 +132,15 @@ export { default as supportTouch } from "../../src/boolean/supportTouch";
 export { default as supportTransform } from "../../src/boolean/supportTransform";
 export { default as supportTransition } from "../../src/boolean/supportTransition";
 
+// attributes
+export { default as getAttribute } from '../../src/attr/getAttribute';
+export { default as getAttributeNS } from '../../src/attr/getAttributeNS';
+export { default as setAttribute } from '../../src/attr/setAttribute';
+export { default as setAttributeNS } from '../../src/attr/setAttributeNS';
+export { default as removeAttribute } from '../../src/attr/removeAttribute';
+export { default as removeAttributeNS } from '../../src/attr/removeAttributeNS';
+
 // get
-export { default as getAttribute } from '../../src/get/getAttribute';
-export { default as getAttributeNS } from '../../src/get/getAttributeNS';
 export { default as getBoundingClientRect } from '../../src/get/getBoundingClientRect';
 export { default as getDocumentElement } from '../../src/get/getDocumentElement';
 export { default as getElementAnimationDuration } from "../../src/get/getElementAnimationDuration";
@@ -172,6 +178,7 @@ export { default as emulateTransitionEnd } from "../../src/misc/emulateTransitio
 export { default as emulateTransitionEndLegacy } from "../../src/misc/emulateTransitionEndLegacy";
 export { default as passiveHandler } from "../../src/misc/passiveHandler";
 
+export { default as setElementStyle } from '../../src/misc/setElementStyle';
 export { default as normalizeValue } from "../../src/misc/normalizeValue";
 export { default as normalizeOptions } from "../../src/misc/normalizeOptions";
 export { default as tryWrapper } from "../../src/misc/tryWrapper";
@@ -184,13 +191,6 @@ export { default as Float64ArrayFrom } from '../../src/misc/Float64ArrayFrom';
 export { default as ObjectKeys } from '../../src/misc/ObjectKeys';
 export { default as ObjectValues } from '../../src/misc/ObjectValues';
 export { default as ObjectAssign } from '../../src/misc/ObjectAssign';
-
-// manipulate
-export { default as setAttribute } from '../../src/manipulate/setAttribute';
-export { default as setAttributeNS } from '../../src/manipulate/setAttributeNS';
-export { default as removeAttribute } from '../../src/manipulate/removeAttribute';
-export { default as removeAttributeNS } from '../../src/manipulate/removeAttributeNS';
-export { default as setElementStyle } from '../../src/manipulate/setElementStyle';
 
 // is
 export { default as isArray } from "../../src/is/isArray";

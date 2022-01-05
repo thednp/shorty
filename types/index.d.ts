@@ -118,8 +118,12 @@ export { default as supportPassive } from "shorter-js/src/boolean/supportPassive
 export { default as supportTouch } from "shorter-js/src/boolean/supportTouch";
 export { default as supportTransform } from "shorter-js/src/boolean/supportTransform";
 export { default as supportTransition } from "shorter-js/src/boolean/supportTransition";
-export { default as getAttribute } from "shorter-js/src/get/getAttribute";
-export { default as getAttributeNS } from "shorter-js/src/get/getAttributeNS";
+export { default as getAttribute } from "shorter-js/src/attr/getAttribute";
+export { default as getAttributeNS } from "shorter-js/src/attr/getAttributeNS";
+export { default as setAttribute } from "shorter-js/src/attr/setAttribute";
+export { default as setAttributeNS } from "shorter-js/src/attr/setAttributeNS";
+export { default as removeAttribute } from "shorter-js/src/attr/removeAttribute";
+export { default as removeAttributeNS } from "shorter-js/src/attr/removeAttributeNS";
 export { default as getBoundingClientRect } from "shorter-js/src/get/getBoundingClientRect";
 export { default as getDocumentElement } from "shorter-js/src/get/getDocumentElement";
 export { default as getElementAnimationDuration } from "shorter-js/src/get/getElementAnimationDuration";
@@ -149,6 +153,7 @@ export { default as emulateAnimationEndLegacy } from "shorter-js/src/misc/emulat
 export { default as emulateTransitionEnd } from "shorter-js/src/misc/emulateTransitionEnd";
 export { default as emulateTransitionEndLegacy } from "shorter-js/src/misc/emulateTransitionEndLegacy";
 export { default as passiveHandler } from "shorter-js/src/misc/passiveHandler";
+export { default as setElementStyle } from "shorter-js/src/misc/setElementStyle";
 export { default as normalizeValue } from "shorter-js/src/misc/normalizeValue";
 export { default as normalizeOptions } from "shorter-js/src/misc/normalizeOptions";
 export { default as tryWrapper } from "shorter-js/src/misc/tryWrapper";
@@ -160,11 +165,6 @@ export { default as Float64ArrayFrom } from "shorter-js/src/misc/Float64ArrayFro
 export { default as ObjectKeys } from "shorter-js/src/misc/ObjectKeys";
 export { default as ObjectValues } from "shorter-js/src/misc/ObjectValues";
 export { default as ObjectAssign } from "shorter-js/src/misc/ObjectAssign";
-export { default as setAttribute } from "shorter-js/src/manipulate/setAttribute";
-export { default as setAttributeNS } from "shorter-js/src/manipulate/setAttributeNS";
-export { default as removeAttribute } from "shorter-js/src/manipulate/removeAttribute";
-export { default as removeAttributeNS } from "shorter-js/src/manipulate/removeAttributeNS";
-export { default as setElementStyle } from "shorter-js/src/manipulate/setElementStyle";
 export { default as isArray } from "shorter-js/src/is/isArray";
 export { default as isElement } from "shorter-js/src/is/isElement";
 export { default as isElementInScrollRange } from "shorter-js/src/is/isElementInScrollRange";

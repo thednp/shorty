@@ -1,9 +1,9 @@
-import ObjectAssign from '../misc/ObjectAssign';
+import ObjectAssign from './ObjectAssign';
 
 /**
  * Shortcut for multiple uses of `HTMLElement.style.propertyName` method.
  * @param  {HTMLElement} element target element
  * @param  {Partial<CSSStyleDeclaration>} styles attribute value
  */
-const setElementStyle = (element, styles) => ObjectAssign(element.style, styles);
+const setElementStyle = (element, styles) => { ObjectAssign(element.style, styles); };
 export default setElementStyle;

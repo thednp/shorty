@@ -4,10 +4,9 @@ import userAgent from '../strings/userAgent';
 const mobileBrands = /iPhone|iPad|iPod|Android/i;
 let isMobileCheck = false;
 
-// @ts-ignore
-if (navigator[userAgentData]) {
-  // @ts-ignore
-  isMobileCheck = navigator[userAgentData].brands.some((x) => mobileBrands.test(x.brand));
+if (userAgentData) {
+  isMobileCheck = userAgentData.brands
+    .some((/** @type {Record<String, any>} */x) => mobileBrands.test(x.brand));
 } else {
   isMobileCheck = mobileBrands.test(userAgent);
 }

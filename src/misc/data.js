@@ -29,7 +29,7 @@ const Data = {
   /**
    * Returns all instances for specified component.
    * @param {string} component the component's name or a unique key
-   * @returns {Map<HTMLElement, SHORTER.Component> | null} all the component instances
+   * @returns {Map<HTMLElement, SHORTER.Component>?} all the component instances
    */
   getAllFor: (component) => {
     const instanceMap = componentData.get(component);
@@ -42,7 +42,7 @@ const Data = {
    * Returns the instance associated with the target.
    * @param {HTMLElement | string} target target element
    * @param {string} component the component's name or a unique key
-   * @returns {SHORTER.Component | null} the instance
+   * @returns {SHORTER.Component?} the instance
    */
   get: (target, component) => {
     const element = querySelector(target);

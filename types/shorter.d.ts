@@ -860,15 +860,13 @@ declare module "shorter-js/src/strings/userAgentData" {
     export default userAgentData;
     /**
      * A global namespace for `userAgentData` event.
-     * @type {string}
      */
-    const userAgentData: string;
+    const userAgentData: any;
 }
 declare module "shorter-js/src/strings/userAgent" {
     export default userAgent;
     /**
      * A global namespace for `navigator.userAgent` string.
-     * @type {string}
      */
     const userAgent: string;
 }
@@ -883,7 +881,8 @@ declare module "shorter-js/src/boolean/isApple" {
 declare module "shorter-js/src/boolean/isFirefox" {
     export default isFirefox;
     /**
-     * A global boolean for Gecko browsers.
+     * A global boolean for Gecko browsers. When writing this file,
+     * Gecko was not supporting `userAgentData`.
      */
     const isFirefox: boolean;
 }
@@ -980,7 +979,7 @@ declare module "shorter-js/src/boolean/supportTransition" {
      */
     const supportTransition: boolean;
 }
-declare module "shorter-js/src/get/getAttribute" {
+declare module "shorter-js/src/attr/getAttribute" {
     export default getAttribute;
     /**
      * Shortcut for `HTMLElement.getAttribute()` method.
@@ -989,7 +988,7 @@ declare module "shorter-js/src/get/getAttribute" {
      */
     function getAttribute(element: HTMLElement, attribute: string): string | null;
 }
-declare module "shorter-js/src/get/getAttributeNS" {
+declare module "shorter-js/src/attr/getAttributeNS" {
     export default getAttributeNS;
     /**
      * Shortcut for `SVGElement.getAttributeNS()` method.
@@ -998,6 +997,46 @@ declare module "shorter-js/src/get/getAttributeNS" {
      * @param  {string=} ns attribute namespace
      */
     function getAttributeNS(element: HTMLElement, attribute: string, ns?: string | undefined): string | null;
+}
+declare module "shorter-js/src/attr/setAttribute" {
+    export default setAttribute;
+    /**
+     * Shortcut for `HTMLElement.setAttribute()` method.
+     * @param  {HTMLElement} element target element
+     * @param  {string} attribute attribute name
+     * @param  {string} value attribute value
+     */
+    function setAttribute(element: HTMLElement, attribute: string, value: string): void;
+}
+declare module "shorter-js/src/attr/setAttributeNS" {
+    export default setAttributeNS;
+    /**
+     * Shortcut for `SVGElement.setAttributeNS()` method.
+     * @param  {HTMLElement} element target element
+     * @param  {string} att attribute name
+     * @param  {string} value attribute value
+     * @param  {string=} ns attribute namespace
+     */
+    function setAttributeNS(element: HTMLElement, att: string, value: string, ns?: string | undefined): void;
+}
+declare module "shorter-js/src/attr/removeAttribute" {
+    export default removeAttribute;
+    /**
+     * Shortcut for `HTMLElement.removeAttribute()` method.
+     * @param  {HTMLElement} element target element
+     * @param  {string} attribute attribute name
+     */
+    function removeAttribute(element: HTMLElement, attribute: string): void;
+}
+declare module "shorter-js/src/attr/removeAttributeNS" {
+    export default removeAttributeNS;
+    /**
+     * Shortcut for `HTMLElement.removeAttributeNS()` method.
+     * @param  {HTMLElement} element target element
+     * @param  {string} att attribute name
+     * @param  {string=} ns attribute namespace
+     */
+    function removeAttributeNS(element: HTMLElement, att: string, ns?: string | undefined): void;
 }
 declare module "shorter-js/src/is/isHTMLElement" {
     export default isHTMLElement;
@@ -1153,10 +1192,10 @@ declare module "shorter-js/src/is/isShadowRoot" {
     /**
      * Check if target is a `ShadowRoot`.
      *
-     * @param {HTMLElement} element target
+     * @param {any} element target
      * @returns {boolean} the query result
      */
-    function isShadowRoot(element: HTMLElement): boolean;
+    function isShadowRoot(element: any): boolean;
 }
 declare module "shorter-js/src/get/getParentNode" {
     /**
@@ -1179,13 +1218,13 @@ declare module "shorter-js/src/is/isWindow" {
 }
 declare module "shorter-js/src/get/getWindow" {
     /**
-     * Returns the `Window` object.
+     * Returns the `Window` object of a target node.
      * @see https://github.com/floating-ui/floating-ui
      *
-     * @param {(Node | Element)=} node target node
+     * @param {(Node | Element | Window)=} node target node
      * @returns {Window} the `Window` object
      */
-    export default function getWindow(node?: (Node | Element) | undefined): Window;
+    export default function getWindow(node?: (Node | Element | Window) | undefined): Window;
 }
 declare module "shorter-js/src/get/getOffsetParent" {
     /**
@@ -1269,9 +1308,9 @@ declare module "shorter-js/src/misc/data" {
     export const getInstance: SHORTER.getInstance<any>;
     export default Data;
     namespace Data {
-        function set(target: string | HTMLElement, component: string, instance: import("shorter-js/types").Component): void;
-        function getAllFor(component: string): Map<HTMLElement, import("shorter-js/types").Component> | null;
-        function get(target: string | HTMLElement, component: string): import("shorter-js/types").Component | null;
+        function set(target: string | HTMLElement, component: string, instance: SHORTER.Component): void;
+        function getAllFor(component: string): Map<HTMLElement, SHORTER.Component> | null;
+        function get(target: string | HTMLElement, component: string): SHORTER.Component | null;
         function remove(target: string | HTMLElement, component: string): void;
     }
 }
@@ -1331,6 +1370,24 @@ declare module "shorter-js/src/misc/passiveHandler" {
     const passiveHandler: false | {
         passive: boolean;
     };
+}
+declare module "shorter-js/src/misc/ObjectAssign" {
+    export default ObjectAssign;
+    /**
+     * Shortcut for `Object.assign()` static method.
+     * @param  {Record<string, any>} obj a target object
+     * @param  {Record<string, any>} source a source object
+     */
+    function ObjectAssign(obj: Record<string, any>, source: Record<string, any>): Record<string, any>;
+}
+declare module "shorter-js/src/misc/setElementStyle" {
+    export default setElementStyle;
+    /**
+     * Shortcut for multiple uses of `HTMLElement.style.propertyName` method.
+     * @param  {HTMLElement} element target element
+     * @param  {Partial<CSSStyleDeclaration>} styles attribute value
+     */
+    function setElementStyle(element: HTMLElement, styles: Partial<CSSStyleDeclaration>): void;
 }
 declare module "shorter-js/src/misc/normalizeValue" {
     /**
@@ -1404,10 +1461,10 @@ declare module "shorter-js/src/misc/ArrayFrom" {
     /**
      * Shortcut for `Array.from()` static method.
      *
-     * @param  {any[] | HTMLCollection | NodeList} arr array-like iterable object
+     * @param  {any[] | HTMLCollection | NodeList | Map<any, any>} arr array-like iterable object
      * @returns {Array<any>}
      */
-    function ArrayFrom(arr: any[] | HTMLCollection | NodeList): Array<any>;
+    function ArrayFrom(arr: any[] | HTMLCollection | NodeList | Map<any, any>): Array<any>;
 }
 declare module "shorter-js/src/misc/Float32ArrayFrom" {
     export default Float32ArrayFrom;
@@ -1435,64 +1492,6 @@ declare module "shorter-js/src/misc/ObjectValues" {
      * @returns {any[]}
      */
     function ObjectValues(obj: Record<string, any>): any[];
-}
-declare module "shorter-js/src/misc/ObjectAssign" {
-    export default ObjectAssign;
-    /**
-     * Shortcut for `Object.assign()` static method.
-     * @param  {Record<string, any>} obj a target object
-     * @param  {Record<string, any>} source a source object
-     */
-    function ObjectAssign(obj: Record<string, any>, source: Record<string, any>): Record<string, any>;
-}
-declare module "shorter-js/src/manipulate/setAttribute" {
-    export default setAttribute;
-    /**
-     * Shortcut for `HTMLElement.setAttribute()` method.
-     * @param  {HTMLElement} element target element
-     * @param  {string} attribute attribute name
-     * @param  {string} value attribute value
-     */
-    function setAttribute(element: HTMLElement, attribute: string, value: string): void;
-}
-declare module "shorter-js/src/manipulate/setAttributeNS" {
-    export default setAttributeNS;
-    /**
-     * Shortcut for `SVGElement.setAttributeNS()` method.
-     * @param  {HTMLElement} element target element
-     * @param  {string} att attribute name
-     * @param  {string} value attribute value
-     * @param  {string=} ns attribute namespace
-     */
-    function setAttributeNS(element: HTMLElement, att: string, value: string, ns?: string | undefined): void;
-}
-declare module "shorter-js/src/manipulate/removeAttribute" {
-    export default removeAttribute;
-    /**
-     * Shortcut for `HTMLElement.removeAttribute()` method.
-     * @param  {HTMLElement} element target element
-     * @param  {string} attribute attribute name
-     */
-    function removeAttribute(element: HTMLElement, attribute: string): void;
-}
-declare module "shorter-js/src/manipulate/removeAttributeNS" {
-    export default removeAttributeNS;
-    /**
-     * Shortcut for `HTMLElement.removeAttributeNS()` method.
-     * @param  {HTMLElement} element target element
-     * @param  {string} att attribute name
-     * @param  {string=} ns attribute namespace
-     */
-    function removeAttributeNS(element: HTMLElement, att: string, ns?: string | undefined): void;
-}
-declare module "shorter-js/src/manipulate/setElementStyle" {
-    export default setElementStyle;
-    /**
-     * Shortcut for multiple uses of `HTMLElement.style.propertyName` method.
-     * @param  {HTMLElement} element target element
-     * @param  {Partial<CSSStyleDeclaration>} styles attribute value
-     */
-    function setElementStyle(element: HTMLElement, styles: Partial<CSSStyleDeclaration>): Record<string, any>;
 }
 declare module "shorter-js/src/is/isArray" {
     export default isArray;
@@ -1639,7 +1638,6 @@ declare module "shorter-js/src/selectors/getCustomElements" {
      * Returns an `Array` of `Node` elements that are registered as
      * `CustomElement`.
      * @see https://stackoverflow.com/questions/27334365/how-to-get-list-of-registered-custom-elements
-     *
      *
      * @param {HTMLElement=} parent parent to look into
      * @returns {Node[]} the query result
@@ -1802,8 +1800,12 @@ declare module "shorter-js/types/module/shorter" {
     export { default as supportTouch } from "shorter-js/src/boolean/supportTouch";
     export { default as supportTransform } from "shorter-js/src/boolean/supportTransform";
     export { default as supportTransition } from "shorter-js/src/boolean/supportTransition";
-    export { default as getAttribute } from "shorter-js/src/get/getAttribute";
-    export { default as getAttributeNS } from "shorter-js/src/get/getAttributeNS";
+    export { default as getAttribute } from "shorter-js/src/attr/getAttribute";
+    export { default as getAttributeNS } from "shorter-js/src/attr/getAttributeNS";
+    export { default as setAttribute } from "shorter-js/src/attr/setAttribute";
+    export { default as setAttributeNS } from "shorter-js/src/attr/setAttributeNS";
+    export { default as removeAttribute } from "shorter-js/src/attr/removeAttribute";
+    export { default as removeAttributeNS } from "shorter-js/src/attr/removeAttributeNS";
     export { default as getBoundingClientRect } from "shorter-js/src/get/getBoundingClientRect";
     export { default as getDocumentElement } from "shorter-js/src/get/getDocumentElement";
     export { default as getElementAnimationDuration } from "shorter-js/src/get/getElementAnimationDuration";
@@ -1833,6 +1835,7 @@ declare module "shorter-js/types/module/shorter" {
     export { default as emulateTransitionEnd } from "shorter-js/src/misc/emulateTransitionEnd";
     export { default as emulateTransitionEndLegacy } from "shorter-js/src/misc/emulateTransitionEndLegacy";
     export { default as passiveHandler } from "shorter-js/src/misc/passiveHandler";
+    export { default as setElementStyle } from "shorter-js/src/misc/setElementStyle";
     export { default as normalizeValue } from "shorter-js/src/misc/normalizeValue";
     export { default as normalizeOptions } from "shorter-js/src/misc/normalizeOptions";
     export { default as tryWrapper } from "shorter-js/src/misc/tryWrapper";
@@ -1844,11 +1847,6 @@ declare module "shorter-js/types/module/shorter" {
     export { default as ObjectKeys } from "shorter-js/src/misc/ObjectKeys";
     export { default as ObjectValues } from "shorter-js/src/misc/ObjectValues";
     export { default as ObjectAssign } from "shorter-js/src/misc/ObjectAssign";
-    export { default as setAttribute } from "shorter-js/src/manipulate/setAttribute";
-    export { default as setAttributeNS } from "shorter-js/src/manipulate/setAttributeNS";
-    export { default as removeAttribute } from "shorter-js/src/manipulate/removeAttribute";
-    export { default as removeAttributeNS } from "shorter-js/src/manipulate/removeAttributeNS";
-    export { default as setElementStyle } from "shorter-js/src/manipulate/setElementStyle";
     export { default as isArray } from "shorter-js/src/is/isArray";
     export { default as isElement } from "shorter-js/src/is/isElement";
     export { default as isElementInScrollRange } from "shorter-js/src/is/isElementInScrollRange";

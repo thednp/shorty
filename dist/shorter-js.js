@@ -1,5 +1,5 @@
 /*!
-* shorter-js v0.3.0alpha2 (https://github.com/thednp/shorter-js)
+* shorter-js v0.3.0alpha3 (https://github.com/thednp/shorter-js)
 * Copyright 2019-2022 © dnp_theme
 * Licensed under MIT (https://github.com/thednp/shorter-js/blob/master/LICENSE)
 */
@@ -748,27 +748,27 @@
    */
   var scrollWidth = 'scrollWidth';
 
+  // @ts-ignore
+  var userAgentDATA = navigator.userAgentData;
+
   /**
    * A global namespace for `userAgentData` event.
-   * @type {string}
    */
-  var userAgentData = 'userAgentData';
+  var userAgentData = userAgentDATA;
 
   var userAgentString = navigator.userAgent;
 
   /**
    * A global namespace for `navigator.userAgent` string.
-   * @type {string}
    */
   var userAgent = userAgentString;
 
   var mobileBrands = /iPhone|iPad|iPod|Android/i;
   var isMobileCheck = false;
 
-  // @ts-ignore
-  if (navigator[userAgentData]) {
-    // @ts-ignore
-    isMobileCheck = navigator[userAgentData].brands.some(function (x) { return mobileBrands.test(x.brand); });
+  if (userAgentData) {
+    isMobileCheck = userAgentData.brands
+      .some(function (/** @type {Record<String, any>} */x) { return mobileBrands.test(x.brand); });
   } else {
     isMobileCheck = mobileBrands.test(userAgent);
   }
@@ -779,20 +779,18 @@
    */
   var isMobile = isMobileCheck;
 
-  /** @type {Record<string, any>} */
-  // @ts-ignore
-  var agentData = navigator[userAgentData];
   var appleBrands = /(iPhone|iPod|iPad)/;
 
   /**
    * A global `boolean` for Apple browsers.
    * @type {boolean}
    */
-  var isApple = !agentData ? appleBrands.test(navigator.userAgent)
-    : agentData.brands.some(function (/** @type {Record<string, any>} */x) { return appleBrands.test(x.brand); });
+  var isApple = !userAgentData ? appleBrands.test(userAgent)
+    : userAgentData.brands.some(function (/** @type {Record<string, any>} */x) { return appleBrands.test(x.brand); });
 
   /**
-   * A global boolean for Gecko browsers.
+   * A global boolean for Gecko browsers. When writing this file,
+   * Gecko was not supporting `userAgentData`.
    */
   var isFirefox = userAgent ? userAgent.includes('Firefox') : false;
 
@@ -898,6 +896,68 @@
    * @type {boolean}
    */
   var supportTransition = 'webkitTransition' in document.head.style || 'transition' in document.head.style;
+
+  /**
+   * Shortcut for `HTMLElement.getAttribute()` method.
+   * @param  {HTMLElement} element target element
+   * @param  {string} attribute attribute name
+   */
+  var getAttribute = function (element, attribute) { return element.getAttribute(attribute); };
+
+  /**
+   * Shortcut for `SVGElement.getAttributeNS()` method.
+   * @param  {HTMLElement} element target element
+   * @param  {string} attribute attribute name
+   * @param  {string=} ns attribute namespace
+   */
+  var getAttributeNS = function (element, attribute, ns) { return element.getAttributeNS(ns || null, attribute); };
+
+  /**
+   * Shortcut for `HTMLElement.hasAttribute()` method.
+   * @param  {HTMLElement} element target element
+   * @param  {string} attribute attribute name
+   */
+  var hasAttribute = function (element, attribute) { return element.hasAttribute(attribute); };
+
+  /**
+   * Shortcut for `SVGElement.hasAttributeNS()` method.
+   * @param  {HTMLElement} element target element
+   * @param  {string} att attribute name
+   * @param  {string=} ns attribute namespace
+   */
+  var hasAttributeNS = function (element, att, ns) { return element.hasAttributeNS(ns || null, att); };
+
+  /**
+   * Shortcut for `HTMLElement.setAttribute()` method.
+   * @param  {HTMLElement} element target element
+   * @param  {string} attribute attribute name
+   * @param  {string} value attribute value
+   */
+  var setAttribute = function (element, attribute, value) { return element.setAttribute(attribute, value); };
+
+  /**
+   * Shortcut for `SVGElement.setAttributeNS()` method.
+   * @param  {HTMLElement} element target element
+   * @param  {string} att attribute name
+   * @param  {string} value attribute value
+   * @param  {string=} ns attribute namespace
+   */
+  var setAttributeNS = function (element, att, value, ns) { return element.setAttributeNS(ns || null, att, value); };
+
+  /**
+   * Shortcut for `HTMLElement.removeAttribute()` method.
+   * @param  {HTMLElement} element target element
+   * @param  {string} attribute attribute name
+   */
+  var removeAttribute = function (element, attribute) { return element.removeAttribute(attribute); };
+
+  /**
+   * Shortcut for `HTMLElement.removeAttributeNS()` method.
+   * @param  {HTMLElement} element target element
+   * @param  {string} att attribute name
+   * @param  {string=} ns attribute namespace
+   */
+  var removeAttributeNS = function (element, att, ns) { return element.removeAttributeNS(ns || null, att); };
 
   /**
    * Add class to `HTMLElement.classList`.
@@ -1454,6 +1514,13 @@
    */
   var reflow = function (element) { return element.offsetHeight; };
 
+  /**
+   * Shortcut for multiple uses of `HTMLElement.style.propertyName` method.
+   * @param  {HTMLElement} element target element
+   * @param  {Partial<CSSStyleDeclaration>} styles attribute value
+   */
+  var setElementStyle = function (element, styles) { ObjectAssign(element.style, styles); };
+
   /** @type {Map<HTMLElement, any>} */
   var TimeCache = new Map();
   /**
@@ -1545,21 +1612,6 @@
   }
 
   /**
-   * Shortcut for `HTMLElement.getAttribute()` method.
-   * @param  {HTMLElement} element target element
-   * @param  {string} attribute attribute name
-   */
-  var getAttribute = function (element, attribute) { return element.getAttribute(attribute); };
-
-  /**
-   * Shortcut for `SVGElement.getAttributeNS()` method.
-   * @param  {HTMLElement} element target element
-   * @param  {string} attribute attribute name
-   * @param  {string=} ns attribute namespace
-   */
-  var getAttributeNS = function (element, attribute, ns) { return element.getAttributeNS(ns || null, attribute); };
-
-  /**
    * Checks if an element is an `HTMLElement`.
    *
    * @param {any} element the target object
@@ -1638,7 +1690,7 @@
   /**
    * Check if target is a `ShadowRoot`.
    *
-   * @param {HTMLElement} element target
+   * @param {any} element target
    * @returns {boolean} the query result
    */
   var isShadowRoot = function (element) {
@@ -1681,10 +1733,10 @@
   }
 
   /**
-   * Returns the `Window` object.
+   * Returns the `Window` object of a target node.
    * @see https://github.com/floating-ui/floating-ui
    *
-   * @param {(Node | Element)=} node target node
+   * @param {(Node | Element | Window)=} node target node
    * @returns {Window} the `Window` object
    */
   function getWindow(node) {
@@ -1693,6 +1745,7 @@
     }
 
     if (!isWindow(node)) {
+      // @ts-ignore
       var ownerDocument = node.ownerDocument;
       return ownerDocument ? ownerDocument.defaultView || window : window;
     }
@@ -1823,45 +1876,6 @@
       height: rect.height,
     };
   }
-
-  /**
-   * Shortcut for `HTMLElement.setAttribute()` method.
-   * @param  {HTMLElement} element target element
-   * @param  {string} attribute attribute name
-   * @param  {string} value attribute value
-   */
-  var setAttribute = function (element, attribute, value) { return element.setAttribute(attribute, value); };
-
-  /**
-   * Shortcut for `SVGElement.setAttributeNS()` method.
-   * @param  {HTMLElement} element target element
-   * @param  {string} att attribute name
-   * @param  {string} value attribute value
-   * @param  {string=} ns attribute namespace
-   */
-  var setAttributeNS = function (element, att, value, ns) { return element.setAttributeNS(ns || null, att, value); };
-
-  /**
-   * Shortcut for `HTMLElement.removeAttribute()` method.
-   * @param  {HTMLElement} element target element
-   * @param  {string} attribute attribute name
-   */
-  var removeAttribute = function (element, attribute) { return element.removeAttribute(attribute); };
-
-  /**
-   * Shortcut for `HTMLElement.removeAttributeNS()` method.
-   * @param  {HTMLElement} element target element
-   * @param  {string} att attribute name
-   * @param  {string=} ns attribute namespace
-   */
-  var removeAttributeNS = function (element, att, ns) { return element.removeAttributeNS(ns || null, att); };
-
-  /**
-   * Shortcut for multiple uses of `HTMLElement.style.propertyName` method.
-   * @param  {HTMLElement} element target element
-   * @param  {Partial<CSSStyleDeclaration>} styles attribute value
-   */
-  var setElementStyle = function (element, styles) { return ObjectAssign(element.style, styles); };
 
   /**
    * Shortcut for `Array.isArray()` static method.
@@ -2001,7 +2015,6 @@
    * `CustomElement`.
    * @see https://stackoverflow.com/questions/27334365/how-to-get-list-of-registered-custom-elements
    *
-   *
    * @param {HTMLElement=} parent parent to look into
    * @returns {Node[]} the query result
    */
@@ -2051,7 +2064,7 @@
     return lookUp.getElementsByClassName(selector);
   }
 
-  var version = "0.3.0alpha2";
+  var version = "0.3.0alpha3";
 
   // @ts-ignore
 
@@ -2247,6 +2260,8 @@
     getDocumentElement: getDocumentElement,
     getElementStyle: getElementStyle,
     setElementStyle: setElementStyle,
+    hasAttribute: hasAttribute,
+    hasAttributeNS: hasAttributeNS,
     getAttribute: getAttribute,
     getAttributeNS: getAttributeNS,
     setAttribute: setAttribute,

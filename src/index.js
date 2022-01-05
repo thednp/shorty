@@ -132,6 +132,16 @@ import supportTouch from './boolean/supportTouch';
 import supportAnimation from './boolean/supportAnimation';
 import supportTransition from './boolean/supportTransition';
 
+// attributes
+import getAttribute from './attr/getAttribute';
+import getAttributeNS from './attr/getAttributeNS';
+import hasAttribute from './attr/hasAttribute';
+import hasAttributeNS from './attr/hasAttributeNS';
+import setAttribute from './attr/setAttribute';
+import setAttributeNS from './attr/setAttributeNS';
+import removeAttribute from './attr/removeAttribute';
+import removeAttributeNS from './attr/removeAttributeNS';
+
 // class
 import addClass from './class/addClass';
 import removeClass from './class/removeClass';
@@ -159,12 +169,11 @@ import ObjectKeys from './misc/ObjectKeys';
 import ObjectValues from './misc/ObjectValues';
 import passiveHandler from './misc/passiveHandler';
 import reflow from './misc/reflow';
+import setElementStyle from './misc/setElementStyle';
 import Timer from './misc/timer';
 import tryWrapper from './misc/tryWrapper';
 
 // get
-import getAttribute from './get/getAttribute';
-import getAttributeNS from './get/getAttributeNS';
 import getBoundingClientRect from './get/getBoundingClientRect';
 import getDocumentElement from './get/getDocumentElement';
 import getElementAnimationDuration from './get/getElementAnimationDuration';
@@ -181,13 +190,6 @@ import getOffsetParent from './get/getOffsetParent';
 import getParentNode from './get/getParentNode';
 import getRectRelativeToOffsetParent from './get/getRectRelativeToOffsetParent';
 import getWindow from './get/getWindow';
-
-// manipulate
-import setAttribute from './manipulate/setAttribute';
-import setAttributeNS from './manipulate/setAttributeNS';
-import removeAttribute from './manipulate/removeAttribute';
-import removeAttributeNS from './manipulate/removeAttributeNS';
-import setElementStyle from './manipulate/setElementStyle';
 
 // is
 import isArray from './is/isArray';
@@ -403,6 +405,8 @@ const SHORTER = {
   getDocumentElement,
   getElementStyle,
   setElementStyle,
+  hasAttribute,
+  hasAttributeNS,
   getAttribute,
   getAttributeNS,
   setAttribute,
