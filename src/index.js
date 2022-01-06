@@ -175,7 +175,10 @@ import tryWrapper from './misc/tryWrapper';
 
 // get
 import getBoundingClientRect from './get/getBoundingClientRect';
+import getDocument from './get/getDocument';
+import getDocumentBody from './get/getDocumentBody';
 import getDocumentElement from './get/getDocumentElement';
+import getDocumentHead from './get/getDocumentHead';
 import getElementAnimationDuration from './get/getElementAnimationDuration';
 import getElementAnimationDurationLegacy from './get/getElementAnimationDurationLegacy';
 import getElementAnimationDelayLegacy from './get/getElementAnimationDelayLegacy';
@@ -186,7 +189,6 @@ import getElementTransitionDurationLegacy from './get/getElementTransitionDurati
 import getElementTransitionDelay from './get/getElementTransitionDelay';
 import getElementTransitionDelayLegacy from './get/getElementTransitionDelayLegacy';
 import getNodeScroll from './get/getNodeScroll';
-import getOffsetParent from './get/getOffsetParent';
 import getParentNode from './get/getParentNode';
 import getRectRelativeToOffsetParent from './get/getRectRelativeToOffsetParent';
 import getWindow from './get/getWindow';
@@ -364,7 +366,6 @@ const SHORTER = {
   getElementTransitionDelay,
   getElementTransitionDelayLegacy,
   getNodeScroll,
-  getOffsetParent,
   getParentNode,
   getRectRelativeToOffsetParent,
   getWindow,
@@ -402,7 +403,10 @@ const SHORTER = {
   ObjectKeys,
   ObjectValues,
   getBoundingClientRect,
+  getDocument,
+  getDocumentBody,
   getDocumentElement,
+  getDocumentHead,
   getElementStyle,
   setElementStyle,
   hasAttribute,

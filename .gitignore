@@ -1,5 +1,6 @@
+.eslintrc
 .vscode/
-experiments/
 node_modules/
+experiments/
 package-lock.json
 .npmignore

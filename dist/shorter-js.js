@@ -1,5 +1,5 @@
 /*!
-* shorter-js v0.3.0alpha3 (https://github.com/thednp/shorter-js)
+* shorter-js v0.3.0alpha4 (https://github.com/thednp/shorter-js)
 * Copyright 2019-2022 © dnp_theme
 * Licensed under MIT (https://github.com/thednp/shorter-js/blob/master/LICENSE)
 */
@@ -993,7 +993,7 @@
   /**
    * Shortcut for `Array.from()` static method.
    *
-   * @param  {any[] | HTMLCollection | NodeList} arr array-like iterable object
+   * @param  {any[] | HTMLCollection | NodeList | Map<any, any>} arr array-like iterable object
    * @returns {Array<any>}
    */
   var ArrayFrom = function (arr) { return Array.from(arr); };
@@ -1044,7 +1044,7 @@
     /**
      * Returns all instances for specified component.
      * @param {string} component the component's name or a unique key
-     * @returns {Map<HTMLElement, SHORTER.Component> | null} all the component instances
+     * @returns {Map<HTMLElement, SHORTER.Component>?} all the component instances
      */
     getAllFor: function (component) {
       var instanceMap = componentData.get(component);
@@ -1057,7 +1057,7 @@
      * Returns the instance associated with the target.
      * @param {HTMLElement | string} target target element
      * @param {string} component the component's name or a unique key
-     * @returns {SHORTER.Component | null} the instance
+     * @returns {SHORTER.Component?} the instance
      */
     get: function (target, component) {
       var element = querySelector(target);
@@ -1629,38 +1629,95 @@
    * @returns {SHORTER.BoundingClientRect} the bounding client rect object
    */
   function getBoundingClientRect(element, includeScale) {
-    var clientRect = element.getBoundingClientRect();
+    var ref = element.getBoundingClientRect();
+    var width = ref.width;
+    var height = ref.height;
+    var top = ref.top;
+    var right = ref.right;
+    var bottom = ref.bottom;
+    var left = ref.left;
     var scaleX = 1;
     var scaleY = 1;
 
     if (includeScale && isHTMLElement(element)) {
       scaleX = element.offsetWidth > 0
-        ? Math.round(clientRect.width) / element.offsetWidth || 1 : 1;
+        ? Math.round(width) / element.offsetWidth || 1 : 1;
       scaleY = element.offsetHeight > 0
-        ? Math.round(clientRect.height) / element.offsetHeight || 1 : 1;
+        ? Math.round(height) / element.offsetHeight || 1 : 1;
     }
 
     return {
-      width: clientRect.width / scaleX,
-      height: clientRect.height / scaleY,
-      top: clientRect.top / scaleY,
-      right: clientRect.right / scaleX,
-      bottom: clientRect.bottom / scaleY,
-      left: clientRect.left / scaleX,
-      x: clientRect.left / scaleX,
-      y: clientRect.top / scaleY,
+      width: width / scaleX,
+      height: height / scaleY,
+      top: top / scaleY,
+      right: right / scaleX,
+      bottom: bottom / scaleY,
+      left: left / scaleX,
+      x: left / scaleX,
+      y: top / scaleY,
     };
   }
 
   /**
-   * Returns the `document.documentElement` or the `<html>` element.
+   * Check if a target node is `window`.
+   *
+   * @param {any} node the target node
+   * @returns {boolean} the query result
+   */
+  function isWindow(node) {
+    return node instanceof Window;
+  }
+
+  /**
+   * Checks if an object is a `Node`.
+   *
+   * @param {any} node the target object
+   * @returns {boolean} the query result
+   */
+  var isNode = function (node) { return node instanceof Node; };
+
+  /**
+   * Returns the `document` or the `#document` element.
    * @see https://github.com/floating-ui/floating-ui
-   * @param {Node | Window} node
+   * @param {(Node | HTMLElement | Element | Window)=} node
+   * @returns {Document}
+   */
+  function getDocument(node) {
+    // @ts-ignore -- `isNode` checks that
+    if (isNode(node)) { return node.ownerDocument; }
+    // @ts-ignore -- `isWindow` checks that too
+    if (isWindow(node)) { return node.document; }
+    return window.document;
+  }
+
+  /**
+   * Returns the `document.body` or the `<body>` element.
+   *
+   * @param {(Node | HTMLElement | Element)=} node
+   * @returns {HTMLElement}
+   */
+  function getDocumentBody(node) {
+    return getDocument(node).body;
+  }
+
+  /**
+   * Returns the `document.documentElement` or the `<html>` element.
+   *
+   * @param {(Node | HTMLElement | Element)=} node
    * @returns {HTMLElement}
    */
   function getDocumentElement(node) {
-    var doc = (node instanceof Node ? node.ownerDocument : node.document) || window.document;
-    return doc.documentElement;
+    return getDocument(node).documentElement;
+  }
+
+  /**
+   * Returns the `document.head` or the `<head>` element.
+   *
+   * @param {(Node | HTMLElement | Element)=} node
+   * @returns {HTMLElement}
+   */
+  function getDocumentHead(node) {
+    return getDocument(node).head;
   }
 
   /**
@@ -1681,11 +1738,26 @@
   }
 
   /**
-   * Check if a target element is a `<table>`, `<td>` or `<th>`.
-   * @param {any} element the target element
-   * @returns {boolean} the query result
+   * Returns the `Window` object of a target node.
+   * @see https://github.com/floating-ui/floating-ui
+   *
+   * @param {(Node | Element | HTMLElement | Window)=} node target node
+   * @returns {globalThis} the `Window` object
    */
-  var isTableElement = function (element) { return ['TABLE', 'TD', 'TH'].includes(element.tagName); };
+  function getWindow(node) {
+    if (node == null) {
+      return window;
+    }
+
+    if (!isWindow(node)) {
+      // @ts-ignore
+      var ownerDocument = node.ownerDocument;
+      return ownerDocument ? ownerDocument.defaultView || window : window;
+    }
+
+    // @ts-ignore -- we know it's window, we checked above
+    return node;
+  }
 
   /**
    * Check if target is a `ShadowRoot`.
@@ -1694,8 +1766,7 @@
    * @returns {boolean} the query result
    */
   var isShadowRoot = function (element) {
-    // eslint-disable-next-line no-restricted-globals
-    var OwnElement = (self || window).ShadowRoot;
+    var OwnElement = getWindow(element).ShadowRoot;
     return element instanceof OwnElement || element instanceof ShadowRoot;
   };
 
@@ -1722,121 +1793,6 @@
   }
 
   /**
-   * Check if a target node is `window`.
-   *
-   * @param {any} node the target node
-   * @returns {boolean} the query result
-   */
-  function isWindow(node) {
-    // eslint-disable-next-line no-restricted-globals
-    return [self, window].includes(node);
-  }
-
-  /**
-   * Returns the `Window` object of a target node.
-   * @see https://github.com/floating-ui/floating-ui
-   *
-   * @param {(Node | Element | Window)=} node target node
-   * @returns {Window} the `Window` object
-   */
-  function getWindow(node) {
-    if (node == null) {
-      return window;
-    }
-
-    if (!isWindow(node)) {
-      // @ts-ignore
-      var ownerDocument = node.ownerDocument;
-      return ownerDocument ? ownerDocument.defaultView || window : window;
-    }
-
-    // @ts-ignore
-    return node;
-  }
-
-  /**
-   * @param {Node} element
-   * @returns {boolean}
-   */
-  function isContainingBlock(element) {
-    // TODO: Try and use feature detection here instead
-    var ref = getComputedStyle(element);
-    var transform = ref.transform;
-    var perspective = ref.perspective;
-    var contain = ref.contain;
-    var willChange = ref.willChange;
-    var filter = ref.filter;
-    // This is non-exhaustive but covers the most common CSS properties that
-    // create a containing block.
-    // https://developer.mozilla.org/en-US/docs/Web/CSS/Containing_block#identifying_the_containing_block
-
-    return transform !== 'none'
-      || perspective !== 'none'
-      || contain === 'paint'
-      || ['transform', 'perspective'].includes(willChange)
-      || (isFirefox && willChange === 'filter')
-      || (isFirefox && (filter ? filter !== 'none' : false));
-  }
-
-  /**
-   * @param {Node} element
-   * @returns {(Node | ParentNode)?}
-   */
-  function getContainingBlock(element) {
-    var currentNode = getParentNode(element);
-
-    while (isHTMLElement(currentNode) && !['HTML', 'BODY'].includes(currentNode.nodeName)) {
-      if (isContainingBlock(currentNode)) {
-        return currentNode;
-      }
-      // @ts-ignore
-      currentNode = currentNode.parentNode;
-    }
-
-    return null;
-  }
-
-  /**
-   * @param {HTMLElement} element
-   * @returns {HTMLElement?}
-   */
-  function getTrueOffsetParent(element) {
-    if (!isHTMLElement(element) || getElementStyle(element, 'position') === 'fixed') {
-      return null;
-    }
-
-    // @ts-ignore
-    return element.offsetParent;
-  }
-
-  /**
-   * Returns the best possible container for offsets computation.
-   * @see https://github.com/floating-ui/floating-ui
-   *
-   * @param {HTMLElement} element target element
-   * @returns {HTMLElement | Window | Node} the best `Node` / `Element` match
-   */
-  function getOffsetParent(element) {
-    // eslint-disable-next-line no-restricted-globals
-    var win = getWindow(element);
-    var offsetParent = getTrueOffsetParent(element);
-
-    while (offsetParent && isTableElement(offsetParent)
-      && getElementStyle(offsetParent, 'position') === 'static') {
-      offsetParent = getTrueOffsetParent(offsetParent);
-    }
-
-    if (offsetParent
-      && (['HTML', 'BODY'].includes(offsetParent.tagName)
-        && getElementStyle(offsetParent, 'position') === 'static'
-          && !isContainingBlock(offsetParent))) {
-      return win;
-    }
-
-    return offsetParent || getContainingBlock(element) || win;
-  }
-
-  /**
    * Checks if a target `HTMLElement` is affected by scale.
    * @see https://github.com/floating-ui/floating-ui
    *
@@ -1854,18 +1810,21 @@
    * @see https://github.com/floating-ui/floating-ui
    *
    * @param {HTMLElement} element target
-   * @param {HTMLElement} offsetParent the container / offset parent
+   * @param {HTMLElement | globalThis} offsetParent the container / offset parent
    * @param {{x: number, y: number}} scroll
-   * @returns {Record<string, number>}
+   * @returns {Partial<SHORTER.BoundingClientRect>}
    */
   function getRectRelativeToOffsetParent(element, offsetParent, scroll) {
-    var isParentAnElement = isHTMLElement(offsetParent);
+    var isParentAnElement = isHTMLElement(offsetParent); // @ts-ignore -- `isParentAnElement` checks
     var rect = getBoundingClientRect(element, isParentAnElement && isScaledElement(offsetParent));
     var offsets = { x: 0, y: 0 };
 
     if (isParentAnElement) {
+      // @ts-ignore -- `isParentAnElement` checks
       var offsetRect = getBoundingClientRect(offsetParent, true);
+      // @ts-ignore -- `isParentAnElement` checks
       offsets.x = offsetRect.x + offsetParent.clientLeft;
+      // @ts-ignore -- `isParentAnElement` checks
       offsets.y = offsetRect.y + offsetParent.clientTop;
     }
 
@@ -1901,9 +1860,12 @@
    * @return {boolean} the query result
    */
   var isElementInScrollRange = function (element) {
-    var bcr = element.getBoundingClientRect();
-    var viewportHeight = window.innerHeight || document.documentElement.clientHeight;
-    return bcr.top <= viewportHeight && bcr.bottom >= 0; // bottom && top
+    var ref = getBoundingClientRect(element);
+    var top = ref.top;
+    var bottom = ref.bottom;
+    var html = getDocumentElement(element);
+    // checks bottom && top
+    return top <= html.clientHeight && bottom >= 0;
   };
 
   /**
@@ -1960,14 +1922,6 @@
       .some(function (mediaType) { return element instanceof mediaType; }); };
 
   /**
-   * Checks if an object is a `Node`.
-   *
-   * @param {any} node the target object
-   * @returns {boolean} the query result
-   */
-  var isNode = function (node) { return node instanceof Node; };
-
-  /**
    * Checks if an object is a `NodeList`.
    *
    * @param {any} object the target object
@@ -1977,11 +1931,10 @@
 
   /**
    * Checks if a page is Right To Left.
+   * @param {HTMLElement} node the target
    * @returns {boolean} the query result
    */
-  var isRTL = function () { return [
-    document.body,
-    document.documentElement ].some(function (el) { return el.dir === 'rtl'; }); };
+  var isRTL = function (node) { return getDocumentElement(node).dir === 'rtl'; };
 
   /**
    * Shortcut for `typeof SOMETHING === string` static method.
@@ -1997,6 +1950,13 @@
    * @returns {boolean} the query result
    */
   var isSVGElement = function (element) { return element instanceof SVGElement; };
+
+  /**
+   * Check if a target element is a `<table>`, `<td>` or `<th>`.
+   * @param {any} element the target element
+   * @returns {boolean} the query result
+   */
+  var isTableElement = function (element) { return ['TABLE', 'TD', 'TH'].includes(element.tagName); };
 
   /**
    * Shortcut for `HTMLElement.closest` method.
@@ -2064,7 +2024,7 @@
     return lookUp.getElementsByClassName(selector);
   }
 
-  var version = "0.3.0alpha3";
+  var version = "0.3.0alpha4";
 
   // @ts-ignore
 
@@ -2219,7 +2179,6 @@
     getElementTransitionDelay: getElementTransitionDelay$1,
     getElementTransitionDelayLegacy: getElementTransitionDelay,
     getNodeScroll: getNodeScroll,
-    getOffsetParent: getOffsetParent,
     getParentNode: getParentNode,
     getRectRelativeToOffsetParent: getRectRelativeToOffsetParent,
     getWindow: getWindow,
@@ -2257,7 +2216,10 @@
     ObjectKeys: ObjectKeys,
     ObjectValues: ObjectValues,
     getBoundingClientRect: getBoundingClientRect,
+    getDocument: getDocument,
+    getDocumentBody: getDocumentBody,
     getDocumentElement: getDocumentElement,
+    getDocumentHead: getDocumentHead,
     getElementStyle: getElementStyle,
     setElementStyle: setElementStyle,
     hasAttribute: hasAttribute,

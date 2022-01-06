@@ -125,7 +125,10 @@ export { default as setAttributeNS } from "shorter-js/src/attr/setAttributeNS";
 export { default as removeAttribute } from "shorter-js/src/attr/removeAttribute";
 export { default as removeAttributeNS } from "shorter-js/src/attr/removeAttributeNS";
 export { default as getBoundingClientRect } from "shorter-js/src/get/getBoundingClientRect";
+export { default as getDocument } from "shorter-js/src/get/getDocument";
+export { default as getDocumentBody } from "shorter-js/src/get/getDocumentBody";
 export { default as getDocumentElement } from "shorter-js/src/get/getDocumentElement";
+export { default as getDocumentHead } from "shorter-js/src/get/getDocumentHead";
 export { default as getElementAnimationDuration } from "shorter-js/src/get/getElementAnimationDuration";
 export { default as getElementAnimationDurationLegacy } from "shorter-js/src/get/getElementAnimationDurationLegacy";
 export { default as getElementAnimationDelay } from "shorter-js/src/get/getElementAnimationDelay";
@@ -136,7 +139,6 @@ export { default as getElementTransitionDurationLegacy } from "shorter-js/src/ge
 export { default as getElementTransitionDelay } from "shorter-js/src/get/getElementTransitionDelay";
 export { default as getElementTransitionDelayLegacy } from "shorter-js/src/get/getElementTransitionDelayLegacy";
 export { default as getNodeScroll } from "shorter-js/src/get/getNodeScroll";
-export { default as getOffsetParent } from "shorter-js/src/get/getOffsetParent";
 export { default as getParentNode } from "shorter-js/src/get/getParentNode";
 export { default as getRectRelativeToOffsetParent } from "shorter-js/src/get/getRectRelativeToOffsetParent";
 export { default as getWindow } from "shorter-js/src/get/getWindow";

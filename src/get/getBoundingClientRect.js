@@ -10,25 +10,27 @@ import isHTMLElement from '../is/isHTMLElement';
  * @returns {SHORTER.BoundingClientRect} the bounding client rect object
  */
 export default function getBoundingClientRect(element, includeScale) {
-  const clientRect = element.getBoundingClientRect();
+  const {
+    width, height, top, right, bottom, left,
+  } = element.getBoundingClientRect();
   let scaleX = 1;
   let scaleY = 1;
 
   if (includeScale && isHTMLElement(element)) {
     scaleX = element.offsetWidth > 0
-      ? Math.round(clientRect.width) / element.offsetWidth || 1 : 1;
+      ? Math.round(width) / element.offsetWidth || 1 : 1;
     scaleY = element.offsetHeight > 0
-      ? Math.round(clientRect.height) / element.offsetHeight || 1 : 1;
+      ? Math.round(height) / element.offsetHeight || 1 : 1;
   }
 
   return {
-    width: clientRect.width / scaleX,
-    height: clientRect.height / scaleY,
-    top: clientRect.top / scaleY,
-    right: clientRect.right / scaleX,
-    bottom: clientRect.bottom / scaleY,
-    left: clientRect.left / scaleX,
-    x: clientRect.left / scaleX,
-    y: clientRect.top / scaleY,
+    width: width / scaleX,
+    height: height / scaleY,
+    top: top / scaleY,
+    right: right / scaleX,
+    bottom: bottom / scaleY,
+    left: left / scaleX,
+    x: left / scaleX,
+    y: top / scaleY,
   };
 }

@@ -1,3 +1,6 @@
+import getBoundingClientRect from '../get/getBoundingClientRect';
+import getDocumentElement from '../get/getDocumentElement';
+
 /**
  * Utility to determine if an `HTMLElement`
  * is partially visible in viewport.
@@ -6,9 +9,10 @@
  * @return {boolean} the query result
  */
 const isElementInScrollRange = (element) => {
-  const bcr = element.getBoundingClientRect();
-  const viewportHeight = window.innerHeight || document.documentElement.clientHeight;
-  return bcr.top <= viewportHeight && bcr.bottom >= 0; // bottom && top
+  const { top, bottom } = getBoundingClientRect(element);
+  const html = getDocumentElement(element);
+  // checks bottom && top
+  return top <= html.clientHeight && bottom >= 0;
 };
 
 export default isElementInScrollRange;

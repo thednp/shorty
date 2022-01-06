@@ -1,3 +1,4 @@
+import getWindow from '../get/getWindow';
 /**
  * Check if target is a `ShadowRoot`.
  *
@@ -5,8 +6,7 @@
  * @returns {boolean} the query result
  */
 const isShadowRoot = (element) => {
-  // eslint-disable-next-line no-restricted-globals
-  const OwnElement = (self || window).ShadowRoot;
+  const OwnElement = getWindow(element).ShadowRoot;
   return element instanceof OwnElement || element instanceof ShadowRoot;
 };
 export default isShadowRoot;

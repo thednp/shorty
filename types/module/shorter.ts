@@ -142,7 +142,10 @@ export { default as removeAttributeNS } from '../../src/attr/removeAttributeNS';
 
 // get
 export { default as getBoundingClientRect } from '../../src/get/getBoundingClientRect';
+export { default as getDocument } from '../../src/get/getDocument';
+export { default as getDocumentBody } from '../../src/get/getDocumentBody';
 export { default as getDocumentElement } from '../../src/get/getDocumentElement';
+export { default as getDocumentHead } from '../../src/get/getDocumentHead';
 export { default as getElementAnimationDuration } from "../../src/get/getElementAnimationDuration";
 export { default as getElementAnimationDurationLegacy } from "../../src/get/getElementAnimationDurationLegacy";
 export { default as getElementAnimationDelay } from "../../src/get/getElementAnimationDelay";
@@ -153,7 +156,6 @@ export { default as getElementTransitionDurationLegacy } from "../../src/get/get
 export { default as getElementTransitionDelay } from "../../src/get/getElementTransitionDelay";
 export { default as getElementTransitionDelayLegacy } from "../../src/get/getElementTransitionDelayLegacy";
 export { default as getNodeScroll } from "../../src/get/getNodeScroll";
-export { default as getOffsetParent } from "../../src/get/getOffsetParent";
 export { default as getParentNode } from "../../src/get/getParentNode";
 export { default as getRectRelativeToOffsetParent } from "../../src/get/getRectRelativeToOffsetParent";
 export { default as getWindow } from "../../src/get/getWindow";

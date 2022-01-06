@@ -1060,14 +1060,60 @@ declare module "shorter-js/src/get/getBoundingClientRect" {
      */
     export default function getBoundingClientRect(element: HTMLElement, includeScale?: boolean | undefined): SHORTER.BoundingClientRect;
 }
+declare module "shorter-js/src/is/isWindow" {
+    /**
+     * Check if a target node is `window`.
+     *
+     * @param {any} node the target node
+     * @returns {boolean} the query result
+     */
+    export default function isWindow(node: any): boolean;
+}
+declare module "shorter-js/src/is/isNode" {
+    export default isNode;
+    /**
+     * Checks if an object is a `Node`.
+     *
+     * @param {any} node the target object
+     * @returns {boolean} the query result
+     */
+    function isNode(node: any): boolean;
+}
+declare module "shorter-js/src/get/getDocument" {
+    /**
+     * Returns the `document` or the `#document` element.
+     * @see https://github.com/floating-ui/floating-ui
+     * @param {(Node | HTMLElement | Element | Window)=} node
+     * @returns {Document}
+     */
+    export default function getDocument(node?: (Node | HTMLElement | Element | Window) | undefined): Document;
+}
+declare module "shorter-js/src/get/getDocumentBody" {
+    /**
+     * Returns the `document.body` or the `<body>` element.
+     *
+     * @param {(Node | HTMLElement | Element)=} node
+     * @returns {HTMLElement}
+     */
+    export default function getDocumentBody(node?: (Node | HTMLElement | Element) | undefined): HTMLElement;
+}
 declare module "shorter-js/src/get/getDocumentElement" {
     /**
      * Returns the `document.documentElement` or the `<html>` element.
-     * @see https://github.com/floating-ui/floating-ui
-     * @param {Node | Window} node
+     *
+     * @param {(Node | HTMLElement | Element)=} node
      * @returns {HTMLElement}
      */
-    export default function getDocumentElement(node: Node | Window): HTMLElement;
+    export default function getDocumentElement(node?: (Node | HTMLElement | Element) | undefined): HTMLElement;
+}
+declare module "shorter-js/src/get/getDocumentHead" {
+    /**
+     * Returns the `document.head` or the `<head>` element.
+     *
+     * @param {(Node | HTMLElement | Element)=} node
+     * @returns {HTMLElement}
+     */
+    export default function getDocumentHead(node?: (Node | HTMLElement | Element) | undefined): HTMLElement;
 }
 declare module "shorter-js/src/get/getElementStyle" {
     /**
@@ -1178,14 +1224,15 @@ declare module "shorter-js/src/get/getNodeScroll" {
         y: number;
     };
 }
-declare module "shorter-js/src/is/isTableElement" {
-    export default isTableElement;
+declare module "shorter-js/src/get/getWindow" {
     /**
-     * Check if a target element is a `<table>`, `<td>` or `<th>`.
-     * @param {any} element the target element
-     * @returns {boolean} the query result
+     * Returns the `Window` object of a target node.
+     * @see https://github.com/floating-ui/floating-ui
+     *
+     * @param {(Node | Element | HTMLElement | Window)=} node target node
+     * @returns {globalThis} the `Window` object
      */
-    function isTableElement(element: any): boolean;
+    export default function getWindow(node?: (Node | Element | HTMLElement | Window) | undefined): typeof globalThis;
 }
 declare module "shorter-js/src/is/isShadowRoot" {
     export default isShadowRoot;
@@ -1207,35 +1254,6 @@ declare module "shorter-js/src/get/getParentNode" {
      */
     export default function getParentNode(node: Node | Element): Node;
 }
-declare module "shorter-js/src/is/isWindow" {
-    /**
-     * Check if a target node is `window`.
-     *
-     * @param {any} node the target node
-     * @returns {boolean} the query result
-     */
-    export default function isWindow(node: any): boolean;
-}
-declare module "shorter-js/src/get/getWindow" {
-    /**
-     * Returns the `Window` object of a target node.
-     * @see https://github.com/floating-ui/floating-ui
-     *
-     * @param {(Node | Element | Window)=} node target node
-     * @returns {Window} the `Window` object
-     */
-    export default function getWindow(node?: (Node | Element | Window) | undefined): Window;
-}
-declare module "shorter-js/src/get/getOffsetParent" {
-    /**
-     * Returns the best possible container for offsets computation.
-     * @see https://github.com/floating-ui/floating-ui
-     *
-     * @param {HTMLElement} element target element
-     * @returns {HTMLElement | Window | Node} the best `Node` / `Element` match
-     */
-    export default function getOffsetParent(element: HTMLElement): HTMLElement | Window | Node;
-}
 declare module "shorter-js/src/is/isScaledElement" {
     /**
      * Checks if a target `HTMLElement` is affected by scale.
@@ -1252,14 +1270,14 @@ declare module "shorter-js/src/get/getRectRelativeToOffsetParent" {
      * @see https://github.com/floating-ui/floating-ui
      *
      * @param {HTMLElement} element target
-     * @param {HTMLElement} offsetParent the container / offset parent
+     * @param {HTMLElement | globalThis} offsetParent the container / offset parent
      * @param {{x: number, y: number}} scroll
-     * @returns {Record<string, number>}
+     * @returns {Partial<SHORTER.BoundingClientRect>}
      */
-    export default function getRectRelativeToOffsetParent(element: HTMLElement, offsetParent: HTMLElement, scroll: {
+    export default function getRectRelativeToOffsetParent(element: HTMLElement, offsetParent: HTMLElement | typeof globalThis, scroll: {
         x: number;
         y: number;
-    }): Record<string, number>;
+    }): Partial<SHORTER.BoundingClientRect>;
 }
 declare module "shorter-js/src/class/addClass" {
     /**
@@ -1576,16 +1594,6 @@ declare module "shorter-js/src/is/isMedia" {
      */
     function isMedia(element: any): boolean;
 }
-declare module "shorter-js/src/is/isNode" {
-    export default isNode;
-    /**
-     * Checks if an object is a `Node`.
-     *
-     * @param {any} node the target object
-     * @returns {boolean} the query result
-     */
-    function isNode(node: any): boolean;
-}
 declare module "shorter-js/src/is/isNodeList" {
     export default isNodeList;
     /**
@@ -1600,9 +1608,10 @@ declare module "shorter-js/src/is/isRTL" {
     export default isRTL;
     /**
      * Checks if a page is Right To Left.
+     * @param {HTMLElement} node the target
      * @returns {boolean} the query result
      */
-    function isRTL(): boolean;
+    function isRTL(node: HTMLElement): boolean;
 }
 declare module "shorter-js/src/is/isString" {
     export default isString;
@@ -1622,6 +1631,15 @@ declare module "shorter-js/src/is/isSVGElement" {
      * @returns {boolean} the query result
      */
     function isSVGElement(element: any): boolean;
+}
+declare module "shorter-js/src/is/isTableElement" {
+    export default isTableElement;
+    /**
+     * Check if a target element is a `<table>`, `<td>` or `<th>`.
+     * @param {any} element the target element
+     * @returns {boolean} the query result
+     */
+    function isTableElement(element: any): boolean;
 }
 declare module "shorter-js/src/selectors/closest" {
     /**
@@ -1807,7 +1825,10 @@ declare module "shorter-js/types/module/shorter" {
     export { default as removeAttribute } from "shorter-js/src/attr/removeAttribute";
     export { default as removeAttributeNS } from "shorter-js/src/attr/removeAttributeNS";
     export { default as getBoundingClientRect } from "shorter-js/src/get/getBoundingClientRect";
+    export { default as getDocument } from "shorter-js/src/get/getDocument";
+    export { default as getDocumentBody } from "shorter-js/src/get/getDocumentBody";
     export { default as getDocumentElement } from "shorter-js/src/get/getDocumentElement";
+    export { default as getDocumentHead } from "shorter-js/src/get/getDocumentHead";
     export { default as getElementAnimationDuration } from "shorter-js/src/get/getElementAnimationDuration";
     export { default as getElementAnimationDurationLegacy } from "shorter-js/src/get/getElementAnimationDurationLegacy";
     export { default as getElementAnimationDelay } from "shorter-js/src/get/getElementAnimationDelay";
@@ -1818,7 +1839,6 @@ declare module "shorter-js/types/module/shorter" {
     export { default as getElementTransitionDelay } from "shorter-js/src/get/getElementTransitionDelay";
     export { default as getElementTransitionDelayLegacy } from "shorter-js/src/get/getElementTransitionDelayLegacy";
     export { default as getNodeScroll } from "shorter-js/src/get/getNodeScroll";
-    export { default as getOffsetParent } from "shorter-js/src/get/getOffsetParent";
     export { default as getParentNode } from "shorter-js/src/get/getParentNode";
     export { default as getRectRelativeToOffsetParent } from "shorter-js/src/get/getRectRelativeToOffsetParent";
     export { default as getWindow } from "shorter-js/src/get/getWindow";
