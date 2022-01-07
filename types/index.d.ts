@@ -197,4 +197,5 @@ export {
   Component,
   getInstance,
   BoundingClientRect,
+  OffsetRect,
 } from './module/types'

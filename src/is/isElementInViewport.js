@@ -1,4 +1,5 @@
 import getBoundingClientRect from '../get/getBoundingClientRect';
+import getDocumentElement from '../get/getDocumentElement';
 
 /**
  * Utility to determine if an `HTMLElement`
@@ -8,12 +9,14 @@ import getBoundingClientRect from '../get/getBoundingClientRect';
  * @return {boolean} the query result
  */
 const isElementInViewport = (element) => {
-  const bcr = getBoundingClientRect(element, true);
+  const {
+    top, left, bottom, right,
+  } = getBoundingClientRect(element, true);
+  const { clientWidth, clientHeight } = getDocumentElement(element);
   return (
-    bcr.top >= 0
-    && bcr.left >= 0
-    && bcr.bottom <= (window.innerHeight || document.documentElement.clientHeight)
-    && bcr.right <= (window.innerWidth || document.documentElement.clientWidth)
+    top >= 0 && left >= 0
+    && bottom <= clientHeight
+    && right <= clientWidth
   );
 };
 export default isElementInViewport;

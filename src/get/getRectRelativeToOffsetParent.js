@@ -7,9 +7,9 @@ import getBoundingClientRect from './getBoundingClientRect';
  * @see https://github.com/floating-ui/floating-ui
  *
  * @param {HTMLElement} element target
- * @param {HTMLElement | globalThis} offsetParent the container / offset parent
+ * @param {HTMLElement | Window} offsetParent the container / offset parent
  * @param {{x: number, y: number}} scroll
- * @returns {Partial<SHORTER.BoundingClientRect>}
+ * @returns {SHORTER.OffsetRect}
  */
 export default function getRectRelativeToOffsetParent(element, offsetParent, scroll) {
   const isParentAnElement = isHTMLElement(offsetParent); // @ts-ignore -- `isParentAnElement` checks

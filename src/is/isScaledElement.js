@@ -8,7 +8,8 @@ import getBoundingClientRect from '../get/getBoundingClientRect';
  * @returns {boolean} the query result
  */
 export default function isScaledElement(element) {
-  const rect = getBoundingClientRect(element);
-  return Math.round(rect.width) !== element.offsetWidth
-    || Math.round(rect.height) !== element.offsetHeight;
+  const { width, height } = getBoundingClientRect(element);
+  const { offsetWidth, offsetHeight } = element;
+  return Math.round(width) !== offsetWidth
+    || Math.round(height) !== offsetHeight;
 }

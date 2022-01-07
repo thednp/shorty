@@ -1791,9 +1791,10 @@ function getParentNode(node) {
  * @returns {boolean} the query result
  */
 function isScaledElement(element) {
-  const rect = getBoundingClientRect(element);
-  return Math.round(rect.width) !== element.offsetWidth
-    || Math.round(rect.height) !== element.offsetHeight;
+  const { width, height } = getBoundingClientRect(element);
+  const { offsetWidth, offsetHeight } = element;
+  return Math.round(width) !== offsetWidth
+    || Math.round(height) !== offsetHeight;
 }
 
 /**
@@ -1801,9 +1802,9 @@ function isScaledElement(element) {
  * @see https://github.com/floating-ui/floating-ui
  *
  * @param {HTMLElement} element target
- * @param {HTMLElement | globalThis} offsetParent the container / offset parent
+ * @param {HTMLElement | Window} offsetParent the container / offset parent
  * @param {{x: number, y: number}} scroll
- * @returns {Partial<SHORTER.BoundingClientRect>}
+ * @returns {SHORTER.OffsetRect}
  */
 function getRectRelativeToOffsetParent(element, offsetParent, scroll) {
   const isParentAnElement = isHTMLElement(offsetParent); // @ts-ignore -- `isParentAnElement` checks
@@ -1852,9 +1853,9 @@ const isElement = (element) => element instanceof Element;
  */
 const isElementInScrollRange = (element) => {
   const { top, bottom } = getBoundingClientRect(element);
-  const html = getDocumentElement(element);
+  const { clientHeight } = getDocumentElement(element);
   // checks bottom && top
-  return top <= html.clientHeight && bottom >= 0;
+  return top <= clientHeight && bottom >= 0;
 };
 
 /**
@@ -1865,12 +1866,14 @@ const isElementInScrollRange = (element) => {
  * @return {boolean} the query result
  */
 const isElementInViewport = (element) => {
-  const bcr = getBoundingClientRect(element, true);
+  const {
+    top, left, bottom, right,
+  } = getBoundingClientRect(element, true);
+  const { clientWidth, clientHeight } = getDocumentElement(element);
   return (
-    bcr.top >= 0
-    && bcr.left >= 0
-    && bcr.bottom <= (window.innerHeight || document.documentElement.clientHeight)
-    && bcr.right <= (window.innerWidth || document.documentElement.clientWidth)
+    top >= 0 && left >= 0
+    && bottom <= clientHeight
+    && right <= clientWidth
   );
 };
 
@@ -1920,7 +1923,7 @@ const isNodeList = (object) => object instanceof NodeList;
 
 /**
  * Checks if a page is Right To Left.
- * @param {HTMLElement} node the target
+ * @param {HTMLElement=} node the target
  * @returns {boolean} the query result
  */
 const isRTL = (node) => getDocumentElement(node).dir === 'rtl';

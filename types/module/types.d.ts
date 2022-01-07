@@ -11,3 +11,10 @@ export interface BoundingClientRect {
   x: number,
   y: number,
 }
+
+export interface OffsetRect {
+  width: number,
+  height: number,
+  x: number,
+  y: number,
+}

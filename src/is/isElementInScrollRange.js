@@ -10,9 +10,9 @@ import getDocumentElement from '../get/getDocumentElement';
  */
 const isElementInScrollRange = (element) => {
   const { top, bottom } = getBoundingClientRect(element);
-  const html = getDocumentElement(element);
+  const { clientHeight } = getDocumentElement(element);
   // checks bottom && top
-  return top <= html.clientHeight && bottom >= 0;
+  return top <= clientHeight && bottom >= 0;
 };
 
 export default isElementInScrollRange;
