@@ -1,5 +1,5 @@
 /*!
-* shorter-js v0.3.0alpha5 (https://github.com/thednp/shorter-js)
+* shorter-js v0.3.0alpha6 (https://github.com/thednp/shorter-js)
 * Copyright 2019-2022 © dnp_theme
 * Licensed under MIT (https://github.com/thednp/shorter-js/blob/master/LICENSE)
 */
@@ -2016,7 +2016,7 @@ function getElementsByClassName(selector, parent) {
   return lookUp.getElementsByClassName(selector);
 }
 
-var version = "0.3.0alpha5";
+var version = "0.3.0alpha6";
 
 // @ts-ignore
 

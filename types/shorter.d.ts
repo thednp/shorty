@@ -1270,14 +1270,14 @@ declare module "shorter-js/src/get/getRectRelativeToOffsetParent" {
      * @see https://github.com/floating-ui/floating-ui
      *
      * @param {HTMLElement} element target
-     * @param {HTMLElement | globalThis} offsetParent the container / offset parent
+     * @param {HTMLElement | Window} offsetParent the container / offset parent
      * @param {{x: number, y: number}} scroll
-     * @returns {Partial<SHORTER.BoundingClientRect>}
+     * @returns {SHORTER.OffsetRect}
      */
-    export default function getRectRelativeToOffsetParent(element: HTMLElement, offsetParent: HTMLElement | typeof globalThis, scroll: {
+    export default function getRectRelativeToOffsetParent(element: HTMLElement, offsetParent: HTMLElement | Window, scroll: {
         x: number;
         y: number;
-    }): Partial<SHORTER.BoundingClientRect>;
+    }): SHORTER.OffsetRect;
 }
 declare module "shorter-js/src/class/addClass" {
     /**
@@ -1608,10 +1608,10 @@ declare module "shorter-js/src/is/isRTL" {
     export default isRTL;
     /**
      * Checks if a page is Right To Left.
-     * @param {HTMLElement} node the target
+     * @param {HTMLElement=} node the target
      * @returns {boolean} the query result
      */
-    function isRTL(node: HTMLElement): boolean;
+    function isRTL(node?: HTMLElement | undefined): boolean;
 }
 declare module "shorter-js/src/is/isString" {
     export default isString;
