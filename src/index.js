@@ -195,6 +195,7 @@ import getWindow from './get/getWindow';
 
 // is
 import isArray from './is/isArray';
+import isDocument from './is/isDocument';
 import isElement from './is/isElement';
 import isElementInScrollRange from './is/isElementInScrollRange';
 import isElementInViewport from './is/isElementInViewport';
@@ -381,6 +382,7 @@ const SHORTER = {
   isScaledElement,
   isTableElement,
   isShadowRoot,
+  isDocument,
   isElementsArray,
   isWindow,
   isMedia,

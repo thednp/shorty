@@ -1313,10 +1313,10 @@ declare module "shorter-js/src/selectors/querySelector" {
      * or find one that matches a selector.
      *
      * @param {HTMLElement | string} selector the input selector or target element
-     * @param {(Node | Element | HTMLElement)=} parent optional node to look into
+     * @param {(Document | Element | HTMLElement)=} parent optional node to look into
      * @return {HTMLElement?} the `HTMLElement` or `querySelector` result
      */
-    export default function querySelector(selector: HTMLElement | string, parent?: (Node | Element | HTMLElement) | undefined): HTMLElement | null;
+    export default function querySelector(selector: HTMLElement | string, parent?: (Document | Element | HTMLElement) | undefined): HTMLElement | null;
 }
 declare module "shorter-js/src/misc/data" {
     /**
@@ -1521,6 +1521,16 @@ declare module "shorter-js/src/is/isArray" {
      */
     function isArray(arr: any): boolean;
 }
+declare module "shorter-js/src/is/isDocument" {
+    export default isDocument;
+    /**
+     * Checks if an object is a `Document`.
+     *
+     * @param {any} element the target object
+     * @returns {boolean} the query result
+     */
+    function isDocument(element: any): boolean;
+}
 declare module "shorter-js/src/is/isElement" {
     export default isElement;
     /**
@@ -1657,40 +1667,40 @@ declare module "shorter-js/src/selectors/getCustomElements" {
      * `CustomElement`.
      * @see https://stackoverflow.com/questions/27334365/how-to-get-list-of-registered-custom-elements
      *
-     * @param {HTMLElement=} parent parent to look into
-     * @returns {Node[]} the query result
+     * @param {(HTMLElement | Document)=} parent parent to look into
+     * @returns {Element[]} the query result
      */
-    export default function getCustomElements(parent?: HTMLElement | undefined): Node[];
+    export default function getCustomElements(parent?: (HTMLElement | Document) | undefined): Element[];
 }
 declare module "shorter-js/src/selectors/querySelectorAll" {
     /**
      * A shortcut for `(document|Element).querySelectorAll`.
      *
      * @param {string} selector the input selector
-     * @param {(Node | Element | HTMLElement)=} parent optional node to look into
-     * @return {NodeListOf<HTMLElement>} the query result
+     * @param {(Document | HTMLElement | Element)=} parent optional node to look into
+     * @return {NodeListOf<Element>} the query result
      */
-    export default function querySelectorAll(selector: string, parent?: (Node | Element | HTMLElement) | undefined): NodeListOf<HTMLElement>;
+    export default function querySelectorAll(selector: string, parent?: (Document | HTMLElement | Element) | undefined): NodeListOf<Element>;
 }
 declare module "shorter-js/src/selectors/getElementsByTagName" {
     /**
      * Shortcut for `HTMLElement.getElementsByTagName` method.
      *
      * @param {string} selector the tag name
-     * @param {HTMLElement=} parent optional Element to look into
-     * @return {HTMLCollectionOf<HTMLElement>} the 'HTMLCollection'
+     * @param {(HTMLElement | Element | Document)=} parent optional Element to look into
+     * @return {HTMLCollection} the 'HTMLCollection'
      */
-    export default function getElementsByTagName(selector: string, parent?: HTMLElement | undefined): HTMLCollectionOf<HTMLElement>;
+    export default function getElementsByTagName(selector: string, parent?: (HTMLElement | Element | Document) | undefined): HTMLCollection;
 }
 declare module "shorter-js/src/selectors/getElementsByClassName" {
     /**
      * Shortcut for `HTMLElement.getElementsByClassName` method.
      *
      * @param {string} selector the class name
-     * @param {HTMLElement=} parent optional Element to look into
-     * @return {HTMLCollectionOf<HTMLElement>} the 'HTMLCollection'
+     * @param {(HTMLElement | Element | Document)=} parent optional Element to look into
+     * @return {HTMLCollection} the 'HTMLCollection'
      */
-    export default function getElementsByClassName(selector: string, parent?: HTMLElement | undefined): HTMLCollectionOf<HTMLElement>;
+    export default function getElementsByClassName(selector: string, parent?: (HTMLElement | Element | Document) | undefined): HTMLCollection;
 }
 declare module "shorter-js/src/misc/version" {
     export default Version;
@@ -1868,6 +1878,7 @@ declare module "shorter-js/types/module/shorter" {
     export { default as ObjectValues } from "shorter-js/src/misc/ObjectValues";
     export { default as ObjectAssign } from "shorter-js/src/misc/ObjectAssign";
     export { default as isArray } from "shorter-js/src/is/isArray";
+    export { default as isDocument } from "shorter-js/src/is/isDocument";
     export { default as isElement } from "shorter-js/src/is/isElement";
     export { default as isElementInScrollRange } from "shorter-js/src/is/isElementInScrollRange";
     export { default as isElementInViewport } from "shorter-js/src/is/isElementInViewport";

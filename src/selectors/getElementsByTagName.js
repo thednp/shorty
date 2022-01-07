@@ -1,14 +1,15 @@
-import isHTMLElement from '../is/isHTMLElement';
+import getDocument from '../get/getDocument';
 
 /**
  * Shortcut for `HTMLElement.getElementsByTagName` method.
  *
  * @param {string} selector the tag name
- * @param {HTMLElement=} parent optional Element to look into
- * @return {HTMLCollectionOf<HTMLElement>} the 'HTMLCollection'
+ * @param {(HTMLElement | Element | Document)=} parent optional Element to look into
+ * @return {HTMLCollection} the 'HTMLCollection'
  */
 export default function getElementsByTagName(selector, parent) {
-  const lookUp = parent && isHTMLElement(parent) ? parent : document;
+  const lookUp = [HTMLElement, Element, Document]
+    .some((x) => parent instanceof x) ? parent : getDocument();
   // @ts-ignore
   return lookUp.getElementsByTagName(selector);
 }

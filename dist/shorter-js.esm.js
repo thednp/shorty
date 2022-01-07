@@ -994,20 +994,59 @@ function hasClass(element, classNAME) {
 const ArrayFrom = (arr) => Array.from(arr);
 
 /**
+ * Check if a target node is `window`.
+ *
+ * @param {any} node the target node
+ * @returns {boolean} the query result
+ */
+function isWindow(node) {
+  return node instanceof Window;
+}
+
+/**
+ * Checks if an object is a `Node`.
+ *
+ * @param {any} node the target object
+ * @returns {boolean} the query result
+ */
+const isNode = (node) => node instanceof Node;
+
+/**
+ * Returns the `document` or the `#document` element.
+ * @see https://github.com/floating-ui/floating-ui
+ * @param {(Node | HTMLElement | Element | Window)=} node
+ * @returns {Document}
+ */
+function getDocument(node) {
+  // @ts-ignore -- `isNode` checks that
+  if (isNode(node)) return node.ownerDocument;
+  // @ts-ignore -- `isWindow` checks that too
+  if (isWindow(node)) return node.document;
+  return window.document;
+}
+
+/**
+ * Checks if an element is an `HTMLElement`.
+ *
+ * @param {any} element the target object
+ * @returns {boolean} the query result
+ */
+const isHTMLElement = (element) => element instanceof HTMLElement;
+
+/**
  * Utility to check if target is typeof `HTMLElement`, `Element`, `Node`
  * or find one that matches a selector.
  *
  * @param {HTMLElement | string} selector the input selector or target element
- * @param {(Node | Element | HTMLElement)=} parent optional node to look into
+ * @param {(Document | Element | HTMLElement)=} parent optional node to look into
  * @return {HTMLElement?} the `HTMLElement` or `querySelector` result
  */
 function querySelector(selector, parent) {
-  const nodeTypes = [HTMLElement, Element, Node];
-  const lookUp = parent && nodeTypes.some((x) => parent instanceof x) ? parent : document;
-
-  return nodeTypes.some((x) => selector instanceof x)
-    // @ts-ignore -- we must include ShadowRoot Node
-    ? selector : lookUp.querySelector(selector);
+  const nodeTypes = [Document, HTMLElement, Element];
+  const lookUp = nodeTypes.some((x) => parent instanceof x)
+    ? parent : getDocument();
+  // @ts-ignore
+  return isHTMLElement(selector) ? selector : lookUp.querySelector(selector);
 }
 
 /** @type {Map<string, Map<HTMLElement, SHORTER.Component>>} */
@@ -1607,14 +1646,6 @@ function tryWrapper(fn, origin) {
 }
 
 /**
- * Checks if an element is an `HTMLElement`.
- *
- * @param {any} element the target object
- * @returns {boolean} the query result
- */
-const isHTMLElement = (element) => element instanceof HTMLElement;
-
-/**
  * Returns the bounding client rect of a target `HTMLElement`.
  *
  * @see https://github.com/floating-ui/floating-ui
@@ -1647,38 +1678,6 @@ function getBoundingClientRect(element, includeScale) {
     x: left / scaleX,
     y: top / scaleY,
   };
-}
-
-/**
- * Check if a target node is `window`.
- *
- * @param {any} node the target node
- * @returns {boolean} the query result
- */
-function isWindow(node) {
-  return node instanceof Window;
-}
-
-/**
- * Checks if an object is a `Node`.
- *
- * @param {any} node the target object
- * @returns {boolean} the query result
- */
-const isNode = (node) => node instanceof Node;
-
-/**
- * Returns the `document` or the `#document` element.
- * @see https://github.com/floating-ui/floating-ui
- * @param {(Node | HTMLElement | Element | Window)=} node
- * @returns {Document}
- */
-function getDocument(node) {
-  // @ts-ignore -- `isNode` checks that
-  if (isNode(node)) return node.ownerDocument;
-  // @ts-ignore -- `isWindow` checks that too
-  if (isWindow(node)) return node.document;
-  return window.document;
 }
 
 /**
@@ -1837,6 +1836,14 @@ function getRectRelativeToOffsetParent(element, offsetParent, scroll) {
 const isArray = (arr) => Array.isArray(arr);
 
 /**
+ * Checks if an object is a `Document`.
+ *
+ * @param {any} element the target object
+ * @returns {boolean} the query result
+ */
+const isDocument = (element) => element instanceof Document;
+
+/**
  * Checks if an object is an `Element`.
  *
  * @param {any} element the target object
@@ -1967,26 +1974,28 @@ function closest(element, selector) {
  * `CustomElement`.
  * @see https://stackoverflow.com/questions/27334365/how-to-get-list-of-registered-custom-elements
  *
- * @param {HTMLElement=} parent parent to look into
- * @returns {Node[]} the query result
+ * @param {(HTMLElement | Document)=} parent parent to look into
+ * @returns {Element[]} the query result
  */
 function getCustomElements(parent) {
-  const lookUp = parent && isHTMLElement(parent) ? parent : document;
+  const lookUp = [HTMLElement, Element, Document]
+    .some((x) => parent instanceof x) ? parent : getDocument();
+  // @ts-ignore
   return [...lookUp.querySelectorAll('*')]
-    .filter((x) => customElements.get(x.nodeName.toLowerCase()));
+    .filter((x) => customElements.get(x.tagName.toLowerCase()));
 }
 
 /**
  * A shortcut for `(document|Element).querySelectorAll`.
  *
  * @param {string} selector the input selector
- * @param {(Node | Element | HTMLElement)=} parent optional node to look into
- * @return {NodeListOf<HTMLElement>} the query result
+ * @param {(Document | HTMLElement | Element)=} parent optional node to look into
+ * @return {NodeListOf<Element>} the query result
  */
 function querySelectorAll(selector, parent) {
-  const lookUp = parent && [HTMLElement, Element, Node]
-    .some((x) => parent instanceof x) ? parent : document;
-  // @ts-ignore -- we must include ShadowRoot Node
+  const lookUp = [HTMLElement, Element, Document]
+    .some((x) => parent instanceof x) ? parent : getDocument();
+  // @ts-ignore
   return lookUp.querySelectorAll(selector);
 }
 
@@ -1994,11 +2003,12 @@ function querySelectorAll(selector, parent) {
  * Shortcut for `HTMLElement.getElementsByTagName` method.
  *
  * @param {string} selector the tag name
- * @param {HTMLElement=} parent optional Element to look into
- * @return {HTMLCollectionOf<HTMLElement>} the 'HTMLCollection'
+ * @param {(HTMLElement | Element | Document)=} parent optional Element to look into
+ * @return {HTMLCollection} the 'HTMLCollection'
  */
 function getElementsByTagName(selector, parent) {
-  const lookUp = parent && isHTMLElement(parent) ? parent : document;
+  const lookUp = [HTMLElement, Element, Document]
+    .some((x) => parent instanceof x) ? parent : getDocument();
   // @ts-ignore
   return lookUp.getElementsByTagName(selector);
 }
@@ -2007,11 +2017,12 @@ function getElementsByTagName(selector, parent) {
  * Shortcut for `HTMLElement.getElementsByClassName` method.
  *
  * @param {string} selector the class name
- * @param {HTMLElement=} parent optional Element to look into
- * @return {HTMLCollectionOf<HTMLElement>} the 'HTMLCollection'
+ * @param {(HTMLElement | Element | Document)=} parent optional Element to look into
+ * @return {HTMLCollection} the 'HTMLCollection'
  */
 function getElementsByClassName(selector, parent) {
-  const lookUp = parent && isHTMLElement(parent) ? parent : document;
+  const lookUp = [HTMLElement, Element, Document]
+    .some((x) => parent instanceof x) ? parent : getDocument();
   // @ts-ignore
   return lookUp.getElementsByClassName(selector);
 }
@@ -2186,6 +2197,7 @@ const SHORTER = {
   isScaledElement,
   isTableElement,
   isShadowRoot,
+  isDocument,
   isElementsArray,
   isWindow,
   isMedia,
