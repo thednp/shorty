@@ -2,10 +2,10 @@ import on from './on';
 import off from './off';
 
 /**
- * Add an `eventListener` to an `HTMLElement` | `Document` target
+ * Add an `eventListener` to an `Element` | `HTMLElement` | `Document` target
  * and remove it once callback is called.
  *
- * @param {HTMLElement | Document} element event.target
+ * @param {SHORTER.ElementNodes | Document} element event.target
  * @param {string} eventName event.type
  * @param {EventListener} handler callback
  * @param {EventListenerOptions | boolean | undefined} options other event options

@@ -1,5 +1,5 @@
 /*!
-* shorter-js v0.3.0alpha6 (https://github.com/thednp/shorter-js)
+* shorter-js v0.3.0alpha8 (https://github.com/thednp/shorter-js)
 * Copyright 2019-2022 © dnp_theme
 * Licensed under MIT (https://github.com/thednp/shorter-js/blob/master/LICENSE)
 */
@@ -801,9 +801,9 @@
   var support3DTransform = 'webkitPerspective' in document.head.style || 'perspective' in document.head.style;
 
   /**
-   * Add eventListener to an `HTMLElement` | `Document` target.
+   * Add eventListener to an `Element` | `HTMLElement` | `Document` target.
    *
-   * @param {HTMLElement | Document} element event.target
+   * @param {SHORTER.ElementNodes | Document} element event.target
    * @param {string} eventName event.type
    * @param {EventListener} handler callback
    * @param {EventListenerOptions | boolean | undefined} options other event options
@@ -814,9 +814,9 @@
   }
 
   /**
-   * Remove eventListener from an `HTMLElement` | `Document` target.
+   * Remove eventListener from an `Element` | `HTMLElement` | `Document` target.
    *
-   * @param {HTMLElement | Document} element event.target
+   * @param {SHORTER.ElementNodes | Document} element event.target
    * @param {string} eventName event.type
    * @param {EventListener} handler callback
    * @param {EventListenerOptions | boolean | undefined} options other event options
@@ -827,10 +827,10 @@
   }
 
   /**
-   * Add an `eventListener` to an `HTMLElement` | `Document` target
+   * Add an `eventListener` to an `Element` | `HTMLElement` | `Document` target
    * and remove it once callback is called.
    *
-   * @param {HTMLElement | Document} element event.target
+   * @param {SHORTER.ElementNodes | Document} element event.target
    * @param {string} eventName event.type
    * @param {EventListener} handler callback
    * @param {EventListenerOptions | boolean | undefined} options other event options
@@ -962,7 +962,7 @@
   /**
    * Add class to `HTMLElement.classList`.
    *
-   * @param {HTMLElement} element target
+   * @param {HTMLElement | Element} element target
    * @param {string} classNAME to add
    */
   function addClass(element, classNAME) {
@@ -972,7 +972,7 @@
   /**
    * Remove class from `HTMLElement.classList`.
    *
-   * @param {HTMLElement} element target
+   * @param {HTMLElement | Element} element target
    * @param {string} classNAME to remove
    */
   function removeClass(element, classNAME) {
@@ -982,7 +982,7 @@
   /**
    * Check class in `HTMLElement.classList`.
    *
-   * @param {HTMLElement} element target
+   * @param {HTMLElement | Element} element target
    * @param {string} classNAME to check
    * @return {boolean}
    */
@@ -1019,7 +1019,7 @@
   /**
    * Returns the `document` or the `#document` element.
    * @see https://github.com/floating-ui/floating-ui
-   * @param {(Node | HTMLElement | Element | Window)=} node
+   * @param {(Node | SHORTER.ElementNodes | Window)=} node
    * @returns {Document}
    */
   function getDocument(node) {
@@ -1031,30 +1031,36 @@
   }
 
   /**
-   * Checks if an element is an `HTMLElement`.
-   *
-   * @param {any} element the target object
-   * @returns {boolean} the query result
+   * A global array of possible `ParentNode`.
    */
-  var isHTMLElement = function (element) { return element instanceof HTMLElement; };
+  var parentNodes = [Document, Node, Element, HTMLElement];
+
+  /**
+   * A global array with `Element` | `HTMLElement`.
+   */
+  var elementNodes = [Element, HTMLElement];
 
   /**
    * Utility to check if target is typeof `HTMLElement`, `Element`, `Node`
    * or find one that matches a selector.
    *
-   * @param {HTMLElement | string} selector the input selector or target element
-   * @param {(Document | Element | HTMLElement)=} parent optional node to look into
-   * @return {HTMLElement?} the `HTMLElement` or `querySelector` result
+   * @param {SHORTER.ElementNodes | string} selector the input selector or target element
+   * @param {SHORTER.ParentNodes=} parent optional node to look into
+   * @return {(SHORTER.ElementNodes)?} the `HTMLElement` or `querySelector` result
    */
   function querySelector(selector, parent) {
-    var nodeTypes = [Document, HTMLElement, Element];
-    var lookUp = nodeTypes.some(function (x) { return parent instanceof x; })
+    var selectorIsString = typeof selector === 'string';
+    var lookUp = parent && parentNodes.some(function (x) { return parent instanceof x; })
       ? parent : getDocument();
-    // @ts-ignore
-    return isHTMLElement(selector) ? selector : lookUp.querySelector(selector);
+
+    if (!selectorIsString && [].concat( elementNodes ).some(function (x) { return selector instanceof x; })) {
+      return selector;
+    }
+    // @ts-ignore -- `ShadowRoot` is also a node
+    return selectorIsString ? lookUp.querySelector(selector) : null;
   }
 
-  /** @type {Map<string, Map<HTMLElement, SHORTER.Component>>} */
+  /** @type {Map<string, Map<SHORTER.ElementNodes, SHORTER.Component>>} */
   var componentData = new Map();
   /**
    * An interface for web components background data.
@@ -1063,7 +1069,7 @@
   var Data = {
     /**
      * Sets web components data.
-     * @param {HTMLElement | string} target target element
+     * @param {SHORTER.ElementNodes | string} target target element
      * @param {string} component the component's name or a unique key
      * @param {SHORTER.Component} instance the component instance
      */
@@ -1083,18 +1089,17 @@
     /**
      * Returns all instances for specified component.
      * @param {string} component the component's name or a unique key
-     * @returns {Map<HTMLElement, SHORTER.Component>?} all the component instances
+     * @returns {Map<SHORTER.ElementNodes, SHORTER.Component>?} all the component instances
      */
     getAllFor: function (component) {
       var instanceMap = componentData.get(component);
 
-      if (instanceMap) { return instanceMap; }
-      return null;
+      return instanceMap || null;
     },
 
     /**
      * Returns the instance associated with the target.
-     * @param {HTMLElement | string} target target element
+     * @param {SHORTER.ElementNodes | string} target target element
      * @param {string} component the component's name or a unique key
      * @returns {SHORTER.Component?} the instance
      */
@@ -1103,13 +1108,12 @@
       var allForC = Data.getAllFor(component);
       var instance = element && allForC && allForC.get(element);
 
-      if (instance) { return instance; }
-      return null;
+      return instance || null;
     },
 
     /**
      * Removes web components data.
-     * @param {HTMLElement | string} target target element
+     * @param {SHORTER.ElementNodes | string} target target element
      * @param {string} component the component's name or a unique key
      */
     remove: function (target, component) {
@@ -1132,13 +1136,23 @@
   var getInstance = function (target, component) { return Data.get(target, component); };
 
   /**
+   * JavaScript `Array` distinct.
+   * @see https://codeburst.io/javascript-array-distinct-5edc93501dc4
+   * @param {*} value
+   * @param {number} index
+   * @param {*} self
+   * @returns {boolean}
+   */
+  var distinct = function (value, index, self) { return self.indexOf(value) === index; };
+
+  /**
    * Shortcut for `window.getComputedStyle(element).propertyName`
    * static method.
    *
    * * If `element` parameter is not an `HTMLElement`, `getComputedStyle`
    * throws a `ReferenceError`.
    *
-   * @param {HTMLElement} element target
+   * @param {SHORTER.ElementNodes} element target
    * @param {string} property the css property
    * @return {string} the css property value
    */
@@ -1154,7 +1168,7 @@
    * Utility to get the computed `animationDelay`
    * from Element in miliseconds.
    *
-   * @param {HTMLElement} element target
+   * @param {SHORTER.ElementNodes} element target
    * @return {number} the value in miliseconds
    */
   function getElementAnimationDelay$1(element) {
@@ -1172,7 +1186,7 @@
    * Utility to get the computed `animationDuration`
    * from `HTMLElement` in miliseconds.
    *
-   * @param {HTMLElement} element target
+   * @param {SHORTER.ElementNodes} element target
    * @return {number} the value in miliseconds
    */
   function getElementAnimationDuration$1(element) {
@@ -1189,7 +1203,7 @@
    * Utility to make sure callbacks are consistently
    * called when animation ends.
    *
-   * @param {HTMLElement} element target
+   * @param {SHORTER.ElementNodes} element target
    * @param {EventListener} handler `animationend` callback
    */
   function emulateAnimationEnd$1(element, handler) {
@@ -1223,7 +1237,7 @@
    * Utility to get the computed `animationDelay`
    * from Element in miliseconds.
    *
-   * @param {HTMLElement} element target
+   * @param {SHORTER.ElementNodes} element target
    * @return {number} the value in miliseconds
    */
   function getElementAnimationDelay(element) {
@@ -1240,7 +1254,7 @@
    * Utility to get the computed `animationDuration`
    * from `HTMLElement` in miliseconds.
    *
-   * @param {HTMLElement} element target
+   * @param {SHORTER.ElementNodes} element target
    * @return {number} the value in miliseconds
    */
   function getElementAnimationDuration(element) {
@@ -1257,7 +1271,7 @@
    * Utility to make sure callbacks are consistently
    * called when animation ends.
    *
-   * @param {HTMLElement} element target
+   * @param {SHORTER.ElementNodes} element target
    * @param {EventListener} handler `animationend` callback
    */
   function emulateAnimationEnd(element, handler) {
@@ -1291,7 +1305,7 @@
    * Utility to get the computed `transitionDelay`
    * from Element in miliseconds.
    *
-   * @param {HTMLElement} element target
+   * @param {SHORTER.ElementNodes} element target
    * @return {number} the value in miliseconds
    */
   function getElementTransitionDelay$1(element) {
@@ -1309,7 +1323,7 @@
    * Utility to get the computed `transitionDuration`
    * from Element in miliseconds.
    *
-   * @param {HTMLElement} element target
+   * @param {SHORTER.ElementNodes} element target
    * @return {number} the value in miliseconds
    */
   function getElementTransitionDuration$1(element) {
@@ -1326,7 +1340,7 @@
    * Utility to make sure callbacks are consistently
    * called when transition ends.
    *
-   * @param {HTMLElement} element target
+   * @param {SHORTER.ElementNodes} element target
    * @param {EventListener} handler `transitionend` callback
    */
   function emulateTransitionEnd$1(element, handler) {
@@ -1360,7 +1374,7 @@
    * Utility to get the computed `transitionDelay`
    * from Element in miliseconds.
    *
-   * @param {HTMLElement} element target
+   * @param {SHORTER.ElementNodes} element target
    * @return {number} the value in miliseconds
    */
   function getElementTransitionDelay(element) {
@@ -1377,7 +1391,7 @@
    * Utility to get the computed `transitionDuration`
    * from Element in miliseconds.
    *
-   * @param {HTMLElement} element target
+   * @param {SHORTER.ElementNodes} element target
    * @return {number} the value in miliseconds
    */
   function getElementTransitionDuration(element) {
@@ -1394,7 +1408,7 @@
    * Utility to make sure callbacks are consistently
    * called when transition ends.
    *
-   * @param {HTMLElement} element target
+   * @param {SHORTER.ElementNodes} element target
    * @param {EventListener} handler `transitionend` callback
    */
   function emulateTransitionEnd(element, handler) {
@@ -1441,8 +1455,9 @@
   /**
    * Utility to focus an `HTMLElement` target.
    *
-   * @param {HTMLElement} element is the target
+   * @param {SHORTER.ElementNodes} element is the target
    */
+  // @ts-ignore -- `Element`s resulted from querySelector can focus too
   var focus = function (element) { return element.focus(); };
 
   /**
@@ -1488,13 +1503,14 @@
   /**
    * Utility to normalize component options.
    *
-   * @param {HTMLElement} element target
+   * @param {SHORTER.ElementNodes} element target
    * @param {Record<string, any>} defaultOps component default options
    * @param {Record<string, any>} inputOps component instance options
    * @param {string=} ns component namespace
    * @return {Record<string, any>} normalized component options object
    */
   function normalizeOptions(element, defaultOps, inputOps, ns) {
+    // @ts-ignore -- our targets are always `HTMLElement`
     var data = Object.assign({}, element.dataset);
     /** @type {Record<string, any>} */
     var normalOps = {};
@@ -1543,24 +1559,31 @@
   /**
    * A global namespace for most scroll event listeners.
    */
+  var passiveHandler$1 = { passive: true };
+
+  /**
+   * A global namespace for most scroll event listeners in legacy browsers.
+   */
   var passiveHandler = supportPassive ? { passive: true } : false;
 
   /**
    * Utility to force re-paint of an `HTMLElement` target.
    *
-   * @param {HTMLElement} element is the target
+   * @param {SHORTER.ElementNodes} element is the target
    * @return {number} the `Element.offsetHeight` value
    */
+  // @ts-ignore
   var reflow = function (element) { return element.offsetHeight; };
 
   /**
    * Shortcut for multiple uses of `HTMLElement.style.propertyName` method.
-   * @param  {HTMLElement} element target element
+   * @param  {SHORTER.ElementNodes} element target element
    * @param  {Partial<CSSStyleDeclaration>} styles attribute value
    */
+  // @ts-ignore
   var setElementStyle = function (element, styles) { ObjectAssign(element.style, styles); };
 
-  /** @type {Map<HTMLElement, any>} */
+  /** @type {Map<SHORTER.ElementNodes, any>} */
   var TimeCache = new Map();
   /**
    * An interface for one or more `TimerHandler`s per `Element`.
@@ -1569,7 +1592,7 @@
   var Timer = {
     /**
      * Sets a new timeout timer for an element, or element -> key association.
-     * @param {HTMLElement | string} target target element
+     * @param {SHORTER.ElementNodes | string} target target element
      * @param {ReturnType<TimerHandler>} callback the callback
      * @param {number} delay the execution delay
      * @param {string=} key a unique
@@ -1592,7 +1615,7 @@
 
     /**
      * Returns the timer associated with the target.
-     * @param {HTMLElement | string} target target element
+     * @param {SHORTER.ElementNodes | string} target target element
      * @param {string=} key a unique
      * @returns {ReturnType<TimerHandler>?} the timer
      */
@@ -1617,8 +1640,8 @@
 
     /**
      * Clears the element's timer.
-     * @param {HTMLElement} target target element
-     * @param {string=} key a unique
+     * @param {SHORTER.ElementNodes | string} target target element
+     * @param {string=} key a unique key
      */
     clear: function (target, key) {
       var element = querySelector(target);
@@ -1651,11 +1674,27 @@
   }
 
   /**
+   * Checks if an object is an `Element`.
+   *
+   * @param {any} element the target object
+   * @returns {boolean} the query result
+   */
+  var isElement = function (element) { return element instanceof Element; };
+
+  /**
+   * Checks if an element is an `HTMLElement`.
+   *
+   * @param {any} element the target object
+   * @returns {boolean} the query result
+   */
+  var isHTMLElement = function (element) { return element instanceof HTMLElement; };
+
+  /**
    * Returns the bounding client rect of a target `HTMLElement`.
    *
    * @see https://github.com/floating-ui/floating-ui
    *
-   * @param {HTMLElement} element target
+   * @param {SHORTER.ElementNodes} element event.target
    * @param {boolean=} includeScale when *true*, the target scale is also computed
    * @returns {SHORTER.BoundingClientRect} the bounding client rect object
    */
@@ -1670,10 +1709,14 @@
     var scaleX = 1;
     var scaleY = 1;
 
-    if (includeScale && isHTMLElement(element)) {
+    if (includeScale && (isHTMLElement(element) || isElement(element))) {
+      // @ts-ignore
       scaleX = element.offsetWidth > 0
+        // @ts-ignore
         ? Math.round(width) / element.offsetWidth || 1 : 1;
+      // @ts-ignore
       scaleY = element.offsetHeight > 0
+        // @ts-ignore
         ? Math.round(height) / element.offsetHeight || 1 : 1;
     }
 
@@ -1692,8 +1735,8 @@
   /**
    * Returns the `document.body` or the `<body>` element.
    *
-   * @param {(Node | HTMLElement | Element)=} node
-   * @returns {HTMLElement}
+   * @param {(Node | SHORTER.ElementNodes)=} node
+   * @returns {HTMLElement | HTMLBodyElement}
    */
   function getDocumentBody(node) {
     return getDocument(node).body;
@@ -1702,8 +1745,8 @@
   /**
    * Returns the `document.documentElement` or the `<html>` element.
    *
-   * @param {(Node | HTMLElement | Element)=} node
-   * @returns {HTMLElement}
+   * @param {(Node | SHORTER.ElementNodes)=} node
+   * @returns {HTMLElement | HTMLHtmlElement}
    */
   function getDocumentElement(node) {
     return getDocument(node).documentElement;
@@ -1712,8 +1755,8 @@
   /**
    * Returns the `document.head` or the `<head>` element.
    *
-   * @param {(Node | HTMLElement | Element)=} node
-   * @returns {HTMLElement}
+   * @param {(Node | SHORTER.ElementNodes)=} node
+   * @returns {HTMLElement | HTMLHeadElement}
    */
   function getDocumentHead(node) {
     return getDocument(node).head;
@@ -1725,7 +1768,7 @@
    *
    * @see https://github.com/floating-ui/floating-ui
    *
-   * @param {HTMLElement | Window} element target node / element
+   * @param {SHORTER.ElementNodes | Window} element target node / element
    * @returns {{x: number, y: number}} the scroll tuple
    */
   function getNodeScroll(element) {
@@ -1740,21 +1783,20 @@
    * Returns the `Window` object of a target node.
    * @see https://github.com/floating-ui/floating-ui
    *
-   * @param {(Node | Element | HTMLElement | Window)=} node target node
-   * @returns {globalThis} the `Window` object
+   * @param {(Node | SHORTER.ElementNodes | Window)=} node target node
+   * @returns {globalThis}
    */
   function getWindow(node) {
     if (node == null) {
       return window;
     }
 
-    if (!isWindow(node)) {
-      // @ts-ignore
+    if (!(node instanceof Window)) {
       var ownerDocument = node.ownerDocument;
       return ownerDocument ? ownerDocument.defaultView || window : window;
     }
 
-    // @ts-ignore -- we know it's window, we checked above
+    // @ts-ignore
     return node;
   }
 
@@ -1773,20 +1815,20 @@
    * Returns the `parentNode` also going through `ShadowRoot`.
    * @see https://github.com/floating-ui/floating-ui
    *
-   * @param {Node | Element} node the target node
-   * @returns {Node} the apropriate parent node
+   * @param {Node | SHORTER.ElementNodes} node the target node
+   * @returns {Node | SHORTER.ElementNodes} the apropriate parent node
    */
   function getParentNode(node) {
     if (node.nodeName === 'HTML') {
       return node;
     }
 
-    return (// this is a quicker (but less type safe) way to save quite some bytes from the bundle
+    // this is a quicker (but less type safe) way to save quite some bytes from the bundle
+    return (
       // @ts-ignore
       node.assignedSlot // step into the shadow DOM of the parent of a slotted node
-      || node.parentNode
-      || (// @ts-ignore DOM Element detected
-        isShadowRoot(node) ? node.host : null) // ShadowRoot detected
+      || node.parentNode // @ts-ignore DOM Element detected
+      || (isShadowRoot(node) ? node.host : null) // ShadowRoot detected
       || getDocumentElement(node) // fallback
     );
   }
@@ -1795,13 +1837,14 @@
    * Checks if a target `HTMLElement` is affected by scale.
    * @see https://github.com/floating-ui/floating-ui
    *
-   * @param {HTMLElement} element target
+   * @param {SHORTER.ElementNodes} element target
    * @returns {boolean} the query result
    */
   function isScaledElement(element) {
     var ref = getBoundingClientRect(element);
     var width = ref.width;
     var height = ref.height;
+    // @ts-ignore -- our elements usually have offset properties
     var offsetWidth = element.offsetWidth;
     var offsetHeight = element.offsetHeight;
     return Math.round(width) !== offsetWidth
@@ -1812,22 +1855,19 @@
    * Returns the rect relative to an offset parent.
    * @see https://github.com/floating-ui/floating-ui
    *
-   * @param {HTMLElement} element target
-   * @param {HTMLElement | Window} offsetParent the container / offset parent
+   * @param {SHORTER.ElementNodes} element target
+   * @param {SHORTER.ElementNodes | Window} offsetParent the container / offset parent
    * @param {{x: number, y: number}} scroll
    * @returns {SHORTER.OffsetRect}
    */
   function getRectRelativeToOffsetParent(element, offsetParent, scroll) {
-    var isParentAnElement = isHTMLElement(offsetParent); // @ts-ignore -- `isParentAnElement` checks
-    var rect = getBoundingClientRect(element, isParentAnElement && isScaledElement(offsetParent));
+    var isParentAWindow = offsetParent instanceof Window;
+    var rect = getBoundingClientRect(element, !isParentAWindow && isScaledElement(offsetParent));
     var offsets = { x: 0, y: 0 };
 
-    if (isParentAnElement) {
-      // @ts-ignore -- `isParentAnElement` checks
+    if (!isParentAWindow) {
       var offsetRect = getBoundingClientRect(offsetParent, true);
-      // @ts-ignore -- `isParentAnElement` checks
       offsets.x = offsetRect.x + offsetParent.clientLeft;
-      // @ts-ignore -- `isParentAnElement` checks
       offsets.y = offsetRect.y + offsetParent.clientTop;
     }
 
@@ -1856,12 +1896,12 @@
   var isDocument = function (element) { return element instanceof Document; };
 
   /**
-   * Checks if an object is an `Element`.
+   * Checks if an object is a `CustomElement`.
    *
    * @param {any} element the target object
    * @returns {boolean} the query result
    */
-  var isElement = function (element) { return element instanceof Element; };
+  var isCustomElement = function (element) { return element && !!element.shadowRoot; };
 
   /**
    * Utility to determine if an `HTMLElement`
@@ -1949,7 +1989,7 @@
 
   /**
    * Checks if a page is Right To Left.
-   * @param {HTMLElement=} node the target
+   * @param {SHORTER.ElementNodes=} node the target
    * @returns {boolean} the query result
    */
   var isRTL = function (node) { return getDocumentElement(node).dir === 'rtl'; };
@@ -1977,15 +2017,20 @@
   var isTableElement = function (element) { return ['TABLE', 'TD', 'TH'].includes(element.tagName); };
 
   /**
-   * Shortcut for `HTMLElement.closest` method.
+   * Shortcut for `HTMLElement.closest` method which also works
+   * with children of `ShadowRoot`. The order of the parameters
+   * is intentional since they're both required.
    *
-   * @param {HTMLElement} element optional Element to look into
+   * @see https://stackoverflow.com/q/54520554/803358
+   *
+   * @param {SHORTER.ElementNodes} element Element to look into
    * @param {string} selector the selector name
-   * @return {HTMLElement?} the query result
+   * @return {SHORTER.ElementNodes?} the query result
    */
   function closest(element, selector) {
-    if (element && selector) { return element.closest(selector); }
-    return null;
+    return (element && element.closest(selector))
+      // @ts-ignore -- break out of `ShadowRoot`
+      || closest(element.getRootNode().host, selector);
   }
 
   /**
@@ -1993,60 +2038,59 @@
    * `CustomElement`.
    * @see https://stackoverflow.com/questions/27334365/how-to-get-list-of-registered-custom-elements
    *
-   * @param {(HTMLElement | Document)=} parent parent to look into
-   * @returns {Element[]} the query result
+   * @param {(SHORTER.ParentNodes)=} parent parent to look into
+   * @returns {SHORTER.ElementNodes[]} the query result
    */
   function getCustomElements(parent) {
-    var lookUp = [HTMLElement, Element, Document]
-      .some(function (x) { return parent instanceof x; }) ? parent : getDocument();
-    // @ts-ignore
-    return [].concat( lookUp.querySelectorAll('*') )
-      .filter(function (x) { return customElements.get(x.tagName.toLowerCase()); });
+    var lookUp = parent && parentNodes.some(function (x) { return parent instanceof x; })
+      ? parent : getDocument();
+    // @ts-ignore -- look inside `shadowRoot` node too
+    return [].concat( lookUp.querySelectorAll('*') ).filter(isCustomElement);
   }
 
   /**
    * A shortcut for `(document|Element).querySelectorAll`.
    *
    * @param {string} selector the input selector
-   * @param {(Document | HTMLElement | Element)=} parent optional node to look into
-   * @return {NodeListOf<Element>} the query result
+   * @param {(SHORTER.ParentNodes)=} parent optional node to look into
+   * @return {NodeListOf<SHORTER.ElementNodes>} the query result
    */
   function querySelectorAll(selector, parent) {
-    var lookUp = [HTMLElement, Element, Document]
+    var lookUp = parent && parentNodes
       .some(function (x) { return parent instanceof x; }) ? parent : getDocument();
-    // @ts-ignore
+    // @ts-ignore -- `ShadowRoot` is also a node
     return lookUp.querySelectorAll(selector);
   }
 
   /**
-   * Shortcut for `HTMLElement.getElementsByTagName` method.
+   * Shortcut for `HTMLElement.getElementsByTagName` method. Some `Node` elements
+   * like `ShadowRoot` do not support `getElementsByTagName`.
    *
    * @param {string} selector the tag name
-   * @param {(HTMLElement | Element | Document)=} parent optional Element to look into
-   * @return {HTMLCollection} the 'HTMLCollection'
+   * @param {(SHORTER.ElementNodes | Document)=} parent optional Element to look into
+   * @return {HTMLCollectionOf<SHORTER.ElementNodes>} the 'HTMLCollection'
    */
   function getElementsByTagName(selector, parent) {
-    var lookUp = [HTMLElement, Element, Document]
+    var lookUp = parent && parentNodes
       .some(function (x) { return parent instanceof x; }) ? parent : getDocument();
-    // @ts-ignore
     return lookUp.getElementsByTagName(selector);
   }
 
   /**
-   * Shortcut for `HTMLElement.getElementsByClassName` method.
+   * Shortcut for `HTMLElement.getElementsByClassName` method. Some `Node` elements
+   * like `ShadowRoot` do not support `getElementsByClassName`.
    *
    * @param {string} selector the class name
-   * @param {(HTMLElement | Element | Document)=} parent optional Element to look into
-   * @return {HTMLCollection} the 'HTMLCollection'
+   * @param {(SHORTER.ElementNodes | Document)=} parent optional Element to look into
+   * @return {HTMLCollectionOf<SHORTER.ElementNodes>} the 'HTMLCollection'
    */
   function getElementsByClassName(selector, parent) {
-    var lookUp = [HTMLElement, Element, Document]
-      .some(function (x) { return parent instanceof x; }) ? parent : getDocument();
-    // @ts-ignore
+    var lookUp = parent && parentNodes.some(function (x) { return parent instanceof x; })
+      ? parent : getDocument();
     return lookUp.getElementsByClassName(selector);
   }
 
-  var version = "0.3.0alpha6";
+  var version = "0.3.0alpha8";
 
   // @ts-ignore
 
@@ -2182,6 +2226,7 @@
     on: on,
     off: off,
     one: one,
+    distinct: distinct,
     Data: Data,
     Timer: Timer,
     getInstance: getInstance,
@@ -2191,7 +2236,8 @@
     emulateTransitionEndLegacy: emulateTransitionEnd,
     isElementInScrollRange: isElementInScrollRange,
     isElementInViewport: isElementInViewport,
-    passiveHandler: passiveHandler,
+    passiveHandler: passiveHandler$1,
+    passiveHandlerLegacy: passiveHandler,
     getElementAnimationDuration: getElementAnimationDuration$1,
     getElementAnimationDurationLegacy: getElementAnimationDuration,
     getElementAnimationDelay: getElementAnimationDelay$1,
@@ -2206,6 +2252,7 @@
     getWindow: getWindow,
     isArray: isArray,
     isString: isString,
+    isCustomElement: isCustomElement,
     isElement: isElement,
     isNode: isNode,
     isHTMLElement: isHTMLElement,
@@ -2221,6 +2268,8 @@
     isWindow: isWindow,
     isMedia: isMedia,
     isRTL: isRTL,
+    elementNodes: elementNodes,
+    parentNodes: parentNodes,
     closest: closest,
     querySelector: querySelector,
     getCustomElements: getCustomElements,

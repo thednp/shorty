@@ -1,6 +1,6 @@
 import querySelector from '../selectors/querySelector';
 
-/** @type {Map<string, Map<HTMLElement, SHORTER.Component>>} */
+/** @type {Map<string, Map<SHORTER.ElementNodes, SHORTER.Component>>} */
 const componentData = new Map();
 /**
  * An interface for web components background data.
@@ -9,7 +9,7 @@ const componentData = new Map();
 const Data = {
   /**
    * Sets web components data.
-   * @param {HTMLElement | string} target target element
+   * @param {SHORTER.ElementNodes | string} target target element
    * @param {string} component the component's name or a unique key
    * @param {SHORTER.Component} instance the component instance
    */
@@ -29,18 +29,17 @@ const Data = {
   /**
    * Returns all instances for specified component.
    * @param {string} component the component's name or a unique key
-   * @returns {Map<HTMLElement, SHORTER.Component>?} all the component instances
+   * @returns {Map<SHORTER.ElementNodes, SHORTER.Component>?} all the component instances
    */
   getAllFor: (component) => {
     const instanceMap = componentData.get(component);
 
-    if (instanceMap) return instanceMap;
-    return null;
+    return instanceMap || null;
   },
 
   /**
    * Returns the instance associated with the target.
-   * @param {HTMLElement | string} target target element
+   * @param {SHORTER.ElementNodes | string} target target element
    * @param {string} component the component's name or a unique key
    * @returns {SHORTER.Component?} the instance
    */
@@ -49,13 +48,12 @@ const Data = {
     const allForC = Data.getAllFor(component);
     const instance = element && allForC && allForC.get(element);
 
-    if (instance) return instance;
-    return null;
+    return instance || null;
   },
 
   /**
    * Removes web components data.
-   * @param {HTMLElement | string} target target element
+   * @param {SHORTER.ElementNodes | string} target target element
    * @param {string} component the component's name or a unique key
    */
   remove: (target, component) => {

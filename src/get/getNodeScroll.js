@@ -4,7 +4,7 @@
  *
  * @see https://github.com/floating-ui/floating-ui
  *
- * @param {HTMLElement | Window} element target node / element
+ * @param {SHORTER.ElementNodes | Window} element target node / element
  * @returns {{x: number, y: number}} the scroll tuple
  */
 export default function getNodeScroll(element) {

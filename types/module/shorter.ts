@@ -173,12 +173,14 @@ export { default as one } from '../../src/event/one';
 // misc
 export { default as Data, getInstance } from '../../src/misc/data';
 export { default as Timer } from '../../src/misc/timer';
+export { default as distinct } from '../../src/misc/distinct';
 
 export { default as emulateAnimationEnd } from '../../src/misc/emulateAnimationEnd';
 export { default as emulateAnimationEndLegacy } from '../../src/misc/emulateAnimationEndLegacy';
 export { default as emulateTransitionEnd } from '../../src/misc/emulateTransitionEnd';
 export { default as emulateTransitionEndLegacy } from '../../src/misc/emulateTransitionEndLegacy';
 export { default as passiveHandler } from '../../src/misc/passiveHandler';
+export { default as passiveHandlerLegacy } from '../../src/misc/passiveHandlerLegacy';
 
 export { default as setElementStyle } from '../../src/misc/setElementStyle';
 export { default as normalizeValue } from '../../src/misc/normalizeValue';
@@ -197,6 +199,7 @@ export { default as ObjectAssign } from '../../src/misc/ObjectAssign';
 // is
 export { default as isArray } from '../../src/is/isArray';
 export { default as isDocument } from '../../src/is/isDocument';
+export { default as isCustomElement } from '../../src/is/isCustomElement';
 export { default as isElement } from '../../src/is/isElement';
 export { default as isElementInScrollRange } from '../../src/is/isElementInScrollRange';
 export { default as isElementInViewport } from '../../src/is/isElementInViewport';
@@ -216,6 +219,8 @@ export { default as isTableElement } from '../../src/is/isTableElement';
 export { default as isWindow } from '../../src/is/isWindow';
 
 // selectors
+export { default as elementNodes } from '../../src/selectors/elementNodes';
+export { default as parentNodes } from '../../src/selectors/parentNodes';
 export { default as closest } from '../../src/selectors/closest';
 export { default as getCustomElements } from '../../src/selectors/getCustomElements';
 export { default as querySelector } from '../../src/selectors/querySelector';

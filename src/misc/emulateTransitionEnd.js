@@ -6,7 +6,7 @@ import getElementTransitionDuration from '../get/getElementTransitionDuration';
  * Utility to make sure callbacks are consistently
  * called when transition ends.
  *
- * @param {HTMLElement} element target
+ * @param {SHORTER.ElementNodes} element target
  * @param {EventListener} handler `transitionend` callback
  */
 export default function emulateTransitionEnd(element, handler) {

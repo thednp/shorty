@@ -6,7 +6,7 @@ import getElementStyle from './getElementStyle';
  * Utility to get the computed `animationDelay`
  * from Element in miliseconds.
  *
- * @param {HTMLElement} element target
+ * @param {SHORTER.ElementNodes} element target
  * @return {number} the value in miliseconds
  */
 export default function getElementAnimationDelay(element) {

@@ -1,7 +1,7 @@
 /**
  * Remove class from `HTMLElement.classList`.
  *
- * @param {HTMLElement} element target
+ * @param {HTMLElement | Element} element target
  * @param {string} classNAME to remove
  */
 export default function removeClass(element, classNAME) {

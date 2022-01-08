@@ -149,6 +149,7 @@ export { default as on } from 'shorter-js/src/event/on';
 export { default as off } from 'shorter-js/src/event/off';
 export { default as one } from 'shorter-js/src/event/one';
 export { default as Data } from 'shorter-js/src/misc/data';
+export { default as distinct } from 'shorter-js/src/misc/distinct';
 export { default as Timer } from 'shorter-js/src/misc/timer';
 export { default as emulateAnimationEnd } from 'shorter-js/src/misc/emulateAnimationEnd';
 export { default as emulateAnimationEndLegacy } from 'shorter-js/src/misc/emulateAnimationEndLegacy';
@@ -170,6 +171,7 @@ export { default as ObjectAssign } from 'shorter-js/src/misc/ObjectAssign';
 export { default as isArray } from 'shorter-js/src/is/isArray';
 export { default as isDocument } from 'shorter-js/src/is/isDocument';
 export { default as isElement } from 'shorter-js/src/is/isElement';
+export { default as isCustomElement } from 'shorter-js/src/is/isCustomElement';
 export { default as isElementInScrollRange } from 'shorter-js/src/is/isElementInScrollRange';
 export { default as isElementInViewport } from 'shorter-js/src/is/isElementInViewport';
 export { default as isElementsArray } from 'shorter-js/src/is/isElementsArray';
@@ -186,6 +188,8 @@ export { default as isString } from 'shorter-js/src/is/isString';
 export { default as isSVGElement } from 'shorter-js/src/is/isSVGElement';
 export { default as isTableElement } from 'shorter-js/src/is/isTableElement';
 export { default as isWindow } from 'shorter-js/src/is/isWindow';
+export { default as parentNodes } from 'shorter-js/src/selectors/parentNodes';
+export { default as elementNodes } from 'shorter-js/src/selectors/elementNodes';
 export { default as closest } from 'shorter-js/src/selectors/closest';
 export { default as getCustomElements } from 'shorter-js/src/selectors/getCustomElements';
 export { default as querySelector } from 'shorter-js/src/selectors/querySelector';
@@ -194,9 +198,26 @@ export { default as getElementsByTagName } from 'shorter-js/src/selectors/getEle
 export { default as getElementsByClassName } from 'shorter-js/src/selectors/getElementsByClassName';
 export { default as Version } from 'shorter-js/src/misc/version';
 
-export {
-  Component,
-  getInstance,
-  BoundingClientRect,
-  OffsetRect,
-} from './module/types'
+export type Component = Record<string, any>;
+export type getInstance<T> = (target: ElementNodes | string, component: string) => T | null;
+
+export interface BoundingClientRect {
+  width: number,
+  height: number,
+  top: number,
+  left: number,
+  right: number,
+  bottom: number,
+  x: number,
+  y: number,
+}
+
+export interface OffsetRect {
+  width: number,
+  height: number,
+  x: number,
+  y: number,
+}
+
+export type ElementNodes = HTMLElement | Element;
+export type ParentNodes = Document | ElementNodes | Node; // ShadowRoot is a Node too

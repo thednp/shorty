@@ -912,37 +912,37 @@ declare module "shorter-js/src/boolean/supportAnimation" {
 }
 declare module "shorter-js/src/event/on" {
     /**
-     * Add eventListener to an `HTMLElement` | `Document` target.
+     * Add eventListener to an `Element` | `HTMLElement` | `Document` target.
      *
-     * @param {HTMLElement | Document} element event.target
+     * @param {SHORTER.ElementNodes | Document} element event.target
      * @param {string} eventName event.type
      * @param {EventListener} handler callback
      * @param {EventListenerOptions | boolean | undefined} options other event options
      */
-    export default function on(element: HTMLElement | Document, eventName: string, handler: EventListener, options: EventListenerOptions | boolean | undefined): void;
+    export default function on(element: SHORTER.ElementNodes | Document, eventName: string, handler: EventListener, options: EventListenerOptions | boolean | undefined): void;
 }
 declare module "shorter-js/src/event/off" {
     /**
-     * Remove eventListener from an `HTMLElement` | `Document` target.
+     * Remove eventListener from an `Element` | `HTMLElement` | `Document` target.
      *
-     * @param {HTMLElement | Document} element event.target
+     * @param {SHORTER.ElementNodes | Document} element event.target
      * @param {string} eventName event.type
      * @param {EventListener} handler callback
      * @param {EventListenerOptions | boolean | undefined} options other event options
      */
-    export default function off(element: HTMLElement | Document, eventName: string, handler: EventListener, options: EventListenerOptions | boolean | undefined): void;
+    export default function off(element: SHORTER.ElementNodes | Document, eventName: string, handler: EventListener, options: EventListenerOptions | boolean | undefined): void;
 }
 declare module "shorter-js/src/event/one" {
     /**
-     * Add an `eventListener` to an `HTMLElement` | `Document` target
+     * Add an `eventListener` to an `Element` | `HTMLElement` | `Document` target
      * and remove it once callback is called.
      *
-     * @param {HTMLElement | Document} element event.target
+     * @param {SHORTER.ElementNodes | Document} element event.target
      * @param {string} eventName event.type
      * @param {EventListener} handler callback
      * @param {EventListenerOptions | boolean | undefined} options other event options
      */
-    export default function one(element: HTMLElement | Document, eventName: string, handler: EventListener, options: EventListenerOptions | boolean | undefined): void;
+    export default function one(element: SHORTER.ElementNodes | Document, eventName: string, handler: EventListener, options: EventListenerOptions | boolean | undefined): void;
 }
 declare module "shorter-js/src/boolean/supportPassive" {
     export default supportPassive;
@@ -1038,6 +1038,16 @@ declare module "shorter-js/src/attr/removeAttributeNS" {
      */
     function removeAttributeNS(element: HTMLElement, att: string, ns?: string | undefined): void;
 }
+declare module "shorter-js/src/is/isElement" {
+    export default isElement;
+    /**
+     * Checks if an object is an `Element`.
+     *
+     * @param {any} element the target object
+     * @returns {boolean} the query result
+     */
+    function isElement(element: any): boolean;
+}
 declare module "shorter-js/src/is/isHTMLElement" {
     export default isHTMLElement;
     /**
@@ -1054,11 +1064,11 @@ declare module "shorter-js/src/get/getBoundingClientRect" {
      *
      * @see https://github.com/floating-ui/floating-ui
      *
-     * @param {HTMLElement} element target
+     * @param {SHORTER.ElementNodes} element event.target
      * @param {boolean=} includeScale when *true*, the target scale is also computed
      * @returns {SHORTER.BoundingClientRect} the bounding client rect object
      */
-    export default function getBoundingClientRect(element: HTMLElement, includeScale?: boolean | undefined): SHORTER.BoundingClientRect;
+    export default function getBoundingClientRect(element: SHORTER.ElementNodes, includeScale?: boolean | undefined): SHORTER.BoundingClientRect;
 }
 declare module "shorter-js/src/is/isWindow" {
     /**
@@ -1083,37 +1093,37 @@ declare module "shorter-js/src/get/getDocument" {
     /**
      * Returns the `document` or the `#document` element.
      * @see https://github.com/floating-ui/floating-ui
-     * @param {(Node | HTMLElement | Element | Window)=} node
+     * @param {(Node | SHORTER.ElementNodes | Window)=} node
      * @returns {Document}
      */
-    export default function getDocument(node?: (Node | HTMLElement | Element | Window) | undefined): Document;
+    export default function getDocument(node?: (Node | SHORTER.ElementNodes | Window) | undefined): Document;
 }
 declare module "shorter-js/src/get/getDocumentBody" {
     /**
      * Returns the `document.body` or the `<body>` element.
      *
-     * @param {(Node | HTMLElement | Element)=} node
-     * @returns {HTMLElement}
+     * @param {(Node | SHORTER.ElementNodes)=} node
+     * @returns {HTMLElement | HTMLBodyElement}
      */
-    export default function getDocumentBody(node?: (Node | HTMLElement | Element) | undefined): HTMLElement;
+    export default function getDocumentBody(node?: (Node | SHORTER.ElementNodes) | undefined): HTMLElement | HTMLBodyElement;
 }
 declare module "shorter-js/src/get/getDocumentElement" {
     /**
      * Returns the `document.documentElement` or the `<html>` element.
      *
-     * @param {(Node | HTMLElement | Element)=} node
-     * @returns {HTMLElement}
+     * @param {(Node | SHORTER.ElementNodes)=} node
+     * @returns {HTMLElement | HTMLHtmlElement}
      */
-    export default function getDocumentElement(node?: (Node | HTMLElement | Element) | undefined): HTMLElement;
+    export default function getDocumentElement(node?: (Node | SHORTER.ElementNodes) | undefined): HTMLElement | HTMLHtmlElement;
 }
 declare module "shorter-js/src/get/getDocumentHead" {
     /**
      * Returns the `document.head` or the `<head>` element.
      *
-     * @param {(Node | HTMLElement | Element)=} node
-     * @returns {HTMLElement}
+     * @param {(Node | SHORTER.ElementNodes)=} node
+     * @returns {HTMLElement | HTMLHeadElement}
      */
-    export default function getDocumentHead(node?: (Node | HTMLElement | Element) | undefined): HTMLElement;
+    export default function getDocumentHead(node?: (Node | SHORTER.ElementNodes) | undefined): HTMLElement | HTMLHeadElement;
 }
 declare module "shorter-js/src/get/getElementStyle" {
     /**
@@ -1123,91 +1133,91 @@ declare module "shorter-js/src/get/getElementStyle" {
      * * If `element` parameter is not an `HTMLElement`, `getComputedStyle`
      * throws a `ReferenceError`.
      *
-     * @param {HTMLElement} element target
+     * @param {SHORTER.ElementNodes} element target
      * @param {string} property the css property
      * @return {string} the css property value
      */
-    export default function getElementStyle(element: HTMLElement, property: string): string;
+    export default function getElementStyle(element: SHORTER.ElementNodes, property: string): string;
 }
 declare module "shorter-js/src/get/getElementAnimationDuration" {
     /**
      * Utility to get the computed `animationDuration`
      * from `HTMLElement` in miliseconds.
      *
-     * @param {HTMLElement} element target
+     * @param {SHORTER.ElementNodes} element target
      * @return {number} the value in miliseconds
      */
-    export default function getElementAnimationDuration(element: HTMLElement): number;
+    export default function getElementAnimationDuration(element: SHORTER.ElementNodes): number;
 }
 declare module "shorter-js/src/get/getElementAnimationDurationLegacy" {
     /**
      * Utility to get the computed `animationDuration`
      * from `HTMLElement` in miliseconds.
      *
-     * @param {HTMLElement} element target
+     * @param {SHORTER.ElementNodes} element target
      * @return {number} the value in miliseconds
      */
-    export default function getElementAnimationDuration(element: HTMLElement): number;
+    export default function getElementAnimationDuration(element: SHORTER.ElementNodes): number;
 }
 declare module "shorter-js/src/get/getElementAnimationDelay" {
     /**
      * Utility to get the computed `animationDelay`
      * from Element in miliseconds.
      *
-     * @param {HTMLElement} element target
+     * @param {SHORTER.ElementNodes} element target
      * @return {number} the value in miliseconds
      */
-    export default function getElementAnimationDelay(element: HTMLElement): number;
+    export default function getElementAnimationDelay(element: SHORTER.ElementNodes): number;
 }
 declare module "shorter-js/src/get/getElementAnimationDelayLegacy" {
     /**
      * Utility to get the computed `animationDelay`
      * from Element in miliseconds.
      *
-     * @param {HTMLElement} element target
+     * @param {SHORTER.ElementNodes} element target
      * @return {number} the value in miliseconds
      */
-    export default function getElementAnimationDelay(element: HTMLElement): number;
+    export default function getElementAnimationDelay(element: SHORTER.ElementNodes): number;
 }
 declare module "shorter-js/src/get/getElementTransitionDuration" {
     /**
      * Utility to get the computed `transitionDuration`
      * from Element in miliseconds.
      *
-     * @param {HTMLElement} element target
+     * @param {SHORTER.ElementNodes} element target
      * @return {number} the value in miliseconds
      */
-    export default function getElementTransitionDuration(element: HTMLElement): number;
+    export default function getElementTransitionDuration(element: SHORTER.ElementNodes): number;
 }
 declare module "shorter-js/src/get/getElementTransitionDurationLegacy" {
     /**
      * Utility to get the computed `transitionDuration`
      * from Element in miliseconds.
      *
-     * @param {HTMLElement} element target
+     * @param {SHORTER.ElementNodes} element target
      * @return {number} the value in miliseconds
      */
-    export default function getElementTransitionDuration(element: HTMLElement): number;
+    export default function getElementTransitionDuration(element: SHORTER.ElementNodes): number;
 }
 declare module "shorter-js/src/get/getElementTransitionDelay" {
     /**
      * Utility to get the computed `transitionDelay`
      * from Element in miliseconds.
      *
-     * @param {HTMLElement} element target
+     * @param {SHORTER.ElementNodes} element target
      * @return {number} the value in miliseconds
      */
-    export default function getElementTransitionDelay(element: HTMLElement): number;
+    export default function getElementTransitionDelay(element: SHORTER.ElementNodes): number;
 }
 declare module "shorter-js/src/get/getElementTransitionDelayLegacy" {
     /**
      * Utility to get the computed `transitionDelay`
      * from Element in miliseconds.
      *
-     * @param {HTMLElement} element target
+     * @param {SHORTER.ElementNodes} element target
      * @return {number} the value in miliseconds
      */
-    export default function getElementTransitionDelay(element: HTMLElement): number;
+    export default function getElementTransitionDelay(element: SHORTER.ElementNodes): number;
 }
 declare module "shorter-js/src/get/getNodeScroll" {
     /**
@@ -1216,10 +1226,10 @@ declare module "shorter-js/src/get/getNodeScroll" {
      *
      * @see https://github.com/floating-ui/floating-ui
      *
-     * @param {HTMLElement | Window} element target node / element
+     * @param {SHORTER.ElementNodes | Window} element target node / element
      * @returns {{x: number, y: number}} the scroll tuple
      */
-    export default function getNodeScroll(element: HTMLElement | Window): {
+    export default function getNodeScroll(element: SHORTER.ElementNodes | Window): {
         x: number;
         y: number;
     };
@@ -1229,10 +1239,10 @@ declare module "shorter-js/src/get/getWindow" {
      * Returns the `Window` object of a target node.
      * @see https://github.com/floating-ui/floating-ui
      *
-     * @param {(Node | Element | HTMLElement | Window)=} node target node
-     * @returns {globalThis} the `Window` object
+     * @param {(Node | SHORTER.ElementNodes | Window)=} node target node
+     * @returns {globalThis}
      */
-    export default function getWindow(node?: (Node | Element | HTMLElement | Window) | undefined): typeof globalThis;
+    export default function getWindow(node?: (Node | SHORTER.ElementNodes | Window) | undefined): typeof globalThis;
 }
 declare module "shorter-js/src/is/isShadowRoot" {
     export default isShadowRoot;
@@ -1249,32 +1259,32 @@ declare module "shorter-js/src/get/getParentNode" {
      * Returns the `parentNode` also going through `ShadowRoot`.
      * @see https://github.com/floating-ui/floating-ui
      *
-     * @param {Node | Element} node the target node
-     * @returns {Node} the apropriate parent node
+     * @param {Node | SHORTER.ElementNodes} node the target node
+     * @returns {Node | SHORTER.ElementNodes} the apropriate parent node
      */
-    export default function getParentNode(node: Node | Element): Node;
+    export default function getParentNode(node: Node | SHORTER.ElementNodes): Node | SHORTER.ElementNodes;
 }
 declare module "shorter-js/src/is/isScaledElement" {
     /**
      * Checks if a target `HTMLElement` is affected by scale.
      * @see https://github.com/floating-ui/floating-ui
      *
-     * @param {HTMLElement} element target
+     * @param {SHORTER.ElementNodes} element target
      * @returns {boolean} the query result
      */
-    export default function isScaledElement(element: HTMLElement): boolean;
+    export default function isScaledElement(element: SHORTER.ElementNodes): boolean;
 }
 declare module "shorter-js/src/get/getRectRelativeToOffsetParent" {
     /**
      * Returns the rect relative to an offset parent.
      * @see https://github.com/floating-ui/floating-ui
      *
-     * @param {HTMLElement} element target
-     * @param {HTMLElement | Window} offsetParent the container / offset parent
+     * @param {SHORTER.ElementNodes} element target
+     * @param {SHORTER.ElementNodes | Window} offsetParent the container / offset parent
      * @param {{x: number, y: number}} scroll
      * @returns {SHORTER.OffsetRect}
      */
-    export default function getRectRelativeToOffsetParent(element: HTMLElement, offsetParent: HTMLElement | Window, scroll: {
+    export default function getRectRelativeToOffsetParent(element: SHORTER.ElementNodes, offsetParent: SHORTER.ElementNodes | Window, scroll: {
         x: number;
         y: number;
     }): SHORTER.OffsetRect;
@@ -1283,40 +1293,84 @@ declare module "shorter-js/src/class/addClass" {
     /**
      * Add class to `HTMLElement.classList`.
      *
-     * @param {HTMLElement} element target
+     * @param {HTMLElement | Element} element target
      * @param {string} classNAME to add
      */
-    export default function addClass(element: HTMLElement, classNAME: string): void;
+    export default function addClass(element: HTMLElement | Element, classNAME: string): void;
 }
 declare module "shorter-js/src/class/removeClass" {
     /**
      * Remove class from `HTMLElement.classList`.
      *
-     * @param {HTMLElement} element target
+     * @param {HTMLElement | Element} element target
      * @param {string} classNAME to remove
      */
-    export default function removeClass(element: HTMLElement, classNAME: string): void;
+    export default function removeClass(element: HTMLElement | Element, classNAME: string): void;
 }
 declare module "shorter-js/src/class/hasClass" {
     /**
      * Check class in `HTMLElement.classList`.
      *
-     * @param {HTMLElement} element target
+     * @param {HTMLElement | Element} element target
      * @param {string} classNAME to check
      * @return {boolean}
      */
-    export default function hasClass(element: HTMLElement, classNAME: string): boolean;
+    export default function hasClass(element: HTMLElement | Element, classNAME: string): boolean;
+}
+declare module "shorter-js/src/selectors/parentNodes" {
+    export default parentNodes;
+    /**
+     * A global array of possible `ParentNode`.
+     */
+    const parentNodes: ({
+        new (): Document;
+        prototype: Document;
+    } | {
+        new (): Element;
+        prototype: Element;
+    } | {
+        new (): Node;
+        prototype: Node;
+        readonly ATTRIBUTE_NODE: number;
+        readonly CDATA_SECTION_NODE: number;
+        readonly COMMENT_NODE: number;
+        readonly DOCUMENT_FRAGMENT_NODE: number;
+        readonly DOCUMENT_NODE: number;
+        readonly DOCUMENT_POSITION_CONTAINED_BY: number;
+        readonly DOCUMENT_POSITION_CONTAINS: number;
+        readonly DOCUMENT_POSITION_DISCONNECTED: number;
+        readonly DOCUMENT_POSITION_FOLLOWING: number;
+        readonly DOCUMENT_POSITION_IMPLEMENTATION_SPECIFIC: number;
+        readonly DOCUMENT_POSITION_PRECEDING: number;
+        readonly DOCUMENT_TYPE_NODE: number;
+        readonly ELEMENT_NODE: number;
+        readonly ENTITY_NODE: number;
+        readonly ENTITY_REFERENCE_NODE: number;
+        readonly NOTATION_NODE: number;
+        readonly PROCESSING_INSTRUCTION_NODE: number;
+        readonly TEXT_NODE: number;
+    })[];
+}
+declare module "shorter-js/src/selectors/elementNodes" {
+    export default elementNodes;
+    /**
+     * A global array with `Element` | `HTMLElement`.
+     */
+    const elementNodes: {
+        new (): Element;
+        prototype: Element;
+    }[];
 }
 declare module "shorter-js/src/selectors/querySelector" {
     /**
      * Utility to check if target is typeof `HTMLElement`, `Element`, `Node`
      * or find one that matches a selector.
      *
-     * @param {HTMLElement | string} selector the input selector or target element
-     * @param {(Document | Element | HTMLElement)=} parent optional node to look into
-     * @return {HTMLElement?} the `HTMLElement` or `querySelector` result
+     * @param {SHORTER.ElementNodes | string} selector the input selector or target element
+     * @param {SHORTER.ParentNodes=} parent optional node to look into
+     * @return {(SHORTER.ElementNodes)?} the `HTMLElement` or `querySelector` result
      */
-    export default function querySelector(selector: HTMLElement | string, parent?: (Document | Element | HTMLElement) | undefined): HTMLElement | null;
+    export default function querySelector(selector: SHORTER.ElementNodes | string, parent?: SHORTER.ParentNodes | undefined): (SHORTER.ElementNodes) | null;
 }
 declare module "shorter-js/src/misc/data" {
     /**
@@ -1326,64 +1380,82 @@ declare module "shorter-js/src/misc/data" {
     export const getInstance: SHORTER.getInstance<any>;
     export default Data;
     namespace Data {
-        function set(target: string | HTMLElement, component: string, instance: SHORTER.Component): void;
-        function getAllFor(component: string): Map<HTMLElement, SHORTER.Component> | null;
-        function get(target: string | HTMLElement, component: string): SHORTER.Component | null;
-        function remove(target: string | HTMLElement, component: string): void;
+        function set(target: string | SHORTER.ElementNodes, component: string, instance: SHORTER.Component): void;
+        function getAllFor(component: string): Map<SHORTER.ElementNodes, SHORTER.Component> | null;
+        function get(target: string | SHORTER.ElementNodes, component: string): SHORTER.Component | null;
+        function remove(target: string | SHORTER.ElementNodes, component: string): void;
     }
 }
 declare module "shorter-js/src/misc/timer" {
     export default Timer;
     namespace Timer {
-        function set(target: string | HTMLElement, callback: any, delay: number, key?: string | undefined): void;
-        function get(target: string | HTMLElement, key?: string | undefined): any;
-        function clear(target: HTMLElement, key?: string | undefined): void;
+        function set(target: string | SHORTER.ElementNodes, callback: any, delay: number, key?: string | undefined): void;
+        function get(target: string | SHORTER.ElementNodes, key?: string | undefined): any;
+        function clear(target: string | SHORTER.ElementNodes, key?: string | undefined): void;
     }
+}
+declare module "shorter-js/src/misc/distinct" {
+    export default distinct;
+    /**
+     * JavaScript `Array` distinct.
+     * @see https://codeburst.io/javascript-array-distinct-5edc93501dc4
+     * @param {*} value
+     * @param {number} index
+     * @param {*} self
+     * @returns {boolean}
+     */
+    function distinct(value: any, index: number, self: any): boolean;
 }
 declare module "shorter-js/src/misc/emulateAnimationEnd" {
     /**
      * Utility to make sure callbacks are consistently
      * called when animation ends.
      *
-     * @param {HTMLElement} element target
+     * @param {SHORTER.ElementNodes} element target
      * @param {EventListener} handler `animationend` callback
      */
-    export default function emulateAnimationEnd(element: HTMLElement, handler: EventListener): void;
+    export default function emulateAnimationEnd(element: SHORTER.ElementNodes, handler: EventListener): void;
 }
 declare module "shorter-js/src/misc/emulateAnimationEndLegacy" {
     /**
      * Utility to make sure callbacks are consistently
      * called when animation ends.
      *
-     * @param {HTMLElement} element target
+     * @param {SHORTER.ElementNodes} element target
      * @param {EventListener} handler `animationend` callback
      */
-    export default function emulateAnimationEnd(element: HTMLElement, handler: EventListener): void;
+    export default function emulateAnimationEnd(element: SHORTER.ElementNodes, handler: EventListener): void;
 }
 declare module "shorter-js/src/misc/emulateTransitionEnd" {
     /**
      * Utility to make sure callbacks are consistently
      * called when transition ends.
      *
-     * @param {HTMLElement} element target
+     * @param {SHORTER.ElementNodes} element target
      * @param {EventListener} handler `transitionend` callback
      */
-    export default function emulateTransitionEnd(element: HTMLElement, handler: EventListener): void;
+    export default function emulateTransitionEnd(element: SHORTER.ElementNodes, handler: EventListener): void;
 }
 declare module "shorter-js/src/misc/emulateTransitionEndLegacy" {
     /**
      * Utility to make sure callbacks are consistently
      * called when transition ends.
      *
-     * @param {HTMLElement} element target
+     * @param {SHORTER.ElementNodes} element target
      * @param {EventListener} handler `transitionend` callback
      */
-    export default function emulateTransitionEnd(element: HTMLElement, handler: EventListener): void;
+    export default function emulateTransitionEnd(element: SHORTER.ElementNodes, handler: EventListener): void;
 }
 declare module "shorter-js/src/misc/passiveHandler" {
     export default passiveHandler;
+    namespace passiveHandler {
+        const passive: boolean;
+    }
+}
+declare module "shorter-js/src/misc/passiveHandlerLegacy" {
+    export default passiveHandler;
     /**
-     * A global namespace for most scroll event listeners.
+     * A global namespace for most scroll event listeners in legacy browsers.
      */
     const passiveHandler: false | {
         passive: boolean;
@@ -1402,10 +1474,10 @@ declare module "shorter-js/src/misc/setElementStyle" {
     export default setElementStyle;
     /**
      * Shortcut for multiple uses of `HTMLElement.style.propertyName` method.
-     * @param  {HTMLElement} element target element
+     * @param  {SHORTER.ElementNodes} element target element
      * @param  {Partial<CSSStyleDeclaration>} styles attribute value
      */
-    function setElementStyle(element: HTMLElement, styles: Partial<CSSStyleDeclaration>): void;
+    function setElementStyle(element: SHORTER.ElementNodes, styles: Partial<CSSStyleDeclaration>): void;
 }
 declare module "shorter-js/src/misc/normalizeValue" {
     /**
@@ -1438,13 +1510,13 @@ declare module "shorter-js/src/misc/normalizeOptions" {
     /**
      * Utility to normalize component options.
      *
-     * @param {HTMLElement} element target
+     * @param {SHORTER.ElementNodes} element target
      * @param {Record<string, any>} defaultOps component default options
      * @param {Record<string, any>} inputOps component instance options
      * @param {string=} ns component namespace
      * @return {Record<string, any>} normalized component options object
      */
-    export default function normalizeOptions(element: HTMLElement, defaultOps: Record<string, any>, inputOps: Record<string, any>, ns?: string | undefined): Record<string, any>;
+    export default function normalizeOptions(element: SHORTER.ElementNodes, defaultOps: Record<string, any>, inputOps: Record<string, any>, ns?: string | undefined): Record<string, any>;
 }
 declare module "shorter-js/src/misc/tryWrapper" {
     /**
@@ -1460,19 +1532,19 @@ declare module "shorter-js/src/misc/reflow" {
     /**
      * Utility to force re-paint of an `HTMLElement` target.
      *
-     * @param {HTMLElement} element is the target
+     * @param {SHORTER.ElementNodes} element is the target
      * @return {number} the `Element.offsetHeight` value
      */
-    function reflow(element: HTMLElement): number;
+    function reflow(element: SHORTER.ElementNodes): number;
 }
 declare module "shorter-js/src/misc/focus" {
     export default focus;
     /**
      * Utility to focus an `HTMLElement` target.
      *
-     * @param {HTMLElement} element is the target
+     * @param {SHORTER.ElementNodes} element is the target
      */
-    function focus(element: HTMLElement): void;
+    function focus(element: SHORTER.ElementNodes): any;
 }
 declare module "shorter-js/src/misc/ArrayFrom" {
     export default ArrayFrom;
@@ -1531,15 +1603,15 @@ declare module "shorter-js/src/is/isDocument" {
      */
     function isDocument(element: any): boolean;
 }
-declare module "shorter-js/src/is/isElement" {
-    export default isElement;
+declare module "shorter-js/src/is/isCustomElement" {
+    export default isCustomElement;
     /**
-     * Checks if an object is an `Element`.
+     * Checks if an object is a `CustomElement`.
      *
      * @param {any} element the target object
      * @returns {boolean} the query result
      */
-    function isElement(element: any): boolean;
+    function isCustomElement(element: any): boolean;
 }
 declare module "shorter-js/src/is/isElementInScrollRange" {
     export default isElementInScrollRange;
@@ -1618,10 +1690,10 @@ declare module "shorter-js/src/is/isRTL" {
     export default isRTL;
     /**
      * Checks if a page is Right To Left.
-     * @param {HTMLElement=} node the target
+     * @param {SHORTER.ElementNodes=} node the target
      * @returns {boolean} the query result
      */
-    function isRTL(node?: HTMLElement | undefined): boolean;
+    function isRTL(node?: SHORTER.ElementNodes | undefined): boolean;
 }
 declare module "shorter-js/src/is/isString" {
     export default isString;
@@ -1653,13 +1725,17 @@ declare module "shorter-js/src/is/isTableElement" {
 }
 declare module "shorter-js/src/selectors/closest" {
     /**
-     * Shortcut for `HTMLElement.closest` method.
+     * Shortcut for `HTMLElement.closest` method which also works
+     * with children of `ShadowRoot`. The order of the parameters
+     * is intentional since they're both required.
      *
-     * @param {HTMLElement} element optional Element to look into
+     * @see https://stackoverflow.com/q/54520554/803358
+     *
+     * @param {SHORTER.ElementNodes} element Element to look into
      * @param {string} selector the selector name
-     * @return {HTMLElement?} the query result
+     * @return {SHORTER.ElementNodes?} the query result
      */
-    export default function closest(element: HTMLElement, selector: string): HTMLElement | null;
+    export default function closest(element: SHORTER.ElementNodes, selector: string): SHORTER.ElementNodes | null;
 }
 declare module "shorter-js/src/selectors/getCustomElements" {
     /**
@@ -1667,40 +1743,42 @@ declare module "shorter-js/src/selectors/getCustomElements" {
      * `CustomElement`.
      * @see https://stackoverflow.com/questions/27334365/how-to-get-list-of-registered-custom-elements
      *
-     * @param {(HTMLElement | Document)=} parent parent to look into
-     * @returns {Element[]} the query result
+     * @param {(SHORTER.ParentNodes)=} parent parent to look into
+     * @returns {SHORTER.ElementNodes[]} the query result
      */
-    export default function getCustomElements(parent?: (HTMLElement | Document) | undefined): Element[];
+    export default function getCustomElements(parent?: (SHORTER.ParentNodes) | undefined): SHORTER.ElementNodes[];
 }
 declare module "shorter-js/src/selectors/querySelectorAll" {
     /**
      * A shortcut for `(document|Element).querySelectorAll`.
      *
      * @param {string} selector the input selector
-     * @param {(Document | HTMLElement | Element)=} parent optional node to look into
-     * @return {NodeListOf<Element>} the query result
+     * @param {(SHORTER.ParentNodes)=} parent optional node to look into
+     * @return {NodeListOf<SHORTER.ElementNodes>} the query result
      */
-    export default function querySelectorAll(selector: string, parent?: (Document | HTMLElement | Element) | undefined): NodeListOf<Element>;
+    export default function querySelectorAll(selector: string, parent?: (SHORTER.ParentNodes) | undefined): NodeListOf<SHORTER.ElementNodes>;
 }
 declare module "shorter-js/src/selectors/getElementsByTagName" {
     /**
-     * Shortcut for `HTMLElement.getElementsByTagName` method.
+     * Shortcut for `HTMLElement.getElementsByTagName` method. Some `Node` elements
+     * like `ShadowRoot` do not support `getElementsByTagName`.
      *
      * @param {string} selector the tag name
-     * @param {(HTMLElement | Element | Document)=} parent optional Element to look into
-     * @return {HTMLCollection} the 'HTMLCollection'
+     * @param {(SHORTER.ElementNodes | Document)=} parent optional Element to look into
+     * @return {HTMLCollectionOf<SHORTER.ElementNodes>} the 'HTMLCollection'
      */
-    export default function getElementsByTagName(selector: string, parent?: (HTMLElement | Element | Document) | undefined): HTMLCollection;
+    export default function getElementsByTagName(selector: string, parent?: (SHORTER.ElementNodes | Document) | undefined): HTMLCollectionOf<SHORTER.ElementNodes>;
 }
 declare module "shorter-js/src/selectors/getElementsByClassName" {
     /**
-     * Shortcut for `HTMLElement.getElementsByClassName` method.
+     * Shortcut for `HTMLElement.getElementsByClassName` method. Some `Node` elements
+     * like `ShadowRoot` do not support `getElementsByClassName`.
      *
      * @param {string} selector the class name
-     * @param {(HTMLElement | Element | Document)=} parent optional Element to look into
-     * @return {HTMLCollection} the 'HTMLCollection'
+     * @param {(SHORTER.ElementNodes | Document)=} parent optional Element to look into
+     * @return {HTMLCollectionOf<SHORTER.ElementNodes>} the 'HTMLCollection'
      */
-    export default function getElementsByClassName(selector: string, parent?: (HTMLElement | Element | Document) | undefined): HTMLCollection;
+    export default function getElementsByClassName(selector: string, parent?: (SHORTER.ElementNodes | Document) | undefined): HTMLCollectionOf<SHORTER.ElementNodes>;
 }
 declare module "shorter-js/src/misc/version" {
     export default Version;
@@ -1860,11 +1938,13 @@ declare module "shorter-js/types/module/shorter" {
     export { default as one } from "shorter-js/src/event/one";
     export { default as Data, getInstance } from "shorter-js/src/misc/data";
     export { default as Timer } from "shorter-js/src/misc/timer";
+    export { default as distinct } from "shorter-js/src/misc/distinct";
     export { default as emulateAnimationEnd } from "shorter-js/src/misc/emulateAnimationEnd";
     export { default as emulateAnimationEndLegacy } from "shorter-js/src/misc/emulateAnimationEndLegacy";
     export { default as emulateTransitionEnd } from "shorter-js/src/misc/emulateTransitionEnd";
     export { default as emulateTransitionEndLegacy } from "shorter-js/src/misc/emulateTransitionEndLegacy";
     export { default as passiveHandler } from "shorter-js/src/misc/passiveHandler";
+    export { default as passiveHandlerLegacy } from "shorter-js/src/misc/passiveHandlerLegacy";
     export { default as setElementStyle } from "shorter-js/src/misc/setElementStyle";
     export { default as normalizeValue } from "shorter-js/src/misc/normalizeValue";
     export { default as normalizeOptions } from "shorter-js/src/misc/normalizeOptions";
@@ -1879,6 +1959,7 @@ declare module "shorter-js/types/module/shorter" {
     export { default as ObjectAssign } from "shorter-js/src/misc/ObjectAssign";
     export { default as isArray } from "shorter-js/src/is/isArray";
     export { default as isDocument } from "shorter-js/src/is/isDocument";
+    export { default as isCustomElement } from "shorter-js/src/is/isCustomElement";
     export { default as isElement } from "shorter-js/src/is/isElement";
     export { default as isElementInScrollRange } from "shorter-js/src/is/isElementInScrollRange";
     export { default as isElementInViewport } from "shorter-js/src/is/isElementInViewport";
@@ -1896,6 +1977,8 @@ declare module "shorter-js/types/module/shorter" {
     export { default as isSVGElement } from "shorter-js/src/is/isSVGElement";
     export { default as isTableElement } from "shorter-js/src/is/isTableElement";
     export { default as isWindow } from "shorter-js/src/is/isWindow";
+    export { default as elementNodes } from "shorter-js/src/selectors/elementNodes";
+    export { default as parentNodes } from "shorter-js/src/selectors/parentNodes";
     export { default as closest } from "shorter-js/src/selectors/closest";
     export { default as getCustomElements } from "shorter-js/src/selectors/getCustomElements";
     export { default as querySelector } from "shorter-js/src/selectors/querySelector";

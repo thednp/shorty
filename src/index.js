@@ -155,6 +155,7 @@ import one from './event/one';
 // misc
 import ArrayFrom from './misc/ArrayFrom';
 import Data, { getInstance } from './misc/data';
+import distinct from './misc/distinct';
 import emulateAnimationEnd from './misc/emulateAnimationEnd';
 import emulateAnimationEndLegacy from './misc/emulateAnimationEndLegacy';
 import emulateTransitionEnd from './misc/emulateTransitionEnd';
@@ -168,6 +169,7 @@ import ObjectAssign from './misc/ObjectAssign';
 import ObjectKeys from './misc/ObjectKeys';
 import ObjectValues from './misc/ObjectValues';
 import passiveHandler from './misc/passiveHandler';
+import passiveHandlerLegacy from './misc/passiveHandlerLegacy';
 import reflow from './misc/reflow';
 import setElementStyle from './misc/setElementStyle';
 import Timer from './misc/timer';
@@ -196,6 +198,7 @@ import getWindow from './get/getWindow';
 // is
 import isArray from './is/isArray';
 import isDocument from './is/isDocument';
+import isCustomElement from './is/isCustomElement';
 import isElement from './is/isElement';
 import isElementInScrollRange from './is/isElementInScrollRange';
 import isElementInViewport from './is/isElementInViewport';
@@ -215,6 +218,8 @@ import isTableElement from './is/isTableElement';
 import isWindow from './is/isWindow';
 
 // selectors
+import elementNodes from './selectors/elementNodes';
+import parentNodes from './selectors/parentNodes';
 import closest from './selectors/closest';
 import querySelector from './selectors/querySelector';
 import getCustomElements from './selectors/getCustomElements';
@@ -348,6 +353,7 @@ const SHORTER = {
   on,
   off,
   one,
+  distinct,
   Data,
   Timer,
   getInstance,
@@ -358,6 +364,7 @@ const SHORTER = {
   isElementInScrollRange,
   isElementInViewport,
   passiveHandler,
+  passiveHandlerLegacy,
   getElementAnimationDuration,
   getElementAnimationDurationLegacy,
   getElementAnimationDelay,
@@ -372,6 +379,7 @@ const SHORTER = {
   getWindow,
   isArray,
   isString,
+  isCustomElement,
   isElement,
   isNode,
   isHTMLElement,
@@ -387,6 +395,8 @@ const SHORTER = {
   isWindow,
   isMedia,
   isRTL,
+  elementNodes,
+  parentNodes,
   closest,
   querySelector,
   getCustomElements,

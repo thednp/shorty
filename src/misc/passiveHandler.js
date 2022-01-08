@@ -1,8 +1,6 @@
-import supportPassive from '../boolean/supportPassive';
-
 /**
  * A global namespace for most scroll event listeners.
  */
-const passiveHandler = supportPassive ? { passive: true } : false;
+const passiveHandler = { passive: true };
 
 export default passiveHandler;
