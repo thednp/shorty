@@ -8,7 +8,7 @@ import elementNodes from './elementNodes';
  *
  * @param {SHORTER.ElementNodes | string} selector the input selector or target element
  * @param {SHORTER.ParentNodes=} parent optional node to look into
- * @return {(SHORTER.ElementNodes)?} the `HTMLElement` or `querySelector` result
+ * @return {SHORTER.ElementNodes?} the `HTMLElement` or `querySelector` result
  */
 export default function querySelector(selector, parent) {
   const selectorIsString = typeof selector === 'string';

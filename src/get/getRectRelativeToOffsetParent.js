@@ -11,11 +11,11 @@ import getBoundingClientRect from './getBoundingClientRect';
  * @returns {SHORTER.OffsetRect}
  */
 export default function getRectRelativeToOffsetParent(element, offsetParent, scroll) {
-  const isParentAWindow = offsetParent instanceof Window;
-  const rect = getBoundingClientRect(element, !isParentAWindow && isScaledElement(offsetParent));
+  const isParentAnElement = offsetParent instanceof HTMLElement;
+  const rect = getBoundingClientRect(element, isParentAnElement && isScaledElement(offsetParent));
   const offsets = { x: 0, y: 0 };
 
-  if (!isParentAWindow) {
+  if (isParentAnElement) {
     const offsetRect = getBoundingClientRect(offsetParent, true);
     offsets.x = offsetRect.x + offsetParent.clientLeft;
     offsets.y = offsetRect.y + offsetParent.clientTop;

@@ -1,6 +1,3 @@
-import isElement from '../is/isElement';
-import isHTMLElement from '../is/isHTMLElement';
-
 /**
  * Returns the bounding client rect of a target `HTMLElement`.
  *
@@ -17,15 +14,10 @@ export default function getBoundingClientRect(element, includeScale) {
   let scaleX = 1;
   let scaleY = 1;
 
-  if (includeScale && (isHTMLElement(element) || isElement(element))) {
-    // @ts-ignore
-    scaleX = element.offsetWidth > 0
-      // @ts-ignore
-      ? Math.round(width) / element.offsetWidth || 1 : 1;
-    // @ts-ignore
-    scaleY = element.offsetHeight > 0
-      // @ts-ignore
-      ? Math.round(height) / element.offsetHeight || 1 : 1;
+  if (includeScale && element instanceof HTMLElement) {
+    const { offsetWidth, offsetHeight } = element;
+    scaleX = offsetWidth > 0 ? Math.round(width) / offsetWidth || 1 : 1;
+    scaleY = offsetHeight > 0 ? Math.round(height) / offsetHeight || 1 : 1;
   }
 
   return {

@@ -1042,26 +1042,6 @@ declare module "shorter-js/src/attr/removeAttributeNS" {
      */
     function removeAttributeNS(element: SHORTER.ElementNodes, att: string, ns?: string | undefined): void;
 }
-declare module "shorter-js/src/is/isElement" {
-    export default isElement;
-    /**
-     * Checks if an object is an `Element`.
-     *
-     * @param {any} element the target object
-     * @returns {boolean} the query result
-     */
-    function isElement(element: any): boolean;
-}
-declare module "shorter-js/src/is/isHTMLElement" {
-    export default isHTMLElement;
-    /**
-     * Checks if an element is an `HTMLElement`.
-     *
-     * @param {any} element the target object
-     * @returns {boolean} the query result
-     */
-    function isHTMLElement(element: any): boolean;
-}
 declare module "shorter-js/src/get/getBoundingClientRect" {
     /**
      * Returns the bounding client rect of a target `HTMLElement`.
@@ -1226,14 +1206,14 @@ declare module "shorter-js/src/get/getElementTransitionDelayLegacy" {
 declare module "shorter-js/src/get/getNodeScroll" {
     /**
      * Returns an `{x,y}` object with the target
-     * `Element` / `Node` scroll position.
+     * `HTMLElement` / `Node` scroll position.
      *
      * @see https://github.com/floating-ui/floating-ui
      *
-     * @param {SHORTER.ElementNodes | Window} element target node / element
+     * @param {HTMLElement | Window} element target node / element
      * @returns {{x: number, y: number}} the scroll tuple
      */
-    export default function getNodeScroll(element: SHORTER.ElementNodes | Window): {
+    export default function getNodeScroll(element: HTMLElement | Window): {
         x: number;
         y: number;
     };
@@ -1273,10 +1253,10 @@ declare module "shorter-js/src/is/isScaledElement" {
      * Checks if a target `HTMLElement` is affected by scale.
      * @see https://github.com/floating-ui/floating-ui
      *
-     * @param {SHORTER.ElementNodes} element target
+     * @param {HTMLElement} element target
      * @returns {boolean} the query result
      */
-    export default function isScaledElement(element: SHORTER.ElementNodes): boolean;
+    export default function isScaledElement(element: HTMLElement): boolean;
 }
 declare module "shorter-js/src/get/getRectRelativeToOffsetParent" {
     /**
@@ -1372,9 +1352,9 @@ declare module "shorter-js/src/selectors/querySelector" {
      *
      * @param {SHORTER.ElementNodes | string} selector the input selector or target element
      * @param {SHORTER.ParentNodes=} parent optional node to look into
-     * @return {(SHORTER.ElementNodes)?} the `HTMLElement` or `querySelector` result
+     * @return {SHORTER.ElementNodes?} the `HTMLElement` or `querySelector` result
      */
-    export default function querySelector(selector: SHORTER.ElementNodes | string, parent?: SHORTER.ParentNodes | undefined): (SHORTER.ElementNodes) | null;
+    export default function querySelector(selector: SHORTER.ElementNodes | string, parent?: SHORTER.ParentNodes | undefined): SHORTER.ElementNodes | null;
 }
 declare module "shorter-js/src/misc/data" {
     /**
@@ -1617,6 +1597,16 @@ declare module "shorter-js/src/is/isCustomElement" {
      */
     function isCustomElement(element: any): boolean;
 }
+declare module "shorter-js/src/is/isElement" {
+    export default isElement;
+    /**
+     * Checks if an object is an `Element`.
+     *
+     * @param {any} element the target object
+     * @returns {boolean} the query result
+     */
+    function isElement(element: any): boolean;
+}
 declare module "shorter-js/src/is/isElementInScrollRange" {
     export default isElementInScrollRange;
     /**
@@ -1638,6 +1628,16 @@ declare module "shorter-js/src/is/isElementInViewport" {
      * @return {boolean} the query result
      */
     function isElementInViewport(element: HTMLElement): boolean;
+}
+declare module "shorter-js/src/is/isHTMLElement" {
+    export default isHTMLElement;
+    /**
+     * Checks if an element is an `HTMLElement`.
+     *
+     * @param {any} element the target object
+     * @returns {boolean} the query result
+     */
+    function isHTMLElement(element: any): boolean;
 }
 declare module "shorter-js/src/is/isElementsArray" {
     export default isElementsArray;

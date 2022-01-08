@@ -1,5 +1,5 @@
 /*!
-* shorter-js v0.3.0alpha9 (https://github.com/thednp/shorter-js)
+* shorter-js v0.3.0alpha10 (https://github.com/thednp/shorter-js)
 * Copyright 2019-2022 © dnp_theme
 * Licensed under MIT (https://github.com/thednp/shorter-js/blob/master/LICENSE)
 */
@@ -1046,7 +1046,7 @@ const elementNodes = [Element, HTMLElement];
  *
  * @param {SHORTER.ElementNodes | string} selector the input selector or target element
  * @param {SHORTER.ParentNodes=} parent optional node to look into
- * @return {(SHORTER.ElementNodes)?} the `HTMLElement` or `querySelector` result
+ * @return {SHORTER.ElementNodes?} the `HTMLElement` or `querySelector` result
  */
 function querySelector(selector, parent) {
   const selectorIsString = typeof selector === 'string';
@@ -1674,22 +1674,6 @@ function tryWrapper(fn, origin) {
 }
 
 /**
- * Checks if an object is an `Element`.
- *
- * @param {any} element the target object
- * @returns {boolean} the query result
- */
-const isElement = (element) => element instanceof Element;
-
-/**
- * Checks if an element is an `HTMLElement`.
- *
- * @param {any} element the target object
- * @returns {boolean} the query result
- */
-const isHTMLElement = (element) => element instanceof HTMLElement;
-
-/**
  * Returns the bounding client rect of a target `HTMLElement`.
  *
  * @see https://github.com/floating-ui/floating-ui
@@ -1705,15 +1689,10 @@ function getBoundingClientRect(element, includeScale) {
   let scaleX = 1;
   let scaleY = 1;
 
-  if (includeScale && (isHTMLElement(element) || isElement(element))) {
-    // @ts-ignore
-    scaleX = element.offsetWidth > 0
-      // @ts-ignore
-      ? Math.round(width) / element.offsetWidth || 1 : 1;
-    // @ts-ignore
-    scaleY = element.offsetHeight > 0
-      // @ts-ignore
-      ? Math.round(height) / element.offsetHeight || 1 : 1;
+  if (includeScale && element instanceof HTMLElement) {
+    const { offsetWidth, offsetHeight } = element;
+    scaleX = offsetWidth > 0 ? Math.round(width) / offsetWidth || 1 : 1;
+    scaleY = offsetHeight > 0 ? Math.round(height) / offsetHeight || 1 : 1;
   }
 
   return {
@@ -1760,11 +1739,11 @@ function getDocumentHead(node) {
 
 /**
  * Returns an `{x,y}` object with the target
- * `Element` / `Node` scroll position.
+ * `HTMLElement` / `Node` scroll position.
  *
  * @see https://github.com/floating-ui/floating-ui
  *
- * @param {SHORTER.ElementNodes | Window} element target node / element
+ * @param {HTMLElement | Window} element target node / element
  * @returns {{x: number, y: number}} the scroll tuple
  */
 function getNodeScroll(element) {
@@ -1833,12 +1812,11 @@ function getParentNode(node) {
  * Checks if a target `HTMLElement` is affected by scale.
  * @see https://github.com/floating-ui/floating-ui
  *
- * @param {SHORTER.ElementNodes} element target
+ * @param {HTMLElement} element target
  * @returns {boolean} the query result
  */
 function isScaledElement(element) {
   const { width, height } = getBoundingClientRect(element);
-  // @ts-ignore -- our elements usually have offset properties
   const { offsetWidth, offsetHeight } = element;
   return Math.round(width) !== offsetWidth
     || Math.round(height) !== offsetHeight;
@@ -1854,11 +1832,11 @@ function isScaledElement(element) {
  * @returns {SHORTER.OffsetRect}
  */
 function getRectRelativeToOffsetParent(element, offsetParent, scroll) {
-  const isParentAWindow = offsetParent instanceof Window;
-  const rect = getBoundingClientRect(element, !isParentAWindow && isScaledElement(offsetParent));
+  const isParentAnElement = offsetParent instanceof HTMLElement;
+  const rect = getBoundingClientRect(element, isParentAnElement && isScaledElement(offsetParent));
   const offsets = { x: 0, y: 0 };
 
-  if (!isParentAWindow) {
+  if (isParentAnElement) {
     const offsetRect = getBoundingClientRect(offsetParent, true);
     offsets.x = offsetRect.x + offsetParent.clientLeft;
     offsets.y = offsetRect.y + offsetParent.clientTop;
@@ -1897,6 +1875,14 @@ const isDocument = (element) => element instanceof Document;
 const isCustomElement = (element) => element && !!element.shadowRoot;
 
 /**
+ * Checks if an object is an `Element`.
+ *
+ * @param {any} element the target object
+ * @returns {boolean} the query result
+ */
+const isElement = (element) => element instanceof Element;
+
+/**
  * Utility to determine if an `HTMLElement`
  * is partially visible in viewport.
  *
@@ -1928,6 +1914,14 @@ const isElementInViewport = (element) => {
     && right <= clientWidth
   );
 };
+
+/**
+ * Checks if an element is an `HTMLElement`.
+ *
+ * @param {any} element the target object
+ * @returns {boolean} the query result
+ */
+const isHTMLElement = (element) => element instanceof HTMLElement;
 
 /**
  * Checks if an object is an `Array` in which all items are `Element`.
@@ -2076,7 +2070,7 @@ function getElementsByClassName(selector, parent) {
   return lookUp.getElementsByClassName(selector);
 }
 
-var version = "0.3.0alpha9";
+var version = "0.3.0alpha10";
 
 // @ts-ignore
 

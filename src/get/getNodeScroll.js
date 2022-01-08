@@ -1,10 +1,10 @@
 /**
  * Returns an `{x,y}` object with the target
- * `Element` / `Node` scroll position.
+ * `HTMLElement` / `Node` scroll position.
  *
  * @see https://github.com/floating-ui/floating-ui
  *
- * @param {SHORTER.ElementNodes | Window} element target node / element
+ * @param {HTMLElement | Window} element target node / element
  * @returns {{x: number, y: number}} the scroll tuple
  */
 export default function getNodeScroll(element) {
