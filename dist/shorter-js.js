@@ -1,5 +1,5 @@
 /*!
-* shorter-js v0.3.0alpha8 (https://github.com/thednp/shorter-js)
+* shorter-js v0.3.0alpha9 (https://github.com/thednp/shorter-js)
 * Copyright 2019-2022 © dnp_theme
 * Licensed under MIT (https://github.com/thednp/shorter-js/blob/master/LICENSE)
 */
@@ -795,10 +795,15 @@
   var isFirefox = userAgent ? userAgent.includes('Firefox') : false;
 
   /**
+   * A global namespace for `document.head`.
+   */
+  var documentHead = document.head;
+
+  /**
    * A global `boolean` for CSS3 3D transform support.
    * @type {boolean}
    */
-  var support3DTransform = 'webkitPerspective' in document.head.style || 'perspective' in document.head.style;
+  var support3DTransform = 'webkitPerspective' in documentHead.style || 'perspective' in documentHead.style;
 
   /**
    * Add eventListener to an `Element` | `HTMLElement` | `Document` target.
@@ -877,7 +882,7 @@
    * A global `boolean` for CSS3 transform support.
    * @type {boolean}
    */
-  var supportTransform = 'webkitTransform' in document.head.style || 'transform' in document.head.style;
+  var supportTransform = 'webkitTransform' in documentHead.style || 'transform' in documentHead.style;
 
   /**
    * A global `boolean` for touch events support.
@@ -889,24 +894,24 @@
    * A global `boolean` for CSS3 animation support.
    * @type {boolean}
    */
-  var supportAnimation = 'webkitAnimation' in document.head.style || 'animation' in document.head.style;
+  var supportAnimation = 'webkitAnimation' in documentHead.style || 'animation' in documentHead.style;
 
   /**
    * A global `boolean` for CSS3 transition support.
    * @type {boolean}
    */
-  var supportTransition = 'webkitTransition' in document.head.style || 'transition' in document.head.style;
+  var supportTransition = 'webkitTransition' in documentHead.style || 'transition' in documentHead.style;
 
   /**
    * Shortcut for `HTMLElement.getAttribute()` method.
-   * @param  {HTMLElement} element target element
+   * @param  {SHORTER.ElementNodes} element target element
    * @param  {string} attribute attribute name
    */
   var getAttribute = function (element, attribute) { return element.getAttribute(attribute); };
 
   /**
    * Shortcut for `SVGElement.getAttributeNS()` method.
-   * @param  {HTMLElement} element target element
+   * @param  {SHORTER.ElementNodes} element target element
    * @param  {string} attribute attribute name
    * @param  {string=} ns attribute namespace
    */
@@ -914,14 +919,14 @@
 
   /**
    * Shortcut for `HTMLElement.hasAttribute()` method.
-   * @param  {HTMLElement} element target element
+   * @param  {SHORTER.ElementNodes} element target element
    * @param  {string} attribute attribute name
    */
   var hasAttribute = function (element, attribute) { return element.hasAttribute(attribute); };
 
   /**
    * Shortcut for `SVGElement.hasAttributeNS()` method.
-   * @param  {HTMLElement} element target element
+   * @param  {SHORTER.ElementNodes} element target element
    * @param  {string} att attribute name
    * @param  {string=} ns attribute namespace
    */
@@ -929,7 +934,7 @@
 
   /**
    * Shortcut for `HTMLElement.setAttribute()` method.
-   * @param  {HTMLElement} element target element
+   * @param  {SHORTER.ElementNodes} element target element
    * @param  {string} attribute attribute name
    * @param  {string} value attribute value
    */
@@ -937,7 +942,7 @@
 
   /**
    * Shortcut for `SVGElement.setAttributeNS()` method.
-   * @param  {HTMLElement} element target element
+   * @param  {SHORTER.ElementNodes} element target element
    * @param  {string} att attribute name
    * @param  {string} value attribute value
    * @param  {string=} ns attribute namespace
@@ -946,14 +951,14 @@
 
   /**
    * Shortcut for `HTMLElement.removeAttribute()` method.
-   * @param  {HTMLElement} element target element
+   * @param  {SHORTER.ElementNodes} element target element
    * @param  {string} attribute attribute name
    */
   var removeAttribute = function (element, attribute) { return element.removeAttribute(attribute); };
 
   /**
    * Shortcut for `HTMLElement.removeAttributeNS()` method.
-   * @param  {HTMLElement} element target element
+   * @param  {SHORTER.ElementNodes} element target element
    * @param  {string} att attribute name
    * @param  {string=} ns attribute namespace
    */
@@ -2090,7 +2095,7 @@
     return lookUp.getElementsByClassName(selector);
   }
 
-  var version = "0.3.0alpha8";
+  var version = "0.3.0alpha9";
 
   // @ts-ignore
 

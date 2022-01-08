@@ -1,6 +1,6 @@
 /**
  * Shortcut for `HTMLElement.removeAttributeNS()` method.
- * @param  {HTMLElement} element target element
+ * @param  {SHORTER.ElementNodes} element target element
  * @param  {string} att attribute name
  * @param  {string=} ns attribute namespace
  */

@@ -1,6 +1,6 @@
 /**
  * Shortcut for `HTMLElement.setAttribute()` method.
- * @param  {HTMLElement} element target element
+ * @param  {SHORTER.ElementNodes} element target element
  * @param  {string} attribute attribute name
  * @param  {string} value attribute value
  */

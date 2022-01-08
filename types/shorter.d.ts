@@ -894,6 +894,10 @@ declare module "shorter-js/src/boolean/isMobile" {
      */
     const isMobile: boolean;
 }
+declare module "shorter-js/src/blocks/documentHead" {
+    export default documentHead;
+    const documentHead: HTMLHeadElement;
+}
 declare module "shorter-js/src/boolean/support3DTransform" {
     export default support3DTransform;
     /**
@@ -983,60 +987,60 @@ declare module "shorter-js/src/attr/getAttribute" {
     export default getAttribute;
     /**
      * Shortcut for `HTMLElement.getAttribute()` method.
-     * @param  {HTMLElement} element target element
+     * @param  {SHORTER.ElementNodes} element target element
      * @param  {string} attribute attribute name
      */
-    function getAttribute(element: HTMLElement, attribute: string): string | null;
+    function getAttribute(element: SHORTER.ElementNodes, attribute: string): string | null;
 }
 declare module "shorter-js/src/attr/getAttributeNS" {
     export default getAttributeNS;
     /**
      * Shortcut for `SVGElement.getAttributeNS()` method.
-     * @param  {HTMLElement} element target element
+     * @param  {SHORTER.ElementNodes} element target element
      * @param  {string} attribute attribute name
      * @param  {string=} ns attribute namespace
      */
-    function getAttributeNS(element: HTMLElement, attribute: string, ns?: string | undefined): string | null;
+    function getAttributeNS(element: SHORTER.ElementNodes, attribute: string, ns?: string | undefined): string | null;
 }
 declare module "shorter-js/src/attr/setAttribute" {
     export default setAttribute;
     /**
      * Shortcut for `HTMLElement.setAttribute()` method.
-     * @param  {HTMLElement} element target element
+     * @param  {SHORTER.ElementNodes} element target element
      * @param  {string} attribute attribute name
      * @param  {string} value attribute value
      */
-    function setAttribute(element: HTMLElement, attribute: string, value: string): void;
+    function setAttribute(element: SHORTER.ElementNodes, attribute: string, value: string): void;
 }
 declare module "shorter-js/src/attr/setAttributeNS" {
     export default setAttributeNS;
     /**
      * Shortcut for `SVGElement.setAttributeNS()` method.
-     * @param  {HTMLElement} element target element
+     * @param  {SHORTER.ElementNodes} element target element
      * @param  {string} att attribute name
      * @param  {string} value attribute value
      * @param  {string=} ns attribute namespace
      */
-    function setAttributeNS(element: HTMLElement, att: string, value: string, ns?: string | undefined): void;
+    function setAttributeNS(element: SHORTER.ElementNodes, att: string, value: string, ns?: string | undefined): void;
 }
 declare module "shorter-js/src/attr/removeAttribute" {
     export default removeAttribute;
     /**
      * Shortcut for `HTMLElement.removeAttribute()` method.
-     * @param  {HTMLElement} element target element
+     * @param  {SHORTER.ElementNodes} element target element
      * @param  {string} attribute attribute name
      */
-    function removeAttribute(element: HTMLElement, attribute: string): void;
+    function removeAttribute(element: SHORTER.ElementNodes, attribute: string): void;
 }
 declare module "shorter-js/src/attr/removeAttributeNS" {
     export default removeAttributeNS;
     /**
      * Shortcut for `HTMLElement.removeAttributeNS()` method.
-     * @param  {HTMLElement} element target element
+     * @param  {SHORTER.ElementNodes} element target element
      * @param  {string} att attribute name
      * @param  {string=} ns attribute namespace
      */
-    function removeAttributeNS(element: HTMLElement, att: string, ns?: string | undefined): void;
+    function removeAttributeNS(element: SHORTER.ElementNodes, att: string, ns?: string | undefined): void;
 }
 declare module "shorter-js/src/is/isElement" {
     export default isElement;
