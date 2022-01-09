@@ -3,7 +3,7 @@
  *
  * @see https://github.com/floating-ui/floating-ui
  *
- * @param {SHORTER.ElementNodes} element event.target
+ * @param {HTMLElement | Element} element event.target
  * @param {boolean=} includeScale when *true*, the target scale is also computed
  * @returns {SHORTER.BoundingClientRect} the bounding client rect object
  */

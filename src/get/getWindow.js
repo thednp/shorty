@@ -2,7 +2,7 @@
  * Returns the `Window` object of a target node.
  * @see https://github.com/floating-ui/floating-ui
  *
- * @param {(Node | SHORTER.ElementNodes | Window)=} node target node
+ * @param {(Node | HTMLElement | Element | Window)=} node target node
  * @returns {globalThis}
  */
 export default function getWindow(node) {

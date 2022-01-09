@@ -2,7 +2,7 @@ import getDocument from './getDocument';
 /**
  * Returns the `document.body` or the `<body>` element.
  *
- * @param {(Node | SHORTER.ElementNodes)=} node
+ * @param {(Node | HTMLElement | Element)=} node
  * @returns {HTMLElement | HTMLBodyElement}
  */
 export default function getDocumentBody(node) {

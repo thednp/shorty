@@ -5,8 +5,8 @@ import getBoundingClientRect from './getBoundingClientRect';
  * Returns the rect relative to an offset parent.
  * @see https://github.com/floating-ui/floating-ui
  *
- * @param {SHORTER.ElementNodes} element target
- * @param {SHORTER.ElementNodes | Window} offsetParent the container / offset parent
+ * @param {HTMLElement | Element} element target
+ * @param {HTMLElement | Element | Window} offsetParent the container / offset parent
  * @param {{x: number, y: number}} scroll
  * @returns {SHORTER.OffsetRect}
  */

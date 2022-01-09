@@ -5,7 +5,7 @@ import getDocumentElement from '../get/getDocumentElement';
  * Utility to determine if an `HTMLElement`
  * is fully visible in the viewport.
  *
- * @param {HTMLElement} element target
+ * @param {HTMLElement | Element} element target
  * @return {boolean} the query result
  */
 const isElementInViewport = (element) => {

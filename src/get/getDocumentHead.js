@@ -2,7 +2,7 @@ import getDocument from './getDocument';
 /**
  * Returns the `document.head` or the `<head>` element.
  *
- * @param {(Node | SHORTER.ElementNodes)=} node
+ * @param {(Node | HTMLElement | Element)=} node
  * @returns {HTMLElement | HTMLHeadElement}
  */
 export default function getDocumentHead(node) {

@@ -6,8 +6,8 @@ import parentNodes from './parentNodes';
  * like `ShadowRoot` do not support `getElementsByClassName`.
  *
  * @param {string} selector the class name
- * @param {(SHORTER.ElementNodes | Document)=} parent optional Element to look into
- * @return {HTMLCollectionOf<SHORTER.ElementNodes>} the 'HTMLCollection'
+ * @param {(HTMLElement | Element | Document)=} parent optional Element to look into
+ * @return {HTMLCollectionOf<HTMLElement | Element>} the 'HTMLCollection'
  */
 export default function getElementsByClassName(selector, parent) {
   const lookUp = parent && parentNodes.some((x) => parent instanceof x)

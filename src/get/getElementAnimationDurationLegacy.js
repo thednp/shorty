@@ -7,7 +7,7 @@ import getElementStyle from './getElementStyle';
  * Utility to get the computed `animationDuration`
  * from `HTMLElement` in miliseconds.
  *
- * @param {SHORTER.ElementNodes} element target
+ * @param {HTMLElement | Element} element target
  * @return {number} the value in miliseconds
  */
 export default function getElementAnimationDuration(element) {

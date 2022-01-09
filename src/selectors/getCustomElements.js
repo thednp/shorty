@@ -7,8 +7,8 @@ import parentNodes from './parentNodes';
  * `CustomElement`.
  * @see https://stackoverflow.com/questions/27334365/how-to-get-list-of-registered-custom-elements
  *
- * @param {(SHORTER.ParentNodes)=} parent parent to look into
- * @returns {SHORTER.ElementNodes[]} the query result
+ * @param {(HTMLElement | Element | Node | Document)=} parent parent to look into
+ * @returns {(HTMLElement | Element)[]} the query result
  */
 export default function getCustomElements(parent) {
   const lookUp = parent && parentNodes.some((x) => parent instanceof x)

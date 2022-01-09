@@ -5,7 +5,7 @@ import getDocumentElement from '../get/getDocumentElement';
  * Utility to determine if an `HTMLElement`
  * is partially visible in viewport.
  *
- * @param {HTMLElement} element target
+ * @param {HTMLElement | Element} element target
  * @return {boolean} the query result
  */
 const isElementInScrollRange = (element) => {

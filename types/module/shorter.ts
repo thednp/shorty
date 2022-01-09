@@ -133,6 +133,8 @@ export { default as supportTransform } from '../../src/boolean/supportTransform'
 export { default as supportTransition } from '../../src/boolean/supportTransition';
 
 // attributes
+export { default as hasAttribute } from '../../src/attr/hasAttribute';
+export { default as hasAttributeNS } from '../../src/attr/hasAttributeNS';
 export { default as getAttribute } from '../../src/attr/getAttribute';
 export { default as getAttributeNS } from '../../src/attr/getAttributeNS';
 export { default as setAttribute } from '../../src/attr/setAttribute';

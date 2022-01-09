@@ -1,6 +1,6 @@
 import querySelector from '../selectors/querySelector';
 
-/** @type {Map<SHORTER.ElementNodes, any>} */
+/** @type {Map<HTMLElement | Element, any>} */
 const TimeCache = new Map();
 /**
  * An interface for one or more `TimerHandler`s per `Element`.
@@ -9,7 +9,7 @@ const TimeCache = new Map();
 const Timer = {
   /**
    * Sets a new timeout timer for an element, or element -> key association.
-   * @param {SHORTER.ElementNodes | string} target target element
+   * @param {HTMLElement | Element | string} target target element
    * @param {ReturnType<TimerHandler>} callback the callback
    * @param {number} delay the execution delay
    * @param {string=} key a unique
@@ -32,7 +32,7 @@ const Timer = {
 
   /**
    * Returns the timer associated with the target.
-   * @param {SHORTER.ElementNodes | string} target target element
+   * @param {HTMLElement | Element | string} target target element
    * @param {string=} key a unique
    * @returns {ReturnType<TimerHandler>?} the timer
    */
@@ -57,7 +57,7 @@ const Timer = {
 
   /**
    * Clears the element's timer.
-   * @param {SHORTER.ElementNodes | string} target target element
+   * @param {HTMLElement | Element | string} target target element
    * @param {string=} key a unique key
    */
   clear: (target, key) => {

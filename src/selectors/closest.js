@@ -5,9 +5,9 @@
  *
  * @see https://stackoverflow.com/q/54520554/803358
  *
- * @param {SHORTER.ElementNodes} element Element to look into
+ * @param {HTMLElement | Element} element Element to look into
  * @param {string} selector the selector name
- * @return {SHORTER.ElementNodes?} the query result
+ * @return {(HTMLElement | Element)?} the query result
  */
 export default function closest(element, selector) {
   return (element && element.closest(selector))

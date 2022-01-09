@@ -4,7 +4,7 @@ import isNode from '../is/isNode';
 /**
  * Returns the `document` or the `#document` element.
  * @see https://github.com/floating-ui/floating-ui
- * @param {(Node | SHORTER.ElementNodes | Window)=} node
+ * @param {(Node | HTMLElement | Element | Window)=} node
  * @returns {Document}
  */
 export default function getDocument(node) {

@@ -1,7 +1,7 @@
 /**
  * Add eventListener to an `Element` | `HTMLElement` | `Document` target.
  *
- * @param {SHORTER.ElementNodes | Document} element event.target
+ * @param {HTMLElement | Element | Document} element event.target
  * @param {string} eventName event.type
  * @param {EventListener} handler callback
  * @param {EventListenerOptions | boolean | undefined} options other event options

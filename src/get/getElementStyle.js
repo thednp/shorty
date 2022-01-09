@@ -5,7 +5,7 @@
  * * If `element` parameter is not an `HTMLElement`, `getComputedStyle`
  * throws a `ReferenceError`.
  *
- * @param {SHORTER.ElementNodes} element target
+ * @param {HTMLElement | Element} element target
  * @param {string} property the css property
  * @return {string} the css property value
  */

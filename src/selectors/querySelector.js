@@ -6,9 +6,9 @@ import elementNodes from './elementNodes';
  * Utility to check if target is typeof `HTMLElement`, `Element`, `Node`
  * or find one that matches a selector.
  *
- * @param {SHORTER.ElementNodes | string} selector the input selector or target element
- * @param {SHORTER.ParentNodes=} parent optional node to look into
- * @return {SHORTER.ElementNodes?} the `HTMLElement` or `querySelector` result
+ * @param {HTMLElement | Element | string} selector the input selector or target element
+ * @param {(HTMLElement | Element | Node | Document)=} parent optional node to look into
+ * @return {(HTMLElement | Element)?} the `HTMLElement` or `querySelector` result
  */
 export default function querySelector(selector, parent) {
   const selectorIsString = typeof selector === 'string';

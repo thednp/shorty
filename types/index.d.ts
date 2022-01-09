@@ -118,6 +118,8 @@ export { default as supportPassive } from 'shorter-js/src/boolean/supportPassive
 export { default as supportTouch } from 'shorter-js/src/boolean/supportTouch';
 export { default as supportTransform } from 'shorter-js/src/boolean/supportTransform';
 export { default as supportTransition } from 'shorter-js/src/boolean/supportTransition';
+export { default as hasAttribute } from 'shorter-js/src/attr/hasAttribute';
+export { default as hasAttributeNS } from 'shorter-js/src/attr/hasAttributeNS';
 export { default as getAttribute } from 'shorter-js/src/attr/getAttribute';
 export { default as getAttributeNS } from 'shorter-js/src/attr/getAttributeNS';
 export { default as setAttribute } from 'shorter-js/src/attr/setAttribute';
@@ -199,7 +201,7 @@ export { default as getElementsByClassName } from 'shorter-js/src/selectors/getE
 export { default as Version } from 'shorter-js/src/misc/version';
 
 export type Component = Record<string, any>;
-export type getInstance<T> = (target: ElementNodes | string, component: string) => T | null;
+export type getInstance<T> = (target: HTMLElement | Element | string, component: string) => T | null;
 
 export interface BoundingClientRect {
   width: number,
@@ -220,4 +222,4 @@ export interface OffsetRect {
 }
 
 export type ElementNodes = HTMLElement | Element;
-export type ParentNodes = Document | ElementNodes | Node; // ShadowRoot is a Node too
+export type ParentNodes = Document | HTMLElement | Element | Node; // ShadowRoot is a Node too

@@ -1,6 +1,6 @@
 /**
  * Shortcut for `SVGElement.getAttributeNS()` method.
- * @param  {SHORTER.ElementNodes} element target element
+ * @param  {HTMLElement | Element} element target element
  * @param  {string} attribute attribute name
  * @param  {string=} ns attribute namespace
  */

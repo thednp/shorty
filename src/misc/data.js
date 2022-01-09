@@ -1,6 +1,6 @@
 import querySelector from '../selectors/querySelector';
 
-/** @type {Map<string, Map<SHORTER.ElementNodes, SHORTER.Component>>} */
+/** @type {Map<string, Map<HTMLElement | Element, Record<string, any>>>} */
 const componentData = new Map();
 /**
  * An interface for web components background data.
@@ -9,9 +9,9 @@ const componentData = new Map();
 const Data = {
   /**
    * Sets web components data.
-   * @param {SHORTER.ElementNodes | string} target target element
+   * @param {HTMLElement | Element | string} target target element
    * @param {string} component the component's name or a unique key
-   * @param {SHORTER.Component} instance the component instance
+   * @param {Record<string, any>} instance the component instance
    */
   set: (target, component, instance) => {
     const element = querySelector(target);
@@ -29,7 +29,7 @@ const Data = {
   /**
    * Returns all instances for specified component.
    * @param {string} component the component's name or a unique key
-   * @returns {Map<SHORTER.ElementNodes, SHORTER.Component>?} all the component instances
+   * @returns {Map<HTMLElement | Element, Record<string, any>>?} all the component instances
    */
   getAllFor: (component) => {
     const instanceMap = componentData.get(component);
@@ -39,9 +39,9 @@ const Data = {
 
   /**
    * Returns the instance associated with the target.
-   * @param {SHORTER.ElementNodes | string} target target element
+   * @param {HTMLElement | Element | string} target target element
    * @param {string} component the component's name or a unique key
-   * @returns {SHORTER.Component?} the instance
+   * @returns {Record<string, any>?} the instance
    */
   get: (target, component) => {
     const element = querySelector(target);
@@ -53,7 +53,7 @@ const Data = {
 
   /**
    * Removes web components data.
-   * @param {SHORTER.ElementNodes | string} target target element
+   * @param {HTMLElement | Element | string} target target element
    * @param {string} component the component's name or a unique key
    */
   remove: (target, component) => {

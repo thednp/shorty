@@ -4,7 +4,7 @@ import ObjectKeys from './ObjectKeys';
 /**
  * Utility to normalize component options.
  *
- * @param {SHORTER.ElementNodes} element target
+ * @param {HTMLElement | Element} element target
  * @param {Record<string, any>} defaultOps component default options
  * @param {Record<string, any>} inputOps component instance options
  * @param {string=} ns component namespace
