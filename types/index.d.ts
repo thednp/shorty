@@ -151,6 +151,7 @@ export { default as on } from 'shorter-js/src/event/on';
 export { default as off } from 'shorter-js/src/event/off';
 export { default as one } from 'shorter-js/src/event/one';
 export { default as Data } from 'shorter-js/src/misc/data';
+export { default as dispatchEvent } from 'shorter-js/src/misc/dispatchEvent';
 export { default as distinct } from 'shorter-js/src/misc/distinct';
 export { default as Timer } from 'shorter-js/src/misc/timer';
 export { default as emulateAnimationEnd } from 'shorter-js/src/misc/emulateAnimationEnd';

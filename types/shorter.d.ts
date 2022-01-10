@@ -1073,60 +1073,41 @@ declare module "shorter-js/src/get/getBoundingClientRect" {
      */
     export default function getBoundingClientRect(element: HTMLElement | Element, includeScale?: boolean | undefined): SHORTER.BoundingClientRect;
 }
-declare module "shorter-js/src/is/isWindow" {
-    /**
-     * Check if a target node is `window`.
-     *
-     * @param {any} node the target node
-     * @returns {boolean} the query result
-     */
-    export default function isWindow(node: any): boolean;
-}
-declare module "shorter-js/src/is/isNode" {
-    export default isNode;
-    /**
-     * Checks if an object is a `Node`.
-     *
-     * @param {any} node the target object
-     * @returns {boolean} the query result
-     */
-    function isNode(node: any): boolean;
-}
 declare module "shorter-js/src/get/getDocument" {
     /**
      * Returns the `document` or the `#document` element.
      * @see https://github.com/floating-ui/floating-ui
-     * @param {(Node | HTMLElement | Element | Window)=} node
+     * @param {(Node | HTMLElement | Element | globalThis)=} node
      * @returns {Document}
      */
-    export default function getDocument(node?: (Node | HTMLElement | Element | Window) | undefined): Document;
+    export default function getDocument(node?: (Node | HTMLElement | Element | typeof globalThis) | undefined): Document;
 }
 declare module "shorter-js/src/get/getDocumentBody" {
     /**
      * Returns the `document.body` or the `<body>` element.
      *
-     * @param {(Node | HTMLElement | Element)=} node
+     * @param {(Node | HTMLElement | Element | globalThis)=} node
      * @returns {HTMLElement | HTMLBodyElement}
      */
-    export default function getDocumentBody(node?: (Node | HTMLElement | Element) | undefined): HTMLElement | HTMLBodyElement;
+    export default function getDocumentBody(node?: (Node | HTMLElement | Element | typeof globalThis) | undefined): HTMLElement | HTMLBodyElement;
 }
 declare module "shorter-js/src/get/getDocumentElement" {
     /**
      * Returns the `document.documentElement` or the `<html>` element.
      *
-     * @param {(Node | HTMLElement | Element)=} node
+     * @param {(Node | HTMLElement | Element | globalThis)=} node
      * @returns {HTMLElement | HTMLHtmlElement}
      */
-    export default function getDocumentElement(node?: (Node | HTMLElement | Element) | undefined): HTMLElement | HTMLHtmlElement;
+    export default function getDocumentElement(node?: (Node | HTMLElement | Element | typeof globalThis) | undefined): HTMLElement | HTMLHtmlElement;
 }
 declare module "shorter-js/src/get/getDocumentHead" {
     /**
      * Returns the `document.head` or the `<head>` element.
      *
-     * @param {(Node | HTMLElement | Element)=} node
+     * @param {(Node | HTMLElement | Element | globalThis)=} node
      * @returns {HTMLElement | HTMLHeadElement}
      */
-    export default function getDocumentHead(node?: (Node | HTMLElement | Element) | undefined): HTMLElement | HTMLHeadElement;
+    export default function getDocumentHead(node?: (Node | HTMLElement | Element | typeof globalThis) | undefined): HTMLElement | HTMLHeadElement;
 }
 declare module "shorter-js/src/get/getElementStyle" {
     /**
@@ -1396,6 +1377,16 @@ declare module "shorter-js/src/misc/timer" {
         function get(target: string | Element | HTMLElement, key?: string | undefined): any;
         function clear(target: string | Element | HTMLElement, key?: string | undefined): void;
     }
+}
+declare module "shorter-js/src/misc/dispatchEvent" {
+    export default dispatchEvent;
+    /**
+     * Shortcut for the `Element.dispatchEvent(Event)` method.
+     *
+     * @param {HTMLElement | Element} element is the target
+     * @param {Event} event is the `Event` object
+     */
+    function dispatchEvent(element: HTMLElement | Element, event: Event): boolean;
 }
 declare module "shorter-js/src/misc/distinct" {
     export default distinct;
@@ -1699,6 +1690,16 @@ declare module "shorter-js/src/is/isMedia" {
      */
     function isMedia(element: any): boolean;
 }
+declare module "shorter-js/src/is/isNode" {
+    export default isNode;
+    /**
+     * Checks if an object is a `Node`.
+     *
+     * @param {any} node the target object
+     * @returns {boolean} the query result
+     */
+    function isNode(node: any): boolean;
+}
 declare module "shorter-js/src/is/isNodeList" {
     export default isNodeList;
     /**
@@ -1745,6 +1746,15 @@ declare module "shorter-js/src/is/isTableElement" {
      * @returns {boolean} the query result
      */
     function isTableElement(element: any): boolean;
+}
+declare module "shorter-js/src/is/isWindow" {
+    /**
+     * Check if a target node is `window`.
+     *
+     * @param {any} node the target node
+     * @returns {boolean} the query result
+     */
+    export default function isWindow(node: any): boolean;
 }
 declare module "shorter-js/src/selectors/closest" {
     /**
@@ -1963,6 +1973,7 @@ declare module "shorter-js/types/module/shorter" {
     export { default as one } from "shorter-js/src/event/one";
     export { default as Data, getInstance } from "shorter-js/src/misc/data";
     export { default as Timer } from "shorter-js/src/misc/timer";
+    export { default as dispatchEvent } from "shorter-js/src/misc/dispatchEvent";
     export { default as distinct } from "shorter-js/src/misc/distinct";
     export { default as emulateAnimationEnd } from "shorter-js/src/misc/emulateAnimationEnd";
     export { default as emulateAnimationEndLegacy } from "shorter-js/src/misc/emulateAnimationEndLegacy";

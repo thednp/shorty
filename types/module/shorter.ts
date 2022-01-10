@@ -175,6 +175,7 @@ export { default as one } from '../../src/event/one';
 // misc
 export { default as Data, getInstance } from '../../src/misc/data';
 export { default as Timer } from '../../src/misc/timer';
+export { default as dispatchEvent } from '../../src/misc/dispatchEvent';
 export { default as distinct } from '../../src/misc/distinct';
 
 export { default as emulateAnimationEnd } from '../../src/misc/emulateAnimationEnd';

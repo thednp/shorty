@@ -10,7 +10,7 @@
  * @return {(HTMLElement | Element)?} the query result
  */
 export default function closest(element, selector) {
-  return (element && element.closest(selector))
+  return element ? (element.closest(selector)
     // @ts-ignore -- break out of `ShadowRoot`
-    || closest(element.getRootNode().host, selector);
+    || closest(element.getRootNode().host, selector)) : null;
 }

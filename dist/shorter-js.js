@@ -1,5 +1,5 @@
 /*!
-* shorter-js v0.3.0alpha11 (https://github.com/thednp/shorter-js)
+* shorter-js v0.3.0alpha12 (https://github.com/thednp/shorter-js)
 * Copyright 2019-2022 © dnp_theme
 * Licensed under MIT (https://github.com/thednp/shorter-js/blob/master/LICENSE)
 */
@@ -1004,34 +1004,14 @@
   var ArrayFrom = function (arr) { return Array.from(arr); };
 
   /**
-   * Check if a target node is `window`.
-   *
-   * @param {any} node the target node
-   * @returns {boolean} the query result
-   */
-  function isWindow(node) {
-    return node instanceof Window;
-  }
-
-  /**
-   * Checks if an object is a `Node`.
-   *
-   * @param {any} node the target object
-   * @returns {boolean} the query result
-   */
-  var isNode = function (node) { return node instanceof Node; };
-
-  /**
    * Returns the `document` or the `#document` element.
    * @see https://github.com/floating-ui/floating-ui
-   * @param {(Node | HTMLElement | Element | Window)=} node
+   * @param {(Node | HTMLElement | Element | globalThis)=} node
    * @returns {Document}
    */
   function getDocument(node) {
-    // @ts-ignore -- `isNode` checks that
-    if (isNode(node)) { return node.ownerDocument; }
-    // @ts-ignore -- `isWindow` checks that too
-    if (isWindow(node)) { return node.document; }
+    if (node instanceof HTMLElement) { return node.ownerDocument; }
+    if (node instanceof Window) { return node.document; }
     return window.document;
   }
 
@@ -1139,6 +1119,14 @@
    * @type {SHORTER.getInstance<any>}
    */
   var getInstance = function (target, component) { return Data.get(target, component); };
+
+  /**
+   * Shortcut for the `Element.dispatchEvent(Event)` method.
+   *
+   * @param {HTMLElement | Element} element is the target
+   * @param {Event} event is the `Event` object
+   */
+  var dispatchEvent = function (element, event) { return element.dispatchEvent(event); };
 
   /**
    * JavaScript `Array` distinct.
@@ -1720,7 +1708,7 @@
   /**
    * Returns the `document.body` or the `<body>` element.
    *
-   * @param {(Node | HTMLElement | Element)=} node
+   * @param {(Node | HTMLElement | Element | globalThis)=} node
    * @returns {HTMLElement | HTMLBodyElement}
    */
   function getDocumentBody(node) {
@@ -1730,7 +1718,7 @@
   /**
    * Returns the `document.documentElement` or the `<html>` element.
    *
-   * @param {(Node | HTMLElement | Element)=} node
+   * @param {(Node | HTMLElement | Element | globalThis)=} node
    * @returns {HTMLElement | HTMLHtmlElement}
    */
   function getDocumentElement(node) {
@@ -1740,7 +1728,7 @@
   /**
    * Returns the `document.head` or the `<head>` element.
    *
-   * @param {(Node | HTMLElement | Element)=} node
+   * @param {(Node | HTMLElement | Element | globalThis)=} node
    * @returns {HTMLElement | HTMLHeadElement}
    */
   function getDocumentHead(node) {
@@ -1980,6 +1968,14 @@
       .some(function (mediaType) { return element instanceof mediaType; }); };
 
   /**
+   * Checks if an object is a `Node`.
+   *
+   * @param {any} node the target object
+   * @returns {boolean} the query result
+   */
+  var isNode = function (node) { return node instanceof Node; };
+
+  /**
    * Checks if an object is a `NodeList`.
    *
    * @param {any} object the target object
@@ -2017,6 +2013,16 @@
   var isTableElement = function (element) { return ['TABLE', 'TD', 'TH'].includes(element.tagName); };
 
   /**
+   * Check if a target node is `window`.
+   *
+   * @param {any} node the target node
+   * @returns {boolean} the query result
+   */
+  function isWindow(node) {
+    return node instanceof Window;
+  }
+
+  /**
    * Shortcut for `HTMLElement.closest` method which also works
    * with children of `ShadowRoot`. The order of the parameters
    * is intentional since they're both required.
@@ -2028,9 +2034,9 @@
    * @return {(HTMLElement | Element)?} the query result
    */
   function closest(element, selector) {
-    return (element && element.closest(selector))
+    return element ? (element.closest(selector)
       // @ts-ignore -- break out of `ShadowRoot`
-      || closest(element.getRootNode().host, selector);
+      || closest(element.getRootNode().host, selector)) : null;
   }
 
   /**
@@ -2090,7 +2096,7 @@
     return lookUp.getElementsByClassName(selector);
   }
 
-  var version = "0.3.0alpha11";
+  var version = "0.3.0alpha12";
 
   // @ts-ignore
 
@@ -2226,6 +2232,7 @@
     on: on,
     off: off,
     one: one,
+    dispatchEvent: dispatchEvent,
     distinct: distinct,
     Data: Data,
     Timer: Timer,

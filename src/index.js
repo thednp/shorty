@@ -155,6 +155,7 @@ import one from './event/one';
 // misc
 import ArrayFrom from './misc/ArrayFrom';
 import Data, { getInstance } from './misc/data';
+import dispatchEvent from './misc/dispatchEvent';
 import distinct from './misc/distinct';
 import emulateAnimationEnd from './misc/emulateAnimationEnd';
 import emulateAnimationEndLegacy from './misc/emulateAnimationEndLegacy';
@@ -353,6 +354,7 @@ const SHORTER = {
   on,
   off,
   one,
+  dispatchEvent,
   distinct,
   Data,
   Timer,
