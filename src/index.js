@@ -164,6 +164,7 @@ import emulateTransitionEndLegacy from './misc/emulateTransitionEndLegacy';
 import Float32ArrayFrom from './misc/Float32ArrayFrom';
 import Float64ArrayFrom from './misc/Float64ArrayFrom';
 import focus from './misc/focus';
+import noop from './misc/noop';
 import normalizeOptions from './misc/normalizeOptions';
 import normalizeValue from './misc/normalizeValue';
 import ObjectAssign from './misc/ObjectAssign';
@@ -409,6 +410,7 @@ const SHORTER = {
   normalizeOptions,
   tryWrapper,
   reflow,
+  noop,
   focus,
   ArrayFrom,
   Float32ArrayFrom,

@@ -1,5 +1,5 @@
 /*!
-* shorter-js v0.3.0alpha12 (https://github.com/thednp/shorter-js)
+* shorter-js v0.3.0alpha13 (https://github.com/thednp/shorter-js)
 * Copyright 2019-2022 © dnp_theme
 * Licensed under MIT (https://github.com/thednp/shorter-js/blob/master/LICENSE)
 */
@@ -1448,6 +1448,9 @@ const Float64ArrayFrom = (arr) => Float64Array.from(Array.from(arr));
 // @ts-ignore -- `Element`s resulted from querySelector can focus too
 const focus = (element) => element.focus();
 
+/** A generic function with empty body. */
+const noop = () => {};
+
 /**
  * The raw value or a given component option.
  *
@@ -1605,25 +1608,18 @@ const Timer = {
    * Returns the timer associated with the target.
    * @param {HTMLElement | Element | string} target target element
    * @param {string=} key a unique
-   * @returns {ReturnType<TimerHandler>?} the timer
+   * @returns {number?} the timer
    */
   get: (target, key) => {
     const element = querySelector(target);
 
     if (!element) return null;
+    const keyTimers = TimeCache.get(element);
 
-    if (key && key.length) {
-      if (!TimeCache.has(element)) {
-        TimeCache.set(element, new Map());
-      }
-      const keyTimers = TimeCache.get(element);
-      if (keyTimers.has(key)) {
-        return keyTimers.get(key);
-      }
-    } else if (TimeCache.has(element)) {
-      return TimeCache.get(element);
+    if (key && key.length && keyTimers && keyTimers.get) {
+      return keyTimers.get(key) || null;
     }
-    return null;
+    return keyTimers || null;
   },
 
   /**
@@ -1633,17 +1629,21 @@ const Timer = {
    */
   clear: (target, key) => {
     const element = querySelector(target);
-    const timers = element && TimeCache.get(element);
 
-    if (!timers) return;
+    if (!element) return;
 
     if (key && key.length) {
-      if (timers.has(key)) {
-        clearTimeout(timers.get(key));
-        timers.delete(key);
+      const keyTimers = TimeCache.get(element);
+
+      if (keyTimers && keyTimers.get) {
+        clearTimeout(keyTimers.get(key));
+        keyTimers.delete(key);
+        if (keyTimers.size === 0) {
+          TimeCache.delete(element);
+        }
       }
     } else {
-      clearTimeout(timers);
+      clearTimeout(TimeCache.get(element));
       TimeCache.delete(element);
     }
   },
@@ -2076,7 +2076,7 @@ function getElementsByClassName(selector, parent) {
   return lookUp.getElementsByClassName(selector);
 }
 
-var version = "0.3.0alpha12";
+var version = "0.3.0alpha13";
 
 // @ts-ignore
 
@@ -2267,6 +2267,7 @@ const SHORTER = {
   normalizeOptions,
   tryWrapper,
   reflow,
+  noop,
   focus,
   ArrayFrom,
   Float32ArrayFrom,

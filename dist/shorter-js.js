@@ -1,5 +1,5 @@
 /*!
-* shorter-js v0.3.0alpha12 (https://github.com/thednp/shorter-js)
+* shorter-js v0.3.0alpha13 (https://github.com/thednp/shorter-js)
 * Copyright 2019-2022 © dnp_theme
 * Licensed under MIT (https://github.com/thednp/shorter-js/blob/master/LICENSE)
 */
@@ -1453,6 +1453,9 @@
   // @ts-ignore -- `Element`s resulted from querySelector can focus too
   var focus = function (element) { return element.focus(); };
 
+  /** A generic function with empty body. */
+  var noop = function () {};
+
   /**
    * The raw value or a given component option.
    *
@@ -1610,25 +1613,18 @@
      * Returns the timer associated with the target.
      * @param {HTMLElement | Element | string} target target element
      * @param {string=} key a unique
-     * @returns {ReturnType<TimerHandler>?} the timer
+     * @returns {number?} the timer
      */
     get: function (target, key) {
       var element = querySelector(target);
 
       if (!element) { return null; }
+      var keyTimers = TimeCache.get(element);
 
-      if (key && key.length) {
-        if (!TimeCache.has(element)) {
-          TimeCache.set(element, new Map());
-        }
-        var keyTimers = TimeCache.get(element);
-        if (keyTimers.has(key)) {
-          return keyTimers.get(key);
-        }
-      } else if (TimeCache.has(element)) {
-        return TimeCache.get(element);
+      if (key && key.length && keyTimers && keyTimers.get) {
+        return keyTimers.get(key) || null;
       }
-      return null;
+      return keyTimers || null;
     },
 
     /**
@@ -1638,17 +1634,21 @@
      */
     clear: function (target, key) {
       var element = querySelector(target);
-      var timers = element && TimeCache.get(element);
 
-      if (!timers) { return; }
+      if (!element) { return; }
 
       if (key && key.length) {
-        if (timers.has(key)) {
-          clearTimeout(timers.get(key));
-          timers.delete(key);
+        var keyTimers = TimeCache.get(element);
+
+        if (keyTimers && keyTimers.get) {
+          clearTimeout(keyTimers.get(key));
+          keyTimers.delete(key);
+          if (keyTimers.size === 0) {
+            TimeCache.delete(element);
+          }
         }
       } else {
-        clearTimeout(timers);
+        clearTimeout(TimeCache.get(element));
         TimeCache.delete(element);
       }
     },
@@ -2096,7 +2096,7 @@
     return lookUp.getElementsByClassName(selector);
   }
 
-  var version = "0.3.0alpha12";
+  var version = "0.3.0alpha13";
 
   // @ts-ignore
 
@@ -2287,6 +2287,7 @@
     normalizeOptions: normalizeOptions,
     tryWrapper: tryWrapper,
     reflow: reflow,
+    noop: noop,
     focus: focus,
     ArrayFrom: ArrayFrom,
     Float32ArrayFrom: Float32ArrayFrom,

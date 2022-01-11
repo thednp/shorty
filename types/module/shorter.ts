@@ -191,6 +191,7 @@ export { default as normalizeOptions } from '../../src/misc/normalizeOptions';
 export { default as tryWrapper } from '../../src/misc/tryWrapper';
 export { default as reflow } from '../../src/misc/reflow';
 export { default as focus } from '../../src/misc/focus';
+export { default as noop } from '../../src/misc/noop';
 
 export { default as ArrayFrom } from '../../src/misc/ArrayFrom';
 export { default as Float32ArrayFrom } from '../../src/misc/Float32ArrayFrom';

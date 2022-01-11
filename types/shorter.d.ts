@@ -1374,7 +1374,7 @@ declare module "shorter-js/src/misc/timer" {
     export default Timer;
     namespace Timer {
         function set(target: string | Element | HTMLElement, callback: any, delay: number, key?: string | undefined): void;
-        function get(target: string | Element | HTMLElement, key?: string | undefined): any;
+        function get(target: string | Element | HTMLElement, key?: string | undefined): number | null;
         function clear(target: string | Element | HTMLElement, key?: string | undefined): void;
     }
 }
@@ -1539,6 +1539,11 @@ declare module "shorter-js/src/misc/focus" {
      * @param {HTMLElement | Element} element is the target
      */
     function focus(element: HTMLElement | Element): any;
+}
+declare module "shorter-js/src/misc/noop" {
+    export default noop;
+    /** A generic function with empty body. */
+    function noop(): void;
 }
 declare module "shorter-js/src/misc/ArrayFrom" {
     export default ArrayFrom;
@@ -1987,6 +1992,7 @@ declare module "shorter-js/types/module/shorter" {
     export { default as tryWrapper } from "shorter-js/src/misc/tryWrapper";
     export { default as reflow } from "shorter-js/src/misc/reflow";
     export { default as focus } from "shorter-js/src/misc/focus";
+    export { default as noop } from "shorter-js/src/misc/noop";
     export { default as ArrayFrom } from "shorter-js/src/misc/ArrayFrom";
     export { default as Float32ArrayFrom } from "shorter-js/src/misc/Float32ArrayFrom";
     export { default as Float64ArrayFrom } from "shorter-js/src/misc/Float64ArrayFrom";
