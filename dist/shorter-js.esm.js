@@ -1,5 +1,5 @@
 /*!
-* shorter-js v0.3.0alpha13 (https://github.com/thednp/shorter-js)
+* shorter-js v0.3.0alpha14 (https://github.com/thednp/shorter-js)
 * Copyright 2019-2022 © dnp_theme
 * Licensed under MIT (https://github.com/thednp/shorter-js/blob/master/LICENSE)
 */
@@ -58,129 +58,10 @@ const ariaPressed = 'aria-pressed';
 const ariaSelected = 'aria-selected';
 
 /**
- * A global namespace for all browser native events.
- * @type {string[]}
- */
-const nativeEvents = [
-  'click',
-  'dblclick',
-  'mouseup',
-  'mousedown',
-  'contextmenu',
-  'mousewheel',
-  'DOMMouseScroll',
-  'mouseover',
-  'mouseout',
-  'mousemove',
-  'selectstart',
-  'selectend',
-  'keydown',
-  'keypress',
-  'keyup',
-  'orientationchange',
-  'touchstart',
-  'touchmove',
-  'touchend',
-  'touchcancel',
-  'pointercancel',
-  'pointerdown',
-  'pointerleave',
-  'pointermove',
-  'pointerup',
-  'gesturestart',
-  'gesturechange',
-  'gestureend',
-  'focus',
-  'blur',
-  'change',
-  'reset',
-  'select',
-  'submit',
-  'focusin',
-  'focusout',
-  'load',
-  'unload',
-  'beforeunload',
-  'resize',
-  'move',
-  'DOMContentLoaded',
-  'readystatechange',
-  'error',
-  'abort',
-  'scroll',
-];
-
-/**
  * A global namespace for `abort` event.
  * @type {string}
  */
 const abortEvent = 'abort';
-
-/**
- * A global namespace for `blur` event.
- * @type {string}
- */
-const blurEvent = 'blur';
-
-/**
- * A global namespace for `move` event.
- * @type {string}
- */
-const moveEvent = 'move';
-
-/**
- * A global namespace for `change` event.
- * @type {string}
- */
-const changeEvent = 'change';
-
-/**
- * A global namespace for `error` event.
- * @type {string}
- */
-const errorEvent = 'error';
-
-/**
- * A global namespace for `reset` event.
- * @type {string}
- */
-const resetEvent = 'reset';
-
-/**
- * A global namespace for `resize` event.
- * @type {string}
- */
-const resizeEvent = 'resize';
-
-/**
- * A global namespace for `scroll` event.
- * @type {string}
- */
-const scrollEvent = 'scroll';
-
-/**
- * A global namespace for `submit` event.
- * @type {string}
- */
-const submitEvent = 'submit';
-
-/**
- * A global namespace for `load` event.
- * @type {string}
- */
-const loadEvent = 'load';
-
-/**
- * A global namespace for `unload` event.
- * @type {string}
- */
-const unloadEvent = 'unload';
-
-/**
- * A global namespace for `readystatechange` event.
- * @type {string}
- */
-const readystatechangeEvent = 'readystatechange';
 
 /**
  * A global namespace for `beforeunload` event.
@@ -189,10 +70,16 @@ const readystatechangeEvent = 'readystatechange';
 const beforeunloadEvent = 'beforeunload';
 
 /**
- * A global namespace for `orientationchange` event.
+ * A global namespace for `blur` event.
  * @type {string}
  */
-const orientationchangeEvent = 'orientationchange';
+const blurEvent = 'blur';
+
+/**
+ * A global namespace for `change` event.
+ * @type {string}
+ */
+const changeEvent = 'change';
 
 /**
  * A global namespace for `contextmenu` event.
@@ -213,176 +100,10 @@ const DOMContentLoadedEvent = 'DOMContentLoaded';
 const DOMMouseScrollEvent = 'DOMMouseScroll';
 
 /**
- * A global namespace for `select` event.
+ * A global namespace for `error` event.
  * @type {string}
  */
-const selectEvent = 'select';
-
-/**
- * A global namespace for the `selectend` event.
- * @type {string}
- */
-const selectendEvent = 'selectend';
-
-/**
- * A global namespace for the `selectstart` event.
- * @type {string}
- */
-const selectstartEvent = 'selectstart';
-
-/**
- * A global namespace for mouse events equivalent to touch events.
- * @type {Record<string, string>}
- */
-const mouseSwipeEvents = {
-  start: 'mousedown', end: 'mouseup', move: 'mousemove', cancel: 'mouseleave',
-};
-
-/**
- * A global namespace for mouse click events.
- * @type {Record<string, string>}
- */
-const mouseClickEvents = { down: 'mousedown', up: 'mouseup' };
-
-/**
- * A global namespace for `click` event.
- * @type {string}
- */
-const mouseclickEvent = 'click';
-
-/**
- * A global namespace for `dblclick` event.
- * @type {string}
- */
-const mousedblclickEvent = 'dblclick';
-
-/**
- * A global namespace for `mousedown` event.
- * @type {string}
- */
-const mousedownEvent = 'mousedown';
-
-/**
- * A global namespace for `mouseup` event.
- * @type {string}
- */
-const mouseupEvent = 'mouseup';
-
-/**
- * A global namespace for `hover` event.
- * @type {string}
- */
-const mousehoverEvent = 'hover';
-
-/**
- * A global namespace for mouse hover events.
- * @type {[string, string]}
- */
-const mouseHoverEvents = ('onmouseleave' in document) ? ['mouseenter', 'mouseleave'] : ['mouseover', 'mouseout'];
-
-/**
- * A global namespace for `mouseenter` event.
- * @type {string}
- */
-const mouseenterEvent = 'mouseenter';
-
-/**
- * A global namespace for `mouseleave` event.
- * @type {string}
- */
-const mouseleaveEvent = 'mouseleave';
-
-/**
- * A global namespace for `mousein` event.
- * @type {string}
- */
-const mouseinEvent = 'mousein';
-
-/**
- * A global namespace for `mouseout` event.
- * @type {string}
- */
-const mouseoutEvent = 'mouseout';
-
-/**
- * A global namespace for `mousemove` event.
- * @type {string}
- */
-const mousemoveEvent = 'mousemove';
-
-/**
- * A global namespace for `mousewheel` event.
- * @type {string}
- */
-const mousewheelEvent = 'mousewheel';
-
-/**
- * A global namespace for touch events.
- * @type {Record<string, string>}
- */
-const touchEvents = {
-  start: 'touchstart', end: 'touchend', move: 'touchmove', cancel: 'touchcancel',
-};
-
-/**
- * A global namespace for `touchstart` event.
- * @type {string}
- */
-const touchstartEvent = 'touchstart';
-
-/**
- * A global namespace for `touchmove` event.
- * @type {string}
- */
-const touchmoveEvent = 'touchmove';
-
-/**
- * A global namespace for `touchcancel` event.
- * @type {string}
- */
-const touchcancelEvent = 'touchcancel';
-
-/**
- * A global namespace for `touchend` event.
- * @type {string}
- */
-const touchendEvent = 'touchend';
-
-/**
- * A global namespace for `pointercancel` event.
- * @type {string}
- */
-const pointercancelEvent = 'pointercancel';
-
-/**
- * A global namespace for `pointerdown` event.
- * @type {string}
- */
-const pointerdownEvent = 'pointerdown';
-
-/**
- * A global namespace for `pointerleave` event.
- * @type {string}
- */
-const pointerleaveEvent = 'pointerleave';
-
-/**
- * A global namespace for `pointermove` event.
- * @type {string}
- */
-const pointermoveEvent = 'pointermove';
-
-/**
- * A global namespace for `pointerup` event.
- * @type {string}
- */
-const pointerupEvent = 'pointerup';
-
-/**
- * A global namespace for focus event names.
- * @type {{in: string, out: string}}
- */
-const focusEvents = { in: 'focusin', out: 'focusout' };
+const errorEvent = 'error';
 
 /**
  * A global namespace for `focus` event.
@@ -421,6 +142,312 @@ const gestureendEvent = 'gestureend';
 const gesturestartEvent = 'gesturestart';
 
 /**
+ * A global namespace for `keydown` event.
+ * @type {string}
+ */
+const keydownEvent = 'keydown';
+
+/**
+ * A global namespace for `keypress` event.
+ * @type {string}
+ */
+const keypressEvent = 'keypress';
+
+/**
+ * A global namespace for `keyup` event.
+ * @type {string}
+ */
+const keyupEvent = 'keyup';
+
+/**
+ * A global namespace for `load` event.
+ * @type {string}
+ */
+const loadEvent = 'load';
+
+/**
+ * A global namespace for `click` event.
+ * @type {string}
+ */
+const mouseclickEvent = 'click';
+
+/**
+ * A global namespace for `dblclick` event.
+ * @type {string}
+ */
+const mousedblclickEvent = 'dblclick';
+
+/**
+ * A global namespace for `mousedown` event.
+ * @type {string}
+ */
+const mousedownEvent = 'mousedown';
+
+/**
+ * A global namespace for `mouseup` event.
+ * @type {string}
+ */
+const mouseupEvent = 'mouseup';
+
+/**
+ * A global namespace for `hover` event.
+ * @type {string}
+ */
+const mousehoverEvent = 'hover';
+
+/**
+ * A global namespace for `mouseenter` event.
+ * @type {string}
+ */
+const mouseenterEvent = 'mouseenter';
+
+/**
+ * A global namespace for `mouseleave` event.
+ * @type {string}
+ */
+const mouseleaveEvent = 'mouseleave';
+
+/**
+ * A global namespace for `mousein` event.
+ * @type {string}
+ */
+const mouseinEvent = 'mousein';
+
+/**
+ * A global namespace for `mouseout` event.
+ * @type {string}
+ */
+const mouseoutEvent = 'mouseout';
+
+/**
+ * A global namespace for `mouseover` event.
+ * @type {string}
+ */
+const mouseoverEvent = 'mouseover';
+
+/**
+ * A global namespace for `mousemove` event.
+ * @type {string}
+ */
+const mousemoveEvent = 'mousemove';
+
+/**
+ * A global namespace for `mousewheel` event.
+ * @type {string}
+ */
+const mousewheelEvent = 'mousewheel';
+
+/**
+ * A global namespace for `move` event.
+ * @type {string}
+ */
+const moveEvent = 'move';
+
+/**
+ * A global namespace for `orientationchange` event.
+ * @type {string}
+ */
+const orientationchangeEvent = 'orientationchange';
+
+/**
+ * A global namespace for `pointercancel` event.
+ * @type {string}
+ */
+const pointercancelEvent = 'pointercancel';
+
+/**
+ * A global namespace for `pointerdown` event.
+ * @type {string}
+ */
+const pointerdownEvent = 'pointerdown';
+
+/**
+ * A global namespace for `pointerleave` event.
+ * @type {string}
+ */
+const pointerleaveEvent = 'pointerleave';
+
+/**
+ * A global namespace for `pointermove` event.
+ * @type {string}
+ */
+const pointermoveEvent = 'pointermove';
+
+/**
+ * A global namespace for `pointerup` event.
+ * @type {string}
+ */
+const pointerupEvent = 'pointerup';
+
+/**
+ * A global namespace for `readystatechange` event.
+ * @type {string}
+ */
+const readystatechangeEvent = 'readystatechange';
+
+/**
+ * A global namespace for `reset` event.
+ * @type {string}
+ */
+const resetEvent = 'reset';
+
+/**
+ * A global namespace for `resize` event.
+ * @type {string}
+ */
+const resizeEvent = 'resize';
+
+/**
+ * A global namespace for `select` event.
+ * @type {string}
+ */
+const selectEvent = 'select';
+
+/**
+ * A global namespace for the `selectend` event.
+ * @type {string}
+ */
+const selectendEvent = 'selectend';
+
+/**
+ * A global namespace for the `selectstart` event.
+ * @type {string}
+ */
+const selectstartEvent = 'selectstart';
+
+/**
+ * A global namespace for `scroll` event.
+ * @type {string}
+ */
+const scrollEvent = 'scroll';
+
+/**
+ * A global namespace for `submit` event.
+ * @type {string}
+ */
+const submitEvent = 'submit';
+
+/**
+ * A global namespace for `touchstart` event.
+ * @type {string}
+ */
+const touchstartEvent = 'touchstart';
+
+/**
+ * A global namespace for `touchmove` event.
+ * @type {string}
+ */
+const touchmoveEvent = 'touchmove';
+
+/**
+ * A global namespace for `touchcancel` event.
+ * @type {string}
+ */
+const touchcancelEvent = 'touchcancel';
+
+/**
+ * A global namespace for `touchend` event.
+ * @type {string}
+ */
+const touchendEvent = 'touchend';
+
+/**
+ * A global namespace for `unload` event.
+ * @type {string}
+ */
+const unloadEvent = 'unload';
+
+/**
+ * A global namespace for all browser native events.
+ */
+const nativeEvents = {
+  DOMContentLoaded: DOMContentLoadedEvent,
+  DOMMouseScroll: DOMMouseScrollEvent,
+  abort: abortEvent,
+  beforeunload: beforeunloadEvent,
+  blur: blurEvent,
+  change: changeEvent,
+  click: mouseclickEvent,
+  contextmenu: contextmenuEvent,
+  dblclick: mousedblclickEvent,
+  error: errorEvent,
+  focus: focusEvent,
+  focusin: focusinEvent,
+  focusout: focusoutEvent,
+  gesturechange: gesturechangeEvent,
+  gestureend: gestureendEvent,
+  gesturestart: gesturestartEvent,
+  hover: mousehoverEvent,
+  keydown: keydownEvent,
+  keypress: keypressEvent,
+  keyup: keyupEvent,
+  load: loadEvent,
+  mousedown: mousedownEvent,
+  mousemove: mousemoveEvent,
+  mousein: mouseinEvent,
+  mouseout: mouseoutEvent,
+  mouseenter: mouseenterEvent,
+  mouseleave: mouseleaveEvent,
+  mouseover: mouseoverEvent,
+  mouseup: mouseupEvent,
+  mousewheel: mousewheelEvent,
+  move: moveEvent,
+  orientationchange: orientationchangeEvent,
+  pointercancel: pointercancelEvent,
+  pointerdown: pointerdownEvent,
+  pointerleave: pointerleaveEvent,
+  pointermove: pointermoveEvent,
+  pointerup: pointerupEvent,
+  readystatechange: readystatechangeEvent,
+  reset: resetEvent,
+  resize: resizeEvent,
+  scroll: scrollEvent,
+  select: selectEvent,
+  selectend: selectendEvent,
+  selectstart: selectstartEvent,
+  submit: submitEvent,
+  touchcancel: touchcancelEvent,
+  touchend: touchendEvent,
+  touchmove: touchmoveEvent,
+  touchstart: touchstartEvent,
+  unload: unloadEvent,
+};
+
+/**
+ * A global namespace for mouse events equivalent to touch events.
+ * @type {Record<string, string>}
+ */
+const mouseSwipeEvents = {
+  start: 'mousedown', end: 'mouseup', move: 'mousemove', cancel: 'mouseleave',
+};
+
+/**
+ * A global namespace for mouse click events.
+ * @type {Record<string, string>}
+ */
+const mouseClickEvents = { down: 'mousedown', up: 'mouseup' };
+
+/**
+ * A global namespace for mouse hover events.
+ * @type {[string, string]}
+ */
+const mouseHoverEvents = ('onmouseleave' in document) ? ['mouseenter', 'mouseleave'] : ['mouseover', 'mouseout'];
+
+/**
+ * A global namespace for touch events.
+ * @type {Record<string, string>}
+ */
+const touchEvents = {
+  start: 'touchstart', end: 'touchend', move: 'touchmove', cancel: 'touchcancel',
+};
+
+/**
+ * A global namespace for focus event names.
+ * @type {{in: string, out: string}}
+ */
+const focusEvents = { in: 'focusin', out: 'focusout' };
+
+/**
  * A global namespace for keyboard event keys.
  * @type {Record<string, string>}
  */
@@ -445,24 +472,6 @@ const keyboardEventKeys = {
   ContextMenu: 'ContextMenu', // 93
   ScrollLock: 'ScrollLock', // 145
 };
-
-/**
- * A global namespace for `keydown` event.
- * @type {string}
- */
-const keydownEvent = 'keydown';
-
-/**
- * A global namespace for `keyup` event.
- * @type {string}
- */
-const keyupEvent = 'keyup';
-
-/**
- * A global namespace for `keypress` event.
- * @type {string}
- */
-const keypressEvent = 'keypress';
 
 /**
  * A global namespace for `Alt` key.
@@ -744,12 +753,12 @@ const scrollHeight = 'scrollHeight';
 const scrollWidth = 'scrollWidth';
 
 // @ts-ignore
-const { userAgentData: userAgentDATA } = navigator;
+const { userAgentData: uaDATA } = navigator;
 
 /**
- * A global namespace for `userAgentData` event.
+ * A global namespace for `userAgentData` object.
  */
-const userAgentData = userAgentDATA;
+const userAgentData = uaDATA;
 
 const { userAgent: userAgentString } = navigator;
 
@@ -803,10 +812,10 @@ const support3DTransform = 'webkitPerspective' in documentHead.style || 'perspec
 /**
  * Add eventListener to an `Element` | `HTMLElement` | `Document` target.
  *
- * @param {HTMLElement | Element | Document} element event.target
+ * @param {HTMLElement | Element | Document | Window} element event.target
  * @param {string} eventName event.type
- * @param {EventListener} handler callback
- * @param {EventListenerOptions | boolean | undefined} options other event options
+ * @param {EventListenerObject['handleEvent']} handler callback
+ * @param {(EventListenerOptions | boolean)=} options other event options
  */
 function on(element, eventName, handler, options) {
   const ops = options || false;
@@ -814,12 +823,12 @@ function on(element, eventName, handler, options) {
 }
 
 /**
- * Remove eventListener from an `Element` | `HTMLElement` | `Document` target.
+ * Remove eventListener from an `Element` | `HTMLElement` | `Document` | `Window` target.
  *
- * @param {HTMLElement | Element | Document} element event.target
+ * @param {HTMLElement | Element | Document | Window} element event.target
  * @param {string} eventName event.type
- * @param {EventListener} handler callback
- * @param {EventListenerOptions | boolean | undefined} options other event options
+ * @param {EventListenerObject['handleEvent']} handler callback
+ * @param {(EventListenerOptions | boolean)=} options other event options
  */
 function off(element, eventName, handler, options) {
   const ops = options || false;
@@ -827,25 +836,25 @@ function off(element, eventName, handler, options) {
 }
 
 /**
- * Add an `eventListener` to an `Element` | `HTMLElement` | `Document` target
- * and remove it once callback is called.
+ * Add an `eventListener` to an `Element` | `HTMLElement` | `Document` | `Window`
+ * target and remove it once callback is called.
  *
- * @param {HTMLElement | Element | Document} element event.target
+ * @param {HTMLElement | Element | Document | Window} element event.target
  * @param {string} eventName event.type
- * @param {EventListener} handler callback
- * @param {EventListenerOptions | boolean | undefined} options other event options
+ * @param {EventListenerObject['handleEvent']} handler callback
+ * @param {(EventListenerOptions | boolean)=} options other event options
  */
 function one(element, eventName, handler, options) {
 /**
  * Wrap the handler for easy on -> off
- * @param {Event} e the Event object
+ * @type {EventListenerObject['handleEvent']}
  */
-  function handlerWrapper(e) {
+  const handlerWrapper = (e) => {
     if (e.target === element) {
       handler.apply(element, [e]);
       off(element, eventName, handlerWrapper, options);
     }
-  }
+  };
   on(element, eventName, handlerWrapper, options);
 }
 
@@ -1549,11 +1558,13 @@ const ObjectValues = (obj) => Object.values(obj);
 
 /**
  * A global namespace for most scroll event listeners.
+ * @type {Partial<AddEventListenerOptions>}
  */
 const passiveHandler$1 = { passive: true };
 
 /**
  * A global namespace for most scroll event listeners in legacy browsers.
+ * @type {Partial<AddEventListenerOptions> | boolean}
  */
 const passiveHandler = supportPassive ? { passive: true } : false;
 
@@ -2076,7 +2087,7 @@ function getElementsByClassName(selector, parent) {
   return lookUp.getElementsByClassName(selector);
 }
 
-var version = "0.3.0alpha13";
+var version = "0.3.0alpha14";
 
 // @ts-ignore
 
@@ -2130,6 +2141,7 @@ const SHORTER = {
   mouseleaveEvent,
   mouseinEvent,
   mouseoutEvent,
+  mouseoverEvent,
   mousemoveEvent,
   mousewheelEvent,
   mouseSwipeEvents,
