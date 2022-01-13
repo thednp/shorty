@@ -1,5 +1,5 @@
 /*!
-* shorter-js v0.3.0alpha14 (https://github.com/thednp/shorter-js)
+* shorter-js v0.3.0alpha15 (https://github.com/thednp/shorter-js)
 * Copyright 2019-2022 © dnp_theme
 * Licensed under MIT (https://github.com/thednp/shorter-js/blob/master/LICENSE)
 */
@@ -1463,6 +1463,36 @@
   // @ts-ignore -- `Element`s resulted from querySelector can focus too
   var focus = function (element) { return element.focus(); };
 
+  var elementUID = 1;
+  var elementIDMap = new Map();
+
+  /**
+   * Returns a unique identifier for popover, tooltip, scrollspy.
+   *
+   * @param {HTMLElement | Element} element target element
+   * @param {string=} key predefined key
+   * @returns {number} an existing or new unique ID
+   */
+  function getUID(element, key) {
+    elementUID += 1;
+    var elMap = elementIDMap.get(element);
+    var result = elementUID;
+
+    if (elMap) {
+      result = key && key.length && elMap.get && elMap.get(key)
+        ? elMap.get(key) : elMap;
+    } else if (key && key.length) {
+      if (!elMap) {
+        elementIDMap.set(element, new Map());
+        elMap = elementIDMap.get(element);
+      }
+      elMap.set(key, result);
+    } else {
+      elementIDMap.set(element, result);
+    }
+    return result;
+  }
+
   /** A generic function with empty body. */
   var noop = function () {};
 
@@ -2108,7 +2138,7 @@
     return lookUp.getElementsByClassName(selector);
   }
 
-  var version = "0.3.0alpha14";
+  var version = "0.3.0alpha15";
 
   // @ts-ignore
 
@@ -2302,6 +2332,7 @@
     reflow: reflow,
     noop: noop,
     focus: focus,
+    getUID: getUID,
     ArrayFrom: ArrayFrom,
     Float32ArrayFrom: Float32ArrayFrom,
     Float64ArrayFrom: Float64ArrayFrom,

@@ -1646,6 +1646,16 @@ declare module "shorter-js/src/misc/focus" {
      */
     function focus(element: HTMLElement | Element): any;
 }
+declare module "shorter-js/src/misc/getUID" {
+    /**
+     * Returns a unique identifier for popover, tooltip, scrollspy.
+     *
+     * @param {HTMLElement | Element} element target element
+     * @param {string=} key predefined key
+     * @returns {number} an existing or new unique ID
+     */
+    export default function getUID(element: HTMLElement | Element, key?: string | undefined): number;
+}
 declare module "shorter-js/src/misc/noop" {
     export default noop;
     /** A generic function with empty body. */
@@ -2099,6 +2109,7 @@ declare module "shorter-js/types/module/shorter" {
     export { default as tryWrapper } from "shorter-js/src/misc/tryWrapper";
     export { default as reflow } from "shorter-js/src/misc/reflow";
     export { default as focus } from "shorter-js/src/misc/focus";
+    export { default as getUID } from "shorter-js/src/misc/getUID";
     export { default as noop } from "shorter-js/src/misc/noop";
     export { default as ArrayFrom } from "shorter-js/src/misc/ArrayFrom";
     export { default as Float32ArrayFrom } from "shorter-js/src/misc/Float32ArrayFrom";

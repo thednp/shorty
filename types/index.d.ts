@@ -167,6 +167,7 @@ export { default as normalizeValue } from 'shorter-js/src/misc/normalizeValue';
 export { default as normalizeOptions } from 'shorter-js/src/misc/normalizeOptions';
 export { default as tryWrapper } from 'shorter-js/src/misc/tryWrapper';
 export { default as reflow } from 'shorter-js/src/misc/reflow';
+export { default as getUID } from 'shorter-js/src/misc/getUID';
 export { default as focus } from 'shorter-js/src/misc/focus';
 export { default as noop } from 'shorter-js/src/misc/noop';
 export { default as ArrayFrom } from 'shorter-js/src/misc/ArrayFrom';

@@ -186,6 +186,7 @@ export { default as normalizeOptions } from '../../src/misc/normalizeOptions';
 export { default as tryWrapper } from '../../src/misc/tryWrapper';
 export { default as reflow } from '../../src/misc/reflow';
 export { default as focus } from '../../src/misc/focus';
+export { default as getUID } from '../../src/misc/getUID';
 export { default as noop } from '../../src/misc/noop';
 
 export { default as ArrayFrom } from '../../src/misc/ArrayFrom';

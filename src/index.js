@@ -165,6 +165,7 @@ import emulateTransitionEndLegacy from './misc/emulateTransitionEndLegacy';
 import Float32ArrayFrom from './misc/Float32ArrayFrom';
 import Float64ArrayFrom from './misc/Float64ArrayFrom';
 import focus from './misc/focus';
+import getUID from './misc/getUID';
 import noop from './misc/noop';
 import normalizeOptions from './misc/normalizeOptions';
 import normalizeValue from './misc/normalizeValue';
@@ -414,6 +415,7 @@ const SHORTER = {
   reflow,
   noop,
   focus,
+  getUID,
   ArrayFrom,
   Float32ArrayFrom,
   Float64ArrayFrom,
