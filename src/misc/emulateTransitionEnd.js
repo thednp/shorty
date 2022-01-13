@@ -1,6 +1,8 @@
 import transitionEndEvent from '../strings/transitionEndEvent';
 import getElementTransitionDelay from '../get/getElementTransitionDelay';
 import getElementTransitionDuration from '../get/getElementTransitionDuration';
+import on from '../event/on';
+import off from '../event/off';
 
 /**
  * Utility to make sure callbacks are consistently
@@ -18,16 +20,16 @@ export default function emulateTransitionEnd(element, handler) {
   if (duration) {
     /**
      * Wrap the handler in on -> off callback
-     * @param {Event} e Event object
+     * @param {TransitionEvent} e Event object
      */
     const transitionEndWrapper = (e) => {
       if (e.target === element) {
         handler.apply(element, [e]);
-        element.removeEventListener(transitionEndEvent, transitionEndWrapper);
+        off(element, transitionEndEvent, transitionEndWrapper);
         called = 1;
       }
     };
-    element.addEventListener(transitionEndEvent, transitionEndWrapper);
+    on(element, transitionEndEvent, transitionEndWrapper);
     setTimeout(() => {
       if (!called) element.dispatchEvent(endEvent);
     }, duration + delay + 17);

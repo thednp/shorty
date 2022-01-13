@@ -778,6 +778,10 @@ declare module "shorter-js/src/strings/animationDuration" {
      */
     const animationDuration: string;
 }
+declare module "shorter-js/src/blocks/documentHead" {
+    export default documentHead;
+    const documentHead: HTMLHeadElement;
+}
 declare module "shorter-js/src/strings/animationDurationLegacy" {
     export default animationDuration;
     /**
@@ -998,10 +1002,6 @@ declare module "shorter-js/src/boolean/isMobile" {
      * @type {boolean}
      */
     const isMobile: boolean;
-}
-declare module "shorter-js/src/blocks/documentHead" {
-    export default documentHead;
-    const documentHead: HTMLHeadElement;
 }
 declare module "shorter-js/src/boolean/support3DTransform" {
     export default support3DTransform;

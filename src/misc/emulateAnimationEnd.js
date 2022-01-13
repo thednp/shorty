@@ -1,6 +1,8 @@
 import animationEndEvent from '../strings/animationEndEvent';
 import getElementAnimationDelay from '../get/getElementAnimationDelay';
 import getElementAnimationDuration from '../get/getElementAnimationDuration';
+import on from '../event/on';
+import off from '../event/off';
 
 /**
  * Utility to make sure callbacks are consistently
@@ -18,16 +20,16 @@ export default function emulateAnimationEnd(element, handler) {
   if (duration) {
     /**
      * Wrap the handler in on -> off callback
-     * @param {Event} e Event object
+     * @param {AnimationEvent} e Event object
      */
     const animationEndWrapper = (e) => {
       if (e.target === element) {
         handler.apply(element, [e]);
-        element.removeEventListener(animationEndEvent, animationEndWrapper);
+        off(element, animationEndEvent, animationEndWrapper);
         called = 1;
       }
     };
-    element.addEventListener(animationEndEvent, animationEndWrapper);
+    on(element, animationEndEvent, animationEndWrapper);
     setTimeout(() => {
       if (!called) element.dispatchEvent(endEvent);
     }, duration + delay + 17);

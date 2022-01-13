@@ -1,5 +1,5 @@
 /*!
-* shorter-js v0.3.0alpha15 (https://github.com/thednp/shorter-js)
+* shorter-js v0.3.0alpha16 (https://github.com/thednp/shorter-js)
 * Copyright 2019-2022 © dnp_theme
 * Licensed under MIT (https://github.com/thednp/shorter-js/blob/master/LICENSE)
 */
@@ -588,10 +588,15 @@ const keyTab = 'Tab';
 const animationDuration$1 = 'animationDuration';
 
 /**
+ * A global namespace for `document.head`.
+ */
+const { head: documentHead } = document;
+
+/**
  * A global namespace for 'animationDuration' string.
  * @type {string}
  */
-const animationDuration = 'webkitAnimation' in document.head.style ? 'webkitAnimationDuration' : 'animationDuration';
+const animationDuration = 'webkitAnimation' in documentHead.style ? 'webkitAnimationDuration' : 'animationDuration';
 
 /**
  * A global namespace for 'animationDelay' string.
@@ -603,7 +608,7 @@ const animationDelay$1 = 'animationDelay';
  * A global namespace for 'animationDelay' string.
  * @type {string}
  */
-const animationDelay = 'webkitAnimation' in document.head.style ? 'webkitAnimationDelay' : 'animationDelay';
+const animationDelay = 'webkitAnimation' in documentHead.style ? 'webkitAnimationDelay' : 'animationDelay';
 
 /**
  * A global namespace for 'animationName' string.
@@ -615,7 +620,7 @@ const animationName$1 = 'animationName';
  * A global namespace for 'animationName' string.
  * @type {string}
  */
-const animationName = 'webkitAnimation' in document.head.style ? 'webkitAnimationName' : 'animationName';
+const animationName = 'webkitAnimation' in documentHead.style ? 'webkitAnimationName' : 'animationName';
 
 /**
  * A global namespace for 'animationend' string.
@@ -627,7 +632,7 @@ const animationEndEvent$1 = 'animationend';
  * A global namespace for 'animationend' string.
  * @type {string}
  */
-const animationEndEvent = 'webkitAnimation' in document.head.style ? 'webkitAnimationEnd' : 'animationend';
+const animationEndEvent = 'webkitAnimation' in documentHead.style ? 'webkitAnimationEnd' : 'animationend';
 
 /**
  * A global namespace for 'transitionDuration' string.
@@ -639,7 +644,7 @@ const transitionDuration$1 = 'transitionDuration';
  * A global namespace for 'transitionDuration' string.
  * @type {string}
  */
-const transitionDuration = 'webkitTransition' in document.head.style ? 'webkitTransitionDuration' : 'transitionDuration';
+const transitionDuration = 'webkitTransition' in documentHead.style ? 'webkitTransitionDuration' : 'transitionDuration';
 
 /**
  * A global namespace for 'transitionDelay' string.
@@ -651,7 +656,7 @@ const transitionDelay$1 = 'transitionDelay';
  * A global namespace for 'transitionDelay' string.
  * @type {string}
  */
-const transitionDelay = 'webkitTransition' in document.head.style ? 'webkitTransitionDelay' : 'transitionDelay';
+const transitionDelay = 'webkitTransition' in documentHead.style ? 'webkitTransitionDelay' : 'transitionDelay';
 
 /**
  * A global namespace for 'transitionend' string.
@@ -663,7 +668,7 @@ const transitionEndEvent$1 = 'transitionend';
  * A global namespace for 'transitionend' string.
  * @type {string}
  */
-const transitionEndEvent = 'webkitTransition' in document.head.style ? 'webkitTransitionEnd' : 'transitionend';
+const transitionEndEvent = 'webkitTransition' in documentHead.style ? 'webkitTransitionEnd' : 'transitionend';
 
 /**
  * A global namespace for:
@@ -681,7 +686,7 @@ const transitionProperty$1 = 'transitionProperty';
  * * `transition` property for all other browsers.
  * @type {string}
  */
-const transitionProperty = 'webkitTransition' in document.head.style ? 'webkitTransitionProperty' : 'transitionProperty';
+const transitionProperty = 'webkitTransition' in documentHead.style ? 'webkitTransitionProperty' : 'transitionProperty';
 
 /**
  * A global namespace for 'addEventListener' string.
@@ -797,11 +802,6 @@ const isApple = !userAgentData ? appleBrands.test(userAgent)
  * Gecko was not supporting `userAgentData`.
  */
 const isFirefox = userAgent ? userAgent.includes('Firefox') : false;
-
-/**
- * A global namespace for `document.head`.
- */
-const { head: documentHead } = document;
 
 /**
  * A global `boolean` for CSS3 3D transform support.
@@ -1212,16 +1212,16 @@ function emulateAnimationEnd$1(element, handler) {
   if (duration) {
     /**
      * Wrap the handler in on -> off callback
-     * @param {Event} e Event object
+     * @param {AnimationEvent} e Event object
      */
     const animationEndWrapper = (e) => {
       if (e.target === element) {
         handler.apply(element, [e]);
-        element.removeEventListener(animationEndEvent$1, animationEndWrapper);
+        off(element, animationEndEvent$1, animationEndWrapper);
         called = 1;
       }
     };
-    element.addEventListener(animationEndEvent$1, animationEndWrapper);
+    on(element, animationEndEvent$1, animationEndWrapper);
     setTimeout(() => {
       if (!called) element.dispatchEvent(endEvent);
     }, duration + delay + 17);
@@ -1349,16 +1349,16 @@ function emulateTransitionEnd$1(element, handler) {
   if (duration) {
     /**
      * Wrap the handler in on -> off callback
-     * @param {Event} e Event object
+     * @param {TransitionEvent} e Event object
      */
     const transitionEndWrapper = (e) => {
       if (e.target === element) {
         handler.apply(element, [e]);
-        element.removeEventListener(transitionEndEvent$1, transitionEndWrapper);
+        off(element, transitionEndEvent$1, transitionEndWrapper);
         called = 1;
       }
     };
-    element.addEventListener(transitionEndEvent$1, transitionEndWrapper);
+    on(element, transitionEndEvent$1, transitionEndWrapper);
     setTimeout(() => {
       if (!called) element.dispatchEvent(endEvent);
     }, duration + delay + 17);
@@ -2117,7 +2117,7 @@ function getElementsByClassName(selector, parent) {
   return lookUp.getElementsByClassName(selector);
 }
 
-var version = "0.3.0alpha15";
+var version = "0.3.0alpha16";
 
 // @ts-ignore
 

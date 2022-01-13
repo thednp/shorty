@@ -1,6 +1,8 @@
+import documentHead from '../blocks/documentHead';
+
 /**
  * A global namespace for 'transitionDuration' string.
  * @type {string}
  */
-const transitionDuration = 'webkitTransition' in document.head.style ? 'webkitTransitionDuration' : 'transitionDuration';
+const transitionDuration = 'webkitTransition' in documentHead.style ? 'webkitTransitionDuration' : 'transitionDuration';
 export default transitionDuration;
