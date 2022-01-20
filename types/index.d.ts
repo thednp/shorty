@@ -176,6 +176,8 @@ export { default as Float64ArrayFrom } from 'shorter-js/src/misc/Float64ArrayFro
 export { default as ObjectKeys } from 'shorter-js/src/misc/ObjectKeys';
 export { default as ObjectValues } from 'shorter-js/src/misc/ObjectValues';
 export { default as ObjectAssign } from 'shorter-js/src/misc/ObjectAssign';
+export { default as toUpperCase } from 'shorter-js/src/misc/toUpperCase';
+export { default as toLowerCase } from 'shorter-js/src/misc/toLowerCase';
 export { default as isArray } from 'shorter-js/src/is/isArray';
 export { default as isDocument } from 'shorter-js/src/is/isDocument';
 export { default as isElement } from 'shorter-js/src/is/isElement';

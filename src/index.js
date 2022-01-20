@@ -177,6 +177,8 @@ import passiveHandlerLegacy from './misc/passiveHandlerLegacy';
 import reflow from './misc/reflow';
 import setElementStyle from './misc/setElementStyle';
 import Timer from './misc/timer';
+import toLowerCase from './misc/toLowerCase';
+import toUpperCase from './misc/toUpperCase';
 import tryWrapper from './misc/tryWrapper';
 
 // get
@@ -361,6 +363,8 @@ const SHORTER = {
   dispatchEvent,
   distinct,
   Data,
+  toUpperCase,
+  toLowerCase,
   Timer,
   getInstance,
   emulateAnimationEnd,

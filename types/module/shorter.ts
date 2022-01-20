@@ -189,6 +189,9 @@ export { default as focus } from '../../src/misc/focus';
 export { default as getUID } from '../../src/misc/getUID';
 export { default as noop } from '../../src/misc/noop';
 
+export { default as toLowerCase } from '../../src/misc/toLowerCase';
+export { default as toUpperCase } from '../../src/misc/toUpperCase';
+
 export { default as ArrayFrom } from '../../src/misc/ArrayFrom';
 export { default as Float32ArrayFrom } from '../../src/misc/Float32ArrayFrom';
 export { default as Float64ArrayFrom } from '../../src/misc/Float64ArrayFrom';

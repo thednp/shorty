@@ -1,5 +1,5 @@
 /*!
-* shorter-js v0.3.0alpha16 (https://github.com/thednp/shorter-js)
+* shorter-js v0.3.0alpha17 (https://github.com/thednp/shorter-js)
 * Copyright 2019-2022 © dnp_theme
 * Licensed under MIT (https://github.com/thednp/shorter-js/blob/master/LICENSE)
 */
@@ -1691,6 +1691,22 @@ const Timer = {
 };
 
 /**
+ * Shortcut for `String.toLowerCase()`.
+ *
+ * @param {string} source input string
+ * @returns {string} lowercase output string
+ */
+const toLowerCase = (source) => source.toLowerCase();
+
+/**
+ * Shortcut for `String.toUpperCase()`.
+ *
+ * @param {string} source input string
+ * @returns {string} uppercase output string
+ */
+const toUpperCase = (source) => source.toUpperCase();
+
+/**
  * Utility to wrap a callback in a try() catch(e)
  *
  * @param {Function} fn callback
@@ -2117,7 +2133,7 @@ function getElementsByClassName(selector, parent) {
   return lookUp.getElementsByClassName(selector);
 }
 
-var version = "0.3.0alpha16";
+var version = "0.3.0alpha17";
 
 // @ts-ignore
 
@@ -2257,6 +2273,8 @@ const SHORTER = {
   dispatchEvent,
   distinct,
   Data,
+  toUpperCase,
+  toLowerCase,
   Timer,
   getInstance,
   emulateAnimationEnd: emulateAnimationEnd$1,

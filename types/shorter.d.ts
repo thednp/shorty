@@ -1661,6 +1661,26 @@ declare module "shorter-js/src/misc/noop" {
     /** A generic function with empty body. */
     function noop(): void;
 }
+declare module "shorter-js/src/misc/toLowerCase" {
+    export default toLowerCase;
+    /**
+     * Shortcut for `String.toLowerCase()`.
+     *
+     * @param {string} source input string
+     * @returns {string} lowercase output string
+     */
+    function toLowerCase(source: string): string;
+}
+declare module "shorter-js/src/misc/toUpperCase" {
+    export default toUpperCase;
+    /**
+     * Shortcut for `String.toUpperCase()`.
+     *
+     * @param {string} source input string
+     * @returns {string} uppercase output string
+     */
+    function toUpperCase(source: string): string;
+}
 declare module "shorter-js/src/misc/ArrayFrom" {
     export default ArrayFrom;
     /**
@@ -2111,6 +2131,8 @@ declare module "shorter-js/types/module/shorter" {
     export { default as focus } from "shorter-js/src/misc/focus";
     export { default as getUID } from "shorter-js/src/misc/getUID";
     export { default as noop } from "shorter-js/src/misc/noop";
+    export { default as toLowerCase } from "shorter-js/src/misc/toLowerCase";
+    export { default as toUpperCase } from "shorter-js/src/misc/toUpperCase";
     export { default as ArrayFrom } from "shorter-js/src/misc/ArrayFrom";
     export { default as Float32ArrayFrom } from "shorter-js/src/misc/Float32ArrayFrom";
     export { default as Float64ArrayFrom } from "shorter-js/src/misc/Float64ArrayFrom";

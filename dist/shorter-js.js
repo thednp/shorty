@@ -1,5 +1,5 @@
 /*!
-* shorter-js v0.3.0alpha16 (https://github.com/thednp/shorter-js)
+* shorter-js v0.3.0alpha17 (https://github.com/thednp/shorter-js)
 * Copyright 2019-2022 © dnp_theme
 * Licensed under MIT (https://github.com/thednp/shorter-js/blob/master/LICENSE)
 */
@@ -1697,6 +1697,22 @@
   };
 
   /**
+   * Shortcut for `String.toLowerCase()`.
+   *
+   * @param {string} source input string
+   * @returns {string} lowercase output string
+   */
+  var toLowerCase = function (source) { return source.toLowerCase(); };
+
+  /**
+   * Shortcut for `String.toUpperCase()`.
+   *
+   * @param {string} source input string
+   * @returns {string} uppercase output string
+   */
+  var toUpperCase = function (source) { return source.toUpperCase(); };
+
+  /**
    * Utility to wrap a callback in a try() catch(e)
    *
    * @param {Function} fn callback
@@ -2138,7 +2154,7 @@
     return lookUp.getElementsByClassName(selector);
   }
 
-  var version = "0.3.0alpha16";
+  var version = "0.3.0alpha17";
 
   // @ts-ignore
 
@@ -2278,6 +2294,8 @@
     dispatchEvent: dispatchEvent,
     distinct: distinct,
     Data: Data,
+    toUpperCase: toUpperCase,
+    toLowerCase: toLowerCase,
     Timer: Timer,
     getInstance: getInstance,
     emulateAnimationEnd: emulateAnimationEnd$1,
