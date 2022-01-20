@@ -198,6 +198,7 @@ export { default as Float64ArrayFrom } from '../../src/misc/Float64ArrayFrom';
 export { default as ObjectKeys } from '../../src/misc/ObjectKeys';
 export { default as ObjectValues } from '../../src/misc/ObjectValues';
 export { default as ObjectAssign } from '../../src/misc/ObjectAssign';
+export { default as OriginalEvent } from '../../src/misc/OriginalEvent';
 
 // is
 export { default as isArray } from '../../src/is/isArray';

@@ -1718,6 +1718,15 @@ declare module "shorter-js/src/misc/ObjectValues" {
      */
     function ObjectValues(obj: Record<string, any>): any[];
 }
+declare module "shorter-js/src/misc/OriginalEvent" {
+    /**
+     * Returns a namespaced `CustomEvent` specific to each component.
+     * @param {string} EventType Event.type
+     * @param {Record<string, any>=} config Event.options | Event.properties
+     * @returns {SHORTER.OriginalEvent} a new namespaced event
+     */
+    export default function OriginalEvent(EventType: string, config?: Record<string, any> | undefined): SHORTER.OriginalEvent;
+}
 declare module "shorter-js/src/is/isArray" {
     export default isArray;
     /**
@@ -2139,6 +2148,7 @@ declare module "shorter-js/types/module/shorter" {
     export { default as ObjectKeys } from "shorter-js/src/misc/ObjectKeys";
     export { default as ObjectValues } from "shorter-js/src/misc/ObjectValues";
     export { default as ObjectAssign } from "shorter-js/src/misc/ObjectAssign";
+    export { default as OriginalEvent } from "shorter-js/src/misc/OriginalEvent";
     export { default as isArray } from "shorter-js/src/is/isArray";
     export { default as isDocument } from "shorter-js/src/is/isDocument";
     export { default as isCustomElement } from "shorter-js/src/is/isCustomElement";

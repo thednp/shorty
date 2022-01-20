@@ -176,6 +176,7 @@ export { default as Float64ArrayFrom } from 'shorter-js/src/misc/Float64ArrayFro
 export { default as ObjectKeys } from 'shorter-js/src/misc/ObjectKeys';
 export { default as ObjectValues } from 'shorter-js/src/misc/ObjectValues';
 export { default as ObjectAssign } from 'shorter-js/src/misc/ObjectAssign';
+export { default as OriginalEvent } from 'shorter-js/src/misc/OriginalEvent';
 export { default as toUpperCase } from 'shorter-js/src/misc/toUpperCase';
 export { default as toLowerCase } from 'shorter-js/src/misc/toLowerCase';
 export { default as isArray } from 'shorter-js/src/is/isArray';
@@ -220,6 +221,10 @@ export interface BoundingClientRect {
   bottom: number,
   x: number,
   y: number,
+}
+
+export interface OriginalEvent extends CustomEvent {
+  relatedTarget?: HTMLElement | Element | null;
 }
 
 export interface OffsetRect {

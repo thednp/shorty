@@ -172,6 +172,7 @@ import normalizeValue from './misc/normalizeValue';
 import ObjectAssign from './misc/ObjectAssign';
 import ObjectKeys from './misc/ObjectKeys';
 import ObjectValues from './misc/ObjectValues';
+import OriginalEvent from './misc/OriginalEvent';
 import passiveHandler from './misc/passiveHandler';
 import passiveHandlerLegacy from './misc/passiveHandlerLegacy';
 import reflow from './misc/reflow';
@@ -426,6 +427,7 @@ const SHORTER = {
   ObjectAssign,
   ObjectKeys,
   ObjectValues,
+  OriginalEvent,
   getBoundingClientRect,
   getDocument,
   getDocumentBody,

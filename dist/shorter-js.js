@@ -1,5 +1,5 @@
 /*!
-* shorter-js v0.3.0alpha17 (https://github.com/thednp/shorter-js)
+* shorter-js v0.3.0alpha18 (https://github.com/thednp/shorter-js)
 * Copyright 2019-2022 © dnp_theme
 * Licensed under MIT (https://github.com/thednp/shorter-js/blob/master/LICENSE)
 */
@@ -1593,6 +1593,23 @@
   var ObjectValues = function (obj) { return Object.values(obj); };
 
   /**
+   * Returns a namespaced `CustomEvent` specific to each component.
+   * @param {string} EventType Event.type
+   * @param {Record<string, any>=} config Event.options | Event.properties
+   * @returns {SHORTER.OriginalEvent} a new namespaced event
+   */
+  function OriginalEvent(EventType, config) {
+    var OriginalCustomEvent = new CustomEvent(EventType, {
+      cancelable: true, bubbles: true,
+    });
+
+    if (config instanceof Object) {
+      ObjectAssign(OriginalCustomEvent, config);
+    }
+    return OriginalCustomEvent;
+  }
+
+  /**
    * A global namespace for most scroll event listeners.
    * @type {Partial<AddEventListenerOptions>}
    */
@@ -2154,7 +2171,7 @@
     return lookUp.getElementsByClassName(selector);
   }
 
-  var version = "0.3.0alpha17";
+  var version = "0.3.0alpha18";
 
   // @ts-ignore
 
@@ -2357,6 +2374,7 @@
     ObjectAssign: ObjectAssign,
     ObjectKeys: ObjectKeys,
     ObjectValues: ObjectValues,
+    OriginalEvent: OriginalEvent,
     getBoundingClientRect: getBoundingClientRect,
     getDocument: getDocument,
     getDocumentBody: getDocumentBody,
