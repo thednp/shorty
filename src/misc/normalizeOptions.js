@@ -1,5 +1,7 @@
+import getAttribute from '../attr/getAttribute';
 import normalizeValue from './normalizeValue';
 import ObjectKeys from './ObjectKeys';
+import toLowerCase from './toLowerCase';
 
 /**
  * Utility to normalize component options.
@@ -17,10 +19,11 @@ export default function normalizeOptions(element, defaultOps, inputOps, ns) {
   const normalOps = {};
   /** @type {Record<string, any>} */
   const dataOps = {};
+  const title = 'title';
 
   ObjectKeys(data).forEach((k) => {
     const key = ns && k.includes(ns)
-      ? k.replace(ns, '').replace(/[A-Z]/, (match) => match.toLowerCase())
+      ? k.replace(ns, '').replace(/[A-Z]/, (match) => toLowerCase(match))
       : k;
 
     dataOps[key] = normalizeValue(data[k]);
@@ -36,7 +39,9 @@ export default function normalizeOptions(element, defaultOps, inputOps, ns) {
     } else if (k in dataOps) {
       normalOps[k] = dataOps[k];
     } else {
-      normalOps[k] = defaultOps[k];
+      normalOps[k] = k === title
+        ? getAttribute(element, title)
+        : defaultOps[k];
     }
   });
 

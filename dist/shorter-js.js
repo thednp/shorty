@@ -1,5 +1,5 @@
 /*!
-* shorter-js v0.3.0alpha18 (https://github.com/thednp/shorter-js)
+* shorter-js v0.3.0alpha19 (https://github.com/thednp/shorter-js)
 * Copyright 2019-2022 © dnp_theme
 * Licensed under MIT (https://github.com/thednp/shorter-js/blob/master/LICENSE)
 */
@@ -1537,6 +1537,14 @@
   var ObjectKeys = function (obj) { return Object.keys(obj); };
 
   /**
+   * Shortcut for `String.toLowerCase()`.
+   *
+   * @param {string} source input string
+   * @returns {string} lowercase output string
+   */
+  var toLowerCase = function (source) { return source.toLowerCase(); };
+
+  /**
    * Utility to normalize component options.
    *
    * @param {HTMLElement | Element} element target
@@ -1552,10 +1560,11 @@
     var normalOps = {};
     /** @type {Record<string, any>} */
     var dataOps = {};
+    var title = 'title';
 
     ObjectKeys(data).forEach(function (k) {
       var key = ns && k.includes(ns)
-        ? k.replace(ns, '').replace(/[A-Z]/, function (match) { return match.toLowerCase(); })
+        ? k.replace(ns, '').replace(/[A-Z]/, function (match) { return toLowerCase(match); })
         : k;
 
       dataOps[key] = normalizeValue(data[k]);
@@ -1571,7 +1580,9 @@
       } else if (k in dataOps) {
         normalOps[k] = dataOps[k];
       } else {
-        normalOps[k] = defaultOps[k];
+        normalOps[k] = k === title
+          ? getAttribute(element, title)
+          : defaultOps[k];
       }
     });
 
@@ -1712,14 +1723,6 @@
       }
     },
   };
-
-  /**
-   * Shortcut for `String.toLowerCase()`.
-   *
-   * @param {string} source input string
-   * @returns {string} lowercase output string
-   */
-  var toLowerCase = function (source) { return source.toLowerCase(); };
 
   /**
    * Shortcut for `String.toUpperCase()`.
@@ -2171,7 +2174,7 @@
     return lookUp.getElementsByClassName(selector);
   }
 
-  var version = "0.3.0alpha18";
+  var version = "0.3.0alpha19";
 
   // @ts-ignore
 
