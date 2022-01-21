@@ -31,6 +31,7 @@ export { default as keydownEvent } from 'shorter-js/src/strings/keydownEvent';
 export { default as keypressEvent } from 'shorter-js/src/strings/keypressEvent';
 export { default as keyupEvent } from 'shorter-js/src/strings/keyupEvent';
 export { default as loadEvent } from 'shorter-js/src/strings/loadEvent';
+export { default as loadstartEvent } from 'shorter-js/src/strings/loadstartEvent';
 export { default as mouseClickEvents } from 'shorter-js/src/strings/mouseClickEvents';
 export { default as mouseclickEvent } from 'shorter-js/src/strings/mouseclickEvent';
 export { default as mousedblclickEvent } from 'shorter-js/src/strings/mousedblclickEvent';

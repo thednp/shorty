@@ -586,6 +586,14 @@ declare module "shorter-js/src/strings/focusEvents" {
         out: string;
     };
 }
+declare module "shorter-js/src/strings/loadstartEvent" {
+    export default loadstartEvent;
+    /**
+     * A global namespace for `loadstart` event.
+     * @type {string}
+     */
+    const loadstartEvent: string;
+}
 declare module "shorter-js/src/strings/mouseClickEvents" {
     export default mouseClickEvents;
     /**
@@ -2011,6 +2019,7 @@ declare module "shorter-js/types/module/shorter" {
     export { default as keyupEvent } from "shorter-js/src/strings/keyupEvent";
     export { default as keypressEvent } from "shorter-js/src/strings/keypressEvent";
     export { default as loadEvent } from "shorter-js/src/strings/loadEvent";
+    export { default as loadstartEvent } from "shorter-js/src/strings/loadstartEvent";
     export { default as mouseClickEvents } from "shorter-js/src/strings/mouseClickEvents";
     export { default as mouseclickEvent } from "shorter-js/src/strings/mouseclickEvent";
     export { default as mousedblclickEvent } from "shorter-js/src/strings/mousedblclickEvent";

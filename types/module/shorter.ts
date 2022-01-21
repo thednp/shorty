@@ -29,6 +29,7 @@ export { default as keydownEvent } from '../../src/strings/keydownEvent';
 export { default as keyupEvent } from '../../src/strings/keyupEvent';
 export { default as keypressEvent } from '../../src/strings/keypressEvent';
 export { default as loadEvent } from '../../src/strings/loadEvent';
+export { default as loadstartEvent } from '../../src/strings/loadstartEvent';
 export { default as mouseClickEvents } from '../../src/strings/mouseClickEvents';
 export { default as mouseclickEvent } from '../../src/strings/mouseclickEvent';
 export { default as mousedblclickEvent } from '../../src/strings/mousedblclickEvent';

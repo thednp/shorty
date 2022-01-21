@@ -1,5 +1,5 @@
 /*!
-* shorter-js v0.3.0alpha20 (https://github.com/thednp/shorter-js)
+* shorter-js v0.3.0alpha21 (https://github.com/thednp/shorter-js)
 * Copyright 2019-2022 © dnp_theme
 * Licensed under MIT (https://github.com/thednp/shorter-js/blob/master/LICENSE)
 */
@@ -412,6 +412,12 @@ const nativeEvents = {
   touchstart: touchstartEvent,
   unload: unloadEvent,
 };
+
+/**
+ * A global namespace for `loadstart` event.
+ * @type {string}
+ */
+const loadstartEvent = 'loadstart';
 
 /**
  * A global namespace for mouse events equivalent to touch events.
@@ -2153,7 +2159,7 @@ function getElementsByClassName(selector, parent) {
   return lookUp.getElementsByClassName(selector);
 }
 
-var version = "0.3.0alpha20";
+var version = "0.3.0alpha21";
 
 // @ts-ignore
 
@@ -2186,6 +2192,7 @@ const SHORTER = {
   scrollEvent,
   submitEvent,
   loadEvent,
+  loadstartEvent,
   unloadEvent,
   readystatechangeEvent,
   beforeunloadEvent,

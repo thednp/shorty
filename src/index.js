@@ -20,6 +20,7 @@ import resizeEvent from './strings/resizeEvent';
 import scrollEvent from './strings/scrollEvent';
 import submitEvent from './strings/submitEvent';
 import loadEvent from './strings/loadEvent';
+import loadstartEvent from './strings/loadstartEvent';
 import unloadEvent from './strings/unloadEvent';
 import readystatechangeEvent from './strings/readystatechangeEvent';
 import beforeunloadEvent from './strings/beforeunloadEvent';
@@ -257,6 +258,7 @@ const SHORTER = {
   scrollEvent,
   submitEvent,
   loadEvent,
+  loadstartEvent,
   unloadEvent,
   readystatechangeEvent,
   beforeunloadEvent,
