@@ -1606,6 +1606,16 @@ declare module "shorter-js/src/misc/ObjectKeys" {
      */
     function ObjectKeys(obj: Record<string, any>): string[];
 }
+declare module "shorter-js/src/misc/toLowerCase" {
+    export default toLowerCase;
+    /**
+     * Shortcut for `String.toLowerCase()`.
+     *
+     * @param {string} source input string
+     * @returns {string} lowercase output string
+     */
+    function toLowerCase(source: string): string;
+}
 declare module "shorter-js/src/misc/normalizeOptions" {
     /**
      * Utility to normalize component options.
@@ -1660,16 +1670,6 @@ declare module "shorter-js/src/misc/noop" {
     export default noop;
     /** A generic function with empty body. */
     function noop(): void;
-}
-declare module "shorter-js/src/misc/toLowerCase" {
-    export default toLowerCase;
-    /**
-     * Shortcut for `String.toLowerCase()`.
-     *
-     * @param {string} source input string
-     * @returns {string} lowercase output string
-     */
-    function toLowerCase(source: string): string;
 }
 declare module "shorter-js/src/misc/toUpperCase" {
     export default toUpperCase;
@@ -1798,6 +1798,16 @@ declare module "shorter-js/src/is/isElementsArray" {
      * @returns {boolean} the query result
      */
     function isElementsArray(object: any): boolean;
+}
+declare module "shorter-js/src/is/isFunction" {
+    export default isFunction;
+    /**
+     * Checks if an object is a `Function`.
+     *
+     * @param {any} element the target object
+     * @returns {boolean} the query result
+     */
+    function isFunction(element: any): boolean;
 }
 declare module "shorter-js/src/is/isHTMLCollection" {
     export default isHTMLCollection;
@@ -2156,6 +2166,7 @@ declare module "shorter-js/types/module/shorter" {
     export { default as isElementInScrollRange } from "shorter-js/src/is/isElementInScrollRange";
     export { default as isElementInViewport } from "shorter-js/src/is/isElementInViewport";
     export { default as isElementsArray } from "shorter-js/src/is/isElementsArray";
+    export { default as isFunction } from "shorter-js/src/is/isFunction";
     export { default as isHTMLCollection } from "shorter-js/src/is/isHTMLCollection";
     export { default as isHTMLElement } from "shorter-js/src/is/isHTMLElement";
     export { default as isHTMLImageElement } from "shorter-js/src/is/isHTMLImageElement";

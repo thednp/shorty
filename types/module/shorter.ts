@@ -208,6 +208,7 @@ export { default as isElement } from '../../src/is/isElement';
 export { default as isElementInScrollRange } from '../../src/is/isElementInScrollRange';
 export { default as isElementInViewport } from '../../src/is/isElementInViewport';
 export { default as isElementsArray } from '../../src/is/isElementsArray';
+export { default as isFunction } from '../../src/is/isFunction';
 export { default as isHTMLCollection } from '../../src/is/isHTMLCollection';
 export { default as isHTMLElement } from '../../src/is/isHTMLElement';
 export { default as isHTMLImageElement } from '../../src/is/isHTMLImageElement';

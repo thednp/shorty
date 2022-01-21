@@ -186,6 +186,7 @@ export { default as isCustomElement } from 'shorter-js/src/is/isCustomElement';
 export { default as isElementInScrollRange } from 'shorter-js/src/is/isElementInScrollRange';
 export { default as isElementInViewport } from 'shorter-js/src/is/isElementInViewport';
 export { default as isElementsArray } from 'shorter-js/src/is/isElementsArray';
+export { default as isFunction } from 'shorter-js/src/is/isFunction';
 export { default as isHTMLCollection } from 'shorter-js/src/is/isHTMLCollection';
 export { default as isHTMLElement } from 'shorter-js/src/is/isHTMLElement';
 export { default as isHTMLImageElement } from 'shorter-js/src/is/isHTMLImageElement';
