@@ -15,7 +15,7 @@ export default function querySelector(selector, parent) {
   const lookUp = parent && parentNodes.some((x) => parent instanceof x)
     ? parent : getDocument();
 
-  if (!selectorIsString && [...elementNodes].some((x) => selector instanceof x)) {
+  if (!selectorIsString && elementNodes.some((x) => selector instanceof x)) {
     return selector;
   }
   // @ts-ignore -- `ShadowRoot` is also a node

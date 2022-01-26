@@ -1,6 +1,7 @@
-import getDocument from '../get/getDocument';
+import documentAll from './documentAll';
 import isCustomElement from '../is/isCustomElement';
 import parentNodes from './parentNodes';
+import getElementsByTagName from './getElementsByTagName';
 
 /**
  * Returns an `Array` of `Node` elements that are registered as
@@ -11,8 +12,8 @@ import parentNodes from './parentNodes';
  * @returns {(HTMLElement | Element)[]} the query result
  */
 export default function getCustomElements(parent) {
-  const lookUp = parent && parentNodes.some((x) => parent instanceof x)
-    ? parent : getDocument();
-  // @ts-ignore -- look inside `shadowRoot` node too
-  return [...lookUp.querySelectorAll('*')].filter(isCustomElement);
+  const collection = parent && parentNodes.some((x) => parent instanceof x)
+    // @ts-ignore -- look inside `shadowRoot` node too
+    ? getElementsByTagName('*', parent) : documentAll;
+  return [...collection].filter(isCustomElement);
 }

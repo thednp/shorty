@@ -1,5 +1,5 @@
 /*!
-* shorter-js v0.3.0alpha21 (https://github.com/thednp/shorter-js)
+* shorter-js v0.3.0alpha22 (https://github.com/thednp/shorter-js)
 * Copyright 2019-2022 © dnp_theme
 * Licensed under MIT (https://github.com/thednp/shorter-js/blob/master/LICENSE)
 */
@@ -1048,7 +1048,7 @@ function querySelector(selector, parent) {
   const lookUp = parent && parentNodes.some((x) => parent instanceof x)
     ? parent : getDocument();
 
-  if (!selectorIsString && [...elementNodes].some((x) => selector instanceof x)) {
+  if (!selectorIsString && elementNodes.some((x) => selector instanceof x)) {
     return selector;
   }
   // @ts-ignore -- `ShadowRoot` is also a node
@@ -2103,6 +2103,26 @@ function closest(element, selector) {
 }
 
 /**
+ * Shortcut for `HTMLElement.getElementsByTagName` method. Some `Node` elements
+ * like `ShadowRoot` do not support `getElementsByTagName`.
+ *
+ * @param {string} selector the tag name
+ * @param {(HTMLElement | Element | Document)=} parent optional Element to look into
+ * @return {HTMLCollectionOf<HTMLElement | Element>} the 'HTMLCollection'
+ */
+function getElementsByTagName(selector, parent) {
+  const lookUp = parent && parentNodes
+    .some((x) => parent instanceof x) ? parent : getDocument();
+  return lookUp.getElementsByTagName(selector);
+}
+
+/**
+ * An `HTMLCollection` with all document elements,
+ * which is the equivalent to `document.all`.
+ */
+const documentAll = getElementsByTagName('*');
+
+/**
  * Returns an `Array` of `Node` elements that are registered as
  * `CustomElement`.
  * @see https://stackoverflow.com/questions/27334365/how-to-get-list-of-registered-custom-elements
@@ -2111,10 +2131,10 @@ function closest(element, selector) {
  * @returns {(HTMLElement | Element)[]} the query result
  */
 function getCustomElements(parent) {
-  const lookUp = parent && parentNodes.some((x) => parent instanceof x)
-    ? parent : getDocument();
-  // @ts-ignore -- look inside `shadowRoot` node too
-  return [...lookUp.querySelectorAll('*')].filter(isCustomElement);
+  const collection = parent && parentNodes.some((x) => parent instanceof x)
+    // @ts-ignore -- look inside `shadowRoot` node too
+    ? getElementsByTagName('*', parent) : documentAll;
+  return [...collection].filter(isCustomElement);
 }
 
 /**
@@ -2132,20 +2152,6 @@ function querySelectorAll(selector, parent) {
 }
 
 /**
- * Shortcut for `HTMLElement.getElementsByTagName` method. Some `Node` elements
- * like `ShadowRoot` do not support `getElementsByTagName`.
- *
- * @param {string} selector the tag name
- * @param {(HTMLElement | Element | Document)=} parent optional Element to look into
- * @return {HTMLCollectionOf<HTMLElement | Element>} the 'HTMLCollection'
- */
-function getElementsByTagName(selector, parent) {
-  const lookUp = parent && parentNodes
-    .some((x) => parent instanceof x) ? parent : getDocument();
-  return lookUp.getElementsByTagName(selector);
-}
-
-/**
  * Shortcut for `HTMLElement.getElementsByClassName` method. Some `Node` elements
  * like `ShadowRoot` do not support `getElementsByClassName`.
  *
@@ -2159,7 +2165,42 @@ function getElementsByClassName(selector, parent) {
   return lookUp.getElementsByClassName(selector);
 }
 
-var version = "0.3.0alpha21";
+/**
+ * Check if element matches a CSS selector.
+ *
+ * @param {HTMLElement | Element} target
+ * @param {string} selector
+ * @returns {boolean}
+ */
+function matches$1(target, selector) {
+  return target.matches(selector);
+}
+
+// @ts-nocheck
+const ElementProto = Element.prototype;
+const matchesFn = ElementProto.matches
+  || ElementProto.matchesSelector
+  || ElementProto.webkitMatchesSelector
+  || ElementProto.mozMatchesSelector
+  || ElementProto.msMatchesSelector
+  || ElementProto.oMatchesSelector
+  || function matchesNotSupported() {
+    return false;
+  };
+
+/**
+ * Check if element matches a CSS selector,
+ * supporting a range of legacy browsers.
+ *
+ * @param {HTMLElement | Element} target
+ * @param {string} selector
+ * @returns {boolean}
+ */
+function matches(target, selector) {
+  return matchesFn.call(target, selector);
+}
+
+var version = "0.3.0alpha22";
 
 // @ts-ignore
 
@@ -2345,11 +2386,14 @@ const SHORTER = {
   elementNodes,
   parentNodes,
   closest,
+  documentAll,
   querySelector,
   getCustomElements,
   querySelectorAll,
   getElementsByClassName,
   getElementsByTagName,
+  matches: matches$1,
+  matchesLegacy: matches,
   normalizeValue,
   normalizeOptions,
   tryWrapper,

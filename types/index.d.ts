@@ -204,11 +204,14 @@ export { default as isWindow } from 'shorter-js/src/is/isWindow';
 export { default as parentNodes } from 'shorter-js/src/selectors/parentNodes';
 export { default as elementNodes } from 'shorter-js/src/selectors/elementNodes';
 export { default as closest } from 'shorter-js/src/selectors/closest';
+export { default as documentAll } from 'shorter-js/src/selectors/documentAll';
 export { default as getCustomElements } from 'shorter-js/src/selectors/getCustomElements';
 export { default as querySelector } from 'shorter-js/src/selectors/querySelector';
 export { default as querySelectorAll } from 'shorter-js/src/selectors/querySelectorAll';
 export { default as getElementsByTagName } from 'shorter-js/src/selectors/getElementsByTagName';
 export { default as getElementsByClassName } from 'shorter-js/src/selectors/getElementsByClassName';
+export { default as matches } from 'shorter-js/src/selectors/matches';
+export { default as matchesLegacy } from 'shorter-js/src/selectors/matchesLegacy';
 export { default as Version } from 'shorter-js/src/misc/version';
 
 export type Component = Record<string, any>;

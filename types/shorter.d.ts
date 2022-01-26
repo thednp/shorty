@@ -1938,6 +1938,25 @@ declare module "shorter-js/src/selectors/closest" {
      */
     export default function closest(element: HTMLElement | Element, selector: string): (HTMLElement | Element) | null;
 }
+declare module "shorter-js/src/selectors/getElementsByTagName" {
+    /**
+     * Shortcut for `HTMLElement.getElementsByTagName` method. Some `Node` elements
+     * like `ShadowRoot` do not support `getElementsByTagName`.
+     *
+     * @param {string} selector the tag name
+     * @param {(HTMLElement | Element | Document)=} parent optional Element to look into
+     * @return {HTMLCollectionOf<HTMLElement | Element>} the 'HTMLCollection'
+     */
+    export default function getElementsByTagName(selector: string, parent?: (HTMLElement | Element | Document) | undefined): HTMLCollectionOf<HTMLElement | Element>;
+}
+declare module "shorter-js/src/selectors/documentAll" {
+    export default documentAll;
+    /**
+     * An `HTMLCollection` with all document elements,
+     * which is the equivalent to `document.all`.
+     */
+    const documentAll: HTMLCollectionOf<Element | HTMLElement>;
+}
 declare module "shorter-js/src/selectors/getCustomElements" {
     /**
      * Returns an `Array` of `Node` elements that are registered as
@@ -1959,17 +1978,6 @@ declare module "shorter-js/src/selectors/querySelectorAll" {
      */
     export default function querySelectorAll(selector: string, parent?: (HTMLElement | Element | Document | Node) | undefined): NodeListOf<HTMLElement | Element>;
 }
-declare module "shorter-js/src/selectors/getElementsByTagName" {
-    /**
-     * Shortcut for `HTMLElement.getElementsByTagName` method. Some `Node` elements
-     * like `ShadowRoot` do not support `getElementsByTagName`.
-     *
-     * @param {string} selector the tag name
-     * @param {(HTMLElement | Element | Document)=} parent optional Element to look into
-     * @return {HTMLCollectionOf<HTMLElement | Element>} the 'HTMLCollection'
-     */
-    export default function getElementsByTagName(selector: string, parent?: (HTMLElement | Element | Document) | undefined): HTMLCollectionOf<HTMLElement | Element>;
-}
 declare module "shorter-js/src/selectors/getElementsByClassName" {
     /**
      * Shortcut for `HTMLElement.getElementsByClassName` method. Some `Node` elements
@@ -1980,6 +1988,27 @@ declare module "shorter-js/src/selectors/getElementsByClassName" {
      * @return {HTMLCollectionOf<HTMLElement | Element>} the 'HTMLCollection'
      */
     export default function getElementsByClassName(selector: string, parent?: (HTMLElement | Element | Document) | undefined): HTMLCollectionOf<HTMLElement | Element>;
+}
+declare module "shorter-js/src/selectors/matches" {
+    /**
+     * Check if element matches a CSS selector.
+     *
+     * @param {HTMLElement | Element} target
+     * @param {string} selector
+     * @returns {boolean}
+     */
+    export default function matches(target: HTMLElement | Element, selector: string): boolean;
+}
+declare module "shorter-js/src/selectors/matchesLegacy" {
+    /**
+     * Check if element matches a CSS selector,
+     * supporting a range of legacy browsers.
+     *
+     * @param {HTMLElement | Element} target
+     * @param {string} selector
+     * @returns {boolean}
+     */
+    export default function matches(target: HTMLElement | Element, selector: string): boolean;
 }
 declare module "shorter-js/src/misc/version" {
     export default Version;
@@ -2192,10 +2221,13 @@ declare module "shorter-js/types/module/shorter" {
     export { default as elementNodes } from "shorter-js/src/selectors/elementNodes";
     export { default as parentNodes } from "shorter-js/src/selectors/parentNodes";
     export { default as closest } from "shorter-js/src/selectors/closest";
+    export { default as documentAll } from "shorter-js/src/selectors/documentAll";
     export { default as getCustomElements } from "shorter-js/src/selectors/getCustomElements";
     export { default as querySelector } from "shorter-js/src/selectors/querySelector";
     export { default as querySelectorAll } from "shorter-js/src/selectors/querySelectorAll";
     export { default as getElementsByTagName } from "shorter-js/src/selectors/getElementsByTagName";
     export { default as getElementsByClassName } from "shorter-js/src/selectors/getElementsByClassName";
+    export { default as matches } from "shorter-js/src/selectors/matches";
+    export { default as matchesLegacy } from "shorter-js/src/selectors/matchesLegacy";
     export { default as Version } from "shorter-js/src/misc/version";
 }

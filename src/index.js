@@ -226,14 +226,17 @@ import isTableElement from './is/isTableElement';
 import isWindow from './is/isWindow';
 
 // selectors
+import closest from './selectors/closest';
+import documentAll from './selectors/documentAll';
 import elementNodes from './selectors/elementNodes';
 import parentNodes from './selectors/parentNodes';
-import closest from './selectors/closest';
 import querySelector from './selectors/querySelector';
 import getCustomElements from './selectors/getCustomElements';
 import querySelectorAll from './selectors/querySelectorAll';
 import getElementsByTagName from './selectors/getElementsByTagName';
 import getElementsByClassName from './selectors/getElementsByClassName';
+import matches from './selectors/matches';
+import matchesLegacy from './selectors/matchesLegacy';
 
 import Version from './misc/version';
 
@@ -411,11 +414,14 @@ const SHORTER = {
   elementNodes,
   parentNodes,
   closest,
+  documentAll,
   querySelector,
   getCustomElements,
   querySelectorAll,
   getElementsByClassName,
   getElementsByTagName,
+  matches,
+  matchesLegacy,
   normalizeValue,
   normalizeOptions,
   tryWrapper,
