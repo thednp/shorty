@@ -13,15 +13,21 @@ export default function getUID(element, key) {
   let elMap = elementIDMap.get(element);
   let result = elementUID;
 
-  if (elMap) {
-    result = key && key.length && elMap.get && elMap.get(key)
-      ? elMap.get(key) : elMap;
-  } else if (key && key.length) {
-    if (!elMap) {
+  if (key && key.length) {
+    if (elMap) {
+      const elMapId = elMap.get(key);
+      if (!Number.isNaN(elMapId)) {
+        result = elMapId;
+      } else {
+        elMap.set(key, result);
+      }
+    } else {
       elementIDMap.set(element, new Map());
       elMap = elementIDMap.get(element);
+      elMap.set(key, result);
     }
-    elMap.set(key, result);
+  } else if (!Number.isNaN(elMap)) {
+    result = elMap;
   } else {
     elementIDMap.set(element, result);
   }
