@@ -158,4 +158,4 @@ on(document.getElementById('my-elem'),'eventName',function(e){
 ```
 
 # License
-[MIT License](https://github.com/thednp/shorter-js/blob/master/LICENSE)
+*shorter-js* is released under the [MIT License](https://github.com/thednp/shorter-js/blob/master/LICENSE)
