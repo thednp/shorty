@@ -1,5 +1,5 @@
 /*!
-* shorter-js v0.3.0alpha23 (https://github.com/thednp/shorter-js)
+* shorter-js v0.3.0alpha24 (https://github.com/thednp/shorter-js)
 * Copyright 2019-2022 © dnp_theme
 * Licensed under MIT (https://github.com/thednp/shorter-js/blob/master/LICENSE)
 */
@@ -1034,7 +1034,7 @@
   /**
    * A global array of possible `ParentNode`.
    */
-  var parentNodes = [Document, Node, Element, HTMLElement];
+  var parentNodes = [Document, Element, HTMLElement];
 
   /**
    * A global array with `Element` | `HTMLElement`.
@@ -1046,19 +1046,17 @@
    * or find one that matches a selector.
    *
    * @param {HTMLElement | Element | string} selector the input selector or target element
-   * @param {(HTMLElement | Element | Node | Document)=} parent optional node to look into
+   * @param {(HTMLElement | Element | Document)=} parent optional node to look into
    * @return {(HTMLElement | Element)?} the `HTMLElement` or `querySelector` result
    */
   function querySelector(selector, parent) {
-    var selectorIsString = typeof selector === 'string';
-    var lookUp = parent && parentNodes.some(function (x) { return parent instanceof x; })
+    var lookUp = parentNodes.some(function (x) { return parent instanceof x; })
       ? parent : getDocument();
 
-    if (!selectorIsString && elementNodes.some(function (x) { return selector instanceof x; })) {
-      return selector;
-    }
-    // @ts-ignore -- `ShadowRoot` is also a node
-    return selectorIsString ? lookUp.querySelector(selector) : null;
+    // @ts-ignore
+    return elementNodes.some(function (x) { return selector instanceof x; })
+      // @ts-ignore
+      ? selector : lookUp.querySelector(selector);
   }
 
   /** @type {Map<string, Map<HTMLElement | Element, Record<string, any>>>} */
@@ -1224,16 +1222,16 @@
     if (duration) {
       /**
        * Wrap the handler in on -> off callback
-       * @param {AnimationEvent} e Event object
+       * @type {EventListenerObject['handleEvent']}
        */
       var animationEndWrapper = function (e) {
         if (e.target === element) {
           handler.apply(element, [e]);
-          off(element, animationEndEvent$1, animationEndWrapper);
+          element.removeEventListener(animationEndEvent$1, animationEndWrapper);
           called = 1;
         }
       };
-      on(element, animationEndEvent$1, animationEndWrapper);
+      element.addEventListener(animationEndEvent$1, animationEndWrapper);
       setTimeout(function () {
         if (!called) { element.dispatchEvent(endEvent); }
       }, duration + delay + 17);
@@ -1361,16 +1359,16 @@
     if (duration) {
       /**
        * Wrap the handler in on -> off callback
-       * @param {TransitionEvent} e Event object
+       * @type {EventListenerObject['handleEvent']} e Event object
        */
       var transitionEndWrapper = function (e) {
         if (e.target === element) {
           handler.apply(element, [e]);
-          off(element, transitionEndEvent$1, transitionEndWrapper);
+          element.removeEventListener(transitionEndEvent$1, transitionEndWrapper);
           called = 1;
         }
       };
-      on(element, transitionEndEvent$1, transitionEndWrapper);
+      element.addEventListener(transitionEndEvent$1, transitionEndWrapper);
       setTimeout(function () {
         if (!called) { element.dispatchEvent(endEvent); }
       }, duration + delay + 17);
@@ -2227,7 +2225,7 @@
     return matchesFn.call(target, selector);
   }
 
-  var version = "0.3.0alpha23";
+  var version = "0.3.0alpha24";
 
   // @ts-ignore
 

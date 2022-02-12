@@ -7,17 +7,15 @@ import elementNodes from './elementNodes';
  * or find one that matches a selector.
  *
  * @param {HTMLElement | Element | string} selector the input selector or target element
- * @param {(HTMLElement | Element | Node | Document)=} parent optional node to look into
+ * @param {(HTMLElement | Element | Document)=} parent optional node to look into
  * @return {(HTMLElement | Element)?} the `HTMLElement` or `querySelector` result
  */
 export default function querySelector(selector, parent) {
-  const selectorIsString = typeof selector === 'string';
-  const lookUp = parent && parentNodes.some((x) => parent instanceof x)
+  const lookUp = parentNodes.some((x) => parent instanceof x)
     ? parent : getDocument();
 
-  if (!selectorIsString && elementNodes.some((x) => selector instanceof x)) {
-    return selector;
-  }
-  // @ts-ignore -- `ShadowRoot` is also a node
-  return selectorIsString ? lookUp.querySelector(selector) : null;
+  // @ts-ignore
+  return elementNodes.some((x) => selector instanceof x)
+    // @ts-ignore
+    ? selector : lookUp.querySelector(selector);
 }
