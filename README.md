@@ -1,5 +1,5 @@
 # shorter-js
-A small ES6+ library with various JavaScript tools, all ESLint valid and with TypeScript definitions, all useful for creating light libraries.
+A small ES6+ library with various JavaScript tools, all ESLint valid and with TypeScript definitions, all useful for creating light libraries or web components.
 
 Featured in [KUTE.js](https://github.com/thednp/kute.js), [BSN](https://github.com/thednp/bootstrap.native), [Navbar.js](https://github.com/thednp/navbar.js) and other libraries.
 
@@ -33,9 +33,9 @@ if (supportTransform) {
 * ***setAttributeNS*** - set a new namespaced attribute value for a given element
 
 # blocks
-* ***documentBody*** - a shortcut for `document.body`
-* ***documentElement*** - a shortcut for `document.documentElement`
-* ***documentHead*** - a shortcut for `document.head`
+* ***documentBody*** - a shortie for `document.body`
+* ***documentElement*** - a shortie for `document.documentElement`
+* ***documentHead*** - a shortie for `document.head`
 
 # boolean
 * ***isApple*** - checks and preserves the client browser is a Apple Safari browser
