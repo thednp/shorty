@@ -1,10 +1,11 @@
 # shorter-js
-A small ES6+ library with various JavaScript tools, all ESLint valid and with TypeScript definitions, all useful for creating light libraries or web components.
+A small ES6+ library with various JavaScript tools, all ESLint valid and with TypeScript definitions, everything useful for creating light libraries or web components.
 
 Featured in [KUTE.js](https://github.com/thednp/kute.js), [BSN](https://github.com/thednp/bootstrap.native), [Navbar.js](https://github.com/thednp/navbar.js) and other libraries.
 
 * The purpose of the library is to speed up the development workflow, minimize the size of larger libraries by providing a shorter syntax for most used JavaScript API methods, most used strings or other helpful utilities.
 * While the library comes with a working build in the `dist` folder, that is mainly for build consistency testing. You can make use of "tree shaking" to import one or anything your code needs.
+* On that note, all shorties are organized in folders inside the `src` root folder, the structure is key to understanding the purpose of each type of shortie, whether we have `boolean` for various basic browser detection or browser feature support, `attr` for all things *Element* attributes or `strings` for most common and most used *Element.prototype* methods.
 
 # npm
 ```
@@ -14,43 +15,57 @@ npm install shorter-js
 # ES6+ Base usage
 ```js
 // import the tool you need
-import {supportTransform} from 'shorter-js'
+import { supportTransform } from 'shorter-js';
 
 // use the tool in your ES6/ES7 sources
 if (supportTransform) {
-  doSomeAction()
+  // have modern browsers do something about that
 }
 ```
 
 # attr
-* ***getAttribute*** - returns the value of a specified *Element* attribute
-* ***getAttributeNS*** - returns the value of a specified namespaced *Element* attribute (eg: namespaced SVG attributes)
-* ***hasAttribute*** - check if element has a specified attribute
-* ***hasAttributeNS*** - check if element has a specified namespaced attribute
-* ***removeAttribute*** - removes a specified attribute from an element
-* ***removeAttributeNS*** - removes a specified namespaced attribute from an element
-* ***setAttribute*** - set a new attribute value for a given element
-* ***setAttributeNS*** - set a new namespaced attribute value for a given element
-
-# blocks
-* ***documentBody*** - a shortie for `document.body`
-* ***documentElement*** - a shortie for `document.documentElement`
-* ***documentHead*** - a shortie for `document.head`
-
-# boolean
-* ***isApple*** - checks and preserves the client browser is a Apple Safari browser
-* ***isFirefox*** - checks and preserves the client browser is Firefox
-* ***isMobile*** - checks and preserves the client browser is a on Mobile device
-* ***support3DTransform*** - checks and preserves the client browser capability for webKit `perspective` 
-* ***supportTouch*** - checks and preserves the client browser capability for `touch` events
-* ***supportPassive*** - checks and preserves the client browser capability for `passive` event option
-* ***supportTransform*** - checks and preserves the client browser capability for webKit `transform` 
-* ***supportAnimation*** - checks and preserves the client browser capability for webKit keyframe `animation` 
-* ***supportTransition*** - checks and preserves the client browser capability for webKit `transition` 
+* ***getAttribute*** - returns the value of a specified *Element* attribute;
+* ***getAttributeNS*** - returns the value of a specified namespaced *Element* attribute (eg: namespaced SVG attributes);
+* ***hasAttribute*** - check if element has a specified attribute;
+* ***hasAttributeNS*** - check if element has a specified namespaced attribute;
+* ***removeAttribute*** - removes a specified attribute from an element;
+* ***removeAttributeNS*** - removes a specified namespaced attribute from an element;
+* ***setAttribute*** - set a new attribute value for a given element;
+* ***setAttributeNS*** - set a new namespaced attribute value for a given element;
 
 ```js 
 // EXAMPLES
-import { support3DTransform } from 'shorter-js'
+import { getAttribute, hasAttribute, setAttribute } from 'shorter-js';
+
+// check target has certain attribute
+if (!hasAttribute(myTarget, 'attribute-name')) {
+  setAttribute(myTarget, 'attribute-name', 'new-value');
+}
+
+// get attribute value
+const currentAttrValue = getAttribute(myTarget, 'attribute-name');
+```
+
+
+# blocks
+* ***documentBody*** - a shortie for `document.body`;
+* ***documentElement*** - a shortie for `document.documentElement`;
+* ***documentHead*** - a shortie for `document.head`;
+
+# boolean
+* ***isApple*** - checks and preserves a `boolean` value for the client browser is either Apple **Safari** browser or not;
+* ***isFirefox*** - checks and preserves a `boolean` value for the client browser is either **Firefox** or not;
+* ***isMobile*** - checks and preserves a `boolean` value for the client browser is either a Mobile device or not;
+* ***support3DTransform*** - checks and preserves a `boolean` value for the client browser capability for webKit `perspective`;
+* ***supportTouch*** - checks and preserves a `boolean` value for the client browser capability for `touch` events;
+* ***supportPassive*** - checks and preserves a `boolean` value for the client browser capability for `passive` event option;
+* ***supportTransform*** - checks and preserves a `boolean` value for the client browser capability for webKit `transform`;
+* ***supportAnimation*** - checks and preserves a `boolean` value for the client browser capability for webKit keyframe `animation`;
+* ***supportTransition*** - checks and preserves a `boolean` value for the client browser capability for webKit `transition`;
+
+```js 
+// EXAMPLES
+import { support3DTransform } from 'shorter-js';
 
 // filter myAction to supported browsers
 if (support3DTransform) {
@@ -68,12 +83,14 @@ if (support3DTransform) {
 import {addClass,removeClass,hasClass} from 'shorter-js'
 
 // add a class
-addClass(targetElement,'className')
+addClass(targetElement, 'className');
+
 // remove a class
-removeClass(targetElement,'className')
+removeClass(targetElement, 'className');
+
 // check for a class
-if (hasClass(targetElement,'className')) {
-  myAction()
+if (hasClass(targetElement, 'className')) {
+  // do something about that
 }
 ```
 
@@ -81,17 +98,23 @@ if (hasClass(targetElement,'className')) {
 * ***on*** - attach an event listener to a specific target *Element*;
 * ***off*** - detach an event listener from a specific target *Element*;
 * ***one*** - attach an event listener to a specific target *Element*, and detach when complete;
+
 ```js 
 // EXAMPLES
-import {on,off,one,passiveHandler} from 'shorter-js'
+import { on, off, one, passiveHandler } from 'shorter-js';
 
 // attach a passive mousedown eventHandler
-on(targetElement,'click',eventHandler,passiveHandler)
+on(targetElement,'click',eventHandler,passiveHandler);
+
 // detach a passive mouseup eventHandler
-off(targetElement,'mouseup',eventHandler,passiveHandler)
+off(targetElement,'mouseup',eventHandler,passiveHandler);
+
 // attach a single instance passive touchstart eventHandler
-one(targetElement,'touchstart',eventHandler,passiveHandler)
+one(targetElement,'touchstart',eventHandler,passiveHandler);
 ```
+
+For a more advanced method to handle event listeners, I recommend using the [event-listener.js](github.com/thednp/event-listener.js).
+
 
 # get
 * ***getBoundingClientRect*** - returns the bounding client rectangle of a given *Element*;
@@ -112,6 +135,20 @@ one(targetElement,'touchstart',eventHandler,passiveHandler)
 * ***getNodeScroll*** - returns the *Element* / *Window* current `{ x, y }` scroll position;
 * ***getParentNode*** - returns parent of a given *Element*;
 * ***getRectRelativeToOffsetParent*** - returns the bounding client rectangle of a given *Element* relative to a given `offsetParent`;
+
+```js 
+// EXAMPLES
+import {
+  getElementAnimationDuration,
+  getElementAnimationDurationLegacy,
+} from 'shorter-js'
+
+// store the transition duration for target element on a modern browser
+const duration = getElementAnimationDuration(target);
+
+// or do the same with legacy browser fallback
+const duration = getElementAnimationDurationLegacy(target);
+```
 
 # is
 * ***isArray*** - check if a given value is an `Array`;
@@ -136,10 +173,24 @@ one(targetElement,'touchstart',eventHandler,passiveHandler)
 * ***isTableElement*** - check if a given value is `<table>`, `<td>` or `<th>` *Element*;
 * ***isWindow*** - check if a given value is a `Window` instance;
 
+```js 
+// EXAMPLES
+import { isArray,  isHTMLElement, isElementsArray } from 'shorter-js';
+
+// check if a value is an `Array` of `Element` instances
+if (isArray(myValue) && myValue.every(isHTMLElement)) {
+  // do something with these instances
+}
+
+// or use the dedicated shortie of the above
+if (isElementsArray(myValue)) {
+  // do something with these instances
+}
+```
 
 # misc
 * ***ArrayFrom*** - a shortie for `Array.from()` method;
-* ***Data*** - a small utility to store web components data;
+* ***Data*** - a small utility to store web components data that makes use of the native `Map`;
 * ***dispatchEvent*** - a shortie for `Element.dispatchEvent()` method;
 * ***distinct*** - a shortie you can use to filter duplicate values in an `Array`;
 * ***emulateAnimationEnd*** - utility to execute a callback function when `animationend` event is triggered, or execute the callback right after for legacy browsers;
@@ -168,30 +219,20 @@ one(targetElement,'touchstart',eventHandler,passiveHandler)
 ```js 
 // EXAMPLES
 import {
-  querySelector,
   emulateTransitionEnd,
-  normalizeOptions,
+  distinct,
 } from 'shorter-js';
 
-// get some target
-let targetElement = querySelector('.mySelectorClass');
-
-// emulateTransitionEnd for the above
+// execute a callback when transitionend is triggered for the target
 emulateTransitionEnd(targetElement, callback);
 
-// check if element is in scroll range
-// emulateTransitionEnd for the above
-if (isElementInScrollRange(targetElement)) {
-  // do something meaningful but not JANKing around
-}
+// define some arrays of numbers
+const array1 = [0, 1, 3, 5, 7, 9];
+const array2 = [0, 2, 4, 6, 8, 10];
 
-// set component options
-const options = normalizeOptions(element, defaultOptions, inputOptions, nameSpace);
-// element - the component target, the owned of the DATA API attributes
-// defaultOptions - the component default options
-// inputOptions - the component JavaScript options
-// namaSpace - the DATA API namespace 
-// ..required to get the value of `data-NAMESPACE-option="value"`
+// merge them and filter them to make sure we have distinct values
+const array3 = [...array1, ...array2].filter(distinct);
+// [0, 1, 3, 5, 7, 9, 2, 4, 6, 8, 10]
 ```
 
 # selectors
@@ -205,51 +246,75 @@ const options = normalizeOptions(element, defaultOptions, inputOptions, nameSpac
 * ***querySelector*** - a simple utility to check if a given value is an *Element* or a selector string, and if a selector string find the FIRST *Element* and return it;
 * ***querySelectorAll*** - a simple utility to check if a certain item is an *Element* or a selector string, and if a selector string find the FIRST *Element* and return it;
 
-# strings
-* ***bezierEasing*** - an *Object* comprised or a set of valid CSS `transition-timing-function` based on Cubic Bezier; EG: `cubic-bezier(0.215,0.61,0.355,1)` for `bezierEasing.easingCubicOut`
-* ***mouseSwipeEvents*** - preserves the pointer events from mouse actions: start: `mousedown`, end: `mouseup`, move: `mousemove`, cancel: `mouseout`
-* ***mouseClickEvents*** - preserves the pointer events from mouse actions: down: `mousedown`, up: `mouseup`
-* ***mouseHoverEvents*** - preserve browser specific mouse hover events: `mouseenter` and `mouseleave` OR `mouseover` and `mouseout`
-* ***touchEvents*** - preserves the pointer events from touch actions: start: `touchstart`, end: `touchend`, move: `touchmove`, cancel: `touchcancel`
-* ***animationDuration*** - preserves the `animationDuration` property name supported by the client browser 
-* ***animationDelay*** - preserves the `animationDelay` property name supported by the client browser 
-* ***animationEndEvent*** - preserves the `animationEndEvent` event name supported by the client browser 
-* ***animationName*** - preserves the `animationName` property name supported by the client browser 
-* ***transitionDuration*** - preserves the `transitionDuration` property name supported by the client browser 
-* ***transitionDelay*** - preserves the `transitionDelay` property name supported by the client browser 
-* ***transitionEndEvent*** - preserves the `transitionend` event name supported by the client browser 
-* ***transitionProperty*** - preserves the `transitionProperty` property name supported by the client browser 
-* ***addEventListener*** - preserves the `addEventListener` method name
-* ***removeEventListener*** - preserves the `removeEventListener` method name
+```js 
+// EXAMPLES
+import { querySelector, querySelectorAll, documentAll, matches } from 'shorter-js';
 
-There are lots more string constants available which include native event names, browser strings or ARIA specific attribute names. Be sure to check the `src/strings` folder for a complete list.
+// get first element that matches a certain selector
+const element = querySelector('.my-class-name');
+
+// get all elements that matches same selector
+const elements = querySelectorAll('.my-class-name');
+
+// now do the same as the above, but differently
+const elements = [...documentAll].filter((x) => matches(x, '.my-class-name'));
+```
+
+# strings
+* ***bezierEasings*** - an *Object* comprised or a set of valid CSS `transition-timing-function` based on Cubic Bezier; EG: `cubic-bezier(0.215,0.61,0.355,1)` for `bezierEasings.easingCubicOut`;
+* ***mouseSwipeEvents*** - preserves the pointer events from mouse actions: start: `mousedown`, end: `mouseup`, move: `mousemove`, cancel: `mouseout`;
+* ***mouseClickEvents*** - preserves the pointer events from mouse actions: down: `mousedown`, up: `mouseup`;
+* ***mouseHoverEvents*** - preserve browser specific mouse hover events: `mouseenter` and `mouseleave` OR `mouseover` and `mouseout`;
+* ***touchEvents*** - preserves the pointer events from touch actions: start: `touchstart`, end: `touchend`, move: `touchmove`, cancel: `touchcancel`;
+* ***animationDuration*** - preserves the `animationDuration` property for modern browsers;
+* ***animationDurationLegacy*** - for legacy browsers fallback;
+* ***animationDelay*** - preserves the `animationDelay` property for modern browsers;
+* ***animationDelayLegacy*** - for legacy browsers fallback;
+* ***animationEndEvent*** - preserves the `animationEndEvent` event for modern browsers;
+* ***animationEndEventLegacy*** - for legacy browsers fallback;
+* ***animationName*** - preserves the `animationName` property name for modern browsers;
+* ***animationNameLegacy*** - for legacy browsers fallback;
+* ***transitionDuration*** - preserves the `transitionDuration` property name for modern browsers;
+* ***transitionDurationLegacy*** - for legacy browsers fallback;
+* ***transitionDelay*** - preserves the `transitionDelay` property name for modern browsers;
+* ***transitionDelayLegacy*** - for legacy browsers fallback;
+* ***transitionEndEvent*** - preserves the `transitionend` event name for modern browsers;
+* ***transitionEndEventLegacy*** - for legacy browsers fallback;
+* ***transitionProperty*** - preserves the `transitionProperty` property name for modern browsers;
+* ***transitionPropertyLegacy*** - for legacy browsers fallback;
+* ***addEventListener*** - preserves the `addEventListener` method name;
+* ***removeEventListener*** - preserves the `removeEventListener` method name;
+
+There are lots more string constants available which include native event names, browser strings, keyboard key codes or ARIA specific attribute names. Be sure to check the `src/strings` folder for a complete list.
 
 ```js 
 // EXAMPLES
-import {on,off,one,mouseClickEvents,touchEvents,passiveHandler} from 'shorter-js'
+import {on, off, one, mouseClickEvents, touchEvents, passiveHandler} from 'shorter-js';
 
 // attach a passive mousedown eventHandler
-on(targetElement,mouseClickEvents.down,eventHandler,passiveHandler)
-// detach a passive mousedown eventHandler
-off(targetElement,mouseClickEvents.down,eventHandler,passiveHandler)
-// attach a single instance passive touchstart eventHandler
-one(targetElement,touchEvents.start,eventHandler,passiveHandler)
-```
+on(targetElement, mouseClickEvents.down, eventHandler, passiveHandler);
 
-For a more advanced method to handle event listeners, I recommend using the [event-listener.js](github.com/thednp/event-listener.js).
+// detach a passive mousedown eventHandler
+off(targetElement, mouseClickEvents.down, eventHandler, passiveHandler);
+
+// attach a single instance passive touchstart eventHandler
+one(targetElement, touchEvents.start, eventHandler, passiveHandler);
+```
 
 # Advanced Use
 To avoid adding un-necessary shorties into your code, you might want to import them directly from their location. Tree shake it!
 
 ```js
 // Example
-import on from 'shorter-js/src/event/on.js'
-import addClass from 'shorter-js/src/class/addClass.js'
+import on from 'shorter-js/src/event/on.js';
+import addClass from 'shorter-js/src/class/addClass.js';
 
 on(document.getElementById('my-elem'),'eventName',function(e){
   addClass(document.getElementById('my-elem'),'my-className')
 })
 ```
 
+For more advanced and real life examples, be sure to check out [KUTE.js](https://github.com/thednp/kute.js), [BSN](https://github.com/thednp/bootstrap.native), [Navbar.js](https://github.com/thednp/navbar.js) and other libraries coming soon.
+
 # License
-*shorter-js* is released under the [MIT License](https://github.com/thednp/shorter-js/blob/master/LICENSE)
+***shorter-js*** is released under the [MIT License](https://github.com/thednp/shorter-js/blob/master/LICENSE)
