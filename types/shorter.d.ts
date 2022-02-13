@@ -1425,27 +1425,6 @@ declare module "shorter-js/src/selectors/parentNodes" {
     } | {
         new (): Element;
         prototype: Element;
-    } | {
-        new (): Node;
-        prototype: Node;
-        readonly ATTRIBUTE_NODE: number;
-        readonly CDATA_SECTION_NODE: number;
-        readonly COMMENT_NODE: number;
-        readonly DOCUMENT_FRAGMENT_NODE: number;
-        readonly DOCUMENT_NODE: number;
-        readonly DOCUMENT_POSITION_CONTAINED_BY: number;
-        readonly DOCUMENT_POSITION_CONTAINS: number;
-        readonly DOCUMENT_POSITION_DISCONNECTED: number;
-        readonly DOCUMENT_POSITION_FOLLOWING: number;
-        readonly DOCUMENT_POSITION_IMPLEMENTATION_SPECIFIC: number;
-        readonly DOCUMENT_POSITION_PRECEDING: number;
-        readonly DOCUMENT_TYPE_NODE: number;
-        readonly ELEMENT_NODE: number;
-        readonly ENTITY_NODE: number;
-        readonly ENTITY_REFERENCE_NODE: number;
-        readonly NOTATION_NODE: number;
-        readonly PROCESSING_INSTRUCTION_NODE: number;
-        readonly TEXT_NODE: number;
     })[];
 }
 declare module "shorter-js/src/selectors/elementNodes" {
@@ -1464,10 +1443,10 @@ declare module "shorter-js/src/selectors/querySelector" {
      * or find one that matches a selector.
      *
      * @param {HTMLElement | Element | string} selector the input selector or target element
-     * @param {(HTMLElement | Element | Node | Document)=} parent optional node to look into
+     * @param {(HTMLElement | Element | Document)=} parent optional node to look into
      * @return {(HTMLElement | Element)?} the `HTMLElement` or `querySelector` result
      */
-    export default function querySelector(selector: HTMLElement | Element | string, parent?: (HTMLElement | Element | Node | Document) | undefined): (HTMLElement | Element) | null;
+    export default function querySelector(selector: HTMLElement | Element | string, parent?: (HTMLElement | Element | Document) | undefined): (HTMLElement | Element) | null;
 }
 declare module "shorter-js/src/misc/data" {
     /**
@@ -1968,6 +1947,15 @@ declare module "shorter-js/src/selectors/getCustomElements" {
      */
     export default function getCustomElements(parent?: (HTMLElement | Element | Node | Document) | undefined): (HTMLElement | Element)[];
 }
+declare module "shorter-js/src/selectors/getElementById" {
+    /**
+     * Returns an `Element` that matches the id in the document.
+     *
+     * @param {string} id
+     * @returns {(HTMLElement | Element)?}
+     */
+    export default function getElementById(id: string): (HTMLElement | Element) | null;
+}
 declare module "shorter-js/src/selectors/querySelectorAll" {
     /**
      * A shortcut for `(document|Element).querySelectorAll`.
@@ -2223,6 +2211,7 @@ declare module "shorter-js/types/module/shorter" {
     export { default as closest } from "shorter-js/src/selectors/closest";
     export { default as documentAll } from "shorter-js/src/selectors/documentAll";
     export { default as getCustomElements } from "shorter-js/src/selectors/getCustomElements";
+    export { default as getElementById } from "shorter-js/src/selectors/getElementById";
     export { default as querySelector } from "shorter-js/src/selectors/querySelector";
     export { default as querySelectorAll } from "shorter-js/src/selectors/querySelectorAll";
     export { default as getElementsByTagName } from "shorter-js/src/selectors/getElementsByTagName";

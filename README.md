@@ -216,6 +216,8 @@ if (isElementsArray(myValue)) {
 * ***toUpperCase*** - a shortie for `String.toUpperCase()` method;
 * ***tryWrapper*** - a simple `try()` and `catch()` wrapper for functions, with option to preffix the error logs, pointing out the context of the errors;
 
+The ***Data*** and ***Timer*** utilities have their own specifics, you might want to check the [wiki](https://github.com/thednp/shorter-js/wiki).
+
 ```js 
 // EXAMPLES
 import {
@@ -239,6 +241,7 @@ const array3 = [...array1, ...array2].filter(distinct);
 * ***closest*** - a shortie for `Element.closest()` method;
 * ***documentAll*** - a quick bit equivalent of the deprecated `document.all` collection;
 * ***getCustomElements*** - returns an `Array` with all registered `CustomElement`;
+* ***getElementById*** - a shortie for `document.getElementById()` method;
 * ***getElementsByClassName*** - a shortie for `Element.getElementsByClassName()` method;
 * ***getElementsByTagName*** - a shortie for `Element.getElementsByTagName()` method;
 * ***matches*** - a shortie for `Element.matches()` method;
@@ -302,19 +305,34 @@ one(targetElement, touchEvents.start, eventHandler, passiveHandler);
 ```
 
 # Advanced Use
-To avoid adding un-necessary shorties into your code, you might want to import them directly from their location. Tree shake it!
+Here's a simple example to showcase the benefit of using ***shorter-js***.
 
 ```js
-// Example
-import on from 'shorter-js/src/event/on.js';
-import addClass from 'shorter-js/src/class/addClass.js';
+// This is your typical day to day scripting
+const target = document.getElementById('my-element');
 
-on(document.getElementById('my-elem'),'eventName',function(e){
-  addClass(document.getElementById('my-elem'),'my-className')
+target.addEventListener('click', function(e) {
+  target.classList.add('my-className');
 })
 ```
 
-For more advanced and real life examples, be sure to check out [KUTE.js](https://github.com/thednp/kute.js), [BSN](https://github.com/thednp/bootstrap.native), [Navbar.js](https://github.com/thednp/navbar.js) and other libraries coming soon.
+Now make it all shorter.
+```js
+// Example
+import on from 'shorter-js/src/event/on';
+import addClass from 'shorter-js/src/class/addClass';
+import getElementById from 'shorter-js/src/selectors/getElementById';
+import mouseclickEvent from 'shorter-js/src/strings/mouseclickEvent';
+
+const target = getElementById('my-element');
+
+on(target, mouseclickEvent, function(e) {
+  addClass(target, 'my-className')
+})
+```
+Now this all shortened code may not be very useful to understand the purpose of using ***shorter-js***, check out real examples with [KUTE.js](https://github.com/thednp/kute.js), [BSN](https://github.com/thednp/bootstrap.native), [Navbar.js](https://github.com/thednp/navbar.js) and other libraries coming soon.
+
+To avoid adding un-necessary shorties into your code, you might want to import them directly from their location. Tree shake it!
 
 # License
 ***shorter-js*** is released under the [MIT License](https://github.com/thednp/shorter-js/blob/master/LICENSE)

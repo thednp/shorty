@@ -206,6 +206,7 @@ export { default as elementNodes } from 'shorter-js/src/selectors/elementNodes';
 export { default as closest } from 'shorter-js/src/selectors/closest';
 export { default as documentAll } from 'shorter-js/src/selectors/documentAll';
 export { default as getCustomElements } from 'shorter-js/src/selectors/getCustomElements';
+export { default as getElementById } from 'shorter-js/src/selectors/getElementById';
 export { default as querySelector } from 'shorter-js/src/selectors/querySelector';
 export { default as querySelectorAll } from 'shorter-js/src/selectors/querySelectorAll';
 export { default as getElementsByTagName } from 'shorter-js/src/selectors/getElementsByTagName';

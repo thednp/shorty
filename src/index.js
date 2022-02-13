@@ -232,6 +232,7 @@ import elementNodes from './selectors/elementNodes';
 import parentNodes from './selectors/parentNodes';
 import querySelector from './selectors/querySelector';
 import getCustomElements from './selectors/getCustomElements';
+import getElementById from './selectors/getElementById';
 import querySelectorAll from './selectors/querySelectorAll';
 import getElementsByTagName from './selectors/getElementsByTagName';
 import getElementsByClassName from './selectors/getElementsByClassName';
@@ -417,6 +418,7 @@ const SHORTER = {
   documentAll,
   querySelector,
   getCustomElements,
+  getElementById,
   querySelectorAll,
   getElementsByClassName,
   getElementsByTagName,

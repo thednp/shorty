@@ -230,6 +230,7 @@ export { default as parentNodes } from '../../src/selectors/parentNodes';
 export { default as closest } from '../../src/selectors/closest';
 export { default as documentAll } from '../../src/selectors/documentAll';
 export { default as getCustomElements } from '../../src/selectors/getCustomElements';
+export { default as getElementById } from '../../src/selectors/getElementById';
 export { default as querySelector } from '../../src/selectors/querySelector';
 export { default as querySelectorAll } from '../../src/selectors/querySelectorAll';
 export { default as getElementsByTagName } from '../../src/selectors/getElementsByTagName';

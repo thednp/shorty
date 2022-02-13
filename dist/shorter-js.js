@@ -1,5 +1,5 @@
 /*!
-* shorter-js v0.3.0alpha24 (https://github.com/thednp/shorter-js)
+* shorter-js v0.3.0alpha25 (https://github.com/thednp/shorter-js)
 * Copyright 2019-2022 © dnp_theme
 * Licensed under MIT (https://github.com/thednp/shorter-js/blob/master/LICENSE)
 */
@@ -2163,6 +2163,16 @@
   }
 
   /**
+   * Returns an `Element` that matches the id in the document.
+   *
+   * @param {string} id
+   * @returns {(HTMLElement | Element)?}
+   */
+  function getElementById(id) {
+    return getDocument().getElementById(id);
+  }
+
+  /**
    * A shortcut for `(document|Element).querySelectorAll`.
    *
    * @param {string} selector the input selector
@@ -2225,7 +2235,7 @@
     return matchesFn.call(target, selector);
   }
 
-  var version = "0.3.0alpha24";
+  var version = "0.3.0alpha25";
 
   // @ts-ignore
 
@@ -2414,6 +2424,7 @@
     documentAll: documentAll,
     querySelector: querySelector,
     getCustomElements: getCustomElements,
+    getElementById: getElementById,
     querySelectorAll: querySelectorAll,
     getElementsByClassName: getElementsByClassName,
     getElementsByTagName: getElementsByTagName,
