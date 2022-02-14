@@ -1,11 +1,11 @@
 # shorter-js
-A small ES6+ library with various JavaScript tools, all ESLint valid and with TypeScript definitions, everything useful for creating light libraries or web components.
+A small ES6+ library with various JavaScript tools, all ESLint valid and with TypeScript definitions, everything useful for creating light libraries or web components. If there is anything that is consistently repeating itself, **shorter-js** can help you cut up to 50% of the code required, with little to no performance cost.
 
 [![NPM Version](https://img.shields.io/npm/v/shorter-js.svg?style=flat-square)](https://www.npmjs.com/package/shorter-js)
 [![NPM Downloads](https://img.shields.io/npm/dm/shorter-js.svg?style=flat-square)](http://npm-stat.com/charts.html?package=shorter-js)
 [![jsDeliver](https://data.jsdelivr.com/v1/package/npm/shorter-js/badge)](https://www.jsdelivr.com/package/npm/shorter-js)
 
-***shorter-js*** is featured in [KUTE.js](https://github.com/thednp/kute.js), [BSN](https://github.com/thednp/bootstrap.native), [Navbar.js](https://github.com/thednp/navbar.js) and other libraries.
+**shorter-js** is featured in [KUTE.js](https://github.com/thednp/kute.js), [BSN](https://github.com/thednp/bootstrap.native), [Navbar.js](https://github.com/thednp/navbar.js) and other libraries.
 
 * The purpose of the library is to speed up the development workflow, minimize the size of larger libraries by providing a shorter syntax for most used JavaScript API methods, most used strings or other helpful utilities.
 * While the library comes with a working build in the `dist` folder, that is mainly for build consistency testing. You can make use of "tree shaking" to import one or anything your code needs.
@@ -320,7 +320,7 @@ target.addEventListener('click', function(e) {
 })
 ```
 
-Now make it all shorter.
+Now make it all shorter. You might want to import shorties directly from their location, something we like to call "tree shaking".
 ```js
 // Example
 import on from 'shorter-js/src/event/on';
@@ -334,9 +334,10 @@ on(target, mouseclickEvent, function(e) {
   addClass(target, 'my-className')
 })
 ```
-Now this all shortened code may not be very useful to understand the purpose of using ***shorter-js***, check out real examples with [KUTE.js](https://github.com/thednp/kute.js), [BSN](https://github.com/thednp/bootstrap.native), [Navbar.js](https://github.com/thednp/navbar.js) and other libraries coming soon.
 
-To avoid adding un-necessary shorties into your code, you might want to import them directly from their location. Tree shake it!
+As you can see, the benefits of using **shorter-js** expand beyond these quick shorties, so check out real examples with our [BSN](https://github.com/thednp/bootstrap.native).
+
+
 
 # License
-***shorter-js*** is released under the [MIT License](https://github.com/thednp/shorter-js/blob/master/LICENSE)
+**shorter-js** is released under the [MIT License](https://github.com/thednp/shorter-js/blob/master/LICENSE)
