@@ -683,9 +683,7 @@
   var transitionEndEvent = 'webkitTransition' in documentHead.style ? 'webkitTransitionEnd' : 'transitionend';
 
   /**
-   * A global namespace for:
-   * * `transitionProperty` string for Firefox,
-   * * `transition` property for all other browsers.
+   * A global namespace for `transitionProperty` string for modern browsers.
    *
    * @type {string}
    */
@@ -693,9 +691,9 @@
 
   /**
    * A global namespace for:
-   * * `transitionProperty` string for Firefox,
-   * * `webkitTransition` for older Chrome / Safari browsers,
-   * * `transition` property for all other browsers.
+   * * `transitionProperty` string for modern brosers,
+   * * `webkitTransition` for legacy Chrome / Safari browsers
+   *
    * @type {string}
    */
   var transitionProperty = 'webkitTransition' in documentHead.style ? 'webkitTransitionProperty' : 'transitionProperty';
@@ -812,6 +810,7 @@
   /**
    * A global boolean for Gecko browsers. When writing this file,
    * Gecko was not supporting `userAgentData`.
+   * @type {boolean}
    */
   var isFirefox = userAgent ? userAgent.includes('Firefox') : false;
 
@@ -826,12 +825,13 @@
    *
    * @param {HTMLElement | Element | Document | Window} element event.target
    * @param {string} eventName event.type
-   * @param {EventListenerObject['handleEvent']} handler callback
+   * @param {EventListener} listener callback
    * @param {(EventListenerOptions | boolean)=} options other event options
+   * @returns {void}
    */
-  function on(element, eventName, handler, options) {
+  function on(element, eventName, listener, options) {
     var ops = options || false;
-    element.addEventListener(eventName, handler, ops);
+    element.addEventListener(eventName, listener, ops);
   }
 
   /**
@@ -839,12 +839,13 @@
    *
    * @param {HTMLElement | Element | Document | Window} element event.target
    * @param {string} eventName event.type
-   * @param {EventListenerObject['handleEvent']} handler callback
+   * @param {EventListener} listener callback
    * @param {(EventListenerOptions | boolean)=} options other event options
+   * @returns {void}
    */
-  function off(element, eventName, handler, options) {
+  function off(element, eventName, listener, options) {
     var ops = options || false;
-    element.removeEventListener(eventName, handler, ops);
+    element.removeEventListener(eventName, listener, ops);
   }
 
   /**
@@ -853,17 +854,18 @@
    *
    * @param {HTMLElement | Element | Document | Window} element event.target
    * @param {string} eventName event.type
-   * @param {EventListenerObject['handleEvent']} handler callback
+   * @param {EventListener} listener callback
    * @param {(EventListenerOptions | boolean)=} options other event options
+   * @returns {void}
    */
-  function one(element, eventName, handler, options) {
+  function one(element, eventName, listener, options) {
   /**
-   * Wrap the handler for easy on -> off
-   * @type {EventListenerObject['handleEvent']}
+   * Wrap the listener for easy on -> off
+   * @type {EventListener}
    */
     var handlerWrapper = function (e) {
       if (e.target === element) {
-        handler.apply(element, [e]);
+        listener.apply(element, [e]);
         off(element, eventName, handlerWrapper, options);
       }
     };
@@ -920,71 +922,80 @@
 
   /**
    * Shortcut for `HTMLElement.getAttribute()` method.
-   * @param  {HTMLElement | Element} element target element
-   * @param  {string} attribute attribute name
+   * @param {HTMLElement | Element} element target element
+   * @param {string} attribute attribute name
+   * @returns {string?} attribute value
    */
   var getAttribute = function (element, attribute) { return element.getAttribute(attribute); };
 
   /**
-   * Shortcut for `SVGElement.getAttributeNS()` method.
-   * @param  {HTMLElement | Element} element target element
-   * @param  {string} attribute attribute name
-   * @param  {string=} ns attribute namespace
+   * Shortcut for `HTMLElement.getAttributeNS()` method.
+   * @param {string} ns attribute namespace
+   * @param {HTMLElement | Element} element target element
+   * @param {string} attribute attribute name
+   * @returns {string?} attribute value
    */
-  var getAttributeNS = function (element, attribute, ns) { return element.getAttributeNS(ns || null, attribute); };
+  var getAttributeNS = function (ns, element, attribute) { return element.getAttributeNS(ns, attribute); };
 
   /**
    * Shortcut for `HTMLElement.hasAttribute()` method.
    * @param  {HTMLElement | Element} element target element
    * @param  {string} attribute attribute name
+   * @returns {boolean} the query result
    */
   var hasAttribute = function (element, attribute) { return element.hasAttribute(attribute); };
 
   /**
-   * Shortcut for `SVGElement.hasAttributeNS()` method.
+   * Shortcut for `HTMLElement.hasAttributeNS()` method.
+   * @param  {string} ns attribute namespace
    * @param  {HTMLElement | Element} element target element
    * @param  {string} att attribute name
-   * @param  {string=} ns attribute namespace
+   * @returns {boolean} the query result
    */
-  var hasAttributeNS = function (element, att, ns) { return element.hasAttributeNS(ns || null, att); };
+  var hasAttributeNS = function (ns, element, att) { return element.hasAttributeNS(ns, att); };
 
   /**
    * Shortcut for `HTMLElement.setAttribute()` method.
    * @param  {HTMLElement | Element} element target element
    * @param  {string} attribute attribute name
    * @param  {string} value attribute value
+   * @returns {void}
    */
   var setAttribute = function (element, attribute, value) { return element.setAttribute(attribute, value); };
 
   /**
    * Shortcut for `SVGElement.setAttributeNS()` method.
+   * @param  {string} ns attribute namespace
    * @param  {HTMLElement | Element} element target element
    * @param  {string} att attribute name
    * @param  {string} value attribute value
-   * @param  {string=} ns attribute namespace
+   * @returns {void}
    */
-  var setAttributeNS = function (element, att, value, ns) { return element.setAttributeNS(ns || null, att, value); };
+  var setAttributeNS = function (ns, element, att, value) { return element.setAttributeNS(ns, att, value); };
 
   /**
    * Shortcut for `HTMLElement.removeAttribute()` method.
    * @param  {HTMLElement | Element} element target element
    * @param  {string} attribute attribute name
+   * @returns {void}
    */
   var removeAttribute = function (element, attribute) { return element.removeAttribute(attribute); };
 
   /**
    * Shortcut for `HTMLElement.removeAttributeNS()` method.
+   * @param  {string} ns attribute namespace
    * @param  {HTMLElement | Element} element target element
    * @param  {string} att attribute name
-   * @param  {string=} ns attribute namespace
+   * @returns {void}
    */
-  var removeAttributeNS = function (element, att, ns) { return element.removeAttributeNS(ns || null, att); };
+  var removeAttributeNS = function (ns, element, att) { return element.removeAttributeNS(ns, att); };
 
   /**
    * Add class to `HTMLElement.classList`.
    *
    * @param {HTMLElement | Element} element target
    * @param {string} classNAME to add
+   * @returns {void}
    */
   function addClass(element, classNAME) {
     element.classList.add(classNAME);
@@ -995,6 +1006,7 @@
    *
    * @param {HTMLElement | Element} element target
    * @param {string} classNAME to remove
+   * @returns {void}
    */
   function removeClass(element, classNAME) {
     element.classList.remove(classNAME);
@@ -1005,7 +1017,7 @@
    *
    * @param {HTMLElement | Element} element target
    * @param {string} classNAME to check
-   * @return {boolean}
+   * @returns {boolean}
    */
   function hasClass(element, classNAME) {
     return element.classList.contains(classNAME);
@@ -1135,6 +1147,60 @@
   var getInstance = function (target, component) { return Data.get(target, component); };
 
   /**
+   * Shortcut for `Object.assign()` static method.
+   * @param  {Record<string, any>} obj a target object
+   * @param  {Record<string, any>} source a source object
+   */
+  var ObjectAssign = function (obj, source) { return Object.assign(obj, source); };
+
+  /**
+   * This is a shortie for `document.createElement` method
+   * which allows you to create a new `HTMLElement` for a given `tagName`
+   * or based on an object with specific non-readonly attributes:
+   * `id`, `className`, `textContent`, `style`, etc.
+   * @see https://developer.mozilla.org/en-US/docs/Web/API/Document/createElement
+   *
+   * @param {Record<string, string> | string} param `tagName` or object
+   * @return {HTMLElement | Element} a new `HTMLElement` or `Element`
+   */
+  function createElement(param) {
+    if (typeof param === 'string') {
+      return getDocument().createElement(param);
+    }
+
+    var tagName = param.tagName;
+    var attr = Object.assign({}, param);
+    var newElement = createElement(tagName);
+    delete attr.tagName;
+    ObjectAssign(newElement, attr);
+    return newElement;
+  }
+
+  /**
+   * This is a shortie for `document.createElementNS` method
+   * which allows you to create a new `HTMLElement` for a given `tagName`
+   * or based on an object with specific non-readonly attributes:
+   * `id`, `className`, `textContent`, `style`, etc.
+   * @see https://developer.mozilla.org/en-US/docs/Web/API/Document/createElementNS
+   *
+   * @param {string} namespace `namespaceURI` to associate with the new `HTMLElement`
+   * @param {Record<string, string> | string} param `tagName` or object
+   * @return {HTMLElement | Element} a new `HTMLElement` or `Element`
+   */
+  function createElementNS(namespace, param) {
+    if (typeof param === 'string') {
+      return getDocument().createElementNS(namespace, param);
+    }
+
+    var tagName = param.tagName;
+    var attr = Object.assign({}, param);
+    var newElement = createElementNS(namespace, tagName);
+    delete attr.tagName;
+    ObjectAssign(newElement, attr);
+    return newElement;
+  }
+
+  /**
    * Shortcut for the `Element.dispatchEvent(Event)` method.
    *
    * @param {HTMLElement | Element} element is the target
@@ -1222,7 +1288,7 @@
     if (duration) {
       /**
        * Wrap the handler in on -> off callback
-       * @type {EventListenerObject['handleEvent']}
+       * @type {EventListener}
        */
       var animationEndWrapper = function (e) {
         if (e.target === element) {
@@ -1359,7 +1425,7 @@
     if (duration) {
       /**
        * Wrap the handler in on -> off callback
-       * @type {EventListenerObject['handleEvent']} e Event object
+       * @type {EventListener} e Event object
        */
       var transitionEndWrapper = function (e) {
         if (e.target === element) {
@@ -1467,42 +1533,6 @@
   // @ts-ignore -- `Element`s resulted from querySelector can focus too
   var focus = function (element) { return element.focus(); };
 
-  var elementUID = 1;
-  var elementIDMap = new Map();
-
-  /**
-   * Returns a unique identifier for popover, tooltip, scrollspy.
-   *
-   * @param {HTMLElement | Element} element target element
-   * @param {string=} key predefined key
-   * @returns {number} an existing or new unique ID
-   */
-  function getUID(element, key) {
-    elementUID += 1;
-    var elMap = elementIDMap.get(element);
-    var result = elementUID;
-
-    if (key && key.length) {
-      if (elMap) {
-        var elMapId = elMap.get(key);
-        if (!Number.isNaN(elMapId)) {
-          result = elMapId;
-        } else {
-          elMap.set(key, result);
-        }
-      } else {
-        elementIDMap.set(element, new Map());
-        elMap = elementIDMap.get(element);
-        elMap.set(key, result);
-      }
-    } else if (!Number.isNaN(elMap)) {
-      result = elMap;
-    } else {
-      elementIDMap.set(element, result);
-    }
-    return result;
-  }
-
   /** A generic function with empty body. */
   var noop = function () {};
 
@@ -1600,13 +1630,6 @@
   }
 
   /**
-   * Shortcut for `Object.assign()` static method.
-   * @param  {Record<string, any>} obj a target object
-   * @param  {Record<string, any>} source a source object
-   */
-  var ObjectAssign = function (obj, source) { return Object.assign(obj, source); };
-
-  /**
    * Shortcut for `Object.values()` static method.
    * @param  {Record<string, any>} obj a target object
    * @returns {any[]}
@@ -1671,7 +1694,7 @@
      * @param {HTMLElement | Element | string} target target element
      * @param {ReturnType<TimerHandler>} callback the callback
      * @param {number} delay the execution delay
-     * @param {string=} key a unique
+     * @param {string=} key a unique key
      */
     set: function (target, callback, delay, key) {
       var element = querySelector(target);
@@ -1939,6 +1962,42 @@
     };
   }
 
+  var elementUID = 1;
+  var elementIDMap = new Map();
+
+  /**
+   * Returns a unique identifier for popover, tooltip, scrollspy.
+   *
+   * @param {HTMLElement | Element} element target element
+   * @param {string=} key predefined key
+   * @returns {number} an existing or new unique ID
+   */
+  function getUID(element, key) {
+    elementUID += 1;
+    var elMap = elementIDMap.get(element);
+    var result = elementUID;
+
+    if (key && key.length) {
+      if (elMap) {
+        var elMapId = elMap.get(key);
+        if (!Number.isNaN(elMapId)) {
+          result = elMapId;
+        } else {
+          elMap.set(key, result);
+        }
+      } else {
+        elementIDMap.set(element, new Map());
+        elMap = elementIDMap.get(element);
+        elMap.set(key, result);
+      }
+    } else if (!Number.isNaN(elMap)) {
+      result = elMap;
+    } else {
+      elementIDMap.set(element, result);
+    }
+    return result;
+  }
+
   /**
    * Shortcut for `Array.isArray()` static method.
    *
@@ -2153,7 +2212,7 @@
    * @see https://stackoverflow.com/questions/27334365/how-to-get-list-of-registered-custom-elements
    *
    * @param {(HTMLElement | Element | Node | Document)=} parent parent to look into
-   * @returns {(HTMLElement | Element)[]} the query result
+   * @returns {Array<(HTMLElement | Element)>} the query result
    */
   function getCustomElements(parent) {
     var collection = parent && parentNodes.some(function (x) { return parent instanceof x; })
@@ -2376,10 +2435,12 @@
     dispatchEvent: dispatchEvent,
     distinct: distinct,
     Data: Data,
+    getInstance: getInstance,
+    createElement: createElement,
+    createElementNS: createElementNS,
     toUpperCase: toUpperCase,
     toLowerCase: toLowerCase,
     Timer: Timer,
-    getInstance: getInstance,
     emulateAnimationEnd: emulateAnimationEnd$1,
     emulateAnimationEndLegacy: emulateAnimationEnd,
     emulateTransitionEnd: emulateTransitionEnd$1,

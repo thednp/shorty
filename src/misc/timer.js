@@ -12,7 +12,7 @@ const Timer = {
    * @param {HTMLElement | Element | string} target target element
    * @param {ReturnType<TimerHandler>} callback the callback
    * @param {number} delay the execution delay
-   * @param {string=} key a unique
+   * @param {string=} key a unique key
    */
   set: (target, callback, delay, key) => {
     const element = querySelector(target);

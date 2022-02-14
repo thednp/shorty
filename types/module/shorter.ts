@@ -156,6 +156,7 @@ export { default as getElementTransitionDelayLegacy } from '../../src/get/getEle
 export { default as getNodeScroll } from '../../src/get/getNodeScroll';
 export { default as getParentNode } from '../../src/get/getParentNode';
 export { default as getRectRelativeToOffsetParent } from '../../src/get/getRectRelativeToOffsetParent';
+export { default as getUID } from '../../src/get/getUID';
 export { default as getWindow } from '../../src/get/getWindow';
 
 // class
@@ -171,6 +172,8 @@ export { default as one } from '../../src/event/one';
 // misc
 export { default as Data, getInstance } from '../../src/misc/data';
 export { default as Timer } from '../../src/misc/timer';
+export { default as createElement } from '../../src/misc/createElement';
+export { default as createElementNS } from '../../src/misc/createElementNS';
 export { default as dispatchEvent } from '../../src/misc/dispatchEvent';
 export { default as distinct } from '../../src/misc/distinct';
 
@@ -187,7 +190,6 @@ export { default as normalizeOptions } from '../../src/misc/normalizeOptions';
 export { default as tryWrapper } from '../../src/misc/tryWrapper';
 export { default as reflow } from '../../src/misc/reflow';
 export { default as focus } from '../../src/misc/focus';
-export { default as getUID } from '../../src/misc/getUID';
 export { default as noop } from '../../src/misc/noop';
 
 export { default as toLowerCase } from '../../src/misc/toLowerCase';

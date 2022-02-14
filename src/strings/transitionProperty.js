@@ -1,7 +1,5 @@
 /**
- * A global namespace for:
- * * `transitionProperty` string for Firefox,
- * * `transition` property for all other browsers.
+ * A global namespace for `transitionProperty` string for modern browsers.
  *
  * @type {string}
  */

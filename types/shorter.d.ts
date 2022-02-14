@@ -897,9 +897,7 @@ declare module "shorter-js/src/strings/transitionEndEventLegacy" {
 declare module "shorter-js/src/strings/transitionProperty" {
     export default transitionProperty;
     /**
-     * A global namespace for:
-     * * `transitionProperty` string for Firefox,
-     * * `transition` property for all other browsers.
+     * A global namespace for `transitionProperty` string for modern browsers.
      *
      * @type {string}
      */
@@ -909,9 +907,9 @@ declare module "shorter-js/src/strings/transitionPropertyLegacy" {
     export default transitionProperty;
     /**
      * A global namespace for:
-     * * `transitionProperty` string for Firefox,
-     * * `webkitTransition` for older Chrome / Safari browsers,
-     * * `transition` property for all other browsers.
+     * * `transitionProperty` string for modern brosers,
+     * * `webkitTransition` for legacy Chrome / Safari browsers
+     *
      * @type {string}
      */
     const transitionProperty: string;
@@ -1000,6 +998,7 @@ declare module "shorter-js/src/boolean/isFirefox" {
     /**
      * A global boolean for Gecko browsers. When writing this file,
      * Gecko was not supporting `userAgentData`.
+     * @type {boolean}
      */
     const isFirefox: boolean;
 }
@@ -1033,10 +1032,11 @@ declare module "shorter-js/src/event/on" {
      *
      * @param {HTMLElement | Element | Document | Window} element event.target
      * @param {string} eventName event.type
-     * @param {EventListenerObject['handleEvent']} handler callback
+     * @param {EventListener} listener callback
      * @param {(EventListenerOptions | boolean)=} options other event options
+     * @returns {void}
      */
-    export default function on(element: HTMLElement | Element | Document | Window, eventName: string, handler: EventListenerObject['handleEvent'], options?: (EventListenerOptions | boolean) | undefined): void;
+    export default function on(element: HTMLElement | Element | Document | Window, eventName: string, listener: EventListener, options?: (EventListenerOptions | boolean) | undefined): void;
 }
 declare module "shorter-js/src/event/off" {
     /**
@@ -1044,10 +1044,11 @@ declare module "shorter-js/src/event/off" {
      *
      * @param {HTMLElement | Element | Document | Window} element event.target
      * @param {string} eventName event.type
-     * @param {EventListenerObject['handleEvent']} handler callback
+     * @param {EventListener} listener callback
      * @param {(EventListenerOptions | boolean)=} options other event options
+     * @returns {void}
      */
-    export default function off(element: HTMLElement | Element | Document | Window, eventName: string, handler: EventListenerObject['handleEvent'], options?: (EventListenerOptions | boolean) | undefined): void;
+    export default function off(element: HTMLElement | Element | Document | Window, eventName: string, listener: EventListener, options?: (EventListenerOptions | boolean) | undefined): void;
 }
 declare module "shorter-js/src/event/one" {
     /**
@@ -1056,10 +1057,11 @@ declare module "shorter-js/src/event/one" {
      *
      * @param {HTMLElement | Element | Document | Window} element event.target
      * @param {string} eventName event.type
-     * @param {EventListenerObject['handleEvent']} handler callback
+     * @param {EventListener} listener callback
      * @param {(EventListenerOptions | boolean)=} options other event options
+     * @returns {void}
      */
-    export default function one(element: HTMLElement | Element | Document | Window, eventName: string, handler: EventListenerObject['handleEvent'], options?: (EventListenerOptions | boolean) | undefined): void;
+    export default function one(element: HTMLElement | Element | Document | Window, eventName: string, listener: EventListener, options?: (EventListenerOptions | boolean) | undefined): void;
 }
 declare module "shorter-js/src/boolean/supportPassive" {
     export default supportPassive;
@@ -1102,37 +1104,41 @@ declare module "shorter-js/src/attr/hasAttribute" {
      * Shortcut for `HTMLElement.hasAttribute()` method.
      * @param  {HTMLElement | Element} element target element
      * @param  {string} attribute attribute name
+     * @returns {boolean} the query result
      */
     function hasAttribute(element: HTMLElement | Element, attribute: string): boolean;
 }
 declare module "shorter-js/src/attr/hasAttributeNS" {
     export default hasAttributeNS;
     /**
-     * Shortcut for `SVGElement.hasAttributeNS()` method.
+     * Shortcut for `HTMLElement.hasAttributeNS()` method.
+     * @param  {string} namespace attribute namespace
      * @param  {HTMLElement | Element} element target element
      * @param  {string} att attribute name
-     * @param  {string=} ns attribute namespace
+     * @returns {boolean} the query result
      */
-    function hasAttributeNS(element: HTMLElement | Element, att: string, ns?: string | undefined): boolean;
+    function hasAttributeNS(namespace: string, element: HTMLElement | Element, att: string): boolean;
 }
 declare module "shorter-js/src/attr/getAttribute" {
     export default getAttribute;
     /**
      * Shortcut for `HTMLElement.getAttribute()` method.
-     * @param  {HTMLElement | Element} element target element
-     * @param  {string} attribute attribute name
+     * @param {HTMLElement | Element} element target element
+     * @param {string} attribute attribute name
+     * @returns {string?} attribute value
      */
     function getAttribute(element: HTMLElement | Element, attribute: string): string | null;
 }
 declare module "shorter-js/src/attr/getAttributeNS" {
     export default getAttributeNS;
     /**
-     * Shortcut for `SVGElement.getAttributeNS()` method.
-     * @param  {HTMLElement | Element} element target element
-     * @param  {string} attribute attribute name
-     * @param  {string=} ns attribute namespace
+     * Shortcut for `HTMLElement.getAttributeNS()` method.
+     * @param {string} ns attribute namespace
+     * @param {HTMLElement | Element} element target element
+     * @param {string} attribute attribute name
+     * @returns {string?} attribute value
      */
-    function getAttributeNS(element: HTMLElement | Element, attribute: string, ns?: string | undefined): string | null;
+    function getAttributeNS(ns: string, element: HTMLElement | Element, attribute: string): string | null;
 }
 declare module "shorter-js/src/attr/setAttribute" {
     export default setAttribute;
@@ -1141,6 +1147,7 @@ declare module "shorter-js/src/attr/setAttribute" {
      * @param  {HTMLElement | Element} element target element
      * @param  {string} attribute attribute name
      * @param  {string} value attribute value
+     * @returns {void}
      */
     function setAttribute(element: HTMLElement | Element, attribute: string, value: string): void;
 }
@@ -1148,12 +1155,13 @@ declare module "shorter-js/src/attr/setAttributeNS" {
     export default setAttributeNS;
     /**
      * Shortcut for `SVGElement.setAttributeNS()` method.
+     * @param  {string} namespace attribute namespace
      * @param  {HTMLElement | Element} element target element
      * @param  {string} att attribute name
      * @param  {string} value attribute value
-     * @param  {string=} ns attribute namespace
+     * @returns {void}
      */
-    function setAttributeNS(element: HTMLElement | Element, att: string, value: string, ns?: string | undefined): void;
+    function setAttributeNS(namespace: string, element: HTMLElement | Element, att: string, value: string): void;
 }
 declare module "shorter-js/src/attr/removeAttribute" {
     export default removeAttribute;
@@ -1161,6 +1169,7 @@ declare module "shorter-js/src/attr/removeAttribute" {
      * Shortcut for `HTMLElement.removeAttribute()` method.
      * @param  {HTMLElement | Element} element target element
      * @param  {string} attribute attribute name
+     * @returns {void}
      */
     function removeAttribute(element: HTMLElement | Element, attribute: string): void;
 }
@@ -1168,11 +1177,12 @@ declare module "shorter-js/src/attr/removeAttributeNS" {
     export default removeAttributeNS;
     /**
      * Shortcut for `HTMLElement.removeAttributeNS()` method.
+     * @param  {string} namespace attribute namespace
      * @param  {HTMLElement | Element} element target element
      * @param  {string} att attribute name
-     * @param  {string=} ns attribute namespace
+     * @returns {void}
      */
-    function removeAttributeNS(element: HTMLElement | Element, att: string, ns?: string | undefined): void;
+    function removeAttributeNS(namespace: string, element: HTMLElement | Element, att: string): void;
 }
 declare module "shorter-js/src/get/getBoundingClientRect" {
     /**
@@ -1386,12 +1396,23 @@ declare module "shorter-js/src/get/getRectRelativeToOffsetParent" {
         y: number;
     }): SHORTER.OffsetRect;
 }
+declare module "shorter-js/src/get/getUID" {
+    /**
+     * Returns a unique identifier for popover, tooltip, scrollspy.
+     *
+     * @param {HTMLElement | Element} element target element
+     * @param {string=} key predefined key
+     * @returns {number} an existing or new unique ID
+     */
+    export default function getUID(element: HTMLElement | Element, key?: string | undefined): number;
+}
 declare module "shorter-js/src/class/addClass" {
     /**
      * Add class to `HTMLElement.classList`.
      *
      * @param {HTMLElement | Element} element target
      * @param {string} classNAME to add
+     * @returns {void}
      */
     export default function addClass(element: HTMLElement | Element, classNAME: string): void;
 }
@@ -1401,6 +1422,7 @@ declare module "shorter-js/src/class/removeClass" {
      *
      * @param {HTMLElement | Element} element target
      * @param {string} classNAME to remove
+     * @returns {void}
      */
     export default function removeClass(element: HTMLElement | Element, classNAME: string): void;
 }
@@ -1410,7 +1432,7 @@ declare module "shorter-js/src/class/hasClass" {
      *
      * @param {HTMLElement | Element} element target
      * @param {string} classNAME to check
-     * @return {boolean}
+     * @returns {boolean}
      */
     export default function hasClass(element: HTMLElement | Element, classNAME: string): boolean;
 }
@@ -1469,6 +1491,42 @@ declare module "shorter-js/src/misc/timer" {
         function get(target: string | Element | HTMLElement, key?: string | undefined): number | null;
         function clear(target: string | Element | HTMLElement, key?: string | undefined): void;
     }
+}
+declare module "shorter-js/src/misc/ObjectAssign" {
+    export default ObjectAssign;
+    /**
+     * Shortcut for `Object.assign()` static method.
+     * @param  {Record<string, any>} obj a target object
+     * @param  {Record<string, any>} source a source object
+     */
+    function ObjectAssign(obj: Record<string, any>, source: Record<string, any>): Record<string, any>;
+}
+declare module "shorter-js/src/misc/createElement" {
+    /**
+     * This is a shortie for `document.createElement` method
+     * which allows you to create a new `HTMLElement` for a given `tagName`
+     * or based on an object with specific non-readonly attributes:
+     * `id`, `className`, `textContent`, `style`, etc.
+     * @see https://developer.mozilla.org/en-US/docs/Web/API/Document/createElement
+     *
+     * @param {Record<string, string> | string} param `tagName` or object
+     * @return {HTMLElement | Element} a new `HTMLElement` or `Element`
+     */
+    export default function createElement(param: Record<string, string> | string): HTMLElement | Element;
+}
+declare module "shorter-js/src/misc/createElementNS" {
+    /**
+     * This is a shortie for `document.createElementNS` method
+     * which allows you to create a new `HTMLElement` for a given `tagName`
+     * or based on an object with specific non-readonly attributes:
+     * `id`, `className`, `textContent`, `style`, etc.
+     * @see https://developer.mozilla.org/en-US/docs/Web/API/Document/createElementNS
+     *
+     * @param {string} namespace `namespaceURI` to associate with the new `HTMLElement`
+     * @param {Record<string, string> | string} param `tagName` or object
+     * @return {HTMLElement | Element} a new `HTMLElement` or `Element`
+     */
+    export default function createElementNS(namespace: string, param: Record<string, string> | string): HTMLElement | Element;
 }
 declare module "shorter-js/src/misc/dispatchEvent" {
     export default dispatchEvent;
@@ -1547,15 +1605,6 @@ declare module "shorter-js/src/misc/passiveHandlerLegacy" {
      * @type {Partial<AddEventListenerOptions> | boolean}
      */
     const passiveHandler: Partial<AddEventListenerOptions> | boolean;
-}
-declare module "shorter-js/src/misc/ObjectAssign" {
-    export default ObjectAssign;
-    /**
-     * Shortcut for `Object.assign()` static method.
-     * @param  {Record<string, any>} obj a target object
-     * @param  {Record<string, any>} source a source object
-     */
-    function ObjectAssign(obj: Record<string, any>, source: Record<string, any>): Record<string, any>;
 }
 declare module "shorter-js/src/misc/setElementStyle" {
     export default setElementStyle;
@@ -1642,16 +1691,6 @@ declare module "shorter-js/src/misc/focus" {
      * @param {HTMLElement | Element} element is the target
      */
     function focus(element: HTMLElement | Element): any;
-}
-declare module "shorter-js/src/misc/getUID" {
-    /**
-     * Returns a unique identifier for popover, tooltip, scrollspy.
-     *
-     * @param {HTMLElement | Element} element target element
-     * @param {string=} key predefined key
-     * @returns {number} an existing or new unique ID
-     */
-    export default function getUID(element: HTMLElement | Element, key?: string | undefined): number;
 }
 declare module "shorter-js/src/misc/noop" {
     export default noop;
@@ -1943,9 +1982,9 @@ declare module "shorter-js/src/selectors/getCustomElements" {
      * @see https://stackoverflow.com/questions/27334365/how-to-get-list-of-registered-custom-elements
      *
      * @param {(HTMLElement | Element | Node | Document)=} parent parent to look into
-     * @returns {(HTMLElement | Element)[]} the query result
+     * @returns {Array<(HTMLElement | Element)>} the query result
      */
-    export default function getCustomElements(parent?: (HTMLElement | Element | Node | Document) | undefined): (HTMLElement | Element)[];
+    export default function getCustomElements(parent?: (HTMLElement | Element | Node | Document) | undefined): Array<(HTMLElement | Element)>;
 }
 declare module "shorter-js/src/selectors/getElementById" {
     /**
@@ -2151,6 +2190,7 @@ declare module "shorter-js/types/module/shorter" {
     export { default as getNodeScroll } from "shorter-js/src/get/getNodeScroll";
     export { default as getParentNode } from "shorter-js/src/get/getParentNode";
     export { default as getRectRelativeToOffsetParent } from "shorter-js/src/get/getRectRelativeToOffsetParent";
+    export { default as getUID } from "shorter-js/src/get/getUID";
     export { default as getWindow } from "shorter-js/src/get/getWindow";
     export { default as addClass } from "shorter-js/src/class/addClass";
     export { default as removeClass } from "shorter-js/src/class/removeClass";
@@ -2160,6 +2200,8 @@ declare module "shorter-js/types/module/shorter" {
     export { default as one } from "shorter-js/src/event/one";
     export { default as Data, getInstance } from "shorter-js/src/misc/data";
     export { default as Timer } from "shorter-js/src/misc/timer";
+    export { default as createElement } from "shorter-js/src/misc/createElement";
+    export { default as createElementNS } from "shorter-js/src/misc/createElementNS";
     export { default as dispatchEvent } from "shorter-js/src/misc/dispatchEvent";
     export { default as distinct } from "shorter-js/src/misc/distinct";
     export { default as emulateAnimationEnd } from "shorter-js/src/misc/emulateAnimationEnd";
@@ -2174,7 +2216,6 @@ declare module "shorter-js/types/module/shorter" {
     export { default as tryWrapper } from "shorter-js/src/misc/tryWrapper";
     export { default as reflow } from "shorter-js/src/misc/reflow";
     export { default as focus } from "shorter-js/src/misc/focus";
-    export { default as getUID } from "shorter-js/src/misc/getUID";
     export { default as noop } from "shorter-js/src/misc/noop";
     export { default as toLowerCase } from "shorter-js/src/misc/toLowerCase";
     export { default as toUpperCase } from "shorter-js/src/misc/toUpperCase";

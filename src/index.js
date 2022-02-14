@@ -157,6 +157,8 @@ import one from './event/one';
 // misc
 import ArrayFrom from './misc/ArrayFrom';
 import Data, { getInstance } from './misc/data';
+import createElement from './misc/createElement';
+import createElementNS from './misc/createElementNS';
 import dispatchEvent from './misc/dispatchEvent';
 import distinct from './misc/distinct';
 import emulateAnimationEnd from './misc/emulateAnimationEnd';
@@ -166,7 +168,6 @@ import emulateTransitionEndLegacy from './misc/emulateTransitionEndLegacy';
 import Float32ArrayFrom from './misc/Float32ArrayFrom';
 import Float64ArrayFrom from './misc/Float64ArrayFrom';
 import focus from './misc/focus';
-import getUID from './misc/getUID';
 import noop from './misc/noop';
 import normalizeOptions from './misc/normalizeOptions';
 import normalizeValue from './misc/normalizeValue';
@@ -201,6 +202,7 @@ import getElementTransitionDelayLegacy from './get/getElementTransitionDelayLega
 import getNodeScroll from './get/getNodeScroll';
 import getParentNode from './get/getParentNode';
 import getRectRelativeToOffsetParent from './get/getRectRelativeToOffsetParent';
+import getUID from './get/getUID';
 import getWindow from './get/getWindow';
 
 // is
@@ -370,10 +372,12 @@ const SHORTER = {
   dispatchEvent,
   distinct,
   Data,
+  getInstance,
+  createElement,
+  createElementNS,
   toUpperCase,
   toLowerCase,
   Timer,
-  getInstance,
   emulateAnimationEnd,
   emulateAnimationEndLegacy,
   emulateTransitionEnd,

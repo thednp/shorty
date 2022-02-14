@@ -1,10 +1,11 @@
 /**
  * Shortcut for `SVGElement.setAttributeNS()` method.
+ * @param  {string} ns attribute namespace
  * @param  {HTMLElement | Element} element target element
  * @param  {string} att attribute name
  * @param  {string} value attribute value
- * @param  {string=} ns attribute namespace
+ * @returns {void}
  */
-const setAttributeNS = (element, att, value, ns) => element.setAttributeNS(ns || null, att, value);
+const setAttributeNS = (ns, element, att, value) => element.setAttributeNS(ns, att, value);
 
 export default setAttributeNS;

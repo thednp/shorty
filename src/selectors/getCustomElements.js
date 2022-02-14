@@ -9,7 +9,7 @@ import getElementsByTagName from './getElementsByTagName';
  * @see https://stackoverflow.com/questions/27334365/how-to-get-list-of-registered-custom-elements
  *
  * @param {(HTMLElement | Element | Node | Document)=} parent parent to look into
- * @returns {(HTMLElement | Element)[]} the query result
+ * @returns {Array<(HTMLElement | Element)>} the query result
  */
 export default function getCustomElements(parent) {
   const collection = parent && parentNodes.some((x) => parent instanceof x)

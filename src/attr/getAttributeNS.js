@@ -1,9 +1,10 @@
 /**
- * Shortcut for `SVGElement.getAttributeNS()` method.
- * @param  {HTMLElement | Element} element target element
- * @param  {string} attribute attribute name
- * @param  {string=} ns attribute namespace
+ * Shortcut for `HTMLElement.getAttributeNS()` method.
+ * @param {string} ns attribute namespace
+ * @param {HTMLElement | Element} element target element
+ * @param {string} attribute attribute name
+ * @returns {string?} attribute value
  */
-const getAttributeNS = (element, attribute, ns) => element.getAttributeNS(ns || null, attribute);
+const getAttributeNS = (ns, element, attribute) => element.getAttributeNS(ns, attribute);
 
 export default getAttributeNS;

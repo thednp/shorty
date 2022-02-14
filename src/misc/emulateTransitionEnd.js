@@ -18,7 +18,7 @@ export default function emulateTransitionEnd(element, handler) {
   if (duration) {
     /**
      * Wrap the handler in on -> off callback
-     * @type {EventListenerObject['handleEvent']} e Event object
+     * @type {EventListener} e Event object
      */
     const transitionEndWrapper = (e) => {
       if (e.target === element) {

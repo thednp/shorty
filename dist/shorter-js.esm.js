@@ -677,9 +677,7 @@ const transitionEndEvent$1 = 'transitionend';
 const transitionEndEvent = 'webkitTransition' in documentHead.style ? 'webkitTransitionEnd' : 'transitionend';
 
 /**
- * A global namespace for:
- * * `transitionProperty` string for Firefox,
- * * `transition` property for all other browsers.
+ * A global namespace for `transitionProperty` string for modern browsers.
  *
  * @type {string}
  */
@@ -687,9 +685,9 @@ const transitionProperty$1 = 'transitionProperty';
 
 /**
  * A global namespace for:
- * * `transitionProperty` string for Firefox,
- * * `webkitTransition` for older Chrome / Safari browsers,
- * * `transition` property for all other browsers.
+ * * `transitionProperty` string for modern brosers,
+ * * `webkitTransition` for legacy Chrome / Safari browsers
+ *
  * @type {string}
  */
 const transitionProperty = 'webkitTransition' in documentHead.style ? 'webkitTransitionProperty' : 'transitionProperty';
@@ -806,6 +804,7 @@ const isApple = !userAgentData ? appleBrands.test(userAgent)
 /**
  * A global boolean for Gecko browsers. When writing this file,
  * Gecko was not supporting `userAgentData`.
+ * @type {boolean}
  */
 const isFirefox = userAgent ? userAgent.includes('Firefox') : false;
 
@@ -820,12 +819,13 @@ const support3DTransform = 'webkitPerspective' in documentHead.style || 'perspec
  *
  * @param {HTMLElement | Element | Document | Window} element event.target
  * @param {string} eventName event.type
- * @param {EventListenerObject['handleEvent']} handler callback
+ * @param {EventListener} listener callback
  * @param {(EventListenerOptions | boolean)=} options other event options
+ * @returns {void}
  */
-function on(element, eventName, handler, options) {
+function on(element, eventName, listener, options) {
   const ops = options || false;
-  element.addEventListener(eventName, handler, ops);
+  element.addEventListener(eventName, listener, ops);
 }
 
 /**
@@ -833,12 +833,13 @@ function on(element, eventName, handler, options) {
  *
  * @param {HTMLElement | Element | Document | Window} element event.target
  * @param {string} eventName event.type
- * @param {EventListenerObject['handleEvent']} handler callback
+ * @param {EventListener} listener callback
  * @param {(EventListenerOptions | boolean)=} options other event options
+ * @returns {void}
  */
-function off(element, eventName, handler, options) {
+function off(element, eventName, listener, options) {
   const ops = options || false;
-  element.removeEventListener(eventName, handler, ops);
+  element.removeEventListener(eventName, listener, ops);
 }
 
 /**
@@ -847,17 +848,18 @@ function off(element, eventName, handler, options) {
  *
  * @param {HTMLElement | Element | Document | Window} element event.target
  * @param {string} eventName event.type
- * @param {EventListenerObject['handleEvent']} handler callback
+ * @param {EventListener} listener callback
  * @param {(EventListenerOptions | boolean)=} options other event options
+ * @returns {void}
  */
-function one(element, eventName, handler, options) {
+function one(element, eventName, listener, options) {
 /**
- * Wrap the handler for easy on -> off
- * @type {EventListenerObject['handleEvent']}
+ * Wrap the listener for easy on -> off
+ * @type {EventListener}
  */
   const handlerWrapper = (e) => {
     if (e.target === element) {
-      handler.apply(element, [e]);
+      listener.apply(element, [e]);
       off(element, eventName, handlerWrapper, options);
     }
   };
@@ -914,71 +916,80 @@ const supportTransition = 'webkitTransition' in documentHead.style || 'transitio
 
 /**
  * Shortcut for `HTMLElement.getAttribute()` method.
- * @param  {HTMLElement | Element} element target element
- * @param  {string} attribute attribute name
+ * @param {HTMLElement | Element} element target element
+ * @param {string} attribute attribute name
+ * @returns {string?} attribute value
  */
 const getAttribute = (element, attribute) => element.getAttribute(attribute);
 
 /**
- * Shortcut for `SVGElement.getAttributeNS()` method.
- * @param  {HTMLElement | Element} element target element
- * @param  {string} attribute attribute name
- * @param  {string=} ns attribute namespace
+ * Shortcut for `HTMLElement.getAttributeNS()` method.
+ * @param {string} ns attribute namespace
+ * @param {HTMLElement | Element} element target element
+ * @param {string} attribute attribute name
+ * @returns {string?} attribute value
  */
-const getAttributeNS = (element, attribute, ns) => element.getAttributeNS(ns || null, attribute);
+const getAttributeNS = (ns, element, attribute) => element.getAttributeNS(ns, attribute);
 
 /**
  * Shortcut for `HTMLElement.hasAttribute()` method.
  * @param  {HTMLElement | Element} element target element
  * @param  {string} attribute attribute name
+ * @returns {boolean} the query result
  */
 const hasAttribute = (element, attribute) => element.hasAttribute(attribute);
 
 /**
- * Shortcut for `SVGElement.hasAttributeNS()` method.
+ * Shortcut for `HTMLElement.hasAttributeNS()` method.
+ * @param  {string} ns attribute namespace
  * @param  {HTMLElement | Element} element target element
  * @param  {string} att attribute name
- * @param  {string=} ns attribute namespace
+ * @returns {boolean} the query result
  */
-const hasAttributeNS = (element, att, ns) => element.hasAttributeNS(ns || null, att);
+const hasAttributeNS = (ns, element, att) => element.hasAttributeNS(ns, att);
 
 /**
  * Shortcut for `HTMLElement.setAttribute()` method.
  * @param  {HTMLElement | Element} element target element
  * @param  {string} attribute attribute name
  * @param  {string} value attribute value
+ * @returns {void}
  */
 const setAttribute = (element, attribute, value) => element.setAttribute(attribute, value);
 
 /**
  * Shortcut for `SVGElement.setAttributeNS()` method.
+ * @param  {string} ns attribute namespace
  * @param  {HTMLElement | Element} element target element
  * @param  {string} att attribute name
  * @param  {string} value attribute value
- * @param  {string=} ns attribute namespace
+ * @returns {void}
  */
-const setAttributeNS = (element, att, value, ns) => element.setAttributeNS(ns || null, att, value);
+const setAttributeNS = (ns, element, att, value) => element.setAttributeNS(ns, att, value);
 
 /**
  * Shortcut for `HTMLElement.removeAttribute()` method.
  * @param  {HTMLElement | Element} element target element
  * @param  {string} attribute attribute name
+ * @returns {void}
  */
 const removeAttribute = (element, attribute) => element.removeAttribute(attribute);
 
 /**
  * Shortcut for `HTMLElement.removeAttributeNS()` method.
+ * @param  {string} ns attribute namespace
  * @param  {HTMLElement | Element} element target element
  * @param  {string} att attribute name
- * @param  {string=} ns attribute namespace
+ * @returns {void}
  */
-const removeAttributeNS = (element, att, ns) => element.removeAttributeNS(ns || null, att);
+const removeAttributeNS = (ns, element, att) => element.removeAttributeNS(ns, att);
 
 /**
  * Add class to `HTMLElement.classList`.
  *
  * @param {HTMLElement | Element} element target
  * @param {string} classNAME to add
+ * @returns {void}
  */
 function addClass(element, classNAME) {
   element.classList.add(classNAME);
@@ -989,6 +1000,7 @@ function addClass(element, classNAME) {
  *
  * @param {HTMLElement | Element} element target
  * @param {string} classNAME to remove
+ * @returns {void}
  */
 function removeClass(element, classNAME) {
   element.classList.remove(classNAME);
@@ -999,7 +1011,7 @@ function removeClass(element, classNAME) {
  *
  * @param {HTMLElement | Element} element target
  * @param {string} classNAME to check
- * @return {boolean}
+ * @returns {boolean}
  */
 function hasClass(element, classNAME) {
   return element.classList.contains(classNAME);
@@ -1129,6 +1141,60 @@ const Data = {
 const getInstance = (target, component) => Data.get(target, component);
 
 /**
+ * Shortcut for `Object.assign()` static method.
+ * @param  {Record<string, any>} obj a target object
+ * @param  {Record<string, any>} source a source object
+ */
+const ObjectAssign = (obj, source) => Object.assign(obj, source);
+
+/**
+ * This is a shortie for `document.createElement` method
+ * which allows you to create a new `HTMLElement` for a given `tagName`
+ * or based on an object with specific non-readonly attributes:
+ * `id`, `className`, `textContent`, `style`, etc.
+ * @see https://developer.mozilla.org/en-US/docs/Web/API/Document/createElement
+ *
+ * @param {Record<string, string> | string} param `tagName` or object
+ * @return {HTMLElement | Element} a new `HTMLElement` or `Element`
+ */
+function createElement(param) {
+  if (typeof param === 'string') {
+    return getDocument().createElement(param);
+  }
+
+  const { tagName } = param;
+  const attr = { ...param };
+  const newElement = createElement(tagName);
+  delete attr.tagName;
+  ObjectAssign(newElement, attr);
+  return newElement;
+}
+
+/**
+ * This is a shortie for `document.createElementNS` method
+ * which allows you to create a new `HTMLElement` for a given `tagName`
+ * or based on an object with specific non-readonly attributes:
+ * `id`, `className`, `textContent`, `style`, etc.
+ * @see https://developer.mozilla.org/en-US/docs/Web/API/Document/createElementNS
+ *
+ * @param {string} namespace `namespaceURI` to associate with the new `HTMLElement`
+ * @param {Record<string, string> | string} param `tagName` or object
+ * @return {HTMLElement | Element} a new `HTMLElement` or `Element`
+ */
+function createElementNS(namespace, param) {
+  if (typeof param === 'string') {
+    return getDocument().createElementNS(namespace, param);
+  }
+
+  const { tagName } = param;
+  const attr = { ...param };
+  const newElement = createElementNS(namespace, tagName);
+  delete attr.tagName;
+  ObjectAssign(newElement, attr);
+  return newElement;
+}
+
+/**
  * Shortcut for the `Element.dispatchEvent(Event)` method.
  *
  * @param {HTMLElement | Element} element is the target
@@ -1216,7 +1282,7 @@ function emulateAnimationEnd$1(element, handler) {
   if (duration) {
     /**
      * Wrap the handler in on -> off callback
-     * @type {EventListenerObject['handleEvent']}
+     * @type {EventListener}
      */
     const animationEndWrapper = (e) => {
       if (e.target === element) {
@@ -1353,7 +1419,7 @@ function emulateTransitionEnd$1(element, handler) {
   if (duration) {
     /**
      * Wrap the handler in on -> off callback
-     * @type {EventListenerObject['handleEvent']} e Event object
+     * @type {EventListener} e Event object
      */
     const transitionEndWrapper = (e) => {
       if (e.target === element) {
@@ -1461,42 +1527,6 @@ const Float64ArrayFrom = (arr) => Float64Array.from(Array.from(arr));
 // @ts-ignore -- `Element`s resulted from querySelector can focus too
 const focus = (element) => element.focus();
 
-let elementUID = 1;
-const elementIDMap = new Map();
-
-/**
- * Returns a unique identifier for popover, tooltip, scrollspy.
- *
- * @param {HTMLElement | Element} element target element
- * @param {string=} key predefined key
- * @returns {number} an existing or new unique ID
- */
-function getUID(element, key) {
-  elementUID += 1;
-  let elMap = elementIDMap.get(element);
-  let result = elementUID;
-
-  if (key && key.length) {
-    if (elMap) {
-      const elMapId = elMap.get(key);
-      if (!Number.isNaN(elMapId)) {
-        result = elMapId;
-      } else {
-        elMap.set(key, result);
-      }
-    } else {
-      elementIDMap.set(element, new Map());
-      elMap = elementIDMap.get(element);
-      elMap.set(key, result);
-    }
-  } else if (!Number.isNaN(elMap)) {
-    result = elMap;
-  } else {
-    elementIDMap.set(element, result);
-  }
-  return result;
-}
-
 /** A generic function with empty body. */
 const noop = () => {};
 
@@ -1594,13 +1624,6 @@ function normalizeOptions(element, defaultOps, inputOps, ns) {
 }
 
 /**
- * Shortcut for `Object.assign()` static method.
- * @param  {Record<string, any>} obj a target object
- * @param  {Record<string, any>} source a source object
- */
-const ObjectAssign = (obj, source) => Object.assign(obj, source);
-
-/**
  * Shortcut for `Object.values()` static method.
  * @param  {Record<string, any>} obj a target object
  * @returns {any[]}
@@ -1665,7 +1688,7 @@ const Timer = {
    * @param {HTMLElement | Element | string} target target element
    * @param {ReturnType<TimerHandler>} callback the callback
    * @param {number} delay the execution delay
-   * @param {string=} key a unique
+   * @param {string=} key a unique key
    */
   set: (target, callback, delay, key) => {
     const element = querySelector(target);
@@ -1925,6 +1948,42 @@ function getRectRelativeToOffsetParent(element, offsetParent, scroll) {
   };
 }
 
+let elementUID = 1;
+const elementIDMap = new Map();
+
+/**
+ * Returns a unique identifier for popover, tooltip, scrollspy.
+ *
+ * @param {HTMLElement | Element} element target element
+ * @param {string=} key predefined key
+ * @returns {number} an existing or new unique ID
+ */
+function getUID(element, key) {
+  elementUID += 1;
+  let elMap = elementIDMap.get(element);
+  let result = elementUID;
+
+  if (key && key.length) {
+    if (elMap) {
+      const elMapId = elMap.get(key);
+      if (!Number.isNaN(elMapId)) {
+        result = elMapId;
+      } else {
+        elMap.set(key, result);
+      }
+    } else {
+      elementIDMap.set(element, new Map());
+      elMap = elementIDMap.get(element);
+      elMap.set(key, result);
+    }
+  } else if (!Number.isNaN(elMap)) {
+    result = elMap;
+  } else {
+    elementIDMap.set(element, result);
+  }
+  return result;
+}
+
 /**
  * Shortcut for `Array.isArray()` static method.
  *
@@ -2132,7 +2191,7 @@ const documentAll = getElementsByTagName('*');
  * @see https://stackoverflow.com/questions/27334365/how-to-get-list-of-registered-custom-elements
  *
  * @param {(HTMLElement | Element | Node | Document)=} parent parent to look into
- * @returns {(HTMLElement | Element)[]} the query result
+ * @returns {Array<(HTMLElement | Element)>} the query result
  */
 function getCustomElements(parent) {
   const collection = parent && parentNodes.some((x) => parent instanceof x)
@@ -2355,10 +2414,12 @@ const SHORTER = {
   dispatchEvent,
   distinct,
   Data,
+  getInstance,
+  createElement,
+  createElementNS,
   toUpperCase,
   toLowerCase,
   Timer,
-  getInstance,
   emulateAnimationEnd: emulateAnimationEnd$1,
   emulateAnimationEndLegacy: emulateAnimationEnd,
   emulateTransitionEnd: emulateTransitionEnd$1,

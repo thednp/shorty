@@ -3,10 +3,11 @@
  *
  * @param {HTMLElement | Element | Document | Window} element event.target
  * @param {string} eventName event.type
- * @param {EventListenerObject['handleEvent']} handler callback
+ * @param {EventListener} listener callback
  * @param {(EventListenerOptions | boolean)=} options other event options
+ * @returns {void}
  */
-export default function off(element, eventName, handler, options) {
+export default function off(element, eventName, listener, options) {
   const ops = options || false;
-  element.removeEventListener(eventName, handler, ops);
+  element.removeEventListener(eventName, listener, ops);
 }

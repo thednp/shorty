@@ -1,9 +1,10 @@
 /**
- * Shortcut for `SVGElement.hasAttributeNS()` method.
+ * Shortcut for `HTMLElement.hasAttributeNS()` method.
+ * @param  {string} ns attribute namespace
  * @param  {HTMLElement | Element} element target element
  * @param  {string} att attribute name
- * @param  {string=} ns attribute namespace
+ * @returns {boolean} the query result
  */
-const hasAttributeNS = (element, att, ns) => element.hasAttributeNS(ns || null, att);
+const hasAttributeNS = (ns, element, att) => element.hasAttributeNS(ns, att);
 
 export default hasAttributeNS;

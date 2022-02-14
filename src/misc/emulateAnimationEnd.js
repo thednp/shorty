@@ -18,7 +18,7 @@ export default function emulateAnimationEnd(element, handler) {
   if (duration) {
     /**
      * Wrap the handler in on -> off callback
-     * @type {EventListenerObject['handleEvent']}
+     * @type {EventListener}
      */
     const animationEndWrapper = (e) => {
       if (e.target === element) {

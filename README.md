@@ -1,7 +1,11 @@
 # shorter-js
 A small ES6+ library with various JavaScript tools, all ESLint valid and with TypeScript definitions, everything useful for creating light libraries or web components.
 
-Featured in [KUTE.js](https://github.com/thednp/kute.js), [BSN](https://github.com/thednp/bootstrap.native), [Navbar.js](https://github.com/thednp/navbar.js) and other libraries.
+[![NPM Version](https://img.shields.io/npm/v/shorter-js.svg?style=flat-square)](https://www.npmjs.com/package/shorter-js)
+[![NPM Downloads](https://img.shields.io/npm/dm/shorter-js.svg?style=flat-square)](http://npm-stat.com/charts.html?package=shorter-js)
+[![jsDeliver](https://data.jsdelivr.com/v1/package/npm/shorter-js/badge)](https://www.jsdelivr.com/package/npm/shorter-js)
+
+***shorter-js*** is featured in [KUTE.js](https://github.com/thednp/kute.js), [BSN](https://github.com/thednp/bootstrap.native), [Navbar.js](https://github.com/thednp/navbar.js) and other libraries.
 
 * The purpose of the library is to speed up the development workflow, minimize the size of larger libraries by providing a shorter syntax for most used JavaScript API methods, most used strings or other helpful utilities.
 * While the library comes with a working build in the `dist` folder, that is mainly for build consistency testing. You can make use of "tree shaking" to import one or anything your code needs.
@@ -119,22 +123,23 @@ For a more advanced method to handle event listeners, I recommend using the [eve
 # get
 * ***getBoundingClientRect*** - returns the bounding client rectangle of a given *Element*;
 * ***getDocument*** - returns the containing `#Document` for a given *Element* or just any *Document*, useful when working with *iframe*s;
-* ***getWindow*** - returns the containing `Window` for a given *Element* or just any *Window*;
 * ***getDocumentBody*** - returns the containing `<body>` for a given *Element* or just any;
 * ***getDocumentElement*** - returns the containing `<html>` for a given *Element* or just any;
 * ***getDocumentHead*** - returns the containing `<head>` for a given *Element* or just any;
-* ***getElementAnimationDuration*** - returns the `animationDuration` property of a `animation` property;
-* ***getElementAnimationDurationLegacy*** - for legacy browsers;
 * ***getElementAnimationDelay*** - returns the `animationDelay` property of an `animation` property; 
 * ***getElementAnimationDelayLegacy*** - for legacy browsers;
-* ***getElementTransitionDuration*** - returns the `transitionDuration` property of a `transition` property;
-* ***getElementTransitionDurationLegacy*** - for legacy browsers;
+* ***getElementAnimationDuration*** - returns the `animationDuration` property of a `animation` property;
+* ***getElementAnimationDurationLegacy*** - for legacy browsers;
 * ***getElementTransitionDelay*** - returns the `transitionDelay` property of a `transition` property;
 * ***getElementTransitionDelayLegacy*** - for legacy browsers;
+* ***getElementTransitionDuration*** - returns the `transitionDuration` property of a `transition` property;
+* ***getElementTransitionDurationLegacy*** - for legacy browsers;
 * ***getElementStyle*** - returns the *Element* computed style for a given property;
 * ***getNodeScroll*** - returns the *Element* / *Window* current `{ x, y }` scroll position;
 * ***getParentNode*** - returns parent of a given *Element*;
 * ***getRectRelativeToOffsetParent*** - returns the bounding client rectangle of a given *Element* relative to a given `offsetParent`;
+* ***getUID*** - a nice utility that creates a unique ID for a given *Element* and returns it;
+* ***getWindow*** - returns the containing `Window` for a given *Element* or just any *Window*;
 
 ```js 
 // EXAMPLES
@@ -200,7 +205,6 @@ if (isElementsArray(myValue)) {
 * ***Float32ArrayFrom*** - a shortie for `Float32Array.from()` method;
 * ***Float64ArrayFrom*** - a shortie for `Float64Array.from()` method;
 * ***focus*** - a shortie for `Element.focus()` method;
-* ***getUID*** - a nice utility that creates a unique ID for a given *Element* and returns it;
 * ***noop*** - is your regular `() => {}` NOOP;
 * ***normalizeOptions*** - a cool utility to normalize and crosscheck JavaScript options and their DATA API counterparts for various web components; supports namespaced options like `data-NAMESPACE-option="value"`; priority: JavaScript options > DATA API options > default options
 * ***ObjectAssign*** - a shortie for `Object.assign()` method;

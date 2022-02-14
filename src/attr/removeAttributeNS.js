@@ -1,9 +1,10 @@
 /**
  * Shortcut for `HTMLElement.removeAttributeNS()` method.
+ * @param  {string} ns attribute namespace
  * @param  {HTMLElement | Element} element target element
  * @param  {string} att attribute name
- * @param  {string=} ns attribute namespace
+ * @returns {void}
  */
-const removeAttributeNS = (element, att, ns) => element.removeAttributeNS(ns || null, att);
+const removeAttributeNS = (ns, element, att) => element.removeAttributeNS(ns, att);
 
 export default removeAttributeNS;

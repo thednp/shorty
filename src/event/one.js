@@ -7,17 +7,18 @@ import off from './off';
  *
  * @param {HTMLElement | Element | Document | Window} element event.target
  * @param {string} eventName event.type
- * @param {EventListenerObject['handleEvent']} handler callback
+ * @param {EventListener} listener callback
  * @param {(EventListenerOptions | boolean)=} options other event options
+ * @returns {void}
  */
-export default function one(element, eventName, handler, options) {
+export default function one(element, eventName, listener, options) {
 /**
- * Wrap the handler for easy on -> off
- * @type {EventListenerObject['handleEvent']}
+ * Wrap the listener for easy on -> off
+ * @type {EventListener}
  */
   const handlerWrapper = (e) => {
     if (e.target === element) {
-      handler.apply(element, [e]);
+      listener.apply(element, [e]);
       off(element, eventName, handlerWrapper, options);
     }
   };
