@@ -1,5 +1,5 @@
 # shorter-js
-A small ES6+ library with various JavaScript tools, all ESLint valid and with TypeScript definitions, everything useful for creating light libraries or web components. If there is anything that is consistently repeating itself, **shorter-js** can help you cut up to 50% of the code required, with little to no performance cost.
+A small ES6+ library with various JavaScript tools, all ESLint valid and with TypeScript definitions, everything useful for creating light libraries or web components. If there is anything that is consistently repeating itself, **shorter-js** can help you save up to 50% of the code required, with little to no performance cost.
 
 [![NPM Version](https://img.shields.io/npm/v/shorter-js.svg?style=flat-square)](https://www.npmjs.com/package/shorter-js)
 [![NPM Downloads](https://img.shields.io/npm/dm/shorter-js.svg?style=flat-square)](http://npm-stat.com/charts.html?package=shorter-js)
@@ -78,13 +78,13 @@ if (support3DTransform) {
 ```
 	
 # class
-* ***addClass*** - add a class to a target *Element*
-* ***removeClass*** - remove a class from a target *Element*
-* ***hasClass*** - checks the existence of a class for a target *Element*
+* ***addClass*** - add a class to a target *Element*;
+* ***removeClass*** - remove a class from a target *Element*;
+* ***hasClass*** - checks the existence of a class for a target *Element*;
 
 ```js 
 // EXAMPLES
-import {addClass,removeClass,hasClass} from 'shorter-js'
+import { addClass, removeClass, hasClass } from 'shorter-js'
 
 // add a class
 addClass(targetElement, 'className');
@@ -108,13 +108,13 @@ if (hasClass(targetElement, 'className')) {
 import { on, off, one, passiveHandler } from 'shorter-js';
 
 // attach a passive mousedown eventHandler
-on(targetElement,'click',eventHandler,passiveHandler);
+on(targetElement, 'click', eventHandler, passiveHandler);
 
 // detach a passive mouseup eventHandler
-off(targetElement,'mouseup',eventHandler,passiveHandler);
+off(targetElement, 'mouseup', eventHandler, passiveHandler);
 
 // attach a single instance passive touchstart eventHandler
-one(targetElement,'touchstart',eventHandler,passiveHandler);
+one(targetElement, 'touchstart', eventHandler, passiveHandler);
 ```
 
 For a more advanced method to handle event listeners, I recommend using the [event-listener.js](github.com/thednp/event-listener.js).
@@ -334,9 +334,6 @@ on(target, mouseclickEvent, function(e) {
   addClass(target, 'my-className')
 })
 ```
-
-As you can see, the benefits of using **shorter-js** expand beyond these quick shorties, so check out real examples with our [BSN](https://github.com/thednp/bootstrap.native).
-
 
 
 # License
