@@ -1,6 +1,6 @@
 {
   "name": "shorter-js",
-  "version": "0.3.0alpha25",
+  "version": "0.3.0",
   "description": "JavaScript shorties for the modern web.",
   "main": "dist/shorter-js.min.js",
   "module": "dist/shorter-js.esm.js",

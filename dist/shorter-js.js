@@ -1,5 +1,5 @@
 /*!
-* shorter-js v0.3.0alpha25 (https://github.com/thednp/shorter-js)
+* shorter-js v0.3.0 (https://github.com/thednp/shorter-js)
 * Copyright 2019-2022 © dnp_theme
 * Licensed under MIT (https://github.com/thednp/shorter-js/blob/master/LICENSE)
 */
@@ -2294,7 +2294,7 @@
     return matchesFn.call(target, selector);
   }
 
-  var version = "0.3.0alpha25";
+  var version = "0.3.0";
 
   // @ts-ignore
 
