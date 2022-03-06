@@ -70,6 +70,38 @@ declare module "shorter-js/src/strings/ariaSelected" {
      */
     const ariaSelected: string;
 }
+declare module "shorter-js/src/strings/ariaValueMin" {
+    export default ariaValueMin;
+    /**
+     * A global namespace for aria-valuemin.
+     * @type {string}
+     */
+    const ariaValueMin: string;
+}
+declare module "shorter-js/src/strings/ariaValueMax" {
+    export default ariaValueMax;
+    /**
+     * A global namespace for aria-valuemax.
+     * @type {string}
+     */
+    const ariaValueMax: string;
+}
+declare module "shorter-js/src/strings/ariaValueNow" {
+    export default ariaValueNow;
+    /**
+     * A global namespace for aria-valuenow.
+     * @type {string}
+     */
+    const ariaValueNow: string;
+}
+declare module "shorter-js/src/strings/ariaValueText" {
+    export default ariaValueText;
+    /**
+     * A global namespace for aria-valuetext.
+     * @type {string}
+     */
+    const ariaValueText: string;
+}
 declare module "shorter-js/src/strings/abortEvent" {
     export default abortEvent;
     /**
@@ -1112,12 +1144,12 @@ declare module "shorter-js/src/attr/hasAttributeNS" {
     export default hasAttributeNS;
     /**
      * Shortcut for `HTMLElement.hasAttributeNS()` method.
-     * @param  {string} namespace attribute namespace
+     * @param  {string} ns attribute namespace
      * @param  {HTMLElement | Element} element target element
      * @param  {string} att attribute name
      * @returns {boolean} the query result
      */
-    function hasAttributeNS(namespace: string, element: HTMLElement | Element, att: string): boolean;
+    function hasAttributeNS(ns: string, element: HTMLElement | Element, att: string): boolean;
 }
 declare module "shorter-js/src/attr/getAttribute" {
     export default getAttribute;
@@ -1155,13 +1187,13 @@ declare module "shorter-js/src/attr/setAttributeNS" {
     export default setAttributeNS;
     /**
      * Shortcut for `SVGElement.setAttributeNS()` method.
-     * @param  {string} namespace attribute namespace
+     * @param  {string} ns attribute namespace
      * @param  {HTMLElement | Element} element target element
      * @param  {string} att attribute name
      * @param  {string} value attribute value
      * @returns {void}
      */
-    function setAttributeNS(namespace: string, element: HTMLElement | Element, att: string, value: string): void;
+    function setAttributeNS(ns: string, element: HTMLElement | Element, att: string, value: string): void;
 }
 declare module "shorter-js/src/attr/removeAttribute" {
     export default removeAttribute;
@@ -1177,12 +1209,12 @@ declare module "shorter-js/src/attr/removeAttributeNS" {
     export default removeAttributeNS;
     /**
      * Shortcut for `HTMLElement.removeAttributeNS()` method.
-     * @param  {string} namespace attribute namespace
+     * @param  {string} ns attribute namespace
      * @param  {HTMLElement | Element} element target element
      * @param  {string} att attribute name
      * @returns {void}
      */
-    function removeAttributeNS(namespace: string, element: HTMLElement | Element, att: string): void;
+    function removeAttributeNS(ns: string, element: HTMLElement | Element, att: string): void;
 }
 declare module "shorter-js/src/get/getBoundingClientRect" {
     /**
@@ -1971,7 +2003,7 @@ declare module "shorter-js/src/selectors/documentAll" {
     export default documentAll;
     /**
      * An `HTMLCollection` with all document elements,
-     * which is the equivalent to `document.all`.
+     * which is the equivalent of `document.all`.
      */
     const documentAll: HTMLCollectionOf<Element | HTMLElement>;
 }
@@ -2055,6 +2087,10 @@ declare module "shorter-js/types/module/shorter" {
     export { default as ariaModal } from "shorter-js/src/strings/ariaModal";
     export { default as ariaPressed } from "shorter-js/src/strings/ariaPressed";
     export { default as ariaSelected } from "shorter-js/src/strings/ariaSelected";
+    export { default as ariaValueMin } from "shorter-js/src/strings/ariaValueMin";
+    export { default as ariaValueMax } from "shorter-js/src/strings/ariaValueMax";
+    export { default as ariaValueNow } from "shorter-js/src/strings/ariaValueNow";
+    export { default as ariaValueText } from "shorter-js/src/strings/ariaValueText";
     export { default as nativeEvents } from "shorter-js/src/strings/nativeEvents";
     export { default as abortEvent } from "shorter-js/src/strings/abortEvent";
     export { default as beforeunloadEvent } from "shorter-js/src/strings/beforeunloadEvent";

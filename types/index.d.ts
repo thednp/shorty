@@ -10,6 +10,10 @@ export { default as ariaLabelledBy } from 'shorter-js/src/strings/ariaLabelledBy
 export { default as ariaModal } from 'shorter-js/src/strings/ariaModal';
 export { default as ariaPressed } from 'shorter-js/src/strings/ariaPressed';
 export { default as ariaSelected } from 'shorter-js/src/strings/ariaSelected';
+export { default as ariaValueMin } from 'shorter-js/src/strings/ariaValueMin';
+export { default as ariaValueMax } from 'shorter-js/src/strings/ariaValueMax';
+export { default as ariaValueNow } from 'shorter-js/src/strings/ariaValueNow';
+export { default as ariaValueText } from 'shorter-js/src/strings/ariaValueText';
 
 export { default as nativeEvents } from 'shorter-js/src/strings/nativeEvents';
 export { default as abortEvent } from 'shorter-js/src/strings/abortEvent';

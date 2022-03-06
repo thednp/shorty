@@ -8,6 +8,10 @@ import ariaLabelledBy from './strings/ariaLabelledBy';
 import ariaModal from './strings/ariaModal';
 import ariaPressed from './strings/ariaPressed';
 import ariaSelected from './strings/ariaSelected';
+import ariaValueMin from './strings/ariaValueMin';
+import ariaValueMax from './strings/ariaValueMax';
+import ariaValueNow from './strings/ariaValueNow';
+import ariaValueText from './strings/ariaValueText';
 
 import nativeEvents from './strings/nativeEvents';
 import abortEvent from './strings/abortEvent';
@@ -253,6 +257,10 @@ const SHORTER = {
   ariaModal,
   ariaPressed,
   ariaSelected,
+  ariaValueMin,
+  ariaValueMax,
+  ariaValueNow,
+  ariaValueText,
   nativeEvents,
   abortEvent,
   blurEvent,

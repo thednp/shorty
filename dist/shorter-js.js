@@ -1,5 +1,5 @@
 /*!
-* shorter-js v0.3.0 (https://github.com/thednp/shorter-js)
+* shorter-js v0.3.1 (https://github.com/thednp/shorter-js)
 * Copyright 2019-2022 © dnp_theme
 * Licensed under MIT (https://github.com/thednp/shorter-js/blob/master/LICENSE)
 */
@@ -62,6 +62,30 @@
    * @type {string}
    */
   var ariaSelected = 'aria-selected';
+
+  /**
+   * A global namespace for aria-valuemin.
+   * @type {string}
+   */
+  var ariaValueMin = 'aria-valuemin';
+
+  /**
+   * A global namespace for aria-valuemax.
+   * @type {string}
+   */
+  var ariaValueMax = 'aria-valuemax';
+
+  /**
+   * A global namespace for aria-valuenow.
+   * @type {string}
+   */
+  var ariaValueNow = 'aria-valuenow';
+
+  /**
+   * A global namespace for aria-valuetext.
+   * @type {string}
+   */
+  var ariaValueText = 'aria-valuetext';
 
   /**
    * A global namespace for `abort` event.
@@ -2202,7 +2226,7 @@
 
   /**
    * An `HTMLCollection` with all document elements,
-   * which is the equivalent to `document.all`.
+   * which is the equivalent of `document.all`.
    */
   var documentAll = getElementsByTagName('*');
 
@@ -2294,7 +2318,7 @@
     return matchesFn.call(target, selector);
   }
 
-  var version = "0.3.0";
+  var version = "0.3.1";
 
   // @ts-ignore
 
@@ -2316,6 +2340,10 @@
     ariaModal: ariaModal,
     ariaPressed: ariaPressed,
     ariaSelected: ariaSelected,
+    ariaValueMin: ariaValueMin,
+    ariaValueMax: ariaValueMax,
+    ariaValueNow: ariaValueNow,
+    ariaValueText: ariaValueText,
     nativeEvents: nativeEvents,
     abortEvent: abortEvent,
     blurEvent: blurEvent,

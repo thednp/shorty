@@ -8,6 +8,10 @@ export { default as ariaLabelledBy } from '../../src/strings/ariaLabelledBy';
 export { default as ariaModal } from '../../src/strings/ariaModal';
 export { default as ariaPressed } from '../../src/strings/ariaPressed';
 export { default as ariaSelected } from '../../src/strings/ariaSelected';
+export { default as ariaValueMin } from '../../src/strings/ariaValueMin';
+export { default as ariaValueMax } from '../../src/strings/ariaValueMax';
+export { default as ariaValueNow } from '../../src/strings/ariaValueNow';
+export { default as ariaValueText } from '../../src/strings/ariaValueText';
 
 export { default as nativeEvents } from '../../src/strings/nativeEvents';
 export { default as abortEvent } from '../../src/strings/abortEvent';
