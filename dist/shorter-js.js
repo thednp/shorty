@@ -1,5 +1,5 @@
 /*!
-* shorter-js v0.3.1 (https://github.com/thednp/shorter-js)
+* shorter-js v0.3.2 (https://github.com/thednp/shorter-js)
 * Copyright 2019-2022 © dnp_theme
 * Licensed under MIT (https://github.com/thednp/shorter-js/blob/master/LICENSE)
 */
@@ -1986,7 +1986,8 @@
     };
   }
 
-  var elementUID = 1;
+  var elementUID = 0;
+  var elementMapUID = 0;
   var elementIDMap = new Map();
 
   /**
@@ -1997,27 +1998,25 @@
    * @returns {number} an existing or new unique ID
    */
   function getUID(element, key) {
-    elementUID += 1;
-    var elMap = elementIDMap.get(element);
-    var result = elementUID;
+    var result = key ? elementUID : elementMapUID;
 
-    if (key && key.length) {
-      if (elMap) {
-        var elMapId = elMap.get(key);
-        if (!Number.isNaN(elMapId)) {
-          result = elMapId;
-        } else {
-          elMap.set(key, result);
-        }
-      } else {
-        elementIDMap.set(element, new Map());
-        elMap = elementIDMap.get(element);
-        elMap.set(key, result);
+    if (key) {
+      var elID = getUID(element);
+      var elMap = elementIDMap.get(elID) || new Map();
+      if (!elementIDMap.has(elID)) {
+        elementIDMap.set(elID, elMap);
       }
-    } else if (!Number.isNaN(elMap)) {
-      result = elMap;
+      if (!elMap.has(key)) {
+        elMap.set(key, result);
+        elementUID += 1;
+      } else { result = elMap.get(key); }
     } else {
-      elementIDMap.set(element, result);
+      var elkey = element.id || element;
+
+      if (!elementIDMap.has(elkey)) {
+        elementIDMap.set(elkey, result);
+        elementMapUID += 1;
+      } else { result = elementIDMap.get(elkey); }
     }
     return result;
   }
@@ -2318,7 +2317,7 @@
     return matchesFn.call(target, selector);
   }
 
-  var version = "0.3.1";
+  var version = "0.3.2";
 
   // @ts-ignore
 

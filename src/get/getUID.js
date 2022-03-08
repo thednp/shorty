@@ -1,4 +1,5 @@
-let elementUID = 1;
+let elementUID = 0;
+let elementMapUID = 0;
 const elementIDMap = new Map();
 
 /**
@@ -9,27 +10,25 @@ const elementIDMap = new Map();
  * @returns {number} an existing or new unique ID
  */
 export default function getUID(element, key) {
-  elementUID += 1;
-  let elMap = elementIDMap.get(element);
-  let result = elementUID;
+  let result = key ? elementUID : elementMapUID;
 
-  if (key && key.length) {
-    if (elMap) {
-      const elMapId = elMap.get(key);
-      if (!Number.isNaN(elMapId)) {
-        result = elMapId;
-      } else {
-        elMap.set(key, result);
-      }
-    } else {
-      elementIDMap.set(element, new Map());
-      elMap = elementIDMap.get(element);
-      elMap.set(key, result);
+  if (key) {
+    const elID = getUID(element);
+    const elMap = elementIDMap.get(elID) || new Map();
+    if (!elementIDMap.has(elID)) {
+      elementIDMap.set(elID, elMap);
     }
-  } else if (!Number.isNaN(elMap)) {
-    result = elMap;
+    if (!elMap.has(key)) {
+      elMap.set(key, result);
+      elementUID += 1;
+    } else result = elMap.get(key);
   } else {
-    elementIDMap.set(element, result);
+    const elkey = element.id || element;
+
+    if (!elementIDMap.has(elkey)) {
+      elementIDMap.set(elkey, result);
+      elementMapUID += 1;
+    } else result = elementIDMap.get(elkey);
   }
   return result;
 }
