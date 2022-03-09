@@ -1,5 +1,6 @@
 // strings
 import ariaChecked from './strings/ariaChecked';
+import ariaDescription from './strings/ariaDescription';
 import ariaDescribedBy from './strings/ariaDescribedBy';
 import ariaExpanded from './strings/ariaExpanded';
 import ariaHidden from './strings/ariaHidden';
@@ -249,6 +250,7 @@ import Version from './misc/version';
 
 const SHORTER = {
   ariaChecked,
+  ariaDescription,
   ariaDescribedBy,
   ariaExpanded,
   ariaHidden,

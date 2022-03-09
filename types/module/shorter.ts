@@ -1,5 +1,6 @@
 // strings
 export { default as ariaChecked } from '../../src/strings/ariaChecked';
+export { default as ariaDescription } from '../../src/strings/ariaDescription';
 export { default as ariaDescribedBy } from '../../src/strings/ariaDescribedBy';
 export { default as ariaExpanded } from '../../src/strings/ariaExpanded';
 export { default as ariaHidden } from '../../src/strings/ariaHidden';

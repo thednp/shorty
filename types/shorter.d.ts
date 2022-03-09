@@ -6,6 +6,14 @@ declare module "shorter-js/src/strings/ariaChecked" {
      */
     const ariaChecked: string;
 }
+declare module "shorter-js/src/strings/ariaDescription" {
+    export default ariaDescription;
+    /**
+     * A global namespace for aria-description.
+     * @type {string}
+     */
+    const ariaDescription: string;
+}
 declare module "shorter-js/src/strings/ariaDescribedBy" {
     export default ariaDescribedBy;
     /**
@@ -2079,6 +2087,7 @@ declare module "shorter-js/src/misc/version" {
 }
 declare module "shorter-js/types/module/shorter" {
     export { default as ariaChecked } from "shorter-js/src/strings/ariaChecked";
+    export { default as ariaDescription } from "shorter-js/src/strings/ariaDescription";
     export { default as ariaDescribedBy } from "shorter-js/src/strings/ariaDescribedBy";
     export { default as ariaExpanded } from "shorter-js/src/strings/ariaExpanded";
     export { default as ariaHidden } from "shorter-js/src/strings/ariaHidden";

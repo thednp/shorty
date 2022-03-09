@@ -2,6 +2,7 @@ export as namespace SHORTER;
 
 import './shorter';
 export { default as ariaChecked } from 'shorter-js/src/strings/ariaChecked';
+export { default as ariaDescription } from 'shorter-js/src/strings/ariaDescription';
 export { default as ariaDescribedBy } from 'shorter-js/src/strings/ariaDescribedBy';
 export { default as ariaExpanded } from 'shorter-js/src/strings/ariaExpanded';
 export { default as ariaHidden } from 'shorter-js/src/strings/ariaHidden';
