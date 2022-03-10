@@ -1,5 +1,5 @@
 /*!
-* shorter-js v0.3.3 (https://github.com/thednp/shorter-js)
+* shorter-js v0.3.4 (https://github.com/thednp/shorter-js)
 * Copyright 2019-2022 © dnp_theme
 * Licensed under MIT (https://github.com/thednp/shorter-js/blob/master/LICENSE)
 */
@@ -26,6 +26,12 @@ const ariaDescribedBy = 'aria-describedby';
  * @type {string}
  */
 const ariaExpanded = 'aria-expanded';
+
+/**
+ * A global namespace for aria-haspopup.
+ * @type {string}
+ */
+const ariaHasPopup = 'aria-haspopup';
 
 /**
  * A global namespace for aria-hidden.
@@ -2302,7 +2308,7 @@ function matches(target, selector) {
   return matchesFn.call(target, selector);
 }
 
-var version = "0.3.3";
+var version = "0.3.4";
 
 // @ts-ignore
 
@@ -2320,6 +2326,7 @@ const SHORTER = {
   ariaDescribedBy,
   ariaExpanded,
   ariaHidden,
+  ariaHasPopup,
   ariaLabel,
   ariaLabelledBy,
   ariaModal,
