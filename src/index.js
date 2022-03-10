@@ -3,6 +3,7 @@ import ariaChecked from './strings/ariaChecked';
 import ariaDescription from './strings/ariaDescription';
 import ariaDescribedBy from './strings/ariaDescribedBy';
 import ariaExpanded from './strings/ariaExpanded';
+import ariaHasPopup from './strings/ariaHasPopup';
 import ariaHidden from './strings/ariaHidden';
 import ariaLabel from './strings/ariaLabel';
 import ariaLabelledBy from './strings/ariaLabelledBy';
@@ -254,6 +255,7 @@ const SHORTER = {
   ariaDescribedBy,
   ariaExpanded,
   ariaHidden,
+  ariaHasPopup,
   ariaLabel,
   ariaLabelledBy,
   ariaModal,

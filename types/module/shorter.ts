@@ -3,6 +3,7 @@ export { default as ariaChecked } from '../../src/strings/ariaChecked';
 export { default as ariaDescription } from '../../src/strings/ariaDescription';
 export { default as ariaDescribedBy } from '../../src/strings/ariaDescribedBy';
 export { default as ariaExpanded } from '../../src/strings/ariaExpanded';
+export { default as ariaHasPopup } from '../../src/strings/ariaHasPopup';
 export { default as ariaHidden } from '../../src/strings/ariaHidden';
 export { default as ariaLabel } from '../../src/strings/ariaLabel';
 export { default as ariaLabelledBy } from '../../src/strings/ariaLabelledBy';

@@ -5,6 +5,7 @@ export { default as ariaChecked } from 'shorter-js/src/strings/ariaChecked';
 export { default as ariaDescription } from 'shorter-js/src/strings/ariaDescription';
 export { default as ariaDescribedBy } from 'shorter-js/src/strings/ariaDescribedBy';
 export { default as ariaExpanded } from 'shorter-js/src/strings/ariaExpanded';
+export { default as ariaHasPopup } from 'shorter-js/src/strings/ariaHasPopup';
 export { default as ariaHidden } from 'shorter-js/src/strings/ariaHidden';
 export { default as ariaLabel } from 'shorter-js/src/strings/ariaLabel';
 export { default as ariaLabelledBy } from 'shorter-js/src/strings/ariaLabelledBy';
