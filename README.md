@@ -1,9 +1,9 @@
 # shorty
 A small ES6+ library with various JavaScript tools, all ESLint valid and with TypeScript definitions, everything useful for creating light libraries or web components. If there is anything that is consistently repeating itself, **shorty** can help you save up to 50% of the code required, with little to no performance cost.
 
-[![NPM Version](https://img.shields.io/npm/v/shorty.svg?style=flat-square)](https://www.npmjs.com/package/shorty)
-[![NPM Downloads](https://img.shields.io/npm/dm/shorty.svg?style=flat-square)](http://npm-stat.com/charts.html?package=shorty)
-[![jsDeliver](https://data.jsdelivr.com/v1/package/npm/shorty/badge)](https://www.jsdelivr.com/package/npm/shorty)
+[![NPM Version](https://img.shields.io/npm/v/@thednp/shorty.svg?style=flat-square)](https://www.npmjs.com/package/shorty)
+[![NPM Downloads](https://img.shields.io/npm/dm/@thednp/shorty.svg?style=flat-square)](http://npm-stat.com/charts.html?package=shorty)
+[![jsDeliver](https://data.jsdelivr.com/v1/package/npm/@thednp/shorty/badge)](https://www.jsdelivr.com/package/npm/shorty)
 
 **shorty** is featured in [KUTE.js](https://github.com/thednp/kute.js), [BSN](https://github.com/thednp/bootstrap.native), [Navbar.js](https://github.com/thednp/navbar.js) and other libraries.
 
