@@ -1,4 +1,4 @@
-# shorty [![ci](https://github.com/thednp/shorty/actions/workflows/ci.yml/badge.svg)](https://github.com/thednp/shorty/actions/workflows/ci.yml) ![typescript version](https://img.shields.io/badge/typescript-4.5.2-brightgreen)
+# shorty ![typescript version](https://img.shields.io/badge/typescript-4.5.2-brightgreen) [![ci](https://github.com/thednp/shorty/actions/workflows/ci.yml/badge.svg)](https://github.com/thednp/shorty/actions/workflows/ci.yml)
 
 A small ES6+ library with various JavaScript tools, all ESLint valid and with TypeScript definitions, everything useful for creating light libraries or web components. If there is anything that is consistently repeating itself, **shorty** can help you save up to 50% of the code required, with little to no performance cost.
 
