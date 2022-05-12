@@ -1,4 +1,5 @@
 import getDocument from '../get/getDocument';
+import parentNodes from './parentNodes';
 
 /**
  * Shortcut for `HTMLElement.getElementsByTagName` method. Some `Node` elements
@@ -9,7 +10,7 @@ import getDocument from '../get/getDocument';
  * @return {HTMLCollectionOf<HTMLElement | Element>} the 'HTMLCollection'
  */
 export default function getElementsByTagName(selector, parent) {
-  const method = 'getElementsByTagName';
-  const lookUp = parent && parent[method] ? parent : getDocument();
-  return lookUp[method](selector);
+  const lookUp = parentNodes.some((e) => parent instanceof e)
+    ? parent : getDocument();
+  return lookUp.getElementsByTagName(selector);
 }

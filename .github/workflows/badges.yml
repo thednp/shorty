@@ -5,7 +5,7 @@ on:
     # update README badge only if the README file changes
     # or if the package.json file changes, or this file changes
     branches:
-      - main
+      - master
     paths:
       - README.md
       - package.json

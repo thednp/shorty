@@ -1,5 +1,5 @@
 /*!
-* Shorty v1.0.0 (https://github.com/thednp/shorty)
+* Shorty v1.0.1 (https://github.com/thednp/shorty)
 * Copyright 2019-2022 © dnp_theme
 * Licensed under MIT (https://github.com/thednp/shorty/blob/master/LICENSE)
 */
@@ -1074,17 +1074,33 @@ function getDocument(node) {
 }
 
 /**
+ * A global array with `Element` | `HTMLElement`.
+ */
+const elementNodes = [Element, HTMLElement];
+
+/**
+ * A global array of possible `ParentNode`.
+ */
+const parentNodes = [Document, Element, HTMLElement];
+
+/**
  * Utility to check if target is typeof `HTMLElement`, `Element`, `Node`
  * or find one that matches a selector.
  *
- * @param {HTMLElement | Element | string} selector the input selector or target element
- * @param {(HTMLElement | Element | Document)=} parent optional node to look into
+ * @param {Node | HTMLElement | Element | string} selector the input selector or target element
+ * @param {(Node | HTMLElement | Element | Document)=} parent optional node to look into
  * @return {(HTMLElement | Element)?} the `HTMLElement` or `querySelector` result
  */
 function querySelector(selector, parent) {
   const method = 'querySelector';
-  const lookUp = parent && parent[method] ? parent : getDocument();
-  return selector[method] ? selector : lookUp[method](selector);
+  if (elementNodes.some((e) => selector instanceof e)) return selector;
+
+  if (selector) {
+    const lookUp = parentNodes.some((e) => parent instanceof e)
+      ? parent : getDocument();
+    return lookUp[method](selector);
+  }
+  return null;
 }
 
 /** @type {Map<string, Map<HTMLElement | Element, Record<string, any>>>} */
@@ -2195,9 +2211,9 @@ function closest(element, selector) {
  * @return {HTMLCollectionOf<HTMLElement | Element>} the 'HTMLCollection'
  */
 function getElementsByTagName(selector, parent) {
-  const method = 'getElementsByTagName';
-  const lookUp = parent && parent[method] ? parent : getDocument();
-  return lookUp[method](selector);
+  const lookUp = parentNodes.some((e) => parent instanceof e)
+    ? parent : getDocument();
+  return lookUp.getElementsByTagName(selector);
 }
 
 /**
@@ -2205,16 +2221,6 @@ function getElementsByTagName(selector, parent) {
  * which is the equivalent of `document.all`.
  */
 const documentAll = getElementsByTagName('*');
-
-/**
- * A global array with `Element` | `HTMLElement`.
- */
-const elementNodes = [Element, HTMLElement];
-
-/**
- * A global array of possible `ParentNode`.
- */
-const parentNodes = [Document, Element, HTMLElement];
 
 /**
  * Returns an `Array` of `Node` elements that are registered as
@@ -2248,9 +2254,9 @@ function getElementById(id) {
  * @return {NodeListOf<HTMLElement | Element>} the query result
  */
 function querySelectorAll(selector, parent) {
-  const method = 'querySelectorAll';
-  const lookUp = parent && parent[method] ? parent : getDocument();
-  return lookUp[method](selector);
+  const lookUp = parentNodes.some((e) => parent instanceof e)
+    ? parent : getDocument();
+  return lookUp.querySelectorAll(selector);
 }
 
 /**
@@ -2262,9 +2268,9 @@ function querySelectorAll(selector, parent) {
  * @return {HTMLCollectionOf<HTMLElement | Element>} the 'HTMLCollection'
  */
 function getElementsByClassName(selector, parent) {
-  const method = 'getElementsByClassName';
-  const lookUp = parent && parent[method] ? parent : getDocument();
-  return lookUp[method](selector);
+  const lookUp = parentNodes.some((e) => parent instanceof e)
+    ? parent : getDocument();
+  return lookUp.getElementsByClassName(selector);
 }
 
 /**
@@ -2302,7 +2308,7 @@ function matches(target, selector) {
   return matchesFn.call(target, selector);
 }
 
-var version = "1.0.0";
+var version = "1.0.1";
 
 // @ts-ignore
 

@@ -1,4 +1,5 @@
 import getDocument from '../get/getDocument';
+import parentNodes from './parentNodes';
 
 /**
  * A shortcut for `(document|Element).querySelectorAll`.
@@ -8,7 +9,7 @@ import getDocument from '../get/getDocument';
  * @return {NodeListOf<HTMLElement | Element>} the query result
  */
 export default function querySelectorAll(selector, parent) {
-  const method = 'querySelectorAll';
-  const lookUp = parent && parent[method] ? parent : getDocument();
-  return lookUp[method](selector);
+  const lookUp = parentNodes.some((e) => parent instanceof e)
+    ? parent : getDocument();
+  return lookUp.querySelectorAll(selector);
 }

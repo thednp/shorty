@@ -1,7 +1,7 @@
 {
   "name": "@thednp/shorty",
-  "version": "1.0.0",
-  "description": "JavaScript shorties.",
+  "version": "1.0.1",
+  "description": "ES6 JavaScript shorties",
   "main": "dist/shorty.min.js",
   "module": "dist/shorty.esm.js",
   "jsnext": "src/index.js",
@@ -21,6 +21,10 @@
     "umdmin": "rollup --environment FORMAT:umd,MIN:true -c",
     "esm": "rollup --environment FORMAT:esm,MIN:false -c",
     "esmmin": "rollup --environment FORMAT:esm,MIN:true -c"
+  },
+  "publishConfig": {
+    "access": "public",
+    "registry": "https://registry.npmjs.org/"
   },
   "repository": {
     "type": "git",
