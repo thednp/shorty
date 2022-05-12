@@ -228,7 +228,7 @@ The ***Data*** and ***Timer*** utilities have their own specifics, you might wan
 import {
   emulateTransitionEnd,
   distinct,
-} from 'shorty';
+} from '@thednp/shorty';
 
 // execute a callback when transitionend is triggered for the target
 emulateTransitionEnd(targetElement, callback);
@@ -256,7 +256,7 @@ const array3 = [...array1, ...array2].filter(distinct);
 
 ```js 
 // EXAMPLES
-import { querySelector, querySelectorAll, documentAll, matches } from 'shorty';
+import { querySelector, querySelectorAll, documentAll, matches } from '@thednp/shorty';
 
 // get first element that matches a certain selector
 const element = querySelector('.my-class-name');
