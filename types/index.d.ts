@@ -224,7 +224,7 @@ export { default as matchesLegacy } from 'shorter-js/src/selectors/matchesLegacy
 export { default as Version } from 'shorter-js/src/misc/version';
 
 export type Component = Record<string, any>;
-export type getInstance<T> = (target: HTMLElement | Element | string, component: string) => T | null;
+export type getInstance<T, ET extends typeof HTMLElement> = (target: ET | string, component: string) => T | null;
 
 export interface BoundingClientRect {
   width: number,
