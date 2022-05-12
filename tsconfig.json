@@ -9,12 +9,12 @@
     "allowJs": true,
     "checkJs": true,
     "rootDir": "../",
-    "outFile": "types/shorter.d.ts", // UN-comment to generate
+    // "outFile": "types/shorty.d.ts", // UN-comment to generate
     "outDir": "types"
   },
   "files": [
     "types/index.d.ts",
-    // "types/shorter.d.ts", // comment to generate, delete file
-    "types/module/shorter.ts",
+    "types/shorty.d.ts", // comment to generate, delete file
+    // "types/module/shorty.ts",
   ],
 }

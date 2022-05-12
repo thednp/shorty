@@ -1,9 +1,9 @@
 {
-  "name": "shorter-js",
-  "version": "0.3.4",
-  "description": "JavaScript shorties for the modern web.",
-  "main": "dist/shorter-js.min.js",
-  "module": "dist/shorter-js.esm.js",
+  "name": "@thednp/shorty",
+  "version": "1.0.0",
+  "description": "JavaScript shorties.",
+  "main": "dist/shorty.min.js",
+  "module": "dist/shorty.esm.js",
   "jsnext": "src/index.js",
   "types": "types/index.d.ts",
   "files": [
@@ -24,20 +24,20 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/thednp/shorter-js.git"
+    "url": "git+https://github.com/thednp/shorty.git"
   },
   "keywords": [
-    "shorter-js",
+    "shorty",
     "javascript",
-    "vanilla js",
-    "vanilla javascript"
+    "vanilla",
+    "native"
   ],
   "author": "dnp_theme",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/thednp/shorter-js/issues"
+    "url": "https://github.com/thednp/shorty/issues"
   },
-  "homepage": "https://github.com/thednp/shorter-js",
+  "homepage": "https://github.com/thednp/shorty",
   "devDependencies": {
     "@rollup/plugin-buble": "^0.21.3",
     "@rollup/plugin-json": "^4.1.0",

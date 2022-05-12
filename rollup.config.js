@@ -10,14 +10,14 @@ const FORMAT = process.env.FORMAT // umd|iife|esm
 
 const year = (new Date).getFullYear()
 const banner = `/*!
-* ${pkg.name} v${pkg.version} (${pkg.homepage})
+* Shorty v${pkg.version} (${pkg.homepage})
 * Copyright 2019-${year} © ${pkg.author}
-* Licensed under MIT (https://github.com/thednp/shorter-js/blob/master/LICENSE)
+* Licensed under MIT (https://github.com/thednp/shorty/blob/master/LICENSE)
 */`
-const miniBanner = `// ${pkg.name} v${pkg.version} | ${pkg.author} © ${year} | ${pkg.license}-License`
+const miniBanner = `// Shorty v${pkg.version} | ${pkg.author} © ${year} | ${pkg.license}-License`
 
-const INPUTFILE = 'src/index.js'
-const OUTPUTFILE = './dist/shorter-js'+(FORMAT==='esm'?'.esm':'')+(MIN?'.min':'')+'.js'
+const INPUTFILE = 'src/index.js';
+const OUTPUTFILE = './dist/shorty'+(FORMAT==='esm'?'.esm':'')+(MIN?'.min':'')+'.js';
 
 const OUTPUT = {
   file: OUTPUTFILE,
@@ -40,7 +40,7 @@ if (MIN){
 }
 
 if (FORMAT!=='esm') {
-  OUTPUT.name = 'SHORTER';
+  OUTPUT.name = 'SHORTY';
 }
 
 export default [

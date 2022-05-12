@@ -1,11 +1,11 @@
-# shorter-js
-A small ES6+ library with various JavaScript tools, all ESLint valid and with TypeScript definitions, everything useful for creating light libraries or web components. If there is anything that is consistently repeating itself, **shorter-js** can help you save up to 50% of the code required, with little to no performance cost.
+# shorty
+A small ES6+ library with various JavaScript tools, all ESLint valid and with TypeScript definitions, everything useful for creating light libraries or web components. If there is anything that is consistently repeating itself, **shorty** can help you save up to 50% of the code required, with little to no performance cost.
 
-[![NPM Version](https://img.shields.io/npm/v/shorter-js.svg?style=flat-square)](https://www.npmjs.com/package/shorter-js)
-[![NPM Downloads](https://img.shields.io/npm/dm/shorter-js.svg?style=flat-square)](http://npm-stat.com/charts.html?package=shorter-js)
-[![jsDeliver](https://data.jsdelivr.com/v1/package/npm/shorter-js/badge)](https://www.jsdelivr.com/package/npm/shorter-js)
+[![NPM Version](https://img.shields.io/npm/v/shorty.svg?style=flat-square)](https://www.npmjs.com/package/shorty)
+[![NPM Downloads](https://img.shields.io/npm/dm/shorty.svg?style=flat-square)](http://npm-stat.com/charts.html?package=shorty)
+[![jsDeliver](https://data.jsdelivr.com/v1/package/npm/shorty/badge)](https://www.jsdelivr.com/package/npm/shorty)
 
-**shorter-js** is featured in [KUTE.js](https://github.com/thednp/kute.js), [BSN](https://github.com/thednp/bootstrap.native), [Navbar.js](https://github.com/thednp/navbar.js) and other libraries.
+**shorty** is featured in [KUTE.js](https://github.com/thednp/kute.js), [BSN](https://github.com/thednp/bootstrap.native), [Navbar.js](https://github.com/thednp/navbar.js) and other libraries.
 
 * The purpose of the library is to speed up the development workflow, minimize the size of larger libraries by providing a shorter syntax for most used JavaScript API methods, most used strings or other helpful utilities.
 * While the library comes with a working build in the `dist` folder, that is mainly for build consistency testing. You can make use of "tree shaking" to import one or anything your code needs.
@@ -13,13 +13,13 @@ A small ES6+ library with various JavaScript tools, all ESLint valid and with Ty
 
 # npm
 ```
-npm install shorter-js
+npm install @thednp/shorty
 ```
 
 # ES6+ Base usage
 ```js
 // import the tool you need
-import { supportTransform } from 'shorter-js';
+import { supportTransform } from '@thednp/shorty';
 
 // use the tool in your ES6/ES7 sources
 if (supportTransform) {
@@ -39,7 +39,7 @@ if (supportTransform) {
 
 ```js 
 // EXAMPLES
-import { getAttribute, hasAttribute, setAttribute } from 'shorter-js';
+import { getAttribute, hasAttribute, setAttribute } from '@thednp/shorty';
 
 // check target has certain attribute
 if (!hasAttribute(myTarget, 'attribute-name')) {
@@ -69,7 +69,7 @@ const currentAttrValue = getAttribute(myTarget, 'attribute-name');
 
 ```js 
 // EXAMPLES
-import { support3DTransform } from 'shorter-js';
+import { support3DTransform } from '@thednp/shorty';
 
 // filter myAction to supported browsers
 if (support3DTransform) {
@@ -84,7 +84,7 @@ if (support3DTransform) {
 
 ```js 
 // EXAMPLES
-import { addClass, removeClass, hasClass } from 'shorter-js'
+import { addClass, removeClass, hasClass } from '@thednp/shorty'
 
 // add a class
 addClass(targetElement, 'className');
@@ -105,7 +105,7 @@ if (hasClass(targetElement, 'className')) {
 
 ```js 
 // EXAMPLES
-import { on, off, one, passiveHandler } from 'shorter-js';
+import { on, off, one, passiveHandler } from '@thednp/shorty';
 
 // attach a passive mousedown eventHandler
 on(targetElement, 'click', eventHandler, passiveHandler);
@@ -146,7 +146,7 @@ For a more advanced method to handle event listeners, I recommend using the [eve
 import {
   getElementAnimationDuration,
   getElementAnimationDurationLegacy,
-} from 'shorter-js'
+} from '@thednp/shorty'
 
 // store the transition duration for target element on a modern browser
 const duration = getElementAnimationDuration(target);
@@ -180,7 +180,7 @@ const duration = getElementAnimationDurationLegacy(target);
 
 ```js 
 // EXAMPLES
-import { isArray,  isHTMLElement, isElementsArray } from 'shorter-js';
+import { isArray,  isHTMLElement, isElementsArray } from '@thednp/shorty';
 
 // check if a value is an `Array` of `Element` instances
 if (isArray(myValue) && myValue.every(isHTMLElement)) {
@@ -220,14 +220,14 @@ if (isElementsArray(myValue)) {
 * ***toUpperCase*** - a shortie for `String.toUpperCase()` method;
 * ***tryWrapper*** - a simple `try()` and `catch()` wrapper for functions, with option to preffix the error logs, pointing out the context of the errors;
 
-The ***Data*** and ***Timer*** utilities have their own specifics, you might want to check the [wiki](https://github.com/thednp/shorter-js/wiki).
+The ***Data*** and ***Timer*** utilities have their own specifics, you might want to check the [wiki](https://github.com/thednp/shorty/wiki).
 
 ```js 
 // EXAMPLES
 import {
   emulateTransitionEnd,
   distinct,
-} from 'shorter-js';
+} from 'shorty';
 
 // execute a callback when transitionend is triggered for the target
 emulateTransitionEnd(targetElement, callback);
@@ -255,7 +255,7 @@ const array3 = [...array1, ...array2].filter(distinct);
 
 ```js 
 // EXAMPLES
-import { querySelector, querySelectorAll, documentAll, matches } from 'shorter-js';
+import { querySelector, querySelectorAll, documentAll, matches } from 'shorty';
 
 // get first element that matches a certain selector
 const element = querySelector('.my-class-name');
@@ -296,7 +296,7 @@ There are lots more string constants available which include native event names,
 
 ```js 
 // EXAMPLES
-import {on, off, one, mouseClickEvents, touchEvents, passiveHandler} from 'shorter-js';
+import {on, off, one, mouseClickEvents, touchEvents, passiveHandler} from '@thednp/shorty';
 
 // attach a passive mousedown eventHandler
 on(targetElement, mouseClickEvents.down, eventHandler, passiveHandler);
@@ -309,7 +309,7 @@ one(targetElement, touchEvents.start, eventHandler, passiveHandler);
 ```
 
 # Advanced Use
-Here's a simple example to showcase the benefit of using ***shorter-js***.
+Here's a simple example to showcase the benefit of using ***shorty***.
 
 ```js
 // This is your typical day to day scripting
@@ -320,13 +320,13 @@ target.addEventListener('click', function(e) {
 })
 ```
 
-Now make it all shorter. You might want to import shorties directly from their location, something we like to call "tree shaking".
+Now make it all shorty. You might want to import shorties directly from their location, something we like to call "tree shaking".
 ```js
 // Example
-import on from 'shorter-js/src/event/on';
-import addClass from 'shorter-js/src/class/addClass';
-import getElementById from 'shorter-js/src/selectors/getElementById';
-import mouseclickEvent from 'shorter-js/src/strings/mouseclickEvent';
+import on from '@thednp/shorty/src/event/on';
+import addClass from '@thednp/shorty/src/class/addClass';
+import getElementById from '@thednp/shorty/src/selectors/getElementById';
+import mouseclickEvent from '@thednp/shorty/src/strings/mouseclickEvent';
 
 const target = getElementById('my-element');
 
@@ -337,4 +337,4 @@ on(target, mouseclickEvent, function(e) {
 
 
 # License
-**shorter-js** is released under the [MIT License](https://github.com/thednp/shorter-js/blob/master/LICENSE)
+**shorty** is released under the [MIT License](https://github.com/thednp/shorty/blob/master/LICENSE)

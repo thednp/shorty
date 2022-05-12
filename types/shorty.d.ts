@@ -1,4 +1,4 @@
-declare module "shorter-js/src/strings/ariaChecked" {
+declare module "shorty/src/strings/ariaChecked" {
     export default ariaChecked;
     /**
      * A global namespace for aria-checked.
@@ -6,7 +6,7 @@ declare module "shorter-js/src/strings/ariaChecked" {
      */
     const ariaChecked: string;
 }
-declare module "shorter-js/src/strings/ariaDescription" {
+declare module "shorty/src/strings/ariaDescription" {
     export default ariaDescription;
     /**
      * A global namespace for aria-description.
@@ -14,7 +14,7 @@ declare module "shorter-js/src/strings/ariaDescription" {
      */
     const ariaDescription: string;
 }
-declare module "shorter-js/src/strings/ariaDescribedBy" {
+declare module "shorty/src/strings/ariaDescribedBy" {
     export default ariaDescribedBy;
     /**
      * A global namespace for aria-describedby.
@@ -22,7 +22,7 @@ declare module "shorter-js/src/strings/ariaDescribedBy" {
      */
     const ariaDescribedBy: string;
 }
-declare module "shorter-js/src/strings/ariaExpanded" {
+declare module "shorty/src/strings/ariaExpanded" {
     export default ariaExpanded;
     /**
      * A global namespace for aria-expanded.
@@ -30,7 +30,7 @@ declare module "shorter-js/src/strings/ariaExpanded" {
      */
     const ariaExpanded: string;
 }
-declare module "shorter-js/src/strings/ariaHasPopup" {
+declare module "shorty/src/strings/ariaHasPopup" {
     export default ariaHasPopup;
     /**
      * A global namespace for aria-haspopup.
@@ -38,7 +38,7 @@ declare module "shorter-js/src/strings/ariaHasPopup" {
      */
     const ariaHasPopup: string;
 }
-declare module "shorter-js/src/strings/ariaHidden" {
+declare module "shorty/src/strings/ariaHidden" {
     export default ariaHidden;
     /**
      * A global namespace for aria-hidden.
@@ -46,7 +46,7 @@ declare module "shorter-js/src/strings/ariaHidden" {
      */
     const ariaHidden: string;
 }
-declare module "shorter-js/src/strings/ariaLabel" {
+declare module "shorty/src/strings/ariaLabel" {
     export default ariaLabel;
     /**
      * A global namespace for aria-label.
@@ -54,7 +54,7 @@ declare module "shorter-js/src/strings/ariaLabel" {
      */
     const ariaLabel: string;
 }
-declare module "shorter-js/src/strings/ariaLabelledBy" {
+declare module "shorty/src/strings/ariaLabelledBy" {
     export default ariaLabelledBy;
     /**
      * A global namespace for aria-labelledby.
@@ -62,7 +62,7 @@ declare module "shorter-js/src/strings/ariaLabelledBy" {
      */
     const ariaLabelledBy: string;
 }
-declare module "shorter-js/src/strings/ariaModal" {
+declare module "shorty/src/strings/ariaModal" {
     export default ariaModal;
     /**
      * A global namespace for aria-modal.
@@ -70,7 +70,7 @@ declare module "shorter-js/src/strings/ariaModal" {
      */
     const ariaModal: string;
 }
-declare module "shorter-js/src/strings/ariaPressed" {
+declare module "shorty/src/strings/ariaPressed" {
     export default ariaPressed;
     /**
      * A global namespace for aria-pressed.
@@ -78,7 +78,7 @@ declare module "shorter-js/src/strings/ariaPressed" {
      */
     const ariaPressed: string;
 }
-declare module "shorter-js/src/strings/ariaSelected" {
+declare module "shorty/src/strings/ariaSelected" {
     export default ariaSelected;
     /**
      * A global namespace for aria-selected.
@@ -86,7 +86,7 @@ declare module "shorter-js/src/strings/ariaSelected" {
      */
     const ariaSelected: string;
 }
-declare module "shorter-js/src/strings/ariaValueMin" {
+declare module "shorty/src/strings/ariaValueMin" {
     export default ariaValueMin;
     /**
      * A global namespace for aria-valuemin.
@@ -94,7 +94,7 @@ declare module "shorter-js/src/strings/ariaValueMin" {
      */
     const ariaValueMin: string;
 }
-declare module "shorter-js/src/strings/ariaValueMax" {
+declare module "shorty/src/strings/ariaValueMax" {
     export default ariaValueMax;
     /**
      * A global namespace for aria-valuemax.
@@ -102,7 +102,7 @@ declare module "shorter-js/src/strings/ariaValueMax" {
      */
     const ariaValueMax: string;
 }
-declare module "shorter-js/src/strings/ariaValueNow" {
+declare module "shorty/src/strings/ariaValueNow" {
     export default ariaValueNow;
     /**
      * A global namespace for aria-valuenow.
@@ -110,7 +110,7 @@ declare module "shorter-js/src/strings/ariaValueNow" {
      */
     const ariaValueNow: string;
 }
-declare module "shorter-js/src/strings/ariaValueText" {
+declare module "shorty/src/strings/ariaValueText" {
     export default ariaValueText;
     /**
      * A global namespace for aria-valuetext.
@@ -118,7 +118,7 @@ declare module "shorter-js/src/strings/ariaValueText" {
      */
     const ariaValueText: string;
 }
-declare module "shorter-js/src/strings/abortEvent" {
+declare module "shorty/src/strings/abortEvent" {
     export default abortEvent;
     /**
      * A global namespace for `abort` event.
@@ -126,7 +126,7 @@ declare module "shorter-js/src/strings/abortEvent" {
      */
     const abortEvent: string;
 }
-declare module "shorter-js/src/strings/beforeunloadEvent" {
+declare module "shorty/src/strings/beforeunloadEvent" {
     export default beforeunloadEvent;
     /**
      * A global namespace for `beforeunload` event.
@@ -134,7 +134,7 @@ declare module "shorter-js/src/strings/beforeunloadEvent" {
      */
     const beforeunloadEvent: string;
 }
-declare module "shorter-js/src/strings/blurEvent" {
+declare module "shorty/src/strings/blurEvent" {
     export default blurEvent;
     /**
      * A global namespace for `blur` event.
@@ -142,7 +142,7 @@ declare module "shorter-js/src/strings/blurEvent" {
      */
     const blurEvent: string;
 }
-declare module "shorter-js/src/strings/changeEvent" {
+declare module "shorty/src/strings/changeEvent" {
     export default changeEvent;
     /**
      * A global namespace for `change` event.
@@ -150,7 +150,7 @@ declare module "shorter-js/src/strings/changeEvent" {
      */
     const changeEvent: string;
 }
-declare module "shorter-js/src/strings/contextmenuEvent" {
+declare module "shorty/src/strings/contextmenuEvent" {
     export default contextmenuEvent;
     /**
      * A global namespace for `contextmenu` event.
@@ -158,7 +158,7 @@ declare module "shorter-js/src/strings/contextmenuEvent" {
      */
     const contextmenuEvent: string;
 }
-declare module "shorter-js/src/strings/DOMContentLoadedEvent" {
+declare module "shorty/src/strings/DOMContentLoadedEvent" {
     export default DOMContentLoadedEvent;
     /**
      * A global namespace for `DOMContentLoaded` event.
@@ -166,7 +166,7 @@ declare module "shorter-js/src/strings/DOMContentLoadedEvent" {
      */
     const DOMContentLoadedEvent: string;
 }
-declare module "shorter-js/src/strings/DOMMouseScrollEvent" {
+declare module "shorty/src/strings/DOMMouseScrollEvent" {
     export default DOMMouseScrollEvent;
     /**
      * A global namespace for `DOMMouseScroll` event.
@@ -174,7 +174,7 @@ declare module "shorter-js/src/strings/DOMMouseScrollEvent" {
      */
     const DOMMouseScrollEvent: string;
 }
-declare module "shorter-js/src/strings/errorEvent" {
+declare module "shorty/src/strings/errorEvent" {
     export default errorEvent;
     /**
      * A global namespace for `error` event.
@@ -182,7 +182,7 @@ declare module "shorter-js/src/strings/errorEvent" {
      */
     const errorEvent: string;
 }
-declare module "shorter-js/src/strings/focusEvent" {
+declare module "shorty/src/strings/focusEvent" {
     export default focusEvent;
     /**
      * A global namespace for `focus` event.
@@ -190,7 +190,7 @@ declare module "shorter-js/src/strings/focusEvent" {
      */
     const focusEvent: string;
 }
-declare module "shorter-js/src/strings/focusinEvent" {
+declare module "shorty/src/strings/focusinEvent" {
     export default focusinEvent;
     /**
      * A global namespace for `focusin` event.
@@ -198,7 +198,7 @@ declare module "shorter-js/src/strings/focusinEvent" {
      */
     const focusinEvent: string;
 }
-declare module "shorter-js/src/strings/focusoutEvent" {
+declare module "shorty/src/strings/focusoutEvent" {
     export default focusoutEvent;
     /**
      * A global namespace for `focusout` event.
@@ -206,7 +206,7 @@ declare module "shorter-js/src/strings/focusoutEvent" {
      */
     const focusoutEvent: string;
 }
-declare module "shorter-js/src/strings/gesturechangeEvent" {
+declare module "shorty/src/strings/gesturechangeEvent" {
     export default gesturechangeEvent;
     /**
      * A global namespace for `gesturechange` event.
@@ -214,7 +214,7 @@ declare module "shorter-js/src/strings/gesturechangeEvent" {
      */
     const gesturechangeEvent: string;
 }
-declare module "shorter-js/src/strings/gestureendEvent" {
+declare module "shorty/src/strings/gestureendEvent" {
     export default gestureendEvent;
     /**
      * A global namespace for `gestureend` event.
@@ -222,7 +222,7 @@ declare module "shorter-js/src/strings/gestureendEvent" {
      */
     const gestureendEvent: string;
 }
-declare module "shorter-js/src/strings/gesturestartEvent" {
+declare module "shorty/src/strings/gesturestartEvent" {
     export default gesturestartEvent;
     /**
      * A global namespace for `gesturestart` event.
@@ -230,7 +230,7 @@ declare module "shorter-js/src/strings/gesturestartEvent" {
      */
     const gesturestartEvent: string;
 }
-declare module "shorter-js/src/strings/keydownEvent" {
+declare module "shorty/src/strings/keydownEvent" {
     export default keydownEvent;
     /**
      * A global namespace for `keydown` event.
@@ -238,7 +238,7 @@ declare module "shorter-js/src/strings/keydownEvent" {
      */
     const keydownEvent: string;
 }
-declare module "shorter-js/src/strings/keypressEvent" {
+declare module "shorty/src/strings/keypressEvent" {
     export default keypressEvent;
     /**
      * A global namespace for `keypress` event.
@@ -246,7 +246,7 @@ declare module "shorter-js/src/strings/keypressEvent" {
      */
     const keypressEvent: string;
 }
-declare module "shorter-js/src/strings/keyupEvent" {
+declare module "shorty/src/strings/keyupEvent" {
     export default keyupEvent;
     /**
      * A global namespace for `keyup` event.
@@ -254,7 +254,7 @@ declare module "shorter-js/src/strings/keyupEvent" {
      */
     const keyupEvent: string;
 }
-declare module "shorter-js/src/strings/loadEvent" {
+declare module "shorty/src/strings/loadEvent" {
     export default loadEvent;
     /**
      * A global namespace for `load` event.
@@ -262,7 +262,7 @@ declare module "shorter-js/src/strings/loadEvent" {
      */
     const loadEvent: string;
 }
-declare module "shorter-js/src/strings/mouseclickEvent" {
+declare module "shorty/src/strings/mouseclickEvent" {
     export default mouseclickEvent;
     /**
      * A global namespace for `click` event.
@@ -270,7 +270,7 @@ declare module "shorter-js/src/strings/mouseclickEvent" {
      */
     const mouseclickEvent: string;
 }
-declare module "shorter-js/src/strings/mousedblclickEvent" {
+declare module "shorty/src/strings/mousedblclickEvent" {
     export default mousedblclickEvent;
     /**
      * A global namespace for `dblclick` event.
@@ -278,7 +278,7 @@ declare module "shorter-js/src/strings/mousedblclickEvent" {
      */
     const mousedblclickEvent: string;
 }
-declare module "shorter-js/src/strings/mousedownEvent" {
+declare module "shorty/src/strings/mousedownEvent" {
     export default mousedownEvent;
     /**
      * A global namespace for `mousedown` event.
@@ -286,7 +286,7 @@ declare module "shorter-js/src/strings/mousedownEvent" {
      */
     const mousedownEvent: string;
 }
-declare module "shorter-js/src/strings/mouseupEvent" {
+declare module "shorty/src/strings/mouseupEvent" {
     export default mouseupEvent;
     /**
      * A global namespace for `mouseup` event.
@@ -294,7 +294,7 @@ declare module "shorter-js/src/strings/mouseupEvent" {
      */
     const mouseupEvent: string;
 }
-declare module "shorter-js/src/strings/mousehoverEvent" {
+declare module "shorty/src/strings/mousehoverEvent" {
     export default mousehoverEvent;
     /**
      * A global namespace for `hover` event.
@@ -302,7 +302,7 @@ declare module "shorter-js/src/strings/mousehoverEvent" {
      */
     const mousehoverEvent: string;
 }
-declare module "shorter-js/src/strings/mouseenterEvent" {
+declare module "shorty/src/strings/mouseenterEvent" {
     export default mouseenterEvent;
     /**
      * A global namespace for `mouseenter` event.
@@ -310,7 +310,7 @@ declare module "shorter-js/src/strings/mouseenterEvent" {
      */
     const mouseenterEvent: string;
 }
-declare module "shorter-js/src/strings/mouseleaveEvent" {
+declare module "shorty/src/strings/mouseleaveEvent" {
     export default mouseleaveEvent;
     /**
      * A global namespace for `mouseleave` event.
@@ -318,7 +318,7 @@ declare module "shorter-js/src/strings/mouseleaveEvent" {
      */
     const mouseleaveEvent: string;
 }
-declare module "shorter-js/src/strings/mouseinEvent" {
+declare module "shorty/src/strings/mouseinEvent" {
     export default mouseinEvent;
     /**
      * A global namespace for `mousein` event.
@@ -326,7 +326,7 @@ declare module "shorter-js/src/strings/mouseinEvent" {
      */
     const mouseinEvent: string;
 }
-declare module "shorter-js/src/strings/mouseoutEvent" {
+declare module "shorty/src/strings/mouseoutEvent" {
     export default mouseoutEvent;
     /**
      * A global namespace for `mouseout` event.
@@ -334,7 +334,7 @@ declare module "shorter-js/src/strings/mouseoutEvent" {
      */
     const mouseoutEvent: string;
 }
-declare module "shorter-js/src/strings/mouseoverEvent" {
+declare module "shorty/src/strings/mouseoverEvent" {
     export default mouseoverEvent;
     /**
      * A global namespace for `mouseover` event.
@@ -342,7 +342,7 @@ declare module "shorter-js/src/strings/mouseoverEvent" {
      */
     const mouseoverEvent: string;
 }
-declare module "shorter-js/src/strings/mousemoveEvent" {
+declare module "shorty/src/strings/mousemoveEvent" {
     export default mousemoveEvent;
     /**
      * A global namespace for `mousemove` event.
@@ -350,7 +350,7 @@ declare module "shorter-js/src/strings/mousemoveEvent" {
      */
     const mousemoveEvent: string;
 }
-declare module "shorter-js/src/strings/mousewheelEvent" {
+declare module "shorty/src/strings/mousewheelEvent" {
     export default mousewheelEvent;
     /**
      * A global namespace for `mousewheel` event.
@@ -358,7 +358,7 @@ declare module "shorter-js/src/strings/mousewheelEvent" {
      */
     const mousewheelEvent: string;
 }
-declare module "shorter-js/src/strings/moveEvent" {
+declare module "shorty/src/strings/moveEvent" {
     export default moveEvent;
     /**
      * A global namespace for `move` event.
@@ -366,7 +366,7 @@ declare module "shorter-js/src/strings/moveEvent" {
      */
     const moveEvent: string;
 }
-declare module "shorter-js/src/strings/orientationchangeEvent" {
+declare module "shorty/src/strings/orientationchangeEvent" {
     export default orientationchangeEvent;
     /**
      * A global namespace for `orientationchange` event.
@@ -374,7 +374,7 @@ declare module "shorter-js/src/strings/orientationchangeEvent" {
      */
     const orientationchangeEvent: string;
 }
-declare module "shorter-js/src/strings/pointercancelEvent" {
+declare module "shorty/src/strings/pointercancelEvent" {
     export default pointercancelEvent;
     /**
      * A global namespace for `pointercancel` event.
@@ -382,7 +382,7 @@ declare module "shorter-js/src/strings/pointercancelEvent" {
      */
     const pointercancelEvent: string;
 }
-declare module "shorter-js/src/strings/pointerdownEvent" {
+declare module "shorty/src/strings/pointerdownEvent" {
     export default pointerdownEvent;
     /**
      * A global namespace for `pointerdown` event.
@@ -390,7 +390,7 @@ declare module "shorter-js/src/strings/pointerdownEvent" {
      */
     const pointerdownEvent: string;
 }
-declare module "shorter-js/src/strings/pointerleaveEvent" {
+declare module "shorty/src/strings/pointerleaveEvent" {
     export default pointerleaveEvent;
     /**
      * A global namespace for `pointerleave` event.
@@ -398,7 +398,7 @@ declare module "shorter-js/src/strings/pointerleaveEvent" {
      */
     const pointerleaveEvent: string;
 }
-declare module "shorter-js/src/strings/pointermoveEvent" {
+declare module "shorty/src/strings/pointermoveEvent" {
     export default pointermoveEvent;
     /**
      * A global namespace for `pointermove` event.
@@ -406,7 +406,7 @@ declare module "shorter-js/src/strings/pointermoveEvent" {
      */
     const pointermoveEvent: string;
 }
-declare module "shorter-js/src/strings/pointerupEvent" {
+declare module "shorty/src/strings/pointerupEvent" {
     export default pointerupEvent;
     /**
      * A global namespace for `pointerup` event.
@@ -414,7 +414,7 @@ declare module "shorter-js/src/strings/pointerupEvent" {
      */
     const pointerupEvent: string;
 }
-declare module "shorter-js/src/strings/readystatechangeEvent" {
+declare module "shorty/src/strings/readystatechangeEvent" {
     export default readystatechangeEvent;
     /**
      * A global namespace for `readystatechange` event.
@@ -422,7 +422,7 @@ declare module "shorter-js/src/strings/readystatechangeEvent" {
      */
     const readystatechangeEvent: string;
 }
-declare module "shorter-js/src/strings/resetEvent" {
+declare module "shorty/src/strings/resetEvent" {
     export default resetEvent;
     /**
      * A global namespace for `reset` event.
@@ -430,7 +430,7 @@ declare module "shorter-js/src/strings/resetEvent" {
      */
     const resetEvent: string;
 }
-declare module "shorter-js/src/strings/resizeEvent" {
+declare module "shorty/src/strings/resizeEvent" {
     export default resizeEvent;
     /**
      * A global namespace for `resize` event.
@@ -438,7 +438,7 @@ declare module "shorter-js/src/strings/resizeEvent" {
      */
     const resizeEvent: string;
 }
-declare module "shorter-js/src/strings/selectEvent" {
+declare module "shorty/src/strings/selectEvent" {
     export default selectEvent;
     /**
      * A global namespace for `select` event.
@@ -446,7 +446,7 @@ declare module "shorter-js/src/strings/selectEvent" {
      */
     const selectEvent: string;
 }
-declare module "shorter-js/src/strings/selectendEvent" {
+declare module "shorty/src/strings/selectendEvent" {
     export default selectendEvent;
     /**
      * A global namespace for the `selectend` event.
@@ -454,7 +454,7 @@ declare module "shorter-js/src/strings/selectendEvent" {
      */
     const selectendEvent: string;
 }
-declare module "shorter-js/src/strings/selectstartEvent" {
+declare module "shorty/src/strings/selectstartEvent" {
     export default selectstartEvent;
     /**
      * A global namespace for the `selectstart` event.
@@ -462,7 +462,7 @@ declare module "shorter-js/src/strings/selectstartEvent" {
      */
     const selectstartEvent: string;
 }
-declare module "shorter-js/src/strings/scrollEvent" {
+declare module "shorty/src/strings/scrollEvent" {
     export default scrollEvent;
     /**
      * A global namespace for `scroll` event.
@@ -470,7 +470,7 @@ declare module "shorter-js/src/strings/scrollEvent" {
      */
     const scrollEvent: string;
 }
-declare module "shorter-js/src/strings/submitEvent" {
+declare module "shorty/src/strings/submitEvent" {
     export default submitEvent;
     /**
      * A global namespace for `submit` event.
@@ -478,7 +478,7 @@ declare module "shorter-js/src/strings/submitEvent" {
      */
     const submitEvent: string;
 }
-declare module "shorter-js/src/strings/touchstartEvent" {
+declare module "shorty/src/strings/touchstartEvent" {
     export default touchstartEvent;
     /**
      * A global namespace for `touchstart` event.
@@ -486,7 +486,7 @@ declare module "shorter-js/src/strings/touchstartEvent" {
      */
     const touchstartEvent: string;
 }
-declare module "shorter-js/src/strings/touchmoveEvent" {
+declare module "shorty/src/strings/touchmoveEvent" {
     export default touchmoveEvent;
     /**
      * A global namespace for `touchmove` event.
@@ -494,7 +494,7 @@ declare module "shorter-js/src/strings/touchmoveEvent" {
      */
     const touchmoveEvent: string;
 }
-declare module "shorter-js/src/strings/touchcancelEvent" {
+declare module "shorty/src/strings/touchcancelEvent" {
     export default touchcancelEvent;
     /**
      * A global namespace for `touchcancel` event.
@@ -502,7 +502,7 @@ declare module "shorter-js/src/strings/touchcancelEvent" {
      */
     const touchcancelEvent: string;
 }
-declare module "shorter-js/src/strings/touchendEvent" {
+declare module "shorty/src/strings/touchendEvent" {
     export default touchendEvent;
     /**
      * A global namespace for `touchend` event.
@@ -510,7 +510,7 @@ declare module "shorter-js/src/strings/touchendEvent" {
      */
     const touchendEvent: string;
 }
-declare module "shorter-js/src/strings/unloadEvent" {
+declare module "shorty/src/strings/unloadEvent" {
     export default unloadEvent;
     /**
      * A global namespace for `unload` event.
@@ -518,7 +518,7 @@ declare module "shorter-js/src/strings/unloadEvent" {
      */
     const unloadEvent: string;
 }
-declare module "shorter-js/src/strings/nativeEvents" {
+declare module "shorty/src/strings/nativeEvents" {
     export default nativeEvents;
     namespace nativeEvents {
         export { DOMContentLoaded };
@@ -572,58 +572,58 @@ declare module "shorter-js/src/strings/nativeEvents" {
         export { touchstart };
         export { unload };
     }
-    import DOMContentLoaded from "shorter-js/src/strings/DOMContentLoadedEvent";
-    import DOMMouseScroll from "shorter-js/src/strings/DOMMouseScrollEvent";
-    import abort from "shorter-js/src/strings/abortEvent";
-    import beforeunload from "shorter-js/src/strings/beforeunloadEvent";
-    import blur from "shorter-js/src/strings/blurEvent";
-    import change from "shorter-js/src/strings/changeEvent";
-    import click from "shorter-js/src/strings/mouseclickEvent";
-    import contextmenu from "shorter-js/src/strings/contextmenuEvent";
-    import dblclick from "shorter-js/src/strings/mousedblclickEvent";
-    import error from "shorter-js/src/strings/errorEvent";
-    import focus from "shorter-js/src/strings/focusEvent";
-    import focusin from "shorter-js/src/strings/focusinEvent";
-    import focusout from "shorter-js/src/strings/focusoutEvent";
-    import gesturechange from "shorter-js/src/strings/gesturechangeEvent";
-    import gestureend from "shorter-js/src/strings/gestureendEvent";
-    import gesturestart from "shorter-js/src/strings/gesturestartEvent";
-    import hover from "shorter-js/src/strings/mousehoverEvent";
-    import keydown from "shorter-js/src/strings/keydownEvent";
-    import keypress from "shorter-js/src/strings/keypressEvent";
-    import keyup from "shorter-js/src/strings/keyupEvent";
-    import load from "shorter-js/src/strings/loadEvent";
-    import mousedown from "shorter-js/src/strings/mousedownEvent";
-    import mousemove from "shorter-js/src/strings/mousemoveEvent";
-    import mousein from "shorter-js/src/strings/mouseinEvent";
-    import mouseout from "shorter-js/src/strings/mouseoutEvent";
-    import mouseenter from "shorter-js/src/strings/mouseenterEvent";
-    import mouseleave from "shorter-js/src/strings/mouseleaveEvent";
-    import mouseover from "shorter-js/src/strings/mouseoverEvent";
-    import mouseup from "shorter-js/src/strings/mouseupEvent";
-    import mousewheel from "shorter-js/src/strings/mousewheelEvent";
-    import move from "shorter-js/src/strings/moveEvent";
-    import orientationchange from "shorter-js/src/strings/orientationchangeEvent";
-    import pointercancel from "shorter-js/src/strings/pointercancelEvent";
-    import pointerdown from "shorter-js/src/strings/pointerdownEvent";
-    import pointerleave from "shorter-js/src/strings/pointerleaveEvent";
-    import pointermove from "shorter-js/src/strings/pointermoveEvent";
-    import pointerup from "shorter-js/src/strings/pointerupEvent";
-    import readystatechange from "shorter-js/src/strings/readystatechangeEvent";
-    import reset from "shorter-js/src/strings/resetEvent";
-    import resize from "shorter-js/src/strings/resizeEvent";
-    import scroll from "shorter-js/src/strings/scrollEvent";
-    import select from "shorter-js/src/strings/selectEvent";
-    import selectend from "shorter-js/src/strings/selectendEvent";
-    import selectstart from "shorter-js/src/strings/selectstartEvent";
-    import submit from "shorter-js/src/strings/submitEvent";
-    import touchcancel from "shorter-js/src/strings/touchcancelEvent";
-    import touchend from "shorter-js/src/strings/touchendEvent";
-    import touchmove from "shorter-js/src/strings/touchmoveEvent";
-    import touchstart from "shorter-js/src/strings/touchstartEvent";
-    import unload from "shorter-js/src/strings/unloadEvent";
+    import DOMContentLoaded from "shorty/src/strings/DOMContentLoadedEvent";
+    import DOMMouseScroll from "shorty/src/strings/DOMMouseScrollEvent";
+    import abort from "shorty/src/strings/abortEvent";
+    import beforeunload from "shorty/src/strings/beforeunloadEvent";
+    import blur from "shorty/src/strings/blurEvent";
+    import change from "shorty/src/strings/changeEvent";
+    import click from "shorty/src/strings/mouseclickEvent";
+    import contextmenu from "shorty/src/strings/contextmenuEvent";
+    import dblclick from "shorty/src/strings/mousedblclickEvent";
+    import error from "shorty/src/strings/errorEvent";
+    import focus from "shorty/src/strings/focusEvent";
+    import focusin from "shorty/src/strings/focusinEvent";
+    import focusout from "shorty/src/strings/focusoutEvent";
+    import gesturechange from "shorty/src/strings/gesturechangeEvent";
+    import gestureend from "shorty/src/strings/gestureendEvent";
+    import gesturestart from "shorty/src/strings/gesturestartEvent";
+    import hover from "shorty/src/strings/mousehoverEvent";
+    import keydown from "shorty/src/strings/keydownEvent";
+    import keypress from "shorty/src/strings/keypressEvent";
+    import keyup from "shorty/src/strings/keyupEvent";
+    import load from "shorty/src/strings/loadEvent";
+    import mousedown from "shorty/src/strings/mousedownEvent";
+    import mousemove from "shorty/src/strings/mousemoveEvent";
+    import mousein from "shorty/src/strings/mouseinEvent";
+    import mouseout from "shorty/src/strings/mouseoutEvent";
+    import mouseenter from "shorty/src/strings/mouseenterEvent";
+    import mouseleave from "shorty/src/strings/mouseleaveEvent";
+    import mouseover from "shorty/src/strings/mouseoverEvent";
+    import mouseup from "shorty/src/strings/mouseupEvent";
+    import mousewheel from "shorty/src/strings/mousewheelEvent";
+    import move from "shorty/src/strings/moveEvent";
+    import orientationchange from "shorty/src/strings/orientationchangeEvent";
+    import pointercancel from "shorty/src/strings/pointercancelEvent";
+    import pointerdown from "shorty/src/strings/pointerdownEvent";
+    import pointerleave from "shorty/src/strings/pointerleaveEvent";
+    import pointermove from "shorty/src/strings/pointermoveEvent";
+    import pointerup from "shorty/src/strings/pointerupEvent";
+    import readystatechange from "shorty/src/strings/readystatechangeEvent";
+    import reset from "shorty/src/strings/resetEvent";
+    import resize from "shorty/src/strings/resizeEvent";
+    import scroll from "shorty/src/strings/scrollEvent";
+    import select from "shorty/src/strings/selectEvent";
+    import selectend from "shorty/src/strings/selectendEvent";
+    import selectstart from "shorty/src/strings/selectstartEvent";
+    import submit from "shorty/src/strings/submitEvent";
+    import touchcancel from "shorty/src/strings/touchcancelEvent";
+    import touchend from "shorty/src/strings/touchendEvent";
+    import touchmove from "shorty/src/strings/touchmoveEvent";
+    import touchstart from "shorty/src/strings/touchstartEvent";
+    import unload from "shorty/src/strings/unloadEvent";
 }
-declare module "shorter-js/src/strings/focusEvents" {
+declare module "shorty/src/strings/focusEvents" {
     export default focusEvents;
     /**
      * A global namespace for focus event names.
@@ -634,7 +634,7 @@ declare module "shorter-js/src/strings/focusEvents" {
         out: string;
     };
 }
-declare module "shorter-js/src/strings/loadstartEvent" {
+declare module "shorty/src/strings/loadstartEvent" {
     export default loadstartEvent;
     /**
      * A global namespace for `loadstart` event.
@@ -642,7 +642,7 @@ declare module "shorter-js/src/strings/loadstartEvent" {
      */
     const loadstartEvent: string;
 }
-declare module "shorter-js/src/strings/mouseClickEvents" {
+declare module "shorty/src/strings/mouseClickEvents" {
     export default mouseClickEvents;
     /**
      * A global namespace for mouse click events.
@@ -650,7 +650,7 @@ declare module "shorter-js/src/strings/mouseClickEvents" {
      */
     const mouseClickEvents: Record<string, string>;
 }
-declare module "shorter-js/src/strings/mouseHoverEvents" {
+declare module "shorty/src/strings/mouseHoverEvents" {
     export default mouseHoverEvents;
     /**
      * A global namespace for mouse hover events.
@@ -658,7 +658,7 @@ declare module "shorter-js/src/strings/mouseHoverEvents" {
      */
     const mouseHoverEvents: [string, string];
 }
-declare module "shorter-js/src/strings/mouseSwipeEvents" {
+declare module "shorty/src/strings/mouseSwipeEvents" {
     export default mouseSwipeEvents;
     /**
      * A global namespace for mouse events equivalent to touch events.
@@ -666,7 +666,7 @@ declare module "shorter-js/src/strings/mouseSwipeEvents" {
      */
     const mouseSwipeEvents: Record<string, string>;
 }
-declare module "shorter-js/src/strings/touchEvents" {
+declare module "shorty/src/strings/touchEvents" {
     export default touchEvents;
     /**
      * A global namespace for touch events.
@@ -674,7 +674,7 @@ declare module "shorter-js/src/strings/touchEvents" {
      */
     const touchEvents: Record<string, string>;
 }
-declare module "shorter-js/src/strings/keyboardEventKeys" {
+declare module "shorty/src/strings/keyboardEventKeys" {
     export default keyboardEventKeys;
     /**
      * A global namespace for keyboard event keys.
@@ -682,7 +682,7 @@ declare module "shorter-js/src/strings/keyboardEventKeys" {
      */
     const keyboardEventKeys: Record<string, string>;
 }
-declare module "shorter-js/src/strings/keyAlt" {
+declare module "shorty/src/strings/keyAlt" {
     export default keyAlt;
     /**
      * A global namespace for `Alt` key.
@@ -690,7 +690,7 @@ declare module "shorter-js/src/strings/keyAlt" {
      */
     const keyAlt: string;
 }
-declare module "shorter-js/src/strings/keyArrowDown" {
+declare module "shorty/src/strings/keyArrowDown" {
     export default keyArrowDown;
     /**
      * A global namespace for `ArrowDown` key.
@@ -698,7 +698,7 @@ declare module "shorter-js/src/strings/keyArrowDown" {
      */
     const keyArrowDown: string;
 }
-declare module "shorter-js/src/strings/keyArrowUp" {
+declare module "shorty/src/strings/keyArrowUp" {
     export default keyArrowUp;
     /**
      * A global namespace for `ArrowUp` key.
@@ -706,7 +706,7 @@ declare module "shorter-js/src/strings/keyArrowUp" {
      */
     const keyArrowUp: string;
 }
-declare module "shorter-js/src/strings/keyArrowLeft" {
+declare module "shorty/src/strings/keyArrowLeft" {
     export default keyArrowLeft;
     /**
      * A global namespace for `ArrowLeft` key.
@@ -714,7 +714,7 @@ declare module "shorter-js/src/strings/keyArrowLeft" {
      */
     const keyArrowLeft: string;
 }
-declare module "shorter-js/src/strings/keyArrowRight" {
+declare module "shorty/src/strings/keyArrowRight" {
     export default keyArrowRight;
     /**
      * A global namespace for `ArrowRight` key.
@@ -722,7 +722,7 @@ declare module "shorter-js/src/strings/keyArrowRight" {
      */
     const keyArrowRight: string;
 }
-declare module "shorter-js/src/strings/keyBackspace" {
+declare module "shorty/src/strings/keyBackspace" {
     export default keyBackspace;
     /**
      * A global namespace for `Backspace` key.
@@ -730,7 +730,7 @@ declare module "shorter-js/src/strings/keyBackspace" {
      */
     const keyBackspace: string;
 }
-declare module "shorter-js/src/strings/keyCapsLock" {
+declare module "shorty/src/strings/keyCapsLock" {
     export default keyCapsLock;
     /**
      * A global namespace for `CapsLock` key.
@@ -738,7 +738,7 @@ declare module "shorter-js/src/strings/keyCapsLock" {
      */
     const keyCapsLock: string;
 }
-declare module "shorter-js/src/strings/keyControl" {
+declare module "shorty/src/strings/keyControl" {
     export default keyControl;
     /**
      * A global namespace for `Control` key.
@@ -746,7 +746,7 @@ declare module "shorter-js/src/strings/keyControl" {
      */
     const keyControl: string;
 }
-declare module "shorter-js/src/strings/keyDelete" {
+declare module "shorty/src/strings/keyDelete" {
     export default keyDelete;
     /**
      * A global namespace for `Delete` key.
@@ -754,7 +754,7 @@ declare module "shorter-js/src/strings/keyDelete" {
      */
     const keyDelete: string;
 }
-declare module "shorter-js/src/strings/keyEnter" {
+declare module "shorty/src/strings/keyEnter" {
     export default keyEnter;
     /**
      * A global namespace for `Enter` key.
@@ -762,7 +762,7 @@ declare module "shorter-js/src/strings/keyEnter" {
      */
     const keyEnter: string;
 }
-declare module "shorter-js/src/strings/keyEscape" {
+declare module "shorty/src/strings/keyEscape" {
     export default keyEscape;
     /**
      * A global namespace for `Escape` key.
@@ -770,7 +770,7 @@ declare module "shorter-js/src/strings/keyEscape" {
      */
     const keyEscape: string;
 }
-declare module "shorter-js/src/strings/keyInsert" {
+declare module "shorty/src/strings/keyInsert" {
     export default keyInsert;
     /**
      * A global namespace for `Insert` key.
@@ -778,7 +778,7 @@ declare module "shorter-js/src/strings/keyInsert" {
      */
     const keyInsert: string;
 }
-declare module "shorter-js/src/strings/keyMeta" {
+declare module "shorty/src/strings/keyMeta" {
     export default keyMeta;
     /**
      * A global namespace for `Meta` key.
@@ -786,7 +786,7 @@ declare module "shorter-js/src/strings/keyMeta" {
      */
     const keyMeta: string;
 }
-declare module "shorter-js/src/strings/keyPause" {
+declare module "shorty/src/strings/keyPause" {
     export default keyPause;
     /**
      * A global namespace for `Pause` key.
@@ -794,7 +794,7 @@ declare module "shorter-js/src/strings/keyPause" {
      */
     const keyPause: string;
 }
-declare module "shorter-js/src/strings/keyScrollLock" {
+declare module "shorty/src/strings/keyScrollLock" {
     export default keyScrollLock;
     /**
      * A global namespace for `ScrollLock` key.
@@ -802,7 +802,7 @@ declare module "shorter-js/src/strings/keyScrollLock" {
      */
     const keyScrollLock: string;
 }
-declare module "shorter-js/src/strings/keyShift" {
+declare module "shorty/src/strings/keyShift" {
     export default keyShift;
     /**
      * A global namespace for `Shift` key.
@@ -810,7 +810,7 @@ declare module "shorter-js/src/strings/keyShift" {
      */
     const keyShift: string;
 }
-declare module "shorter-js/src/strings/keySpace" {
+declare module "shorty/src/strings/keySpace" {
     export default keySpace;
     /**
      * A global namespace for `Space` key.
@@ -818,7 +818,7 @@ declare module "shorter-js/src/strings/keySpace" {
      */
     const keySpace: string;
 }
-declare module "shorter-js/src/strings/keyTab" {
+declare module "shorty/src/strings/keyTab" {
     export default keyTab;
     /**
      * A global namespace for `Tab` key.
@@ -826,7 +826,7 @@ declare module "shorter-js/src/strings/keyTab" {
      */
     const keyTab: string;
 }
-declare module "shorter-js/src/strings/animationDuration" {
+declare module "shorty/src/strings/animationDuration" {
     export default animationDuration;
     /**
      * A global namespace for 'animationDuration' string.
@@ -834,11 +834,11 @@ declare module "shorter-js/src/strings/animationDuration" {
      */
     const animationDuration: string;
 }
-declare module "shorter-js/src/blocks/documentHead" {
+declare module "shorty/src/blocks/documentHead" {
     export default documentHead;
     const documentHead: HTMLHeadElement;
 }
-declare module "shorter-js/src/strings/animationDurationLegacy" {
+declare module "shorty/src/strings/animationDurationLegacy" {
     export default animationDuration;
     /**
      * A global namespace for 'animationDuration' string.
@@ -846,7 +846,7 @@ declare module "shorter-js/src/strings/animationDurationLegacy" {
      */
     const animationDuration: string;
 }
-declare module "shorter-js/src/strings/animationDelay" {
+declare module "shorty/src/strings/animationDelay" {
     export default animationDelay;
     /**
      * A global namespace for 'animationDelay' string.
@@ -854,7 +854,7 @@ declare module "shorter-js/src/strings/animationDelay" {
      */
     const animationDelay: string;
 }
-declare module "shorter-js/src/strings/animationDelayLegacy" {
+declare module "shorty/src/strings/animationDelayLegacy" {
     export default animationDelay;
     /**
      * A global namespace for 'animationDelay' string.
@@ -862,7 +862,7 @@ declare module "shorter-js/src/strings/animationDelayLegacy" {
      */
     const animationDelay: string;
 }
-declare module "shorter-js/src/strings/animationName" {
+declare module "shorty/src/strings/animationName" {
     export default animationName;
     /**
      * A global namespace for 'animationName' string.
@@ -870,7 +870,7 @@ declare module "shorter-js/src/strings/animationName" {
      */
     const animationName: string;
 }
-declare module "shorter-js/src/strings/animationNameLegacy" {
+declare module "shorty/src/strings/animationNameLegacy" {
     export default animationName;
     /**
      * A global namespace for 'animationName' string.
@@ -878,7 +878,7 @@ declare module "shorter-js/src/strings/animationNameLegacy" {
      */
     const animationName: string;
 }
-declare module "shorter-js/src/strings/animationEndEvent" {
+declare module "shorty/src/strings/animationEndEvent" {
     export default animationEndEvent;
     /**
      * A global namespace for 'animationend' string.
@@ -886,7 +886,7 @@ declare module "shorter-js/src/strings/animationEndEvent" {
      */
     const animationEndEvent: string;
 }
-declare module "shorter-js/src/strings/animationEndEventLegacy" {
+declare module "shorty/src/strings/animationEndEventLegacy" {
     export default animationEndEvent;
     /**
      * A global namespace for 'animationend' string.
@@ -894,7 +894,7 @@ declare module "shorter-js/src/strings/animationEndEventLegacy" {
      */
     const animationEndEvent: string;
 }
-declare module "shorter-js/src/strings/transitionDuration" {
+declare module "shorty/src/strings/transitionDuration" {
     export default transitionDuration;
     /**
      * A global namespace for 'transitionDuration' string.
@@ -902,7 +902,7 @@ declare module "shorter-js/src/strings/transitionDuration" {
      */
     const transitionDuration: string;
 }
-declare module "shorter-js/src/strings/transitionDurationLegacy" {
+declare module "shorty/src/strings/transitionDurationLegacy" {
     export default transitionDuration;
     /**
      * A global namespace for 'transitionDuration' string.
@@ -910,7 +910,7 @@ declare module "shorter-js/src/strings/transitionDurationLegacy" {
      */
     const transitionDuration: string;
 }
-declare module "shorter-js/src/strings/transitionDelay" {
+declare module "shorty/src/strings/transitionDelay" {
     export default transitionDelay;
     /**
      * A global namespace for 'transitionDelay' string.
@@ -918,7 +918,7 @@ declare module "shorter-js/src/strings/transitionDelay" {
      */
     const transitionDelay: string;
 }
-declare module "shorter-js/src/strings/transitionDelayLegacy" {
+declare module "shorty/src/strings/transitionDelayLegacy" {
     export default transitionDelay;
     /**
      * A global namespace for 'transitionDelay' string.
@@ -926,7 +926,7 @@ declare module "shorter-js/src/strings/transitionDelayLegacy" {
      */
     const transitionDelay: string;
 }
-declare module "shorter-js/src/strings/transitionEndEvent" {
+declare module "shorty/src/strings/transitionEndEvent" {
     export default transitionEndEvent;
     /**
      * A global namespace for 'transitionend' string.
@@ -934,7 +934,7 @@ declare module "shorter-js/src/strings/transitionEndEvent" {
      */
     const transitionEndEvent: string;
 }
-declare module "shorter-js/src/strings/transitionEndEventLegacy" {
+declare module "shorty/src/strings/transitionEndEventLegacy" {
     export default transitionEndEvent;
     /**
      * A global namespace for 'transitionend' string.
@@ -942,7 +942,7 @@ declare module "shorter-js/src/strings/transitionEndEventLegacy" {
      */
     const transitionEndEvent: string;
 }
-declare module "shorter-js/src/strings/transitionProperty" {
+declare module "shorty/src/strings/transitionProperty" {
     export default transitionProperty;
     /**
      * A global namespace for `transitionProperty` string for modern browsers.
@@ -951,7 +951,7 @@ declare module "shorter-js/src/strings/transitionProperty" {
      */
     const transitionProperty: string;
 }
-declare module "shorter-js/src/strings/transitionPropertyLegacy" {
+declare module "shorty/src/strings/transitionPropertyLegacy" {
     export default transitionProperty;
     /**
      * A global namespace for:
@@ -962,7 +962,7 @@ declare module "shorter-js/src/strings/transitionPropertyLegacy" {
      */
     const transitionProperty: string;
 }
-declare module "shorter-js/src/strings/addEventListener" {
+declare module "shorty/src/strings/addEventListener" {
     export default addEventListener;
     /**
      * A global namespace for 'addEventListener' string.
@@ -970,7 +970,7 @@ declare module "shorter-js/src/strings/addEventListener" {
      */
     const addEventListener: string;
 }
-declare module "shorter-js/src/strings/removeEventListener" {
+declare module "shorty/src/strings/removeEventListener" {
     export default removeEventListener;
     /**
      * A global namespace for 'removeEventListener' string.
@@ -978,7 +978,7 @@ declare module "shorter-js/src/strings/removeEventListener" {
      */
     const removeEventListener: string;
 }
-declare module "shorter-js/src/strings/bezierEasings" {
+declare module "shorty/src/strings/bezierEasings" {
     export default bezierEasings;
     /**
      * A global namespace for predefined
@@ -987,7 +987,7 @@ declare module "shorter-js/src/strings/bezierEasings" {
      */
     const bezierEasings: Record<string, string>;
 }
-declare module "shorter-js/src/strings/offsetHeight" {
+declare module "shorty/src/strings/offsetHeight" {
     export default offsetHeight;
     /**
      * A global namespace for `offsetHeight` property.
@@ -995,7 +995,7 @@ declare module "shorter-js/src/strings/offsetHeight" {
      */
     const offsetHeight: string;
 }
-declare module "shorter-js/src/strings/offsetWidth" {
+declare module "shorty/src/strings/offsetWidth" {
     export default offsetWidth;
     /**
      * A global namespace for `offsetWidth` property.
@@ -1003,7 +1003,7 @@ declare module "shorter-js/src/strings/offsetWidth" {
      */
     const offsetWidth: string;
 }
-declare module "shorter-js/src/strings/scrollHeight" {
+declare module "shorty/src/strings/scrollHeight" {
     export default scrollHeight;
     /**
      * A global namespace for `scrollHeight` property.
@@ -1011,7 +1011,7 @@ declare module "shorter-js/src/strings/scrollHeight" {
      */
     const scrollHeight: string;
 }
-declare module "shorter-js/src/strings/scrollWidth" {
+declare module "shorty/src/strings/scrollWidth" {
     export default scrollWidth;
     /**
      * A global namespace for `scrollWidth` property.
@@ -1019,21 +1019,21 @@ declare module "shorter-js/src/strings/scrollWidth" {
      */
     const scrollWidth: string;
 }
-declare module "shorter-js/src/strings/userAgentData" {
+declare module "shorty/src/strings/userAgentData" {
     export default userAgentData;
     /**
      * A global namespace for `userAgentData` object.
      */
     const userAgentData: any;
 }
-declare module "shorter-js/src/strings/userAgent" {
+declare module "shorty/src/strings/userAgent" {
     export default userAgent;
     /**
      * A global namespace for `navigator.userAgent` string.
      */
     const userAgent: string;
 }
-declare module "shorter-js/src/boolean/isApple" {
+declare module "shorty/src/boolean/isApple" {
     export default isApple;
     /**
      * A global `boolean` for Apple browsers.
@@ -1041,7 +1041,7 @@ declare module "shorter-js/src/boolean/isApple" {
      */
     const isApple: boolean;
 }
-declare module "shorter-js/src/boolean/isFirefox" {
+declare module "shorty/src/boolean/isFirefox" {
     export default isFirefox;
     /**
      * A global boolean for Gecko browsers. When writing this file,
@@ -1050,7 +1050,7 @@ declare module "shorter-js/src/boolean/isFirefox" {
      */
     const isFirefox: boolean;
 }
-declare module "shorter-js/src/boolean/isMobile" {
+declare module "shorty/src/boolean/isMobile" {
     export default isMobile;
     /**
      * A global `boolean` for mobile detection.
@@ -1058,7 +1058,7 @@ declare module "shorter-js/src/boolean/isMobile" {
      */
     const isMobile: boolean;
 }
-declare module "shorter-js/src/boolean/support3DTransform" {
+declare module "shorty/src/boolean/support3DTransform" {
     export default support3DTransform;
     /**
      * A global `boolean` for CSS3 3D transform support.
@@ -1066,7 +1066,7 @@ declare module "shorter-js/src/boolean/support3DTransform" {
      */
     const support3DTransform: boolean;
 }
-declare module "shorter-js/src/boolean/supportAnimation" {
+declare module "shorty/src/boolean/supportAnimation" {
     export default supportAnimation;
     /**
      * A global `boolean` for CSS3 animation support.
@@ -1074,7 +1074,7 @@ declare module "shorter-js/src/boolean/supportAnimation" {
      */
     const supportAnimation: boolean;
 }
-declare module "shorter-js/src/event/on" {
+declare module "shorty/src/event/on" {
     /**
      * Add eventListener to an `Element` | `HTMLElement` | `Document` target.
      *
@@ -1086,7 +1086,7 @@ declare module "shorter-js/src/event/on" {
      */
     export default function on(element: HTMLElement | Element | Document | Window, eventName: string, listener: EventListener, options?: (EventListenerOptions | boolean) | undefined): void;
 }
-declare module "shorter-js/src/event/off" {
+declare module "shorty/src/event/off" {
     /**
      * Remove eventListener from an `Element` | `HTMLElement` | `Document` | `Window` target.
      *
@@ -1098,7 +1098,7 @@ declare module "shorter-js/src/event/off" {
      */
     export default function off(element: HTMLElement | Element | Document | Window, eventName: string, listener: EventListener, options?: (EventListenerOptions | boolean) | undefined): void;
 }
-declare module "shorter-js/src/event/one" {
+declare module "shorty/src/event/one" {
     /**
      * Add an `eventListener` to an `Element` | `HTMLElement` | `Document` | `Window`
      * target and remove it once callback is called.
@@ -1111,7 +1111,7 @@ declare module "shorter-js/src/event/one" {
      */
     export default function one(element: HTMLElement | Element | Document | Window, eventName: string, listener: EventListener, options?: (EventListenerOptions | boolean) | undefined): void;
 }
-declare module "shorter-js/src/boolean/supportPassive" {
+declare module "shorty/src/boolean/supportPassive" {
     export default supportPassive;
     /**
      * A global `boolean` for passive events support,
@@ -1122,7 +1122,7 @@ declare module "shorter-js/src/boolean/supportPassive" {
      */
     const supportPassive: boolean;
 }
-declare module "shorter-js/src/boolean/supportTouch" {
+declare module "shorty/src/boolean/supportTouch" {
     export default supportTouch;
     /**
      * A global `boolean` for touch events support.
@@ -1130,7 +1130,7 @@ declare module "shorter-js/src/boolean/supportTouch" {
      */
     const supportTouch: boolean;
 }
-declare module "shorter-js/src/boolean/supportTransform" {
+declare module "shorty/src/boolean/supportTransform" {
     export default supportTransform;
     /**
      * A global `boolean` for CSS3 transform support.
@@ -1138,7 +1138,7 @@ declare module "shorter-js/src/boolean/supportTransform" {
      */
     const supportTransform: boolean;
 }
-declare module "shorter-js/src/boolean/supportTransition" {
+declare module "shorty/src/boolean/supportTransition" {
     export default supportTransition;
     /**
      * A global `boolean` for CSS3 transition support.
@@ -1146,7 +1146,7 @@ declare module "shorter-js/src/boolean/supportTransition" {
      */
     const supportTransition: boolean;
 }
-declare module "shorter-js/src/attr/hasAttribute" {
+declare module "shorty/src/attr/hasAttribute" {
     export default hasAttribute;
     /**
      * Shortcut for `HTMLElement.hasAttribute()` method.
@@ -1156,7 +1156,7 @@ declare module "shorter-js/src/attr/hasAttribute" {
      */
     function hasAttribute(element: HTMLElement | Element, attribute: string): boolean;
 }
-declare module "shorter-js/src/attr/hasAttributeNS" {
+declare module "shorty/src/attr/hasAttributeNS" {
     export default hasAttributeNS;
     /**
      * Shortcut for `HTMLElement.hasAttributeNS()` method.
@@ -1167,7 +1167,7 @@ declare module "shorter-js/src/attr/hasAttributeNS" {
      */
     function hasAttributeNS(ns: string, element: HTMLElement | Element, att: string): boolean;
 }
-declare module "shorter-js/src/attr/getAttribute" {
+declare module "shorty/src/attr/getAttribute" {
     export default getAttribute;
     /**
      * Shortcut for `HTMLElement.getAttribute()` method.
@@ -1177,7 +1177,7 @@ declare module "shorter-js/src/attr/getAttribute" {
      */
     function getAttribute(element: HTMLElement | Element, attribute: string): string | null;
 }
-declare module "shorter-js/src/attr/getAttributeNS" {
+declare module "shorty/src/attr/getAttributeNS" {
     export default getAttributeNS;
     /**
      * Shortcut for `HTMLElement.getAttributeNS()` method.
@@ -1188,7 +1188,7 @@ declare module "shorter-js/src/attr/getAttributeNS" {
      */
     function getAttributeNS(ns: string, element: HTMLElement | Element, attribute: string): string | null;
 }
-declare module "shorter-js/src/attr/setAttribute" {
+declare module "shorty/src/attr/setAttribute" {
     export default setAttribute;
     /**
      * Shortcut for `HTMLElement.setAttribute()` method.
@@ -1199,7 +1199,7 @@ declare module "shorter-js/src/attr/setAttribute" {
      */
     function setAttribute(element: HTMLElement | Element, attribute: string, value: string): void;
 }
-declare module "shorter-js/src/attr/setAttributeNS" {
+declare module "shorty/src/attr/setAttributeNS" {
     export default setAttributeNS;
     /**
      * Shortcut for `SVGElement.setAttributeNS()` method.
@@ -1211,7 +1211,7 @@ declare module "shorter-js/src/attr/setAttributeNS" {
      */
     function setAttributeNS(ns: string, element: HTMLElement | Element, att: string, value: string): void;
 }
-declare module "shorter-js/src/attr/removeAttribute" {
+declare module "shorty/src/attr/removeAttribute" {
     export default removeAttribute;
     /**
      * Shortcut for `HTMLElement.removeAttribute()` method.
@@ -1221,7 +1221,7 @@ declare module "shorter-js/src/attr/removeAttribute" {
      */
     function removeAttribute(element: HTMLElement | Element, attribute: string): void;
 }
-declare module "shorter-js/src/attr/removeAttributeNS" {
+declare module "shorty/src/attr/removeAttributeNS" {
     export default removeAttributeNS;
     /**
      * Shortcut for `HTMLElement.removeAttributeNS()` method.
@@ -1232,7 +1232,7 @@ declare module "shorter-js/src/attr/removeAttributeNS" {
      */
     function removeAttributeNS(ns: string, element: HTMLElement | Element, att: string): void;
 }
-declare module "shorter-js/src/get/getBoundingClientRect" {
+declare module "shorty/src/get/getBoundingClientRect" {
     /**
      * Returns the bounding client rect of a target `HTMLElement`.
      *
@@ -1240,11 +1240,11 @@ declare module "shorter-js/src/get/getBoundingClientRect" {
      *
      * @param {HTMLElement | Element} element event.target
      * @param {boolean=} includeScale when *true*, the target scale is also computed
-     * @returns {SHORTER.BoundingClientRect} the bounding client rect object
+     * @returns {SHORTY.BoundingClientRect} the bounding client rect object
      */
-    export default function getBoundingClientRect(element: HTMLElement | Element, includeScale?: boolean | undefined): SHORTER.BoundingClientRect;
+    export default function getBoundingClientRect(element: HTMLElement | Element, includeScale?: boolean | undefined): SHORTY.BoundingClientRect;
 }
-declare module "shorter-js/src/get/getDocument" {
+declare module "shorty/src/get/getDocument" {
     /**
      * Returns the `document` or the `#document` element.
      * @see https://github.com/floating-ui/floating-ui
@@ -1253,7 +1253,7 @@ declare module "shorter-js/src/get/getDocument" {
      */
     export default function getDocument(node?: (Node | HTMLElement | Element | typeof globalThis) | undefined): Document;
 }
-declare module "shorter-js/src/get/getDocumentBody" {
+declare module "shorty/src/get/getDocumentBody" {
     /**
      * Returns the `document.body` or the `<body>` element.
      *
@@ -1262,7 +1262,7 @@ declare module "shorter-js/src/get/getDocumentBody" {
      */
     export default function getDocumentBody(node?: (Node | HTMLElement | Element | typeof globalThis) | undefined): HTMLElement | HTMLBodyElement;
 }
-declare module "shorter-js/src/get/getDocumentElement" {
+declare module "shorty/src/get/getDocumentElement" {
     /**
      * Returns the `document.documentElement` or the `<html>` element.
      *
@@ -1271,7 +1271,7 @@ declare module "shorter-js/src/get/getDocumentElement" {
      */
     export default function getDocumentElement(node?: (Node | HTMLElement | Element | typeof globalThis) | undefined): HTMLElement | HTMLHtmlElement;
 }
-declare module "shorter-js/src/get/getDocumentHead" {
+declare module "shorty/src/get/getDocumentHead" {
     /**
      * Returns the `document.head` or the `<head>` element.
      *
@@ -1280,7 +1280,7 @@ declare module "shorter-js/src/get/getDocumentHead" {
      */
     export default function getDocumentHead(node?: (Node | HTMLElement | Element | typeof globalThis) | undefined): HTMLElement | HTMLHeadElement;
 }
-declare module "shorter-js/src/get/getElementStyle" {
+declare module "shorty/src/get/getElementStyle" {
     /**
      * Shortcut for `window.getComputedStyle(element).propertyName`
      * static method.
@@ -1294,7 +1294,7 @@ declare module "shorter-js/src/get/getElementStyle" {
      */
     export default function getElementStyle(element: HTMLElement | Element, property: string): string;
 }
-declare module "shorter-js/src/get/getElementAnimationDuration" {
+declare module "shorty/src/get/getElementAnimationDuration" {
     /**
      * Utility to get the computed `animationDuration`
      * from `HTMLElement` in miliseconds.
@@ -1304,7 +1304,7 @@ declare module "shorter-js/src/get/getElementAnimationDuration" {
      */
     export default function getElementAnimationDuration(element: HTMLElement | Element): number;
 }
-declare module "shorter-js/src/get/getElementAnimationDurationLegacy" {
+declare module "shorty/src/get/getElementAnimationDurationLegacy" {
     /**
      * Utility to get the computed `animationDuration`
      * from `HTMLElement` in miliseconds.
@@ -1314,7 +1314,7 @@ declare module "shorter-js/src/get/getElementAnimationDurationLegacy" {
      */
     export default function getElementAnimationDuration(element: HTMLElement | Element): number;
 }
-declare module "shorter-js/src/get/getElementAnimationDelay" {
+declare module "shorty/src/get/getElementAnimationDelay" {
     /**
      * Utility to get the computed `animationDelay`
      * from Element in miliseconds.
@@ -1324,7 +1324,7 @@ declare module "shorter-js/src/get/getElementAnimationDelay" {
      */
     export default function getElementAnimationDelay(element: HTMLElement | Element): number;
 }
-declare module "shorter-js/src/get/getElementAnimationDelayLegacy" {
+declare module "shorty/src/get/getElementAnimationDelayLegacy" {
     /**
      * Utility to get the computed `animationDelay`
      * from Element in miliseconds.
@@ -1334,7 +1334,7 @@ declare module "shorter-js/src/get/getElementAnimationDelayLegacy" {
      */
     export default function getElementAnimationDelay(element: HTMLElement | Element): number;
 }
-declare module "shorter-js/src/get/getElementTransitionDuration" {
+declare module "shorty/src/get/getElementTransitionDuration" {
     /**
      * Utility to get the computed `transitionDuration`
      * from Element in miliseconds.
@@ -1344,7 +1344,7 @@ declare module "shorter-js/src/get/getElementTransitionDuration" {
      */
     export default function getElementTransitionDuration(element: HTMLElement | Element): number;
 }
-declare module "shorter-js/src/get/getElementTransitionDurationLegacy" {
+declare module "shorty/src/get/getElementTransitionDurationLegacy" {
     /**
      * Utility to get the computed `transitionDuration`
      * from Element in miliseconds.
@@ -1354,7 +1354,7 @@ declare module "shorter-js/src/get/getElementTransitionDurationLegacy" {
      */
     export default function getElementTransitionDuration(element: HTMLElement | Element): number;
 }
-declare module "shorter-js/src/get/getElementTransitionDelay" {
+declare module "shorty/src/get/getElementTransitionDelay" {
     /**
      * Utility to get the computed `transitionDelay`
      * from Element in miliseconds.
@@ -1364,7 +1364,7 @@ declare module "shorter-js/src/get/getElementTransitionDelay" {
      */
     export default function getElementTransitionDelay(element: HTMLElement | Element): number;
 }
-declare module "shorter-js/src/get/getElementTransitionDelayLegacy" {
+declare module "shorty/src/get/getElementTransitionDelayLegacy" {
     /**
      * Utility to get the computed `transitionDelay`
      * from Element in miliseconds.
@@ -1374,7 +1374,7 @@ declare module "shorter-js/src/get/getElementTransitionDelayLegacy" {
      */
     export default function getElementTransitionDelay(element: HTMLElement | Element): number;
 }
-declare module "shorter-js/src/get/getNodeScroll" {
+declare module "shorty/src/get/getNodeScroll" {
     /**
      * Returns an `{x,y}` object with the target
      * `HTMLElement` / `Node` scroll position.
@@ -1389,7 +1389,7 @@ declare module "shorter-js/src/get/getNodeScroll" {
         y: number;
     };
 }
-declare module "shorter-js/src/get/getWindow" {
+declare module "shorty/src/get/getWindow" {
     /**
      * Returns the `Window` object of a target node.
      * @see https://github.com/floating-ui/floating-ui
@@ -1399,7 +1399,7 @@ declare module "shorter-js/src/get/getWindow" {
      */
     export default function getWindow(node?: (Node | HTMLElement | Element | Window) | undefined): typeof globalThis;
 }
-declare module "shorter-js/src/is/isShadowRoot" {
+declare module "shorty/src/is/isShadowRoot" {
     export default isShadowRoot;
     /**
      * Check if target is a `ShadowRoot`.
@@ -1409,7 +1409,7 @@ declare module "shorter-js/src/is/isShadowRoot" {
      */
     function isShadowRoot(element: any): boolean;
 }
-declare module "shorter-js/src/get/getParentNode" {
+declare module "shorty/src/get/getParentNode" {
     /**
      * Returns the `parentNode` also going through `ShadowRoot`.
      * @see https://github.com/floating-ui/floating-ui
@@ -1419,7 +1419,7 @@ declare module "shorter-js/src/get/getParentNode" {
      */
     export default function getParentNode(node: Node | HTMLElement | Element): Node | HTMLElement | Element;
 }
-declare module "shorter-js/src/is/isScaledElement" {
+declare module "shorty/src/is/isScaledElement" {
     /**
      * Checks if a target `HTMLElement` is affected by scale.
      * @see https://github.com/floating-ui/floating-ui
@@ -1429,7 +1429,7 @@ declare module "shorter-js/src/is/isScaledElement" {
      */
     export default function isScaledElement(element: HTMLElement): boolean;
 }
-declare module "shorter-js/src/get/getRectRelativeToOffsetParent" {
+declare module "shorty/src/get/getRectRelativeToOffsetParent" {
     /**
      * Returns the rect relative to an offset parent.
      * @see https://github.com/floating-ui/floating-ui
@@ -1437,14 +1437,14 @@ declare module "shorter-js/src/get/getRectRelativeToOffsetParent" {
      * @param {HTMLElement | Element} element target
      * @param {HTMLElement | Element | Window} offsetParent the container / offset parent
      * @param {{x: number, y: number}} scroll
-     * @returns {SHORTER.OffsetRect}
+     * @returns {SHORTY.OffsetRect}
      */
     export default function getRectRelativeToOffsetParent(element: HTMLElement | Element, offsetParent: HTMLElement | Element | Window, scroll: {
         x: number;
         y: number;
-    }): SHORTER.OffsetRect;
+    }): SHORTY.OffsetRect;
 }
-declare module "shorter-js/src/get/getUID" {
+declare module "shorty/src/get/getUID" {
     /**
      * Returns a unique identifier for popover, tooltip, scrollspy.
      *
@@ -1454,7 +1454,7 @@ declare module "shorter-js/src/get/getUID" {
      */
     export default function getUID(element: HTMLElement | Element, key?: string | undefined): number;
 }
-declare module "shorter-js/src/class/addClass" {
+declare module "shorty/src/class/addClass" {
     /**
      * Add class to `HTMLElement.classList`.
      *
@@ -1464,7 +1464,7 @@ declare module "shorter-js/src/class/addClass" {
      */
     export default function addClass(element: HTMLElement | Element, classNAME: string): void;
 }
-declare module "shorter-js/src/class/removeClass" {
+declare module "shorty/src/class/removeClass" {
     /**
      * Remove class from `HTMLElement.classList`.
      *
@@ -1474,7 +1474,7 @@ declare module "shorter-js/src/class/removeClass" {
      */
     export default function removeClass(element: HTMLElement | Element, classNAME: string): void;
 }
-declare module "shorter-js/src/class/hasClass" {
+declare module "shorty/src/class/hasClass" {
     /**
      * Check class in `HTMLElement.classList`.
      *
@@ -1484,7 +1484,7 @@ declare module "shorter-js/src/class/hasClass" {
      */
     export default function hasClass(element: HTMLElement | Element, classNAME: string): boolean;
 }
-declare module "shorter-js/src/selectors/parentNodes" {
+declare module "shorty/src/selectors/parentNodes" {
     export default parentNodes;
     /**
      * A global array of possible `ParentNode`.
@@ -1497,7 +1497,7 @@ declare module "shorter-js/src/selectors/parentNodes" {
         prototype: Element;
     })[];
 }
-declare module "shorter-js/src/selectors/elementNodes" {
+declare module "shorty/src/selectors/elementNodes" {
     export default elementNodes;
     /**
      * A global array with `Element` | `HTMLElement`.
@@ -1507,7 +1507,7 @@ declare module "shorter-js/src/selectors/elementNodes" {
         prototype: Element;
     }[];
 }
-declare module "shorter-js/src/selectors/querySelector" {
+declare module "shorty/src/selectors/querySelector" {
     /**
      * Utility to check if target is typeof `HTMLElement`, `Element`, `Node`
      * or find one that matches a selector.
@@ -1518,12 +1518,12 @@ declare module "shorter-js/src/selectors/querySelector" {
      */
     export default function querySelector(selector: HTMLElement | Element | string, parent?: (HTMLElement | Element | Document) | undefined): (HTMLElement | Element) | null;
 }
-declare module "shorter-js/src/misc/data" {
+declare module "shorty/src/misc/data" {
     /**
      * An alias for `Data.get()`.
-     * @type {SHORTER.getInstance<any>}
+     * @type {SHORTY.getInstance<any,any>}
      */
-    export const getInstance: SHORTER.getInstance<any>;
+    export const getInstance: SHORTY.getInstance<any, any>;
     export default Data;
     namespace Data {
         function set(target: string | Element | HTMLElement, component: string, instance: Record<string, any>): void;
@@ -1532,7 +1532,7 @@ declare module "shorter-js/src/misc/data" {
         function remove(target: string | Element | HTMLElement, component: string): void;
     }
 }
-declare module "shorter-js/src/misc/timer" {
+declare module "shorty/src/misc/timer" {
     export default Timer;
     namespace Timer {
         function set(target: string | Element | HTMLElement, callback: any, delay: number, key?: string | undefined): void;
@@ -1540,7 +1540,7 @@ declare module "shorter-js/src/misc/timer" {
         function clear(target: string | Element | HTMLElement, key?: string | undefined): void;
     }
 }
-declare module "shorter-js/src/misc/ObjectAssign" {
+declare module "shorty/src/misc/ObjectAssign" {
     export default ObjectAssign;
     /**
      * Shortcut for `Object.assign()` static method.
@@ -1549,7 +1549,7 @@ declare module "shorter-js/src/misc/ObjectAssign" {
      */
     function ObjectAssign(obj: Record<string, any>, source: Record<string, any>): Record<string, any>;
 }
-declare module "shorter-js/src/misc/createElement" {
+declare module "shorty/src/misc/createElement" {
     /**
      * This is a shortie for `document.createElement` method
      * which allows you to create a new `HTMLElement` for a given `tagName`
@@ -1562,7 +1562,7 @@ declare module "shorter-js/src/misc/createElement" {
      */
     export default function createElement(param: Record<string, string> | string): HTMLElement | Element;
 }
-declare module "shorter-js/src/misc/createElementNS" {
+declare module "shorty/src/misc/createElementNS" {
     /**
      * This is a shortie for `document.createElementNS` method
      * which allows you to create a new `HTMLElement` for a given `tagName`
@@ -1576,7 +1576,7 @@ declare module "shorter-js/src/misc/createElementNS" {
      */
     export default function createElementNS(namespace: string, param: Record<string, string> | string): HTMLElement | Element;
 }
-declare module "shorter-js/src/misc/dispatchEvent" {
+declare module "shorty/src/misc/dispatchEvent" {
     export default dispatchEvent;
     /**
      * Shortcut for the `Element.dispatchEvent(Event)` method.
@@ -1586,7 +1586,7 @@ declare module "shorter-js/src/misc/dispatchEvent" {
      */
     function dispatchEvent(element: HTMLElement | Element, event: Event): boolean;
 }
-declare module "shorter-js/src/misc/distinct" {
+declare module "shorty/src/misc/distinct" {
     export default distinct;
     /**
      * JavaScript `Array` distinct.
@@ -1598,7 +1598,7 @@ declare module "shorter-js/src/misc/distinct" {
      */
     function distinct(value: any, index: number, self: any): boolean;
 }
-declare module "shorter-js/src/misc/emulateAnimationEnd" {
+declare module "shorty/src/misc/emulateAnimationEnd" {
     /**
      * Utility to make sure callbacks are consistently
      * called when animation ends.
@@ -1608,7 +1608,7 @@ declare module "shorter-js/src/misc/emulateAnimationEnd" {
      */
     export default function emulateAnimationEnd(element: HTMLElement | Element, handler: EventListener): void;
 }
-declare module "shorter-js/src/misc/emulateAnimationEndLegacy" {
+declare module "shorty/src/misc/emulateAnimationEndLegacy" {
     /**
      * Utility to make sure callbacks are consistently
      * called when animation ends.
@@ -1618,7 +1618,7 @@ declare module "shorter-js/src/misc/emulateAnimationEndLegacy" {
      */
     export default function emulateAnimationEnd(element: HTMLElement | Element, handler: EventListener): void;
 }
-declare module "shorter-js/src/misc/emulateTransitionEnd" {
+declare module "shorty/src/misc/emulateTransitionEnd" {
     /**
      * Utility to make sure callbacks are consistently
      * called when transition ends.
@@ -1628,7 +1628,7 @@ declare module "shorter-js/src/misc/emulateTransitionEnd" {
      */
     export default function emulateTransitionEnd(element: HTMLElement | Element, handler: EventListener): void;
 }
-declare module "shorter-js/src/misc/emulateTransitionEndLegacy" {
+declare module "shorty/src/misc/emulateTransitionEndLegacy" {
     /**
      * Utility to make sure callbacks are consistently
      * called when transition ends.
@@ -1638,7 +1638,7 @@ declare module "shorter-js/src/misc/emulateTransitionEndLegacy" {
      */
     export default function emulateTransitionEnd(element: HTMLElement | Element, handler: EventListener): void;
 }
-declare module "shorter-js/src/misc/passiveHandler" {
+declare module "shorty/src/misc/passiveHandler" {
     export default passiveHandler;
     /**
      * A global namespace for most scroll event listeners.
@@ -1646,7 +1646,7 @@ declare module "shorter-js/src/misc/passiveHandler" {
      */
     const passiveHandler: Partial<AddEventListenerOptions>;
 }
-declare module "shorter-js/src/misc/passiveHandlerLegacy" {
+declare module "shorty/src/misc/passiveHandlerLegacy" {
     export default passiveHandler;
     /**
      * A global namespace for most scroll event listeners in legacy browsers.
@@ -1654,7 +1654,7 @@ declare module "shorter-js/src/misc/passiveHandlerLegacy" {
      */
     const passiveHandler: Partial<AddEventListenerOptions> | boolean;
 }
-declare module "shorter-js/src/misc/setElementStyle" {
+declare module "shorty/src/misc/setElementStyle" {
     export default setElementStyle;
     /**
      * Shortcut for multiple uses of `HTMLElement.style.propertyName` method.
@@ -1663,7 +1663,7 @@ declare module "shorter-js/src/misc/setElementStyle" {
      */
     function setElementStyle(element: HTMLElement | Element, styles: Partial<CSSStyleDeclaration>): void;
 }
-declare module "shorter-js/src/misc/normalizeValue" {
+declare module "shorty/src/misc/normalizeValue" {
     /**
      * The raw value or a given component option.
      *
@@ -1681,7 +1681,7 @@ declare module "shorter-js/src/misc/normalizeValue" {
      */
     export type niceValue = string | HTMLElement | Function | number | boolean | null;
 }
-declare module "shorter-js/src/misc/ObjectKeys" {
+declare module "shorty/src/misc/ObjectKeys" {
     export default ObjectKeys;
     /**
      * Shortcut for `Object.keys()` static method.
@@ -1690,7 +1690,7 @@ declare module "shorter-js/src/misc/ObjectKeys" {
      */
     function ObjectKeys(obj: Record<string, any>): string[];
 }
-declare module "shorter-js/src/misc/toLowerCase" {
+declare module "shorty/src/misc/toLowerCase" {
     export default toLowerCase;
     /**
      * Shortcut for `String.toLowerCase()`.
@@ -1700,7 +1700,7 @@ declare module "shorter-js/src/misc/toLowerCase" {
      */
     function toLowerCase(source: string): string;
 }
-declare module "shorter-js/src/misc/normalizeOptions" {
+declare module "shorty/src/misc/normalizeOptions" {
     /**
      * Utility to normalize component options.
      *
@@ -1712,7 +1712,7 @@ declare module "shorter-js/src/misc/normalizeOptions" {
      */
     export default function normalizeOptions(element: HTMLElement | Element, defaultOps: Record<string, any>, inputOps: Record<string, any>, ns?: string | undefined): Record<string, any>;
 }
-declare module "shorter-js/src/misc/tryWrapper" {
+declare module "shorty/src/misc/tryWrapper" {
     /**
      * Utility to wrap a callback in a try() catch(e)
      *
@@ -1721,7 +1721,7 @@ declare module "shorter-js/src/misc/tryWrapper" {
      */
     export default function tryWrapper(fn: Function, origin: string): void;
 }
-declare module "shorter-js/src/misc/reflow" {
+declare module "shorty/src/misc/reflow" {
     export default reflow;
     /**
      * Utility to force re-paint of an `HTMLElement` target.
@@ -1731,7 +1731,7 @@ declare module "shorter-js/src/misc/reflow" {
      */
     function reflow(element: HTMLElement | Element): number;
 }
-declare module "shorter-js/src/misc/focus" {
+declare module "shorty/src/misc/focus" {
     export default focus;
     /**
      * Utility to focus an `HTMLElement` target.
@@ -1740,12 +1740,12 @@ declare module "shorter-js/src/misc/focus" {
      */
     function focus(element: HTMLElement | Element): any;
 }
-declare module "shorter-js/src/misc/noop" {
+declare module "shorty/src/misc/noop" {
     export default noop;
     /** A generic function with empty body. */
     function noop(): void;
 }
-declare module "shorter-js/src/misc/toUpperCase" {
+declare module "shorty/src/misc/toUpperCase" {
     export default toUpperCase;
     /**
      * Shortcut for `String.toUpperCase()`.
@@ -1755,7 +1755,7 @@ declare module "shorter-js/src/misc/toUpperCase" {
      */
     function toUpperCase(source: string): string;
 }
-declare module "shorter-js/src/misc/ArrayFrom" {
+declare module "shorty/src/misc/ArrayFrom" {
     export default ArrayFrom;
     /**
      * Shortcut for `Array.from()` static method.
@@ -1765,7 +1765,7 @@ declare module "shorter-js/src/misc/ArrayFrom" {
      */
     function ArrayFrom(arr: any[] | HTMLCollection | NodeList | Map<any, any>): Array<any>;
 }
-declare module "shorter-js/src/misc/Float32ArrayFrom" {
+declare module "shorty/src/misc/Float32ArrayFrom" {
     export default Float32ArrayFrom;
     /**
      * Shortcut for `Float32Array.from()` static method.
@@ -1774,7 +1774,7 @@ declare module "shorter-js/src/misc/Float32ArrayFrom" {
      */
     function Float32ArrayFrom(arr: any[] | HTMLCollection | NodeList): Float32Array;
 }
-declare module "shorter-js/src/misc/Float64ArrayFrom" {
+declare module "shorty/src/misc/Float64ArrayFrom" {
     export default Float64ArrayFrom;
     /**
      * Shortcut for `Float64Array.from()` static method.
@@ -1783,7 +1783,7 @@ declare module "shorter-js/src/misc/Float64ArrayFrom" {
      */
     function Float64ArrayFrom(arr: any[] | HTMLCollection | NodeList): Float64Array;
 }
-declare module "shorter-js/src/misc/ObjectValues" {
+declare module "shorty/src/misc/ObjectValues" {
     export default ObjectValues;
     /**
      * Shortcut for `Object.values()` static method.
@@ -1792,16 +1792,16 @@ declare module "shorter-js/src/misc/ObjectValues" {
      */
     function ObjectValues(obj: Record<string, any>): any[];
 }
-declare module "shorter-js/src/misc/OriginalEvent" {
+declare module "shorty/src/misc/OriginalEvent" {
     /**
      * Returns a namespaced `CustomEvent` specific to each component.
      * @param {string} EventType Event.type
      * @param {Record<string, any>=} config Event.options | Event.properties
-     * @returns {SHORTER.OriginalEvent} a new namespaced event
+     * @returns {SHORTY.OriginalEvent} a new namespaced event
      */
-    export default function OriginalEvent(EventType: string, config?: Record<string, any> | undefined): SHORTER.OriginalEvent;
+    export default function OriginalEvent(EventType: string, config?: Record<string, any> | undefined): SHORTY.OriginalEvent;
 }
-declare module "shorter-js/src/is/isArray" {
+declare module "shorty/src/is/isArray" {
     export default isArray;
     /**
      * Shortcut for `Array.isArray()` static method.
@@ -1811,7 +1811,7 @@ declare module "shorter-js/src/is/isArray" {
      */
     function isArray(arr: any): boolean;
 }
-declare module "shorter-js/src/is/isDocument" {
+declare module "shorty/src/is/isDocument" {
     export default isDocument;
     /**
      * Checks if an object is a `Document`.
@@ -1821,7 +1821,7 @@ declare module "shorter-js/src/is/isDocument" {
      */
     function isDocument(element: any): boolean;
 }
-declare module "shorter-js/src/is/isCustomElement" {
+declare module "shorty/src/is/isCustomElement" {
     export default isCustomElement;
     /**
      * Checks if an object is a `CustomElement`.
@@ -1831,7 +1831,7 @@ declare module "shorter-js/src/is/isCustomElement" {
      */
     function isCustomElement(element: any): boolean;
 }
-declare module "shorter-js/src/is/isElement" {
+declare module "shorty/src/is/isElement" {
     export default isElement;
     /**
      * Checks if an object is an `Element`.
@@ -1841,7 +1841,7 @@ declare module "shorter-js/src/is/isElement" {
      */
     function isElement(element: any): boolean;
 }
-declare module "shorter-js/src/is/isElementInScrollRange" {
+declare module "shorty/src/is/isElementInScrollRange" {
     export default isElementInScrollRange;
     /**
      * Utility to determine if an `HTMLElement`
@@ -1852,7 +1852,7 @@ declare module "shorter-js/src/is/isElementInScrollRange" {
      */
     function isElementInScrollRange(element: HTMLElement | Element): boolean;
 }
-declare module "shorter-js/src/is/isElementInViewport" {
+declare module "shorty/src/is/isElementInViewport" {
     export default isElementInViewport;
     /**
      * Utility to determine if an `HTMLElement`
@@ -1863,7 +1863,7 @@ declare module "shorter-js/src/is/isElementInViewport" {
      */
     function isElementInViewport(element: HTMLElement | Element): boolean;
 }
-declare module "shorter-js/src/is/isElementsArray" {
+declare module "shorty/src/is/isElementsArray" {
     export default isElementsArray;
     /**
      * Checks if an object is an `Array` in which all items are `Element`.
@@ -1873,7 +1873,7 @@ declare module "shorter-js/src/is/isElementsArray" {
      */
     function isElementsArray(object: any): boolean;
 }
-declare module "shorter-js/src/is/isFunction" {
+declare module "shorty/src/is/isFunction" {
     export default isFunction;
     /**
      * Checks if an object is a `Function`.
@@ -1883,7 +1883,7 @@ declare module "shorter-js/src/is/isFunction" {
      */
     function isFunction(element: any): boolean;
 }
-declare module "shorter-js/src/is/isHTMLCollection" {
+declare module "shorty/src/is/isHTMLCollection" {
     export default isHTMLCollection;
     /**
      * Checks if an object is an `HTMLCollection`.
@@ -1893,7 +1893,7 @@ declare module "shorter-js/src/is/isHTMLCollection" {
      */
     function isHTMLCollection(object: any): boolean;
 }
-declare module "shorter-js/src/is/isHTMLElement" {
+declare module "shorty/src/is/isHTMLElement" {
     export default isHTMLElement;
     /**
      * Checks if an element is an `HTMLElement`.
@@ -1903,7 +1903,7 @@ declare module "shorter-js/src/is/isHTMLElement" {
      */
     function isHTMLElement(element: any): boolean;
 }
-declare module "shorter-js/src/is/isHTMLImageElement" {
+declare module "shorty/src/is/isHTMLImageElement" {
     export default isHTMLImageElement;
     /**
      * Check if a target element is an `<img>`.
@@ -1912,7 +1912,7 @@ declare module "shorter-js/src/is/isHTMLImageElement" {
      */
     function isHTMLImageElement(element: any): boolean;
 }
-declare module "shorter-js/src/is/isMedia" {
+declare module "shorty/src/is/isMedia" {
     export default isMedia;
     /**
      * Checks if an element is an `<svg>` (or any type of SVG element),
@@ -1924,7 +1924,7 @@ declare module "shorter-js/src/is/isMedia" {
      */
     function isMedia(element: any): boolean;
 }
-declare module "shorter-js/src/is/isNode" {
+declare module "shorty/src/is/isNode" {
     export default isNode;
     /**
      * Checks if an object is a `Node`.
@@ -1934,7 +1934,7 @@ declare module "shorter-js/src/is/isNode" {
      */
     function isNode(node: any): boolean;
 }
-declare module "shorter-js/src/is/isNodeList" {
+declare module "shorty/src/is/isNodeList" {
     export default isNodeList;
     /**
      * Checks if an object is a `NodeList`.
@@ -1944,7 +1944,7 @@ declare module "shorter-js/src/is/isNodeList" {
      */
     function isNodeList(object: any): boolean;
 }
-declare module "shorter-js/src/is/isRTL" {
+declare module "shorty/src/is/isRTL" {
     export default isRTL;
     /**
      * Checks if a page is Right To Left.
@@ -1953,7 +1953,7 @@ declare module "shorter-js/src/is/isRTL" {
      */
     function isRTL(node?: (HTMLElement | Element) | undefined): boolean;
 }
-declare module "shorter-js/src/is/isString" {
+declare module "shorty/src/is/isString" {
     export default isString;
     /**
      * Shortcut for `typeof SOMETHING === string` static method.
@@ -1963,7 +1963,7 @@ declare module "shorter-js/src/is/isString" {
      */
     function isString(str: any): boolean;
 }
-declare module "shorter-js/src/is/isSVGElement" {
+declare module "shorty/src/is/isSVGElement" {
     export default isSVGElement;
     /**
      * Check if an element is an `<svg>` or any other SVG element.
@@ -1972,7 +1972,7 @@ declare module "shorter-js/src/is/isSVGElement" {
      */
     function isSVGElement(element: any): boolean;
 }
-declare module "shorter-js/src/is/isTableElement" {
+declare module "shorty/src/is/isTableElement" {
     export default isTableElement;
     /**
      * Check if a target element is a `<table>`, `<td>` or `<th>`.
@@ -1981,7 +1981,7 @@ declare module "shorter-js/src/is/isTableElement" {
      */
     function isTableElement(element: any): boolean;
 }
-declare module "shorter-js/src/is/isWindow" {
+declare module "shorty/src/is/isWindow" {
     /**
      * Check if a target node is `window`.
      *
@@ -1990,7 +1990,7 @@ declare module "shorter-js/src/is/isWindow" {
      */
     export default function isWindow(node: any): boolean;
 }
-declare module "shorter-js/src/selectors/closest" {
+declare module "shorty/src/selectors/closest" {
     /**
      * Shortcut for `HTMLElement.closest` method which also works
      * with children of `ShadowRoot`. The order of the parameters
@@ -2004,7 +2004,7 @@ declare module "shorter-js/src/selectors/closest" {
      */
     export default function closest(element: HTMLElement | Element, selector: string): (HTMLElement | Element) | null;
 }
-declare module "shorter-js/src/selectors/getElementsByTagName" {
+declare module "shorty/src/selectors/getElementsByTagName" {
     /**
      * Shortcut for `HTMLElement.getElementsByTagName` method. Some `Node` elements
      * like `ShadowRoot` do not support `getElementsByTagName`.
@@ -2015,7 +2015,7 @@ declare module "shorter-js/src/selectors/getElementsByTagName" {
      */
     export default function getElementsByTagName(selector: string, parent?: (HTMLElement | Element | Document) | undefined): HTMLCollectionOf<HTMLElement | Element>;
 }
-declare module "shorter-js/src/selectors/documentAll" {
+declare module "shorty/src/selectors/documentAll" {
     export default documentAll;
     /**
      * An `HTMLCollection` with all document elements,
@@ -2023,7 +2023,7 @@ declare module "shorter-js/src/selectors/documentAll" {
      */
     const documentAll: HTMLCollectionOf<Element | HTMLElement>;
 }
-declare module "shorter-js/src/selectors/getCustomElements" {
+declare module "shorty/src/selectors/getCustomElements" {
     /**
      * Returns an `Array` of `Node` elements that are registered as
      * `CustomElement`.
@@ -2034,7 +2034,7 @@ declare module "shorter-js/src/selectors/getCustomElements" {
      */
     export default function getCustomElements(parent?: (HTMLElement | Element | Node | Document) | undefined): Array<(HTMLElement | Element)>;
 }
-declare module "shorter-js/src/selectors/getElementById" {
+declare module "shorty/src/selectors/getElementById" {
     /**
      * Returns an `Element` that matches the id in the document.
      *
@@ -2043,7 +2043,7 @@ declare module "shorter-js/src/selectors/getElementById" {
      */
     export default function getElementById(id: string): (HTMLElement | Element) | null;
 }
-declare module "shorter-js/src/selectors/querySelectorAll" {
+declare module "shorty/src/selectors/querySelectorAll" {
     /**
      * A shortcut for `(document|Element).querySelectorAll`.
      *
@@ -2053,7 +2053,7 @@ declare module "shorter-js/src/selectors/querySelectorAll" {
      */
     export default function querySelectorAll(selector: string, parent?: (HTMLElement | Element | Document | Node) | undefined): NodeListOf<HTMLElement | Element>;
 }
-declare module "shorter-js/src/selectors/getElementsByClassName" {
+declare module "shorty/src/selectors/getElementsByClassName" {
     /**
      * Shortcut for `HTMLElement.getElementsByClassName` method. Some `Node` elements
      * like `ShadowRoot` do not support `getElementsByClassName`.
@@ -2064,7 +2064,7 @@ declare module "shorter-js/src/selectors/getElementsByClassName" {
      */
     export default function getElementsByClassName(selector: string, parent?: (HTMLElement | Element | Document) | undefined): HTMLCollectionOf<HTMLElement | Element>;
 }
-declare module "shorter-js/src/selectors/matches" {
+declare module "shorty/src/selectors/matches" {
     /**
      * Check if element matches a CSS selector.
      *
@@ -2074,7 +2074,7 @@ declare module "shorter-js/src/selectors/matches" {
      */
     export default function matches(target: HTMLElement | Element, selector: string): boolean;
 }
-declare module "shorter-js/src/selectors/matchesLegacy" {
+declare module "shorty/src/selectors/matchesLegacy" {
     /**
      * Check if element matches a CSS selector,
      * supporting a range of legacy browsers.
@@ -2085,7 +2085,7 @@ declare module "shorter-js/src/selectors/matchesLegacy" {
      */
     export default function matches(target: HTMLElement | Element, selector: string): boolean;
 }
-declare module "shorter-js/src/misc/version" {
+declare module "shorty/src/misc/version" {
     export default Version;
     /**
      * A global namespace for library version.
@@ -2093,225 +2093,225 @@ declare module "shorter-js/src/misc/version" {
      */
     const Version: string;
 }
-declare module "shorter-js/types/module/shorter" {
-    export { default as ariaChecked } from "shorter-js/src/strings/ariaChecked";
-    export { default as ariaDescription } from "shorter-js/src/strings/ariaDescription";
-    export { default as ariaDescribedBy } from "shorter-js/src/strings/ariaDescribedBy";
-    export { default as ariaExpanded } from "shorter-js/src/strings/ariaExpanded";
-    export { default as ariaHasPopup } from "shorter-js/src/strings/ariaHasPopup";
-    export { default as ariaHidden } from "shorter-js/src/strings/ariaHidden";
-    export { default as ariaLabel } from "shorter-js/src/strings/ariaLabel";
-    export { default as ariaLabelledBy } from "shorter-js/src/strings/ariaLabelledBy";
-    export { default as ariaModal } from "shorter-js/src/strings/ariaModal";
-    export { default as ariaPressed } from "shorter-js/src/strings/ariaPressed";
-    export { default as ariaSelected } from "shorter-js/src/strings/ariaSelected";
-    export { default as ariaValueMin } from "shorter-js/src/strings/ariaValueMin";
-    export { default as ariaValueMax } from "shorter-js/src/strings/ariaValueMax";
-    export { default as ariaValueNow } from "shorter-js/src/strings/ariaValueNow";
-    export { default as ariaValueText } from "shorter-js/src/strings/ariaValueText";
-    export { default as nativeEvents } from "shorter-js/src/strings/nativeEvents";
-    export { default as abortEvent } from "shorter-js/src/strings/abortEvent";
-    export { default as beforeunloadEvent } from "shorter-js/src/strings/beforeunloadEvent";
-    export { default as blurEvent } from "shorter-js/src/strings/blurEvent";
-    export { default as changeEvent } from "shorter-js/src/strings/changeEvent";
-    export { default as contextmenuEvent } from "shorter-js/src/strings/contextmenuEvent";
-    export { default as DOMContentLoadedEvent } from "shorter-js/src/strings/DOMContentLoadedEvent";
-    export { default as DOMMouseScrollEvent } from "shorter-js/src/strings/DOMMouseScrollEvent";
-    export { default as errorEvent } from "shorter-js/src/strings/errorEvent";
-    export { default as focusEvents } from "shorter-js/src/strings/focusEvents";
-    export { default as focusEvent } from "shorter-js/src/strings/focusEvent";
-    export { default as focusinEvent } from "shorter-js/src/strings/focusinEvent";
-    export { default as focusoutEvent } from "shorter-js/src/strings/focusoutEvent";
-    export { default as gesturechangeEvent } from "shorter-js/src/strings/gesturechangeEvent";
-    export { default as gestureendEvent } from "shorter-js/src/strings/gestureendEvent";
-    export { default as gesturestartEvent } from "shorter-js/src/strings/gesturestartEvent";
-    export { default as keydownEvent } from "shorter-js/src/strings/keydownEvent";
-    export { default as keyupEvent } from "shorter-js/src/strings/keyupEvent";
-    export { default as keypressEvent } from "shorter-js/src/strings/keypressEvent";
-    export { default as loadEvent } from "shorter-js/src/strings/loadEvent";
-    export { default as loadstartEvent } from "shorter-js/src/strings/loadstartEvent";
-    export { default as mouseClickEvents } from "shorter-js/src/strings/mouseClickEvents";
-    export { default as mouseclickEvent } from "shorter-js/src/strings/mouseclickEvent";
-    export { default as mousedblclickEvent } from "shorter-js/src/strings/mousedblclickEvent";
-    export { default as mousedownEvent } from "shorter-js/src/strings/mousedownEvent";
-    export { default as mouseupEvent } from "shorter-js/src/strings/mouseupEvent";
-    export { default as mousehoverEvent } from "shorter-js/src/strings/mousehoverEvent";
-    export { default as mouseHoverEvents } from "shorter-js/src/strings/mouseHoverEvents";
-    export { default as mouseenterEvent } from "shorter-js/src/strings/mouseenterEvent";
-    export { default as mouseleaveEvent } from "shorter-js/src/strings/mouseleaveEvent";
-    export { default as mouseinEvent } from "shorter-js/src/strings/mouseinEvent";
-    export { default as mouseoutEvent } from "shorter-js/src/strings/mouseoutEvent";
-    export { default as mouseoverEvent } from "shorter-js/src/strings/mouseoverEvent";
-    export { default as mousemoveEvent } from "shorter-js/src/strings/mousemoveEvent";
-    export { default as mouseSwipeEvents } from "shorter-js/src/strings/mouseSwipeEvents";
-    export { default as mousewheelEvent } from "shorter-js/src/strings/mousewheelEvent";
-    export { default as moveEvent } from "shorter-js/src/strings/moveEvent";
-    export { default as orientationchangeEvent } from "shorter-js/src/strings/orientationchangeEvent";
-    export { default as pointercancelEvent } from "shorter-js/src/strings/pointercancelEvent";
-    export { default as pointerdownEvent } from "shorter-js/src/strings/pointerdownEvent";
-    export { default as pointerleaveEvent } from "shorter-js/src/strings/pointerleaveEvent";
-    export { default as pointermoveEvent } from "shorter-js/src/strings/pointermoveEvent";
-    export { default as pointerupEvent } from "shorter-js/src/strings/pointerupEvent";
-    export { default as readystatechangeEvent } from "shorter-js/src/strings/readystatechangeEvent";
-    export { default as resetEvent } from "shorter-js/src/strings/resetEvent";
-    export { default as resizeEvent } from "shorter-js/src/strings/resizeEvent";
-    export { default as selectEvent } from "shorter-js/src/strings/selectEvent";
-    export { default as selectendEvent } from "shorter-js/src/strings/selectendEvent";
-    export { default as selectstartEvent } from "shorter-js/src/strings/selectstartEvent";
-    export { default as scrollEvent } from "shorter-js/src/strings/scrollEvent";
-    export { default as submitEvent } from "shorter-js/src/strings/submitEvent";
-    export { default as touchEvents } from "shorter-js/src/strings/touchEvents";
-    export { default as touchstartEvent } from "shorter-js/src/strings/touchstartEvent";
-    export { default as touchmoveEvent } from "shorter-js/src/strings/touchmoveEvent";
-    export { default as touchcancelEvent } from "shorter-js/src/strings/touchcancelEvent";
-    export { default as touchendEvent } from "shorter-js/src/strings/touchendEvent";
-    export { default as unloadEvent } from "shorter-js/src/strings/unloadEvent";
-    export { default as keyboardEventKeys } from "shorter-js/src/strings/keyboardEventKeys";
-    export { default as keyAlt } from "shorter-js/src/strings/keyAlt";
-    export { default as keyArrowDown } from "shorter-js/src/strings/keyArrowDown";
-    export { default as keyArrowUp } from "shorter-js/src/strings/keyArrowUp";
-    export { default as keyArrowLeft } from "shorter-js/src/strings/keyArrowLeft";
-    export { default as keyArrowRight } from "shorter-js/src/strings/keyArrowRight";
-    export { default as keyBackspace } from "shorter-js/src/strings/keyBackspace";
-    export { default as keyCapsLock } from "shorter-js/src/strings/keyCapsLock";
-    export { default as keyControl } from "shorter-js/src/strings/keyControl";
-    export { default as keyDelete } from "shorter-js/src/strings/keyDelete";
-    export { default as keyEnter } from "shorter-js/src/strings/keyEnter";
-    export { default as keyEscape } from "shorter-js/src/strings/keyEscape";
-    export { default as keyInsert } from "shorter-js/src/strings/keyInsert";
-    export { default as keyMeta } from "shorter-js/src/strings/keyMeta";
-    export { default as keyPause } from "shorter-js/src/strings/keyPause";
-    export { default as keyScrollLock } from "shorter-js/src/strings/keyScrollLock";
-    export { default as keyShift } from "shorter-js/src/strings/keyShift";
-    export { default as keySpace } from "shorter-js/src/strings/keySpace";
-    export { default as keyTab } from "shorter-js/src/strings/keyTab";
-    export { default as animationDuration } from "shorter-js/src/strings/animationDuration";
-    export { default as animationDurationLegacy } from "shorter-js/src/strings/animationDurationLegacy";
-    export { default as animationDelay } from "shorter-js/src/strings/animationDelay";
-    export { default as animationDelayLegacy } from "shorter-js/src/strings/animationDelayLegacy";
-    export { default as animationName } from "shorter-js/src/strings/animationName";
-    export { default as animationNameLegacy } from "shorter-js/src/strings/animationNameLegacy";
-    export { default as animationEndEvent } from "shorter-js/src/strings/animationEndEvent";
-    export { default as animationEndEventLegacy } from "shorter-js/src/strings/animationEndEventLegacy";
-    export { default as transitionDuration } from "shorter-js/src/strings/transitionDuration";
-    export { default as transitionDurationLegacy } from "shorter-js/src/strings/transitionDurationLegacy";
-    export { default as transitionDelay } from "shorter-js/src/strings/transitionDelay";
-    export { default as transitionDelayLegacy } from "shorter-js/src/strings/transitionDelayLegacy";
-    export { default as transitionEndEvent } from "shorter-js/src/strings/transitionEndEvent";
-    export { default as transitionEndEventLegacy } from "shorter-js/src/strings/transitionEndEventLegacy";
-    export { default as transitionProperty } from "shorter-js/src/strings/transitionProperty";
-    export { default as transitionPropertyLegacy } from "shorter-js/src/strings/transitionPropertyLegacy";
-    export { default as addEventListener } from "shorter-js/src/strings/addEventListener";
-    export { default as removeEventListener } from "shorter-js/src/strings/removeEventListener";
-    export { default as bezierEasings } from "shorter-js/src/strings/bezierEasings";
-    export { default as offsetHeight } from "shorter-js/src/strings/offsetHeight";
-    export { default as offsetWidth } from "shorter-js/src/strings/offsetWidth";
-    export { default as scrollHeight } from "shorter-js/src/strings/scrollHeight";
-    export { default as scrollWidth } from "shorter-js/src/strings/scrollWidth";
-    export { default as userAgentData } from "shorter-js/src/strings/userAgentData";
-    export { default as userAgent } from "shorter-js/src/strings/userAgent";
-    export { default as isApple } from "shorter-js/src/boolean/isApple";
-    export { default as isFirefox } from "shorter-js/src/boolean/isFirefox";
-    export { default as isMobile } from "shorter-js/src/boolean/isMobile";
-    export { default as support3DTransform } from "shorter-js/src/boolean/support3DTransform";
-    export { default as supportAnimation } from "shorter-js/src/boolean/supportAnimation";
-    export { default as supportPassive } from "shorter-js/src/boolean/supportPassive";
-    export { default as supportTouch } from "shorter-js/src/boolean/supportTouch";
-    export { default as supportTransform } from "shorter-js/src/boolean/supportTransform";
-    export { default as supportTransition } from "shorter-js/src/boolean/supportTransition";
-    export { default as hasAttribute } from "shorter-js/src/attr/hasAttribute";
-    export { default as hasAttributeNS } from "shorter-js/src/attr/hasAttributeNS";
-    export { default as getAttribute } from "shorter-js/src/attr/getAttribute";
-    export { default as getAttributeNS } from "shorter-js/src/attr/getAttributeNS";
-    export { default as setAttribute } from "shorter-js/src/attr/setAttribute";
-    export { default as setAttributeNS } from "shorter-js/src/attr/setAttributeNS";
-    export { default as removeAttribute } from "shorter-js/src/attr/removeAttribute";
-    export { default as removeAttributeNS } from "shorter-js/src/attr/removeAttributeNS";
-    export { default as getBoundingClientRect } from "shorter-js/src/get/getBoundingClientRect";
-    export { default as getDocument } from "shorter-js/src/get/getDocument";
-    export { default as getDocumentBody } from "shorter-js/src/get/getDocumentBody";
-    export { default as getDocumentElement } from "shorter-js/src/get/getDocumentElement";
-    export { default as getDocumentHead } from "shorter-js/src/get/getDocumentHead";
-    export { default as getElementAnimationDuration } from "shorter-js/src/get/getElementAnimationDuration";
-    export { default as getElementAnimationDurationLegacy } from "shorter-js/src/get/getElementAnimationDurationLegacy";
-    export { default as getElementAnimationDelay } from "shorter-js/src/get/getElementAnimationDelay";
-    export { default as getElementAnimationDelayLegacy } from "shorter-js/src/get/getElementAnimationDelayLegacy";
-    export { default as getElementStyle } from "shorter-js/src/get/getElementStyle";
-    export { default as getElementTransitionDuration } from "shorter-js/src/get/getElementTransitionDuration";
-    export { default as getElementTransitionDurationLegacy } from "shorter-js/src/get/getElementTransitionDurationLegacy";
-    export { default as getElementTransitionDelay } from "shorter-js/src/get/getElementTransitionDelay";
-    export { default as getElementTransitionDelayLegacy } from "shorter-js/src/get/getElementTransitionDelayLegacy";
-    export { default as getNodeScroll } from "shorter-js/src/get/getNodeScroll";
-    export { default as getParentNode } from "shorter-js/src/get/getParentNode";
-    export { default as getRectRelativeToOffsetParent } from "shorter-js/src/get/getRectRelativeToOffsetParent";
-    export { default as getUID } from "shorter-js/src/get/getUID";
-    export { default as getWindow } from "shorter-js/src/get/getWindow";
-    export { default as addClass } from "shorter-js/src/class/addClass";
-    export { default as removeClass } from "shorter-js/src/class/removeClass";
-    export { default as hasClass } from "shorter-js/src/class/hasClass";
-    export { default as on } from "shorter-js/src/event/on";
-    export { default as off } from "shorter-js/src/event/off";
-    export { default as one } from "shorter-js/src/event/one";
-    export { default as Data, getInstance } from "shorter-js/src/misc/data";
-    export { default as Timer } from "shorter-js/src/misc/timer";
-    export { default as createElement } from "shorter-js/src/misc/createElement";
-    export { default as createElementNS } from "shorter-js/src/misc/createElementNS";
-    export { default as dispatchEvent } from "shorter-js/src/misc/dispatchEvent";
-    export { default as distinct } from "shorter-js/src/misc/distinct";
-    export { default as emulateAnimationEnd } from "shorter-js/src/misc/emulateAnimationEnd";
-    export { default as emulateAnimationEndLegacy } from "shorter-js/src/misc/emulateAnimationEndLegacy";
-    export { default as emulateTransitionEnd } from "shorter-js/src/misc/emulateTransitionEnd";
-    export { default as emulateTransitionEndLegacy } from "shorter-js/src/misc/emulateTransitionEndLegacy";
-    export { default as passiveHandler } from "shorter-js/src/misc/passiveHandler";
-    export { default as passiveHandlerLegacy } from "shorter-js/src/misc/passiveHandlerLegacy";
-    export { default as setElementStyle } from "shorter-js/src/misc/setElementStyle";
-    export { default as normalizeValue } from "shorter-js/src/misc/normalizeValue";
-    export { default as normalizeOptions } from "shorter-js/src/misc/normalizeOptions";
-    export { default as tryWrapper } from "shorter-js/src/misc/tryWrapper";
-    export { default as reflow } from "shorter-js/src/misc/reflow";
-    export { default as focus } from "shorter-js/src/misc/focus";
-    export { default as noop } from "shorter-js/src/misc/noop";
-    export { default as toLowerCase } from "shorter-js/src/misc/toLowerCase";
-    export { default as toUpperCase } from "shorter-js/src/misc/toUpperCase";
-    export { default as ArrayFrom } from "shorter-js/src/misc/ArrayFrom";
-    export { default as Float32ArrayFrom } from "shorter-js/src/misc/Float32ArrayFrom";
-    export { default as Float64ArrayFrom } from "shorter-js/src/misc/Float64ArrayFrom";
-    export { default as ObjectKeys } from "shorter-js/src/misc/ObjectKeys";
-    export { default as ObjectValues } from "shorter-js/src/misc/ObjectValues";
-    export { default as ObjectAssign } from "shorter-js/src/misc/ObjectAssign";
-    export { default as OriginalEvent } from "shorter-js/src/misc/OriginalEvent";
-    export { default as isArray } from "shorter-js/src/is/isArray";
-    export { default as isDocument } from "shorter-js/src/is/isDocument";
-    export { default as isCustomElement } from "shorter-js/src/is/isCustomElement";
-    export { default as isElement } from "shorter-js/src/is/isElement";
-    export { default as isElementInScrollRange } from "shorter-js/src/is/isElementInScrollRange";
-    export { default as isElementInViewport } from "shorter-js/src/is/isElementInViewport";
-    export { default as isElementsArray } from "shorter-js/src/is/isElementsArray";
-    export { default as isFunction } from "shorter-js/src/is/isFunction";
-    export { default as isHTMLCollection } from "shorter-js/src/is/isHTMLCollection";
-    export { default as isHTMLElement } from "shorter-js/src/is/isHTMLElement";
-    export { default as isHTMLImageElement } from "shorter-js/src/is/isHTMLImageElement";
-    export { default as isMedia } from "shorter-js/src/is/isMedia";
-    export { default as isNode } from "shorter-js/src/is/isNode";
-    export { default as isNodeList } from "shorter-js/src/is/isNodeList";
-    export { default as isRTL } from "shorter-js/src/is/isRTL";
-    export { default as isScaledElement } from "shorter-js/src/is/isScaledElement";
-    export { default as isShadowRoot } from "shorter-js/src/is/isShadowRoot";
-    export { default as isString } from "shorter-js/src/is/isString";
-    export { default as isSVGElement } from "shorter-js/src/is/isSVGElement";
-    export { default as isTableElement } from "shorter-js/src/is/isTableElement";
-    export { default as isWindow } from "shorter-js/src/is/isWindow";
-    export { default as elementNodes } from "shorter-js/src/selectors/elementNodes";
-    export { default as parentNodes } from "shorter-js/src/selectors/parentNodes";
-    export { default as closest } from "shorter-js/src/selectors/closest";
-    export { default as documentAll } from "shorter-js/src/selectors/documentAll";
-    export { default as getCustomElements } from "shorter-js/src/selectors/getCustomElements";
-    export { default as getElementById } from "shorter-js/src/selectors/getElementById";
-    export { default as querySelector } from "shorter-js/src/selectors/querySelector";
-    export { default as querySelectorAll } from "shorter-js/src/selectors/querySelectorAll";
-    export { default as getElementsByTagName } from "shorter-js/src/selectors/getElementsByTagName";
-    export { default as getElementsByClassName } from "shorter-js/src/selectors/getElementsByClassName";
-    export { default as matches } from "shorter-js/src/selectors/matches";
-    export { default as matchesLegacy } from "shorter-js/src/selectors/matchesLegacy";
-    export { default as Version } from "shorter-js/src/misc/version";
+declare module "shorty/types/module/SHORTY" {
+    export { default as ariaChecked } from "shorty/src/strings/ariaChecked";
+    export { default as ariaDescription } from "shorty/src/strings/ariaDescription";
+    export { default as ariaDescribedBy } from "shorty/src/strings/ariaDescribedBy";
+    export { default as ariaExpanded } from "shorty/src/strings/ariaExpanded";
+    export { default as ariaHasPopup } from "shorty/src/strings/ariaHasPopup";
+    export { default as ariaHidden } from "shorty/src/strings/ariaHidden";
+    export { default as ariaLabel } from "shorty/src/strings/ariaLabel";
+    export { default as ariaLabelledBy } from "shorty/src/strings/ariaLabelledBy";
+    export { default as ariaModal } from "shorty/src/strings/ariaModal";
+    export { default as ariaPressed } from "shorty/src/strings/ariaPressed";
+    export { default as ariaSelected } from "shorty/src/strings/ariaSelected";
+    export { default as ariaValueMin } from "shorty/src/strings/ariaValueMin";
+    export { default as ariaValueMax } from "shorty/src/strings/ariaValueMax";
+    export { default as ariaValueNow } from "shorty/src/strings/ariaValueNow";
+    export { default as ariaValueText } from "shorty/src/strings/ariaValueText";
+    export { default as nativeEvents } from "shorty/src/strings/nativeEvents";
+    export { default as abortEvent } from "shorty/src/strings/abortEvent";
+    export { default as beforeunloadEvent } from "shorty/src/strings/beforeunloadEvent";
+    export { default as blurEvent } from "shorty/src/strings/blurEvent";
+    export { default as changeEvent } from "shorty/src/strings/changeEvent";
+    export { default as contextmenuEvent } from "shorty/src/strings/contextmenuEvent";
+    export { default as DOMContentLoadedEvent } from "shorty/src/strings/DOMContentLoadedEvent";
+    export { default as DOMMouseScrollEvent } from "shorty/src/strings/DOMMouseScrollEvent";
+    export { default as errorEvent } from "shorty/src/strings/errorEvent";
+    export { default as focusEvents } from "shorty/src/strings/focusEvents";
+    export { default as focusEvent } from "shorty/src/strings/focusEvent";
+    export { default as focusinEvent } from "shorty/src/strings/focusinEvent";
+    export { default as focusoutEvent } from "shorty/src/strings/focusoutEvent";
+    export { default as gesturechangeEvent } from "shorty/src/strings/gesturechangeEvent";
+    export { default as gestureendEvent } from "shorty/src/strings/gestureendEvent";
+    export { default as gesturestartEvent } from "shorty/src/strings/gesturestartEvent";
+    export { default as keydownEvent } from "shorty/src/strings/keydownEvent";
+    export { default as keyupEvent } from "shorty/src/strings/keyupEvent";
+    export { default as keypressEvent } from "shorty/src/strings/keypressEvent";
+    export { default as loadEvent } from "shorty/src/strings/loadEvent";
+    export { default as loadstartEvent } from "shorty/src/strings/loadstartEvent";
+    export { default as mouseClickEvents } from "shorty/src/strings/mouseClickEvents";
+    export { default as mouseclickEvent } from "shorty/src/strings/mouseclickEvent";
+    export { default as mousedblclickEvent } from "shorty/src/strings/mousedblclickEvent";
+    export { default as mousedownEvent } from "shorty/src/strings/mousedownEvent";
+    export { default as mouseupEvent } from "shorty/src/strings/mouseupEvent";
+    export { default as mousehoverEvent } from "shorty/src/strings/mousehoverEvent";
+    export { default as mouseHoverEvents } from "shorty/src/strings/mouseHoverEvents";
+    export { default as mouseenterEvent } from "shorty/src/strings/mouseenterEvent";
+    export { default as mouseleaveEvent } from "shorty/src/strings/mouseleaveEvent";
+    export { default as mouseinEvent } from "shorty/src/strings/mouseinEvent";
+    export { default as mouseoutEvent } from "shorty/src/strings/mouseoutEvent";
+    export { default as mouseoverEvent } from "shorty/src/strings/mouseoverEvent";
+    export { default as mousemoveEvent } from "shorty/src/strings/mousemoveEvent";
+    export { default as mouseSwipeEvents } from "shorty/src/strings/mouseSwipeEvents";
+    export { default as mousewheelEvent } from "shorty/src/strings/mousewheelEvent";
+    export { default as moveEvent } from "shorty/src/strings/moveEvent";
+    export { default as orientationchangeEvent } from "shorty/src/strings/orientationchangeEvent";
+    export { default as pointercancelEvent } from "shorty/src/strings/pointercancelEvent";
+    export { default as pointerdownEvent } from "shorty/src/strings/pointerdownEvent";
+    export { default as pointerleaveEvent } from "shorty/src/strings/pointerleaveEvent";
+    export { default as pointermoveEvent } from "shorty/src/strings/pointermoveEvent";
+    export { default as pointerupEvent } from "shorty/src/strings/pointerupEvent";
+    export { default as readystatechangeEvent } from "shorty/src/strings/readystatechangeEvent";
+    export { default as resetEvent } from "shorty/src/strings/resetEvent";
+    export { default as resizeEvent } from "shorty/src/strings/resizeEvent";
+    export { default as selectEvent } from "shorty/src/strings/selectEvent";
+    export { default as selectendEvent } from "shorty/src/strings/selectendEvent";
+    export { default as selectstartEvent } from "shorty/src/strings/selectstartEvent";
+    export { default as scrollEvent } from "shorty/src/strings/scrollEvent";
+    export { default as submitEvent } from "shorty/src/strings/submitEvent";
+    export { default as touchEvents } from "shorty/src/strings/touchEvents";
+    export { default as touchstartEvent } from "shorty/src/strings/touchstartEvent";
+    export { default as touchmoveEvent } from "shorty/src/strings/touchmoveEvent";
+    export { default as touchcancelEvent } from "shorty/src/strings/touchcancelEvent";
+    export { default as touchendEvent } from "shorty/src/strings/touchendEvent";
+    export { default as unloadEvent } from "shorty/src/strings/unloadEvent";
+    export { default as keyboardEventKeys } from "shorty/src/strings/keyboardEventKeys";
+    export { default as keyAlt } from "shorty/src/strings/keyAlt";
+    export { default as keyArrowDown } from "shorty/src/strings/keyArrowDown";
+    export { default as keyArrowUp } from "shorty/src/strings/keyArrowUp";
+    export { default as keyArrowLeft } from "shorty/src/strings/keyArrowLeft";
+    export { default as keyArrowRight } from "shorty/src/strings/keyArrowRight";
+    export { default as keyBackspace } from "shorty/src/strings/keyBackspace";
+    export { default as keyCapsLock } from "shorty/src/strings/keyCapsLock";
+    export { default as keyControl } from "shorty/src/strings/keyControl";
+    export { default as keyDelete } from "shorty/src/strings/keyDelete";
+    export { default as keyEnter } from "shorty/src/strings/keyEnter";
+    export { default as keyEscape } from "shorty/src/strings/keyEscape";
+    export { default as keyInsert } from "shorty/src/strings/keyInsert";
+    export { default as keyMeta } from "shorty/src/strings/keyMeta";
+    export { default as keyPause } from "shorty/src/strings/keyPause";
+    export { default as keyScrollLock } from "shorty/src/strings/keyScrollLock";
+    export { default as keyShift } from "shorty/src/strings/keyShift";
+    export { default as keySpace } from "shorty/src/strings/keySpace";
+    export { default as keyTab } from "shorty/src/strings/keyTab";
+    export { default as animationDuration } from "shorty/src/strings/animationDuration";
+    export { default as animationDurationLegacy } from "shorty/src/strings/animationDurationLegacy";
+    export { default as animationDelay } from "shorty/src/strings/animationDelay";
+    export { default as animationDelayLegacy } from "shorty/src/strings/animationDelayLegacy";
+    export { default as animationName } from "shorty/src/strings/animationName";
+    export { default as animationNameLegacy } from "shorty/src/strings/animationNameLegacy";
+    export { default as animationEndEvent } from "shorty/src/strings/animationEndEvent";
+    export { default as animationEndEventLegacy } from "shorty/src/strings/animationEndEventLegacy";
+    export { default as transitionDuration } from "shorty/src/strings/transitionDuration";
+    export { default as transitionDurationLegacy } from "shorty/src/strings/transitionDurationLegacy";
+    export { default as transitionDelay } from "shorty/src/strings/transitionDelay";
+    export { default as transitionDelayLegacy } from "shorty/src/strings/transitionDelayLegacy";
+    export { default as transitionEndEvent } from "shorty/src/strings/transitionEndEvent";
+    export { default as transitionEndEventLegacy } from "shorty/src/strings/transitionEndEventLegacy";
+    export { default as transitionProperty } from "shorty/src/strings/transitionProperty";
+    export { default as transitionPropertyLegacy } from "shorty/src/strings/transitionPropertyLegacy";
+    export { default as addEventListener } from "shorty/src/strings/addEventListener";
+    export { default as removeEventListener } from "shorty/src/strings/removeEventListener";
+    export { default as bezierEasings } from "shorty/src/strings/bezierEasings";
+    export { default as offsetHeight } from "shorty/src/strings/offsetHeight";
+    export { default as offsetWidth } from "shorty/src/strings/offsetWidth";
+    export { default as scrollHeight } from "shorty/src/strings/scrollHeight";
+    export { default as scrollWidth } from "shorty/src/strings/scrollWidth";
+    export { default as userAgentData } from "shorty/src/strings/userAgentData";
+    export { default as userAgent } from "shorty/src/strings/userAgent";
+    export { default as isApple } from "shorty/src/boolean/isApple";
+    export { default as isFirefox } from "shorty/src/boolean/isFirefox";
+    export { default as isMobile } from "shorty/src/boolean/isMobile";
+    export { default as support3DTransform } from "shorty/src/boolean/support3DTransform";
+    export { default as supportAnimation } from "shorty/src/boolean/supportAnimation";
+    export { default as supportPassive } from "shorty/src/boolean/supportPassive";
+    export { default as supportTouch } from "shorty/src/boolean/supportTouch";
+    export { default as supportTransform } from "shorty/src/boolean/supportTransform";
+    export { default as supportTransition } from "shorty/src/boolean/supportTransition";
+    export { default as hasAttribute } from "shorty/src/attr/hasAttribute";
+    export { default as hasAttributeNS } from "shorty/src/attr/hasAttributeNS";
+    export { default as getAttribute } from "shorty/src/attr/getAttribute";
+    export { default as getAttributeNS } from "shorty/src/attr/getAttributeNS";
+    export { default as setAttribute } from "shorty/src/attr/setAttribute";
+    export { default as setAttributeNS } from "shorty/src/attr/setAttributeNS";
+    export { default as removeAttribute } from "shorty/src/attr/removeAttribute";
+    export { default as removeAttributeNS } from "shorty/src/attr/removeAttributeNS";
+    export { default as getBoundingClientRect } from "shorty/src/get/getBoundingClientRect";
+    export { default as getDocument } from "shorty/src/get/getDocument";
+    export { default as getDocumentBody } from "shorty/src/get/getDocumentBody";
+    export { default as getDocumentElement } from "shorty/src/get/getDocumentElement";
+    export { default as getDocumentHead } from "shorty/src/get/getDocumentHead";
+    export { default as getElementAnimationDuration } from "shorty/src/get/getElementAnimationDuration";
+    export { default as getElementAnimationDurationLegacy } from "shorty/src/get/getElementAnimationDurationLegacy";
+    export { default as getElementAnimationDelay } from "shorty/src/get/getElementAnimationDelay";
+    export { default as getElementAnimationDelayLegacy } from "shorty/src/get/getElementAnimationDelayLegacy";
+    export { default as getElementStyle } from "shorty/src/get/getElementStyle";
+    export { default as getElementTransitionDuration } from "shorty/src/get/getElementTransitionDuration";
+    export { default as getElementTransitionDurationLegacy } from "shorty/src/get/getElementTransitionDurationLegacy";
+    export { default as getElementTransitionDelay } from "shorty/src/get/getElementTransitionDelay";
+    export { default as getElementTransitionDelayLegacy } from "shorty/src/get/getElementTransitionDelayLegacy";
+    export { default as getNodeScroll } from "shorty/src/get/getNodeScroll";
+    export { default as getParentNode } from "shorty/src/get/getParentNode";
+    export { default as getRectRelativeToOffsetParent } from "shorty/src/get/getRectRelativeToOffsetParent";
+    export { default as getUID } from "shorty/src/get/getUID";
+    export { default as getWindow } from "shorty/src/get/getWindow";
+    export { default as addClass } from "shorty/src/class/addClass";
+    export { default as removeClass } from "shorty/src/class/removeClass";
+    export { default as hasClass } from "shorty/src/class/hasClass";
+    export { default as on } from "shorty/src/event/on";
+    export { default as off } from "shorty/src/event/off";
+    export { default as one } from "shorty/src/event/one";
+    export { default as Data, getInstance } from "shorty/src/misc/data";
+    export { default as Timer } from "shorty/src/misc/timer";
+    export { default as createElement } from "shorty/src/misc/createElement";
+    export { default as createElementNS } from "shorty/src/misc/createElementNS";
+    export { default as dispatchEvent } from "shorty/src/misc/dispatchEvent";
+    export { default as distinct } from "shorty/src/misc/distinct";
+    export { default as emulateAnimationEnd } from "shorty/src/misc/emulateAnimationEnd";
+    export { default as emulateAnimationEndLegacy } from "shorty/src/misc/emulateAnimationEndLegacy";
+    export { default as emulateTransitionEnd } from "shorty/src/misc/emulateTransitionEnd";
+    export { default as emulateTransitionEndLegacy } from "shorty/src/misc/emulateTransitionEndLegacy";
+    export { default as passiveHandler } from "shorty/src/misc/passiveHandler";
+    export { default as passiveHandlerLegacy } from "shorty/src/misc/passiveHandlerLegacy";
+    export { default as setElementStyle } from "shorty/src/misc/setElementStyle";
+    export { default as normalizeValue } from "shorty/src/misc/normalizeValue";
+    export { default as normalizeOptions } from "shorty/src/misc/normalizeOptions";
+    export { default as tryWrapper } from "shorty/src/misc/tryWrapper";
+    export { default as reflow } from "shorty/src/misc/reflow";
+    export { default as focus } from "shorty/src/misc/focus";
+    export { default as noop } from "shorty/src/misc/noop";
+    export { default as toLowerCase } from "shorty/src/misc/toLowerCase";
+    export { default as toUpperCase } from "shorty/src/misc/toUpperCase";
+    export { default as ArrayFrom } from "shorty/src/misc/ArrayFrom";
+    export { default as Float32ArrayFrom } from "shorty/src/misc/Float32ArrayFrom";
+    export { default as Float64ArrayFrom } from "shorty/src/misc/Float64ArrayFrom";
+    export { default as ObjectKeys } from "shorty/src/misc/ObjectKeys";
+    export { default as ObjectValues } from "shorty/src/misc/ObjectValues";
+    export { default as ObjectAssign } from "shorty/src/misc/ObjectAssign";
+    export { default as OriginalEvent } from "shorty/src/misc/OriginalEvent";
+    export { default as isArray } from "shorty/src/is/isArray";
+    export { default as isDocument } from "shorty/src/is/isDocument";
+    export { default as isCustomElement } from "shorty/src/is/isCustomElement";
+    export { default as isElement } from "shorty/src/is/isElement";
+    export { default as isElementInScrollRange } from "shorty/src/is/isElementInScrollRange";
+    export { default as isElementInViewport } from "shorty/src/is/isElementInViewport";
+    export { default as isElementsArray } from "shorty/src/is/isElementsArray";
+    export { default as isFunction } from "shorty/src/is/isFunction";
+    export { default as isHTMLCollection } from "shorty/src/is/isHTMLCollection";
+    export { default as isHTMLElement } from "shorty/src/is/isHTMLElement";
+    export { default as isHTMLImageElement } from "shorty/src/is/isHTMLImageElement";
+    export { default as isMedia } from "shorty/src/is/isMedia";
+    export { default as isNode } from "shorty/src/is/isNode";
+    export { default as isNodeList } from "shorty/src/is/isNodeList";
+    export { default as isRTL } from "shorty/src/is/isRTL";
+    export { default as isScaledElement } from "shorty/src/is/isScaledElement";
+    export { default as isShadowRoot } from "shorty/src/is/isShadowRoot";
+    export { default as isString } from "shorty/src/is/isString";
+    export { default as isSVGElement } from "shorty/src/is/isSVGElement";
+    export { default as isTableElement } from "shorty/src/is/isTableElement";
+    export { default as isWindow } from "shorty/src/is/isWindow";
+    export { default as elementNodes } from "shorty/src/selectors/elementNodes";
+    export { default as parentNodes } from "shorty/src/selectors/parentNodes";
+    export { default as closest } from "shorty/src/selectors/closest";
+    export { default as documentAll } from "shorty/src/selectors/documentAll";
+    export { default as getCustomElements } from "shorty/src/selectors/getCustomElements";
+    export { default as getElementById } from "shorty/src/selectors/getElementById";
+    export { default as querySelector } from "shorty/src/selectors/querySelector";
+    export { default as querySelectorAll } from "shorty/src/selectors/querySelectorAll";
+    export { default as getElementsByTagName } from "shorty/src/selectors/getElementsByTagName";
+    export { default as getElementsByClassName } from "shorty/src/selectors/getElementsByClassName";
+    export { default as matches } from "shorty/src/selectors/matches";
+    export { default as matchesLegacy } from "shorty/src/selectors/matchesLegacy";
+    export { default as Version } from "shorty/src/misc/version";
 }

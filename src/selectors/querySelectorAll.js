@@ -1,5 +1,4 @@
 import getDocument from '../get/getDocument';
-import parentNodes from './parentNodes';
 
 /**
  * A shortcut for `(document|Element).querySelectorAll`.
@@ -9,8 +8,7 @@ import parentNodes from './parentNodes';
  * @return {NodeListOf<HTMLElement | Element>} the query result
  */
 export default function querySelectorAll(selector, parent) {
-  const lookUp = parent && parentNodes
-    .some((x) => parent instanceof x) ? parent : getDocument();
-  // @ts-ignore -- `ShadowRoot` is also a node
-  return lookUp.querySelectorAll(selector);
+  const method = 'querySelectorAll';
+  const lookUp = parent && parent[method] ? parent : getDocument();
+  return lookUp[method](selector);
 }

@@ -1,6 +1,6 @@
 .eslintrc
-.vscode/
-node_modules/
-experiments/
-package-lock.json
+.vscode
+.github
 .gitignore
+node_modules
+experiments

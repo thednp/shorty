@@ -1,12 +1,12 @@
 /*!
-* shorter-js v0.3.4 (https://github.com/thednp/shorter-js)
+* Shorty v1.0.0 (https://github.com/thednp/shorty)
 * Copyright 2019-2022 © dnp_theme
-* Licensed under MIT (https://github.com/thednp/shorter-js/blob/master/LICENSE)
+* Licensed under MIT (https://github.com/thednp/shorty/blob/master/LICENSE)
 */
 (function (global, factory) {
   typeof exports === 'object' && typeof module !== 'undefined' ? module.exports = factory() :
   typeof define === 'function' && define.amd ? define(factory) :
-  (global = typeof globalThis !== 'undefined' ? globalThis : global || self, global.SHORTER = factory());
+  (global = typeof globalThis !== 'undefined' ? globalThis : global || self, global.SHORTY = factory());
 })(this, (function () { 'use strict';
 
   /**
@@ -1080,16 +1080,6 @@
   }
 
   /**
-   * A global array of possible `ParentNode`.
-   */
-  var parentNodes = [Document, Element, HTMLElement];
-
-  /**
-   * A global array with `Element` | `HTMLElement`.
-   */
-  var elementNodes = [Element, HTMLElement];
-
-  /**
    * Utility to check if target is typeof `HTMLElement`, `Element`, `Node`
    * or find one that matches a selector.
    *
@@ -1098,13 +1088,9 @@
    * @return {(HTMLElement | Element)?} the `HTMLElement` or `querySelector` result
    */
   function querySelector(selector, parent) {
-    var lookUp = parentNodes.some(function (x) { return parent instanceof x; })
-      ? parent : getDocument();
-
-    // @ts-ignore
-    return elementNodes.some(function (x) { return selector instanceof x; })
-      // @ts-ignore
-      ? selector : lookUp.querySelector(selector);
+    var method = 'querySelector';
+    var lookUp = parent && parent[method] ? parent : getDocument();
+    return selector[method] ? selector : lookUp[method](selector);
   }
 
   /** @type {Map<string, Map<HTMLElement | Element, Record<string, any>>>} */
@@ -2230,9 +2216,9 @@
    * @return {HTMLCollectionOf<HTMLElement | Element>} the 'HTMLCollection'
    */
   function getElementsByTagName(selector, parent) {
-    var lookUp = parent && parentNodes
-      .some(function (x) { return parent instanceof x; }) ? parent : getDocument();
-    return lookUp.getElementsByTagName(selector);
+    var method = 'getElementsByTagName';
+    var lookUp = parent && parent[method] ? parent : getDocument();
+    return lookUp[method](selector);
   }
 
   /**
@@ -2242,16 +2228,25 @@
   var documentAll = getElementsByTagName('*');
 
   /**
+   * A global array with `Element` | `HTMLElement`.
+   */
+  var elementNodes = [Element, HTMLElement];
+
+  /**
+   * A global array of possible `ParentNode`.
+   */
+  var parentNodes = [Document, Element, HTMLElement];
+
+  /**
    * Returns an `Array` of `Node` elements that are registered as
    * `CustomElement`.
    * @see https://stackoverflow.com/questions/27334365/how-to-get-list-of-registered-custom-elements
    *
    * @param {(HTMLElement | Element | Node | Document)=} parent parent to look into
-   * @returns {Array<(HTMLElement | Element)>} the query result
+   * @returns {Array<HTMLElement | Element>} the query result
    */
   function getCustomElements(parent) {
     var collection = parent && parentNodes.some(function (x) { return parent instanceof x; })
-      // @ts-ignore -- look inside `shadowRoot` node too
       ? getElementsByTagName('*', parent) : documentAll;
     return [].concat( collection ).filter(isCustomElement);
   }
@@ -2274,10 +2269,9 @@
    * @return {NodeListOf<HTMLElement | Element>} the query result
    */
   function querySelectorAll(selector, parent) {
-    var lookUp = parent && parentNodes
-      .some(function (x) { return parent instanceof x; }) ? parent : getDocument();
-    // @ts-ignore -- `ShadowRoot` is also a node
-    return lookUp.querySelectorAll(selector);
+    var method = 'querySelectorAll';
+    var lookUp = parent && parent[method] ? parent : getDocument();
+    return lookUp[method](selector);
   }
 
   /**
@@ -2289,9 +2283,9 @@
    * @return {HTMLCollectionOf<HTMLElement | Element>} the 'HTMLCollection'
    */
   function getElementsByClassName(selector, parent) {
-    var lookUp = parent && parentNodes.some(function (x) { return parent instanceof x; })
-      ? parent : getDocument();
-    return lookUp.getElementsByClassName(selector);
+    var method = 'getElementsByClassName';
+    var lookUp = parent && parent[method] ? parent : getDocument();
+    return lookUp[method](selector);
   }
 
   /**
@@ -2329,7 +2323,7 @@
     return matchesFn.call(target, selector);
   }
 
-  var version = "0.3.4";
+  var version = "1.0.0";
 
   // @ts-ignore
 
