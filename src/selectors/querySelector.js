@@ -1,6 +1,4 @@
 import getDocument from '../get/getDocument';
-import elementNodes from './elementNodes';
-import parentNodes from './parentNodes';
 
 /**
  * Utility to check if target is typeof `HTMLElement`, `Element`, `Node`
@@ -11,13 +9,9 @@ import parentNodes from './parentNodes';
  * @return {(HTMLElement | Element)?} the `HTMLElement` or `querySelector` result
  */
 export default function querySelector(selector, parent) {
-  const method = 'querySelector';
-  if (elementNodes.some((e) => selector instanceof e)) return selector;
-
-  if (selector) {
-    const lookUp = parentNodes.some((e) => parent instanceof e)
-      ? parent : getDocument();
-    return lookUp[method](selector);
+  if (typeof selector === 'string') {
+    const lookUp = typeof parent !== 'object' ? getDocument() : parent;
+    return lookUp.querySelector(selector);
   }
-  return null;
+  return selector;
 }

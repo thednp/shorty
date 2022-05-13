@@ -1080,16 +1080,6 @@
   }
 
   /**
-   * A global array with `Element` | `HTMLElement`.
-   */
-  var elementNodes = [Element, HTMLElement];
-
-  /**
-   * A global array of possible `ParentNode`.
-   */
-  var parentNodes = [Document, Element, HTMLElement];
-
-  /**
    * Utility to check if target is typeof `HTMLElement`, `Element`, `Node`
    * or find one that matches a selector.
    *
@@ -1098,15 +1088,11 @@
    * @return {(HTMLElement | Element)?} the `HTMLElement` or `querySelector` result
    */
   function querySelector(selector, parent) {
-    var method = 'querySelector';
-    if (elementNodes.some(function (e) { return selector instanceof e; })) { return selector; }
-
-    if (selector) {
-      var lookUp = parentNodes.some(function (e) { return parent instanceof e; })
-        ? parent : getDocument();
-      return lookUp[method](selector);
+    if (typeof selector === 'string') {
+      var lookUp = typeof parent !== 'object' ? getDocument() : parent;
+      return lookUp.querySelector(selector);
     }
-    return null;
+    return selector;
   }
 
   /** @type {Map<string, Map<HTMLElement | Element, Record<string, any>>>} */
@@ -2232,8 +2218,7 @@
    * @return {HTMLCollectionOf<HTMLElement | Element>} the 'HTMLCollection'
    */
   function getElementsByTagName(selector, parent) {
-    var lookUp = parentNodes.some(function (e) { return parent instanceof e; })
-      ? parent : getDocument();
+    var lookUp = typeof parent !== 'object' ? getDocument() : parent;
     return lookUp.getElementsByTagName(selector);
   }
 
@@ -2252,7 +2237,7 @@
    * @returns {Array<HTMLElement | Element>} the query result
    */
   function getCustomElements(parent) {
-    var collection = parent && parentNodes.some(function (x) { return parent instanceof x; })
+    var collection = parent && typeof parent === 'object'
       ? getElementsByTagName('*', parent) : documentAll;
     return [].concat( collection ).filter(isCustomElement);
   }
@@ -2275,8 +2260,7 @@
    * @return {NodeListOf<HTMLElement | Element>} the query result
    */
   function querySelectorAll(selector, parent) {
-    var lookUp = parentNodes.some(function (e) { return parent instanceof e; })
-      ? parent : getDocument();
+    var lookUp = typeof parent !== 'object' ? getDocument() : parent;
     return lookUp.querySelectorAll(selector);
   }
 
@@ -2289,8 +2273,7 @@
    * @return {HTMLCollectionOf<HTMLElement | Element>} the 'HTMLCollection'
    */
   function getElementsByClassName(selector, parent) {
-    var lookUp = parentNodes.some(function (e) { return parent instanceof e; })
-      ? parent : getDocument();
+    var lookUp = typeof parent !== 'object' ? getDocument() : parent;
     return lookUp.getElementsByClassName(selector);
   }
 
@@ -2520,8 +2503,6 @@
     isWindow: isWindow,
     isMedia: isMedia,
     isRTL: isRTL,
-    elementNodes: elementNodes,
-    parentNodes: parentNodes,
     closest: closest,
     documentAll: documentAll,
     querySelector: querySelector,

@@ -236,8 +236,6 @@ import isWindow from './is/isWindow';
 // selectors
 import closest from './selectors/closest';
 import documentAll from './selectors/documentAll';
-import elementNodes from './selectors/elementNodes';
-import parentNodes from './selectors/parentNodes';
 import querySelector from './selectors/querySelector';
 import getCustomElements from './selectors/getCustomElements';
 import getElementById from './selectors/getElementById';
@@ -428,8 +426,6 @@ const SHORTER = {
   isWindow,
   isMedia,
   isRTL,
-  elementNodes,
-  parentNodes,
   closest,
   documentAll,
   querySelector,

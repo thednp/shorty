@@ -1484,29 +1484,6 @@ declare module "shorty/src/class/hasClass" {
      */
     export default function hasClass(element: HTMLElement | Element, classNAME: string): boolean;
 }
-declare module "shorty/src/selectors/parentNodes" {
-    export default parentNodes;
-    /**
-     * A global array of possible `ParentNode`.
-     */
-    const parentNodes: ({
-        new (): Document;
-        prototype: Document;
-    } | {
-        new (): Element;
-        prototype: Element;
-    })[];
-}
-declare module "shorty/src/selectors/elementNodes" {
-    export default elementNodes;
-    /**
-     * A global array with `Element` | `HTMLElement`.
-     */
-    const elementNodes: {
-        new (): Element;
-        prototype: Element;
-    }[];
-}
 declare module "shorty/src/selectors/querySelector" {
     /**
      * Utility to check if target is typeof `HTMLElement`, `Element`, `Node`
@@ -2301,8 +2278,6 @@ declare module "shorty/types/module/SHORTY" {
     export { default as isSVGElement } from "shorty/src/is/isSVGElement";
     export { default as isTableElement } from "shorty/src/is/isTableElement";
     export { default as isWindow } from "shorty/src/is/isWindow";
-    export { default as elementNodes } from "shorty/src/selectors/elementNodes";
-    export { default as parentNodes } from "shorty/src/selectors/parentNodes";
     export { default as closest } from "shorty/src/selectors/closest";
     export { default as documentAll } from "shorty/src/selectors/documentAll";
     export { default as getCustomElements } from "shorty/src/selectors/getCustomElements";

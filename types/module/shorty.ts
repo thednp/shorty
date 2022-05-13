@@ -233,8 +233,6 @@ export { default as isTableElement } from '../../src/is/isTableElement';
 export { default as isWindow } from '../../src/is/isWindow';
 
 // selectors
-export { default as elementNodes } from '../../src/selectors/elementNodes';
-export { default as parentNodes } from '../../src/selectors/parentNodes';
 export { default as closest } from '../../src/selectors/closest';
 export { default as documentAll } from '../../src/selectors/documentAll';
 export { default as getCustomElements } from '../../src/selectors/getCustomElements';

@@ -208,8 +208,6 @@ export { default as isString } from 'shorty/src/is/isString';
 export { default as isSVGElement } from 'shorty/src/is/isSVGElement';
 export { default as isTableElement } from 'shorty/src/is/isTableElement';
 export { default as isWindow } from 'shorty/src/is/isWindow';
-export { default as parentNodes } from 'shorty/src/selectors/parentNodes';
-export { default as elementNodes } from 'shorty/src/selectors/elementNodes';
 export { default as closest } from 'shorty/src/selectors/closest';
 export { default as documentAll } from 'shorty/src/selectors/documentAll';
 export { default as getCustomElements } from 'shorty/src/selectors/getCustomElements';

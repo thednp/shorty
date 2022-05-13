@@ -1,5 +1,4 @@
 import getDocument from '../get/getDocument';
-import parentNodes from './parentNodes';
 
 /**
  * Shortcut for `HTMLElement.getElementsByClassName` method. Some `Node` elements
@@ -10,7 +9,6 @@ import parentNodes from './parentNodes';
  * @return {HTMLCollectionOf<HTMLElement | Element>} the 'HTMLCollection'
  */
 export default function getElementsByClassName(selector, parent) {
-  const lookUp = parentNodes.some((e) => parent instanceof e)
-    ? parent : getDocument();
+  const lookUp = typeof parent !== 'object' ? getDocument() : parent;
   return lookUp.getElementsByClassName(selector);
 }

@@ -1,6 +1,5 @@
 import documentAll from './documentAll';
 import isCustomElement from '../is/isCustomElement';
-import parentNodes from './parentNodes';
 import getElementsByTagName from './getElementsByTagName';
 
 /**
@@ -12,7 +11,7 @@ import getElementsByTagName from './getElementsByTagName';
  * @returns {Array<HTMLElement | Element>} the query result
  */
 export default function getCustomElements(parent) {
-  const collection = parent && parentNodes.some((x) => parent instanceof x)
+  const collection = parent && typeof parent === 'object'
     ? getElementsByTagName('*', parent) : documentAll;
   return [...collection].filter(isCustomElement);
 }

@@ -1074,16 +1074,6 @@ function getDocument(node) {
 }
 
 /**
- * A global array with `Element` | `HTMLElement`.
- */
-const elementNodes = [Element, HTMLElement];
-
-/**
- * A global array of possible `ParentNode`.
- */
-const parentNodes = [Document, Element, HTMLElement];
-
-/**
  * Utility to check if target is typeof `HTMLElement`, `Element`, `Node`
  * or find one that matches a selector.
  *
@@ -1092,15 +1082,11 @@ const parentNodes = [Document, Element, HTMLElement];
  * @return {(HTMLElement | Element)?} the `HTMLElement` or `querySelector` result
  */
 function querySelector(selector, parent) {
-  const method = 'querySelector';
-  if (elementNodes.some((e) => selector instanceof e)) return selector;
-
-  if (selector) {
-    const lookUp = parentNodes.some((e) => parent instanceof e)
-      ? parent : getDocument();
-    return lookUp[method](selector);
+  if (typeof selector === 'string') {
+    const lookUp = typeof parent !== 'object' ? getDocument() : parent;
+    return lookUp.querySelector(selector);
   }
-  return null;
+  return selector;
 }
 
 /** @type {Map<string, Map<HTMLElement | Element, Record<string, any>>>} */
@@ -2211,8 +2197,7 @@ function closest(element, selector) {
  * @return {HTMLCollectionOf<HTMLElement | Element>} the 'HTMLCollection'
  */
 function getElementsByTagName(selector, parent) {
-  const lookUp = parentNodes.some((e) => parent instanceof e)
-    ? parent : getDocument();
+  const lookUp = typeof parent !== 'object' ? getDocument() : parent;
   return lookUp.getElementsByTagName(selector);
 }
 
@@ -2231,7 +2216,7 @@ const documentAll = getElementsByTagName('*');
  * @returns {Array<HTMLElement | Element>} the query result
  */
 function getCustomElements(parent) {
-  const collection = parent && parentNodes.some((x) => parent instanceof x)
+  const collection = parent && typeof parent === 'object'
     ? getElementsByTagName('*', parent) : documentAll;
   return [...collection].filter(isCustomElement);
 }
@@ -2254,8 +2239,7 @@ function getElementById(id) {
  * @return {NodeListOf<HTMLElement | Element>} the query result
  */
 function querySelectorAll(selector, parent) {
-  const lookUp = parentNodes.some((e) => parent instanceof e)
-    ? parent : getDocument();
+  const lookUp = typeof parent !== 'object' ? getDocument() : parent;
   return lookUp.querySelectorAll(selector);
 }
 
@@ -2268,8 +2252,7 @@ function querySelectorAll(selector, parent) {
  * @return {HTMLCollectionOf<HTMLElement | Element>} the 'HTMLCollection'
  */
 function getElementsByClassName(selector, parent) {
-  const lookUp = parentNodes.some((e) => parent instanceof e)
-    ? parent : getDocument();
+  const lookUp = typeof parent !== 'object' ? getDocument() : parent;
   return lookUp.getElementsByClassName(selector);
 }
 
@@ -2499,8 +2482,6 @@ const SHORTER = {
   isWindow,
   isMedia,
   isRTL,
-  elementNodes,
-  parentNodes,
   closest,
   documentAll,
   querySelector,
