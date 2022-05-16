@@ -1455,12 +1455,12 @@ declare module "shorty/src/get/getRectRelativeToOffsetParent" {
      * Returns the rect relative to an offset parent.
      * @see https://github.com/floating-ui/floating-ui
      *
-     * @param {HTMLElement | Element} element target
-     * @param {HTMLElement | Element | Window} offsetParent the container / offset parent
+     * @param {HTMLElement} element target
+     * @param {ParentNode | Window} offsetParent the container / offset parent
      * @param {{x: number, y: number}} scroll the offsetParent scroll position
      * @returns {SHORTY.OffsetRect}
      */
-    export default function getRectRelativeToOffsetParent(element: HTMLElement | Element, offsetParent: HTMLElement | Element | Window, scroll: {
+    export default function getRectRelativeToOffsetParent(element: HTMLElement, offsetParent: ParentNode | Window, scroll: {
         x: number;
         y: number;
     }): SHORTY.OffsetRect;

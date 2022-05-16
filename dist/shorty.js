@@ -1853,7 +1853,7 @@
    *
    * @see https://github.com/floating-ui/floating-ui
    *
-   * @param {HTMLElement | Element} element event.target
+   * @param {HTMLElement} element event.target
    * @param {boolean=} includeScale when *true*, the target scale is also computed
    * @returns {SHORTY.BoundingClientRect} the bounding client rect object
    */
@@ -1871,9 +1871,9 @@
     if (includeScale && isHTMLElement(element)) {
       var offsetWidth = element.offsetWidth;
       var offsetHeight = element.offsetHeight;
-      scaleX = offsetWidth > 0 ? Math.round(width) / offsetWidth
+      scaleX = offsetWidth > 0 ? Math.round(width) / offsetWidth || 1
         : /* istanbul ignore next */1;
-      scaleY = offsetHeight > 0 ? Math.round(height) / offsetHeight
+      scaleY = offsetHeight > 0 ? Math.round(height) / offsetHeight || 1
         : /* istanbul ignore next */1;
     }
 
@@ -1988,8 +1988,8 @@
    * Returns the rect relative to an offset parent.
    * @see https://github.com/floating-ui/floating-ui
    *
-   * @param {HTMLElement | Element} element target
-   * @param {HTMLElement | Element | Window} offsetParent the container / offset parent
+   * @param {HTMLElement} element target
+   * @param {ParentNode | Window} offsetParent the container / offset parent
    * @param {{x: number, y: number}} scroll the offsetParent scroll position
    * @returns {SHORTY.OffsetRect}
    */

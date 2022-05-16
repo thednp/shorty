@@ -5,7 +5,7 @@ import isHTMLElement from '../is/isHTMLElement';
  *
  * @see https://github.com/floating-ui/floating-ui
  *
- * @param {HTMLElement | Element} element event.target
+ * @param {HTMLElement} element event.target
  * @param {boolean=} includeScale when *true*, the target scale is also computed
  * @returns {SHORTY.BoundingClientRect} the bounding client rect object
  */
@@ -18,9 +18,9 @@ export default function getBoundingClientRect(element, includeScale) {
 
   if (includeScale && isHTMLElement(element)) {
     const { offsetWidth, offsetHeight } = element;
-    scaleX = offsetWidth > 0 ? Math.round(width) / offsetWidth
+    scaleX = offsetWidth > 0 ? Math.round(width) / offsetWidth || 1
       : /* istanbul ignore next */1;
-    scaleY = offsetHeight > 0 ? Math.round(height) / offsetHeight
+    scaleY = offsetHeight > 0 ? Math.round(height) / offsetHeight || 1
       : /* istanbul ignore next */1;
   }
 

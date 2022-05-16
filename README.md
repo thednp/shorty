@@ -1,5 +1,6 @@
-# shorty ![cypress version](https://img.shields.io/badge/cypress-9.6.1-brightgreen)
+# shorty
 [![Coverage Status](https://coveralls.io/repos/github/thednp/shorty/badge.svg)](https://coveralls.io/github/thednp/shorty)
+![cypress version](https://img.shields.io/badge/cypress-9.6.1-brightgreen)
 ![typescript version](https://img.shields.io/badge/typescript-4.5.2-brightgreen)
 [![ci](https://github.com/thednp/shorty/actions/workflows/ci.yml/badge.svg)](https://github.com/thednp/shorty/actions/workflows/ci.yml)
 
