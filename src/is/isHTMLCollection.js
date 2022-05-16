@@ -4,5 +4,5 @@
  * @param {any} object the target object
  * @returns {boolean} the query result
  */
-const isHTMLCollection = (object) => object instanceof HTMLCollection;
+const isHTMLCollection = (object) => (object && object.constructor.name === 'HTMLCollection') || false;
 export default isHTMLCollection;

@@ -1,7 +1,8 @@
 import supportAnimation from '../boolean/supportAnimation';
-import animationEndEvent from '../strings/animationEndEventLegacy';
+import animationEndEventLegacy from '../strings/animationEndEventLegacy';
 import getElementAnimationDelay from '../get/getElementAnimationDelayLegacy';
 import getElementAnimationDuration from '../get/getElementAnimationDurationLegacy';
+import dispatchEvent from './dispatchEvent';
 
 /**
  * Utility to make sure callbacks are consistently
@@ -12,7 +13,7 @@ import getElementAnimationDuration from '../get/getElementAnimationDurationLegac
  */
 export default function emulateAnimationEnd(element, handler) {
   let called = 0;
-  const endEvent = new Event(animationEndEvent);
+  const endEvent = new Event(animationEndEventLegacy);
   const duration = getElementAnimationDuration(element);
   const delay = getElementAnimationDelay(element);
 
@@ -22,15 +23,17 @@ export default function emulateAnimationEnd(element, handler) {
      * @param {Event} e Event object
      */
     const animationEndWrapper = (e) => {
+      /* istanbul ignore else */
       if (e.target === element) {
         handler.apply(element, [e]);
-        element.removeEventListener(animationEndEvent, animationEndWrapper);
+        element.removeEventListener(animationEndEventLegacy, animationEndWrapper);
         called = 1;
       }
     };
-    element.addEventListener(animationEndEvent, animationEndWrapper);
+    element.addEventListener(animationEndEventLegacy, animationEndWrapper);
     setTimeout(() => {
-      if (!called) element.dispatchEvent(endEvent);
+      /* istanbul ignore next */
+      if (!called) dispatchEvent(element, endEvent);
     }, duration + delay + 17);
   } else {
     handler.apply(element, [endEvent]);

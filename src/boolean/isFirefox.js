@@ -5,5 +5,6 @@ import userAgent from '../strings/userAgent';
  * Gecko was not supporting `userAgentData`.
  * @type {boolean}
  */
-const isFirefox = userAgent ? userAgent.includes('Firefox') : false;
+const isFirefox = userAgent ? userAgent.includes('Firefox')
+  : /* istanbul ignore next */false;
 export default isFirefox;

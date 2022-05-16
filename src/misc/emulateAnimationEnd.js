@@ -1,6 +1,7 @@
 import animationEndEvent from '../strings/animationEndEvent';
 import getElementAnimationDelay from '../get/getElementAnimationDelay';
 import getElementAnimationDuration from '../get/getElementAnimationDuration';
+import dispatchEvent from './dispatchEvent';
 
 /**
  * Utility to make sure callbacks are consistently
@@ -21,6 +22,7 @@ export default function emulateAnimationEnd(element, handler) {
      * @type {EventListener}
      */
     const animationEndWrapper = (e) => {
+      /* istanbul ignore else */
       if (e.target === element) {
         handler.apply(element, [e]);
         element.removeEventListener(animationEndEvent, animationEndWrapper);
@@ -29,7 +31,8 @@ export default function emulateAnimationEnd(element, handler) {
     };
     element.addEventListener(animationEndEvent, animationEndWrapper);
     setTimeout(() => {
-      if (!called) element.dispatchEvent(endEvent);
+      /* istanbul ignore next */
+      if (!called) dispatchEvent(element, endEvent);
     }, duration + delay + 17);
   } else {
     handler.apply(element, [endEvent]);

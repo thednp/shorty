@@ -1,5 +1,6 @@
 import getBoundingClientRect from '../get/getBoundingClientRect';
 import getDocumentElement from '../get/getDocumentElement';
+import isNode from './isNode';
 
 /**
  * Utility to determine if an `HTMLElement`
@@ -9,10 +10,13 @@ import getDocumentElement from '../get/getDocumentElement';
  * @return {boolean} the query result
  */
 const isElementInViewport = (element) => {
+  if (!element || !isNode(element)) return false;
+
+  const { clientWidth, clientHeight } = getDocumentElement(element);
   const {
     top, left, bottom, right,
   } = getBoundingClientRect(element, true);
-  const { clientWidth, clientHeight } = getDocumentElement(element);
+
   return (
     top >= 0 && left >= 0
     && bottom <= clientHeight

@@ -5,5 +5,4 @@
  * @returns {boolean} the query result
  */
 const isArray = (arr) => Array.isArray(arr);
-
 export default isArray;

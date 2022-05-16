@@ -1,5 +1,6 @@
 import getDocument from '../get/getDocument';
-import ObjectAssign from './ObjectAssign';
+import ObjectEntries from './ObjectEntries';
+import setAttribute from '../attr/setAttribute';
 
 /**
  * This is a shortie for `document.createElementNS` method
@@ -13,6 +14,7 @@ import ObjectAssign from './ObjectAssign';
  * @return {HTMLElement | Element} a new `HTMLElement` or `Element`
  */
 export default function createElementNS(namespace, param) {
+  if (!namespace && !param) return null;
   if (typeof param === 'string') {
     return getDocument().createElementNS(namespace, param);
   }
@@ -21,6 +23,8 @@ export default function createElementNS(namespace, param) {
   const attr = { ...param };
   const newElement = createElementNS(namespace, tagName);
   delete attr.tagName;
-  ObjectAssign(newElement, attr);
+  ObjectEntries(attr).forEach(([key, value]) => {
+    setAttribute(newElement, key, value);
+  });
   return newElement;
 }

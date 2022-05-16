@@ -1,7 +1,7 @@
 /**
  * Check if element matches a CSS selector.
  *
- * @param {HTMLElement | Element} target
+ * @param {HTMLElement} target
  * @param {string} selector
  * @returns {boolean}
  */

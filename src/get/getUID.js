@@ -5,7 +5,7 @@ const elementIDMap = new Map();
 /**
  * Returns a unique identifier for popover, tooltip, scrollspy.
  *
- * @param {HTMLElement | Element} element target element
+ * @param {HTMLElement} element target element
  * @param {string=} key predefined key
  * @returns {number} an existing or new unique ID
  */

@@ -1,3 +1,5 @@
+import isHTMLElement from './isHTMLElement';
+
 /**
  * Checks if an object is an `Array` in which all items are `Element`.
  *
@@ -5,6 +7,6 @@
  * @returns {boolean} the query result
  */
 const isElementsArray = (object) => Array.isArray(object)
-  && object.every((el) => [HTMLElement, Element].some((x) => el instanceof x));
+  && object.every(isHTMLElement);
 
 export default isElementsArray;

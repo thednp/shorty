@@ -5,11 +5,7 @@ import off from './off';
  * Add an `eventListener` to an `Element` | `HTMLElement` | `Document` | `Window`
  * target and remove it once callback is called.
  *
- * @param {HTMLElement | Element | Document | Window} element event.target
- * @param {string} eventName event.type
- * @param {EventListener} listener callback
- * @param {(EventListenerOptions | boolean)=} options other event options
- * @returns {void}
+ * @type {SHORTY.OnOff<EventTarget>}
  */
 export default function one(element, eventName, listener, options) {
 /**
@@ -17,6 +13,7 @@ export default function one(element, eventName, listener, options) {
  * @type {EventListener}
  */
   const handlerWrapper = (e) => {
+    /* istanbul ignore else */
     if (e.target === element) {
       listener.apply(element, [e]);
       off(element, eventName, handlerWrapper, options);

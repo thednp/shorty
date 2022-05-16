@@ -1,4 +1,4 @@
-import querySelector from '../selectors/querySelector';
+import isHTMLElement from '../is/isHTMLElement';
 
 /** @type {Map<HTMLElement | Element, any>} */
 const TimeCache = new Map();
@@ -9,17 +9,17 @@ const TimeCache = new Map();
 const Timer = {
   /**
    * Sets a new timeout timer for an element, or element -> key association.
-   * @param {HTMLElement | Element | string} target target element
+   * @param {HTMLElement} element target element
    * @param {ReturnType<TimerHandler>} callback the callback
    * @param {number} delay the execution delay
    * @param {string=} key a unique key
    */
-  set: (target, callback, delay, key) => {
-    const element = querySelector(target);
+  set: (element, callback, delay, key) => {
+    if (!isHTMLElement(element)) return;
 
-    if (!element) return;
-
+    /* istanbul ignore else */
     if (key && key.length) {
+      /* istanbul ignore else */
       if (!TimeCache.has(element)) {
         TimeCache.set(element, new Map());
       }
@@ -32,38 +32,35 @@ const Timer = {
 
   /**
    * Returns the timer associated with the target.
-   * @param {HTMLElement | Element | string} target target element
+   * @param {HTMLElement} element target element
    * @param {string=} key a unique
    * @returns {number?} the timer
    */
-  get: (target, key) => {
-    const element = querySelector(target);
-
-    if (!element) return null;
+  get: (element, key) => {
+    if (!isHTMLElement(element)) return null;
     const keyTimers = TimeCache.get(element);
 
     if (key && key.length && keyTimers && keyTimers.get) {
-      return keyTimers.get(key) || null;
+      return keyTimers.get(key) || /* istanbul ignore next */null;
     }
     return keyTimers || null;
   },
 
   /**
    * Clears the element's timer.
-   * @param {HTMLElement | Element | string} target target element
+   * @param {HTMLElement} element target element
    * @param {string=} key a unique key
    */
-  clear: (target, key) => {
-    const element = querySelector(target);
-
-    if (!element) return;
+  clear: (element, key) => {
+    if (!isHTMLElement(element)) return;
 
     if (key && key.length) {
       const keyTimers = TimeCache.get(element);
-
+      /* istanbul ignore else */
       if (keyTimers && keyTimers.get) {
         clearTimeout(keyTimers.get(key));
         keyTimers.delete(key);
+        /* istanbul ignore else */
         if (keyTimers.size === 0) {
           TimeCache.delete(element);
         }

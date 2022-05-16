@@ -1,12 +1,12 @@
-// @ts-nocheck
 const ElementProto = Element.prototype;
+
 const matchesFn = ElementProto.matches
-  || ElementProto.matchesSelector
-  || ElementProto.webkitMatchesSelector
-  || ElementProto.mozMatchesSelector
-  || ElementProto.msMatchesSelector
-  || ElementProto.oMatchesSelector
-  || function matchesNotSupported() {
+  || /* istanbul ignore next */ ElementProto.matchesSelector
+  || /* istanbul ignore next */ ElementProto.webkitMatchesSelector
+  || /* istanbul ignore next */ ElementProto.mozMatchesSelector
+  || /* istanbul ignore next */ ElementProto.msMatchesSelector
+  || /* istanbul ignore next */ ElementProto.oMatchesSelector
+  || /* istanbul ignore next */ function matchesNotSupported() {
     return false;
   };
 
@@ -14,7 +14,7 @@ const matchesFn = ElementProto.matches
  * Check if element matches a CSS selector,
  * supporting a range of legacy browsers.
  *
- * @param {HTMLElement | Element} target
+ * @param {HTMLElement} target
  * @param {string} selector
  * @returns {boolean}
  */

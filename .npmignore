@@ -1,6 +1,13 @@
+.nyc_output
 .eslintrc
 .vscode
 .github
 .gitignore
 node_modules
 experiments
+docs
+coverage
+cypress/videos
+cypress/screenshots
+cypress/coverage
+cypress/instrumented

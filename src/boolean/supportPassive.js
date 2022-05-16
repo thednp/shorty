@@ -19,7 +19,7 @@ const supportPassive = (() => {
     });
     one(document, DOMContentLoadedEvent, () => {}, opts);
   } catch (e) {
-    throw Error('Passive events are not supported');
+    // throw Error('Passive events are not supported');
   }
 
   return result;

@@ -7,7 +7,7 @@ import getElementStyle from './getElementStyle';
  * Utility to get the computed `transitionDelay`
  * from Element in miliseconds.
  *
- * @param {HTMLElement | Element} element target
+ * @param {HTMLElement} element target
  * @return {number} the value in miliseconds
  */
 export default function getElementTransitionDelay(element) {

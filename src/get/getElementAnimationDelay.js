@@ -6,13 +6,12 @@ import getElementStyle from './getElementStyle';
  * Utility to get the computed `animationDelay`
  * from Element in miliseconds.
  *
- * @param {HTMLElement | Element} element target
+ * @param {HTMLElement} element target
  * @return {number} the value in miliseconds
  */
 export default function getElementAnimationDelay(element) {
   const propertyValue = getElementStyle(element, animationName);
   const durationValue = getElementStyle(element, animationDelay);
-
   const durationScale = durationValue.includes('ms') ? 1 : 1000;
   const duration = propertyValue && propertyValue !== 'none'
     ? parseFloat(durationValue) * durationScale : 0;

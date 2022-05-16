@@ -1,7 +1,8 @@
 import supportTransition from '../boolean/supportTransition';
-import transitionEndEvent from '../strings/transitionEndEventLegacy';
+import transitionEndEventLegacy from '../strings/transitionEndEventLegacy';
 import getElementTransitionDelay from '../get/getElementTransitionDelayLegacy';
 import getElementTransitionDuration from '../get/getElementTransitionDurationLegacy';
+import dispatchEvent from './dispatchEvent';
 
 /**
  * Utility to make sure callbacks are consistently
@@ -12,7 +13,7 @@ import getElementTransitionDuration from '../get/getElementTransitionDurationLeg
  */
 export default function emulateTransitionEnd(element, handler) {
   let called = 0;
-  const endEvent = new Event(transitionEndEvent);
+  const endEvent = new Event(transitionEndEventLegacy);
   const duration = getElementTransitionDuration(element);
   const delay = getElementTransitionDelay(element);
 
@@ -22,15 +23,17 @@ export default function emulateTransitionEnd(element, handler) {
      * @param {Event} e Event object
      */
     const transitionEndWrapper = (e) => {
+      /* istanbul ignore else */
       if (e.target === element) {
         handler.apply(element, [e]);
-        element.removeEventListener(transitionEndEvent, transitionEndWrapper);
+        element.removeEventListener(transitionEndEventLegacy, transitionEndWrapper);
         called = 1;
       }
     };
-    element.addEventListener(transitionEndEvent, transitionEndWrapper);
+    element.addEventListener(transitionEndEventLegacy, transitionEndWrapper);
     setTimeout(() => {
-      if (!called) element.dispatchEvent(endEvent);
+      /* istanbul ignore next */
+      if (!called) dispatchEvent(element, endEvent);
     }, duration + delay + 17);
   } else {
     handler.apply(element, [endEvent]);

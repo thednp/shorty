@@ -1,6 +1,7 @@
 import transitionEndEvent from '../strings/transitionEndEvent';
 import getElementTransitionDelay from '../get/getElementTransitionDelay';
 import getElementTransitionDuration from '../get/getElementTransitionDuration';
+import dispatchEvent from './dispatchEvent';
 
 /**
  * Utility to make sure callbacks are consistently
@@ -21,6 +22,7 @@ export default function emulateTransitionEnd(element, handler) {
      * @type {EventListener} e Event object
      */
     const transitionEndWrapper = (e) => {
+      /* istanbul ignore else */
       if (e.target === element) {
         handler.apply(element, [e]);
         element.removeEventListener(transitionEndEvent, transitionEndWrapper);
@@ -29,7 +31,8 @@ export default function emulateTransitionEnd(element, handler) {
     };
     element.addEventListener(transitionEndEvent, transitionEndWrapper);
     setTimeout(() => {
-      if (!called) element.dispatchEvent(endEvent);
+      /* istanbul ignore next */
+      if (!called) dispatchEvent(element, endEvent);
     }, duration + delay + 17);
   } else {
     handler.apply(element, [endEvent]);

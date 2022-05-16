@@ -1,20 +1,29 @@
+import isDocument from '../is/isDocument';
+import isNode from '../is/isNode';
+
 /**
  * Returns the `Window` object of a target node.
  * @see https://github.com/floating-ui/floating-ui
  *
- * @param {(Node | HTMLElement | Element | Window)=} node target node
- * @returns {globalThis}
+ * @param {(Node | Window)=} node target node
+ * @returns {Window} the `Window` object
  */
 export default function getWindow(node) {
-  if (node == null) {
+  // node is undefined | NULL
+  if (!node) {
     return window;
   }
 
-  if (!(node instanceof Window)) {
-    const { ownerDocument } = node;
-    return ownerDocument ? ownerDocument.defaultView || window : window;
+  // node instanceof Document
+  if (isDocument(node)) {
+    return node.defaultView;
   }
 
-  // @ts-ignore
+  // node instanceof Node
+  if (isNode(node)) {
+    return node.ownerDocument.defaultView;
+  }
+
+  // node is instanceof Window
   return node;
 }

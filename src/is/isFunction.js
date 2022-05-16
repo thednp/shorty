@@ -1,9 +1,8 @@
 /**
  * Checks if an object is a `Function`.
  *
- * @param {any} element the target object
+ * @param {any} fn the target object
  * @returns {boolean} the query result
  */
-const isFunction = (element) => element instanceof Function;
-
+const isFunction = (fn) => (fn && fn.constructor.name === 'Function') || false;
 export default isFunction;

@@ -3,6 +3,6 @@
  * @param {any} element the target element
  * @returns {boolean} the query result
  */
-const isHTMLImageElement = (element) => element instanceof HTMLImageElement;
+const isHTMLImageElement = (element) => (element && element.tagName === 'IMG') || false;
 
 export default isHTMLImageElement;

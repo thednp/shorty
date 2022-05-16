@@ -1,4 +1,7 @@
-# shorty ![typescript version](https://img.shields.io/badge/typescript-4.5.2-brightgreen) [![ci](https://github.com/thednp/shorty/actions/workflows/ci.yml/badge.svg)](https://github.com/thednp/shorty/actions/workflows/ci.yml)
+# shorty
+[![Coverage Status](https://coveralls.io/repos/github/thednp/shorty/badge.svg)](https://coveralls.io/github/thednp/shorty)
+![typescript version](https://img.shields.io/badge/typescript-4.5.2-brightgreen)
+[![ci](https://github.com/thednp/shorty/actions/workflows/ci.yml/badge.svg)](https://github.com/thednp/shorty/actions/workflows/ci.yml)
 
 A small ES6+ library with various JavaScript tools, all ESLint valid and with TypeScript definitions, everything useful for creating light libraries or web components. If there is anything that is consistently repeating itself, **shorty** can help you save up to 50% of the code required, with little to no performance cost.
 
@@ -6,9 +9,10 @@ A small ES6+ library with various JavaScript tools, all ESLint valid and with Ty
 [![NPM Downloads](https://img.shields.io/npm/dm/@thednp/shorty.svg?style=flat-square)](http://npm-stat.com/charts.html?package=shorty)
 [![jsDeliver](https://data.jsdelivr.com/v1/package/npm/@thednp/shorty/badge)](https://www.jsdelivr.com/package/npm/shorty)
 
-**shorty** is featured in [KUTE.js](https://github.com/thednp/kute.js), [BSN](https://github.com/thednp/bootstrap.native), [Navbar.js](https://github.com/thednp/navbar.js) and other libraries.
+**shorty** is featured in [ColorPicker](https://github.com/thednp/color-picker), [KUTE.js](https://github.com/thednp/kute.js), [BSN](https://github.com/thednp/bootstrap.native), [Navbar.js](https://github.com/thednp/navbar.js) and other libraries.
 
 * The purpose of the library is to speed up the development workflow, minimize the size of larger libraries by providing a shorter syntax for most used JavaScript API methods, most used strings or other helpful utilities.
+* Another excellent use for the library is for its selectors in a testing environment where you need to check the `instanceof` for various objects.
 * While the library comes with a working build in the `dist` folder, that is mainly for build consistency testing. You can make use of "tree shaking" to import one or anything your code needs.
 * On that note, all shorties are organized in folders inside the `src` root folder, the structure is key to understanding the purpose of each type of shortie, whether we have `boolean` for various basic browser detection or browser feature support, `attr` for all things *Element* attributes or `strings` for most common and most used *Element.prototype* methods.
 

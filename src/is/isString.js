@@ -1,7 +1,7 @@
 /**
- * Shortcut for `typeof SOMETHING === string` static method.
+ * Shortcut for `typeof SOMETHING === "string"`.
  *
- * @param  {any} str array-like iterable object
+ * @param  {any} str input value
  * @returns {boolean} the query result
  */
 const isString = (str) => typeof str === 'string';

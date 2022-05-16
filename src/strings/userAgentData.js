@@ -1,4 +1,3 @@
-// @ts-ignore
 const { userAgentData: uaDATA } = navigator;
 
 /**

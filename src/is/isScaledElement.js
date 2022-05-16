@@ -1,3 +1,4 @@
+import isHTMLElement from './isHTMLElement';
 import getBoundingClientRect from '../get/getBoundingClientRect';
 
 /**
@@ -8,6 +9,7 @@ import getBoundingClientRect from '../get/getBoundingClientRect';
  * @returns {boolean} the query result
  */
 export default function isScaledElement(element) {
+  if (!element || !isHTMLElement(element)) return false;
   const { width, height } = getBoundingClientRect(element);
   const { offsetWidth, offsetHeight } = element;
   return Math.round(width) !== offsetWidth

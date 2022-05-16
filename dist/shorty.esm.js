@@ -1,5 +1,5 @@
 /*!
-* Shorty v1.0.1 (https://github.com/thednp/shorty)
+* Shorty v1.0.2 (https://github.com/thednp/shorty)
 * Copyright 2019-2022 © dnp_theme
 * Licensed under MIT (https://github.com/thednp/shorty/blob/master/LICENSE)
 */
@@ -638,7 +638,8 @@ const { head: documentHead } = document;
  * A global namespace for 'animationDuration' string.
  * @type {string}
  */
-const animationDuration = 'webkitAnimation' in documentHead.style ? 'webkitAnimationDuration' : 'animationDuration';
+const animationDuration = 'webkitAnimation' in documentHead.style ? 'webkitAnimationDuration'
+  : /* istanbul ignore next */'animationDuration';
 
 /**
  * A global namespace for 'animationDelay' string.
@@ -650,7 +651,8 @@ const animationDelay$1 = 'animationDelay';
  * A global namespace for 'animationDelay' string.
  * @type {string}
  */
-const animationDelay = 'webkitAnimation' in documentHead.style ? 'webkitAnimationDelay' : 'animationDelay';
+const animationDelay = 'webkitAnimation' in documentHead.style ? 'webkitAnimationDelay'
+  : /* istanbul ignore next */'animationDelay';
 
 /**
  * A global namespace for 'animationName' string.
@@ -662,7 +664,8 @@ const animationName$1 = 'animationName';
  * A global namespace for 'animationName' string.
  * @type {string}
  */
-const animationName = 'webkitAnimation' in documentHead.style ? 'webkitAnimationName' : 'animationName';
+const animationName = 'webkitAnimation' in documentHead.style ? 'webkitAnimationName'
+  : /* istanbul ignore next */'animationName';
 
 /**
  * A global namespace for 'animationend' string.
@@ -674,7 +677,8 @@ const animationEndEvent$1 = 'animationend';
  * A global namespace for 'animationend' string.
  * @type {string}
  */
-const animationEndEvent = 'webkitAnimation' in documentHead.style ? 'webkitAnimationEnd' : 'animationend';
+const animationEndEvent = 'webkitAnimation' in documentHead.style ? 'webkitAnimationEnd'
+  : /* istanbul ignore next */'animationend';
 
 /**
  * A global namespace for 'transitionDuration' string.
@@ -686,7 +690,8 @@ const transitionDuration$1 = 'transitionDuration';
  * A global namespace for 'transitionDuration' string.
  * @type {string}
  */
-const transitionDuration = 'webkitTransition' in documentHead.style ? 'webkitTransitionDuration' : 'transitionDuration';
+const transitionDuration = 'webkitTransition' in documentHead.style ? 'webkitTransitionDuration'
+  : /* istanbul ignore next */'transitionDuration';
 
 /**
  * A global namespace for 'transitionDelay' string.
@@ -698,7 +703,8 @@ const transitionDelay$1 = 'transitionDelay';
  * A global namespace for 'transitionDelay' string.
  * @type {string}
  */
-const transitionDelay = 'webkitTransition' in documentHead.style ? 'webkitTransitionDelay' : 'transitionDelay';
+const transitionDelay = 'webkitTransition' in documentHead.style ? 'webkitTransitionDelay'
+  : /* istanbul ignore next */'transitionDelay';
 
 /**
  * A global namespace for 'transitionend' string.
@@ -710,7 +716,8 @@ const transitionEndEvent$1 = 'transitionend';
  * A global namespace for 'transitionend' string.
  * @type {string}
  */
-const transitionEndEvent = 'webkitTransition' in documentHead.style ? 'webkitTransitionEnd' : 'transitionend';
+const transitionEndEvent = 'webkitTransition' in documentHead.style ? 'webkitTransitionEnd'
+  : /* istanbul ignore next */'transitionend';
 
 /**
  * A global namespace for `transitionProperty` string for modern browsers.
@@ -726,7 +733,8 @@ const transitionProperty$1 = 'transitionProperty';
  *
  * @type {string}
  */
-const transitionProperty = 'webkitTransition' in documentHead.style ? 'webkitTransitionProperty' : 'transitionProperty';
+const transitionProperty = 'webkitTransition' in documentHead.style ? 'webkitTransitionProperty'
+  : /* istanbul ignore next */'transitionProperty';
 
 /**
  * A global namespace for 'addEventListener' string.
@@ -797,7 +805,6 @@ const scrollHeight = 'scrollHeight';
  */
 const scrollWidth = 'scrollWidth';
 
-// @ts-ignore
 const { userAgentData: uaDATA } = navigator;
 
 /**
@@ -815,9 +822,9 @@ const userAgent = userAgentString;
 const mobileBrands = /iPhone|iPad|iPod|Android/i;
 let isMobileCheck = false;
 
+/* istanbul ignore else */
 if (userAgentData) {
-  isMobileCheck = userAgentData.brands
-    .some((/** @type {Record<String, any>} */x) => mobileBrands.test(x.brand));
+  isMobileCheck = userAgentData.brands.some((x) => mobileBrands.test(x.brand));
 } else {
   isMobileCheck = mobileBrands.test(userAgent);
 }
@@ -834,7 +841,7 @@ const appleBrands = /(iPhone|iPod|iPad)/;
  * A global `boolean` for Apple browsers.
  * @type {boolean}
  */
-const isApple = !userAgentData ? appleBrands.test(userAgent)
+const isApple = !userAgentData ? /* istanbul ignore next */appleBrands.test(userAgent)
   : userAgentData.brands.some((/** @type {Record<string, any>} */x) => appleBrands.test(x.brand));
 
 /**
@@ -842,22 +849,20 @@ const isApple = !userAgentData ? appleBrands.test(userAgent)
  * Gecko was not supporting `userAgentData`.
  * @type {boolean}
  */
-const isFirefox = userAgent ? userAgent.includes('Firefox') : false;
+const isFirefox = userAgent ? userAgent.includes('Firefox')
+  : /* istanbul ignore next */false;
 
 /**
  * A global `boolean` for CSS3 3D transform support.
  * @type {boolean}
  */
-const support3DTransform = 'webkitPerspective' in documentHead.style || 'perspective' in documentHead.style;
+const support3DTransform = 'webkitPerspective' in documentHead.style
+  || /* istanbul ignore next */'perspective' in documentHead.style;
 
 /**
  * Add eventListener to an `Element` | `HTMLElement` | `Document` target.
  *
- * @param {HTMLElement | Element | Document | Window} element event.target
- * @param {string} eventName event.type
- * @param {EventListener} listener callback
- * @param {(EventListenerOptions | boolean)=} options other event options
- * @returns {void}
+ * @type {SHORTY.OnOff<EventTarget>}
  */
 function on(element, eventName, listener, options) {
   const ops = options || false;
@@ -867,11 +872,7 @@ function on(element, eventName, listener, options) {
 /**
  * Remove eventListener from an `Element` | `HTMLElement` | `Document` | `Window` target.
  *
- * @param {HTMLElement | Element | Document | Window} element event.target
- * @param {string} eventName event.type
- * @param {EventListener} listener callback
- * @param {(EventListenerOptions | boolean)=} options other event options
- * @returns {void}
+ * @type {SHORTY.OnOff<EventTarget>}
  */
 function off(element, eventName, listener, options) {
   const ops = options || false;
@@ -882,11 +883,7 @@ function off(element, eventName, listener, options) {
  * Add an `eventListener` to an `Element` | `HTMLElement` | `Document` | `Window`
  * target and remove it once callback is called.
  *
- * @param {HTMLElement | Element | Document | Window} element event.target
- * @param {string} eventName event.type
- * @param {EventListener} listener callback
- * @param {(EventListenerOptions | boolean)=} options other event options
- * @returns {void}
+ * @type {SHORTY.OnOff<EventTarget>}
  */
 function one(element, eventName, listener, options) {
 /**
@@ -894,6 +891,7 @@ function one(element, eventName, listener, options) {
  * @type {EventListener}
  */
   const handlerWrapper = (e) => {
+    /* istanbul ignore else */
     if (e.target === element) {
       listener.apply(element, [e]);
       off(element, eventName, handlerWrapper, options);
@@ -920,7 +918,7 @@ const supportPassive = (() => {
     });
     one(document, DOMContentLoadedEvent, () => {}, opts);
   } catch (e) {
-    throw Error('Passive events are not supported');
+    // throw Error('Passive events are not supported');
   }
 
   return result;
@@ -930,25 +928,29 @@ const supportPassive = (() => {
  * A global `boolean` for CSS3 transform support.
  * @type {boolean}
  */
-const supportTransform = 'webkitTransform' in documentHead.style || 'transform' in documentHead.style;
+const supportTransform = 'webkitTransform' in documentHead.style
+  || /* istanbul ignore next */'transform' in documentHead.style;
 
 /**
  * A global `boolean` for touch events support.
  * @type {boolean}
  */
-const supportTouch = 'ontouchstart' in window || 'msMaxTouchPoints' in navigator;
+const supportTouch = 'ontouchstart' in window
+  || /* istanbul ignore next */'msMaxTouchPoints' in navigator;
 
 /**
  * A global `boolean` for CSS3 animation support.
  * @type {boolean}
  */
-const supportAnimation = 'webkitAnimation' in documentHead.style || 'animation' in documentHead.style;
+const supportAnimation = 'webkitAnimation' in documentHead.style
+  || /* istanbul ignore next */'animation' in documentHead.style;
 
 /**
  * A global `boolean` for CSS3 transition support.
  * @type {boolean}
  */
-const supportTransition = 'webkitTransition' in documentHead.style || 'transition' in documentHead.style;
+const supportTransition = 'webkitTransition' in documentHead.style
+  || /* istanbul ignore next */'transition' in documentHead.style;
 
 /**
  * Shortcut for `HTMLElement.getAttribute()` method.
@@ -1062,32 +1064,13 @@ function hasClass(element, classNAME) {
 const ArrayFrom = (arr) => Array.from(arr);
 
 /**
- * Returns the `document` or the `#document` element.
- * @see https://github.com/floating-ui/floating-ui
- * @param {(Node | HTMLElement | Element | globalThis)=} node
- * @returns {Document}
- */
-function getDocument(node) {
-  if (node instanceof HTMLElement) return node.ownerDocument;
-  if (node instanceof Window) return node.document;
-  return window.document;
-}
-
-/**
- * Utility to check if target is typeof `HTMLElement`, `Element`, `Node`
- * or find one that matches a selector.
+ * Checks if an element is an `HTMLElement`.
+ * @see https://dom.spec.whatwg.org/#node
  *
- * @param {Node | HTMLElement | Element | string} selector the input selector or target element
- * @param {(Node | HTMLElement | Element | Document)=} parent optional node to look into
- * @return {(HTMLElement | Element)?} the `HTMLElement` or `querySelector` result
+ * @param {any} element the target object
+ * @returns {boolean} the query result
  */
-function querySelector(selector, parent) {
-  if (typeof selector === 'string') {
-    const lookUp = typeof parent !== 'object' ? getDocument() : parent;
-    return lookUp.querySelector(selector);
-  }
-  return selector;
-}
+const isHTMLElement = (element) => (element && element.nodeType === 1) || false;
 
 /** @type {Map<string, Map<HTMLElement | Element, Record<string, any>>>} */
 const componentData = new Map();
@@ -1098,27 +1081,27 @@ const componentData = new Map();
 const Data = {
   /**
    * Sets web components data.
-   * @param {HTMLElement | Element | string} target target element
+   * @param {HTMLElement} element target element
    * @param {string} component the component's name or a unique key
    * @param {Record<string, any>} instance the component instance
    */
-  set: (target, component, instance) => {
-    const element = querySelector(target);
-    if (!element) return;
+  set: (element, component, instance) => {
+    if (!isHTMLElement(element)) return;
 
+    /* istanbul ignore else */
     if (!componentData.has(component)) {
       componentData.set(component, new Map());
     }
 
     const instanceMap = componentData.get(component);
-    // @ts-ignore - not undefined, but defined right above
+    // not undefined, but defined right above
     instanceMap.set(element, instance);
   },
 
   /**
    * Returns all instances for specified component.
    * @param {string} component the component's name or a unique key
-   * @returns {Map<HTMLElement | Element, Record<string, any>>?} all the component instances
+   * @returns {Map<HTMLElement, Record<string, any>>?} all the component instances
    */
   getAllFor: (component) => {
     const instanceMap = componentData.get(component);
@@ -1128,12 +1111,12 @@ const Data = {
 
   /**
    * Returns the instance associated with the target.
-   * @param {HTMLElement | Element | string} target target element
+   * @param {HTMLElement} element target element
    * @param {string} component the component's name or a unique key
    * @returns {Record<string, any>?} the instance
    */
-  get: (target, component) => {
-    const element = querySelector(target);
+  get: (element, component) => {
+    if (!isHTMLElement(element) || !component) return null;
     const allForC = Data.getAllFor(component);
     const instance = element && allForC && allForC.get(element);
 
@@ -1142,16 +1125,16 @@ const Data = {
 
   /**
    * Removes web components data.
-   * @param {HTMLElement | Element | string} target target element
+   * @param {HTMLElement} element target element
    * @param {string} component the component's name or a unique key
    */
-  remove: (target, component) => {
-    const element = querySelector(target);
+  remove: (element, component) => {
     const instanceMap = componentData.get(component);
-    if (!instanceMap || !element) return;
+    if (!instanceMap || !isHTMLElement(element)) return;
 
     instanceMap.delete(element);
 
+    /* istanbul ignore else */
     if (instanceMap.size === 0) {
       componentData.delete(component);
     }
@@ -1160,9 +1143,49 @@ const Data = {
 
 /**
  * An alias for `Data.get()`.
- * @type {SHORTER.getInstance<any>}
+ * @type {SHORTY.getInstance<any>}
  */
 const getInstance = (target, component) => Data.get(target, component);
+
+/**
+ * Checks if an object is a `Document`.
+ * @see https://dom.spec.whatwg.org/#node
+ *
+ * @param {any} object the target object
+ * @returns {boolean} the query result
+ */
+const isDocument = (object) => (object && object.nodeType === 9) || false;
+
+/**
+ * Checks if an object is a `Node`.
+ *
+ * @param {any} node the target object
+ * @returns {boolean} the query result
+ */
+const isNode = (element) => (element && [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11]
+  .some((x) => +element.nodeType === x)) || false;
+
+/**
+ * Check if a target object is `Window`.
+ * => equivalent to `object instanceof Window`
+ *
+ * @param {any} object the target object
+ * @returns {boolean} the query result
+ */
+const isWindow = (object) => (object && object.constructor.name === 'Window') || false;
+
+/**
+ * Returns the `document` or the `#document` element.
+ * @see https://github.com/floating-ui/floating-ui
+ * @param {(ParentNode | Window)=} node
+ * @returns {Document}
+ */
+function getDocument(node) {
+  if (isDocument(node)) return node;
+  if (isNode(node)) return node.ownerDocument;
+  if (isWindow(node)) return node.document;
+  return window.document;
+}
 
 /**
  * Shortcut for `Object.assign()` static method.
@@ -1182,6 +1205,8 @@ const ObjectAssign = (obj, source) => Object.assign(obj, source);
  * @return {HTMLElement | Element} a new `HTMLElement` or `Element`
  */
 function createElement(param) {
+  if (!param) return null;
+
   if (typeof param === 'string') {
     return getDocument().createElement(param);
   }
@@ -1195,6 +1220,13 @@ function createElement(param) {
 }
 
 /**
+ * Shortcut for `Object.entries()` static method.
+ * @param  {Record<string, any>} obj a target object
+ * @returns {[string, any][]}
+ */
+const ObjectEntries = (obj) => Object.entries(obj);
+
+/**
  * This is a shortie for `document.createElementNS` method
  * which allows you to create a new `HTMLElement` for a given `tagName`
  * or based on an object with specific non-readonly attributes:
@@ -1206,6 +1238,7 @@ function createElement(param) {
  * @return {HTMLElement | Element} a new `HTMLElement` or `Element`
  */
 function createElementNS(namespace, param) {
+  if (!namespace && !param) return null;
   if (typeof param === 'string') {
     return getDocument().createElementNS(namespace, param);
   }
@@ -1214,7 +1247,9 @@ function createElementNS(namespace, param) {
   const attr = { ...param };
   const newElement = createElementNS(namespace, tagName);
   delete attr.tagName;
-  ObjectAssign(newElement, attr);
+  ObjectEntries(attr).forEach(([key, value]) => {
+    setAttribute(newElement, key, value);
+  });
   return newElement;
 }
 
@@ -1243,29 +1278,30 @@ const distinct = (value, index, self) => self.indexOf(value) === index;
  * * If `element` parameter is not an `HTMLElement`, `getComputedStyle`
  * throws a `ReferenceError`.
  *
- * @param {HTMLElement | Element} element target
+ * @param {HTMLElement} element target
  * @param {string} property the css property
  * @return {string} the css property value
  */
 function getElementStyle(element, property) {
   const computedStyle = getComputedStyle(element);
 
-  // @ts-ignore -- must use camelcase strings,
+  // must use camelcase strings,
   // or non-camelcase strings with `getPropertyValue`
-  return property in computedStyle ? computedStyle[property] : '';
+  return property.includes('--')
+    ? computedStyle.getPropertyValue(property)
+    : computedStyle[property];
 }
 
 /**
  * Utility to get the computed `animationDelay`
  * from Element in miliseconds.
  *
- * @param {HTMLElement | Element} element target
+ * @param {HTMLElement} element target
  * @return {number} the value in miliseconds
  */
 function getElementAnimationDelay$1(element) {
   const propertyValue = getElementStyle(element, animationName$1);
   const durationValue = getElementStyle(element, animationDelay$1);
-
   const durationScale = durationValue.includes('ms') ? 1 : 1000;
   const duration = propertyValue && propertyValue !== 'none'
     ? parseFloat(durationValue) * durationScale : 0;
@@ -1277,7 +1313,7 @@ function getElementAnimationDelay$1(element) {
  * Utility to get the computed `animationDuration`
  * from `HTMLElement` in miliseconds.
  *
- * @param {HTMLElement | Element} element target
+ * @param {HTMLElement} element target
  * @return {number} the value in miliseconds
  */
 function getElementAnimationDuration$1(element) {
@@ -1309,6 +1345,7 @@ function emulateAnimationEnd$1(element, handler) {
      * @type {EventListener}
      */
     const animationEndWrapper = (e) => {
+      /* istanbul ignore else */
       if (e.target === element) {
         handler.apply(element, [e]);
         element.removeEventListener(animationEndEvent$1, animationEndWrapper);
@@ -1317,7 +1354,8 @@ function emulateAnimationEnd$1(element, handler) {
     };
     element.addEventListener(animationEndEvent$1, animationEndWrapper);
     setTimeout(() => {
-      if (!called) element.dispatchEvent(endEvent);
+      /* istanbul ignore next */
+      if (!called) dispatchEvent(element, endEvent);
     }, duration + delay + 17);
   } else {
     handler.apply(element, [endEvent]);
@@ -1328,7 +1366,7 @@ function emulateAnimationEnd$1(element, handler) {
  * Utility to get the computed `animationDelay`
  * from Element in miliseconds.
  *
- * @param {HTMLElement | Element} element target
+ * @param {HTMLElement} element target
  * @return {number} the value in miliseconds
  */
 function getElementAnimationDelay(element) {
@@ -1345,7 +1383,7 @@ function getElementAnimationDelay(element) {
  * Utility to get the computed `animationDuration`
  * from `HTMLElement` in miliseconds.
  *
- * @param {HTMLElement | Element} element target
+ * @param {HTMLElement} element target
  * @return {number} the value in miliseconds
  */
 function getElementAnimationDuration(element) {
@@ -1377,6 +1415,7 @@ function emulateAnimationEnd(element, handler) {
      * @param {Event} e Event object
      */
     const animationEndWrapper = (e) => {
+      /* istanbul ignore else */
       if (e.target === element) {
         handler.apply(element, [e]);
         element.removeEventListener(animationEndEvent, animationEndWrapper);
@@ -1385,7 +1424,8 @@ function emulateAnimationEnd(element, handler) {
     };
     element.addEventListener(animationEndEvent, animationEndWrapper);
     setTimeout(() => {
-      if (!called) element.dispatchEvent(endEvent);
+      /* istanbul ignore next */
+      if (!called) dispatchEvent(element, endEvent);
     }, duration + delay + 17);
   } else {
     handler.apply(element, [endEvent]);
@@ -1396,13 +1436,12 @@ function emulateAnimationEnd(element, handler) {
  * Utility to get the computed `transitionDelay`
  * from Element in miliseconds.
  *
- * @param {HTMLElement | Element} element target
+ * @param {HTMLElement} element target
  * @return {number} the value in miliseconds
  */
 function getElementTransitionDelay$1(element) {
   const propertyValue = getElementStyle(element, transitionProperty$1);
   const delayValue = getElementStyle(element, transitionDelay$1);
-
   const delayScale = delayValue.includes('ms') ? 1 : 1000;
   const duration = propertyValue && propertyValue !== 'none'
     ? parseFloat(delayValue) * delayScale : 0;
@@ -1414,7 +1453,7 @@ function getElementTransitionDelay$1(element) {
  * Utility to get the computed `transitionDuration`
  * from Element in miliseconds.
  *
- * @param {HTMLElement | Element} element target
+ * @param {HTMLElement} element target
  * @return {number} the value in miliseconds
  */
 function getElementTransitionDuration$1(element) {
@@ -1446,6 +1485,7 @@ function emulateTransitionEnd$1(element, handler) {
      * @type {EventListener} e Event object
      */
     const transitionEndWrapper = (e) => {
+      /* istanbul ignore else */
       if (e.target === element) {
         handler.apply(element, [e]);
         element.removeEventListener(transitionEndEvent$1, transitionEndWrapper);
@@ -1454,7 +1494,8 @@ function emulateTransitionEnd$1(element, handler) {
     };
     element.addEventListener(transitionEndEvent$1, transitionEndWrapper);
     setTimeout(() => {
-      if (!called) element.dispatchEvent(endEvent);
+      /* istanbul ignore next */
+      if (!called) dispatchEvent(element, endEvent);
     }, duration + delay + 17);
   } else {
     handler.apply(element, [endEvent]);
@@ -1465,7 +1506,7 @@ function emulateTransitionEnd$1(element, handler) {
  * Utility to get the computed `transitionDelay`
  * from Element in miliseconds.
  *
- * @param {HTMLElement | Element} element target
+ * @param {HTMLElement} element target
  * @return {number} the value in miliseconds
  */
 function getElementTransitionDelay(element) {
@@ -1482,7 +1523,7 @@ function getElementTransitionDelay(element) {
  * Utility to get the computed `transitionDuration`
  * from Element in miliseconds.
  *
- * @param {HTMLElement | Element} element target
+ * @param {HTMLElement} element target
  * @return {number} the value in miliseconds
  */
 function getElementTransitionDuration(element) {
@@ -1514,6 +1555,7 @@ function emulateTransitionEnd(element, handler) {
      * @param {Event} e Event object
      */
     const transitionEndWrapper = (e) => {
+      /* istanbul ignore else */
       if (e.target === element) {
         handler.apply(element, [e]);
         element.removeEventListener(transitionEndEvent, transitionEndWrapper);
@@ -1522,7 +1564,8 @@ function emulateTransitionEnd(element, handler) {
     };
     element.addEventListener(transitionEndEvent, transitionEndWrapper);
     setTimeout(() => {
-      if (!called) element.dispatchEvent(endEvent);
+      /* istanbul ignore next */
+      if (!called) dispatchEvent(element, endEvent);
     }, duration + delay + 17);
   } else {
     handler.apply(element, [endEvent]);
@@ -1567,20 +1610,22 @@ const noop = () => {};
  * @return {niceValue} the normalized value
  */
 function normalizeValue(value) {
-  if (value === 'true') { // boolean
+  if (['true', true].includes(value)) { // boolean
+  // if ('true' === value) { // boolean
     return true;
   }
 
-  if (value === 'false') { // boolean
+  if (['false', false].includes(value)) { // boolean
+  // if ('false' === value) { // boolean
     return false;
-  }
-
-  if (!Number.isNaN(+value)) { // number
-    return +value;
   }
 
   if (value === '' || value === 'null') { // null
     return null;
+  }
+
+  if (value !== '' && !Number.isNaN(+value)) { // number
+    return +value;
   }
 
   // string / function / HTMLElement / object
@@ -1633,6 +1678,7 @@ function normalizeOptions(element, defaultOps, inputOps, ns) {
   });
 
   ObjectKeys(defaultOps).forEach((k) => {
+    /* istanbul ignore else */
     if (k in inputOps) {
       normalOps[k] = inputOps[k];
     } else if (k in dataOps) {
@@ -1658,13 +1704,14 @@ const ObjectValues = (obj) => Object.values(obj);
  * Returns a namespaced `CustomEvent` specific to each component.
  * @param {string} EventType Event.type
  * @param {Record<string, any>=} config Event.options | Event.properties
- * @returns {SHORTER.OriginalEvent} a new namespaced event
+ * @returns {SHORTY.OriginalEvent} a new namespaced event
  */
 function OriginalEvent(EventType, config) {
   const OriginalCustomEvent = new CustomEvent(EventType, {
     cancelable: true, bubbles: true,
   });
 
+  /* istanbul ignore else */
   if (config instanceof Object) {
     ObjectAssign(OriginalCustomEvent, config);
   }
@@ -1681,7 +1728,8 @@ const passiveHandler$1 = { passive: true };
  * A global namespace for most scroll event listeners in legacy browsers.
  * @type {Partial<AddEventListenerOptions> | boolean}
  */
-const passiveHandler = supportPassive ? { passive: true } : false;
+const passiveHandler = supportPassive ? { passive: true }
+  : /* istanbul ignore next */false;
 
 /**
  * Utility to force re-paint of an `HTMLElement` target.
@@ -1697,8 +1745,16 @@ const reflow = (element) => element.offsetHeight;
  * @param  {HTMLElement | Element} element target element
  * @param  {Partial<CSSStyleDeclaration>} styles attribute value
  */
-// @ts-ignore
-const setElementStyle = (element, styles) => { ObjectAssign(element.style, styles); };
+const setElementStyle = (element, styles) => {
+  ObjectEntries(styles).forEach(([key, value]) => {
+    if (key.includes('--')) {
+      element.style.setProperty(key, value);
+    } else {
+      const propObject = {}; propObject[key] = value;
+      ObjectAssign(element.style, propObject);
+    }
+  });
+};
 
 /** @type {Map<HTMLElement | Element, any>} */
 const TimeCache = new Map();
@@ -1709,17 +1765,17 @@ const TimeCache = new Map();
 const Timer = {
   /**
    * Sets a new timeout timer for an element, or element -> key association.
-   * @param {HTMLElement | Element | string} target target element
+   * @param {HTMLElement} element target element
    * @param {ReturnType<TimerHandler>} callback the callback
    * @param {number} delay the execution delay
    * @param {string=} key a unique key
    */
-  set: (target, callback, delay, key) => {
-    const element = querySelector(target);
+  set: (element, callback, delay, key) => {
+    if (!isHTMLElement(element)) return;
 
-    if (!element) return;
-
+    /* istanbul ignore else */
     if (key && key.length) {
+      /* istanbul ignore else */
       if (!TimeCache.has(element)) {
         TimeCache.set(element, new Map());
       }
@@ -1732,38 +1788,35 @@ const Timer = {
 
   /**
    * Returns the timer associated with the target.
-   * @param {HTMLElement | Element | string} target target element
+   * @param {HTMLElement} element target element
    * @param {string=} key a unique
    * @returns {number?} the timer
    */
-  get: (target, key) => {
-    const element = querySelector(target);
-
-    if (!element) return null;
+  get: (element, key) => {
+    if (!isHTMLElement(element)) return null;
     const keyTimers = TimeCache.get(element);
 
     if (key && key.length && keyTimers && keyTimers.get) {
-      return keyTimers.get(key) || null;
+      return keyTimers.get(key) || /* istanbul ignore next */null;
     }
     return keyTimers || null;
   },
 
   /**
    * Clears the element's timer.
-   * @param {HTMLElement | Element | string} target target element
+   * @param {HTMLElement} element target element
    * @param {string=} key a unique key
    */
-  clear: (target, key) => {
-    const element = querySelector(target);
-
-    if (!element) return;
+  clear: (element, key) => {
+    if (!isHTMLElement(element)) return;
 
     if (key && key.length) {
       const keyTimers = TimeCache.get(element);
-
+      /* istanbul ignore else */
       if (keyTimers && keyTimers.get) {
         clearTimeout(keyTimers.get(key));
         keyTimers.delete(key);
+        /* istanbul ignore else */
         if (keyTimers.size === 0) {
           TimeCache.delete(element);
         }
@@ -1784,25 +1837,13 @@ const Timer = {
 const toUpperCase = (source) => source.toUpperCase();
 
 /**
- * Utility to wrap a callback in a try() catch(e)
- *
- * @param {Function} fn callback
- * @param {string} origin callback context description
- */
-function tryWrapper(fn, origin) {
-  try { fn(); } catch (e) {
-    throw TypeError(`${origin} ${e}`);
-  }
-}
-
-/**
  * Returns the bounding client rect of a target `HTMLElement`.
  *
  * @see https://github.com/floating-ui/floating-ui
  *
  * @param {HTMLElement | Element} element event.target
  * @param {boolean=} includeScale when *true*, the target scale is also computed
- * @returns {SHORTER.BoundingClientRect} the bounding client rect object
+ * @returns {SHORTY.BoundingClientRect} the bounding client rect object
  */
 function getBoundingClientRect(element, includeScale) {
   const {
@@ -1811,10 +1852,12 @@ function getBoundingClientRect(element, includeScale) {
   let scaleX = 1;
   let scaleY = 1;
 
-  if (includeScale && element instanceof HTMLElement) {
+  if (includeScale && isHTMLElement(element)) {
     const { offsetWidth, offsetHeight } = element;
-    scaleX = offsetWidth > 0 ? Math.round(width) / offsetWidth || 1 : 1;
-    scaleY = offsetHeight > 0 ? Math.round(height) / offsetHeight || 1 : 1;
+    scaleX = offsetWidth > 0 ? Math.round(width) / offsetWidth
+      : /* istanbul ignore next */1;
+    scaleY = offsetHeight > 0 ? Math.round(height) / offsetHeight
+      : /* istanbul ignore next */1;
   }
 
   return {
@@ -1832,8 +1875,8 @@ function getBoundingClientRect(element, includeScale) {
 /**
  * Returns the `document.body` or the `<body>` element.
  *
- * @param {(Node | HTMLElement | Element | globalThis)=} node
- * @returns {HTMLElement | HTMLBodyElement}
+ * @param {(ParentNode | Window)=} node
+ * @returns {HTMLBodyElement}
  */
 function getDocumentBody(node) {
   return getDocument(node).body;
@@ -1842,8 +1885,8 @@ function getDocumentBody(node) {
 /**
  * Returns the `document.documentElement` or the `<html>` element.
  *
- * @param {(Node | HTMLElement | Element | globalThis)=} node
- * @returns {HTMLElement | HTMLHtmlElement}
+ * @param {(ParentNode | Window)=} node
+ * @returns {HTMLHtmlElement}
  */
 function getDocumentElement(node) {
   return getDocument(node).documentElement;
@@ -1852,8 +1895,8 @@ function getDocumentElement(node) {
 /**
  * Returns the `document.head` or the `<head>` element.
  *
- * @param {(Node | HTMLElement | Element | globalThis)=} node
- * @returns {HTMLElement | HTMLHeadElement}
+ * @param {(ParentNode | Window)=} node
+ * @returns {HTMLHeadElement}
  */
 function getDocumentHead(node) {
   return getDocument(node).head;
@@ -1865,7 +1908,7 @@ function getDocumentHead(node) {
  *
  * @see https://github.com/floating-ui/floating-ui
  *
- * @param {HTMLElement | Element | Window} element target node / element
+ * @param {HTMLElement | Window} element target node / element
  * @returns {{x: number, y: number}} the scroll tuple
  */
 function getNodeScroll(element) {
@@ -1877,43 +1920,20 @@ function getNodeScroll(element) {
 }
 
 /**
- * Returns the `Window` object of a target node.
- * @see https://github.com/floating-ui/floating-ui
- *
- * @param {(Node | HTMLElement | Element | Window)=} node target node
- * @returns {globalThis}
- */
-function getWindow(node) {
-  if (node == null) {
-    return window;
-  }
-
-  if (!(node instanceof Window)) {
-    const { ownerDocument } = node;
-    return ownerDocument ? ownerDocument.defaultView || window : window;
-  }
-
-  // @ts-ignore
-  return node;
-}
-
-/**
  * Check if target is a `ShadowRoot`.
  *
  * @param {any} element target
  * @returns {boolean} the query result
  */
-const isShadowRoot = (element) => {
-  const OwnElement = getWindow(element).ShadowRoot;
-  return element instanceof OwnElement || element instanceof ShadowRoot;
-};
+const isShadowRoot = (element) => (element && element.constructor.name === 'ShadowRoot')
+  || false;
 
 /**
  * Returns the `parentNode` also going through `ShadowRoot`.
  * @see https://github.com/floating-ui/floating-ui
  *
- * @param {Node | HTMLElement | Element} node the target node
- * @returns {Node | HTMLElement | Element} the apropriate parent node
+ * @param {Node} node the target node
+ * @returns {Node} the apropriate parent node
  */
 function getParentNode(node) {
   if (node.nodeName === 'HTML') {
@@ -1922,10 +1942,9 @@ function getParentNode(node) {
 
   // this is a quicker (but less type safe) way to save quite some bytes from the bundle
   return (
-    // @ts-ignore
     node.assignedSlot // step into the shadow DOM of the parent of a slotted node
     || node.parentNode // @ts-ignore DOM Element detected
-    || (isShadowRoot(node) ? node.host : null) // ShadowRoot detected
+    || (isShadowRoot(node) && node.host) // ShadowRoot detected
     || getDocumentElement(node) // fallback
   );
 }
@@ -1938,6 +1957,7 @@ function getParentNode(node) {
  * @returns {boolean} the query result
  */
 function isScaledElement(element) {
+  if (!element || !isHTMLElement(element)) return false;
   const { width, height } = getBoundingClientRect(element);
   const { offsetWidth, offsetHeight } = element;
   return Math.round(width) !== offsetWidth
@@ -1950,14 +1970,15 @@ function isScaledElement(element) {
  *
  * @param {HTMLElement | Element} element target
  * @param {HTMLElement | Element | Window} offsetParent the container / offset parent
- * @param {{x: number, y: number}} scroll
- * @returns {SHORTER.OffsetRect}
+ * @param {{x: number, y: number}} scroll the offsetParent scroll position
+ * @returns {SHORTY.OffsetRect}
  */
 function getRectRelativeToOffsetParent(element, offsetParent, scroll) {
-  const isParentAnElement = offsetParent instanceof HTMLElement;
+  const isParentAnElement = isHTMLElement(offsetParent);
   const rect = getBoundingClientRect(element, isParentAnElement && isScaledElement(offsetParent));
   const offsets = { x: 0, y: 0 };
 
+  /* istanbul ignore next */
   if (isParentAnElement) {
     const offsetRect = getBoundingClientRect(offsetParent, true);
     offsets.x = offsetRect.x + offsetParent.clientLeft;
@@ -1979,7 +2000,7 @@ const elementIDMap = new Map();
 /**
  * Returns a unique identifier for popover, tooltip, scrollspy.
  *
- * @param {HTMLElement | Element} element target element
+ * @param {HTMLElement} element target element
  * @param {string=} key predefined key
  * @returns {number} an existing or new unique ID
  */
@@ -2008,6 +2029,33 @@ function getUID(element, key) {
 }
 
 /**
+ * Returns the `Window` object of a target node.
+ * @see https://github.com/floating-ui/floating-ui
+ *
+ * @param {(Node | Window)=} node target node
+ * @returns {Window} the `Window` object
+ */
+function getWindow(node) {
+  // node is undefined | NULL
+  if (!node) {
+    return window;
+  }
+
+  // node instanceof Document
+  if (isDocument(node)) {
+    return node.defaultView;
+  }
+
+  // node instanceof Node
+  if (isNode(node)) {
+    return node.ownerDocument.defaultView;
+  }
+
+  // node is instanceof Window
+  return node;
+}
+
+/**
  * Shortcut for `Array.isArray()` static method.
  *
  * @param  {any} arr array-like iterable object
@@ -2016,28 +2064,33 @@ function getUID(element, key) {
 const isArray = (arr) => Array.isArray(arr);
 
 /**
- * Checks if an object is a `Document`.
- *
- * @param {any} element the target object
- * @returns {boolean} the query result
- */
-const isDocument = (element) => element instanceof Document;
-
-/**
  * Checks if an object is a `CustomElement`.
  *
  * @param {any} element the target object
  * @returns {boolean} the query result
  */
-const isCustomElement = (element) => element && !!element.shadowRoot;
+const isCustomElement = (element) => (element && !!element.shadowRoot) || false;
 
 /**
  * Checks if an object is an `Element`.
+ * @see https://dom.spec.whatwg.org/#node
+ * ELEMENT_NODE = 1;
+ * ATTRIBUTE_NODE = 2;
+ * TEXT_NODE = 3;
+ * CDATA_SECTION_NODE = 4;
+ * ENTITY_REFERENCE_NODE = 5; // legacy
+ * ENTITY_NODE = 6; // legacy
+ * PROCESSING_INSTRUCTION_NODE = 7;
+ * COMMENT_NODE = 8;
+ * DOCUMENT_NODE = 9;
+ * DOCUMENT_TYPE_NODE = 10;
+ * DOCUMENT_FRAGMENT_NODE = 11;
  *
  * @param {any} element the target object
  * @returns {boolean} the query result
  */
-const isElement = (element) => element instanceof Element;
+const isElement = (element) => (element && [1, 2, 3, 4, 5, 6, 7, 8]
+  .some((x) => element.nodeType === x)) || false;
 
 /**
  * Utility to determine if an `HTMLElement`
@@ -2047,9 +2100,10 @@ const isElement = (element) => element instanceof Element;
  * @return {boolean} the query result
  */
 const isElementInScrollRange = (element) => {
+  if (!element || !isNode(element)) return false;
+
   const { top, bottom } = getBoundingClientRect(element);
   const { clientHeight } = getDocumentElement(element);
-  // checks bottom && top
   return top <= clientHeight && bottom >= 0;
 };
 
@@ -2061,10 +2115,13 @@ const isElementInScrollRange = (element) => {
  * @return {boolean} the query result
  */
 const isElementInViewport = (element) => {
+  if (!element || !isNode(element)) return false;
+
+  const { clientWidth, clientHeight } = getDocumentElement(element);
   const {
     top, left, bottom, right,
   } = getBoundingClientRect(element, true);
-  const { clientWidth, clientHeight } = getDocumentElement(element);
+
   return (
     top >= 0 && left >= 0
     && bottom <= clientHeight
@@ -2079,7 +2136,15 @@ const isElementInViewport = (element) => {
  * @returns {boolean} the query result
  */
 const isElementsArray = (object) => Array.isArray(object)
-  && object.every((el) => [HTMLElement, Element].some((x) => el instanceof x));
+  && object.every(isHTMLElement);
+
+/**
+ * Checks if an object is a `Function`.
+ *
+ * @param {any} fn the target object
+ * @returns {boolean} the query result
+ */
+const isFunction = (fn) => (fn && fn.constructor.name === 'Function') || false;
 
 /**
  * Checks if an object is an `HTMLCollection`.
@@ -2087,22 +2152,14 @@ const isElementsArray = (object) => Array.isArray(object)
  * @param {any} object the target object
  * @returns {boolean} the query result
  */
-const isHTMLCollection = (object) => object instanceof HTMLCollection;
-
-/**
- * Checks if an element is an `HTMLElement`.
- *
- * @param {any} element the target object
- * @returns {boolean} the query result
- */
-const isHTMLElement = (element) => element instanceof HTMLElement;
+const isHTMLCollection = (object) => (object && object.constructor.name === 'HTMLCollection') || false;
 
 /**
  * Check if a target element is an `<img>`.
  * @param {any} element the target element
  * @returns {boolean} the query result
  */
-const isHTMLImageElement = (element) => element instanceof HTMLImageElement;
+const isHTMLImageElement = (element) => (element && element.tagName === 'IMG') || false;
 
 /**
  * Checks if an element is an `<svg>` (or any type of SVG element),
@@ -2112,25 +2169,28 @@ const isHTMLImageElement = (element) => element instanceof HTMLImageElement;
  * @param {any} element the target element
  * @returns {boolean} the query result
  */
-const isMedia = (element) => element
-  && [SVGElement, HTMLImageElement, HTMLVideoElement]
-    .some((mediaType) => element instanceof mediaType);
 
-/**
- * Checks if an object is a `Node`.
- *
- * @param {any} node the target object
- * @returns {boolean} the query result
- */
-const isNode = (node) => node instanceof Node;
+const isMedia = (element) => (
+  element
+  && element.nodeType === 1
+  && ['SVG', 'Image', 'Video'].some((s) => element.constructor.name.includes(s))) || false;
 
 /**
  * Checks if an object is a `NodeList`.
+ * => equivalent to `object instanceof NodeList`
  *
  * @param {any} object the target object
  * @returns {boolean} the query result
  */
-const isNodeList = (object) => object instanceof NodeList;
+const isNodeList = (object) => (object && object.constructor.name === 'NodeList') || false;
+
+/**
+ * Shortcut for `typeof SOMETHING === "number"`.
+ *
+ * @param  {any} num input value
+ * @returns {boolean} the query result
+ */
+const isNumber = (num) => typeof num === 'number';
 
 /**
  * Checks if a page is Right To Left.
@@ -2140,9 +2200,9 @@ const isNodeList = (object) => object instanceof NodeList;
 const isRTL = (node) => getDocumentElement(node).dir === 'rtl';
 
 /**
- * Shortcut for `typeof SOMETHING === string` static method.
+ * Shortcut for `typeof SOMETHING === "string"`.
  *
- * @param  {any} str array-like iterable object
+ * @param  {any} str input value
  * @returns {boolean} the query result
  */
 const isString = (str) => typeof str === 'string';
@@ -2152,24 +2212,19 @@ const isString = (str) => typeof str === 'string';
  * @param {any} element the target element
  * @returns {boolean} the query result
  */
-const isSVGElement = (element) => element instanceof SVGElement;
+const isSVGElement = (element) => (element && element instanceof getWindow(element).SVGElement)
+  || false;
 
 /**
  * Check if a target element is a `<table>`, `<td>` or `<th>`.
+ * This specific check is important for determining
+ * the `offsetParent` of a given element.
+ *
  * @param {any} element the target element
  * @returns {boolean} the query result
  */
-const isTableElement = (element) => ['TABLE', 'TD', 'TH'].includes(element.tagName);
-
-/**
- * Check if a target node is `window`.
- *
- * @param {any} node the target node
- * @returns {boolean} the query result
- */
-function isWindow(node) {
-  return node instanceof Window;
-}
+const isTableElement = (element) => (element && ['TABLE', 'TD', 'TH'].includes(element.tagName))
+  || false;
 
 /**
  * Shortcut for `HTMLElement.closest` method which also works
@@ -2189,57 +2244,71 @@ function closest(element, selector) {
 }
 
 /**
+ * Utility to check if target is typeof `HTMLElement`, `Element`, `Node`
+ * or find one that matches a selector.
+ *
+ * @param {Node | string} selector the input selector or target element
+ * @param {ParentNode=} parent optional node to look into
+ * @return {HTMLElement?} the `HTMLElement` or `querySelector` result
+ */
+function querySelector(selector, parent) {
+  if (isNode(selector)) {
+    return selector;
+  }
+  const lookUp = isNode(parent) ? parent : getDocument();
+
+  return lookUp.querySelector(selector);
+}
+
+/**
  * Shortcut for `HTMLElement.getElementsByTagName` method. Some `Node` elements
  * like `ShadowRoot` do not support `getElementsByTagName`.
  *
  * @param {string} selector the tag name
- * @param {(HTMLElement | Element | Document)=} parent optional Element to look into
- * @return {HTMLCollectionOf<HTMLElement | Element>} the 'HTMLCollection'
+ * @param {ParentNode=} parent optional Element to look into
+ * @return {HTMLCollectionOf<HTMLElement>} the 'HTMLCollection'
  */
 function getElementsByTagName(selector, parent) {
-  const lookUp = typeof parent !== 'object' ? getDocument() : parent;
+  const lookUp = isNode(parent) ? parent : getDocument();
   return lookUp.getElementsByTagName(selector);
 }
-
-/**
- * An `HTMLCollection` with all document elements,
- * which is the equivalent of `document.all`.
- */
-const documentAll = getElementsByTagName('*');
 
 /**
  * Returns an `Array` of `Node` elements that are registered as
  * `CustomElement`.
  * @see https://stackoverflow.com/questions/27334365/how-to-get-list-of-registered-custom-elements
  *
- * @param {(HTMLElement | Element | Node | Document)=} parent parent to look into
- * @returns {Array<HTMLElement | Element>} the query result
+ * @param {ParentNode=} parent parent to look into
+ * @returns {Array<HTMLElement>} the query result
  */
 function getCustomElements(parent) {
-  const collection = parent && typeof parent === 'object'
-    ? getElementsByTagName('*', parent) : documentAll;
+  const collection = getElementsByTagName('*', parent);
+
   return [...collection].filter(isCustomElement);
 }
 
 /**
  * Returns an `Element` that matches the id in the document.
+ * Within multiple <iframe> elements, a `parent` parameter
+ * would decisively locate the correct element.
  *
  * @param {string} id
+ * @param {ParentNode=} parent
  * @returns {(HTMLElement | Element)?}
  */
-function getElementById(id) {
-  return getDocument().getElementById(id);
+function getElementById(id, parent) {
+  return getDocument(parent).getElementById(id);
 }
 
 /**
  * A shortcut for `(document|Element).querySelectorAll`.
  *
  * @param {string} selector the input selector
- * @param {(HTMLElement | Element | Document | Node)=} parent optional node to look into
- * @return {NodeListOf<HTMLElement | Element>} the query result
+ * @param {ParentNode=} parent optional node to look into
+ * @return {NodeListOf<HTMLElement>} the query result
  */
 function querySelectorAll(selector, parent) {
-  const lookUp = typeof parent !== 'object' ? getDocument() : parent;
+  const lookUp = isNode(parent) ? parent : getDocument();
   return lookUp.querySelectorAll(selector);
 }
 
@@ -2248,18 +2317,18 @@ function querySelectorAll(selector, parent) {
  * like `ShadowRoot` do not support `getElementsByClassName`.
  *
  * @param {string} selector the class name
- * @param {(HTMLElement | Element | Document)=} parent optional Element to look into
- * @return {HTMLCollectionOf<HTMLElement | Element>} the 'HTMLCollection'
+ * @param {ParentNode=} parent optional Element to look into
+ * @return {HTMLCollectionOf<HTMLElement>} the 'HTMLCollection'
  */
 function getElementsByClassName(selector, parent) {
-  const lookUp = typeof parent !== 'object' ? getDocument() : parent;
+  const lookUp = isNode(parent) ? parent : getDocument();
   return lookUp.getElementsByClassName(selector);
 }
 
 /**
  * Check if element matches a CSS selector.
  *
- * @param {HTMLElement | Element} target
+ * @param {HTMLElement} target
  * @param {string} selector
  * @returns {boolean}
  */
@@ -2267,15 +2336,15 @@ function matches$1(target, selector) {
   return target.matches(selector);
 }
 
-// @ts-nocheck
 const ElementProto = Element.prototype;
+
 const matchesFn = ElementProto.matches
-  || ElementProto.matchesSelector
-  || ElementProto.webkitMatchesSelector
-  || ElementProto.mozMatchesSelector
-  || ElementProto.msMatchesSelector
-  || ElementProto.oMatchesSelector
-  || function matchesNotSupported() {
+  || /* istanbul ignore next */ ElementProto.matchesSelector
+  || /* istanbul ignore next */ ElementProto.webkitMatchesSelector
+  || /* istanbul ignore next */ ElementProto.mozMatchesSelector
+  || /* istanbul ignore next */ ElementProto.msMatchesSelector
+  || /* istanbul ignore next */ ElementProto.oMatchesSelector
+  || /* istanbul ignore next */ function matchesNotSupported() {
     return false;
   };
 
@@ -2283,7 +2352,7 @@ const matchesFn = ElementProto.matches
  * Check if element matches a CSS selector,
  * supporting a range of legacy browsers.
  *
- * @param {HTMLElement | Element} target
+ * @param {HTMLElement} target
  * @param {string} selector
  * @returns {boolean}
  */
@@ -2291,7 +2360,7 @@ function matches(target, selector) {
   return matchesFn.call(target, selector);
 }
 
-var version = "1.0.1";
+var version = "1.0.2";
 
 // @ts-ignore
 
@@ -2301,9 +2370,9 @@ var version = "1.0.1";
  */
 const Version = version;
 
-// strings
+/** @typedef {import('../types/index')} */
 
-const SHORTER = {
+const SHORTY = {
   ariaChecked,
   ariaDescription,
   ariaDescribedBy,
@@ -2469,6 +2538,7 @@ const SHORTER = {
   isCustomElement,
   isElement,
   isNode,
+  isNumber,
   isHTMLElement,
   isHTMLImageElement,
   isSVGElement,
@@ -2479,11 +2549,11 @@ const SHORTER = {
   isShadowRoot,
   isDocument,
   isElementsArray,
+  isFunction,
   isWindow,
   isMedia,
   isRTL,
   closest,
-  documentAll,
   querySelector,
   getCustomElements,
   getElementById,
@@ -2494,7 +2564,6 @@ const SHORTER = {
   matchesLegacy: matches,
   normalizeValue,
   normalizeOptions,
-  tryWrapper,
   reflow,
   noop,
   focus,
@@ -2503,6 +2572,7 @@ const SHORTER = {
   Float32ArrayFrom,
   Float64ArrayFrom,
   ObjectAssign,
+  ObjectEntries,
   ObjectKeys,
   ObjectValues,
   OriginalEvent,
@@ -2524,4 +2594,4 @@ const SHORTER = {
   Version,
 };
 
-export { SHORTER as default };
+export { SHORTY as default };

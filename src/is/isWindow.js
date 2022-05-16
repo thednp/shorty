@@ -1,9 +1,9 @@
 /**
- * Check if a target node is `window`.
+ * Check if a target object is `Window`.
+ * => equivalent to `object instanceof Window`
  *
- * @param {any} node the target node
+ * @param {any} object the target object
  * @returns {boolean} the query result
  */
-export default function isWindow(node) {
-  return node instanceof Window;
-}
+const isWindow = (object) => (object && object.constructor.name === 'Window') || false;
+export default isWindow;

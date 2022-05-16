@@ -1,13 +1,14 @@
 import getDocument from '../get/getDocument';
+import isNode from '../is/isNode';
 
 /**
  * A shortcut for `(document|Element).querySelectorAll`.
  *
  * @param {string} selector the input selector
- * @param {(HTMLElement | Element | Document | Node)=} parent optional node to look into
- * @return {NodeListOf<HTMLElement | Element>} the query result
+ * @param {ParentNode=} parent optional node to look into
+ * @return {NodeListOf<HTMLElement>} the query result
  */
 export default function querySelectorAll(selector, parent) {
-  const lookUp = typeof parent !== 'object' ? getDocument() : parent;
+  const lookUp = isNode(parent) ? parent : getDocument();
   return lookUp.querySelectorAll(selector);
 }

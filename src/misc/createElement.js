@@ -12,6 +12,8 @@ import ObjectAssign from './ObjectAssign';
  * @return {HTMLElement | Element} a new `HTMLElement` or `Element`
  */
 export default function createElement(param) {
+  if (!param) return null;
+
   if (typeof param === 'string') {
     return getDocument().createElement(param);
   }

@@ -4,5 +4,5 @@
  * @param {any} element the target object
  * @returns {boolean} the query result
  */
-const isCustomElement = (element) => element && !!element.shadowRoot;
+const isCustomElement = (element) => (element && !!element.shadowRoot) || false;
 export default isCustomElement;

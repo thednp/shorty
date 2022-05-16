@@ -193,7 +193,6 @@ export { default as passiveHandlerLegacy } from '../../src/misc/passiveHandlerLe
 export { default as setElementStyle } from '../../src/misc/setElementStyle';
 export { default as normalizeValue } from '../../src/misc/normalizeValue';
 export { default as normalizeOptions } from '../../src/misc/normalizeOptions';
-export { default as tryWrapper } from '../../src/misc/tryWrapper';
 export { default as reflow } from '../../src/misc/reflow';
 export { default as focus } from '../../src/misc/focus';
 export { default as noop } from '../../src/misc/noop';
@@ -204,6 +203,7 @@ export { default as toUpperCase } from '../../src/misc/toUpperCase';
 export { default as ArrayFrom } from '../../src/misc/ArrayFrom';
 export { default as Float32ArrayFrom } from '../../src/misc/Float32ArrayFrom';
 export { default as Float64ArrayFrom } from '../../src/misc/Float64ArrayFrom';
+export { default as ObjectEntries } from '../../src/misc/ObjectEntries';
 export { default as ObjectKeys } from '../../src/misc/ObjectKeys';
 export { default as ObjectValues } from '../../src/misc/ObjectValues';
 export { default as ObjectAssign } from '../../src/misc/ObjectAssign';
@@ -228,13 +228,13 @@ export { default as isRTL } from '../../src/is/isRTL';
 export { default as isScaledElement } from '../../src/is/isScaledElement';
 export { default as isShadowRoot } from '../../src/is/isShadowRoot';
 export { default as isString } from '../../src/is/isString';
+export { default as isNumber } from '../../src/is/isNumber';
 export { default as isSVGElement } from '../../src/is/isSVGElement';
 export { default as isTableElement } from '../../src/is/isTableElement';
 export { default as isWindow } from '../../src/is/isWindow';
 
 // selectors
 export { default as closest } from '../../src/selectors/closest';
-export { default as documentAll } from '../../src/selectors/documentAll';
 export { default as getCustomElements } from '../../src/selectors/getCustomElements';
 export { default as getElementById } from '../../src/selectors/getElementById';
 export { default as querySelector } from '../../src/selectors/querySelector';

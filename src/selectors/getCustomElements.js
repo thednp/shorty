@@ -1,4 +1,3 @@
-import documentAll from './documentAll';
 import isCustomElement from '../is/isCustomElement';
 import getElementsByTagName from './getElementsByTagName';
 
@@ -7,11 +6,11 @@ import getElementsByTagName from './getElementsByTagName';
  * `CustomElement`.
  * @see https://stackoverflow.com/questions/27334365/how-to-get-list-of-registered-custom-elements
  *
- * @param {(HTMLElement | Element | Node | Document)=} parent parent to look into
- * @returns {Array<HTMLElement | Element>} the query result
+ * @param {ParentNode=} parent parent to look into
+ * @returns {Array<HTMLElement>} the query result
  */
 export default function getCustomElements(parent) {
-  const collection = parent && typeof parent === 'object'
-    ? getElementsByTagName('*', parent) : documentAll;
+  const collection = getElementsByTagName('*', parent);
+
   return [...collection].filter(isCustomElement);
 }

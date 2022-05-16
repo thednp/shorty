@@ -1,5 +1,6 @@
 import getBoundingClientRect from '../get/getBoundingClientRect';
 import getDocumentElement from '../get/getDocumentElement';
+import isNode from './isNode';
 
 /**
  * Utility to determine if an `HTMLElement`
@@ -9,9 +10,10 @@ import getDocumentElement from '../get/getDocumentElement';
  * @return {boolean} the query result
  */
 const isElementInScrollRange = (element) => {
+  if (!element || !isNode(element)) return false;
+
   const { top, bottom } = getBoundingClientRect(element);
   const { clientHeight } = getDocumentElement(element);
-  // checks bottom && top
   return top <= clientHeight && bottom >= 0;
 };
 

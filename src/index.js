@@ -1,3 +1,5 @@
+/** @typedef {import('../types/index')} */
+
 // strings
 import ariaChecked from './strings/ariaChecked';
 import ariaDescription from './strings/ariaDescription';
@@ -178,6 +180,7 @@ import noop from './misc/noop';
 import normalizeOptions from './misc/normalizeOptions';
 import normalizeValue from './misc/normalizeValue';
 import ObjectAssign from './misc/ObjectAssign';
+import ObjectEntries from './misc/ObjectEntries';
 import ObjectKeys from './misc/ObjectKeys';
 import ObjectValues from './misc/ObjectValues';
 import OriginalEvent from './misc/OriginalEvent';
@@ -188,7 +191,6 @@ import setElementStyle from './misc/setElementStyle';
 import Timer from './misc/timer';
 import toLowerCase from './misc/toLowerCase';
 import toUpperCase from './misc/toUpperCase';
-import tryWrapper from './misc/tryWrapper';
 
 // get
 import getBoundingClientRect from './get/getBoundingClientRect';
@@ -219,12 +221,14 @@ import isElement from './is/isElement';
 import isElementInScrollRange from './is/isElementInScrollRange';
 import isElementInViewport from './is/isElementInViewport';
 import isElementsArray from './is/isElementsArray';
+import isFunction from './is/isFunction';
 import isHTMLCollection from './is/isHTMLCollection';
 import isHTMLElement from './is/isHTMLElement';
 import isHTMLImageElement from './is/isHTMLImageElement';
 import isMedia from './is/isMedia';
 import isNode from './is/isNode';
 import isNodeList from './is/isNodeList';
+import isNumber from './is/isNumber';
 import isRTL from './is/isRTL';
 import isScaledElement from './is/isScaledElement';
 import isShadowRoot from './is/isShadowRoot';
@@ -235,7 +239,6 @@ import isWindow from './is/isWindow';
 
 // selectors
 import closest from './selectors/closest';
-import documentAll from './selectors/documentAll';
 import querySelector from './selectors/querySelector';
 import getCustomElements from './selectors/getCustomElements';
 import getElementById from './selectors/getElementById';
@@ -247,7 +250,7 @@ import matchesLegacy from './selectors/matchesLegacy';
 
 import Version from './misc/version';
 
-const SHORTER = {
+const SHORTY = {
   ariaChecked,
   ariaDescription,
   ariaDescribedBy,
@@ -413,6 +416,7 @@ const SHORTER = {
   isCustomElement,
   isElement,
   isNode,
+  isNumber,
   isHTMLElement,
   isHTMLImageElement,
   isSVGElement,
@@ -423,11 +427,11 @@ const SHORTER = {
   isShadowRoot,
   isDocument,
   isElementsArray,
+  isFunction,
   isWindow,
   isMedia,
   isRTL,
   closest,
-  documentAll,
   querySelector,
   getCustomElements,
   getElementById,
@@ -438,7 +442,6 @@ const SHORTER = {
   matchesLegacy,
   normalizeValue,
   normalizeOptions,
-  tryWrapper,
   reflow,
   noop,
   focus,
@@ -447,6 +450,7 @@ const SHORTER = {
   Float32ArrayFrom,
   Float64ArrayFrom,
   ObjectAssign,
+  ObjectEntries,
   ObjectKeys,
   ObjectValues,
   OriginalEvent,
@@ -468,4 +472,4 @@ const SHORTER = {
   Version,
 };
 
-export default SHORTER;
+export default SHORTY;

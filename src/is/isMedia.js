@@ -6,7 +6,9 @@
  * @param {any} element the target element
  * @returns {boolean} the query result
  */
-const isMedia = (element) => element
-  && [SVGElement, HTMLImageElement, HTMLVideoElement]
-    .some((mediaType) => element instanceof mediaType);
+
+const isMedia = (element) => (
+  element
+  && element.nodeType === 1
+  && ['SVG', 'Image', 'Video'].some((s) => element.constructor.name.includes(s))) || false;
 export default isMedia;

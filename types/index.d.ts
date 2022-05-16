@@ -174,13 +174,13 @@ export { default as passiveHandler } from 'shorty/src/misc/passiveHandler';
 export { default as setElementStyle } from 'shorty/src/misc/setElementStyle';
 export { default as normalizeValue } from 'shorty/src/misc/normalizeValue';
 export { default as normalizeOptions } from 'shorty/src/misc/normalizeOptions';
-export { default as tryWrapper } from 'shorty/src/misc/tryWrapper';
 export { default as reflow } from 'shorty/src/misc/reflow';
 export { default as focus } from 'shorty/src/misc/focus';
 export { default as noop } from 'shorty/src/misc/noop';
 export { default as ArrayFrom } from 'shorty/src/misc/ArrayFrom';
 export { default as Float32ArrayFrom } from 'shorty/src/misc/Float32ArrayFrom';
 export { default as Float64ArrayFrom } from 'shorty/src/misc/Float64ArrayFrom';
+export { default as ObjectEntries } from 'shorty/src/misc/ObjectEntries';
 export { default as ObjectKeys } from 'shorty/src/misc/ObjectKeys';
 export { default as ObjectValues } from 'shorty/src/misc/ObjectValues';
 export { default as ObjectAssign } from 'shorty/src/misc/ObjectAssign';
@@ -209,7 +209,6 @@ export { default as isSVGElement } from 'shorty/src/is/isSVGElement';
 export { default as isTableElement } from 'shorty/src/is/isTableElement';
 export { default as isWindow } from 'shorty/src/is/isWindow';
 export { default as closest } from 'shorty/src/selectors/closest';
-export { default as documentAll } from 'shorty/src/selectors/documentAll';
 export { default as getCustomElements } from 'shorty/src/selectors/getCustomElements';
 export { default as getElementById } from 'shorty/src/selectors/getElementById';
 export { default as querySelector } from 'shorty/src/selectors/querySelector';
@@ -234,8 +233,15 @@ export interface BoundingClientRect {
   y: number,
 }
 
+export type OnOff<T> = (
+  element: T,
+  eventType: string,
+  listener: EventListenerObject['handleEvent'],
+  options?: AddEventListenerOptions
+) => void;
+
 export interface OriginalEvent extends CustomEvent {
-  relatedTarget?: HTMLElement | Element | null;
+  relatedTarget: EventTarget | null;
 }
 
 export interface OffsetRect {
