@@ -107,7 +107,7 @@ describe('Shorty Library Test', () => {
       getBoundingClientRect, getDocument, getDocumentBody, getDocumentElement, getDocumentHead,
       getElementAnimationDelay, getElementAnimationDelayLegacy, getElementAnimationDuration, getElementAnimationDurationLegacy,
       getElementTransitionDelay, getElementTransitionDelayLegacy, getElementTransitionDuration, getElementTransitionDurationLegacy,
-      getElementStyle, getNodeScroll, getParentNode, getRectRelativeToOffsetParent, getUID, getWindow,
+      getElementStyle, getNodeScroll, getParentNode, getRectRelativeToOffsetParent, getUID, getWindow, ObjectValues
     } = SHORTY;
 
     cy.wait('@pageload')
@@ -120,17 +120,9 @@ describe('Shorty Library Test', () => {
         CE.style.animation = 'animate-me 1s ease 0.5s infinite';
         win.document.body.append(CE);
 
-        expect(getBoundingClientRect(element), 'getBoundingClientRect').to.deep.equal({
-          width: 864, height: 117,
-          top: 88.15625, right: 932, bottom: 205.15625, left: 68,
-          x: 68,y: 88.15625
-        });
-
-        expect(getBoundingClientRect(CE, true), 'getBoundingClientRect').to.deep.equal({
-          width: 198.10519958496093, height: 69.70420729946083,
-          top: 483.89347989794237, right: 264.44448234558104, bottom: 553.5976871974032, left: 66.33928276062011,
-          x: 66.33928276062011, y: 483.89347989794237
-        });
+        // we round values so all browsers return same values
+        expect(ObjectValues(getBoundingClientRect(element)).map(Math.round), 'getBoundingClientRect').to.deep.equal([864, 117, 88, 932, 205, 68, 68, 88]);
+        expect(ObjectValues(getBoundingClientRect(CE, true)).map(Math.round), 'getBoundingClientRect').to.deep.equal([198, 70, 484, 264, 553, 66, 66, 484]);
 
         expect(getWindow(), 'getWindow').to.be.instanceOf(Window); // root WINDOW
         expect(getWindow(element.ownerDocument), 'getWindow(document)').to.be.instanceOf(win.Window);
@@ -172,8 +164,9 @@ describe('Shorty Library Test', () => {
         expect(getParentNode(CE), 'getParentNode(CustomElement)').to.be.instanceOf(win.HTMLBodyElement);
         expect(getParentNode(CE.shadowRoot), 'getParentNode(CustomElement.shadowRoot)').to.be.instanceOf(CustomElem);
 
+        // if (Cypress.isBrowser({name: '!electron'}))
         expect(getRectRelativeToOffsetParent(element, element.offsetParent, getNodeScroll(element.offsetParent)), 'getRectRelativeToOffsetParent')
-          .to.deep.equal({x: 48, y: 88.15625, width: 864, height: 117});
+          .to.deep.equal({x: 48, y: 88, width: 864, height: 117});
 
         expect(getUID(element), 'getUID()').to.eq(0);
         expect(getUID(element, 'Alert'), 'getUID(key) - set & returns').to.eq(0);
