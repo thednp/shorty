@@ -16,7 +16,7 @@ export default function getParentNode(node) {
   // this is a quicker (but less type safe) way to save quite some bytes from the bundle
   return (
     node.assignedSlot // step into the shadow DOM of the parent of a slotted node
-    || node.parentNode // @ts-ignore DOM Element detected
+    || node.parentNode // DOM Element detected
     || (isShadowRoot(node) && node.host) // ShadowRoot detected
     || getDocumentElement(node) // fallback
   );

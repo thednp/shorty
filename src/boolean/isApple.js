@@ -7,7 +7,7 @@ const appleBrands = /(iPhone|iPod|iPad)/;
  * A global `boolean` for Apple browsers.
  * @type {boolean}
  */
-const isApple = !userAgentData ? /* istanbul ignore next */appleBrands.test(userAgent)
-  : userAgentData.brands.some((/** @type {Record<string, any>} */x) => appleBrands.test(x.brand));
+const isApple = userAgentData ? userAgentData.brands.some((x) => appleBrands.test(x.brand))
+  : /* istanbul ignore next */appleBrands.test(userAgent);
 
 export default isApple;
