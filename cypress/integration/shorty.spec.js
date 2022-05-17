@@ -116,13 +116,17 @@ describe('Shorty Library Test', () => {
         const win = getWindow(element);
         const CE = new CustomElem();
         CE.className = 'btn btn-outline-primary';
-        CE.style.transform = 'scale(1.01)';
-        CE.style.animation = 'animate-me 1s ease 0.5s infinite';
+
         win.document.body.append(CE);
 
         // we round values so all browsers return same values
-        expect(ObjectValues(getBoundingClientRect(element)).map(Math.round), 'getBoundingClientRect').to.deep.equal([864, 117, 88, 932, 205, 68, 68, 88]);
-        expect(ObjectValues(getBoundingClientRect(CE, true)).map(Math.round), 'getBoundingClientRect').to.deep.equal([198, 70, 484, 264, 553, 66, 66, 484]);
+        let {x,y,top,left,right,bottom,width,height} = getBoundingClientRect(element);
+        expect(ObjectValues([x,y,top,left,right,bottom,width,height]).map(Math.round), 'getBoundingClientRect').to.deep.equal([ 68, 88, 88, 68, 932, 205, 864, 117 ]);
+        ({x,y,top,left,right,bottom,width,height} = getBoundingClientRect(CE, true));
+        expect(ObjectValues([x,y,top,left,right,bottom,width,height]).map(Math.round), 'getBoundingClientRect').to.deep.equal([ 68, 491, 491, 68, 266, 561, 198, 70 ]);
+
+        CE.style.transform = 'scale(1.01)';
+        CE.style.animation = 'animate-me 1s ease 0.5s infinite';
 
         expect(getWindow(), 'getWindow').to.be.instanceOf(Window); // root WINDOW
         expect(getWindow(element.ownerDocument), 'getWindow(document)').to.be.instanceOf(win.Window);
@@ -164,9 +168,9 @@ describe('Shorty Library Test', () => {
         expect(getParentNode(CE), 'getParentNode(CustomElement)').to.be.instanceOf(win.HTMLBodyElement);
         expect(getParentNode(CE.shadowRoot), 'getParentNode(CustomElement.shadowRoot)').to.be.instanceOf(CustomElem);
 
-        // if (Cypress.isBrowser({name: '!electron'}))
-        expect(getRectRelativeToOffsetParent(element, element.offsetParent, getNodeScroll(element.offsetParent)), 'getRectRelativeToOffsetParent')
-          .to.deep.equal({x: 48, y: 88, width: 864, height: 117});
+        ({x,y,width,height} = getRectRelativeToOffsetParent(element, element.offsetParent, getNodeScroll(element.offsetParent)));
+        
+        expect([x,y,width,height].map(Math.round), 'getRectRelativeToOffsetParent').to.deep.equal([ 48, 88, 864, 117 ]);
 
         expect(getUID(element), 'getUID()').to.eq(0);
         expect(getUID(element, 'Alert'), 'getUID(key) - set & returns').to.eq(0);
