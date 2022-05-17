@@ -224,7 +224,6 @@ if (isElementsArray(myValue)) {
 * ***Timer*** - a small but powerful utility that makes `setTimeout` have a meaning;
 * ***toLowerCase*** - a shortie for `String.toLowerCase()` method;
 * ***toUpperCase*** - a shortie for `String.toUpperCase()` method;
-* ***tryWrapper*** - a simple `try()` and `catch()` wrapper for functions, with option to preffix the error logs, pointing out the context of the errors;
 
 The ***Data*** and ***Timer*** utilities have their own specifics, you might want to check the [wiki](https://github.com/thednp/shorty/wiki).
 
@@ -249,7 +248,6 @@ const array3 = [...array1, ...array2].filter(distinct);
 
 # selectors
 * ***closest*** - a shortie for `Element.closest()` method;
-* ***documentAll*** - a quick bit equivalent of the deprecated `document.all` collection;
 * ***getCustomElements*** - returns an `Array` with all registered `CustomElement`;
 * ***getElementById*** - a shortie for `document.getElementById()` method;
 * ***getElementsByClassName*** - a shortie for `Element.getElementsByClassName()` method;
