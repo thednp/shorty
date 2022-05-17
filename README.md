@@ -180,6 +180,7 @@ const duration = getElementAnimationDurationLegacy(target);
 * ***isScaledElement*** - check if a given *Element* is affected by scale;
 * ***isShadowRoot*** - check if a given *Node* is a `ShadowRoot` instance;
 * ***isString*** - check if a given value is string;
+* ***isNumber*** - check if a given value is string;
 * ***isSVGElement*** - check if a given value is `SVGElement` instance;
 * ***isTableElement*** - check if a given value is `<table>`, `<td>` or `<th>` *Element*;
 * ***isWindow*** - check if a given value is a `Window` instance;
@@ -214,6 +215,7 @@ if (isElementsArray(myValue)) {
 * ***noop*** - is your regular `() => {}` NOOP;
 * ***normalizeOptions*** - a cool utility to normalize and crosscheck JavaScript options and their DATA API counterparts for various web components; supports namespaced options like `data-NAMESPACE-option="value"`; priority: JavaScript options > DATA API options > default options
 * ***ObjectAssign*** - a shortie for `Object.assign()` method;
+* ***ObjectEntries*** - a shortie for `Object.entries()` method;
 * ***ObjectKeys*** - a shortie for `Object.keys()` method;
 * ***ObjectValues*** - a shortie for `Object.values()` method;
 * ***OriginalEvent*** - a small utility that returns a synthetic `CustomEvent` with the added `relatedTarget` and other properties;
