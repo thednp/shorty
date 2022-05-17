@@ -847,8 +847,8 @@
    * A global `boolean` for Apple browsers.
    * @type {boolean}
    */
-  var isApple = !userAgentData ? /* istanbul ignore next */appleBrands.test(userAgent)
-    : userAgentData.brands.some(function (/** @type {Record<string, any>} */x) { return appleBrands.test(x.brand); });
+  var isApple = userAgentData ? userAgentData.brands.some(function (x) { return appleBrands.test(x.brand); })
+    : /* istanbul ignore next */appleBrands.test(userAgent);
 
   /**
    * A global boolean for Gecko browsers. When writing this file,
@@ -1311,10 +1311,11 @@
   function getElementAnimationDelay$1(element) {
     var propertyValue = getElementStyle(element, animationName$1);
     var durationValue = getElementStyle(element, animationDelay$1);
-    var durationScale = durationValue.includes('ms') ? 1 : 1000;
+    var durationScale = durationValue.includes('ms') ? /* istanbul ignore next */1 : 1000;
     var duration = propertyValue && propertyValue !== 'none'
       ? parseFloat(durationValue) * durationScale : 0;
 
+    /* istanbul ignore next */
     return !Number.isNaN(duration) ? duration : 0;
   }
 
@@ -1328,11 +1329,11 @@
   function getElementAnimationDuration$1(element) {
     var propertyValue = getElementStyle(element, animationName$1);
     var durationValue = getElementStyle(element, animationDuration$1);
-    var durationScale = durationValue.includes('ms') ? 1 : 1000;
+    var durationScale = durationValue.includes('ms') ? /* istanbul ignore next */1 : 1000;
     var duration = propertyValue && propertyValue !== 'none'
       ? parseFloat(durationValue) * durationScale : 0;
 
-    return !Number.isNaN(duration) ? duration : 0;
+    return !Number.isNaN(duration) ? duration : /* istanbul ignore next */0;
   }
 
   /**
@@ -1381,11 +1382,11 @@
   function getElementAnimationDelay(element) {
     var propertyValue = getElementStyle(element, animationName);
     var durationValue = getElementStyle(element, animationDelay);
-    var durationScale = durationValue.includes('ms') ? 1 : 1000;
+    var durationScale = durationValue.includes('ms') ? /* istanbul ignore next */1 : 1000;
     var duration = supportAnimation && propertyValue && propertyValue !== 'none'
       ? parseFloat(durationValue) * durationScale : 0;
 
-    return !Number.isNaN(duration) ? duration : 0;
+    return !Number.isNaN(duration) ? duration : /* istanbul ignore next */0;
   }
 
   /**
@@ -1398,11 +1399,11 @@
   function getElementAnimationDuration(element) {
     var propertyValue = getElementStyle(element, animationName);
     var durationValue = getElementStyle(element, animationDuration);
-    var durationScale = durationValue.includes('ms') ? 1 : 1000;
+    var durationScale = durationValue.includes('ms') ? /* istanbul ignore next */1 : 1000;
     var duration = supportAnimation && propertyValue && propertyValue !== 'none'
       ? parseFloat(durationValue) * durationScale : 0;
 
-    return !Number.isNaN(duration) ? duration : 0;
+    return !Number.isNaN(duration) ? duration : /* istanbul ignore next */0;
   }
 
   /**
@@ -1451,11 +1452,11 @@
   function getElementTransitionDelay$1(element) {
     var propertyValue = getElementStyle(element, transitionProperty$1);
     var delayValue = getElementStyle(element, transitionDelay$1);
-    var delayScale = delayValue.includes('ms') ? 1 : 1000;
+    var delayScale = delayValue.includes('ms') ? /* istanbul ignore next */1 : 1000;
     var duration = propertyValue && propertyValue !== 'none'
       ? parseFloat(delayValue) * delayScale : 0;
 
-    return !Number.isNaN(duration) ? duration : 0;
+    return !Number.isNaN(duration) ? duration : /* istanbul ignore next */0;
   }
 
   /**
@@ -1468,11 +1469,11 @@
   function getElementTransitionDuration$1(element) {
     var propertyValue = getElementStyle(element, transitionProperty$1);
     var durationValue = getElementStyle(element, transitionDuration$1);
-    var durationScale = durationValue.includes('ms') ? 1 : 1000;
+    var durationScale = durationValue.includes('ms') ? /* istanbul ignore next */1 : 1000;
     var duration = propertyValue && propertyValue !== 'none'
       ? parseFloat(durationValue) * durationScale : 0;
 
-    return !Number.isNaN(duration) ? duration : 0;
+    return !Number.isNaN(duration) ? duration : /* istanbul ignore next */0;
   }
 
   /**
@@ -1521,11 +1522,11 @@
   function getElementTransitionDelay(element) {
     var propertyValue = getElementStyle(element, transitionProperty);
     var delayValue = getElementStyle(element, transitionDelay);
-    var delayScale = delayValue.includes('ms') ? 1 : 1000;
+    var delayScale = delayValue.includes('ms') ? /* istanbul ignore next */1 : 1000;
     var duration = supportTransition && propertyValue && propertyValue !== 'none'
       ? parseFloat(delayValue) * delayScale : 0;
 
-    return !Number.isNaN(duration) ? duration : 0;
+    return !Number.isNaN(duration) ? duration : /* istanbul ignore next */0;
   }
 
   /**
@@ -1538,11 +1539,11 @@
   function getElementTransitionDuration(element) {
     var propertyValue = getElementStyle(element, transitionProperty);
     var durationValue = getElementStyle(element, transitionDuration);
-    var durationScale = durationValue.includes('ms') ? 1 : 1000;
+    var durationScale = durationValue.includes('ms') ? /* istanbul ignore next */1 : 1000;
     var duration = supportTransition && propertyValue && propertyValue !== 'none'
       ? parseFloat(durationValue) * durationScale : 0;
 
-    return !Number.isNaN(duration) ? duration : 0;
+    return !Number.isNaN(duration) ? duration : /* istanbul ignore next */0;
   }
 
   /**
@@ -1871,9 +1872,9 @@
     if (includeScale && isHTMLElement(element)) {
       var offsetWidth = element.offsetWidth;
       var offsetHeight = element.offsetHeight;
-      scaleX = offsetWidth > 0 ? Math.round(width) / offsetWidth || 1
+      scaleX = offsetWidth > 0 ? Math.round(width) / offsetWidth
         : /* istanbul ignore next */1;
-      scaleY = offsetHeight > 0 ? Math.round(height) / offsetHeight || 1
+      scaleY = offsetHeight > 0 ? Math.round(height) / offsetHeight
         : /* istanbul ignore next */1;
     }
 
@@ -1960,7 +1961,7 @@
     // this is a quicker (but less type safe) way to save quite some bytes from the bundle
     return (
       node.assignedSlot // step into the shadow DOM of the parent of a slotted node
-      || node.parentNode // @ts-ignore DOM Element detected
+      || node.parentNode // DOM Element detected
       || (isShadowRoot(node) && node.host) // ShadowRoot detected
       || getDocumentElement(node) // fallback
     );

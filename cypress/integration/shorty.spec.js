@@ -113,20 +113,16 @@ describe('Shorty Library Test', () => {
     cy.wait('@pageload')
       .get('.alert').then(($element) => {
         const element = $element[0];
+        element.style.transform = 'scale(1.01)';
         const win = getWindow(element);
         const CE = new CustomElem();
         CE.className = 'btn btn-outline-primary';
-
         win.document.body.append(CE);
 
         // we round values so all browsers return same values
         let {x,y,top,left,right,bottom,width,height} = getBoundingClientRect(element, true);
-        expect(ObjectValues([x,y,top,left,right,bottom,width,height]).map(Math.round), 'getBoundingClientRect').to.deep.equal([ 68, 88, 88, 68, 932, 205, 864, 117 ]);
-        // ({x,y,top,left,right,bottom,width,height} = getBoundingClientRect(CE, true));
-        // expect(ObjectValues([x,y,top,left,right,bottom,width,height]).map(Math.round), 'getBoundingClientRect').to.deep.equal([ 68, 491, 491, 68, 266, 561, 198, 70 ]);
-
-        CE.style.transform = 'scale(1.01)';
-        CE.style.animation = 'animate-me 1s ease 0.5s infinite';
+        expect(ObjectValues([x,y,top,left,right,bottom,width,height]).map(Math.round), 'getBoundingClientRect').to.deep.equal([63, 87, 87, 63, 927, 204, 864, 117]);
+        element.style.transform = '';
 
         expect(getWindow(), 'getWindow').to.be.instanceOf(Window); // root WINDOW
         expect(getWindow(element.ownerDocument), 'getWindow(document)').to.be.instanceOf(win.Window);
@@ -146,29 +142,46 @@ describe('Shorty Library Test', () => {
         expect(getElementAnimationDelayLegacy(element), 'getElementAnimationDelayLegacy').to.equal(0);
         expect(getElementAnimationDuration(element), 'getElementAnimationDuration').to.equal(0);
         expect(getElementAnimationDurationLegacy(element), 'getElementAnimationDurationLegacy').to.equal(0);
+        
+        CE.style.animation = 'animate-me 1s ease 0.5s';
+        expect(getElementAnimationDelay(CE), 'getElementAnimationDelay - seconds').to.equal(500);
+        expect(getElementAnimationDelayLegacy(CE), 'getElementAnimationDelayLegacy - seconds').to.equal(500);
+        expect(getElementAnimationDuration(CE), 'getElementAnimationDuration - seconds').to.equal(1000);
+        expect(getElementAnimationDurationLegacy(CE), 'getElementAnimationDurationLegacy - seconds').to.equal(1000);
+        CE.style.animation = 'animate-me 1200ms ease 400ms';
+        expect(getElementAnimationDelay(CE), 'getElementAnimationDelay - miliseconds').to.equal(400);
+        expect(getElementAnimationDelayLegacy(CE), 'getElementAnimationDelayLegacy - miliseconds').to.equal(400);
+        expect(getElementAnimationDuration(CE), 'getElementAnimationDuration - miliseconds').to.equal(1200);
+        expect(getElementAnimationDurationLegacy(CE), 'getElementAnimationDurationLegacy - miliseconds').to.equal(1200);
 
-        expect(getElementAnimationDelay(CE), 'getElementAnimationDelay').to.equal(500);
-        expect(getElementAnimationDelayLegacy(CE), 'getElementAnimationDelayLegacy').to.equal(500);
-        expect(getElementAnimationDuration(CE), 'getElementAnimationDuration').to.equal(1000);
-        expect(getElementAnimationDurationLegacy(CE), 'getElementAnimationDurationLegacy').to.equal(1000);
+        element.style.transition = 'opacity .145s linear .1s';
+        expect(getElementTransitionDelay(element), 'getElementTransitionDelay - seconds').to.equal(100);
+        expect(getElementTransitionDelayLegacy(element), 'getElementTransitionDelayLegacy - seconds').to.equal(100);
+        expect(getElementTransitionDuration(element), 'getElementTransitionDuration - seconds').to.equal(145);
+        expect(getElementTransitionDurationLegacy(element), 'getElementTransitionDurationLegacy - seconds').to.equal(145);
 
-        expect(getElementTransitionDelay(element), 'getElementTransitionDelay').to.equal(0);
-        expect(getElementTransitionDelayLegacy(element), 'getElementTransitionDelayLegacy').to.equal(0);
-        expect(getElementTransitionDuration(element), 'getElementTransitionDuration').to.equal(150);
-        expect(getElementTransitionDurationLegacy(element), 'getElementTransitionDurationLegacy').to.equal(150);
+        element.style.transition = 'opacity 140ms linear 10ms';
+        expect(getElementTransitionDelay(element), 'getElementTransitionDelay- miliseconds').to.equal(10);
+        expect(getElementTransitionDelayLegacy(element), 'getElementTransitionDelayLegacy- miliseconds').to.equal(10);
+        expect(getElementTransitionDuration(element), 'getElementTransitionDuration- miliseconds').to.equal(140);
+        expect(getElementTransitionDurationLegacy(element), 'getElementTransitionDurationLegacy- miliseconds').to.equal(140);
+        element.style.transition = '';
 
         expect(getElementStyle(element, 'color'), 'getElementStyle(color)').to.equal('rgb(102, 77, 3)');
+
+        expect(getNodeScroll(win), 'getNodeScroll(window)').to.deep.equal({ x: 0, y: 0 });
         expect(getNodeScroll(element), 'getNodeScroll(element)').to.deep.equal({ x: 0, y: 0 });
         expect(getNodeScroll(element.offsetParent), 'getNodeScroll(element.offsetParent)').to.deep.equal({ x: 0, y: 0 });
         expect(getNodeScroll(getDocumentBody(element)), 'getNodeScroll(body)').to.deep.equal({ x: 0, y: 0 });
 
         expect(getParentNode(getDocumentElement()), 'getParentNode()').to.be.instanceOf(HTMLHtmlElement); // root HTML
+        expect(getParentNode(win), 'getParentNode(window)').to.be.instanceOf(win.HTMLHtmlElement);
         expect(getParentNode(getDocumentBody(element)), 'getParentNode(body)').to.be.instanceOf(win.HTMLHtmlElement);
         expect(getParentNode(element), 'getParentNode(node)').to.have.class('container');
         expect(getParentNode(CE), 'getParentNode(CustomElement)').to.be.instanceOf(win.HTMLBodyElement);
         expect(getParentNode(CE.shadowRoot), 'getParentNode(CustomElement.shadowRoot)').to.be.instanceOf(CustomElem);
 
-        ({x,y,width,height} = getRectRelativeToOffsetParent(element, win, getNodeScroll(win)));
+        ({x,y,width,height} = getRectRelativeToOffsetParent(element, getDocumentElement(win), getNodeScroll(getDocumentElement(win))));
         
         expect([x,y,width,height].map(Math.round), 'getRectRelativeToOffsetParent').to.deep.equal([68, 88, 864, 117]);
 
@@ -654,6 +667,8 @@ describe('Shorty Library Test', () => {
         const [el] = querySelectorAll('.alert', win.document);
         const CE = new CustomElem();
         win.document.body.append(CE);
+
+        expect(querySelectorAll('div'), 'querySelectorAll(div)').to.have.length(0);
 
         expect(querySelector(), 'querySelector()').to.be.null;
         expect(querySelector(el), 'querySelector(node)').to.equal(el);

@@ -12,9 +12,9 @@ import getElementStyle from './getElementStyle';
 export default function getElementTransitionDuration(element) {
   const propertyValue = getElementStyle(element, transitionProperty);
   const durationValue = getElementStyle(element, transitionDuration);
-  const durationScale = durationValue.includes('ms') ? 1 : 1000;
+  const durationScale = durationValue.includes('ms') ? /* istanbul ignore next */1 : 1000;
   const duration = propertyValue && propertyValue !== 'none'
     ? parseFloat(durationValue) * durationScale : 0;
 
-  return !Number.isNaN(duration) ? duration : 0;
+  return !Number.isNaN(duration) ? duration : /* istanbul ignore next */0;
 }

@@ -841,8 +841,8 @@ const appleBrands = /(iPhone|iPod|iPad)/;
  * A global `boolean` for Apple browsers.
  * @type {boolean}
  */
-const isApple = !userAgentData ? /* istanbul ignore next */appleBrands.test(userAgent)
-  : userAgentData.brands.some((/** @type {Record<string, any>} */x) => appleBrands.test(x.brand));
+const isApple = userAgentData ? userAgentData.brands.some((x) => appleBrands.test(x.brand))
+  : /* istanbul ignore next */appleBrands.test(userAgent);
 
 /**
  * A global boolean for Gecko browsers. When writing this file,
@@ -1302,10 +1302,11 @@ function getElementStyle(element, property) {
 function getElementAnimationDelay$1(element) {
   const propertyValue = getElementStyle(element, animationName$1);
   const durationValue = getElementStyle(element, animationDelay$1);
-  const durationScale = durationValue.includes('ms') ? 1 : 1000;
+  const durationScale = durationValue.includes('ms') ? /* istanbul ignore next */1 : 1000;
   const duration = propertyValue && propertyValue !== 'none'
     ? parseFloat(durationValue) * durationScale : 0;
 
+  /* istanbul ignore next */
   return !Number.isNaN(duration) ? duration : 0;
 }
 
@@ -1319,11 +1320,11 @@ function getElementAnimationDelay$1(element) {
 function getElementAnimationDuration$1(element) {
   const propertyValue = getElementStyle(element, animationName$1);
   const durationValue = getElementStyle(element, animationDuration$1);
-  const durationScale = durationValue.includes('ms') ? 1 : 1000;
+  const durationScale = durationValue.includes('ms') ? /* istanbul ignore next */1 : 1000;
   const duration = propertyValue && propertyValue !== 'none'
     ? parseFloat(durationValue) * durationScale : 0;
 
-  return !Number.isNaN(duration) ? duration : 0;
+  return !Number.isNaN(duration) ? duration : /* istanbul ignore next */0;
 }
 
 /**
@@ -1372,11 +1373,11 @@ function emulateAnimationEnd$1(element, handler) {
 function getElementAnimationDelay(element) {
   const propertyValue = getElementStyle(element, animationName);
   const durationValue = getElementStyle(element, animationDelay);
-  const durationScale = durationValue.includes('ms') ? 1 : 1000;
+  const durationScale = durationValue.includes('ms') ? /* istanbul ignore next */1 : 1000;
   const duration = supportAnimation && propertyValue && propertyValue !== 'none'
     ? parseFloat(durationValue) * durationScale : 0;
 
-  return !Number.isNaN(duration) ? duration : 0;
+  return !Number.isNaN(duration) ? duration : /* istanbul ignore next */0;
 }
 
 /**
@@ -1389,11 +1390,11 @@ function getElementAnimationDelay(element) {
 function getElementAnimationDuration(element) {
   const propertyValue = getElementStyle(element, animationName);
   const durationValue = getElementStyle(element, animationDuration);
-  const durationScale = durationValue.includes('ms') ? 1 : 1000;
+  const durationScale = durationValue.includes('ms') ? /* istanbul ignore next */1 : 1000;
   const duration = supportAnimation && propertyValue && propertyValue !== 'none'
     ? parseFloat(durationValue) * durationScale : 0;
 
-  return !Number.isNaN(duration) ? duration : 0;
+  return !Number.isNaN(duration) ? duration : /* istanbul ignore next */0;
 }
 
 /**
@@ -1442,11 +1443,11 @@ function emulateAnimationEnd(element, handler) {
 function getElementTransitionDelay$1(element) {
   const propertyValue = getElementStyle(element, transitionProperty$1);
   const delayValue = getElementStyle(element, transitionDelay$1);
-  const delayScale = delayValue.includes('ms') ? 1 : 1000;
+  const delayScale = delayValue.includes('ms') ? /* istanbul ignore next */1 : 1000;
   const duration = propertyValue && propertyValue !== 'none'
     ? parseFloat(delayValue) * delayScale : 0;
 
-  return !Number.isNaN(duration) ? duration : 0;
+  return !Number.isNaN(duration) ? duration : /* istanbul ignore next */0;
 }
 
 /**
@@ -1459,11 +1460,11 @@ function getElementTransitionDelay$1(element) {
 function getElementTransitionDuration$1(element) {
   const propertyValue = getElementStyle(element, transitionProperty$1);
   const durationValue = getElementStyle(element, transitionDuration$1);
-  const durationScale = durationValue.includes('ms') ? 1 : 1000;
+  const durationScale = durationValue.includes('ms') ? /* istanbul ignore next */1 : 1000;
   const duration = propertyValue && propertyValue !== 'none'
     ? parseFloat(durationValue) * durationScale : 0;
 
-  return !Number.isNaN(duration) ? duration : 0;
+  return !Number.isNaN(duration) ? duration : /* istanbul ignore next */0;
 }
 
 /**
@@ -1512,11 +1513,11 @@ function emulateTransitionEnd$1(element, handler) {
 function getElementTransitionDelay(element) {
   const propertyValue = getElementStyle(element, transitionProperty);
   const delayValue = getElementStyle(element, transitionDelay);
-  const delayScale = delayValue.includes('ms') ? 1 : 1000;
+  const delayScale = delayValue.includes('ms') ? /* istanbul ignore next */1 : 1000;
   const duration = supportTransition && propertyValue && propertyValue !== 'none'
     ? parseFloat(delayValue) * delayScale : 0;
 
-  return !Number.isNaN(duration) ? duration : 0;
+  return !Number.isNaN(duration) ? duration : /* istanbul ignore next */0;
 }
 
 /**
@@ -1529,11 +1530,11 @@ function getElementTransitionDelay(element) {
 function getElementTransitionDuration(element) {
   const propertyValue = getElementStyle(element, transitionProperty);
   const durationValue = getElementStyle(element, transitionDuration);
-  const durationScale = durationValue.includes('ms') ? 1 : 1000;
+  const durationScale = durationValue.includes('ms') ? /* istanbul ignore next */1 : 1000;
   const duration = supportTransition && propertyValue && propertyValue !== 'none'
     ? parseFloat(durationValue) * durationScale : 0;
 
-  return !Number.isNaN(duration) ? duration : 0;
+  return !Number.isNaN(duration) ? duration : /* istanbul ignore next */0;
 }
 
 /**
@@ -1854,9 +1855,9 @@ function getBoundingClientRect(element, includeScale) {
 
   if (includeScale && isHTMLElement(element)) {
     const { offsetWidth, offsetHeight } = element;
-    scaleX = offsetWidth > 0 ? Math.round(width) / offsetWidth || 1
+    scaleX = offsetWidth > 0 ? Math.round(width) / offsetWidth
       : /* istanbul ignore next */1;
-    scaleY = offsetHeight > 0 ? Math.round(height) / offsetHeight || 1
+    scaleY = offsetHeight > 0 ? Math.round(height) / offsetHeight
       : /* istanbul ignore next */1;
   }
 
@@ -1943,7 +1944,7 @@ function getParentNode(node) {
   // this is a quicker (but less type safe) way to save quite some bytes from the bundle
   return (
     node.assignedSlot // step into the shadow DOM of the parent of a slotted node
-    || node.parentNode // @ts-ignore DOM Element detected
+    || node.parentNode // DOM Element detected
     || (isShadowRoot(node) && node.host) // ShadowRoot detected
     || getDocumentElement(node) // fallback
   );

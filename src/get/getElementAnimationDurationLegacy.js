@@ -13,9 +13,9 @@ import getElementStyle from './getElementStyle';
 export default function getElementAnimationDuration(element) {
   const propertyValue = getElementStyle(element, animationName);
   const durationValue = getElementStyle(element, animationDuration);
-  const durationScale = durationValue.includes('ms') ? 1 : 1000;
+  const durationScale = durationValue.includes('ms') ? /* istanbul ignore next */1 : 1000;
   const duration = supportAnimation && propertyValue && propertyValue !== 'none'
     ? parseFloat(durationValue) * durationScale : 0;
 
-  return !Number.isNaN(duration) ? duration : 0;
+  return !Number.isNaN(duration) ? duration : /* istanbul ignore next */0;
 }

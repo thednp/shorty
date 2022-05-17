@@ -13,9 +13,9 @@ import getElementStyle from './getElementStyle';
 export default function getElementTransitionDelay(element) {
   const propertyValue = getElementStyle(element, transitionProperty);
   const delayValue = getElementStyle(element, transitionDelay);
-  const delayScale = delayValue.includes('ms') ? 1 : 1000;
+  const delayScale = delayValue.includes('ms') ? /* istanbul ignore next */1 : 1000;
   const duration = supportTransition && propertyValue && propertyValue !== 'none'
     ? parseFloat(delayValue) * delayScale : 0;
 
-  return !Number.isNaN(duration) ? duration : 0;
+  return !Number.isNaN(duration) ? duration : /* istanbul ignore next */0;
 }

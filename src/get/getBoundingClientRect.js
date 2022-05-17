@@ -18,9 +18,9 @@ export default function getBoundingClientRect(element, includeScale) {
 
   if (includeScale && isHTMLElement(element)) {
     const { offsetWidth, offsetHeight } = element;
-    scaleX = offsetWidth > 0 ? Math.round(width) / offsetWidth || 1
+    scaleX = offsetWidth > 0 ? Math.round(width) / offsetWidth
       : /* istanbul ignore next */1;
-    scaleY = offsetHeight > 0 ? Math.round(height) / offsetHeight || 1
+    scaleY = offsetHeight > 0 ? Math.round(height) / offsetHeight
       : /* istanbul ignore next */1;
   }
 
