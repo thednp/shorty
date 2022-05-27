@@ -1,5 +1,5 @@
 /**
- * Add eventListener to an `Element` | `HTMLElement` | `Document` target.
+ * Add eventListener to an `HTMLElement` | `Document` target.
  *
  * @type {SHORTY.OnOff<EventTarget>}
  */

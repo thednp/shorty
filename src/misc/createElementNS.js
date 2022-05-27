@@ -11,7 +11,7 @@ import setAttribute from '../attr/setAttribute';
  *
  * @param {string} namespace `namespaceURI` to associate with the new `HTMLElement`
  * @param {Record<string, string> | string} param `tagName` or object
- * @return {HTMLElement | Element} a new `HTMLElement` or `Element`
+ * @return {HTMLElement} a new `HTMLElement` or `Element`
  */
 export default function createElementNS(namespace, param) {
   if (!namespace && !param) return null;

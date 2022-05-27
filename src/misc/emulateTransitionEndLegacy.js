@@ -8,7 +8,7 @@ import dispatchEvent from './dispatchEvent';
  * Utility to make sure callbacks are consistently
  * called when transition ends.
  *
- * @param {HTMLElement | Element} element target
+ * @param {HTMLElement} element target
  * @param {EventListener} handler `transitionend` callback
  */
 export default function emulateTransitionEnd(element, handler) {

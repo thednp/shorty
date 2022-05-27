@@ -1138,87 +1138,87 @@ declare module "shorty/src/attr/hasAttribute" {
     export default hasAttribute;
     /**
      * Shortcut for `HTMLElement.hasAttribute()` method.
-     * @param  {HTMLElement | Element} element target element
+     * @param  {HTMLElement} element target element
      * @param  {string} attribute attribute name
      * @returns {boolean} the query result
      */
-    function hasAttribute(element: HTMLElement | Element, attribute: string): boolean;
+    function hasAttribute(element: HTMLElement, attribute: string): boolean;
 }
 declare module "shorty/src/attr/hasAttributeNS" {
     export default hasAttributeNS;
     /**
      * Shortcut for `HTMLElement.hasAttributeNS()` method.
      * @param  {string} ns attribute namespace
-     * @param  {HTMLElement | Element} element target element
+     * @param  {HTMLElement} element target element
      * @param  {string} att attribute name
      * @returns {boolean} the query result
      */
-    function hasAttributeNS(ns: string, element: HTMLElement | Element, att: string): boolean;
+    function hasAttributeNS(ns: string, element: HTMLElement, att: string): boolean;
 }
 declare module "shorty/src/attr/getAttribute" {
     export default getAttribute;
     /**
      * Shortcut for `HTMLElement.getAttribute()` method.
-     * @param {HTMLElement | Element} element target element
+     * @param {HTMLElement} element target element
      * @param {string} attribute attribute name
      * @returns {string?} attribute value
      */
-    function getAttribute(element: HTMLElement | Element, attribute: string): string | null;
+    function getAttribute(element: HTMLElement, attribute: string): string | null;
 }
 declare module "shorty/src/attr/getAttributeNS" {
     export default getAttributeNS;
     /**
      * Shortcut for `HTMLElement.getAttributeNS()` method.
      * @param {string} ns attribute namespace
-     * @param {HTMLElement | Element} element target element
+     * @param {HTMLElement} element target element
      * @param {string} attribute attribute name
      * @returns {string?} attribute value
      */
-    function getAttributeNS(ns: string, element: HTMLElement | Element, attribute: string): string | null;
+    function getAttributeNS(ns: string, element: HTMLElement, attribute: string): string | null;
 }
 declare module "shorty/src/attr/setAttribute" {
     export default setAttribute;
     /**
      * Shortcut for `HTMLElement.setAttribute()` method.
-     * @param  {HTMLElement | Element} element target element
+     * @param  {HTMLElement} element target element
      * @param  {string} attribute attribute name
      * @param  {string} value attribute value
      * @returns {void}
      */
-    function setAttribute(element: HTMLElement | Element, attribute: string, value: string): void;
+    function setAttribute(element: HTMLElement, attribute: string, value: string): void;
 }
 declare module "shorty/src/attr/setAttributeNS" {
     export default setAttributeNS;
     /**
      * Shortcut for `SVGElement.setAttributeNS()` method.
      * @param  {string} ns attribute namespace
-     * @param  {HTMLElement | Element} element target element
+     * @param  {HTMLElement} element target element
      * @param  {string} att attribute name
      * @param  {string} value attribute value
      * @returns {void}
      */
-    function setAttributeNS(ns: string, element: HTMLElement | Element, att: string, value: string): void;
+    function setAttributeNS(ns: string, element: HTMLElement, att: string, value: string): void;
 }
 declare module "shorty/src/attr/removeAttribute" {
     export default removeAttribute;
     /**
      * Shortcut for `HTMLElement.removeAttribute()` method.
-     * @param  {HTMLElement | Element} element target element
+     * @param  {HTMLElement} element target element
      * @param  {string} attribute attribute name
      * @returns {void}
      */
-    function removeAttribute(element: HTMLElement | Element, attribute: string): void;
+    function removeAttribute(element: HTMLElement, attribute: string): void;
 }
 declare module "shorty/src/attr/removeAttributeNS" {
     export default removeAttributeNS;
     /**
      * Shortcut for `HTMLElement.removeAttributeNS()` method.
      * @param  {string} ns attribute namespace
-     * @param  {HTMLElement | Element} element target element
+     * @param  {HTMLElement} element target element
      * @param  {string} att attribute name
      * @returns {void}
      */
-    function removeAttributeNS(ns: string, element: HTMLElement | Element, att: string): void;
+    function removeAttributeNS(ns: string, element: HTMLElement, att: string): void;
 }
 declare module "shorty/src/is/isHTMLElement" {
     export default isHTMLElement;
@@ -1237,11 +1237,11 @@ declare module "shorty/src/get/getBoundingClientRect" {
      *
      * @see https://github.com/floating-ui/floating-ui
      *
-     * @param {HTMLElement | Element} element event.target
+     * @param {HTMLElement} element event.target
      * @param {boolean=} includeScale when *true*, the target scale is also computed
      * @returns {SHORTY.BoundingClientRect} the bounding client rect object
      */
-    export default function getBoundingClientRect(element: HTMLElement | Element, includeScale?: boolean | undefined): SHORTY.BoundingClientRect;
+    export default function getBoundingClientRect(element: HTMLElement, includeScale?: boolean | undefined): SHORTY.BoundingClientRect;
 }
 declare module "shorty/src/is/isDocument" {
     export default isDocument;
@@ -1489,31 +1489,31 @@ declare module "shorty/src/class/addClass" {
     /**
      * Add class to `HTMLElement.classList`.
      *
-     * @param {HTMLElement | Element} element target
+     * @param {HTMLElement} element target
      * @param {string} classNAME to add
      * @returns {void}
      */
-    export default function addClass(element: HTMLElement | Element, classNAME: string): void;
+    export default function addClass(element: HTMLElement, classNAME: string): void;
 }
 declare module "shorty/src/class/removeClass" {
     /**
      * Remove class from `HTMLElement.classList`.
      *
-     * @param {HTMLElement | Element} element target
+     * @param {HTMLElement} element target
      * @param {string} classNAME to remove
      * @returns {void}
      */
-    export default function removeClass(element: HTMLElement | Element, classNAME: string): void;
+    export default function removeClass(element: HTMLElement, classNAME: string): void;
 }
 declare module "shorty/src/class/hasClass" {
     /**
      * Check class in `HTMLElement.classList`.
      *
-     * @param {HTMLElement | Element} element target
+     * @param {HTMLElement} element target
      * @param {string} classNAME to check
      * @returns {boolean}
      */
-    export default function hasClass(element: HTMLElement | Element, classNAME: string): boolean;
+    export default function hasClass(element: HTMLElement, classNAME: string): boolean;
 }
 declare module "shorty/src/misc/data" {
     /**
@@ -1555,9 +1555,9 @@ declare module "shorty/src/misc/createElement" {
      * @see https://developer.mozilla.org/en-US/docs/Web/API/Document/createElement
      *
      * @param {Record<string, string> | string} param `tagName` or object
-     * @return {HTMLElement | Element} a new `HTMLElement` or `Element`
+     * @return {HTMLElement} a new `HTMLElement` or `Element`
      */
-    export default function createElement(param: Record<string, string> | string): HTMLElement | Element;
+    export default function createElement(param: Record<string, string> | string): HTMLElement;
 }
 declare module "shorty/src/misc/ObjectEntries" {
     export default ObjectEntries;
@@ -1578,19 +1578,19 @@ declare module "shorty/src/misc/createElementNS" {
      *
      * @param {string} namespace `namespaceURI` to associate with the new `HTMLElement`
      * @param {Record<string, string> | string} param `tagName` or object
-     * @return {HTMLElement | Element} a new `HTMLElement` or `Element`
+     * @return {HTMLElement} a new `HTMLElement` or `Element`
      */
-    export default function createElementNS(namespace: string, param: Record<string, string> | string): HTMLElement | Element;
+    export default function createElementNS(namespace: string, param: Record<string, string> | string): HTMLElement;
 }
 declare module "shorty/src/misc/dispatchEvent" {
     export default dispatchEvent;
     /**
      * Shortcut for the `Element.dispatchEvent(Event)` method.
      *
-     * @param {HTMLElement | Element} element is the target
+     * @param {HTMLElement} element is the target
      * @param {Event} event is the `Event` object
      */
-    function dispatchEvent(element: HTMLElement | Element, event: Event): boolean;
+    function dispatchEvent(element: HTMLElement, event: Event): boolean;
 }
 declare module "shorty/src/misc/distinct" {
     export default distinct;
@@ -1609,40 +1609,40 @@ declare module "shorty/src/misc/emulateAnimationEnd" {
      * Utility to make sure callbacks are consistently
      * called when animation ends.
      *
-     * @param {HTMLElement | Element} element target
+     * @param {HTMLElement} element target
      * @param {EventListener} handler `animationend` callback
      */
-    export default function emulateAnimationEnd(element: HTMLElement | Element, handler: EventListener): void;
+    export default function emulateAnimationEnd(element: HTMLElement, handler: EventListener): void;
 }
 declare module "shorty/src/misc/emulateAnimationEndLegacy" {
     /**
      * Utility to make sure callbacks are consistently
      * called when animation ends.
      *
-     * @param {HTMLElement | Element} element target
+     * @param {HTMLElement} element target
      * @param {EventListener} handler `animationend` callback
      */
-    export default function emulateAnimationEnd(element: HTMLElement | Element, handler: EventListener): void;
+    export default function emulateAnimationEnd(element: HTMLElement, handler: EventListener): void;
 }
 declare module "shorty/src/misc/emulateTransitionEnd" {
     /**
      * Utility to make sure callbacks are consistently
      * called when transition ends.
      *
-     * @param {HTMLElement | Element} element target
+     * @param {HTMLElement} element target
      * @param {EventListener} handler `transitionend` callback
      */
-    export default function emulateTransitionEnd(element: HTMLElement | Element, handler: EventListener): void;
+    export default function emulateTransitionEnd(element: HTMLElement, handler: EventListener): void;
 }
 declare module "shorty/src/misc/emulateTransitionEndLegacy" {
     /**
      * Utility to make sure callbacks are consistently
      * called when transition ends.
      *
-     * @param {HTMLElement | Element} element target
+     * @param {HTMLElement} element target
      * @param {EventListener} handler `transitionend` callback
      */
-    export default function emulateTransitionEnd(element: HTMLElement | Element, handler: EventListener): void;
+    export default function emulateTransitionEnd(element: HTMLElement, handler: EventListener): void;
 }
 declare module "shorty/src/misc/passiveHandler" {
     export default passiveHandler;
@@ -1664,10 +1664,10 @@ declare module "shorty/src/misc/setElementStyle" {
     export default setElementStyle;
     /**
      * Shortcut for multiple uses of `HTMLElement.style.propertyName` method.
-     * @param  {HTMLElement | Element} element target element
+     * @param  {HTMLElement} element target element
      * @param  {Partial<CSSStyleDeclaration>} styles attribute value
      */
-    function setElementStyle(element: HTMLElement | Element, styles: Partial<CSSStyleDeclaration>): void;
+    function setElementStyle(element: HTMLElement, styles: Partial<CSSStyleDeclaration>): void;
 }
 declare module "shorty/src/misc/normalizeValue" {
     /**
@@ -1710,32 +1710,32 @@ declare module "shorty/src/misc/normalizeOptions" {
     /**
      * Utility to normalize component options.
      *
-     * @param {HTMLElement | Element} element target
+     * @param {HTMLElement} element target
      * @param {Record<string, any>} defaultOps component default options
      * @param {Record<string, any>} inputOps component instance options
      * @param {string=} ns component namespace
      * @return {Record<string, any>} normalized component options object
      */
-    export default function normalizeOptions(element: HTMLElement | Element, defaultOps: Record<string, any>, inputOps: Record<string, any>, ns?: string | undefined): Record<string, any>;
+    export default function normalizeOptions(element: HTMLElement, defaultOps: Record<string, any>, inputOps: Record<string, any>, ns?: string | undefined): Record<string, any>;
 }
 declare module "shorty/src/misc/reflow" {
     export default reflow;
     /**
      * Utility to force re-paint of an `HTMLElement` target.
      *
-     * @param {HTMLElement | Element} element is the target
+     * @param {HTMLElement} element is the target
      * @return {number} the `Element.offsetHeight` value
      */
-    function reflow(element: HTMLElement | Element): number;
+    function reflow(element: HTMLElement): number;
 }
 declare module "shorty/src/misc/focus" {
     export default focus;
     /**
      * Utility to focus an `HTMLElement` target.
      *
-     * @param {HTMLElement | Element} element is the target
+     * @param {HTMLElement} element is the target
      */
-    function focus(element: HTMLElement | Element): any;
+    function focus(element: HTMLElement): void;
 }
 declare module "shorty/src/misc/noop" {
     export default noop;
@@ -1846,10 +1846,10 @@ declare module "shorty/src/is/isElementInScrollRange" {
      * Utility to determine if an `HTMLElement`
      * is partially visible in viewport.
      *
-     * @param {HTMLElement | Element} element target
+     * @param {HTMLElement} element target
      * @return {boolean} the query result
      */
-    function isElementInScrollRange(element: HTMLElement | Element): boolean;
+    function isElementInScrollRange(element: HTMLElement): boolean;
 }
 declare module "shorty/src/is/isElementInViewport" {
     export default isElementInViewport;
@@ -1857,10 +1857,10 @@ declare module "shorty/src/is/isElementInViewport" {
      * Utility to determine if an `HTMLElement`
      * is fully visible in the viewport.
      *
-     * @param {HTMLElement | Element} element target
+     * @param {HTMLElement} element target
      * @return {boolean} the query result
      */
-    function isElementInViewport(element: HTMLElement | Element): boolean;
+    function isElementInViewport(element: HTMLElement): boolean;
 }
 declare module "shorty/src/is/isElementsArray" {
     export default isElementsArray;
@@ -1928,10 +1928,10 @@ declare module "shorty/src/is/isRTL" {
     export default isRTL;
     /**
      * Checks if a page is Right To Left.
-     * @param {(HTMLElement | Element)=} node the target
+     * @param {HTMLElement=} node the target
      * @returns {boolean} the query result
      */
-    function isRTL(node?: (HTMLElement | Element) | undefined): boolean;
+    function isRTL(node?: HTMLElement | undefined): boolean;
 }
 declare module "shorty/src/is/isString" {
     export default isString;
@@ -1982,11 +1982,11 @@ declare module "shorty/src/selectors/closest" {
      *
      * @see https://stackoverflow.com/q/54520554/803358
      *
-     * @param {HTMLElement | Element} element Element to look into
+     * @param {HTMLElement} element Element to look into
      * @param {string} selector the selector name
-     * @return {(HTMLElement | Element)?} the query result
+     * @return {HTMLElement?} the query result
      */
-    export default function closest(element: HTMLElement | Element, selector: string): (HTMLElement | Element) | null;
+    export default function closest(element: HTMLElement, selector: string): HTMLElement | null;
 }
 declare module "shorty/src/selectors/getElementsByTagName" {
     /**
@@ -2017,10 +2017,10 @@ declare module "shorty/src/selectors/getElementById" {
      * would decisively locate the correct element.
      *
      * @param {string} id
-     * @param {ParentNode=} parent
-     * @returns {(HTMLElement | Element)?}
+     * @param {ParentNode=} context
+     * @returns {HTMLElement?}
      */
-    export default function getElementById(id: string, parent?: ParentNode | undefined): (HTMLElement | Element) | null;
+    export default function getElementById(id: string, context?: ParentNode | undefined): HTMLElement | null;
 }
 declare module "shorty/src/selectors/querySelector" {
     /**

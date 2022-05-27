@@ -3,7 +3,7 @@ import ObjectEntries from './ObjectEntries';
 
 /**
  * Shortcut for multiple uses of `HTMLElement.style.propertyName` method.
- * @param  {HTMLElement | Element} element target element
+ * @param  {HTMLElement} element target element
  * @param  {Partial<CSSStyleDeclaration>} styles attribute value
  */
 const setElementStyle = (element, styles) => {

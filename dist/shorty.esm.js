@@ -473,7 +473,8 @@ const mouseClickEvents = { down: 'mousedown', up: 'mouseup' };
  * A global namespace for mouse hover events.
  * @type {[string, string]}
  */
-const mouseHoverEvents = ('onmouseleave' in document) ? ['mouseenter', 'mouseleave'] : ['mouseover', 'mouseout'];
+const mouseHoverEvents = ('onmouseleave' in document) ? ['mouseenter', 'mouseleave']
+  : /* istanbul ignore next */['mouseover', 'mouseout'];
 
 /**
  * A global namespace for touch events.
@@ -860,7 +861,7 @@ const support3DTransform = 'webkitPerspective' in documentHead.style
   || /* istanbul ignore next */'perspective' in documentHead.style;
 
 /**
- * Add eventListener to an `Element` | `HTMLElement` | `Document` target.
+ * Add eventListener to an `HTMLElement` | `Document` target.
  *
  * @type {SHORTY.OnOff<EventTarget>}
  */
@@ -870,7 +871,7 @@ function on(element, eventName, listener, options) {
 }
 
 /**
- * Remove eventListener from an `Element` | `HTMLElement` | `Document` | `Window` target.
+ * Remove eventListener from an `HTMLElement` | `Document` | `Window` target.
  *
  * @type {SHORTY.OnOff<EventTarget>}
  */
@@ -880,7 +881,7 @@ function off(element, eventName, listener, options) {
 }
 
 /**
- * Add an `eventListener` to an `Element` | `HTMLElement` | `Document` | `Window`
+ * Add an `eventListener` to an `HTMLElement` | `Document` | `Window`
  * target and remove it once callback is called.
  *
  * @type {SHORTY.OnOff<EventTarget>}
@@ -954,7 +955,7 @@ const supportTransition = 'webkitTransition' in documentHead.style
 
 /**
  * Shortcut for `HTMLElement.getAttribute()` method.
- * @param {HTMLElement | Element} element target element
+ * @param {HTMLElement} element target element
  * @param {string} attribute attribute name
  * @returns {string?} attribute value
  */
@@ -963,7 +964,7 @@ const getAttribute = (element, attribute) => element.getAttribute(attribute);
 /**
  * Shortcut for `HTMLElement.getAttributeNS()` method.
  * @param {string} ns attribute namespace
- * @param {HTMLElement | Element} element target element
+ * @param {HTMLElement} element target element
  * @param {string} attribute attribute name
  * @returns {string?} attribute value
  */
@@ -971,7 +972,7 @@ const getAttributeNS = (ns, element, attribute) => element.getAttributeNS(ns, at
 
 /**
  * Shortcut for `HTMLElement.hasAttribute()` method.
- * @param  {HTMLElement | Element} element target element
+ * @param  {HTMLElement} element target element
  * @param  {string} attribute attribute name
  * @returns {boolean} the query result
  */
@@ -980,7 +981,7 @@ const hasAttribute = (element, attribute) => element.hasAttribute(attribute);
 /**
  * Shortcut for `HTMLElement.hasAttributeNS()` method.
  * @param  {string} ns attribute namespace
- * @param  {HTMLElement | Element} element target element
+ * @param  {HTMLElement} element target element
  * @param  {string} att attribute name
  * @returns {boolean} the query result
  */
@@ -988,7 +989,7 @@ const hasAttributeNS = (ns, element, att) => element.hasAttributeNS(ns, att);
 
 /**
  * Shortcut for `HTMLElement.setAttribute()` method.
- * @param  {HTMLElement | Element} element target element
+ * @param  {HTMLElement} element target element
  * @param  {string} attribute attribute name
  * @param  {string} value attribute value
  * @returns {void}
@@ -998,7 +999,7 @@ const setAttribute = (element, attribute, value) => element.setAttribute(attribu
 /**
  * Shortcut for `SVGElement.setAttributeNS()` method.
  * @param  {string} ns attribute namespace
- * @param  {HTMLElement | Element} element target element
+ * @param  {HTMLElement} element target element
  * @param  {string} att attribute name
  * @param  {string} value attribute value
  * @returns {void}
@@ -1007,7 +1008,7 @@ const setAttributeNS = (ns, element, att, value) => element.setAttributeNS(ns, a
 
 /**
  * Shortcut for `HTMLElement.removeAttribute()` method.
- * @param  {HTMLElement | Element} element target element
+ * @param  {HTMLElement} element target element
  * @param  {string} attribute attribute name
  * @returns {void}
  */
@@ -1016,7 +1017,7 @@ const removeAttribute = (element, attribute) => element.removeAttribute(attribut
 /**
  * Shortcut for `HTMLElement.removeAttributeNS()` method.
  * @param  {string} ns attribute namespace
- * @param  {HTMLElement | Element} element target element
+ * @param  {HTMLElement} element target element
  * @param  {string} att attribute name
  * @returns {void}
  */
@@ -1025,7 +1026,7 @@ const removeAttributeNS = (ns, element, att) => element.removeAttributeNS(ns, at
 /**
  * Add class to `HTMLElement.classList`.
  *
- * @param {HTMLElement | Element} element target
+ * @param {HTMLElement} element target
  * @param {string} classNAME to add
  * @returns {void}
  */
@@ -1036,7 +1037,7 @@ function addClass(element, classNAME) {
 /**
  * Remove class from `HTMLElement.classList`.
  *
- * @param {HTMLElement | Element} element target
+ * @param {HTMLElement} element target
  * @param {string} classNAME to remove
  * @returns {void}
  */
@@ -1047,7 +1048,7 @@ function removeClass(element, classNAME) {
 /**
  * Check class in `HTMLElement.classList`.
  *
- * @param {HTMLElement | Element} element target
+ * @param {HTMLElement} element target
  * @param {string} classNAME to check
  * @returns {boolean}
  */
@@ -1072,7 +1073,7 @@ const ArrayFrom = (arr) => Array.from(arr);
  */
 const isHTMLElement = (element) => (element && element.nodeType === 1) || false;
 
-/** @type {Map<string, Map<HTMLElement | Element, Record<string, any>>>} */
+/** @type {Map<string, Map<HTMLElement, Record<string, any>>>} */
 const componentData = new Map();
 /**
  * An interface for web components background data.
@@ -1202,7 +1203,7 @@ const ObjectAssign = (obj, source) => Object.assign(obj, source);
  * @see https://developer.mozilla.org/en-US/docs/Web/API/Document/createElement
  *
  * @param {Record<string, string> | string} param `tagName` or object
- * @return {HTMLElement | Element} a new `HTMLElement` or `Element`
+ * @return {HTMLElement} a new `HTMLElement` or `Element`
  */
 function createElement(param) {
   if (!param) return null;
@@ -1235,7 +1236,7 @@ const ObjectEntries = (obj) => Object.entries(obj);
  *
  * @param {string} namespace `namespaceURI` to associate with the new `HTMLElement`
  * @param {Record<string, string> | string} param `tagName` or object
- * @return {HTMLElement | Element} a new `HTMLElement` or `Element`
+ * @return {HTMLElement} a new `HTMLElement` or `Element`
  */
 function createElementNS(namespace, param) {
   if (!namespace && !param) return null;
@@ -1256,7 +1257,7 @@ function createElementNS(namespace, param) {
 /**
  * Shortcut for the `Element.dispatchEvent(Event)` method.
  *
- * @param {HTMLElement | Element} element is the target
+ * @param {HTMLElement} element is the target
  * @param {Event} event is the `Event` object
  */
 const dispatchEvent = (element, event) => element.dispatchEvent(event);
@@ -1331,7 +1332,7 @@ function getElementAnimationDuration$1(element) {
  * Utility to make sure callbacks are consistently
  * called when animation ends.
  *
- * @param {HTMLElement | Element} element target
+ * @param {HTMLElement} element target
  * @param {EventListener} handler `animationend` callback
  */
 function emulateAnimationEnd$1(element, handler) {
@@ -1401,7 +1402,7 @@ function getElementAnimationDuration(element) {
  * Utility to make sure callbacks are consistently
  * called when animation ends.
  *
- * @param {HTMLElement | Element} element target
+ * @param {HTMLElement} element target
  * @param {EventListener} handler `animationend` callback
  */
 function emulateAnimationEnd(element, handler) {
@@ -1471,7 +1472,7 @@ function getElementTransitionDuration$1(element) {
  * Utility to make sure callbacks are consistently
  * called when transition ends.
  *
- * @param {HTMLElement | Element} element target
+ * @param {HTMLElement} element target
  * @param {EventListener} handler `transitionend` callback
  */
 function emulateTransitionEnd$1(element, handler) {
@@ -1541,7 +1542,7 @@ function getElementTransitionDuration(element) {
  * Utility to make sure callbacks are consistently
  * called when transition ends.
  *
- * @param {HTMLElement | Element} element target
+ * @param {HTMLElement} element target
  * @param {EventListener} handler `transitionend` callback
  */
 function emulateTransitionEnd(element, handler) {
@@ -1590,9 +1591,8 @@ const Float64ArrayFrom = (arr) => Float64Array.from(Array.from(arr));
 /**
  * Utility to focus an `HTMLElement` target.
  *
- * @param {HTMLElement | Element} element is the target
+ * @param {HTMLElement} element is the target
  */
-// @ts-ignore -- `Element`s resulted from querySelector can focus too
 const focus = (element) => element.focus();
 
 /** A generic function with empty body. */
@@ -1651,14 +1651,13 @@ const toLowerCase = (source) => source.toLowerCase();
 /**
  * Utility to normalize component options.
  *
- * @param {HTMLElement | Element} element target
+ * @param {HTMLElement} element target
  * @param {Record<string, any>} defaultOps component default options
  * @param {Record<string, any>} inputOps component instance options
  * @param {string=} ns component namespace
  * @return {Record<string, any>} normalized component options object
  */
 function normalizeOptions(element, defaultOps, inputOps, ns) {
-  // @ts-ignore -- our targets are always `HTMLElement`
   const data = { ...element.dataset };
   /** @type {Record<string, any>} */
   const normalOps = {};
@@ -1735,15 +1734,14 @@ const passiveHandler = supportPassive ? { passive: true }
 /**
  * Utility to force re-paint of an `HTMLElement` target.
  *
- * @param {HTMLElement | Element} element is the target
+ * @param {HTMLElement} element is the target
  * @return {number} the `Element.offsetHeight` value
  */
-// @ts-ignore
 const reflow = (element) => element.offsetHeight;
 
 /**
  * Shortcut for multiple uses of `HTMLElement.style.propertyName` method.
- * @param  {HTMLElement | Element} element target element
+ * @param  {HTMLElement} element target element
  * @param  {Partial<CSSStyleDeclaration>} styles attribute value
  */
 const setElementStyle = (element, styles) => {
@@ -1757,7 +1755,7 @@ const setElementStyle = (element, styles) => {
   });
 };
 
-/** @type {Map<HTMLElement | Element, any>} */
+/** @type {Map<HTMLElement, any>} */
 const TimeCache = new Map();
 /**
  * An interface for one or more `TimerHandler`s per `Element`.
@@ -2097,7 +2095,7 @@ const isElement = (element) => (element && [1, 2, 3, 4, 5, 6, 7, 8]
  * Utility to determine if an `HTMLElement`
  * is partially visible in viewport.
  *
- * @param {HTMLElement | Element} element target
+ * @param {HTMLElement} element target
  * @return {boolean} the query result
  */
 const isElementInScrollRange = (element) => {
@@ -2112,7 +2110,7 @@ const isElementInScrollRange = (element) => {
  * Utility to determine if an `HTMLElement`
  * is fully visible in the viewport.
  *
- * @param {HTMLElement | Element} element target
+ * @param {HTMLElement} element target
  * @return {boolean} the query result
  */
 const isElementInViewport = (element) => {
@@ -2195,7 +2193,7 @@ const isNumber = (num) => typeof num === 'number';
 
 /**
  * Checks if a page is Right To Left.
- * @param {(HTMLElement | Element)=} node the target
+ * @param {HTMLElement=} node the target
  * @returns {boolean} the query result
  */
 const isRTL = (node) => getDocumentElement(node).dir === 'rtl';
@@ -2234,13 +2232,13 @@ const isTableElement = (element) => (element && ['TABLE', 'TD', 'TH'].includes(e
  *
  * @see https://stackoverflow.com/q/54520554/803358
  *
- * @param {HTMLElement | Element} element Element to look into
+ * @param {HTMLElement} element Element to look into
  * @param {string} selector the selector name
- * @return {(HTMLElement | Element)?} the query result
+ * @return {HTMLElement?} the query result
  */
 function closest(element, selector) {
   return element ? (element.closest(selector)
-    // @ts-ignore -- break out of `ShadowRoot`
+    // break out of `ShadowRoot`
     || closest(element.getRootNode().host, selector)) : null;
 }
 
@@ -2294,11 +2292,11 @@ function getCustomElements(parent) {
  * would decisively locate the correct element.
  *
  * @param {string} id
- * @param {ParentNode=} parent
- * @returns {(HTMLElement | Element)?}
+ * @param {ParentNode=} context
+ * @returns {HTMLElement?}
  */
-function getElementById(id, parent) {
-  return getDocument(parent).getElementById(id);
+function getElementById(id, context) {
+  return getDocument(context).getElementById(id);
 }
 
 /**
@@ -2362,8 +2360,6 @@ function matches(target, selector) {
 }
 
 var version = "1.0.2";
-
-// @ts-ignore
 
 /**
  * A global namespace for library version.

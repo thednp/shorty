@@ -1,6 +1,6 @@
 import isHTMLElement from '../is/isHTMLElement';
 
-/** @type {Map<HTMLElement | Element, any>} */
+/** @type {Map<HTMLElement, any>} */
 const TimeCache = new Map();
 /**
  * An interface for one or more `TimerHandler`s per `Element`.

@@ -9,7 +9,7 @@ import ObjectAssign from './ObjectAssign';
  * @see https://developer.mozilla.org/en-US/docs/Web/API/Document/createElement
  *
  * @param {Record<string, string> | string} param `tagName` or object
- * @return {HTMLElement | Element} a new `HTMLElement` or `Element`
+ * @return {HTMLElement} a new `HTMLElement` or `Element`
  */
 export default function createElement(param) {
   if (!param) return null;

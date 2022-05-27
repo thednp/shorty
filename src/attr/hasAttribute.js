@@ -1,6 +1,6 @@
 /**
  * Shortcut for `HTMLElement.hasAttribute()` method.
- * @param  {HTMLElement | Element} element target element
+ * @param  {HTMLElement} element target element
  * @param  {string} attribute attribute name
  * @returns {boolean} the query result
  */

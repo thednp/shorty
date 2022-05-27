@@ -6,7 +6,7 @@ import isNode from './isNode';
  * Utility to determine if an `HTMLElement`
  * is fully visible in the viewport.
  *
- * @param {HTMLElement | Element} element target
+ * @param {HTMLElement} element target
  * @return {boolean} the query result
  */
 const isElementInViewport = (element) => {

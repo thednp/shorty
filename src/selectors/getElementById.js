@@ -6,9 +6,9 @@ import getDocument from '../get/getDocument';
  * would decisively locate the correct element.
  *
  * @param {string} id
- * @param {ParentNode=} parent
- * @returns {(HTMLElement | Element)?}
+ * @param {ParentNode=} context
+ * @returns {HTMLElement?}
  */
-export default function getElementById(id, parent) {
-  return getDocument(parent).getElementById(id);
+export default function getElementById(id, context) {
+  return getDocument(context).getElementById(id);
 }

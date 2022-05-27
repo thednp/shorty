@@ -2,7 +2,7 @@ import on from './on';
 import off from './off';
 
 /**
- * Add an `eventListener` to an `Element` | `HTMLElement` | `Document` | `Window`
+ * Add an `eventListener` to an `HTMLElement` | `Document` | `Window`
  * target and remove it once callback is called.
  *
  * @type {SHORTY.OnOff<EventTarget>}

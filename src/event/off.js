@@ -1,5 +1,5 @@
 /**
- * Remove eventListener from an `Element` | `HTMLElement` | `Document` | `Window` target.
+ * Remove eventListener from an `HTMLElement` | `Document` | `Window` target.
  *
  * @type {SHORTY.OnOff<EventTarget>}
  */
