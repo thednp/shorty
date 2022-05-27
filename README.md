@@ -1,8 +1,8 @@
 # shorty
 [![Coverage Status](https://coveralls.io/repos/github/thednp/shorty/badge.svg)](https://coveralls.io/github/thednp/shorty)
 [![ci](https://github.com/thednp/shorty/actions/workflows/ci.yml/badge.svg)](https://github.com/thednp/shorty/actions/workflows/ci.yml)
-[![NPM Version](https://img.shields.io/npm/v/@thednp/shorty.svg)](https://www.npmjs.com/package/shorty)
-[![NPM Downloads](https://img.shields.io/npm/dm/@thednp/shorty.svg)](http://npm-stat.com/charts.html?package=shorty)
+[![NPM Version](https://img.shields.io/npm/v/@thednp/shorty.svg)](https://www.npmjs.com/package/@thednp/shorty)
+[![NPM Downloads](https://img.shields.io/npm/dm/@thednp/shorty.svg)](http://npm-stat.com/charts.html?package=@thednp/shorty)
 [![jsDelivr hits (npm)](https://img.shields.io/jsdelivr/npm/hw/@thednp/shorty)](https://www.jsdelivr.com/package/npm/@thednp/shorty)
 ![cypress version](https://img.shields.io/badge/cypress-9.7.0-brightgreen)
 ![typescript version](https://img.shields.io/badge/typescript-4.5.2-brightgreen)
