@@ -51,7 +51,7 @@
     "@rollup/plugin-json": "^4.1.0",
     "@rollup/plugin-node-resolve": "^7.1.0",
     "@rollup/plugin-typescript": "^8.3.0",
-    "cypress": "^9.6.1",
+    "cypress": "^9.7.0",
     "esbuild": "^0.14.30",
     "eslint": "^7.22.0",
     "eslint-config-airbnb-base": "^14.2.1",
