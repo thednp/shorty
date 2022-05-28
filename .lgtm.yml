@@ -3,3 +3,5 @@ extraction:
     index:
       exclude:
         - node_modules
+        - cypress
+        - dist

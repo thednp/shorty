@@ -222,6 +222,7 @@ import isElementInScrollRange from './is/isElementInScrollRange';
 import isElementInViewport from './is/isElementInViewport';
 import isElementsArray from './is/isElementsArray';
 import isFunction from './is/isFunction';
+import isObject from './is/isObject';
 import isHTMLCollection from './is/isHTMLCollection';
 import isHTMLElement from './is/isHTMLElement';
 import isHTMLImageElement from './is/isHTMLImageElement';
@@ -428,6 +429,7 @@ const SHORTY = {
   isDocument,
   isElementsArray,
   isFunction,
+  isObject,
   isWindow,
   isMedia,
   isRTL,

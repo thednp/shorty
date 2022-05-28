@@ -130,6 +130,7 @@ describe('Shorty Library Test', () => {
         expect(getWindow(CE.shadowRoot), 'getWindow(CustomElement.shadowRoot)').to.be.instanceOf(win.Window);
         expect(getWindow(win.top), 'getWindow(window)').to.be.instanceOf(win.top.Window);
 
+        expect(getDocument(), 'getDocument()').to.be.instanceOf(Document);
         expect(getDocument(element), 'getDocument(node)').to.be.instanceOf(win.Document);
         expect(getDocument(win.document), 'getDocument(document)').to.be.instanceOf(win.Document);
         expect(getDocument(win), 'getDocument(window)').to.be.instanceOf(win.Document);
@@ -197,7 +198,7 @@ describe('Shorty Library Test', () => {
   it('Test is folder', () => {
     const {
       isArray, isCustomElement, isDocument, isElement, isElementInScrollRange, isElementInViewport,
-      isElementsArray, isFunction, isHTMLCollection, isHTMLElement, isHTMLImageElement, isMedia, 
+      isElementsArray, isFunction, isHTMLCollection, isHTMLElement, isHTMLImageElement, isMedia, isObject,
       isNode, isNodeList, isRTL, isScaledElement, isShadowRoot, isString, isNumber, isSVGElement, isTableElement, isWindow,
       getWindow, querySelector,
     } = SHORTY;
@@ -247,8 +248,13 @@ describe('Shorty Library Test', () => {
         expect(isElementsArray([...element.children]), 'isElementsArray(expected)').to.be.true;
 
         expect(isFunction(), 'isFunction()').to.be.false;
-        expect(isFunction(element), 'isFunction(ndoe)').to.be.false;
+        expect(isFunction(element), 'isFunction(node)').to.be.false;
         expect(isFunction(element.addEventListener), 'isFunction(function)').to.be.true;
+
+        expect(isObject(), 'isObject()').to.be.false;
+        expect(isObject(element), 'isObject(node)').to.be.true;
+        expect(isObject({a:2}), 'isObject(object)').to.be.true;
+        expect(isObject(element.addEventListener), 'isObject(function)').to.be.false;
 
         expect(isHTMLCollection(), 'isHTMLCollection()').to.be.false;
         expect(isHTMLCollection([...element.children]), 'isHTMLCollection(array)').to.be.false;

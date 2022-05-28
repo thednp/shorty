@@ -2,7 +2,7 @@ import getDocument from './getDocument';
 /**
  * Returns the `document.body` or the `<body>` element.
  *
- * @param {(ParentNode | Window)=} node
+ * @param {(Node | Window)=} node
  * @returns {HTMLBodyElement}
  */
 export default function getDocumentBody(node) {

@@ -201,6 +201,7 @@ export { default as isHTMLImageElement } from 'shorty/src/is/isHTMLImageElement'
 export { default as isMedia } from 'shorty/src/is/isMedia';
 export { default as isNode } from 'shorty/src/is/isNode';
 export { default as isNodeList } from 'shorty/src/is/isNodeList';
+export { default as isObject } from 'shorty/src/is/isObject';
 export { default as isRTL } from 'shorty/src/is/isRTL';
 export { default as isScaledElement } from 'shorty/src/is/isScaledElement';
 export { default as isShadowRoot } from 'shorty/src/is/isShadowRoot';

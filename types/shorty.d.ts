@@ -1279,37 +1279,37 @@ declare module "shorty/src/get/getDocument" {
     /**
      * Returns the `document` or the `#document` element.
      * @see https://github.com/floating-ui/floating-ui
-     * @param {(ParentNode | Window)=} node
+     * @param {(Node | Window)=} node
      * @returns {Document}
      */
-    export default function getDocument(node?: (ParentNode | Window) | undefined): Document;
+    export default function getDocument(node?: (Node | Window) | undefined): Document;
 }
 declare module "shorty/src/get/getDocumentBody" {
     /**
      * Returns the `document.body` or the `<body>` element.
      *
-     * @param {(ParentNode | Window)=} node
+     * @param {(Node | Window)=} node
      * @returns {HTMLBodyElement}
      */
-    export default function getDocumentBody(node?: (ParentNode | Window) | undefined): HTMLBodyElement;
+    export default function getDocumentBody(node?: (Node | Window) | undefined): HTMLBodyElement;
 }
 declare module "shorty/src/get/getDocumentElement" {
     /**
      * Returns the `document.documentElement` or the `<html>` element.
      *
-     * @param {(ParentNode | Window)=} node
+     * @param {(Node | Window)=} node
      * @returns {HTMLHtmlElement}
      */
-    export default function getDocumentElement(node?: (ParentNode | Window) | undefined): HTMLHtmlElement;
+    export default function getDocumentElement(node?: (Node | Window) | undefined): HTMLHtmlElement;
 }
 declare module "shorty/src/get/getDocumentHead" {
     /**
      * Returns the `document.head` or the `<head>` element.
      *
-     * @param {(ParentNode | Window)=} node
+     * @param {(Node | Window)=} node
      * @returns {HTMLHeadElement}
      */
-    export default function getDocumentHead(node?: (ParentNode | Window) | undefined): HTMLHeadElement;
+    export default function getDocumentHead(node?: (Node | Window) | undefined): HTMLHeadElement;
 }
 declare module "shorty/src/get/getElementStyle" {
     /**
@@ -1872,6 +1872,16 @@ declare module "shorty/src/is/isElementsArray" {
      */
     function isElementsArray(object: any): boolean;
 }
+declare module "shorty/src/is/isObject" {
+    export default isObject;
+    /**
+     * Checks if an object is an `Object`.
+     *
+     * @param {any} obj the target object
+     * @returns {boolean} the query result
+     */
+    function isObject(obj: any): boolean;
+}
 declare module "shorty/src/is/isFunction" {
     export default isFunction;
     /**
@@ -2278,6 +2288,7 @@ declare module "shorty/types/module/shorty" {
     export { default as isElementInViewport } from "shorty/src/is/isElementInViewport";
     export { default as isElementsArray } from "shorty/src/is/isElementsArray";
     export { default as isFunction } from "shorty/src/is/isFunction";
+    export { default as isObject } from "shorty/src/is/isObject";
     export { default as isHTMLCollection } from "shorty/src/is/isHTMLCollection";
     export { default as isHTMLElement } from "shorty/src/is/isHTMLElement";
     export { default as isHTMLImageElement } from "shorty/src/is/isHTMLImageElement";

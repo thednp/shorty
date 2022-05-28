@@ -224,6 +224,7 @@ export { default as isHTMLImageElement } from '../../src/is/isHTMLImageElement';
 export { default as isMedia } from '../../src/is/isMedia';
 export { default as isNode } from '../../src/is/isNode';
 export { default as isNodeList } from '../../src/is/isNodeList';
+export { default as isObject } from '../../src/is/isObject';
 export { default as isRTL } from '../../src/is/isRTL';
 export { default as isScaledElement } from '../../src/is/isScaledElement';
 export { default as isShadowRoot } from '../../src/is/isShadowRoot';

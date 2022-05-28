@@ -10,20 +10,11 @@ import isNode from '../is/isNode';
  */
 export default function getWindow(node) {
   // node is undefined | NULL
-  if (!node) {
-    return window;
-  }
-
+  if (!node) return window;
   // node instanceof Document
-  if (isDocument(node)) {
-    return node.defaultView;
-  }
-
+  if (isDocument(node)) return node.defaultView;
   // node instanceof Node
-  if (isNode(node)) {
-    return node.ownerDocument.defaultView;
-  }
-
+  if (isNode(node)) return node.ownerDocument.defaultView;
   // node is instanceof Window
   return node;
 }

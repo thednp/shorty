@@ -1,3 +1,4 @@
+import isObject from '../is/isObject';
 import ObjectAssign from './ObjectAssign';
 
 /**
@@ -12,7 +13,7 @@ export default function OriginalEvent(EventType, config) {
   });
 
   /* istanbul ignore else */
-  if (config instanceof Object) {
+  if (isObject(config)) {
     ObjectAssign(OriginalCustomEvent, config);
   }
   return OriginalCustomEvent;
