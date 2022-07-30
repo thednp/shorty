@@ -1,6 +1,3 @@
-/**
- * A global namespace for `mouseover` event.
- * @type {string}
- */
-const mouseoverEvent = 'mouseover';
+const mouseoverEvent = "mouseover";
 export default mouseoverEvent;
+//# sourceMappingURL=mouseoverEvent.js.map

@@ -1,27 +1,23 @@
-/**
- * A global namespace for keyboard event keys.
- * @type {Record<string, string>}
- */
 const keyboardEventKeys = {
-  Backspace: 'Backspace', //  8
-  Tab: 'Tab', //  9
-  Enter: 'Enter', // 13
-  Shift: 'Shift', // 16
-  Control: 'Control', // 17
-  Alt: 'Alt', // 18
-  Pause: 'Pause', // 19
-  CapsLock: 'CapsLock', // 20
-  Escape: 'Escape', // 27
-  Scape: 'Space', // 32
-  ArrowLeft: 'ArrowLeft', // 37
-  ArrowUp: 'ArrowUp', // 38
-  ArrowRight: 'ArrowRight', // 39
-  ArrowDown: 'ArrowDown', // 40
-  Insert: 'Insert', // 45
-  Delete: 'Delete', // 46
-  Meta: 'Meta', // 91 windows key
-  ContextMenu: 'ContextMenu', // 93
-  ScrollLock: 'ScrollLock', // 145
+    Backspace: "Backspace",
+    Tab: "Tab",
+    Enter: "Enter",
+    Shift: "Shift",
+    Control: "Control",
+    Alt: "Alt",
+    Pause: "Pause",
+    CapsLock: "CapsLock",
+    Escape: "Escape",
+    Scape: "Space",
+    ArrowLeft: "ArrowLeft",
+    ArrowUp: "ArrowUp",
+    ArrowRight: "ArrowRight",
+    ArrowDown: "ArrowDown",
+    Insert: "Insert",
+    Delete: "Delete",
+    Meta: "Meta",
+    ContextMenu: "ContextMenu",
+    ScrollLock: "ScrollLock",
 };
-
 export default keyboardEventKeys;
+//# sourceMappingURL=keyboardEventKeys.js.map

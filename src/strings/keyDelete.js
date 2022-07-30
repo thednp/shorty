@@ -1,7 +1,3 @@
-/**
- * A global namespace for `Delete` key.
- * @type {string} e.which = 46 equivalent
- */
-const keyDelete = 'Delete';
-
+const keyDelete = "Delete";
 export default keyDelete;
+//# sourceMappingURL=keyDelete.js.map

@@ -1,6 +1,3 @@
-/**
- * A global namespace for `touchend` event.
- * @type {string}
- */
-const touchendEvent = 'touchend';
+const touchendEvent = "touchend";
 export default touchendEvent;
+//# sourceMappingURL=touchendEvent.js.map

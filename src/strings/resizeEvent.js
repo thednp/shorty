@@ -1,6 +1,3 @@
-/**
- * A global namespace for `resize` event.
- * @type {string}
- */
-const resizeEvent = 'resize';
+const resizeEvent = "resize";
 export default resizeEvent;
+//# sourceMappingURL=resizeEvent.js.map

@@ -1,6 +1,3 @@
-/**
- * A global namespace for `reset` event.
- * @type {string}
- */
-const resetEvent = 'reset';
+const resetEvent = "reset";
 export default resetEvent;
+//# sourceMappingURL=resetEvent.js.map

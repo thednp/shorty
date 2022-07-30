@@ -1,15 +1,8 @@
-import getDocument from '../get/getDocument';
-import isNode from '../is/isNode';
-
-/**
- * Shortcut for `HTMLElement.getElementsByClassName` method. Some `Node` elements
- * like `ShadowRoot` do not support `getElementsByClassName`.
- *
- * @param {string} selector the class name
- * @param {ParentNode=} parent optional Element to look into
- * @return {HTMLCollectionOf<HTMLElement>} the 'HTMLCollection'
- */
-export default function getElementsByClassName(selector, parent) {
-  const lookUp = isNode(parent) ? parent : getDocument();
-  return lookUp.getElementsByClassName(selector);
-}
+import getDocument from "../get/getDocument";
+import isNode from "../is/isNode";
+const getElementsByClassName = (selector, parent) => {
+    const lookUp = parent && isNode(parent) ? parent : getDocument();
+    return lookUp.getElementsByClassName(selector);
+};
+export default getElementsByClassName;
+//# sourceMappingURL=getElementsByClassName.js.map

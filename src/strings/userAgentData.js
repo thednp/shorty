@@ -1,7 +1,4 @@
-const { userAgentData: uaDATA } = navigator;
-
-/**
- * A global namespace for `userAgentData` object.
- */
+const uaDATA = navigator.userAgentData;
 const userAgentData = uaDATA;
 export default userAgentData;
+//# sourceMappingURL=userAgentData.js.map

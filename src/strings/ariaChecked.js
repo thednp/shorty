@@ -1,6 +1,3 @@
-/**
- * A global namespace for aria-checked.
- * @type {string}
- */
-const ariaChecked = 'aria-checked';
+const ariaChecked = "aria-checked";
 export default ariaChecked;
+//# sourceMappingURL=ariaChecked.js.map

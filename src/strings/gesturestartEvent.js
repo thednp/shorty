@@ -1,6 +1,3 @@
-/**
- * A global namespace for `gesturestart` event.
- * @type {string}
- */
-const gesturestartEvent = 'gesturestart';
+const gesturestartEvent = "gesturestart";
 export default gesturestartEvent;
+//# sourceMappingURL=gesturestartEvent.js.map

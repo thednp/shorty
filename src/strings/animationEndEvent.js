@@ -1,6 +1,3 @@
-/**
- * A global namespace for 'animationend' string.
- * @type {string}
- */
-const animationEndEvent = 'animationend';
+const animationEndEvent = "animationend";
 export default animationEndEvent;
+//# sourceMappingURL=animationEndEvent.js.map

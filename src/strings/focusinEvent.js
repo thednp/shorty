@@ -1,6 +1,3 @@
-/**
- * A global namespace for `focusin` event.
- * @type {string}
- */
-const focusinEvent = 'focusin';
+const focusinEvent = "focusin";
 export default focusinEvent;
+//# sourceMappingURL=focusinEvent.js.map

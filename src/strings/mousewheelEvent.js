@@ -1,6 +1,3 @@
-/**
- * A global namespace for `mousewheel` event.
- * @type {string}
- */
-const mousewheelEvent = 'mousewheel';
+const mousewheelEvent = "mousewheel";
 export default mousewheelEvent;
+//# sourceMappingURL=mousewheelEvent.js.map

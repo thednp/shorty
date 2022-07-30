@@ -1,6 +1,3 @@
-/**
- * A global namespace for 'animationDuration' string.
- * @type {string}
- */
-const animationDuration = 'animationDuration';
+const animationDuration = "animationDuration";
 export default animationDuration;
+//# sourceMappingURL=animationDuration.js.map

@@ -1,9 +1,4 @@
-import documentHead from '../blocks/documentHead';
-
-/**
- * A global `boolean` for CSS3 transform support.
- * @type {boolean}
- */
-const supportTransform = 'webkitTransform' in documentHead.style
-  || /* istanbul ignore next */'transform' in documentHead.style;
+import documentHead from "../blocks/documentHead";
+const supportTransform = ["webkitTransform", "transform"].some((p) => p in documentHead.style);
 export default supportTransform;
+//# sourceMappingURL=supportTransform.js.map

@@ -1,6 +1,3 @@
-/**
- * A global namespace for `dblclick` event.
- * @type {string}
- */
-const mousedblclickEvent = 'dblclick';
+const mousedblclickEvent = "dblclick";
 export default mousedblclickEvent;
+//# sourceMappingURL=mousedblclickEvent.js.map

@@ -1,6 +1,3 @@
-/**
- * A global namespace for 'transitionDuration' string.
- * @type {string}
- */
-const transitionDuration = 'transitionDuration';
+const transitionDuration = "transitionDuration";
 export default transitionDuration;
+//# sourceMappingURL=transitionDuration.js.map

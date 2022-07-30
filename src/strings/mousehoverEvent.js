@@ -1,6 +1,3 @@
-/**
- * A global namespace for `hover` event.
- * @type {string}
- */
-const mousehoverEvent = 'hover';
+const mousehoverEvent = "hover";
 export default mousehoverEvent;
+//# sourceMappingURL=mousehoverEvent.js.map

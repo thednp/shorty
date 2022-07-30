@@ -1,8 +1,3 @@
-/**
- * Shortcut for `typeof SOMETHING === "number"`.
- *
- * @param  {any} num input value
- * @returns {boolean} the query result
- */
-const isNumber = (num) => typeof num === 'number';
+const isNumber = (num) => typeof num === "number" || false;
 export default isNumber;
+//# sourceMappingURL=isNumber.js.map

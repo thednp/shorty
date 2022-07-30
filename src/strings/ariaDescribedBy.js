@@ -1,6 +1,3 @@
-/**
- * A global namespace for aria-describedby.
- * @type {string}
- */
-const ariaDescribedBy = 'aria-describedby';
+const ariaDescribedBy = "aria-describedby";
 export default ariaDescribedBy;
+//# sourceMappingURL=ariaDescribedBy.js.map

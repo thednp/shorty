@@ -1,6 +1,3 @@
-/**
- * A global namespace for `touchmove` event.
- * @type {string}
- */
-const touchmoveEvent = 'touchmove';
+const touchmoveEvent = "touchmove";
 export default touchmoveEvent;
+//# sourceMappingURL=touchmoveEvent.js.map

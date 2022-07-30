@@ -1,6 +1,3 @@
-/**
- * A global namespace for `scrollHeight` property.
- * @type {string}
- */
-const scrollHeight = 'scrollHeight';
+const scrollHeight = "scrollHeight";
 export default scrollHeight;
+//# sourceMappingURL=scrollHeight.js.map

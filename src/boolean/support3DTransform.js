@@ -1,9 +1,4 @@
-import documentHead from '../blocks/documentHead';
-
-/**
- * A global `boolean` for CSS3 3D transform support.
- * @type {boolean}
- */
-const support3DTransform = 'webkitPerspective' in documentHead.style
-  || /* istanbul ignore next */'perspective' in documentHead.style;
+import documentHead from "../blocks/documentHead";
+const support3DTransform = ["webkitPerspective", "perspective"].some((p) => p in documentHead.style);
 export default support3DTransform;
+//# sourceMappingURL=support3DTransform.js.map

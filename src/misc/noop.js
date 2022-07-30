@@ -1,3 +1,3 @@
-/** A generic function with empty body. */
-const noop = () => {};
+const noop = () => { };
 export default noop;
+//# sourceMappingURL=noop.js.map

@@ -1,6 +1,3 @@
-/**
- * A global namespace for `touchstart` event.
- * @type {string}
- */
-const touchstartEvent = 'touchstart';
+const touchstartEvent = "touchstart";
 export default touchstartEvent;
+//# sourceMappingURL=touchstartEvent.js.map

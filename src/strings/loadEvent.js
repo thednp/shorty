@@ -1,6 +1,3 @@
-/**
- * A global namespace for `load` event.
- * @type {string}
- */
-const loadEvent = 'load';
+const loadEvent = "load";
 export default loadEvent;
+//# sourceMappingURL=loadEvent.js.map

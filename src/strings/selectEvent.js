@@ -1,6 +1,3 @@
-/**
- * A global namespace for `select` event.
- * @type {string}
- */
-const selectEvent = 'select';
+const selectEvent = "select";
 export default selectEvent;
+//# sourceMappingURL=selectEvent.js.map

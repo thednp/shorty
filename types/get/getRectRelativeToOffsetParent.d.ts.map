@@ -1,0 +1,1 @@
+{"version":3,"file":"getRectRelativeToOffsetParent.d.ts","sourceRoot":"","sources":["../../src/get/getRectRelativeToOffsetParent.ts"],"names":[],"mappings":"AAAA,OAAO,UAAU,MAAM,yBAAyB,CAAC;AAcjD,QAAA,MAAM,6BAA6B,YACxB,WAAW,gBACN,WAAW,UACjB;IAAE,CAAC,EAAE,MAAM,CAAC;IAAC,CAAC,EAAE,MAAM,CAAA;CAAE,KAC/B,UAkBF,CAAC;AAEF,eAAe,6BAA6B,CAAC"}

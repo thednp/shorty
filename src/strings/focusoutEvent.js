@@ -1,6 +1,3 @@
-/**
- * A global namespace for `focusout` event.
- * @type {string}
- */
-const focusoutEvent = 'focusout';
+const focusoutEvent = "focusout";
 export default focusoutEvent;
+//# sourceMappingURL=focusoutEvent.js.map

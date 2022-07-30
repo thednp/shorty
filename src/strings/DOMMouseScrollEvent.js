@@ -1,6 +1,3 @@
-/**
- * A global namespace for `DOMMouseScroll` event.
- * @type {string}
- */
-const DOMMouseScrollEvent = 'DOMMouseScroll';
+const DOMMouseScrollEvent = "DOMMouseScroll";
 export default DOMMouseScrollEvent;
+//# sourceMappingURL=DOMMouseScrollEvent.js.map

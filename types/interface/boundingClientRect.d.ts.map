@@ -1,0 +1,1 @@
+{"version":3,"file":"boundingClientRect.d.ts","sourceRoot":"","sources":["../../src/interface/boundingClientRect.ts"],"names":[],"mappings":"AAAA,MAAM,CAAC,OAAO,WAAW,kBAAkB;IACzC,KAAK,EAAE,MAAM,CAAC;IACd,MAAM,EAAE,MAAM,CAAC;IACf,GAAG,EAAE,MAAM,CAAC;IACZ,IAAI,EAAE,MAAM,CAAC;IACb,KAAK,EAAE,MAAM,CAAC;IACd,MAAM,EAAE,MAAM,CAAC;IACf,CAAC,EAAE,MAAM,CAAC;IACV,CAAC,EAAE,MAAM,CAAC;CACX"}

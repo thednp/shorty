@@ -1,6 +1,3 @@
-/**
- * A global namespace for `change` event.
- * @type {string}
- */
-const changeEvent = 'change';
+const changeEvent = "change";
 export default changeEvent;
+//# sourceMappingURL=changeEvent.js.map

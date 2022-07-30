@@ -1,6 +1,3 @@
-/**
- * A global namespace for `pointercancel` event.
- * @type {string}
- */
-const pointercancelEvent = 'pointercancel';
+const pointercancelEvent = "pointercancel";
 export default pointercancelEvent;
+//# sourceMappingURL=pointercancelEvent.js.map

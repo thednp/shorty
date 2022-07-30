@@ -1,6 +1,3 @@
-/**
- * A global namespace for 'animationDelay' string.
- * @type {string}
- */
-const animationDelay = 'animationDelay';
+const animationDelay = "animationDelay";
 export default animationDelay;
+//# sourceMappingURL=animationDelay.js.map

@@ -1,6 +1,3 @@
-/**
- * A global namespace for `loadstart` event.
- * @type {string}
- */
-const loadstartEvent = 'loadstart';
+const loadstartEvent = "loadstart";
 export default loadstartEvent;
+//# sourceMappingURL=loadstartEvent.js.map

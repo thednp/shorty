@@ -1,6 +1,3 @@
-/**
- * A global namespace for `orientationchange` event.
- * @type {string}
- */
-const orientationchangeEvent = 'orientationchange';
+const orientationchangeEvent = "orientationchange";
 export default orientationchangeEvent;
+//# sourceMappingURL=orientationchangeEvent.js.map

@@ -1,6 +1,3 @@
-/**
- * A global namespace for `unload` event.
- * @type {string}
- */
-const unloadEvent = 'unload';
+const unloadEvent = "unload";
 export default unloadEvent;
+//# sourceMappingURL=unloadEvent.js.map

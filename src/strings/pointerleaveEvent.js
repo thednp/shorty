@@ -1,6 +1,3 @@
-/**
- * A global namespace for `pointerleave` event.
- * @type {string}
- */
-const pointerleaveEvent = 'pointerleave';
+const pointerleaveEvent = "pointerleave";
 export default pointerleaveEvent;
+//# sourceMappingURL=pointerleaveEvent.js.map

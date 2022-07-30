@@ -1,7 +1,3 @@
-/**
- * A global namespace for `ArrowLeft` key.
- * @type {string} e.which = 37 equivalent
- */
-const keyArrowLeft = 'ArrowLeft';
-
+const keyArrowLeft = "ArrowLeft";
 export default keyArrowLeft;
+//# sourceMappingURL=keyArrowLeft.js.map

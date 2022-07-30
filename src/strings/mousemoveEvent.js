@@ -1,6 +1,3 @@
-/**
- * A global namespace for `mousemove` event.
- * @type {string}
- */
-const mousemoveEvent = 'mousemove';
+const mousemoveEvent = "mousemove";
 export default mousemoveEvent;
+//# sourceMappingURL=mousemoveEvent.js.map

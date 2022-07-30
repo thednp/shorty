@@ -1,6 +1,3 @@
-/**
- * A global namespace for `mouseleave` event.
- * @type {string}
- */
-const mouseleaveEvent = 'mouseleave';
+const mouseleaveEvent = "mouseleave";
 export default mouseleaveEvent;
+//# sourceMappingURL=mouseleaveEvent.js.map

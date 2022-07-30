@@ -1,6 +1,3 @@
-/**
- * A global namespace for 'addEventListener' string.
- * @type {string}
- */
-const addEventListener = 'addEventListener';
+const addEventListener = "addEventListener";
 export default addEventListener;
+//# sourceMappingURL=addEventListener.js.map

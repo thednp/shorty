@@ -1,6 +1,3 @@
-/**
- * A global namespace for aria-hidden.
- * @type {string}
- */
-const ariaHidden = 'aria-hidden';
+const ariaHidden = "aria-hidden";
 export default ariaHidden;
+//# sourceMappingURL=ariaHidden.js.map

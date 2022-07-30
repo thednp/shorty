@@ -1,6 +1,3 @@
-/**
- * A global namespace for the `selectend` event.
- * @type {string}
- */
-const selectendEvent = 'selectend';
+const selectendEvent = "selectend";
 export default selectendEvent;
+//# sourceMappingURL=selectendEvent.js.map

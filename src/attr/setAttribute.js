@@ -1,10 +1,3 @@
-/**
- * Shortcut for `HTMLElement.setAttribute()` method.
- * @param  {HTMLElement} element target element
- * @param  {string} attribute attribute name
- * @param  {string} value attribute value
- * @returns {void}
- */
-const setAttribute = (element, attribute, value) => element.setAttribute(attribute, value);
-
+const setAttribute = (element, att, value) => element.setAttribute(att, value);
 export default setAttribute;
+//# sourceMappingURL=setAttribute.js.map

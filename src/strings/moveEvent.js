@@ -1,6 +1,3 @@
-/**
- * A global namespace for `move` event.
- * @type {string}
- */
-const moveEvent = 'move';
+const moveEvent = "move";
 export default moveEvent;
+//# sourceMappingURL=moveEvent.js.map

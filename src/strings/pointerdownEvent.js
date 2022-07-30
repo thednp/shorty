@@ -1,6 +1,3 @@
-/**
- * A global namespace for `pointerdown` event.
- * @type {string}
- */
-const pointerdownEvent = 'pointerdown';
+const pointerdownEvent = "pointerdown";
 export default pointerdownEvent;
+//# sourceMappingURL=pointerdownEvent.js.map

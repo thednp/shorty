@@ -1,6 +1,3 @@
-/**
- * A global namespace for `pointermove` event.
- * @type {string}
- */
-const pointermoveEvent = 'pointermove';
+const pointermoveEvent = "pointermove";
 export default pointermoveEvent;
+//# sourceMappingURL=pointermoveEvent.js.map

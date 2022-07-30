@@ -1,6 +1,3 @@
-/**
- * A global namespace for `contextmenu` event.
- * @type {string}
- */
-const contextmenuEvent = 'contextmenu';
+const contextmenuEvent = "contextmenu";
 export default contextmenuEvent;
+//# sourceMappingURL=contextmenuEvent.js.map

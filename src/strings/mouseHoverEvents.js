@@ -1,7 +1,5 @@
-/**
- * A global namespace for mouse hover events.
- * @type {[string, string]}
- */
-const mouseHoverEvents = ('onmouseleave' in document) ? ['mouseenter', 'mouseleave']
-  : /* istanbul ignore next */['mouseover', 'mouseout'];
+const mouseHoverEvents = "onmouseleave" in document
+    ? ["mouseenter", "mouseleave"]
+    : ["mouseover", "mouseout"];
 export default mouseHoverEvents;
+//# sourceMappingURL=mouseHoverEvents.js.map

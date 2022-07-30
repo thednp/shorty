@@ -1,6 +1,3 @@
-/**
- * A global namespace for `abort` event.
- * @type {string}
- */
-const abortEvent = 'abort';
+const abortEvent = "abort";
 export default abortEvent;
+//# sourceMappingURL=abortEvent.js.map

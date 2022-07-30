@@ -1,40 +1,29 @@
-import transitionEndEvent from '../strings/transitionEndEvent';
-import getElementTransitionDelay from '../get/getElementTransitionDelay';
-import getElementTransitionDuration from '../get/getElementTransitionDuration';
-import dispatchEvent from './dispatchEvent';
-
-/**
- * Utility to make sure callbacks are consistently
- * called when transition ends.
- *
- * @param {HTMLElement} element target
- * @param {EventListener} handler `transitionend` callback
- */
-export default function emulateTransitionEnd(element, handler) {
-  let called = 0;
-  const endEvent = new Event(transitionEndEvent);
-  const duration = getElementTransitionDuration(element);
-  const delay = getElementTransitionDelay(element);
-
-  if (duration) {
-    /**
-     * Wrap the handler in on -> off callback
-     * @type {EventListener} e Event object
-     */
-    const transitionEndWrapper = (e) => {
-      /* istanbul ignore else */
-      if (e.target === element) {
-        handler.apply(element, [e]);
-        element.removeEventListener(transitionEndEvent, transitionEndWrapper);
-        called = 1;
-      }
-    };
-    element.addEventListener(transitionEndEvent, transitionEndWrapper);
-    setTimeout(() => {
-      /* istanbul ignore next */
-      if (!called) dispatchEvent(element, endEvent);
-    }, duration + delay + 17);
-  } else {
-    handler.apply(element, [endEvent]);
-  }
-}
+import transitionEndEvent from "../strings/transitionEndEvent";
+import getElementTransitionDelay from "../get/getElementTransitionDelay";
+import getElementTransitionDuration from "../get/getElementTransitionDuration";
+import dispatchEvent from "./dispatchEvent";
+const emulateTransitionEnd = (element, handler) => {
+    let called = 0;
+    const endEvent = new Event(transitionEndEvent);
+    const duration = getElementTransitionDuration(element);
+    const delay = getElementTransitionDelay(element);
+    if (duration) {
+        const transitionEndWrapper = (e) => {
+            if (e.target === element) {
+                handler.apply(element, [e]);
+                element.removeEventListener(transitionEndEvent, transitionEndWrapper);
+                called = 1;
+            }
+        };
+        element.addEventListener(transitionEndEvent, transitionEndWrapper);
+        setTimeout(() => {
+            if (!called)
+                dispatchEvent(element, endEvent);
+        }, duration + delay + 17);
+    }
+    else {
+        handler.apply(element, [endEvent]);
+    }
+};
+export default emulateTransitionEnd;
+//# sourceMappingURL=emulateTransitionEnd.js.map

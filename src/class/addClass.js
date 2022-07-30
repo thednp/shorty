@@ -1,10 +1,5 @@
-/**
- * Add class to `HTMLElement.classList`.
- *
- * @param {HTMLElement} element target
- * @param {string} classNAME to add
- * @returns {void}
- */
-export default function addClass(element, classNAME) {
-  element.classList.add(classNAME);
-}
+const addClass = (element, classNAME) => {
+    element.classList.add(classNAME);
+};
+export default addClass;
+//# sourceMappingURL=addClass.js.map

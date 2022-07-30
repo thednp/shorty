@@ -1,6 +1,3 @@
-/**
- * A global namespace for `gestureend` event.
- * @type {string}
- */
-const gestureendEvent = 'gestureend';
+const gestureendEvent = "gestureend";
 export default gestureendEvent;
+//# sourceMappingURL=gestureendEvent.js.map

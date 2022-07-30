@@ -1,6 +1,3 @@
-/**
- * A global namespace for `mouseenter` event.
- * @type {string}
- */
-const mouseenterEvent = 'mouseenter';
+const mouseenterEvent = "mouseenter";
 export default mouseenterEvent;
+//# sourceMappingURL=mouseenterEvent.js.map

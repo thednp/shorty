@@ -1,10 +1,3 @@
-/**
- * Shortcut for `HTMLElement.getAttributeNS()` method.
- * @param {string} ns attribute namespace
- * @param {HTMLElement} element target element
- * @param {string} attribute attribute name
- * @returns {string?} attribute value
- */
-const getAttributeNS = (ns, element, attribute) => element.getAttributeNS(ns, attribute);
-
+const getAttributeNS = (ns, element, att) => element.getAttributeNS(ns, att);
 export default getAttributeNS;
+//# sourceMappingURL=getAttributeNS.js.map

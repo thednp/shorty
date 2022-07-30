@@ -1,6 +1,3 @@
-/**
- * A global namespace for `beforeunload` event.
- * @type {string}
- */
-const beforeunloadEvent = 'beforeunload';
+const beforeunloadEvent = "beforeunload";
 export default beforeunloadEvent;
+//# sourceMappingURL=beforeunloadEvent.js.map

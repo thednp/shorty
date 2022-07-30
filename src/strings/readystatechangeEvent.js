@@ -1,6 +1,3 @@
-/**
- * A global namespace for `readystatechange` event.
- * @type {string}
- */
-const readystatechangeEvent = 'readystatechange';
+const readystatechangeEvent = "readystatechange";
 export default readystatechangeEvent;
+//# sourceMappingURL=readystatechangeEvent.js.map

@@ -1,6 +1,3 @@
-/**
- * A global namespace for `touchcancel` event.
- * @type {string}
- */
-const touchcancelEvent = 'touchcancel';
+const touchcancelEvent = "touchcancel";
 export default touchcancelEvent;
+//# sourceMappingURL=touchcancelEvent.js.map

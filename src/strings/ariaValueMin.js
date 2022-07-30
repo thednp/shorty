@@ -1,6 +1,3 @@
-/**
- * A global namespace for aria-valuemin.
- * @type {string}
- */
-const ariaValueMin = 'aria-valuemin';
+const ariaValueMin = "aria-valuemin";
 export default ariaValueMin;
+//# sourceMappingURL=ariaValueMin.js.map
