@@ -14,7 +14,7 @@ jobs:
           node-version: 16
       - uses: bahmutov/npm-install@v1
       - run: npm run lint:ts
-      - run: npm run umd
+      - run: npm run esm
       - run: npx cypress run
 
       - name: Upload coverage report on Node 16 to coveralls.io...
