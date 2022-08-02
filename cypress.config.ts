@@ -1,15 +1,15 @@
-import { defineConfig } from "cypress";
-import createBundler from "@bahmutov/cypress-esbuild-preprocessor";
-import createEsbuildIstanbulPlugin from "./cypress/plugins/esbuild-istanbul";
+import { defineConfig } from 'cypress';
+import createBundler from '@bahmutov/cypress-esbuild-preprocessor';
+import createEsbuildIstanbulPlugin from './cypress/plugins/esbuild-istanbul';
 
 async function setupNodeEvents(
   on: Cypress.PluginEvents,
   config: Cypress.PluginConfigOptions
 ): Promise<Cypress.PluginConfigOptions> {
-  await require("@cypress/code-coverage/task")(on, config);
+  await require('@cypress/code-coverage/task')(on, config);
 
   on(
-    "file:preprocessor",
+    'file:preprocessor',
     createBundler({
       plugins: [createEsbuildIstanbulPlugin()],
     })
@@ -21,8 +21,8 @@ async function setupNodeEvents(
 
 export default defineConfig({
   e2e: {
-    specPattern: "cypress/e2e/**/*.{js,jsx,ts,tsx}",
-    supportFile: "cypress/support/e2e.ts",
+    specPattern: 'cypress/e2e/**/*.{js,jsx,ts,tsx}',
+    supportFile: 'cypress/support/e2e.ts',
     video: false,
     setupNodeEvents,
   },

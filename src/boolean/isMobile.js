@@ -10,3 +10,4 @@ else {
 }
 const isMobile = isMobileCheck;
 export default isMobile;
+//# sourceMappingURL=isMobile.js.map

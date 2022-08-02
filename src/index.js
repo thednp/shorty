@@ -183,6 +183,7 @@ import isObject from './is/isObject';
 import isHTMLCollection from './is/isHTMLCollection';
 import isHTMLElement from './is/isHTMLElement';
 import isHTMLImageElement from './is/isHTMLImageElement';
+import isJSON from './is/isJSON';
 import isMap from './is/isMap';
 import isWeakMap from './is/isWeakMap';
 import isMedia from './is/isMedia';
@@ -356,6 +357,7 @@ const SHORTY = {
     isString,
     isCustomElement,
     isElement,
+    isJSON,
     isMap,
     isWeakMap,
     isNode,
@@ -414,3 +416,4 @@ const SHORTY = {
     removeAttributeNS,
 };
 export default SHORTY;
+//# sourceMappingURL=index.js.map

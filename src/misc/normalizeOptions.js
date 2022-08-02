@@ -31,3 +31,4 @@ const normalizeOptions = (element, defaultOps, inputOps, ns) => {
     return normalOps;
 };
 export default normalizeOptions;
+//# sourceMappingURL=normalizeOptions.js.map

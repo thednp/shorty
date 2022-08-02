@@ -48,3 +48,4 @@ const Timer = {
     },
 };
 export default Timer;
+//# sourceMappingURL=timer.js.map

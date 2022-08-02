@@ -287,6 +287,7 @@ describe('Shorty Library Test', () => {
       isHTMLCollection,
       isHTMLElement,
       isHTMLImageElement,
+      isJSON,
       isMedia,
       isMap,
       isWeakMap,
@@ -387,6 +388,12 @@ describe('Shorty Library Test', () => {
         expect(isMedia(img), 'isMedia(image)').to.be.true;
         expect(isMedia(svg), 'isMedia(svg)').to.be.true;
         expect(isMedia(path), 'isMedia(path)').to.be.true;
+
+        expect(isJSON(), 'isJSON()').to.be.false;
+        expect(isJSON(win.document), 'isJSON(document)').to.be.false;
+        expect(isJSON(win), 'isJSON(window)').to.be.false;
+        expect(isJSON('{"a":1,"b":2}'), 'isJSON(JSON)').to.be.true;
+        expect(isJSON('["a",2]'), 'isJSON(JSON)').to.be.true;
 
         expect(isMap(), 'isMap()').to.be.false;
         expect(isMap(win.document), 'isMap(document)').to.be.false;

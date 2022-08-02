@@ -5,3 +5,4 @@ const getCustomElements = (parent) => {
     return [...collection].filter(isCustomElement);
 };
 export default getCustomElements;
+//# sourceMappingURL=getCustomElements.js.map

@@ -22,3 +22,4 @@ const createElement = (param) => {
     return newElement;
 };
 export default createElement;
+//# sourceMappingURL=createElement.js.map

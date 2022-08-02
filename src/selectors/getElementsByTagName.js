@@ -5,3 +5,4 @@ const getElementsByTagName = (selector, parent) => {
     return lookUp.getElementsByTagName(selector);
 };
 export default getElementsByTagName;
+//# sourceMappingURL=getElementsByTagName.js.map

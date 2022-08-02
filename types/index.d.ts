@@ -242,20 +242,14 @@ declare const SHORTY: {
     dispatchEvent: (element: EventTarget, event: Event) => boolean;
     distinct: <T>(value: T, index: number, arr: T[]) => boolean;
     Data: {
-        set: <T_1 extends {
-            [x: string]: any;
-        }>(element: HTMLElement, component: string, instance: T_1) => void;
+        set: <T_1>(element: HTMLElement, component: string, instance: T_1) => void;
         getAllFor: (component: string) => Map<HTMLElement, {
             [x: string]: any;
         }>;
-        get: (element: HTMLElement, component: string) => {
-            [x: string]: any;
-        };
-        remove: <S extends string, E extends HTMLElement>(element: E, component: S) => void;
+        get: <T_2>(element: HTMLElement, component: string) => T_2;
+        remove: (element: HTMLElement, component: string) => void;
     };
-    getInstance: (target: HTMLElement, component: string) => {
-        [x: string]: any;
-    };
+    getInstance: <T_3>(target: HTMLElement, component: string) => T_3;
     createElement: (param?: string | Partial<HTMLElement>) => HTMLElement;
     createElementNS: (ns?: string, param?: string | Partial<HTMLElement>) => HTMLElement;
     toUpperCase: (source: string) => string;
@@ -287,8 +281,9 @@ declare const SHORTY: {
     isArray: (obj?: any) => obj is any[];
     isCanvas: (element?: any) => element is HTMLCanvasElement;
     isString: (str?: any) => str is string;
-    isCustomElement: <T_2 extends import("./interface/customElement").default>(element?: any) => element is T_2;
+    isCustomElement: <T_4 extends import("./interface/customElement").default>(element?: any) => element is T_4;
     isElement: (element?: any) => element is Element;
+    isJSON: (str?: any) => boolean;
     isMap: (obj?: any) => obj is Map<any, any>;
     isWeakMap: (obj?: any) => obj is WeakMap<any, any>;
     isNode: (node?: any) => node is Node;
@@ -317,21 +312,21 @@ declare const SHORTY: {
     getElementsByTagName: (selector: string, parent?: ParentNode) => HTMLCollectionOf<HTMLElement>;
     matches: (target: Element, selector: string) => boolean;
     normalizeValue: (value?: any) => import("./types").optionValues;
-    normalizeOptions: <T_3 extends {
+    normalizeOptions: <T_5 extends {
         [key: string]: import("./types").optionValues;
-    }>(element: HTMLElement, defaultOps: T_3, inputOps: Partial<T_3>, ns?: string) => T_3;
+    }>(element: HTMLElement, defaultOps: T_5, inputOps: Partial<T_5>, ns?: string) => T_5;
     reflow: (element: HTMLElement) => number;
     noop: () => void;
     focus: (element: HTMLOrSVGElement, options?: FocusOptions) => void;
     getUID: (element: HTMLElement, key?: string) => number;
-    ArrayFrom: <T_4>(arr: ArrayLike<T_4> | Iterable<T_4>) => T_4[];
+    ArrayFrom: <T_6>(arr: ArrayLike<T_6> | Iterable<T_6>) => T_6[];
     Float32ArrayFrom: (arr: ArrayLike<number> | Iterable<number>) => Float32Array;
     Float64ArrayFrom: (arr: ArrayLike<number> | Iterable<number>) => Float64Array;
     ObjectAssign: <A extends {}, B>(obj: A, ...source: B[]) => B extends any[] ? any : A & B;
     ObjectEntries: <O extends {}>(obj: O) => [keyof O, O[keyof O]][];
     ObjectKeys: (obj: Record<string, any>) => string[];
     ObjectValues: <O_1 extends {}>(obj: O_1) => [O_1[keyof O_1]][];
-    OriginalEvent: <T_5>(EventType: string, config?: CustomEventInit<T_5>) => import("./interface/originalEvent").default<T_5>;
+    OriginalEvent: <T_7>(EventType: string, config?: CustomEventInit<T_7>) => import("./interface/originalEvent").default<T_7>;
     getBoundingClientRect: (element: HTMLElement, includeScale?: boolean) => import("./interface/boundingClientRect").default;
     getDocument: (node?: any) => Document;
     getDocumentBody: (node?: any) => HTMLElement;

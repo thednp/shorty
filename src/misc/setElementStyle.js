@@ -13,3 +13,4 @@ const setElementStyle = (element, styles) => {
     });
 };
 export default setElementStyle;
+//# sourceMappingURL=setElementStyle.js.map

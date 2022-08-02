@@ -5,3 +5,4 @@ const isApple = userAgentData
     ? userAgentData.brands.some((x) => appleBrands.test(x.brand))
     : appleBrands.test(userAgent);
 export default isApple;
+//# sourceMappingURL=isApple.js.map

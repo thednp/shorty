@@ -9,3 +9,4 @@ const isElementInScrollRange = (element) => {
     return top <= clientHeight && bottom >= 0;
 };
 export default isElementInScrollRange;
+//# sourceMappingURL=isElementInScrollRange.js.map

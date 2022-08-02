@@ -9,3 +9,4 @@ const isElementInViewport = (element) => {
     return top >= 0 && left >= 0 && bottom <= clientHeight && right <= clientWidth;
 };
 export default isElementInViewport;
+//# sourceMappingURL=isElementInViewport.js.map

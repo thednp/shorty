@@ -5,3 +5,4 @@ const getElementsByClassName = (selector, parent) => {
     return lookUp.getElementsByClassName(selector);
 };
 export default getElementsByClassName;
+//# sourceMappingURL=getElementsByClassName.js.map

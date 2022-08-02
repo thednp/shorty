@@ -1,6 +1,6 @@
 "use strict";
 /*!
-* SHORTY v2.0.0alpha2 (https://github.com/thednp/shorty)
+* SHORTY v2.0.0alpha3 (https://github.com/thednp/shorty)
 * Copyright 2022 © dnp_theme
 * Licensed under MIT (https://github.com/thednp/shorty/blob/main/LICENSE)
 */
@@ -1296,6 +1296,19 @@ var isHTMLCollection_default = isHTMLCollection;
 var isHTMLImageElement = (element) => element && element.tagName === "IMG" || false;
 var isHTMLImageElement_default = isHTMLImageElement;
 
+// src/is/isJSON.ts
+var isJSON = (str) => {
+  if (!isString_default(str))
+    return false;
+  try {
+    JSON.parse(str);
+  } catch (e) {
+    return false;
+  }
+  return true;
+};
+var isJSON_default = isJSON;
+
 // src/is/isWeakMap.ts
 var isWeakMap = (obj) => obj && obj.constructor.name === "WeakMap" || false;
 var isWeakMap_default = isWeakMap;
@@ -1529,6 +1542,7 @@ var SHORTY = {
   isString: isString_default,
   isCustomElement: isCustomElement_default,
   isElement: isElement_default,
+  isJSON: isJSON_default,
   isMap: isMap_default,
   isWeakMap: isWeakMap_default,
   isNode: isNode_default,

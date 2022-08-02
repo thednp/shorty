@@ -22,3 +22,4 @@ const createElementNS = (ns, param) => {
     return newElement;
 };
 export default createElementNS;
+//# sourceMappingURL=createElementNS.js.map

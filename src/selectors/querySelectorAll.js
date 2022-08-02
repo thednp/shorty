@@ -5,3 +5,4 @@ const querySelectorAll = (selector, parent) => {
     return lookUp.querySelectorAll(selector);
 };
 export default querySelectorAll;
+//# sourceMappingURL=querySelectorAll.js.map

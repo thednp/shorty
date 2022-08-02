@@ -10,3 +10,4 @@ const one = (element, eventName, listener, options) => {
     on(element, eventName, handlerWrapper, options);
 };
 export default one;
+//# sourceMappingURL=one.js.map

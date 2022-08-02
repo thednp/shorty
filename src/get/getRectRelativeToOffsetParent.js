@@ -18,3 +18,4 @@ const getRectRelativeToOffsetParent = (element, offsetParent, scroll) => {
     };
 };
 export default getRectRelativeToOffsetParent;
+//# sourceMappingURL=getRectRelativeToOffsetParent.js.map

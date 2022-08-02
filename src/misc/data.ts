@@ -17,7 +17,7 @@ const Data = {
    * @param component the component's name or a unique key
    * @param instance the component instance
    */
-  set: <T extends ComponentData>(element: HTMLElement, component: string, instance: T): void => {
+  set: <T>(element: HTMLElement, component: string, instance: T): void => {
     if (!isHTMLElement(element)) return;
 
     /* istanbul ignore else */
@@ -27,7 +27,7 @@ const Data = {
 
     const instanceMap = componentData.get(component);
     // not undefined, but defined right above
-    instanceMap.set(element, instance);
+    (instanceMap as ElementComponentMap).set(element, instance);
   },
 
   /**
@@ -47,12 +47,12 @@ const Data = {
    * @param component the component's name or a unique key
    * @returns the instance
    */
-  get: (element: HTMLElement, component: string): ComponentData | null => {
+  get: <T>(element: HTMLElement, component: string): T | null => {
     if (!isHTMLElement(element) || !component) return null;
     const instanceMap = Data.getAllFor(component);
     const instance = element && instanceMap && instanceMap.get(element);
 
-    return instance || null;
+    return (instance as T) || null;
   },
 
   /**
@@ -60,7 +60,7 @@ const Data = {
    * @param element target element
    * @param component the component's name or a unique key
    */
-  remove: <S extends string, E extends HTMLElement>(element: E, component: S): void => {
+  remove: (element: HTMLElement, component: string): void => {
     const instanceMap = Data.getAllFor(component);
     if (!instanceMap || !isHTMLElement(element)) return;
 
@@ -76,6 +76,7 @@ const Data = {
 /**
  * An alias for `Data.get()`.
  */
-export const getInstance = (target: HTMLElement, component: string) => Data.get(target, component);
+export const getInstance = <T>(target: HTMLElement, component: string): T | null =>
+  Data.get<T>(target, component);
 
 export default Data;

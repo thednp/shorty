@@ -5,3 +5,4 @@ const closest = (element, selector) => {
         : null;
 };
 export default closest;
+//# sourceMappingURL=closest.js.map

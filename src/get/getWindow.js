@@ -10,3 +10,4 @@ const getWindow = (node) => {
     return node;
 };
 export default getWindow;
+//# sourceMappingURL=getWindow.js.map

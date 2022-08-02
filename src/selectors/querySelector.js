@@ -8,3 +8,4 @@ const querySelector = (selector, parent) => {
     return lookUp.querySelector(selector);
 };
 export default querySelector;
+//# sourceMappingURL=querySelector.js.map

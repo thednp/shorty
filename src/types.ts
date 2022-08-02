@@ -1,1 +1,9 @@
-export type optionValues = HTMLElement | Function | string | number | boolean | null | undefined;
+export type optionValues =
+  | HTMLElement
+  | Function
+  | Array<any>
+  | string
+  | number
+  | boolean
+  | null
+  | undefined;

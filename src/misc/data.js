@@ -33,3 +33,4 @@ const Data = {
 };
 export const getInstance = (target, component) => Data.get(target, component);
 export default Data;
+//# sourceMappingURL=data.js.map

@@ -11,3 +11,4 @@ const OriginalEvent = (EventType, config) => {
     return OriginalCustomEvent;
 };
 export default OriginalEvent;
+//# sourceMappingURL=OriginalEvent.js.map

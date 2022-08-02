@@ -12,3 +12,4 @@ const getParentNode = (node) => {
         getDocumentElement(node));
 };
 export default getParentNode;
+//# sourceMappingURL=getParentNode.js.map

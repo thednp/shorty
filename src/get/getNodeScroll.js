@@ -6,3 +6,4 @@ const getNodeScroll = (element) => {
     return { x, y };
 };
 export default getNodeScroll;
+//# sourceMappingURL=getNodeScroll.js.map

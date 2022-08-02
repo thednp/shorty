@@ -16,3 +16,4 @@ const supportPassive = (() => {
     return result;
 })();
 export default supportPassive;
+//# sourceMappingURL=supportPassive.js.map

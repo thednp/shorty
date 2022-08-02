@@ -3,3 +3,4 @@ const getDocumentBody = (node) => {
     return getDocument(node).body;
 };
 export default getDocumentBody;
+//# sourceMappingURL=getDocumentBody.js.map

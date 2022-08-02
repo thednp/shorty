@@ -11,3 +11,4 @@ const getDocument = (node) => {
     return window.document;
 };
 export default getDocument;
+//# sourceMappingURL=getDocument.js.map

@@ -9,3 +9,4 @@ const getElementAnimationDelay = (element) => {
     return !Number.isNaN(duration) ? duration : 0;
 };
 export default getElementAnimationDelay;
+//# sourceMappingURL=getElementAnimationDelay.js.map
