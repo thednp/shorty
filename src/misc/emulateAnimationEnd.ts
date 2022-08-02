@@ -17,9 +17,7 @@ const emulateAnimationEnd = (element: HTMLElement, handler: EventListener): void
   const delay = getElementAnimationDelay(element);
 
   if (duration) {
-    /**
-     * Wrap the handler in on -> off callback
-     */
+    /** Wrap the handler in on -> off callback */
     const animationEndWrapper = (e: Event): void => {
       /* istanbul ignore else */
       if (e.target === element) {

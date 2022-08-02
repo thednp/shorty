@@ -4,4 +4,3 @@ export default interface OffsetRect {
     x: number;
     y: number;
 }
-//# sourceMappingURL=offsetRect.d.ts.map

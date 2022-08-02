@@ -1,6 +1,8 @@
-import isHTMLElement from "../is/isHTMLElement";
+import isHTMLElement from '../is/isHTMLElement';
 
-type ComponentDataMap = Map<string, Map<HTMLElement, Record<string, any>>>;
+type ComponentData = Record<string, any>;
+type ElementComponentMap = Map<HTMLElement, ComponentData>;
+type ComponentDataMap = Map<string, ElementComponentMap>;
 
 const componentData: ComponentDataMap = new Map();
 
@@ -15,7 +17,7 @@ const Data = {
    * @param component the component's name or a unique key
    * @param instance the component instance
    */
-  set: (element: HTMLElement, component: string, instance: Record<string, any>): void => {
+  set: <T extends ComponentData>(element: HTMLElement, component: string, instance: T): void => {
     if (!isHTMLElement(element)) return;
 
     /* istanbul ignore else */
@@ -31,9 +33,9 @@ const Data = {
   /**
    * Returns all instances for specified component.
    * @param component the component's name or a unique key
-   * @returns {} all the component instances
+   * @returns all the component instances
    */
-  getAllFor: (component: string): Map<HTMLElement, Record<string, any>> | null => {
+  getAllFor: (component: string): ElementComponentMap | null => {
     const instanceMap = componentData.get(component);
 
     return instanceMap || null;
@@ -45,10 +47,10 @@ const Data = {
    * @param component the component's name or a unique key
    * @returns the instance
    */
-  get: (element: HTMLElement, component: string): Record<string, any> | null => {
+  get: (element: HTMLElement, component: string): ComponentData | null => {
     if (!isHTMLElement(element) || !component) return null;
-    const allForC = Data.getAllFor(component);
-    const instance = element && allForC && allForC.get(element);
+    const instanceMap = Data.getAllFor(component);
+    const instance = element && instanceMap && instanceMap.get(element);
 
     return instance || null;
   },
@@ -58,8 +60,8 @@ const Data = {
    * @param element target element
    * @param component the component's name or a unique key
    */
-  remove: (element: HTMLElement, component: string): void => {
-    const instanceMap = componentData.get(component);
+  remove: <S extends string, E extends HTMLElement>(element: E, component: S): void => {
+    const instanceMap = Data.getAllFor(component);
     if (!instanceMap || !isHTMLElement(element)) return;
 
     instanceMap.delete(element);

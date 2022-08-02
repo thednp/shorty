@@ -5,4 +5,3 @@ const mouseSwipeEvents = {
     cancel: "mouseleave",
 };
 export default mouseSwipeEvents;
-//# sourceMappingURL=mouseSwipeEvents.js.map

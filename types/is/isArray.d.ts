@@ -1,3 +1,2 @@
-declare const isArray: (arr?: any) => arr is any[];
+declare const isArray: (obj?: any) => obj is any[];
 export default isArray;
-//# sourceMappingURL=isArray.d.ts.map

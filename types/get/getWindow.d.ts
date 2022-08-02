@@ -1,3 +1,2 @@
-declare const getWindow: (node?: any) => Window;
+declare const getWindow: (node?: Node) => Window;
 export default getWindow;
-//# sourceMappingURL=getWindow.d.ts.map

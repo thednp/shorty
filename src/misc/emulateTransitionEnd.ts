@@ -17,10 +17,8 @@ const emulateTransitionEnd = (element: HTMLElement, handler: EventListener): voi
   const delay = getElementTransitionDelay(element);
 
   if (duration) {
-    /**
-     * Wrap the handler in on -> off callback
-     */
-    const transitionEndWrapper = (e: Event) => {
+    /** Wrap the handler in on -> off callback */
+    const transitionEndWrapper = (e: Event): void => {
       /* istanbul ignore else */
       if (e.target === element) {
         handler.apply(element, [e]);

@@ -1,10 +1,10 @@
 /**
- * Add eventListener to an `HTMLElement` | `Document` target.
+ * Add eventListener to an `EventTarget` object.
  */
 export default function on(
   element: EventTarget,
   eventName: string,
-  listener: EventListenerObject["handleEvent"],
+  listener: EventListener,
   options?: AddEventListenerOptions
 ) {
   const ops = options || false;

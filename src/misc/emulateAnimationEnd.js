@@ -26,4 +26,3 @@ const emulateAnimationEnd = (element, handler) => {
     }
 };
 export default emulateAnimationEnd;
-//# sourceMappingURL=emulateAnimationEnd.js.map

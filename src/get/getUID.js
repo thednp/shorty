@@ -1,3 +1,4 @@
+import isMap from '../is/isMap';
 let elementUID = 0;
 let elementMapUID = 0;
 const elementIDMap = new Map();
@@ -9,7 +10,7 @@ const getUID = (element, key) => {
         if (!elementIDMap.has(elID)) {
             elementIDMap.set(elID, elMap);
         }
-        if (!elMap.has(key)) {
+        if (isMap(elMap) && !elMap.has(key)) {
             elMap.set(key, result);
             elementUID += 1;
         }
@@ -28,4 +29,3 @@ const getUID = (element, key) => {
     return result;
 };
 export default getUID;
-//# sourceMappingURL=getUID.js.map

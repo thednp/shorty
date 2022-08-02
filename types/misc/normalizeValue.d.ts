@@ -1,3 +1,3 @@
-declare const normalizeValue: (value: any) => string | HTMLElement | Function | number | boolean | null;
+import { optionValues } from '../types';
+declare const normalizeValue: (value?: any) => optionValues;
 export default normalizeValue;
-//# sourceMappingURL=normalizeValue.d.ts.map

@@ -1,5 +1,5 @@
 /**
- * Checks if an object is an `Object`.
+ * Checks if a value is an `Object`.
  *
  * @param obj the target object
  * @returns the query result

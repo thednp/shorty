@@ -1,16 +1,16 @@
-import OffsetRect from "../interface/offsetRect";
-import isScaledElement from "../is/isScaledElement";
-import isHTMLElement from "../is/isHTMLElement";
-import getBoundingClientRect from "./getBoundingClientRect";
+import OffsetRect from '../interface/offsetRect';
+import isScaledElement from '../is/isScaledElement';
+import isHTMLElement from '../is/isHTMLElement';
+import getBoundingClientRect from './getBoundingClientRect';
 
 /**
- * Returns the rect relative to an offset parent.
+ * Returns the rect relative to a given offset parent and its scroll position.
  * @see https://github.com/floating-ui/floating-ui
  *
  * @param element target
  * @param offsetParent the container / offset parent
  * @param scroll the offsetParent scroll position
- * @returns {SHORTY.OffsetRect}
+ * @returns a DOMRect like object
  */
 const getRectRelativeToOffsetParent = (
   element: HTMLElement,

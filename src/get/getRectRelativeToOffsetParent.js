@@ -1,6 +1,6 @@
-import isScaledElement from "../is/isScaledElement";
-import isHTMLElement from "../is/isHTMLElement";
-import getBoundingClientRect from "./getBoundingClientRect";
+import isScaledElement from '../is/isScaledElement';
+import isHTMLElement from '../is/isHTMLElement';
+import getBoundingClientRect from './getBoundingClientRect';
 const getRectRelativeToOffsetParent = (element, offsetParent, scroll) => {
     const isParentAnElement = isHTMLElement(offsetParent);
     const rect = getBoundingClientRect(element, isParentAnElement && isScaledElement(offsetParent));
@@ -18,4 +18,3 @@ const getRectRelativeToOffsetParent = (element, offsetParent, scroll) => {
     };
 };
 export default getRectRelativeToOffsetParent;
-//# sourceMappingURL=getRectRelativeToOffsetParent.js.map

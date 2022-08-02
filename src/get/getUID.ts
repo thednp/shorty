@@ -1,12 +1,18 @@
+import isMap from '../is/isMap';
+
 let elementUID = 0;
 let elementMapUID = 0;
-const elementIDMap = new Map();
+
+type KeyIdMap = Map<string | number, number>;
+type IDMap = Map<number | string | HTMLElement, number | KeyIdMap>;
+
+const elementIDMap: IDMap = new Map();
 
 /**
  * Returns a unique identifier for popover, tooltip, scrollspy.
  *
  * @param element target element
- * @param key predefined key
+ * @param key optional identifier key
  * @returns an existing or new unique ID
  */
 const getUID = (element: HTMLElement, key?: string): number => {
@@ -14,21 +20,21 @@ const getUID = (element: HTMLElement, key?: string): number => {
 
   if (key) {
     const elID = getUID(element);
-    const elMap = elementIDMap.get(elID) || new Map();
+    const elMap = elementIDMap.get(elID) || (new Map() as KeyIdMap);
     if (!elementIDMap.has(elID)) {
       elementIDMap.set(elID, elMap);
     }
-    if (!elMap.has(key)) {
+    if (isMap(elMap) && !elMap.has(key)) {
       elMap.set(key, result);
       elementUID += 1;
-    } else result = elMap.get(key);
+    } else result = (elMap as KeyIdMap).get(key);
   } else {
     const elkey = element.id || element;
 
     if (!elementIDMap.has(elkey)) {
       elementIDMap.set(elkey, result);
       elementMapUID += 1;
-    } else result = elementIDMap.get(elkey);
+    } else result = elementIDMap.get(elkey) as number;
   }
   return result;
 };

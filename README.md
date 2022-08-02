@@ -129,7 +129,7 @@ off(targetElement, "mouseup", eventHandler, passiveHandler);
 one(targetElement, "touchstart", eventHandler, passiveHandler);
 ```
 
-For a more advanced method to handle event listeners, I recommend using the [event-listener.js](github.com/thednp/event-listener.js).
+For a more advanced method to handle event listeners, I recommend using the [event-listener](github.com/thednp/event-listener).
 
 # get
 

@@ -1,6 +1,6 @@
 {
   "name": "@thednp/shorty",
-  "version": "2.0.0alpha1",
+  "version": "2.0.0alpha2",
   "description": "TypeScript shorties",
   "main": "src/index.ts",
   "esmodule": "dist/shorty.js",
@@ -20,12 +20,14 @@
     "coverage:report": "nyc report --reporter=lcov --reporter=json --reporter=text --reporter=json-summary",
     "fix:ts": "npx eslint --fix",
     "lint:ts": "npx eslint",
-    "build:ts": "del-cli --force ./types && tsc -d --removeComments --emitDeclarationOnly --declarationMap --outDir ./types",
-    "build": "npm run lint:js && npm-run-all --parallel umd umdmin esm esmmin",
-    "umd": "node esbuild.config.js FORMAT:cjs",
-    "umdmin": "node esbuild.config.js FORMAT:cjs MIN:true",
+    "build:ts": "del-cli --force ./types && tsc -d --removeComments --emitDeclarationOnly --outDir ./types",
+    "build": "npm run lint:ts && npm-run-all --parallel cjs cjsmin esm esmmin iife iifemin",
+    "cjs": "node esbuild.config.js FORMAT:cjs",
+    "cjsmin": "node esbuild.config.js FORMAT:cjs MIN:true",
     "esm": "node esbuild.config.js",
-    "esmmin": "node esbuild.config.js MIN:true"
+    "esmmin": "node esbuild.config.js MIN:true",
+    "iife": "node esbuild.config.js FORMAT:iife",
+    "iifemin": "node esbuild.config.js MIN:true FORMAT:iife"
   },
   "publishConfig": {
     "access": "public",

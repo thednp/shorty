@@ -1,5 +1,5 @@
 /**
- * Shortcut for `typeof SOMETHING === "number"`.
+ * Shortie for `typeof SOMETHING === "number"`.
  *
  * @param num input value
  * @returns the query result

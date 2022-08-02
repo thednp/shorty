@@ -1,1 +1,1 @@
-{"version":3,"file":"removeClass.js","sourceRoot":"","sources":["removeClass.ts"],"names":[],"mappings":"AAMA,MAAM,WAAW,GAAG,CAAC,OAAoB,EAAE,SAAiB,EAAQ,EAAE;IACpE,OAAO,CAAC,SAAS,CAAC,MAAM,CAAC,SAAS,CAAC,CAAC;AACtC,CAAC,CAAC;AAEF,eAAe,WAAW,CAAC"}
+{"version":3,"file":"removeClass.js","sourceRoot":"","sources":["removeClass.ts"],"names":[],"mappings":"AAMA,MAAM,WAAW,GAAG,CAAC,OAAoB,EAAE,GAAG,SAAmB,EAAQ,EAAE;IACzE,OAAO,CAAC,SAAS,CAAC,MAAM,CAAC,GAAG,SAAS,CAAC,CAAC;AACzC,CAAC,CAAC;AAEF,eAAe,WAAW,CAAC"}

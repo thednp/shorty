@@ -26,4 +26,3 @@ const emulateTransitionEnd = (element, handler) => {
     }
 };
 export default emulateTransitionEnd;
-//# sourceMappingURL=emulateTransitionEnd.js.map

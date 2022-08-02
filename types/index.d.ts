@@ -1,6 +1,6 @@
-import on from "./event/on";
-import off from "./event/off";
-import isScaledElement from "./is/isScaledElement";
+import on from './event/on';
+import off from './event/off';
+import isScaledElement from './is/isScaledElement';
 declare const SHORTY: {
     ariaChecked: string;
     ariaDescription: string;
@@ -233,29 +233,37 @@ declare const SHORTY: {
     userAgentData: import("./interface/navigatorUA").NavigatorUAData;
     userAgent: string;
     tabindex: string;
-    addClass: (element: HTMLElement, classNAME: string) => void;
-    removeClass: (element: HTMLElement, classNAME: string) => void;
+    addClass: (element: HTMLElement, ...classNAME: string[]) => void;
+    removeClass: (element: HTMLElement, ...classNAME: string[]) => void;
     hasClass: (element: HTMLElement, classNAME: string) => boolean;
     on: typeof on;
     off: typeof off;
-    one: (element: EventTarget, eventName: string, listener: (object: Event) => void, options?: AddEventListenerOptions) => void;
-    dispatchEvent: (element: HTMLElement, event: Event) => boolean;
-    distinct: (value: any, index: number, self: any[]) => boolean;
+    one: (element: EventTarget, eventName: string, listener: EventListener, options?: AddEventListenerOptions) => void;
+    dispatchEvent: (element: EventTarget, event: Event) => boolean;
+    distinct: <T>(value: T, index: number, arr: T[]) => boolean;
     Data: {
-        set: (element: HTMLElement, component: string, instance: Record<string, any>) => void;
-        getAllFor: (component: string) => Map<HTMLElement, Record<string, any>>;
-        get: (element: HTMLElement, component: string) => Record<string, any>;
-        remove: (element: HTMLElement, component: string) => void;
+        set: <T_1 extends {
+            [x: string]: any;
+        }>(element: HTMLElement, component: string, instance: T_1) => void;
+        getAllFor: (component: string) => Map<HTMLElement, {
+            [x: string]: any;
+        }>;
+        get: (element: HTMLElement, component: string) => {
+            [x: string]: any;
+        };
+        remove: <S extends string, E extends HTMLElement>(element: E, component: S) => void;
     };
-    getInstance: (target: HTMLElement, component: string) => Record<string, any>;
+    getInstance: (target: HTMLElement, component: string) => {
+        [x: string]: any;
+    };
     createElement: (param?: string | Partial<HTMLElement>) => HTMLElement;
     createElementNS: (ns?: string, param?: string | Partial<HTMLElement>) => HTMLElement;
     toUpperCase: (source: string) => string;
     toLowerCase: (source: string) => string;
     Timer: {
-        set: (element: HTMLElement, callback: any, delay: number, key?: string) => void;
-        get: (element: HTMLElement, key?: string) => any;
-        clear: (element: HTMLElement, key: string) => void;
+        set: (element: HTMLElement, callback: TimerHandler, delay: number, key?: string) => void;
+        get: (element: HTMLElement, key?: string) => number;
+        clear: (element: HTMLElement, key?: string) => void;
     };
     emulateAnimationEnd: (element: HTMLElement, handler: EventListener) => void;
     emulateTransitionEnd: (element: HTMLElement, handler: EventListener) => void;
@@ -275,13 +283,14 @@ declare const SHORTY: {
         x: number;
         y: number;
     }) => import("./interface/offsetRect").default;
-    getWindow: (node?: any) => Window;
-    isArray: (arr?: any) => arr is any[];
+    getWindow: (node?: Node) => Window;
+    isArray: (obj?: any) => obj is any[];
+    isCanvas: (element?: any) => element is HTMLCanvasElement;
     isString: (str?: any) => str is string;
-    isCustomElement: <T extends HTMLElement & {
-        shadowRoot: Node;
-    }>(element?: any) => element is T;
+    isCustomElement: <T_2 extends import("./interface/customElement").default>(element?: any) => element is T_2;
     isElement: (element?: any) => element is Element;
+    isMap: (obj?: any) => obj is Map<any, any>;
+    isWeakMap: (obj?: any) => obj is WeakMap<any, any>;
     isNode: (node?: any) => node is Node;
     isNumber: (num?: any) => num is number;
     isHTMLElement: (element?: any) => element is HTMLElement;
@@ -297,37 +306,39 @@ declare const SHORTY: {
     isFunction: (fn?: any) => fn is Function;
     isObject: (obj?: any) => obj is object;
     isWindow: (obj?: any) => obj is Window;
-    isMedia: (element?: any) => element is HTMLImageElement | HTMLVideoElement | SVGElement;
+    isMedia: (element?: any) => element is HTMLCanvasElement | HTMLImageElement | HTMLVideoElement | SVGElement;
     isRTL: (node?: Node) => boolean;
     closest: (element: HTMLElement, selector: string) => HTMLElement;
     querySelector: (selector: string | Node, parent?: ParentNode) => HTMLElement;
-    getCustomElements: (parent?: ParentNode) => HTMLElement[];
-    getElementById: (id: string, context?: ParentNode) => HTMLElement;
+    getCustomElements: (parent?: ParentNode) => import("./interface/customElement").default[];
+    getElementById: (id: string, context?: Node) => HTMLElement;
     querySelectorAll: (selector: string, parent?: ParentNode) => NodeListOf<HTMLElement>;
     getElementsByClassName: (selector: string, parent?: ParentNode) => HTMLCollectionOf<HTMLElement>;
     getElementsByTagName: (selector: string, parent?: ParentNode) => HTMLCollectionOf<HTMLElement>;
-    matches: (target: HTMLElement, selector: string) => boolean;
-    normalizeValue: (value: any) => string | number | boolean | Function | HTMLElement;
-    normalizeOptions: (element: HTMLElement, defaultOps: Record<string, any>, inputOps: Record<string, any>, ns?: string) => Record<string, any>;
+    matches: (target: Element, selector: string) => boolean;
+    normalizeValue: (value?: any) => import("./types").optionValues;
+    normalizeOptions: <T_3 extends {
+        [key: string]: import("./types").optionValues;
+    }>(element: HTMLElement, defaultOps: T_3, inputOps: Partial<T_3>, ns?: string) => T_3;
     reflow: (element: HTMLElement) => number;
     noop: () => void;
-    focus: (element: HTMLElement) => void;
+    focus: (element: HTMLOrSVGElement, options?: FocusOptions) => void;
     getUID: (element: HTMLElement, key?: string) => number;
-    ArrayFrom: (arr: Iterable<any>) => any[];
-    Float32ArrayFrom: (arr: any[] | Map<any, any>) => Float32Array;
-    Float64ArrayFrom: (arr: any[] | Map<any, any>) => Float64Array;
-    ObjectAssign: (obj: Record<string, any>, source: Record<string, any>) => Record<string, any>;
-    ObjectEntries: (obj: Record<string, any>) => [string, any][];
+    ArrayFrom: <T_4>(arr: ArrayLike<T_4> | Iterable<T_4>) => T_4[];
+    Float32ArrayFrom: (arr: ArrayLike<number> | Iterable<number>) => Float32Array;
+    Float64ArrayFrom: (arr: ArrayLike<number> | Iterable<number>) => Float64Array;
+    ObjectAssign: <A extends {}, B>(obj: A, ...source: B[]) => B extends any[] ? any : A & B;
+    ObjectEntries: <O extends {}>(obj: O) => [keyof O, O[keyof O]][];
     ObjectKeys: (obj: Record<string, any>) => string[];
-    ObjectValues: (obj: Record<string, any>) => any[];
-    OriginalEvent: (EventType: string, config?: Record<string, any>) => import("./interface/originalEvent").default;
+    ObjectValues: <O_1 extends {}>(obj: O_1) => [O_1[keyof O_1]][];
+    OriginalEvent: <T_5>(EventType: string, config?: CustomEventInit<T_5>) => import("./interface/originalEvent").default<T_5>;
     getBoundingClientRect: (element: HTMLElement, includeScale?: boolean) => import("./interface/boundingClientRect").default;
     getDocument: (node?: any) => Document;
     getDocumentBody: (node?: any) => HTMLElement;
     getDocumentElement: (node?: Node) => HTMLElement;
-    getDocumentHead: (node?: Node) => HTMLElement;
+    getDocumentHead: (node?: Node) => HTMLElement & HTMLHeadElement;
     getElementStyle: (element: HTMLElement, property: string) => string;
-    setElementStyle: (element: HTMLElement, styles: Partial<CSSStyleDeclaration>) => void;
+    setElementStyle: (element: HTMLElement, styles: import("./interface/css4Declaration").default) => void;
     hasAttribute: (element: HTMLElement, att: string) => boolean;
     hasAttributeNS: (ns: string, element: HTMLElement, att: string) => boolean;
     getAttribute: (element: HTMLElement, att: string) => string;
@@ -338,4 +349,3 @@ declare const SHORTY: {
     removeAttributeNS: (ns: string, element: HTMLElement, att: string) => void;
 };
 export default SHORTY;
-//# sourceMappingURL=index.d.ts.map

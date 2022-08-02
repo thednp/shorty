@@ -1,7 +1,8 @@
-import getAttribute from "../attr/getAttribute";
-import normalizeValue from "./normalizeValue";
-import ObjectKeys from "./ObjectKeys";
-import toLowerCase from "./toLowerCase";
+import getAttribute from '../attr/getAttribute';
+import normalizeValue from './normalizeValue';
+import ObjectEntries from './ObjectEntries';
+import toLowerCase from './toLowerCase';
+import { optionValues } from '../types';
 
 /**
  * Utility to normalize component options.
@@ -12,36 +13,39 @@ import toLowerCase from "./toLowerCase";
  * @param ns component namespace
  * @return normalized component options object
  */
-const normalizeOptions = (
+const normalizeOptions = <T extends { [key: string]: optionValues }>(
   element: HTMLElement,
-  defaultOps: Record<string, any>,
-  inputOps: Record<string, any>,
+  defaultOps: T,
+  inputOps: Partial<T>,
   ns?: string
-) => {
-  const data = { ...element.dataset };
-  const normalOps: Record<string, any> = {};
-  const dataOps: Record<string, any> = {};
-  const title = "title";
+): T => {
+  const INPUT = { ...inputOps };
+  const data = { ...element.dataset } as Partial<T> & { [key: string]: any };
+  const normalOps = { ...defaultOps };
+  const dataOps: Partial<T> = {};
+  const title = 'title';
 
-  ObjectKeys(data).forEach((k) => {
-    const key =
-      ns && k.includes(ns) ? k.replace(ns, "").replace(/[A-Z]/, (match) => toLowerCase(match)) : k;
+  ObjectEntries(data).forEach(([k, v]) => {
+    const key: keyof T =
+      ns && typeof k === 'string' && k.includes(ns)
+        ? k.replace(ns, '').replace(/[A-Z]/g, (match: string) => toLowerCase(match))
+        : k;
 
-    dataOps[key] = normalizeValue(data[k]);
+    dataOps[key] = normalizeValue(v) as T[keyof T];
   });
 
-  ObjectKeys(inputOps).forEach((k) => {
-    inputOps[k] = normalizeValue(inputOps[k]);
+  ObjectEntries(INPUT).forEach(([k, v]) => {
+    INPUT[k] = normalizeValue(v) as T[keyof T];
   });
 
-  ObjectKeys(defaultOps).forEach((k) => {
+  ObjectEntries(defaultOps).forEach(([k, v]) => {
     /* istanbul ignore else */
-    if (k in inputOps) {
-      normalOps[k] = inputOps[k];
+    if (k in INPUT) {
+      normalOps[k] = INPUT[k];
     } else if (k in dataOps) {
       normalOps[k] = dataOps[k];
     } else {
-      normalOps[k] = k === title ? getAttribute(element, title) : defaultOps[k];
+      normalOps[k] = (k === title ? getAttribute(element, title) : v) as T[keyof T];
     }
   });
 

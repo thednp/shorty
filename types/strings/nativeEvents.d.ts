@@ -51,4 +51,3 @@ declare const nativeEvents: {
     unload: string;
 };
 export default nativeEvents;
-//# sourceMappingURL=nativeEvents.d.ts.map

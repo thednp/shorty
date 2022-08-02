@@ -20,4 +20,3 @@ const getBoundingClientRect = (element, includeScale) => {
     };
 };
 export default getBoundingClientRect;
-//# sourceMappingURL=getBoundingClientRect.js.map

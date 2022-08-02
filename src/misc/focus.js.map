@@ -1,1 +1,1 @@
-{"version":3,"file":"focus.js","sourceRoot":"","sources":["focus.ts"],"names":[],"mappings":"AAKA,MAAM,KAAK,GAAG,CAAC,OAAoB,EAAE,EAAE,CAAC,OAAO,CAAC,KAAK,EAAE,CAAC;AAExD,eAAe,KAAK,CAAC"}
+{"version":3,"file":"focus.js","sourceRoot":"","sources":["focus.ts"],"names":[],"mappings":"AAMA,MAAM,KAAK,GAAG,CAAC,OAAyB,EAAE,OAAsB,EAAQ,EAAE,CAAC,OAAO,CAAC,KAAK,CAAC,OAAO,CAAC,CAAC;AAElG,eAAe,KAAK,CAAC"}

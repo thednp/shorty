@@ -1,3 +1,2 @@
-declare const distinct: (value: any, index: number, self: any[]) => boolean;
+declare const distinct: <T>(value: T, index: number, arr: T[]) => boolean;
 export default distinct;
-//# sourceMappingURL=distinct.d.ts.map

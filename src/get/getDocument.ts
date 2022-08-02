@@ -6,7 +6,7 @@ import isDocument from "../is/isDocument";
  * Returns the `document` or the `#document` element.
  * @see https://github.com/floating-ui/floating-ui
  *
- * @param node the target node
+ * @param node the reference node
  * @returns the parent document of the given node
  */
 const getDocument = (node?: any): Document => {

@@ -1,6 +1,11 @@
-import isHTMLElement from "../is/isHTMLElement";
+import isMap from '../is/isMap';
+import isHTMLElement from '../is/isHTMLElement';
+import isNumber from '../is/isNumber';
 
-const TimeCache = new Map();
+type KeyMap = Map<string, number>;
+type TimeMap = Map<HTMLElement, number | KeyMap>;
+
+const TimeCache: TimeMap = new Map();
 /**
  * An interface for one or more `TimerHandler`s per `Element`.
  * @see https://github.com/thednp/navbar/
@@ -13,7 +18,7 @@ const Timer = {
    * @param delay the execution delay
    * @param key a unique key
    */
-  set: (element: HTMLElement, callback: ReturnType<any>, delay: number, key?: string) => {
+  set: (element: HTMLElement, callback: TimerHandler, delay: number, key?: string): void => {
     if (!isHTMLElement(element)) return;
 
     /* istanbul ignore else */
@@ -22,8 +27,7 @@ const Timer = {
       if (!TimeCache.has(element)) {
         TimeCache.set(element, new Map());
       }
-      const keyTimers = TimeCache.get(element);
-      keyTimers.set(key, setTimeout(callback, delay));
+      (TimeCache.get(element) as KeyMap).set(key, setTimeout(callback, delay));
     } else {
       TimeCache.set(element, setTimeout(callback, delay));
     }
@@ -35,14 +39,16 @@ const Timer = {
    * @param key a unique
    * @returns the timer
    */
-  get: (element: HTMLElement, key?: string) => {
+  get: (element: HTMLElement, key?: string): number | null => {
     if (!isHTMLElement(element)) return null;
     const keyTimers = TimeCache.get(element);
 
-    if (key && key.length && keyTimers && keyTimers.get) {
+    if (isMap(keyTimers)) {
       return keyTimers.get(key) || /* istanbul ignore next */ null;
+    } else if (isNumber(keyTimers)) {
+      return keyTimers;
     }
-    return keyTimers || null;
+    return null;
   },
 
   /**
@@ -50,13 +56,14 @@ const Timer = {
    * @param element target element
    * @param key a unique key
    */
-  clear: (element: HTMLElement, key: string) => {
+  clear: (element: HTMLElement, key?: string): void => {
     if (!isHTMLElement(element)) return;
 
-    if (key && key.length) {
-      const keyTimers = TimeCache.get(element);
+    const keyTimers = TimeCache.get(element);
+
+    if (key && key.length && isMap(keyTimers)) {
       /* istanbul ignore else */
-      if (keyTimers && keyTimers.get) {
+      if (isMap(keyTimers)) {
         clearTimeout(keyTimers.get(key));
         keyTimers.delete(key);
         /* istanbul ignore else */
@@ -65,7 +72,7 @@ const Timer = {
         }
       }
     } else {
-      clearTimeout(TimeCache.get(element));
+      clearTimeout(keyTimers as number);
       TimeCache.delete(element);
     }
   },

@@ -5,4 +5,3 @@ const getElementStyle = (element, property) => {
         : computedStyle[property];
 };
 export default getElementStyle;
-//# sourceMappingURL=getElementStyle.js.map

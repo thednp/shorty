@@ -1,3 +1,5 @@
+import CSS4Declaration from "../interface/css4Declaration";
+
 /**
  * Shortcut for `window.getComputedStyle(element).propertyName`
  * static method.
@@ -10,13 +12,13 @@
  * @return the css property value
  */
 const getElementStyle = (element: HTMLElement, property: string): string => {
-  const computedStyle = getComputedStyle(element);
+  const computedStyle: CSS4Declaration = getComputedStyle(element);
 
   // must use camelcase strings,
   // or non-camelcase strings with `getPropertyValue`
   return property.includes("--")
     ? computedStyle.getPropertyValue(property)
-    : computedStyle[property as any];
+    : computedStyle[property];
 };
 
 export default getElementStyle;

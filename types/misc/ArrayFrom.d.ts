@@ -1,3 +1,2 @@
-declare const ArrayFrom: (arr: Iterable<any>) => any[];
+declare const ArrayFrom: <T>(arr: ArrayLike<T> | Iterable<T>) => T[];
 export default ArrayFrom;
-//# sourceMappingURL=ArrayFrom.d.ts.map

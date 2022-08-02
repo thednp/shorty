@@ -1,8 +1,4 @@
-/**
- * The raw value or a given component option.
- *
- * @typedef {} niceValue
- */
+import { optionValues } from '../types';
 
 /**
  * Utility to normalize component options
@@ -10,30 +6,24 @@
  * @param value the input value
  * @return the normalized value
  */
-const normalizeValue = (value: any): string | HTMLElement | Function | number | boolean | null => {
-  if (["true", true].includes(value)) {
-    // boolean
-    // if ('true' === value) { // boolean
+const normalizeValue = (value?: any): optionValues => {
+  if (['true', true].includes(value)) {
     return true;
   }
 
-  if (["false", false].includes(value)) {
-    // boolean
-    // if ('false' === value) { // boolean
+  if (['false', false].includes(value)) {
     return false;
   }
 
-  if (value === "" || value === "null") {
-    // null
+  if (['null', '', null].includes(value)) {
     return null;
   }
 
-  if (value !== "" && !Number.isNaN(+value)) {
-    // number
+  if (value !== '' && !Number.isNaN(+value)) {
     return +value;
   }
 
-  // string / function / HTMLElement / object
+  // string / function / HTMLElement / object / undefined
   return value;
 };
 

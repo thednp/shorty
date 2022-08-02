@@ -8,4 +8,3 @@ export default interface BoundingClientRect {
     x: number;
     y: number;
 }
-//# sourceMappingURL=boundingClientRect.d.ts.map

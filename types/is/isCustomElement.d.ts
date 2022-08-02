@@ -1,5 +1,3 @@
-declare const isCustomElement: <T extends HTMLElement & {
-    shadowRoot: Node;
-}>(element?: any) => element is T;
+import CustomElement from "../interface/customElement";
+declare const isCustomElement: <T extends CustomElement>(element?: any) => element is T;
 export default isCustomElement;
-//# sourceMappingURL=isCustomElement.d.ts.map

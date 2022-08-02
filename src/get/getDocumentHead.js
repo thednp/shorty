@@ -3,4 +3,3 @@ const getDocumentHead = (node) => {
     return getDocument(node).head;
 };
 export default getDocumentHead;
-//# sourceMappingURL=getDocumentHead.js.map

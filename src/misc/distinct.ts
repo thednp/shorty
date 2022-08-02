@@ -7,11 +7,11 @@
  * [0,1,1,2].filter(distinct)
  * // => [0,1,2]
  * ```
- * @param value aray item value
+ * @param value array item value
  * @param index array item index
- * @param self the array
+ * @param arr a clone of the target array
  * @returns the query result
  */
-const distinct = (value: any, index: number, self: any[]): boolean => self.indexOf(value) === index;
+const distinct = <T>(value: T, index: number, arr: T[]): boolean => arr.indexOf(value) === index;
 
 export default distinct;

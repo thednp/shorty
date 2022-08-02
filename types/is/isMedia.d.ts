@@ -1,3 +1,2 @@
-declare const isMedia: (element?: any) => element is HTMLImageElement | HTMLVideoElement | SVGElement;
+declare const isMedia: (element?: any) => element is HTMLCanvasElement | HTMLImageElement | HTMLVideoElement | SVGElement;
 export default isMedia;
-//# sourceMappingURL=isMedia.d.ts.map

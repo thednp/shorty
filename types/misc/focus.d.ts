@@ -1,3 +1,2 @@
-declare const focus: (element: HTMLElement) => void;
+declare const focus: (element: HTMLOrSVGElement, options?: FocusOptions) => void;
 export default focus;
-//# sourceMappingURL=focus.d.ts.map

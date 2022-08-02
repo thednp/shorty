@@ -16,8 +16,7 @@ const getElementAnimationDelay = (element: HTMLElement): number => {
   const duration =
     propertyValue && propertyValue !== "none" ? parseFloat(durationValue) * durationScale : 0;
 
-  /* istanbul ignore next */
-  return !Number.isNaN(duration) ? duration : 0;
+  return !Number.isNaN(duration) ? duration : /* istanbul ignore next */ 0;
 };
 
 export default getElementAnimationDelay;

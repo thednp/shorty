@@ -10,7 +10,7 @@ import isNode from "./isNode";
  * @return the query result
  */
 const isElementInScrollRange = (element?: HTMLElement): boolean => {
-  if (!element || !isNode(element)) return false;
+  if (!isNode(element)) return false;
 
   const { top, bottom } = getBoundingClientRect(element);
   const { clientHeight } = getDocumentElement(element);

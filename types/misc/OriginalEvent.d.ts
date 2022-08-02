@@ -1,4 +1,3 @@
-import OriginalEvent from "../interface/originalEvent";
-declare const OriginalEvent: (EventType: string, config?: Record<string, any>) => OriginalEvent;
+import OriginalEvent from '../interface/originalEvent';
+declare const OriginalEvent: <T>(EventType: string, config?: CustomEventInit<T>) => OriginalEvent<T>;
 export default OriginalEvent;
-//# sourceMappingURL=OriginalEvent.d.ts.map

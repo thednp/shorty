@@ -1,31 +1,33 @@
-import getAttribute from "../attr/getAttribute";
-import normalizeValue from "./normalizeValue";
-import ObjectKeys from "./ObjectKeys";
-import toLowerCase from "./toLowerCase";
+import getAttribute from '../attr/getAttribute';
+import normalizeValue from './normalizeValue';
+import ObjectEntries from './ObjectEntries';
+import toLowerCase from './toLowerCase';
 const normalizeOptions = (element, defaultOps, inputOps, ns) => {
+    const INPUT = { ...inputOps };
     const data = { ...element.dataset };
-    const normalOps = {};
+    const normalOps = { ...defaultOps };
     const dataOps = {};
-    const title = "title";
-    ObjectKeys(data).forEach((k) => {
-        const key = ns && k.includes(ns) ? k.replace(ns, "").replace(/[A-Z]/, (match) => toLowerCase(match)) : k;
-        dataOps[key] = normalizeValue(data[k]);
+    const title = 'title';
+    ObjectEntries(data).forEach(([k, v]) => {
+        const key = ns && typeof k === 'string' && k.includes(ns)
+            ? k.replace(ns, '').replace(/[A-Z]/g, (match) => toLowerCase(match))
+            : k;
+        dataOps[key] = normalizeValue(v);
     });
-    ObjectKeys(inputOps).forEach((k) => {
-        inputOps[k] = normalizeValue(inputOps[k]);
+    ObjectEntries(INPUT).forEach(([k, v]) => {
+        INPUT[k] = normalizeValue(v);
     });
-    ObjectKeys(defaultOps).forEach((k) => {
-        if (k in inputOps) {
-            normalOps[k] = inputOps[k];
+    ObjectEntries(defaultOps).forEach(([k, v]) => {
+        if (k in INPUT) {
+            normalOps[k] = INPUT[k];
         }
         else if (k in dataOps) {
             normalOps[k] = dataOps[k];
         }
         else {
-            normalOps[k] = k === title ? getAttribute(element, title) : defaultOps[k];
+            normalOps[k] = (k === title ? getAttribute(element, title) : v);
         }
     });
     return normalOps;
 };
 export default normalizeOptions;
-//# sourceMappingURL=normalizeOptions.js.map

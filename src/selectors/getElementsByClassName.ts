@@ -1,11 +1,11 @@
-import getDocument from "../get/getDocument";
-import isNode from "../is/isNode";
+import getDocument from '../get/getDocument';
+import isNode from '../is/isNode';
 
 /**
  * Shortcut for `HTMLElement.getElementsByClassName` method. Some `Node` elements
  * like `ShadowRoot` do not support `getElementsByClassName`.
  *
- * @param elector the class name
+ * @param selector the class name
  * @param parent optional Element to look into
  * @return the 'HTMLCollection'
  */

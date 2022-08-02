@@ -8,7 +8,7 @@ import isNode from "../is/isNode";
  * @param node target node
  * @returns the `Window` object
  */
-const getWindow = (node?: any): Window => {
+const getWindow = (node?: Node): Window => {
   // node is undefined | NULL
   if (!node) return window;
   // node instanceof Document

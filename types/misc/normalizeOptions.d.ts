@@ -1,3 +1,5 @@
-declare const normalizeOptions: (element: HTMLElement, defaultOps: Record<string, any>, inputOps: Record<string, any>, ns?: string) => Record<string, any>;
+import { optionValues } from '../types';
+declare const normalizeOptions: <T extends {
+    [key: string]: optionValues;
+}>(element: HTMLElement, defaultOps: T, inputOps: Partial<T>, ns?: string) => T;
 export default normalizeOptions;
-//# sourceMappingURL=normalizeOptions.d.ts.map

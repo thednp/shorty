@@ -1,11 +1,12 @@
-import getDocument from "../get/getDocument";
-import ObjectEntries from "./ObjectEntries";
-import setAttribute from "../attr/setAttribute";
+import getDocument from '../get/getDocument';
+import ObjectEntries from './ObjectEntries';
+import setAttribute from '../attr/setAttribute';
+import isString from '../is/isString';
 
 /**
- * This is a shortie for `document.createElementNS` method
+ * Shortie for `document.createElementNS` method
  * which allows you to create a new `HTMLElement` for a given `tagName`
- * or based on an object with specific non-readonly attributes:
+ * or based on an object with specific non-readonly attributes with string values:
  * `id`, `className`, `textContent`, `style`, etc.
  * @see https://developer.mozilla.org/en-US/docs/Web/API/Document/createElementNS
  *
@@ -19,7 +20,7 @@ const createElementNS = (
 ): HTMLElement | undefined => {
   if (!ns && !param) return undefined;
 
-  if (typeof param === "string") {
+  if (typeof param === 'string') {
     return getDocument().createElementNS(ns, param) as HTMLElement;
   }
 
@@ -32,7 +33,9 @@ const createElementNS = (
   delete attr.tagName;
 
   ObjectEntries(attr).forEach(([key, value]) => {
-    setAttribute(newElement, key, value);
+    if (isString(value)) {
+      setAttribute(newElement, key, value);
+    }
   });
 
   return newElement;

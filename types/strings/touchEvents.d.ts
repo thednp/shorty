@@ -5,4 +5,3 @@ declare const touchEvents: {
     cancel: string;
 };
 export default touchEvents;
-//# sourceMappingURL=touchEvents.d.ts.map

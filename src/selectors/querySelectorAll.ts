@@ -1,5 +1,5 @@
-import getDocument from "../get/getDocument";
-import isNode from "../is/isNode";
+import getDocument from '../get/getDocument';
+import isNode from '../is/isNode';
 
 /**
  * A shortcut for `(document|Element).querySelectorAll`.
@@ -10,7 +10,7 @@ import isNode from "../is/isNode";
  */
 const querySelectorAll = (selector: string, parent?: ParentNode): NodeListOf<HTMLElement> => {
   const lookUp = isNode(parent) ? parent : getDocument();
-  return (lookUp as Document).querySelectorAll(selector);
+  return lookUp.querySelectorAll(selector);
 };
 
 export default querySelectorAll;

@@ -1,4 +1,4 @@
-import isWindow from "src/is/isWindow";
+import isWindow from '../is/isWindow';
 
 /**
  * Returns an `{x,y}` object with the target

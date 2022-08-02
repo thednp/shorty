@@ -1,9 +1,9 @@
 /**
- * Shortcut for `Array.isArray()` static method.
+ * Shortie for the `Array.isArray()` static method.
  *
- * @param arr array-like iterable object
+ * @param obj array-like iterable object
  * @returns the query result
  */
-const isArray = (arr?: any): arr is any[] => Array.isArray(arr) || false;
+const isArray = (obj?: any): obj is any[] => Array.isArray(obj) || false;
 
 export default isArray;

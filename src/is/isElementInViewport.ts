@@ -10,7 +10,7 @@ import isNode from "./isNode";
  * @return the query result
  */
 const isElementInViewport = (element?: HTMLElement): boolean => {
-  if (!element || !isNode(element)) return false;
+  if (!isNode(element)) return false;
 
   const { clientWidth, clientHeight } = getDocumentElement(element);
   const { top, left, bottom, right } = getBoundingClientRect(element, true);

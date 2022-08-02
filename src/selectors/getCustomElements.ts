@@ -1,5 +1,6 @@
-import isCustomElement from "../is/isCustomElement";
-import getElementsByTagName from "./getElementsByTagName";
+import CustomElement from '../interface/customElement';
+import isCustomElement from '../is/isCustomElement';
+import getElementsByTagName from './getElementsByTagName';
 
 /**
  * Returns an `Array` of `Node` elements that are registered as
@@ -9,8 +10,8 @@ import getElementsByTagName from "./getElementsByTagName";
  * @param parent parent to look into
  * @returns the query result
  */
-const getCustomElements = (parent?: ParentNode): HTMLElement[] => {
-  const collection = getElementsByTagName("*", parent);
+const getCustomElements = (parent?: ParentNode): CustomElement[] => {
+  const collection = getElementsByTagName('*', parent);
 
   return [...collection].filter(isCustomElement);
 };

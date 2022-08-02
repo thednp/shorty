@@ -5,4 +5,3 @@ declare const mouseSwipeEvents: {
     cancel: string;
 };
 export default mouseSwipeEvents;
-//# sourceMappingURL=mouseSwipeEvents.d.ts.map

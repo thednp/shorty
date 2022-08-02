@@ -1,10 +1,11 @@
-import setAttribute from "../attr/setAttribute";
-import getDocument from "../get/getDocument";
-import ObjectEntries from "./ObjectEntries";
+import isString from '../is/isString';
+import setAttribute from '../attr/setAttribute';
+import getDocument from '../get/getDocument';
+import ObjectEntries from './ObjectEntries';
 const createElement = (param) => {
     if (!param)
         return undefined;
-    if (typeof param === "string") {
+    if (typeof param === 'string') {
         return getDocument().createElement(param);
     }
     const { tagName } = param;
@@ -14,9 +15,10 @@ const createElement = (param) => {
     const attr = { ...param };
     delete attr.tagName;
     ObjectEntries(attr).forEach(([key, value]) => {
-        setAttribute(newElement, key, value);
+        if (isString(value)) {
+            setAttribute(newElement, key, value);
+        }
     });
     return newElement;
 };
 export default createElement;
-//# sourceMappingURL=createElement.js.map

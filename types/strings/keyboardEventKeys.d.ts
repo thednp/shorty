@@ -20,4 +20,3 @@ declare const keyboardEventKeys: {
     ScrollLock: string;
 };
 export default keyboardEventKeys;
-//# sourceMappingURL=keyboardEventKeys.d.ts.map

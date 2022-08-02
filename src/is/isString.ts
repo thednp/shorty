@@ -1,5 +1,5 @@
 /**
- * Shortcut for `typeof SOMETHING === "string"`.
+ * Shortie for `typeof SOMETHING === "string"`.
  *
  * @param str input value
  * @returns the query result

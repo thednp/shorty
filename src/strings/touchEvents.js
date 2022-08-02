@@ -5,4 +5,3 @@ const touchEvents = {
     cancel: "touchcancel",
 };
 export default touchEvents;
-//# sourceMappingURL=touchEvents.js.map

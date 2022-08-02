@@ -1,3 +1,2 @@
-declare const ObjectAssign: (obj: Record<string, any>, source: Record<string, any>) => Record<string, any>;
+declare const ObjectAssign: <A extends {}, B>(obj: A, ...source: B[]) => B extends any[] ? any : A & B;
 export default ObjectAssign;
-//# sourceMappingURL=ObjectAssign.d.ts.map

@@ -1,3 +1,2 @@
-declare const getElementById: (id: string, context?: ParentNode) => HTMLElement | null;
+declare const getElementById: (id: string, context?: Node) => HTMLElement | null;
 export default getElementById;
-//# sourceMappingURL=getElementById.d.ts.map

@@ -9,6 +9,8 @@ const options = {
   NAME: "SHORTY",
 };
 
+const [FILENAME] = process.cwd().split(/\\|\//).slice(-1);
+
 process.argv.forEach((str) => {
   const [key, val] = str.split(":");
   options[key] = val;
@@ -32,7 +34,7 @@ const miniBanner = `// ${NAME} v${pkg.version} | ${pkg.author} © ${YEAR} | ${pk
 
 const OUTPUTFILE = OUT
   ? OUT
-  : `./dist/index${FORMAT === "iife" ? ".es5" : FORMAT === "cjs" ? ".cjs" : ""}${
+  : `./dist/${FILENAME}${FORMAT === "iife" ? ".es5" : FORMAT === "cjs" ? ".cjs" : ""}${
       MIN ? ".min" : ""
     }.js`;
 
@@ -43,7 +45,7 @@ esbuild
     banner: { js: MIN ? miniBanner : banner },
     bundle: true,
     minify: MIN,
-    platform: "neutral",
+    platform: FORMAT === "iife" ? "browser" : "node",
     sourcemap: true, // !MIN && FORMAT === "esm" ? true : false,
     globalName: `__${NAME}_export`,
     footer: FORMAT === "iife" ? { js: `const ${NAME} = __${NAME}_export.default;` } : {},

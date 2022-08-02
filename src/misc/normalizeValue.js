@@ -1,17 +1,16 @@
 const normalizeValue = (value) => {
-    if (["true", true].includes(value)) {
+    if (['true', true].includes(value)) {
         return true;
     }
-    if (["false", false].includes(value)) {
+    if (['false', false].includes(value)) {
         return false;
     }
-    if (value === "" || value === "null") {
+    if (['null', '', null].includes(value)) {
         return null;
     }
-    if (value !== "" && !Number.isNaN(+value)) {
+    if (value !== '' && !Number.isNaN(+value)) {
         return +value;
     }
     return value;
 };
 export default normalizeValue;
-//# sourceMappingURL=normalizeValue.js.map

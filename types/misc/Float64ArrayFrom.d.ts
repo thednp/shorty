@@ -1,3 +1,2 @@
-declare const Float64ArrayFrom: (arr: any[] | Map<any, any>) => Float64Array;
+declare const Float64ArrayFrom: (arr: ArrayLike<number> | Iterable<number>) => Float64Array;
 export default Float64ArrayFrom;
-//# sourceMappingURL=Float64ArrayFrom.d.ts.map

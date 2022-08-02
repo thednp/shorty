@@ -1,9 +1,9 @@
-import getDocument from "./getDocument";
+import getDocument from './getDocument';
 
 /**
  * Returns the `document.body` or the `<body>` element.
  *
- * @param node reference node
+ * @param node the reference node
  * @returns the parent `<body>` of the specified node
  */
 const getDocumentBody = (node?: any): HTMLElement => {

@@ -7,4 +7,3 @@ export default function isScaledElement(element) {
     const { offsetWidth, offsetHeight } = element;
     return Math.round(width) !== offsetWidth || Math.round(height) !== offsetHeight;
 }
-//# sourceMappingURL=isScaledElement.js.map

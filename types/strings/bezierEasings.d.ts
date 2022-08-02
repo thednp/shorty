@@ -26,4 +26,3 @@ declare const bezierEasings: {
     easingBackInOut: string;
 };
 export default bezierEasings;
-//# sourceMappingURL=bezierEasings.d.ts.map

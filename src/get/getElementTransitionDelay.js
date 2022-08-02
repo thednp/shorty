@@ -9,4 +9,3 @@ const getElementTransitionDelay = (element) => {
     return !Number.isNaN(duration) ? duration : 0;
 };
 export default getElementTransitionDelay;
-//# sourceMappingURL=getElementTransitionDelay.js.map

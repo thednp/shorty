@@ -1,4 +1,4 @@
-import isWindow from "src/is/isWindow";
+import isWindow from '../is/isWindow';
 const getNodeScroll = (element) => {
     const isWin = isWindow(element);
     const x = isWin ? element.scrollX : element.scrollLeft;
@@ -6,4 +6,3 @@ const getNodeScroll = (element) => {
     return { x, y };
 };
 export default getNodeScroll;
-//# sourceMappingURL=getNodeScroll.js.map

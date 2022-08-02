@@ -3,4 +3,3 @@ declare const focusEvents: {
     out: string;
 };
 export default focusEvents;
-//# sourceMappingURL=focusEvents.d.ts.map

@@ -3,4 +3,3 @@ declare const mouseClickEvents: {
     up: string;
 };
 export default mouseClickEvents;
-//# sourceMappingURL=mouseClickEvents.d.ts.map

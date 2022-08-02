@@ -1,10 +1,10 @@
 /**
- * Remove eventListener from an `HTMLElement` | `Document` | `Window` target.
+ * Remove eventListener from an `EventTarget` object.
  */
 export default function off(
   element: EventTarget,
   eventName: string,
-  listener: EventListenerObject["handleEvent"],
+  listener: EventListener,
   options?: AddEventListenerOptions
 ) {
   const ops = options || false;

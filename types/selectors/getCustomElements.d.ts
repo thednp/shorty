@@ -1,3 +1,3 @@
-declare const getCustomElements: (parent?: ParentNode) => HTMLElement[];
+import CustomElement from '../interface/customElement';
+declare const getCustomElements: (parent?: ParentNode) => CustomElement[];
 export default getCustomElements;
-//# sourceMappingURL=getCustomElements.d.ts.map

@@ -26,4 +26,3 @@ const bezierEasings = {
     easingBackInOut: "cubic-bezier(0.68,-0.55,0.265,1.55)",
 };
 export default bezierEasings;
-//# sourceMappingURL=bezierEasings.js.map

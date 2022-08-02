@@ -1,4 +1,6 @@
-import isHTMLElement from "../is/isHTMLElement";
+import isMap from '../is/isMap';
+import isHTMLElement from '../is/isHTMLElement';
+import isNumber from '../is/isNumber';
 const TimeCache = new Map();
 const Timer = {
     set: (element, callback, delay, key) => {
@@ -8,8 +10,7 @@ const Timer = {
             if (!TimeCache.has(element)) {
                 TimeCache.set(element, new Map());
             }
-            const keyTimers = TimeCache.get(element);
-            keyTimers.set(key, setTimeout(callback, delay));
+            TimeCache.get(element).set(key, setTimeout(callback, delay));
         }
         else {
             TimeCache.set(element, setTimeout(callback, delay));
@@ -19,17 +20,20 @@ const Timer = {
         if (!isHTMLElement(element))
             return null;
         const keyTimers = TimeCache.get(element);
-        if (key && key.length && keyTimers && keyTimers.get) {
+        if (isMap(keyTimers)) {
             return keyTimers.get(key) || null;
         }
-        return keyTimers || null;
+        else if (isNumber(keyTimers)) {
+            return keyTimers;
+        }
+        return null;
     },
     clear: (element, key) => {
         if (!isHTMLElement(element))
             return;
-        if (key && key.length) {
-            const keyTimers = TimeCache.get(element);
-            if (keyTimers && keyTimers.get) {
+        const keyTimers = TimeCache.get(element);
+        if (key && key.length && isMap(keyTimers)) {
+            if (isMap(keyTimers)) {
                 clearTimeout(keyTimers.get(key));
                 keyTimers.delete(key);
                 if (keyTimers.size === 0) {
@@ -38,10 +42,9 @@ const Timer = {
             }
         }
         else {
-            clearTimeout(TimeCache.get(element));
+            clearTimeout(keyTimers);
             TimeCache.delete(element);
         }
     },
 };
 export default Timer;
-//# sourceMappingURL=timer.js.map

@@ -1,2 +1,1 @@
-export default function off(element: EventTarget, eventName: string, listener: EventListenerObject["handleEvent"], options?: AddEventListenerOptions): void;
-//# sourceMappingURL=off.d.ts.map
+export default function off(element: EventTarget, eventName: string, listener: EventListener, options?: AddEventListenerOptions): void;

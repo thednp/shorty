@@ -1,14 +1,14 @@
-import on from "./on";
-import off from "./off";
+import on from './on';
+import off from './off';
 
 /**
- * Add an `eventListener` to an `HTMLElement` | `Document` | `Window`
- * target and remove it once callback is called.
+ * Add an `eventListener` to an `EventTarget`
+ * element and remove it once callback is called.
  */
 const one = (
   element: EventTarget,
   eventName: string,
-  listener: EventListenerObject["handleEvent"],
+  listener: EventListener,
   options?: AddEventListenerOptions
 ) => {
   /** Wrap the listener for easy on -> off */

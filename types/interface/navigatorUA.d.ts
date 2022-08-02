@@ -10,4 +10,3 @@ export interface NavigatorUAData {
 export default interface NavigatorUA extends Navigator {
     readonly userAgentData: NavigatorUAData;
 }
-//# sourceMappingURL=navigatorUA.d.ts.map

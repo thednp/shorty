@@ -1,3 +1,2 @@
-const isArray = (arr) => Array.isArray(arr) || false;
+const isArray = (obj) => Array.isArray(obj) || false;
 export default isArray;
-//# sourceMappingURL=isArray.js.map

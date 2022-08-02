@@ -1,3 +1,2 @@
-declare const ObjectEntries: (obj: Record<string, any>) => [string, any][];
+declare const ObjectEntries: <O extends {}>(obj: O) => [keyof O, O[keyof O]][];
 export default ObjectEntries;
-//# sourceMappingURL=ObjectEntries.d.ts.map
