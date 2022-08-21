@@ -1,6 +1,6 @@
 "use strict";
 /*!
-* SHORTY v2.0.0alpha3 (https://github.com/thednp/shorty)
+* SHORTY v2.0.0alpha4 (https://github.com/thednp/shorty)
 * Copyright 2022 © dnp_theme
 * Licensed under MIT (https://github.com/thednp/shorty/blob/main/LICENSE)
 */

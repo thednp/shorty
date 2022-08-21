@@ -1,6 +1,6 @@
 {
   "name": "@thednp/shorty",
-  "version": "2.0.0alpha3",
+  "version": "2.0.0alpha4",
   "description": "TypeScript shorties",
   "main": "src/index.ts",
   "esmodule": "dist/shorty.js",
