@@ -5,7 +5,7 @@ export default function off(
   element: EventTarget,
   eventName: string,
   listener: EventListener,
-  options?: AddEventListenerOptions
+  options?: AddEventListenerOptions,
 ) {
   const ops = options || false;
   element.removeEventListener(eventName, listener, ops);

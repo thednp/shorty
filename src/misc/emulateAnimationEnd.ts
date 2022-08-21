@@ -1,7 +1,7 @@
-import animationEndEvent from "../strings/animationEndEvent";
-import getElementAnimationDelay from "../get/getElementAnimationDelay";
-import getElementAnimationDuration from "../get/getElementAnimationDuration";
-import dispatchEvent from "./dispatchEvent";
+import animationEndEvent from '../strings/animationEndEvent';
+import getElementAnimationDelay from '../get/getElementAnimationDelay';
+import getElementAnimationDuration from '../get/getElementAnimationDuration';
+import dispatchEvent from './dispatchEvent';
 
 /**
  * Utility to make sure callbacks are consistently

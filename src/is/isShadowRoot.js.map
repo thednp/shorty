@@ -1,1 +1,1 @@
-{"version":3,"file":"isShadowRoot.js","sourceRoot":"","sources":["isShadowRoot.ts"],"names":[],"mappings":"AAMA,MAAM,YAAY,GAAG,CAAC,OAAa,EAAyB,EAAE,CAC5D,CAAC,OAAO,IAAI,OAAO,CAAC,WAAW,CAAC,IAAI,KAAK,YAAY,CAAC,IAAI,KAAK,CAAC;AAElE,eAAe,YAAY,CAAC"}
+{"version":3,"file":"isShadowRoot.js","sourceRoot":"","sources":["isShadowRoot.ts"],"names":[],"mappings":"AAAA;;;;;GAKG;AACH,MAAM,YAAY,GAAG,CAAC,OAAa,EAAyB,EAAE,CAC5D,CAAC,OAAO,IAAI,OAAO,CAAC,WAAW,CAAC,IAAI,KAAK,YAAY,CAAC,IAAI,KAAK,CAAC;AAElE,eAAe,YAAY,CAAC"}

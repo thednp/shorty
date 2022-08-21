@@ -7,6 +7,6 @@
  * @returns the query result
  */
 const isTableElement = (element?: any): element is HTMLTableElement | HTMLTableCellElement =>
-  (element && ["TABLE", "TD", "TH"].includes(element.tagName)) || false;
+  (element && ['TABLE', 'TD', 'TH'].includes(element.tagName)) || false;
 
 export default isTableElement;

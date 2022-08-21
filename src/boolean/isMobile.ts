@@ -1,5 +1,5 @@
-import userAgentData from "../strings/userAgentData";
-import userAgent from "../strings/userAgent";
+import userAgentData from '../strings/userAgentData';
+import userAgent from '../strings/userAgent';
 
 const mobileBrands = /iPhone|iPad|iPod|Android/i;
 let isMobileCheck = false;

@@ -2,6 +2,16 @@ import getAttribute from '../attr/getAttribute';
 import normalizeValue from './normalizeValue';
 import ObjectEntries from './ObjectEntries';
 import toLowerCase from './toLowerCase';
+// import { optionValues } from '../types';
+/**
+ * Utility to normalize component options.
+ *
+ * @param element target
+ * @param defaultOps component default options
+ * @param inputOps component instance options
+ * @param ns component namespace
+ * @return normalized component options object
+ */
 const normalizeOptions = (element, defaultOps, inputOps, ns) => {
     const INPUT = { ...inputOps };
     const data = { ...element.dataset };
@@ -18,6 +28,7 @@ const normalizeOptions = (element, defaultOps, inputOps, ns) => {
         INPUT[k] = normalizeValue(v);
     });
     ObjectEntries(defaultOps).forEach(([k, v]) => {
+        /* istanbul ignore else */
         if (k in INPUT) {
             normalOps[k] = INPUT[k];
         }

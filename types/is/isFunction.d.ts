@@ -1,2 +1,2 @@
-declare const isFunction: (fn?: any) => fn is Function;
+declare const isFunction: (fn?: any) => fn is () => any;
 export default isFunction;

@@ -1,4 +1,4 @@
-import CSS4Declaration from "../interface/css4Declaration";
+// import CSS4Declaration from "../interface/css4Declaration";
 
 /**
  * Shortcut for `window.getComputedStyle(element).propertyName`
@@ -12,13 +12,14 @@ import CSS4Declaration from "../interface/css4Declaration";
  * @return the css property value
  */
 const getElementStyle = (element: HTMLElement, property: string): string => {
-  const computedStyle: CSS4Declaration = getComputedStyle(element);
+  const computedStyle = getComputedStyle(element);
+  const prop = property
+    .replace('webkit', 'Webkit')
+    .replace(/([A-Z])/g, '-$1')
+    .toLowerCase();
 
-  // must use camelcase strings,
-  // or non-camelcase strings with `getPropertyValue`
-  return property.includes("--")
-    ? computedStyle.getPropertyValue(property)
-    : computedStyle[property];
+  // modern browsers only
+  return computedStyle.getPropertyValue(prop);
 };
 
 export default getElementStyle;

@@ -1,5 +1,5 @@
 /**
  * A global namespace for `submit` event.
  */
-const submitEvent = "submit";
+const submitEvent = 'submit';
 export default submitEvent;

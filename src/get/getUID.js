@@ -2,6 +2,13 @@ import isMap from '../is/isMap';
 let elementUID = 0;
 let elementMapUID = 0;
 const elementIDMap = new Map();
+/**
+ * Returns a unique identifier for popover, tooltip, scrollspy.
+ *
+ * @param element target element
+ * @param key optional identifier key
+ * @returns an existing or new unique ID
+ */
 const getUID = (element, key) => {
     let result = key ? elementUID : elementMapUID;
     if (key) {

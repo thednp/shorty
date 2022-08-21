@@ -1,15 +1,16 @@
 import ObjectAssign from './ObjectAssign';
 import ObjectEntries from './ObjectEntries';
 import CSS4Declaration from '../interface/css4Declaration';
+import isString from '../is/isString';
 
 /**
  * Shortcut for multiple uses of `HTMLElement.style.propertyName` method.
  * @param element target element
  * @param styles attribute value
  */
-const setElementStyle = (element: HTMLElement, styles: CSS4Declaration): void => {
-  ObjectEntries(styles).forEach(([key, value]: [string, string]) => {
-    if (key.includes('--')) {
+const setElementStyle = (element: HTMLElement, styles: Partial<CSS4Declaration>): void => {
+  ObjectEntries(styles).forEach(([key, value]) => {
+    if (isString(key) && key.includes('--')) {
       element.style.setProperty(key, value);
     } else {
       const propObject: Partial<CSS4Declaration> = {};

@@ -4,6 +4,6 @@
  * @returns the query result
  */
 const isHTMLImageElement = (element?: any): element is HTMLImageElement =>
-  (element && element.tagName === "IMG") || false;
+  (element && element.tagName === 'IMG') || false;
 
 export default isHTMLImageElement;

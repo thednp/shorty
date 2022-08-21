@@ -1,5 +1,5 @@
-import isHTMLElement from "./isHTMLElement";
-import getBoundingClientRect from "../get/getBoundingClientRect";
+import isHTMLElement from './isHTMLElement';
+import getBoundingClientRect from '../get/getBoundingClientRect';
 
 /**
  * Checks if a target `HTMLElement` is affected by scale.

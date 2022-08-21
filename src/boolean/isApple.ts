@@ -1,6 +1,6 @@
-import { NavigatorUABrand } from "../interface/navigatorUA";
-import userAgentData from "../strings/userAgentData";
-import userAgent from "../strings/userAgent";
+import { NavigatorUABrand } from '../interface/navigatorUA';
+import userAgentData from '../strings/userAgentData';
+import userAgent from '../strings/userAgent';
 
 const appleBrands = /(iPhone|iPod|iPad)/;
 

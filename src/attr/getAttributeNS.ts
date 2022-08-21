@@ -5,7 +5,6 @@
  * @param att attribute name
  * @returns attribute value
  */
-const getAttributeNS = (ns: string, element: HTMLElement, att: string) =>
-  element.getAttributeNS(ns, att);
+const getAttributeNS = (ns: string, element: HTMLElement, att: string) => element.getAttributeNS(ns, att);
 
 export default getAttributeNS;

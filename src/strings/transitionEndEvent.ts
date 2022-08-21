@@ -1,5 +1,5 @@
 /**
  * A global namespace for 'transitionend' string.
  */
-const transitionEndEvent = "transitionend";
+const transitionEndEvent = 'transitionend';
 export default transitionEndEvent;

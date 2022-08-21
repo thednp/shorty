@@ -1,3 +1,9 @@
+/**
+ * Utility to normalize component options
+ *
+ * @param value the input value
+ * @return the normalized value
+ */
 const normalizeValue = (value) => {
     if (['true', true].includes(value)) {
         return true;
@@ -11,6 +17,7 @@ const normalizeValue = (value) => {
     if (value !== '' && !Number.isNaN(+value)) {
         return +value;
     }
+    // string / function / HTMLElement / object / undefined
     return value;
 };
 export default normalizeValue;

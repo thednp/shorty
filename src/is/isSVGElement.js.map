@@ -1,1 +1,1 @@
-{"version":3,"file":"isSVGElement.js","sourceRoot":"","sources":["isSVGElement.ts"],"names":[],"mappings":"AAOA,MAAM,YAAY,GAAG,CAAC,OAAa,EAAyB,EAAE,CAC5D,CAAC,OAAO,IAAI,OAAO,CAAC,WAAW,CAAC,IAAI,CAAC,QAAQ,CAAC,KAAK,CAAC,CAAC,IAAI,KAAK,CAAC;AAEjE,eAAe,YAAY,CAAC"}
+{"version":3,"file":"isSVGElement.js","sourceRoot":"","sources":["isSVGElement.ts"],"names":[],"mappings":"AAAA;;;;;;GAMG;AACH,MAAM,YAAY,GAAG,CAAC,OAAa,EAAyB,EAAE,CAC5D,CAAC,OAAO,IAAI,OAAO,CAAC,WAAW,CAAC,IAAI,CAAC,QAAQ,CAAC,KAAK,CAAC,CAAC,IAAI,KAAK,CAAC;AAEjE,eAAe,YAAY,CAAC"}

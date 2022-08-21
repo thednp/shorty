@@ -1,5 +1,5 @@
-import isDocument from "../is/isDocument";
-import isNode from "../is/isNode";
+import isDocument from '../is/isDocument';
+import isNode from '../is/isNode';
 
 /**
  * Returns the `Window` object of a target node.
@@ -12,9 +12,9 @@ const getWindow = (node?: Node): Window => {
   // node is undefined | NULL
   if (!node) return window;
   // node instanceof Document
-  if (isDocument(node)) return node.defaultView;
+  if (isDocument(node)) return node.defaultView as Window;
   // node instanceof Node
-  if (isNode(node)) return node.ownerDocument.defaultView;
+  if (isNode(node)) return node?.ownerDocument?.defaultView as Window;
   // node is instanceof Window
   return node;
 };

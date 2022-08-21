@@ -5,6 +5,5 @@
  * @param element the target object
  * @returns the query result
  */
-const isHTMLElement = (element?: any): element is HTMLElement =>
-  (element && element.nodeType === 1) || false;
+const isHTMLElement = (element?: any): element is HTMLElement => (element && element.nodeType === 1) || false;
 export default isHTMLElement;

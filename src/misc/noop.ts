@@ -1,4 +1,6 @@
 /** A generic function with empty body. */
-const noop = () => {};
+const noop = () => {
+  // this is a noop
+};
 
 export default noop;

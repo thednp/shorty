@@ -1,3 +1,2 @@
-import { optionValues } from '../types';
-declare const normalizeValue: (value?: any) => optionValues;
+declare const normalizeValue: (value?: any) => any;
 export default normalizeValue;

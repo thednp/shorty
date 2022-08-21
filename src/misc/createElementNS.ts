@@ -14,18 +14,15 @@ import isString from '../is/isString';
  * @param param `tagName` or object
  * @return a new `HTMLElement`
  */
-const createElementNS = (
-  ns?: string,
-  param?: string | Partial<HTMLElement>
-): HTMLElement | undefined => {
-  if (!ns && !param) return undefined;
+const createElementNS = (ns: string, param?: string | Partial<HTMLElement>): HTMLElement | undefined => {
+  if (!ns || !param) return undefined;
 
   if (typeof param === 'string') {
     return getDocument().createElementNS(ns, param) as HTMLElement;
   }
 
   const { tagName } = param;
-  const newElement = createElementNS(ns, tagName as string);
+  const newElement = createElementNS(ns, tagName);
 
   if (!newElement) return undefined;
 

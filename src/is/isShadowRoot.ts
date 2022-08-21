@@ -5,6 +5,6 @@
  * @returns the query result
  */
 const isShadowRoot = (element?: any): element is ShadowRoot =>
-  (element && element.constructor.name === "ShadowRoot") || false;
+  (element && element.constructor.name === 'ShadowRoot') || false;
 
 export default isShadowRoot;

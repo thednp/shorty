@@ -1,1 +1,1 @@
-{"version":3,"file":"supportTouch.js","sourceRoot":"","sources":["supportTouch.ts"],"names":[],"mappings":"AAGA,MAAM,YAAY,GAChB,cAAc,IAAI,MAAM,IAA+B,kBAAkB,IAAI,SAAS,CAAC;AAEzF,eAAe,YAAY,CAAC"}
+{"version":3,"file":"supportTouch.js","sourceRoot":"","sources":["supportTouch.ts"],"names":[],"mappings":"AAAA;;GAEG;AACH,MAAM,YAAY,GAAG,cAAc,IAAI,MAAM,IAAI,0BAA0B,CAAC,kBAAkB,IAAI,SAAS,CAAC;AAE5G,eAAe,YAAY,CAAC"}

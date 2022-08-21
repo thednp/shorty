@@ -599,9 +599,7 @@ var __SHORTY_export = (() => {
   var documentHead_default = documentHead;
 
   // src/boolean/support3DTransform.ts
-  var support3DTransform = ["webkitPerspective", "perspective"].some(
-    (p) => p in documentHead_default.style
-  );
+  var support3DTransform = ["webkitPerspective", "perspective"].some((p) => p in documentHead_default.style);
   var support3DTransform_default = support3DTransform;
 
   // src/event/on.ts
@@ -628,6 +626,11 @@ var __SHORTY_export = (() => {
   };
   var one_default = one;
 
+  // src/misc/noop.ts
+  var noop = () => {
+  };
+  var noop_default = noop;
+
   // src/boolean/supportPassive.ts
   var supportPassive = (() => {
     let result = false;
@@ -638,8 +641,7 @@ var __SHORTY_export = (() => {
           return result;
         }
       });
-      one_default(document, DOMContentLoadedEvent_default, () => {
-      }, opts);
+      one_default(document, DOMContentLoadedEvent_default, noop_default, opts);
     } catch (e) {
     }
     return result;
@@ -812,7 +814,7 @@ var __SHORTY_export = (() => {
 
   // src/misc/createElementNS.ts
   var createElementNS = (ns, param) => {
-    if (!ns && !param)
+    if (!ns || !param)
       return void 0;
     if (typeof param === "string") {
       return getDocument_default().createElementNS(ns, param);
@@ -843,7 +845,8 @@ var __SHORTY_export = (() => {
   // src/get/getElementStyle.ts
   var getElementStyle = (element, property) => {
     const computedStyle = getComputedStyle(element);
-    return property.includes("--") ? computedStyle.getPropertyValue(property) : computedStyle[property];
+    const prop = property.replace("webkit", "Webkit").replace(/([A-Z])/g, "-$1").toLowerCase();
+    return computedStyle.getPropertyValue(prop);
   };
   var getElementStyle_default = getElementStyle;
 
@@ -949,11 +952,6 @@ var __SHORTY_export = (() => {
   var focus = (element, options) => element.focus(options);
   var focus_default = focus;
 
-  // src/misc/noop.ts
-  var noop = () => {
-  };
-  var noop_default = noop;
-
   // src/misc/normalizeValue.ts
   var normalizeValue = (value) => {
     if (["true", true].includes(value)) {
@@ -1043,7 +1041,7 @@ var __SHORTY_export = (() => {
   // src/misc/setElementStyle.ts
   var setElementStyle = (element, styles) => {
     ObjectEntries_default(styles).forEach(([key, value]) => {
-      if (key.includes("--")) {
+      if (isString_default(key) && key.includes("--")) {
         element.style.setProperty(key, value);
       } else {
         const propObject = {};
@@ -1081,7 +1079,7 @@ var __SHORTY_export = (() => {
       if (!isHTMLElement_default(element))
         return null;
       const keyTimers = TimeCache.get(element);
-      if (isMap_default(keyTimers)) {
+      if (key && isMap_default(keyTimers)) {
         return keyTimers.get(key) || null;
       } else if (isNumber_default(keyTimers)) {
         return keyTimers;
@@ -1239,7 +1237,7 @@ var __SHORTY_export = (() => {
     if (isDocument_default(node))
       return node.defaultView;
     if (isNode_default(node))
-      return node.ownerDocument.defaultView;
+      return node?.ownerDocument?.defaultView;
     return node;
   };
   var getWindow_default = getWindow;
@@ -1379,9 +1377,7 @@ var __SHORTY_export = (() => {
   // src/selectors/getElementsByClassName.ts
   var getElementsByClassName = (selector, parent) => {
     const lookUp = parent && isNode_default(parent) ? parent : getDocument_default();
-    return lookUp.getElementsByClassName(
-      selector
-    );
+    return lookUp.getElementsByClassName(selector);
   };
   var getElementsByClassName_default = getElementsByClassName;
 
@@ -1604,4 +1600,3 @@ var __SHORTY_export = (() => {
   return __toCommonJS(src_exports);
 })();
 const SHORTY = __SHORTY_export.default;
-//# sourceMappingURL=shorty.es5.js.map

@@ -48,6 +48,9 @@ import touchmove from './touchmoveEvent';
 import touchcancel from './touchcancelEvent';
 import touchend from './touchendEvent';
 import unload from './unloadEvent';
+/**
+ * A global namespace for all browser native events.
+ */
 const nativeEvents = {
     DOMContentLoaded,
     DOMMouseScroll,

@@ -19,6 +19,9 @@ const sourceFilter = `${name}/${sourcePath}`;
 const instrumenter = createInstrumenter({
   compact: false,
   esModules: true,
+  // coverageGlobalScope: 'window',
+  preserveComments: true,
+  autoWrap: true,
 });
 
 const createEsbuildIstanbulPlugin = (): esbuild.Plugin => {
@@ -43,11 +46,12 @@ const createEsbuildIstanbulPlugin = (): esbuild.Plugin => {
           // console.log("🧡 instrumenting %s for output coverage", path);
           const sourceMapPath = path.replace(/\.ts/, '.js.map');
           const sourceMapText = await promises.readFile(sourceMapPath, 'utf8');
+          const contents1 = await promises.readFile(path.replace('.ts', '.js'), 'utf8');
 
           return {
             contents: instrumenter.instrumentSync(
-              tsCompile(contents),
-              path,
+              contents1,
+              path.replace('.ts', '.js'),
               sourceMapText ? JSON.parse(sourceMapText) : undefined
             ),
           };

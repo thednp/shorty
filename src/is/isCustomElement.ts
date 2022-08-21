@@ -1,4 +1,4 @@
-import CustomElement from "../interface/customElement";
+import CustomElement from '../interface/customElement';
 
 /**
  * Checks if an object is a `CustomElement`.

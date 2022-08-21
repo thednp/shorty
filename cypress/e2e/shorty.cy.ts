@@ -283,6 +283,7 @@ describe('Shorty Library Test', () => {
       isElementInScrollRange,
       isElementInViewport,
       isElementsArray,
+      isCanvas,
       isFunction,
       isHTMLCollection,
       isHTMLElement,
@@ -389,9 +390,18 @@ describe('Shorty Library Test', () => {
         expect(isMedia(svg), 'isMedia(svg)').to.be.true;
         expect(isMedia(path), 'isMedia(path)').to.be.true;
 
+        expect(isCanvas(), 'isCanvas()').to.be.false;
+        expect(isCanvas(win.document), 'isCanvas(document)').to.be.false;
+        expect(isCanvas(win), 'isCanvas(window)').to.be.false;
+        expect(isCanvas(CE), 'isCanvas(CustomElement)').to.be.false;
+        expect(isCanvas(img), 'isCanvas(image)').to.be.false;
+        expect(isCanvas(svg), 'isCanvas(svg)').to.be.false;
+        expect(isCanvas(win.document.createElement('canvas')), 'isCanvas(canvas)').to.be.true;
+
         expect(isJSON(), 'isJSON()').to.be.false;
         expect(isJSON(win.document), 'isJSON(document)').to.be.false;
         expect(isJSON(win), 'isJSON(window)').to.be.false;
+        expect(isJSON('some string'), 'isJSON(JSON)').to.be.false;
         expect(isJSON('{"a":1,"b":2}'), 'isJSON(JSON)').to.be.true;
         expect(isJSON('["a",2]'), 'isJSON(JSON)').to.be.true;
 
@@ -731,6 +741,13 @@ describe('Shorty Library Test', () => {
           }),
           'createElement(object)'
         ).to.be.instanceOf(HTMLParagraphElement);
+        expect(
+          createElement({
+            className: 'lead',
+            innerText: 'This is a newly created paragraph.',
+          }),
+          'createElement(incompleteObject)'
+        ).to.be.undefined;
 
         expect(createElementNS(), 'createElementNS()').to.be.undefined;
         expect(
@@ -753,6 +770,14 @@ describe('Shorty Library Test', () => {
           }),
           'createElementNS(ns, object)'
         ).to.be.instanceOf(SVGPathElement);
+        expect(
+          createElementNS('http://www.w3.org/2000/svg', {
+            tagName: '',
+            className: 'icon',
+            d: 'M98,158l157,156L411,158l27,27L255,368L71,185L98,158z',
+          }),
+          'createElementNS(ns, object)'
+        ).to.be.undefined;
 
         Data.set(el);
         expect(Data.get(el), 'not enough params - Data.get(node)').to.be.null;

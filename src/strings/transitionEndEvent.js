@@ -1,3 +1,6 @@
-const transitionEndEvent = "transitionend";
+/**
+ * A global namespace for 'transitionend' string.
+ */
+const transitionEndEvent = 'transitionend';
 export default transitionEndEvent;
 //# sourceMappingURL=transitionEndEvent.js.map

@@ -1,3 +1,4 @@
+// strings
 import ariaChecked from './strings/ariaChecked';
 import ariaDescription from './strings/ariaDescription';
 import ariaDescribedBy from './strings/ariaDescribedBy';
@@ -107,6 +108,7 @@ import scrollWidth from './strings/scrollWidth';
 import tabindex from './strings/tabindex';
 import userAgentData from './strings/userAgentData';
 import userAgent from './strings/userAgent';
+// boolean
 import isMobile from './boolean/isMobile';
 import isApple from './boolean/isApple';
 import isFirefox from './boolean/isFirefox';
@@ -116,6 +118,7 @@ import supportTransform from './boolean/supportTransform';
 import supportTouch from './boolean/supportTouch';
 import supportAnimation from './boolean/supportAnimation';
 import supportTransition from './boolean/supportTransition';
+// attributes
 import getAttribute from './attr/getAttribute';
 import getAttributeNS from './attr/getAttributeNS';
 import hasAttribute from './attr/hasAttribute';
@@ -124,12 +127,15 @@ import setAttribute from './attr/setAttribute';
 import setAttributeNS from './attr/setAttributeNS';
 import removeAttribute from './attr/removeAttribute';
 import removeAttributeNS from './attr/removeAttributeNS';
+// class
 import addClass from './class/addClass';
 import removeClass from './class/removeClass';
 import hasClass from './class/hasClass';
+// event
 import on from './event/on';
 import off from './event/off';
 import one from './event/one';
+// misc
 import ArrayFrom from './misc/ArrayFrom';
 import Data, { getInstance } from './misc/data';
 import createElement from './misc/createElement';
@@ -155,6 +161,7 @@ import setElementStyle from './misc/setElementStyle';
 import Timer from './misc/timer';
 import toLowerCase from './misc/toLowerCase';
 import toUpperCase from './misc/toUpperCase';
+// get
 import getBoundingClientRect from './get/getBoundingClientRect';
 import getDocument from './get/getDocument';
 import getDocumentBody from './get/getDocumentBody';
@@ -170,6 +177,7 @@ import getParentNode from './get/getParentNode';
 import getRectRelativeToOffsetParent from './get/getRectRelativeToOffsetParent';
 import getUID from './get/getUID';
 import getWindow from './get/getWindow';
+// is
 import isArray from './is/isArray';
 import isCanvas from './is/isCanvas';
 import isDocument from './is/isDocument';
@@ -197,6 +205,7 @@ import isString from './is/isString';
 import isSVGElement from './is/isSVGElement';
 import isTableElement from './is/isTableElement';
 import isWindow from './is/isWindow';
+// selectors
 import closest from './selectors/closest';
 import querySelector from './selectors/querySelector';
 import getCustomElements from './selectors/getCustomElements';

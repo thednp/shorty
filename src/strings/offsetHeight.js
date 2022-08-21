@@ -1,3 +1,6 @@
-const offsetHeight = "offsetHeight";
+/**
+ * A global namespace for `offsetHeight` property.
+ */
+const offsetHeight = 'offsetHeight';
 export default offsetHeight;
 //# sourceMappingURL=offsetHeight.js.map

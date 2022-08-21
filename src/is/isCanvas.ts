@@ -6,6 +6,6 @@
  */
 
 const isCanvas = (element?: any): element is HTMLCanvasElement =>
-  (element && element.constructor.name === "HTMLCanvasElement") || false;
+  (element && element.constructor.name === 'HTMLCanvasElement') || false;
 
 export default isCanvas;

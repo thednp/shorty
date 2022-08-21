@@ -1,1 +1,1 @@
-{"version":3,"file":"setAttributeNS.js","sourceRoot":"","sources":["setAttributeNS.ts"],"names":[],"mappings":"AAOA,MAAM,cAAc,GAAG,CAAC,EAAU,EAAE,OAAoB,EAAE,GAAW,EAAE,KAAa,EAAQ,EAAE,CAC5F,OAAO,CAAC,cAAc,CAAC,EAAE,EAAE,GAAG,EAAE,KAAK,CAAC,CAAC;AAEzC,eAAe,cAAc,CAAC"}
+{"version":3,"file":"setAttributeNS.js","sourceRoot":"","sources":["setAttributeNS.ts"],"names":[],"mappings":"AAAA;;;;;;GAMG;AACH,MAAM,cAAc,GAAG,CAAC,EAAU,EAAE,OAAoB,EAAE,GAAW,EAAE,KAAa,EAAQ,EAAE,CAC5F,OAAO,CAAC,cAAc,CAAC,EAAE,EAAE,GAAG,EAAE,KAAK,CAAC,CAAC;AAEzC,eAAe,cAAc,CAAC"}

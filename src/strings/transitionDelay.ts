@@ -1,5 +1,5 @@
 /**
  * A global namespace for 'transitionDelay' string.
  */
-const transitionDelay = "transitionDelay";
+const transitionDelay = 'transitionDelay';
 export default transitionDelay;

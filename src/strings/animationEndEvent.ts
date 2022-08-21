@@ -1,5 +1,5 @@
 /**
  * A global namespace for 'animationend' string.
  */
-const animationEndEvent = "animationend";
+const animationEndEvent = 'animationend';
 export default animationEndEvent;

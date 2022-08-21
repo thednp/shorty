@@ -1,3 +1,6 @@
-const submitEvent = "submit";
+/**
+ * A global namespace for `submit` event.
+ */
+const submitEvent = 'submit';
 export default submitEvent;
 //# sourceMappingURL=submitEvent.js.map

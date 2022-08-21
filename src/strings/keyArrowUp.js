@@ -1,3 +1,7 @@
-const keyArrowUp = "ArrowUp";
+/**
+ * A global namespace for `ArrowUp` key.
+ * e.which = 38 equivalent
+ */
+const keyArrowUp = 'ArrowUp';
 export default keyArrowUp;
 //# sourceMappingURL=keyArrowUp.js.map

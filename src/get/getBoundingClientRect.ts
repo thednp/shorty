@@ -1,5 +1,5 @@
-import isHTMLElement from "../is/isHTMLElement";
-import BoundingClientRect from "../interface/boundingClientRect";
+import isHTMLElement from '../is/isHTMLElement';
+import BoundingClientRect from '../interface/boundingClientRect';
 
 /**
  * Returns the bounding client rect of a target `HTMLElement`.
@@ -9,10 +9,7 @@ import BoundingClientRect from "../interface/boundingClientRect";
  * @param includeScale when *true*, the target scale is also computed
  * @returns the bounding client rect object
  */
-const getBoundingClientRect = (
-  element: HTMLElement,
-  includeScale?: boolean
-): BoundingClientRect => {
+const getBoundingClientRect = (element: HTMLElement, includeScale?: boolean): BoundingClientRect => {
   const { width, height, top, right, bottom, left } = element.getBoundingClientRect();
   let scaleX = 1;
   let scaleY = 1;

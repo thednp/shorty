@@ -7,12 +7,10 @@
  * @returns the query result
  */
 
-const isMedia = (
-  element?: any
-): element is SVGElement | HTMLImageElement | HTMLVideoElement | HTMLCanvasElement =>
+const isMedia = (element?: any): element is SVGElement | HTMLImageElement | HTMLVideoElement | HTMLCanvasElement =>
   (element &&
     element.nodeType === 1 &&
-    ["SVG", "Image", "Video", "Canvas"].some((s) => element.constructor.name.includes(s))) ||
+    ['SVG', 'Image', 'Video', 'Canvas'].some((s) => element.constructor.name.includes(s))) ||
   false;
 
 export default isMedia;

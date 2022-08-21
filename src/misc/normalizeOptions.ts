@@ -2,7 +2,7 @@ import getAttribute from '../attr/getAttribute';
 import normalizeValue from './normalizeValue';
 import ObjectEntries from './ObjectEntries';
 import toLowerCase from './toLowerCase';
-import { optionValues } from '../types';
+// import { optionValues } from '../types';
 
 /**
  * Utility to normalize component options.
@@ -13,14 +13,14 @@ import { optionValues } from '../types';
  * @param ns component namespace
  * @return normalized component options object
  */
-const normalizeOptions = <T extends { [key: string]: optionValues }>(
+const normalizeOptions = <T extends { [key: string]: any }>(
   element: HTMLElement,
   defaultOps: T,
   inputOps: Partial<T>,
-  ns?: string
+  ns?: string,
 ): T => {
   const INPUT = { ...inputOps };
-  const data = { ...element.dataset } as Partial<T> & { [key: string]: any };
+  const data = { ...element.dataset };
   const normalOps = { ...defaultOps };
   const dataOps: Partial<T> = {};
   const title = 'title';
@@ -41,9 +41,9 @@ const normalizeOptions = <T extends { [key: string]: optionValues }>(
   ObjectEntries(defaultOps).forEach(([k, v]) => {
     /* istanbul ignore else */
     if (k in INPUT) {
-      normalOps[k] = INPUT[k];
+      normalOps[k] = INPUT[k] as T[keyof T];
     } else if (k in dataOps) {
-      normalOps[k] = dataOps[k];
+      normalOps[k] = dataOps[k] as T[keyof T];
     } else {
       normalOps[k] = (k === title ? getAttribute(element, title) : v) as T[keyof T];
     }

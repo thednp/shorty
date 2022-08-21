@@ -1,6 +1,13 @@
-import getBoundingClientRect from "../get/getBoundingClientRect";
-import getDocumentElement from "../get/getDocumentElement";
-import isNode from "./isNode";
+import getBoundingClientRect from '../get/getBoundingClientRect';
+import getDocumentElement from '../get/getDocumentElement';
+import isNode from './isNode';
+/**
+ * Utility to determine if an `HTMLElement`
+ * is partially visible in viewport.
+ *
+ * @param element target
+ * @return the query result
+ */
 const isElementInScrollRange = (element) => {
     if (!isNode(element))
         return false;

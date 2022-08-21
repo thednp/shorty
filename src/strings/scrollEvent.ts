@@ -1,5 +1,5 @@
 /**
  * A global namespace for `scroll` event.
  */
-const scrollEvent = "scroll";
+const scrollEvent = 'scroll';
 export default scrollEvent;

@@ -1,1 +1,1 @@
-{"version":3,"file":"addClass.js","sourceRoot":"","sources":["addClass.ts"],"names":[],"mappings":"AAMA,MAAM,QAAQ,GAAG,CAAC,OAAoB,EAAE,GAAG,SAAmB,EAAQ,EAAE;IACtE,OAAO,CAAC,SAAS,CAAC,GAAG,CAAC,GAAG,SAAS,CAAC,CAAC;AACtC,CAAC,CAAC;AAEF,eAAe,QAAQ,CAAC"}
+{"version":3,"file":"addClass.js","sourceRoot":"","sources":["addClass.ts"],"names":[],"mappings":"AAAA;;;;;GAKG;AACH,MAAM,QAAQ,GAAG,CAAC,OAAoB,EAAE,GAAG,SAAmB,EAAQ,EAAE;IACtE,OAAO,CAAC,SAAS,CAAC,GAAG,CAAC,GAAG,SAAS,CAAC,CAAC;AACtC,CAAC,CAAC;AAEF,eAAe,QAAQ,CAAC"}

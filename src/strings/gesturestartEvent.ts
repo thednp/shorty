@@ -1,5 +1,5 @@
 /**
  * A global namespace for `gesturestart` event.
  */
-const gesturestartEvent = "gesturestart";
+const gesturestartEvent = 'gesturestart';
 export default gesturestartEvent;

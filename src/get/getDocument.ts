@@ -1,6 +1,6 @@
-import isNode from "../is/isNode";
-import isWindow from "../is/isWindow";
-import isDocument from "../is/isDocument";
+import isNode from '../is/isNode';
+import isWindow from '../is/isWindow';
+import isDocument from '../is/isDocument';
 
 /**
  * Returns the `document` or the `#document` element.
@@ -13,7 +13,7 @@ const getDocument = (node?: any): Document => {
   // node instanceof Document
   if (isDocument(node)) return node;
   // node instanceof Node
-  if (isNode(node)) return node.ownerDocument;
+  if (isNode(node)) return node.ownerDocument as Document;
   // node instanceof Window
   if (isWindow(node)) return node.document;
   // node is undefined | NULL

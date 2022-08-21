@@ -1,23 +1,23 @@
 {
+   // https://janessagarrow.com/blog/typescript-and-esbuild/
   "compilerOptions": {
     "lib": ["DOM", "ESNext", "DOM.Iterable"],
+    "types": ["cypress", "@testing-library/cypress"],
     "allowJs": true,
+    "importHelpers": true,
     "target": "ESNext",
+    "isolatedModules": true,
     "esModuleInterop": true,
     "noImplicitAny": true,
     "alwaysStrict": true,
     "sourceMap": true,
     "skipLibCheck": true,
-    "removeComments": true,
+    "skipDefaultLibCheck": true,
+    "removeComments": false,
     "module": "ESNext",
-    "baseUrl": "./"
-    // "moduleResolution": "NodeNext",
-    // "resolveJsonModule": true,
-    // "inlineSourceMap": true,
-    // "moduleResolution": "Node",
-    // "outDir": "./types"
-    // "outFile": "./types/index.d.ts"
+    "moduleResolution": "Node",
+    "baseUrl": "./",
   },
   "include": ["src"],
-  "exclude": ["node_modules", "experiments", "cypress"]
+  "exclude": ["node_modules", "experiments", "cypress", "coverage", "dist"],
 }

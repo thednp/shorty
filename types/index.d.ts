@@ -251,7 +251,7 @@ declare const SHORTY: {
     };
     getInstance: <T_3>(target: HTMLElement, component: string) => T_3;
     createElement: (param?: string | Partial<HTMLElement>) => HTMLElement;
-    createElementNS: (ns?: string, param?: string | Partial<HTMLElement>) => HTMLElement;
+    createElementNS: (ns: string, param?: string | Partial<HTMLElement>) => HTMLElement;
     toUpperCase: (source: string) => string;
     toLowerCase: (source: string) => string;
     Timer: {
@@ -298,7 +298,7 @@ declare const SHORTY: {
     isShadowRoot: (element?: any) => element is ShadowRoot;
     isDocument: (obj?: any) => obj is Document;
     isElementsArray: (obj?: any) => obj is HTMLElement[];
-    isFunction: (fn?: any) => fn is Function;
+    isFunction: (fn?: any) => fn is () => any;
     isObject: (obj?: any) => obj is object;
     isWindow: (obj?: any) => obj is Window;
     isMedia: (element?: any) => element is HTMLCanvasElement | HTMLImageElement | HTMLVideoElement | SVGElement;
@@ -311,9 +311,9 @@ declare const SHORTY: {
     getElementsByClassName: (selector: string, parent?: ParentNode) => HTMLCollectionOf<HTMLElement>;
     getElementsByTagName: (selector: string, parent?: ParentNode) => HTMLCollectionOf<HTMLElement>;
     matches: (target: Element, selector: string) => boolean;
-    normalizeValue: (value?: any) => import("./types").optionValues;
+    normalizeValue: (value?: any) => any;
     normalizeOptions: <T_5 extends {
-        [key: string]: import("./types").optionValues;
+        [key: string]: any;
     }>(element: HTMLElement, defaultOps: T_5, inputOps: Partial<T_5>, ns?: string) => T_5;
     reflow: (element: HTMLElement) => number;
     noop: () => void;
@@ -324,8 +324,8 @@ declare const SHORTY: {
     Float64ArrayFrom: (arr: ArrayLike<number> | Iterable<number>) => Float64Array;
     ObjectAssign: <A extends {}, B>(obj: A, ...source: B[]) => B extends any[] ? any : A & B;
     ObjectEntries: <O extends {}>(obj: O) => [keyof O, O[keyof O]][];
-    ObjectKeys: (obj: Record<string, any>) => string[];
-    ObjectValues: <O_1 extends {}>(obj: O_1) => [O_1[keyof O_1]][];
+    ObjectKeys: <O_1 extends {}>(obj: O_1) => (keyof O_1)[];
+    ObjectValues: <O_2 extends {}>(obj: O_2) => O_2[keyof O_2][];
     OriginalEvent: <T_7>(EventType: string, config?: CustomEventInit<T_7>) => import("./interface/originalEvent").default<T_7>;
     getBoundingClientRect: (element: HTMLElement, includeScale?: boolean) => import("./interface/boundingClientRect").default;
     getDocument: (node?: any) => Document;
@@ -333,7 +333,7 @@ declare const SHORTY: {
     getDocumentElement: (node?: Node) => HTMLElement;
     getDocumentHead: (node?: Node) => HTMLElement & HTMLHeadElement;
     getElementStyle: (element: HTMLElement, property: string) => string;
-    setElementStyle: (element: HTMLElement, styles: import("./interface/css4Declaration").default) => void;
+    setElementStyle: (element: HTMLElement, styles: Partial<import("./interface/css4Declaration").default>) => void;
     hasAttribute: (element: HTMLElement, att: string) => boolean;
     hasAttributeNS: (ns: string, element: HTMLElement, att: string) => boolean;
     getAttribute: (element: HTMLElement, att: string) => string;

@@ -1,1 +1,1 @@
-{"version":3,"file":"DOMMouseScrollEvent.js","sourceRoot":"","sources":["DOMMouseScrollEvent.ts"],"names":[],"mappings":"AAGA,MAAM,mBAAmB,GAAG,gBAAgB,CAAC;AAC7C,eAAe,mBAAmB,CAAC"}
+{"version":3,"file":"DOMMouseScrollEvent.js","sourceRoot":"","sources":["DOMMouseScrollEvent.ts"],"names":[],"mappings":"AAAA;;GAEG;AACH,MAAM,mBAAmB,GAAG,gBAAgB,CAAC;AAC7C,eAAe,mBAAmB,CAAC"}

@@ -1,6 +1,6 @@
-import transitionDelay from "../strings/transitionDelay";
-import transitionProperty from "../strings/transitionProperty";
-import getElementStyle from "./getElementStyle";
+import transitionDelay from '../strings/transitionDelay';
+import transitionProperty from '../strings/transitionProperty';
+import getElementStyle from './getElementStyle';
 
 /**
  * Utility to get the computed `transitionDelay`
@@ -12,9 +12,8 @@ import getElementStyle from "./getElementStyle";
 const getElementTransitionDelay = (element: HTMLElement): number => {
   const propertyValue = getElementStyle(element, transitionProperty);
   const delayValue = getElementStyle(element, transitionDelay);
-  const delayScale = delayValue.includes("ms") ? /* istanbul ignore next */ 1 : 1000;
-  const duration =
-    propertyValue && propertyValue !== "none" ? parseFloat(delayValue) * delayScale : 0;
+  const delayScale = delayValue.includes('ms') ? /* istanbul ignore next */ 1 : 1000;
+  const duration = propertyValue && propertyValue !== 'none' ? parseFloat(delayValue) * delayScale : 0;
 
   return !Number.isNaN(duration) ? duration : /* istanbul ignore next */ 0;
 };

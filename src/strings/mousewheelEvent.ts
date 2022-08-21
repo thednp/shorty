@@ -1,5 +1,5 @@
 /**
  * A global namespace for `mousewheel` event.
  */
-const mousewheelEvent = "mousewheel";
+const mousewheelEvent = 'mousewheel';
 export default mousewheelEvent;

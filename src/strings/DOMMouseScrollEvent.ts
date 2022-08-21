@@ -1,5 +1,5 @@
 /**
  * A global namespace for `DOMMouseScroll` event.
  */
-const DOMMouseScrollEvent = "DOMMouseScroll";
+const DOMMouseScrollEvent = 'DOMMouseScroll';
 export default DOMMouseScrollEvent;

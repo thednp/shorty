@@ -1,6 +1,6 @@
-import getBoundingClientRect from "../get/getBoundingClientRect";
-import getDocumentElement from "../get/getDocumentElement";
-import isNode from "./isNode";
+import getBoundingClientRect from '../get/getBoundingClientRect';
+import getDocumentElement from '../get/getDocumentElement';
+import isNode from './isNode';
 
 /**
  * Utility to determine if an `HTMLElement`

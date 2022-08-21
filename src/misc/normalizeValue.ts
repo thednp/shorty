@@ -1,12 +1,10 @@
-import { optionValues } from '../types';
-
 /**
  * Utility to normalize component options
  *
  * @param value the input value
  * @return the normalized value
  */
-const normalizeValue = (value?: any): optionValues => {
+const normalizeValue = (value?: any): any => {
   if (['true', true].includes(value)) {
     return true;
   }

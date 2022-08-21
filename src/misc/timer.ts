@@ -43,7 +43,7 @@ const Timer = {
     if (!isHTMLElement(element)) return null;
     const keyTimers = TimeCache.get(element);
 
-    if (isMap(keyTimers)) {
+    if (key && isMap(keyTimers)) {
       return keyTimers.get(key) || /* istanbul ignore next */ null;
     } else if (isNumber(keyTimers)) {
       return keyTimers;

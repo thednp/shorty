@@ -1,3 +1,6 @@
-const ariaHasPopup = "aria-haspopup";
+/**
+ * A global namespace for aria-haspopup.
+ */
+const ariaHasPopup = 'aria-haspopup';
 export default ariaHasPopup;
 //# sourceMappingURL=ariaHasPopup.js.map

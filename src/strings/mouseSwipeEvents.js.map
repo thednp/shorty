@@ -1,1 +1,1 @@
-{"version":3,"file":"mouseSwipeEvents.js","sourceRoot":"","sources":["mouseSwipeEvents.ts"],"names":[],"mappings":"AAGA,MAAM,gBAAgB,GAAG;IACvB,KAAK,EAAE,WAAW;IAClB,GAAG,EAAE,SAAS;IACd,IAAI,EAAE,WAAW;IACjB,MAAM,EAAE,YAAY;CACrB,CAAC;AACF,eAAe,gBAAgB,CAAC"}
+{"version":3,"file":"mouseSwipeEvents.js","sourceRoot":"","sources":["mouseSwipeEvents.ts"],"names":[],"mappings":"AAAA;;GAEG;AACH,MAAM,gBAAgB,GAAG;IACvB,KAAK,EAAE,WAAW;IAClB,GAAG,EAAE,SAAS;IACd,IAAI,EAAE,WAAW;IACjB,MAAM,EAAE,YAAY;CACrB,CAAC;AACF,eAAe,gBAAgB,CAAC"}

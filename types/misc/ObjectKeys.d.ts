@@ -1,2 +1,2 @@
-declare const ObjectKeys: (obj: Record<string, any>) => string[];
+declare const ObjectKeys: <O extends {}>(obj: O) => (keyof O)[];
 export default ObjectKeys;

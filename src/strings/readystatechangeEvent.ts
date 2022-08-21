@@ -1,5 +1,5 @@
 /**
  * A global namespace for `readystatechange` event.
  */
-const readystatechangeEvent = "readystatechange";
+const readystatechangeEvent = 'readystatechange';
 export default readystatechangeEvent;

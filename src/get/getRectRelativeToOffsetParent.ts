@@ -15,7 +15,7 @@ import getBoundingClientRect from './getBoundingClientRect';
 const getRectRelativeToOffsetParent = (
   element: HTMLElement,
   offsetParent: HTMLElement,
-  scroll: { x: number; y: number }
+  scroll: { x: number; y: number },
 ): OffsetRect => {
   const isParentAnElement = isHTMLElement(offsetParent);
   const rect = getBoundingClientRect(element, isParentAnElement && isScaledElement(offsetParent));

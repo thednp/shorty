@@ -2,6 +2,16 @@ import isString from '../is/isString';
 import setAttribute from '../attr/setAttribute';
 import getDocument from '../get/getDocument';
 import ObjectEntries from './ObjectEntries';
+/**
+ * Shortie for `document.createElement` method
+ * which allows you to create a new `HTMLElement` for a given `tagName`
+ * or based on an object with specific non-readonly attributes with string values:
+ * `id`, `className`, `textContent`, `style`, etc.
+ * @see https://developer.mozilla.org/en-US/docs/Web/API/Document/createElement
+ *
+ * @param param `tagName` or object
+ * @return a new `HTMLElement` or `Element`
+ */
 const createElement = (param) => {
     if (!param)
         return undefined;
