@@ -19,7 +19,6 @@ const sourceFilter = `${name}/${sourcePath}`;
 const instrumenter = createInstrumenter({
   compact: false,
   esModules: true,
-  // coverageGlobalScope: 'window',
   preserveComments: true,
   autoWrap: true,
 });
