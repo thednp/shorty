@@ -1,3 +1,4 @@
-export interface OriginalEvent<T> extends CustomEvent<T> {
+export interface OriginalEvent extends CustomEvent<any> {
+  readonly type: string,
   relatedTarget?: EventTarget;
 }

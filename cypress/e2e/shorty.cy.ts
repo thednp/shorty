@@ -491,7 +491,7 @@ describe('Shorty Library Test', () => {
     const {
       dispatchEvent,
       emulateTransitionEnd,
-      OriginalEvent,
+      createCustomEvent,
       reflow,
       querySelector,
       setElementStyle,
@@ -506,7 +506,7 @@ describe('Shorty Library Test', () => {
       .then((win) => {
         const el = querySelector('.alert', win.document) as HTMLElement;
         const btn = querySelector('.btn-close', el);
-        const alertHideEvent = OriginalEvent('hide-alert', { relatedTarget: null });
+        const alertHideEvent = createCustomEvent('hide-alert', { relatedTarget: null });
 
         setElementStyle(el, {
           transition: 'none',
@@ -551,7 +551,7 @@ describe('Shorty Library Test', () => {
     const {
       dispatchEvent,
       emulateTransitionEnd,
-      OriginalEvent,
+      createCustomEvent,
       reflow,
       querySelector,
       removeClass,
@@ -565,7 +565,7 @@ describe('Shorty Library Test', () => {
       .then((win) => {
         const el = querySelector('.alert', win.document);
         const btn = querySelector('.btn-close', el);
-        const alertHideEvent = OriginalEvent('hide-alert', { relatedTarget: null });
+        const alertHideEvent = createCustomEvent('hide-alert', { relatedTarget: null });
 
         cy.log('begin **emulateTransitionEnd**').then(() => {
           one(el, 'hide-alert', function hideHandler(e) {

@@ -172,7 +172,7 @@ import ObjectAssign from './misc/ObjectAssign';
 import ObjectEntries from './misc/ObjectEntries';
 import ObjectKeys from './misc/ObjectKeys';
 import ObjectValues from './misc/ObjectValues';
-import OriginalEvent from './misc/OriginalEvent';
+import createCustomEvent from './misc/createCustomEvent';
 import passiveHandler from './misc/passiveHandler';
 import reflow from './misc/reflow';
 import setElementStyle from './misc/setElementStyle';
@@ -367,6 +367,7 @@ const SHORTY = {
   getInstance,
   createElement,
   createElementNS,
+  createCustomEvent,
   toUpperCase,
   toLowerCase,
   Timer,
@@ -429,7 +430,6 @@ const SHORTY = {
   ObjectEntries,
   ObjectKeys,
   ObjectValues,
-  OriginalEvent,
   getBoundingClientRect,
   getDocument,
   getDocumentBody,

@@ -12,6 +12,10 @@ export interface NavigatorUAData {
 	readonly mobile: boolean;
 	readonly platform: string;
 }
+export interface OriginalEvent extends CustomEvent<any> {
+	readonly type: string;
+	relatedTarget?: EventTarget;
+}
 export interface OffsetRect {
 	width: number;
 	height: number;
@@ -25,9 +29,6 @@ export interface CustomElement extends HTMLElement {
 	adoptedCallback?: () => void;
 	attributeChangedCallback?: () => void;
 	[key: string]: any;
-}
-export interface OriginalEvent<T> extends CustomEvent<T> {
-	relatedTarget?: EventTarget;
 }
 export interface BoundingClientRect {
 	width: number;
@@ -293,6 +294,7 @@ declare const SHORTY: {
 	getInstance: <T_3>(target: HTMLElement, component: string) => T_3 | null;
 	createElement: (param?: string | Partial<HTMLElement> | undefined) => HTMLElement | undefined;
 	createElementNS: (ns: string, param?: string | Partial<HTMLElement> | undefined) => HTMLElement | undefined;
+	createCustomEvent: <T_4 extends OriginalEvent>(eventType: string, config?: CustomEventInit<any> | undefined) => T_4;
 	toUpperCase: (source: string) => string;
 	toLowerCase: (source: string) => string;
 	Timer: {
@@ -322,7 +324,7 @@ declare const SHORTY: {
 	isArray: (obj?: any) => obj is any[];
 	isCanvas: (element?: any) => element is HTMLCanvasElement;
 	isString: (str?: any) => str is string;
-	isCustomElement: <T_4 extends CustomElement>(element?: any) => element is T_4;
+	isCustomElement: <T_5 extends CustomElement>(element?: any) => element is T_5;
 	isElement: (element?: any) => element is Element;
 	isJSON: (str?: any) => boolean;
 	isMap: (obj?: any) => obj is Map<any, any>;
@@ -339,7 +341,7 @@ declare const SHORTY: {
 	isShadowRoot: (element?: any) => element is ShadowRoot;
 	isDocument: (obj?: any) => obj is Document;
 	isElementsArray: (obj?: any) => obj is HTMLElement[];
-	isFunction: (fn?: any) => fn is () => any;
+	isFunction: (fn?: any) => fn is (...arg0: any[]) => any;
 	isObject: (obj?: any) => obj is object;
 	isWindow: (obj?: any) => obj is Window;
 	isMedia: (element?: any) => element is HTMLCanvasElement | HTMLImageElement | SVGElement | HTMLVideoElement;
@@ -353,14 +355,14 @@ declare const SHORTY: {
 	getElementsByTagName: (selector: string, parent?: ParentNode | undefined) => HTMLCollectionOf<HTMLElement>;
 	matches: (target: Element, selector: string) => boolean;
 	normalizeValue: (value?: any) => any;
-	normalizeOptions: <T_5 extends {
+	normalizeOptions: <T_6 extends {
 		[key: string]: any;
-	}>(element: HTMLElement, defaultOps: T_5, inputOps: Partial<T_5>, ns?: string | undefined) => T_5;
+	}>(element: HTMLElement, defaultOps: T_6, inputOps: Partial<T_6>, ns?: string | undefined) => T_6;
 	reflow: (element: HTMLElement) => number;
 	noop: () => void;
 	focus: (element: HTMLOrSVGElement, options?: FocusOptions | undefined) => void;
 	getUID: (element: HTMLElement, key?: string | undefined) => number;
-	ArrayFrom: <T_6>(arr: ArrayLike<T_6> | Iterable<T_6>) => T_6[];
+	ArrayFrom: <T_7>(arr: ArrayLike<T_7> | Iterable<T_7>) => T_7[];
 	Float32ArrayFrom: (arr: ArrayLike<number> | Iterable<number>) => Float32Array;
 	Float64ArrayFrom: (arr: ArrayLike<number> | Iterable<number>) => Float64Array;
 	ObjectAssign: <A extends {}, B>(obj: A, ...source: B[]) => B extends any[] ? any : A & B;
@@ -370,7 +372,6 @@ declare const SHORTY: {
 	][];
 	ObjectKeys: <O_1 extends {}>(obj: O_1) => (keyof O_1)[];
 	ObjectValues: <O_2 extends {}>(obj: O_2) => O_2[keyof O_2][];
-	OriginalEvent: <T_7>(EventType: string, config?: CustomEventInit<T_7> | undefined) => OriginalEvent<T_7>;
 	getBoundingClientRect: (element: HTMLElement, includeScale?: boolean | undefined) => BoundingClientRect;
 	getDocument: (node?: any) => Document;
 	getDocumentBody: (node?: any) => HTMLElement;

@@ -4,6 +4,6 @@
  * @param fn the target object
  * @returns the query result
  */
-const isFunction = (fn?: any): fn is (() => any) => (fn && fn.constructor.name === 'Function') || false;
+const isFunction = (fn?: any): fn is ((...arg0: any[]) => any) => (fn && fn.constructor.name === 'Function') || false;
 
 export default isFunction;
