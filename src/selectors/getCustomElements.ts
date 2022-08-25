@@ -1,4 +1,4 @@
-import CustomElement from '../interface/customElement';
+import { CustomElement } from '../interface/customElement';
 import isCustomElement from '../is/isCustomElement';
 import getElementsByTagName from './getElementsByTagName';
 

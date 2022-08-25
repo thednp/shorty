@@ -1,4 +1,4 @@
-import OffsetRect from '../interface/offsetRect';
+import { OffsetRect } from '../interface/offsetRect';
 import isScaledElement from '../is/isScaledElement';
 import isHTMLElement from '../is/isHTMLElement';
 import getBoundingClientRect from './getBoundingClientRect';

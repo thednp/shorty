@@ -4,18 +4,16 @@
 import esbuild from 'esbuild';
 import { promises } from 'fs';
 import { createInstrumenter } from 'istanbul-lib-instrument';
-import { extname } from 'path';
+import { extname, sep } from 'path';
 import tsCompile from './tsCompile';
 
 // import Cypress settings
 const sourceFolder = 'src';
-const [name] = process
-  .cwd()
-  .split(/[\\|\/]/)
-  .slice(-1);
-const sourcePath = sourceFolder.replace(/\\/g, '/');
+const [name] = process.cwd().split(sep).slice(-1);
 
-const sourceFilter = `${name}/${sourcePath}`;
+// const sourcePath = sourceFolder.replace(/\\/g, '/');
+// const sourceFilter = `${name}${sep}${sourcePath}`;
+const sourceFilter = `${name}${sep}${sourceFolder}`;
 const instrumenter = createInstrumenter({
   compact: false,
   esModules: true,
@@ -29,32 +27,23 @@ const createEsbuildIstanbulPlugin = (): esbuild.Plugin => {
     setup(build: esbuild.PluginBuild) {
       build.onLoad(
         { filter: /\.(ts|tsx)$/ },
-        async ({
-          path,
-        }: esbuild.OnLoadArgs): Promise<{ contents: string } & Record<string, any>> => {
-          const contents = await promises.readFile(path, 'utf8');
-          const samePath = path.replace(/\\/g, '/');
-
-          if (!samePath.includes(sourceFilter)) {
+        async ({ path }: esbuild.OnLoadArgs): Promise<{ contents: string } & Record<string, any>> => {
+          
+          if (!path.includes(sourceFilter)) {
             // console.log("> compiling typescript %s for output build", path);
+            const contents = await promises.readFile(path, 'utf8');
             return {
-              contents: ['.ts', '.tsx'].includes(extname(path)) ? tsCompile(contents) : contents,
+              contents: ['.ts', '.tsx'].includes(extname(path)) ? tsCompile(path).outputText : contents,
             };
           }
 
           // console.log("🧡 instrumenting %s for output coverage", path);
-          const sourceMapPath = path.replace(/\.ts/, '.js.map');
-          const sourceMapText = await promises.readFile(sourceMapPath, 'utf8');
-          const contents1 = await promises.readFile(path.replace('.ts', '.js'), 'utf8');
+          const { outputText, sourceMap } = tsCompile(path);
 
           return {
-            contents: instrumenter.instrumentSync(
-              contents1,
-              path.replace('.ts', '.js'),
-              sourceMapText ? JSON.parse(sourceMapText) : undefined
-            ),
+            contents: instrumenter.instrumentSync(outputText, path, sourceMap),
           };
-        }
+        },
       );
     },
   };

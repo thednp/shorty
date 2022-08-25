@@ -10,6 +10,6 @@ export interface NavigatorUAData {
   readonly platform: string;
 }
 
-export default interface NavigatorUA extends Navigator {
+export interface NavigatorUA extends Navigator {
   readonly userAgentData: NavigatorUAData;
 }

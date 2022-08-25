@@ -1,4 +1,4 @@
-export default interface BoundingClientRect {
+export interface BoundingClientRect {
   width: number;
   height: number;
   top: number;

@@ -1,4 +1,4 @@
-export default interface CustomElement extends HTMLElement {
+export interface CustomElement extends HTMLElement {
   shadowRoot: ShadowRoot;
   connectedCallback?: () => void;
   disconnectedCallback?: () => void;

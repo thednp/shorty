@@ -1,1 +1,0 @@
-{"version":3,"file":"getDocumentElement.js","sourceRoot":"","sources":["getDocumentElement.ts"],"names":[],"mappings":"AAAA,OAAO,WAAW,MAAM,eAAe,CAAC;AAExC;;;;;GAKG;AACH,MAAM,kBAAkB,GAAG,CAAC,IAAW,EAAe,EAAE;IACtD,OAAO,WAAW,CAAC,IAAI,CAAC,CAAC,eAAe,CAAC;AAC3C,CAAC,CAAC;AAEF,eAAe,kBAAkB,CAAC"}

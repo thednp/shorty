@@ -4,7 +4,7 @@ import createEsbuildIstanbulPlugin from './cypress/plugins/esbuild-istanbul';
 
 async function setupNodeEvents(
   on: Cypress.PluginEvents,
-  config: Cypress.PluginConfigOptions
+  config: Cypress.PluginConfigOptions,
 ): Promise<Cypress.PluginConfigOptions> {
   await require('@cypress/code-coverage/task')(on, config);
 
@@ -12,7 +12,7 @@ async function setupNodeEvents(
     'file:preprocessor',
     createBundler({
       plugins: [createEsbuildIstanbulPlugin()],
-    })
+    }),
   );
 
   // Make sure to return the config object as it might have been modified by the plugin.

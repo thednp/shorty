@@ -1,4 +1,4 @@
-export default interface OffsetRect {
+export interface OffsetRect {
   width: number;
   height: number;
   x: number;

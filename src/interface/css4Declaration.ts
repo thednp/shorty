@@ -1,3 +1,3 @@
-export default interface CSS4Declaration extends Exclude<() => string | symbol, CSSStyleDeclaration> {
+export interface CSS4Declaration extends Exclude<() => string | symbol, CSSStyleDeclaration> {
   [key: string]: string;
 }

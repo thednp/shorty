@@ -1,6 +1,6 @@
 import ObjectAssign from './ObjectAssign';
 import ObjectEntries from './ObjectEntries';
-import CSS4Declaration from '../interface/css4Declaration';
+import { CSS4Declaration } from '../interface/css4Declaration';
 import isString from '../is/isString';
 
 /**
@@ -10,7 +10,7 @@ import isString from '../is/isString';
  */
 const setElementStyle = (element: HTMLElement, styles: Partial<CSS4Declaration>): void => {
   ObjectEntries(styles).forEach(([key, value]) => {
-    if (isString(key) && key.includes('--')) {
+    if (value && isString(key) && key.includes('--')) {
       element.style.setProperty(key, value);
     } else {
       const propObject: Partial<CSS4Declaration> = {};

@@ -1,3 +1,3 @@
-export default interface OriginalEvent<T> extends CustomEvent<T> {
+export interface OriginalEvent<T> extends CustomEvent<T> {
   relatedTarget?: EventTarget;
 }

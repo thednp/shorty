@@ -1,6 +1,6 @@
 import DOMContentLoadedEvent from '../strings/DOMContentLoadedEvent';
 import one from '../event/one';
-import noop from 'src/misc/noop';
+import noop from '../misc/noop';
 
 /**
  * A global `boolean` for passive events support,
