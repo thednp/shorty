@@ -5,6 +5,7 @@ import getElementsByTagName from './getElementsByTagName';
 /**
  * Returns an `Array` of `Node` elements that are registered as
  * `CustomElement`.
+ *
  * @see https://stackoverflow.com/questions/27334365/how-to-get-list-of-registered-custom-elements
  *
  * @param parent parent to look into

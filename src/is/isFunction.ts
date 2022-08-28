@@ -4,6 +4,7 @@
  * @param fn the target object
  * @returns the query result
  */
-const isFunction = (fn?: any): fn is ((...arg0: any[]) => any) => (fn && fn.constructor.name === 'Function') || false;
+const isFunction = <T extends (...arg0: any[]) => any>(fn?: T): fn is T =>
+  typeof fn === 'function' || false;
 
 export default isFunction;

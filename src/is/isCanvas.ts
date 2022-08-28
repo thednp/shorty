@@ -5,7 +5,7 @@
  * @returns the query result
  */
 
-const isCanvas = (element?: any): element is HTMLCanvasElement =>
-  (element && element.constructor.name === 'HTMLCanvasElement') || false;
+const isCanvas = (element?: Node): element is HTMLCanvasElement =>
+  (element && element.nodeName === 'CANVAS') || false;
 
 export default isCanvas;

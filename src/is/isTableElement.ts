@@ -6,7 +6,9 @@
  * @param element the target element
  * @returns the query result
  */
-const isTableElement = (element?: any): element is HTMLTableElement | HTMLTableCellElement =>
+const isTableElement = (
+  element?: HTMLTableElement | HTMLTableCellElement,
+): element is HTMLTableElement | HTMLTableCellElement =>
   (element && ['TABLE', 'TD', 'TH'].includes(element.tagName)) || false;
 
 export default isTableElement;

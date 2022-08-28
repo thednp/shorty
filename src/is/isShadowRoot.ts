@@ -4,7 +4,7 @@
  * @param element target
  * @returns the query result
  */
-const isShadowRoot = (element?: any): element is ShadowRoot =>
+const isShadowRoot = (element?: Node | ShadowRoot): element is ShadowRoot =>
   (element && element.constructor.name === 'ShadowRoot') || false;
 
 export default isShadowRoot;

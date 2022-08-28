@@ -24,8 +24,8 @@ const getUID = (element: HTMLElement, key?: string): number => {
     if (!elementIDMap.has(elID)) {
       elementIDMap.set(elID, elMap);
     }
-    if (isMap(elMap) && !elMap.has(key)) {
-      elMap.set(key, result);
+    if (isMap(elMap as KeyIdMap) && !(elMap as KeyIdMap).has(key)) {
+      (elMap as KeyIdMap).set(key, result);
       elementUID += 1;
     } else result = (elMap as KeyIdMap).get(key) as number;
   } else {

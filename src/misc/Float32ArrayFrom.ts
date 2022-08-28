@@ -1,5 +1,6 @@
 /**
  * Shortcut for `Float32Array.from()` static method.
+ *
  * @param arr array-like iterable object
  * @returns a new Float32Array
  */

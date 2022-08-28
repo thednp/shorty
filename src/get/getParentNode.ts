@@ -5,12 +5,13 @@ import isNode from '../is/isNode';
 
 /**
  * Returns the `parentNode` also going through `ShadowRoot`.
+ *
  * @see https://github.com/floating-ui/floating-ui
  *
  * @param {Node} node the target node
  * @returns {Node} the apropriate parent node
  */
-const getParentNode = (node: Node): Node => {
+const getParentNode = (node: Node): Node | ParentNode => {
   if (node.nodeName === 'HTML') {
     return node;
   }

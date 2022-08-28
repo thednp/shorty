@@ -12,7 +12,7 @@ const supportPassive = (() => {
   let result = false;
   try {
     const opts = Object.defineProperty({}, 'passive', {
-      get() {
+      get: () => {
         result = true;
         return result;
       },

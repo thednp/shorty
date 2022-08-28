@@ -10,12 +10,12 @@ import isNode from '../is/isNode';
  * @return the `HTMLElement` or `querySelector` result
  */
 const querySelector = (selector: Node | string, parent?: ParentNode): HTMLElement | null => {
-  if (isNode(selector)) {
+  if (isNode(selector as Node)) {
     return selector as HTMLElement;
   }
   const lookUp = parent && isNode(parent) ? parent : getDocument();
 
-  return lookUp.querySelector(selector);
+  return lookUp.querySelector(selector as string);
 };
 
 export default querySelector;

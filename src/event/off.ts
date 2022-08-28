@@ -1,12 +1,14 @@
 /**
  * Remove eventListener from an `EventTarget` object.
  */
-export default function off(
+const off = (
   element: EventTarget,
   eventName: string,
   listener: EventListener,
   options?: AddEventListenerOptions,
-) {
+) => {
   const ops = options || false;
   element.removeEventListener(eventName, listener, ops);
-}
+};
+
+export default off;

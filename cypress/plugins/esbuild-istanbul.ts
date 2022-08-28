@@ -11,8 +11,6 @@ import tsCompile from './tsCompile';
 const sourceFolder = 'src';
 const [name] = process.cwd().split(sep).slice(-1);
 
-// const sourcePath = sourceFolder.replace(/\\/g, '/');
-// const sourceFilter = `${name}${sep}${sourcePath}`;
 const sourceFilter = `${name}${sep}${sourceFolder}`;
 const instrumenter = createInstrumenter({
   compact: false,

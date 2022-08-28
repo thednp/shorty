@@ -4,11 +4,15 @@ import ObjectAssign from './ObjectAssign';
 
 /**
  * Returns a namespaced `CustomEvent` specific to each component.
+ *
  * @param eventType Event.type
  * @param config Event.options | Event.properties
  * @returns a new namespaced event
  */
-const createCustomEvent = <T extends OriginalEvent>(eventType: string, config?: CustomEventInit<any>): T => {
+const createCustomEvent = <T extends OriginalEvent>(
+  eventType: string,
+  config?: CustomEventInit<any>,
+): T => {
   const OriginalCustomEvent = new CustomEvent<any>(eventType, {
     cancelable: true,
     bubbles: true,

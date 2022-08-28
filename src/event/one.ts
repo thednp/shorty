@@ -5,7 +5,12 @@ import off from './off';
  * Add an `eventListener` to an `EventTarget`
  * element and remove it once callback is called.
  */
-const one = (element: EventTarget, eventName: string, listener: EventListener, options?: AddEventListenerOptions) => {
+const one = (
+  element: EventTarget,
+  eventName: string,
+  listener: EventListener,
+  options?: AddEventListenerOptions,
+) => {
   /** Wrap the listener for easy on -> off */
   const handlerWrapper = (e: Event): void => {
     /* istanbul ignore else */

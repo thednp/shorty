@@ -5,6 +5,7 @@ import getBoundingClientRect from './getBoundingClientRect';
 
 /**
  * Returns the rect relative to a given offset parent and its scroll position.
+ *
  * @see https://github.com/floating-ui/floating-ui
  *
  * @param element target

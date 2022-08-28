@@ -153,6 +153,11 @@ import on from './event/on';
 import off from './event/off';
 import one from './event/one';
 
+// blocks
+import documentBody from './blocks/documentBody';
+import documentElement from './blocks/documentElement';
+import documentHead from './blocks/documentHead';
+
 // misc
 import ArrayFrom from './misc/ArrayFrom';
 import Data, { getInstance } from './misc/data';
@@ -361,6 +366,9 @@ const SHORTY = {
   on,
   off,
   one,
+  documentBody,
+  documentElement,
+  documentHead,
   dispatchEvent,
   distinct,
   Data,

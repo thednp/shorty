@@ -7,6 +7,7 @@ import isArray from './isArray';
  * @param obj the target object
  * @returns the query result
  */
-const isElementsArray = (obj?: any): obj is HTMLElement[] => (isArray(obj) && obj.every(isHTMLElement)) || false;
+const isElementsArray = (obj?: any): obj is HTMLElement[] =>
+  (isArray(obj) && obj.every(isHTMLElement)) || false;
 
 export default isElementsArray;

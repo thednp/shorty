@@ -1,5 +1,6 @@
 /**
  * Shortcut for `HTMLElement.removeAttribute()` method.
+ *
  * @param element target element
  * @param att attribute name
  */

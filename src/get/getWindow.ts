@@ -3,6 +3,7 @@ import isNode from '../is/isNode';
 
 /**
  * Returns the `Window` object of a target node.
+ *
  * @see https://github.com/floating-ui/floating-ui
  *
  * @param node target node

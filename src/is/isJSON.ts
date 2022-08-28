@@ -6,7 +6,7 @@ import isString from './isString';
  * @param str the target string
  * @returns the query result
  */
-const isJSON = (str?: any): boolean => {
+const isJSON = (str?: string): boolean => {
   if (!isString(str)) return false;
 
   try {

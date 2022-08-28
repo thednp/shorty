@@ -1,5 +1,6 @@
 /**
  * JavaScript `Array` distinct.
+ *
  * @see https://codeburst.io/javascript-array-distinct-5edc93501dc4
  *
  * @example
