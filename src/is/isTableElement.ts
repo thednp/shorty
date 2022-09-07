@@ -1,3 +1,5 @@
+import isNode from './isNode';
+
 /**
  * Check if a target element is a `<table>`, `<td>` or `<th>`.
  * This specific check is important for determining
@@ -6,9 +8,7 @@
  * @param element the target element
  * @returns the query result
  */
-const isTableElement = (
-  element?: HTMLTableElement | HTMLTableCellElement,
-): element is HTMLTableElement | HTMLTableCellElement =>
-  (element && ['TABLE', 'TD', 'TH'].includes(element.tagName)) || false;
+const isTableElement = (element?: unknown): element is HTMLTableElement | HTMLTableCellElement =>
+  (isNode(element) && ['TABLE', 'TD', 'TH'].includes(element.nodeName)) || false;
 
 export default isTableElement;

@@ -1,5 +1,6 @@
 import getDocument from '../get/getDocument';
 import isNode from '../is/isNode';
+import isHTMLElement from '../is/isHTMLElement';
 
 /**
  * Utility to check if target is typeof `HTMLElement`, `Element`, `Node`
@@ -9,13 +10,13 @@ import isNode from '../is/isNode';
  * @param parent optional node to look into
  * @return the `HTMLElement` or `querySelector` result
  */
-const querySelector = (selector: Node | string, parent?: ParentNode): HTMLElement | null => {
-  if (isNode(selector as Node)) {
-    return selector as HTMLElement;
+const querySelector = (selector: HTMLElement | string, parent?: ParentNode): HTMLElement | null => {
+  if (isHTMLElement(selector)) {
+    return selector;
   }
-  const lookUp = parent && isNode(parent) ? parent : getDocument();
+  const lookUp = isNode(parent) ? parent : getDocument();
 
-  return lookUp.querySelector(selector as string);
+  return lookUp.querySelector(selector);
 };
 
 export default querySelector;

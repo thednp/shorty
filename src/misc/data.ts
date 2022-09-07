@@ -1,10 +1,6 @@
 import isHTMLElement from '../is/isHTMLElement';
 
-type MConstructor<T extends new (...args: any[]) => any> = new (
-  ...args: ConstructorParameters<T>
-) => InstanceType<T>;
-
-const componentData = new Map<MConstructor<any>, Map<HTMLElement, InstanceType<any>>>();
+const componentData = new Map<string, Map<HTMLElement, any>>();
 
 /**
  * An interface for web components background data.
@@ -19,19 +15,15 @@ const Data = {
    * @param component the component's name or a unique key
    * @param instance the component instance
    */
-  set: <T extends MConstructor<T>>(
-    element: HTMLElement,
-    component: T,
-    instance: InstanceType<T>,
-  ): void => {
+  set: <T>(element: HTMLElement, component: string, instance: T): void => {
     if (!isHTMLElement(element)) return;
 
     /* istanbul ignore else */
     if (!componentData.has(component)) {
-      componentData.set(component, new Map<HTMLElement, InstanceType<T>>());
+      componentData.set(component, new Map<HTMLElement, T>());
     }
 
-    const instanceMap = componentData.get(component) as Map<HTMLElement, InstanceType<T>>;
+    const instanceMap = componentData.get(component) as Map<HTMLElement, T>;
     // not undefined, but defined right above
     instanceMap.set(element, instance);
   },
@@ -42,10 +34,8 @@ const Data = {
    * @param component the component's name or a unique key
    * @returns all the component instances
    */
-  getAllFor: <T extends MConstructor<T>>(
-    component: T,
-  ): Map<HTMLElement, InstanceType<T>> | null => {
-    const instanceMap = componentData.get(component) as Map<HTMLElement, InstanceType<T>>;
+  getAllFor: <T>(component: string): Map<HTMLElement, T> | null => {
+    const instanceMap = componentData.get(component) as Map<HTMLElement, T>;
 
     return instanceMap || null;
   },
@@ -57,9 +47,11 @@ const Data = {
    * @param component the component's name or a unique key
    * @returns the instance
    */
-  get: <T extends MConstructor<T>>(element: HTMLElement, component: T): InstanceType<T> | null => {
+  get: <T>(element: HTMLElement, component: string): T | null => {
     if (!isHTMLElement(element) || !component) return null;
     const instanceMap = Data.getAllFor<T>(component);
+    // const instanceMap = componentData.get(component) as Map<HTMLElement, InstanceType<T>>;
+
     const instance = element && instanceMap && instanceMap.get(element);
 
     // return (instance as T) || null;
@@ -72,8 +64,10 @@ const Data = {
    * @param element target element
    * @param component the component's name or a unique key
    */
-  remove: <T extends MConstructor<T>>(element: HTMLElement, component: T): void => {
+  remove: <T>(element: HTMLElement, component: string): void => {
     const instanceMap = Data.getAllFor<T>(component);
+    // const instanceMap = componentData.get(component) as Map<HTMLElement, InstanceType<T>>;
+
     if (!instanceMap || !isHTMLElement(element)) return;
 
     instanceMap.delete(element);
@@ -88,9 +82,7 @@ const Data = {
 /**
  * An alias for `Data.get()`.
  */
-export const getInstance = <T extends MConstructor<T>>(
-  target: HTMLElement,
-  component: T,
-): InstanceType<T> | null => Data.get<T>(target, component);
+export const getInstance = <T>(target: HTMLElement, component: string): T | null =>
+  Data.get(target, component);
 
 export default Data;

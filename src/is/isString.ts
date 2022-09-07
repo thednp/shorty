@@ -4,6 +4,6 @@
  * @param str input value
  * @returns the query result
  */
-const isString = (str?: string): str is string => typeof str === 'string' || false;
+const isString = (str?: unknown): str is string => typeof str === 'string' || false;
 
 export default isString;

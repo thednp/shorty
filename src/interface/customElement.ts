@@ -4,5 +4,5 @@ export interface CustomElement extends HTMLElement {
   disconnectedCallback?: () => void;
   adoptedCallback?: () => void;
   attributeChangedCallback?: () => void;
-  [key: string]: any;
+  // [key: PropertyKey]: any;
 }

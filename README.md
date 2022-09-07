@@ -164,6 +164,7 @@ const duration = getElementAnimationDuration(target);
 # is
 
 - **_isArray_** - check if a given value is an `Array`;
+- **_isCanvas_** - check if a given value is a `HTMLCanvasElement` instance;
 - **_isCustomElement_** - check if a given value is a `CustomElement` instance;
 - **_isDocument_** - check if a given value is a `Document` instance;
 - **_isElement_** - check if a given value is an `Element` instance;
@@ -174,7 +175,7 @@ const duration = getElementAnimationDuration(target);
 - **_isHTMLCollection_** - check if a given value is an `HTMLCollection` instance;
 - **_isHTMLElement_** - check if a given value is an `HTMLElement` instance;
 - **_isHTMLImageElement_** - check if a given value is an `HTMLImageElement` instance;
-- **_isMedia_** - check if a given value is an `SVGElement`, `HTMLImageElement` or `HTMLVideoElement` instance;
+- **_isMedia_** - check if a given value is an `SVGElement`, `HTMLImageElement`, `HTMLCanvasElement` or `HTMLVideoElement` instance;
 - **_isNode_** - check if a given value is a `Node` instance;
 - **_isNodeList_** - check if a given value is a `NodeList` instance;
 - **_isNumber_** - check if a given value is string;

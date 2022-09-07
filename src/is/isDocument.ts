@@ -1,3 +1,5 @@
+import isNode from './isNode';
+
 /**
  * Checks if an object is a `Document`.
  *
@@ -6,6 +8,6 @@
  * @param obj the target object
  * @returns the query result
  */
-const isDocument = (obj?: Node | Document): obj is Document => (obj && obj.nodeType === 9) || false;
+const isDocument = (obj?: unknown): obj is Document => (isNode(obj) && obj.nodeType === 9) || false;
 
 export default isDocument;

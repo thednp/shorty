@@ -14,7 +14,7 @@ const one = (
   /** Wrap the listener for easy on -> off */
   const handlerWrapper = (e: Event): void => {
     /* istanbul ignore else */
-    if (e.target === element) {
+    if (e.target === element || e.currentTarget === element) {
       listener.apply(element, [e]);
       off(element, eventName, handlerWrapper, options);
     }
