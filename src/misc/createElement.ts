@@ -14,9 +14,7 @@ import ObjectEntries from './ObjectEntries';
  * @param param `tagName` or object
  * @return a new `HTMLElement`
  */
-const createElement = (
-  param?: string | Partial<HTMLElement>
-): HTMLElement | undefined => {
+const createElement = (param?: string | Partial<HTMLElement>): HTMLElement | undefined => {
   if (!param) return undefined;
 
   if (isString(param)) {
