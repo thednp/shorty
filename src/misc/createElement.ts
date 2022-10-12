@@ -15,7 +15,7 @@ import ObjectEntries from './ObjectEntries';
  * @return a new `HTMLElement`
  */
 const createElement = (
-  param?: string | Exclude<HTMLElement, ((...args: any[]) => any) | object>,
+  param?: string | Partial<HTMLElement>
 ): HTMLElement | undefined => {
   if (!param) return undefined;
 

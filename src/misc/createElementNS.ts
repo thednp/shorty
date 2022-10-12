@@ -17,7 +17,7 @@ import isString from '../is/isString';
  */
 const createElementNS = (
   ns: string,
-  param?: string | Exclude<HTMLElement, ((...args: any[]) => any) | object>,
+  param?: string | Partial<HTMLElement>
 ): HTMLElement | undefined => {
   if (!ns || !param) return undefined;
 
