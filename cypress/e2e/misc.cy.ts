@@ -169,6 +169,7 @@ describe('Shorty Library Tests', () => {
       Float64ArrayFrom,
       distinct,
       noop,
+      hasOwn,
       ObjectEntries,
       ObjectAssign,
       ObjectKeys,
@@ -193,6 +194,9 @@ describe('Shorty Library Tests', () => {
 
         const defaults = { op1: true, op2: true, op3: 5, title: null };
         const jsOps = { op1: false, op2: false, op3: 8, title: 'something' };
+        expect(hasOwn(jsOps,'op3')).to.be.true;
+        expect(hasOwn(jsOps,'momo')).to.be.false;
+        expect(hasOwn(null,'momo')).to.be.false;
         expect(normalizeOptions(el, defaults, {}, 'bs'), 'normalizeOptions(data)').to.deep.equal({
           op1: false,
           op2: true,
