@@ -1,4 +1,4 @@
-// eslint-disable-next-line @typescript-eslint/no-var-requires
+// @ts-check
 const packageJson = require("./package.json");
 
 const getPackageName = () => {
@@ -11,6 +11,10 @@ const config = {
       filePath: "./src/index.ts",
       outFile: `./dist/${getPackageName()}.d.ts`,
       noCheck: false,
+      output: {
+        umdModuleName: 'SHORTY',
+        noBanner: true,
+      }
     },
   ],
 };

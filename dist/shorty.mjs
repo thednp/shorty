@@ -1,9 +1,9 @@
-const de = "aria-checked", pe = "aria-description", fe = "aria-describedby", me = "aria-expanded", ge = "aria-haspopup", Ee = "aria-hidden", ve = "aria-label", be = "aria-labelledby", he = "aria-modal", ye = "aria-pressed", we = "aria-selected", Ae = "aria-valuemin", Se = "aria-valuemax", Me = "aria-valuenow", Ne = "aria-valuetext", G = "abort", Y = "beforeunload", j = "blur", J = "change", K = "contextmenu", z = "DOMContentLoaded", X = "DOMMouseScroll", Z = "error", $ = "focus", _ = "focusin", tt = "focusout", et = "gesturechange", nt = "gestureend", ot = "gesturestart", st = "keydown", ct = "keypress", rt = "keyup", it = "load", at = "click", ut = "dblclick", lt = "mousedown", dt = "mouseup", pt = "hover", ft = "mouseenter", mt = "mouseleave", gt = "mousein", Et = "mouseout", vt = "mouseover", bt = "mousemove", ht = "mousewheel", yt = "move", wt = "orientationchange", At = "pointercancel", St = "pointerdown", Mt = "pointerleave", Nt = "pointermove", Tt = "pointerup", kt = "readystatechange", Dt = "reset", Ct = "resize", Lt = "select", Ot = "selectend", It = "selectstart", zt = "scroll", xt = "submit", Vt = "touchstart", Bt = "touchmove", Ht = "touchcancel", Pt = "touchend", Ut = "unload", Te = {
+const de = "aria-checked", pe = "aria-description", fe = "aria-describedby", me = "aria-expanded", ge = "aria-haspopup", Ee = "aria-hidden", ve = "aria-label", be = "aria-labelledby", he = "aria-modal", ye = "aria-pressed", we = "aria-selected", Ae = "aria-valuemin", Se = "aria-valuemax", Me = "aria-valuenow", Ne = "aria-valuetext", G = "abort", j = "beforeunload", Y = "blur", J = "change", K = "contextmenu", z = "DOMContentLoaded", X = "DOMMouseScroll", Z = "error", $ = "focus", _ = "focusin", tt = "focusout", et = "gesturechange", nt = "gestureend", ot = "gesturestart", st = "keydown", ct = "keypress", rt = "keyup", it = "load", at = "click", ut = "dblclick", lt = "mousedown", dt = "mouseup", pt = "hover", ft = "mouseenter", mt = "mouseleave", gt = "mousein", Et = "mouseout", vt = "mouseover", bt = "mousemove", ht = "mousewheel", yt = "move", wt = "orientationchange", At = "pointercancel", St = "pointerdown", Mt = "pointerleave", Nt = "pointermove", Tt = "pointerup", kt = "readystatechange", Dt = "reset", Ct = "resize", Ot = "select", Lt = "selectend", It = "selectstart", zt = "scroll", xt = "submit", Ht = "touchstart", Vt = "touchmove", Bt = "touchcancel", Pt = "touchend", Ut = "unload", Te = {
   DOMContentLoaded: z,
   DOMMouseScroll: X,
   abort: G,
-  beforeunload: Y,
-  blur: j,
+  beforeunload: j,
+  blur: Y,
   change: J,
   click: at,
   contextmenu: K,
@@ -40,21 +40,21 @@ const de = "aria-checked", pe = "aria-description", fe = "aria-describedby", me 
   reset: Dt,
   resize: Ct,
   scroll: zt,
-  select: Lt,
-  selectend: Ot,
+  select: Ot,
+  selectend: Lt,
   selectstart: It,
   submit: xt,
-  touchcancel: Ht,
+  touchcancel: Bt,
   touchend: Pt,
-  touchmove: Bt,
-  touchstart: Vt,
+  touchmove: Vt,
+  touchstart: Ht,
   unload: Ut
 }, ke = "loadstart", De = {
   start: "mousedown",
   end: "mouseup",
   move: "mousemove",
   cancel: "mouseleave"
-}, Ce = { down: "mousedown", up: "mouseup" }, Le = "onmouseleave" in document ? ["mouseenter", "mouseleave"] : ["mouseover", "mouseout"], Oe = {
+}, Ce = { down: "mousedown", up: "mouseup" }, Oe = "onmouseleave" in document ? ["mouseenter", "mouseleave"] : ["mouseover", "mouseout"], Le = {
   start: "touchstart",
   end: "touchend",
   move: "touchmove",
@@ -79,7 +79,7 @@ const de = "aria-checked", pe = "aria-description", fe = "aria-describedby", me 
   Meta: "Meta",
   ContextMenu: "ContextMenu",
   ScrollLock: "ScrollLock"
-}, xe = "Alt", Ve = "ArrowDown", Be = "ArrowUp", He = "ArrowLeft", Pe = "ArrowRight", Ue = "Backspace", Fe = "CapsLock", We = "Control", Re = "Delete", Qe = "Enter", qe = "Escape", Ge = "Insert", Ye = "Meta", je = "Pause", Je = "ScrollLock", Ke = "Shift", Xe = "Space", Ze = "Tab", Ft = "animationDuration", Wt = "animationDelay", x = "animationName", k = "animationend", Rt = "transitionDuration", Qt = "transitionDelay", D = "transitionend", V = "transitionProperty", $e = "addEventListener", _e = "removeEventListener", tn = {
+}, xe = "Alt", He = "ArrowDown", Ve = "ArrowUp", Be = "ArrowLeft", Pe = "ArrowRight", Ue = "Backspace", Fe = "CapsLock", We = "Control", Re = "Delete", Qe = "Enter", qe = "Escape", Ge = "Insert", je = "Meta", Ye = "Pause", Je = "ScrollLock", Ke = "Shift", Xe = "Space", Ze = "Tab", Ft = "animationDuration", Wt = "animationDelay", x = "animationName", k = "animationend", Rt = "transitionDuration", Qt = "transitionDelay", D = "transitionend", H = "transitionProperty", $e = "addEventListener", _e = "removeEventListener", tn = {
   linear: "linear",
   easingSinusoidalIn: "cubic-bezier(0.47,0,0.745,0.715)",
   easingSinusoidalOut: "cubic-bezier(0.39,0.575,0.565,1)",
@@ -106,31 +106,31 @@ const de = "aria-checked", pe = "aria-description", fe = "aria-describedby", me 
   easingBackOut: "cubic-bezier(0.175,0.885,0.32,1.275)",
   easingBackInOut: "cubic-bezier(0.68,-0.55,0.265,1.55)"
 }, en = "offsetHeight", nn = "offsetWidth", on = "scrollHeight", sn = "scrollWidth", cn = "tabindex", rn = navigator.userAgentData, A = rn, { userAgent: an } = navigator, S = an, W = /iPhone|iPad|iPod|Android/i;
-let O = !1;
-A ? O = A.brands.some((t) => W.test(t.brand)) : O = W.test(S);
-const un = O, R = /(iPhone|iPod|iPad)/, ln = A ? A.brands.some((t) => R.test(t.brand)) : R.test(S), dn = S ? S.includes("Firefox") : !1, { head: M } = document, pn = ["webkitPerspective", "perspective"].some((t) => t in M.style), qt = (t, e, n, o) => {
+let L = !1;
+A ? L = A.brands.some((t) => W.test(t.brand)) : L = W.test(S);
+const un = L, R = /(iPhone|iPod|iPad)/, ln = A ? A.brands.some((t) => R.test(t.brand)) : R.test(S), dn = S ? S.includes("Firefox") : !1, { head: M } = document, pn = ["webkitPerspective", "perspective"].some((t) => t in M.style), qt = (t, e, n, o) => {
   const s = o || !1;
   t.addEventListener(e, n, s);
 }, Gt = (t, e, n, o) => {
   const s = o || !1;
   t.removeEventListener(e, n, s);
-}, Yt = (t, e, n, o) => {
+}, jt = (t, e, n, o) => {
   const s = (c) => {
     (c.target === t || c.currentTarget === t) && (n.apply(t, [c]), Gt(t, e, s, o));
   };
   qt(t, e, s, o);
-}, jt = () => {
+}, Yt = () => {
 }, fn = (() => {
   let t = !1;
   try {
     const e = Object.defineProperty({}, "passive", {
       get: () => (t = !0, t)
     });
-    Yt(document, z, jt, e);
+    jt(document, z, Yt, e);
   } catch {
   }
   return t;
-})(), mn = ["webkitTransform", "transform"].some((t) => t in M.style), gn = "ontouchstart" in window || "msMaxTouchPoints" in navigator, En = ["webkitAnimation", "animation"].some((t) => t in M.style), vn = ["webkitTransition", "transition"].some((t) => t in M.style), Jt = (t, e) => t.getAttribute(e), bn = (t, e, n) => e.getAttributeNS(t, n), hn = (t, e) => t.hasAttribute(e), yn = (t, e, n) => e.hasAttributeNS(t, n), B = (t, e, n) => t.setAttribute(e, n), wn = (t, e, n, o) => e.setAttributeNS(t, n, o), An = (t, e) => t.removeAttribute(e), Sn = (t, e, n) => e.removeAttributeNS(t, n), Mn = (t, ...e) => {
+})(), mn = ["webkitTransform", "transform"].some((t) => t in M.style), gn = "ontouchstart" in window || "msMaxTouchPoints" in navigator, En = ["webkitAnimation", "animation"].some((t) => t in M.style), vn = ["webkitTransition", "transition"].some((t) => t in M.style), Jt = (t, e) => t.getAttribute(e), bn = (t, e, n) => e.getAttributeNS(t, n), hn = (t, e) => t.hasAttribute(e), yn = (t, e, n) => e.hasAttributeNS(t, n), V = (t, e, n) => t.setAttribute(e, n), wn = (t, e, n, o) => e.setAttributeNS(t, n, o), An = (t, e) => t.removeAttribute(e), Sn = (t, e, n) => e.removeAttributeNS(t, n), Mn = (t, ...e) => {
   t.classList.add(...e);
 }, Nn = (t, ...e) => {
   t.classList.remove(...e);
@@ -151,7 +151,7 @@ const un = O, R = /(iPhone|iPod|iPad)/, ln = A ? A.brands.some((t) => R.test(t.b
     const n = C.getAllFor(e);
     !n || !u(t) || (n.delete(t), n.size === 0 && w.delete(e));
   }
-}, Ln = (t, e) => C.get(t, e), p = (t) => typeof t == "string" || !1, H = (t) => m(t) && t.constructor.name === "Window" || !1, P = (t) => a(t) && t.nodeType === 9 || !1, d = (t) => H(t) ? t.document : P(t) ? t : a(t) ? t.ownerDocument : window.document, b = (t) => Object.entries(t), Kt = (t) => {
+}, On = (t, e) => C.get(t, e), p = (t) => typeof t == "string" || !1, B = (t) => m(t) && t.constructor.name === "Window" || !1, P = (t) => a(t) && t.nodeType === 9 || !1, d = (t) => B(t) ? t.document : P(t) ? t : a(t) ? t.ownerDocument : window.document, b = (t) => Object.entries(t), Kt = (t) => {
   if (!t)
     return;
   if (p(t))
@@ -161,7 +161,7 @@ const un = O, R = /(iPhone|iPod|iPad)/, ln = A ? A.brands.some((t) => R.test(t.b
     return;
   const o = { ...t };
   return delete o.tagName, b(o).forEach(([s, c]) => {
-    p(s) && p(c) && B(n, s, c);
+    p(s) && p(c) && V(n, s, c);
   }), n;
 }, Xt = (t, e) => {
   if (!t || !e)
@@ -173,9 +173,9 @@ const un = O, R = /(iPhone|iPod|iPad)/, ln = A ? A.brands.some((t) => R.test(t.b
     return;
   const s = { ...e };
   return delete s.tagName, b(s).forEach(([c, i]) => {
-    p(c) && p(i) && B(o, c, i);
+    p(c) && p(i) && V(o, c, i);
   }), o;
-}, U = (t, e) => t.dispatchEvent(e), On = (t, e, n) => n.indexOf(t) === e, f = (t, e) => {
+}, U = (t, e) => t.dispatchEvent(e), Ln = (t, e, n) => n.indexOf(t) === e, f = (t, e) => {
   const n = getComputedStyle(t), o = e.replace("webkit", "Webkit").replace(/([A-Z])/g, "-$1").toLowerCase();
   return n.getPropertyValue(o);
 }, Zt = (t) => {
@@ -197,10 +197,10 @@ const un = O, R = /(iPhone|iPod|iPad)/, ln = A ? A.brands.some((t) => R.test(t.b
   } else
     e.apply(t, [o]);
 }, _t = (t) => {
-  const e = f(t, V), n = f(t, Qt), o = n.includes("ms") ? 1 : 1e3, s = e && e !== "none" ? parseFloat(n) * o : 0;
+  const e = f(t, H), n = f(t, Qt), o = n.includes("ms") ? 1 : 1e3, s = e && e !== "none" ? parseFloat(n) * o : 0;
   return Number.isNaN(s) ? 0 : s;
 }, te = (t) => {
-  const e = f(t, V), n = f(t, Rt), o = n.includes("ms") ? 1 : 1e3, s = e && e !== "none" ? parseFloat(n) * o : 0;
+  const e = f(t, H), n = f(t, Rt), o = n.includes("ms") ? 1 : 1e3, s = e && e !== "none" ? parseFloat(n) * o : 0;
   return Number.isNaN(s) ? 0 : s;
 }, zn = (t, e) => {
   let n = 0;
@@ -214,7 +214,7 @@ const un = O, R = /(iPhone|iPod|iPad)/, ln = A ? A.brands.some((t) => R.test(t.b
     }, s + c + 17);
   } else
     e.apply(t, [o]);
-}, xn = (t) => Float32Array.from(Array.from(t)), Vn = (t) => Float64Array.from(Array.from(t)), Bn = (t, e) => t.focus(e), Hn = (t, e) => m(t) && (Object.hasOwn(t, e) || e in t), I = (t) => ["true", !0].includes(t) ? !0 : ["false", !1].includes(t) ? !1 : ["null", "", null, void 0].includes(t) ? null : t !== "" && !Number.isNaN(+t) ? +t : t, ee = (t) => t.toLowerCase(), Pn = (t, e, n, o) => {
+}, xn = (t) => Float32Array.from(Array.from(t)), Hn = (t) => Float64Array.from(Array.from(t)), Vn = (t, e) => t.focus(e), I = (t) => ["true", !0].includes(t) ? !0 : ["false", !1].includes(t) ? !1 : ["null", "", null, void 0].includes(t) ? null : t !== "" && !Number.isNaN(+t) ? +t : t, ee = (t) => t.toLowerCase(), Bn = (t, e, n, o) => {
   const s = { ...n }, c = { ...t.dataset }, i = { ...e }, l = {}, g = "title";
   return b(c).forEach(([r, E]) => {
     const T = o && typeof r == "string" && r.includes(o) ? r.replace(o, "").replace(/[A-Z]/g, (le) => ee(le)) : r;
@@ -224,7 +224,7 @@ const un = O, R = /(iPhone|iPod|iPad)/, ln = A ? A.brands.some((t) => R.test(t.b
   }), b(e).forEach(([r, E]) => {
     r in s ? i[r] = s[r] : r in l ? i[r] = l[r] : i[r] = r === g ? Jt(t, g) : E;
   }), i;
-}, F = (t, ...e) => Object.assign(t, ...e), Un = (t) => Object.keys(t), Fn = (t) => Object.values(t), Wn = (t, e) => {
+}, F = (t, ...e) => Object.assign(t, ...e), Pn = (t, e) => m(t) && (Object.hasOwn(t, e) || e in t), Un = (t) => Object.keys(t), Fn = (t) => Object.values(t), Wn = (t, e) => {
   const n = new CustomEvent(t, {
     cancelable: !0,
     bubbles: !0
@@ -239,7 +239,7 @@ const un = O, R = /(iPhone|iPod|iPad)/, ln = A ? A.brands.some((t) => R.test(t.b
       s[n] = o, F(t.style, s);
     }
   });
-}, L = (t) => m(t) && t.constructor.name === "Map" || !1, ne = (t) => typeof t == "number" || !1, v = /* @__PURE__ */ new Map(), Gn = {
+}, O = (t) => m(t) && t.constructor.name === "Map" || !1, ne = (t) => typeof t == "number" || !1, v = /* @__PURE__ */ new Map(), Gn = {
   set: (t, e, n, o) => {
     !u(t) || (o && o.length ? (v.has(t) || v.set(t, /* @__PURE__ */ new Map()), v.get(t).set(o, setTimeout(e, n))) : v.set(t, setTimeout(e, n)));
   },
@@ -247,15 +247,15 @@ const un = O, R = /(iPhone|iPod|iPad)/, ln = A ? A.brands.some((t) => R.test(t.b
     if (!u(t))
       return null;
     const n = v.get(t);
-    return e && n && L(n) ? n.get(e) || null : ne(n) ? n : null;
+    return e && n && O(n) ? n.get(e) || null : ne(n) ? n : null;
   },
   clear: (t, e) => {
     if (!u(t))
       return;
     const n = v.get(t);
-    e && e.length && L(n) ? (clearTimeout(n.get(e)), n.delete(e), n.size === 0 && v.delete(t)) : (clearTimeout(n), v.delete(t));
+    e && e.length && O(n) ? (clearTimeout(n.get(e)), n.delete(e), n.size === 0 && v.delete(t)) : (clearTimeout(n), v.delete(t));
   }
-}, Yn = (t) => t.toUpperCase(), y = (t, e) => {
+}, jn = (t) => t.toUpperCase(), y = (t, e) => {
   const { width: n, height: o, top: s, right: c, bottom: i, left: l } = t.getBoundingClientRect();
   let g = 1, r = 1;
   if (e && u(t)) {
@@ -272,8 +272,8 @@ const un = O, R = /(iPhone|iPod|iPad)/, ln = A ? A.brands.some((t) => R.test(t.b
     x: l / g,
     y: s / r
   };
-}, jn = (t) => d(t).body, N = (t) => d(t).documentElement, Jn = (t) => d(t).head, Kn = (t) => {
-  const e = H(t), n = e ? t.scrollX : t.scrollLeft, o = e ? t.scrollY : t.scrollTop;
+}, Yn = (t) => d(t).body, N = (t) => d(t).documentElement, Jn = (t) => d(t).head, Kn = (t) => {
+  const e = B(t), n = e ? t.scrollX : t.scrollLeft, o = e ? t.scrollY : t.scrollTop;
   return { x: n, y: o };
 }, oe = (t) => a(t) && t.constructor.name === "ShadowRoot" || !1, Xn = (t) => t.nodeName === "HTML" ? t : u(t) && t.assignedSlot || a(t) && t.parentNode || oe(t) && t.host || N(t), se = (t) => {
   if (!u(t))
@@ -298,7 +298,7 @@ const h = /* @__PURE__ */ new Map(), ce = (t, e) => {
   let n = e ? Q : q;
   if (e) {
     const o = ce(t), s = h.get(o) || /* @__PURE__ */ new Map();
-    h.has(o) || h.set(o, s), L(s) && !s.has(e) ? (s.set(e, n), Q += 1) : n = s.get(e);
+    h.has(o) || h.set(o, s), O(s) && !s.has(e) ? (s.set(e, n), Q += 1) : n = s.get(e);
   } else {
     const o = t.id || t;
     h.has(o) ? n = h.get(o) : (h.set(o, n), q += 1);
@@ -346,7 +346,7 @@ const h = /* @__PURE__ */ new Map(), ce = (t, e) => {
   ariaValueText: Ne,
   nativeEvents: Te,
   abortEvent: G,
-  blurEvent: j,
+  blurEvent: Y,
   moveEvent: yt,
   changeEvent: J,
   errorEvent: Z,
@@ -358,13 +358,13 @@ const h = /* @__PURE__ */ new Map(), ce = (t, e) => {
   loadstartEvent: ke,
   unloadEvent: Ut,
   readystatechangeEvent: kt,
-  beforeunloadEvent: Y,
+  beforeunloadEvent: j,
   orientationchangeEvent: wt,
   contextmenuEvent: K,
   DOMContentLoadedEvent: z,
   DOMMouseScrollEvent: X,
-  selectEvent: Lt,
-  selectendEvent: Ot,
+  selectEvent: Ot,
+  selectendEvent: Lt,
   selectstartEvent: It,
   mouseClickEvents: Ce,
   mouseclickEvent: at,
@@ -372,7 +372,7 @@ const h = /* @__PURE__ */ new Map(), ce = (t, e) => {
   mousedownEvent: lt,
   mouseupEvent: dt,
   mousehoverEvent: pt,
-  mouseHoverEvents: Le,
+  mouseHoverEvents: Oe,
   mouseenterEvent: ft,
   mouseleaveEvent: mt,
   mouseinEvent: gt,
@@ -381,10 +381,10 @@ const h = /* @__PURE__ */ new Map(), ce = (t, e) => {
   mousemoveEvent: bt,
   mousewheelEvent: ht,
   mouseSwipeEvents: De,
-  touchEvents: Oe,
-  touchstartEvent: Vt,
-  touchmoveEvent: Bt,
-  touchcancelEvent: Ht,
+  touchEvents: Le,
+  touchstartEvent: Ht,
+  touchmoveEvent: Vt,
+  touchcancelEvent: Bt,
   touchendEvent: Pt,
   pointercancelEvent: At,
   pointerdownEvent: St,
@@ -406,7 +406,7 @@ const h = /* @__PURE__ */ new Map(), ce = (t, e) => {
   transitionDuration: Rt,
   transitionDelay: Qt,
   transitionEndEvent: D,
-  transitionProperty: V,
+  transitionProperty: H,
   isMobile: un,
   isApple: ln,
   isFirefox: dn,
@@ -423,10 +423,10 @@ const h = /* @__PURE__ */ new Map(), ce = (t, e) => {
   keypressEvent: ct,
   keyupEvent: rt,
   keyAlt: xe,
-  keyArrowDown: Ve,
-  keyArrowLeft: He,
+  keyArrowDown: He,
+  keyArrowLeft: Be,
   keyArrowRight: Pe,
-  keyArrowUp: Be,
+  keyArrowUp: Ve,
   keyBackspace: Ue,
   keyCapsLock: Fe,
   keyControl: We,
@@ -434,8 +434,8 @@ const h = /* @__PURE__ */ new Map(), ce = (t, e) => {
   keyEnter: Qe,
   keyEscape: qe,
   keyInsert: Ge,
-  keyMeta: Ye,
-  keyPause: je,
+  keyMeta: je,
+  keyPause: Ye,
   keyScrollLock: Je,
   keyShift: Ke,
   keySpace: Xe,
@@ -452,18 +452,18 @@ const h = /* @__PURE__ */ new Map(), ce = (t, e) => {
   hasClass: Tn,
   on: qt,
   off: Gt,
-  one: Yt,
+  one: jt,
   documentBody: kn,
   documentElement: Dn,
   documentHead: M,
   dispatchEvent: U,
-  distinct: On,
+  distinct: Ln,
   Data: C,
-  getInstance: Ln,
+  getInstance: On,
   createElement: Kt,
   createElementNS: Xt,
   createCustomEvent: Wn,
-  toUpperCase: Yn,
+  toUpperCase: jn,
   toLowerCase: ee,
   Timer: Gn,
   emulateAnimationEnd: In,
@@ -485,7 +485,7 @@ const h = /* @__PURE__ */ new Map(), ce = (t, e) => {
   isCustomElement: ie,
   isElement: to,
   isJSON: io,
-  isMap: L,
+  isMap: O,
   isWeakMap: ao,
   isNode: a,
   isNumber: ne,
@@ -501,7 +501,7 @@ const h = /* @__PURE__ */ new Map(), ce = (t, e) => {
   isElementsArray: oo,
   isFunction: so,
   isObject: m,
-  isWindow: H,
+  isWindow: B,
   isMedia: uo,
   isRTL: po,
   closest: ae,
@@ -512,23 +512,23 @@ const h = /* @__PURE__ */ new Map(), ce = (t, e) => {
   getElementsByClassName: ho,
   getElementsByTagName: ue,
   matches: yo,
-  hasOwn: Hn,
   normalizeValue: I,
-  normalizeOptions: Pn,
+  normalizeOptions: Bn,
   reflow: Qn,
-  noop: jt,
-  focus: Bn,
+  noop: Yt,
+  focus: Vn,
   getUID: ce,
   ArrayFrom: Cn,
   Float32ArrayFrom: xn,
-  Float64ArrayFrom: Vn,
+  Float64ArrayFrom: Hn,
+  ObjectHasOwn: Pn,
   ObjectAssign: F,
   ObjectEntries: b,
   ObjectKeys: Un,
   ObjectValues: Fn,
   getBoundingClientRect: y,
   getDocument: d,
-  getDocumentBody: jn,
+  getDocumentBody: Yn,
   getDocumentElement: N,
   getDocumentHead: Jn,
   getElementStyle: f,
@@ -537,7 +537,7 @@ const h = /* @__PURE__ */ new Map(), ce = (t, e) => {
   hasAttributeNS: yn,
   getAttribute: Jt,
   getAttributeNS: bn,
-  setAttribute: B,
+  setAttribute: V,
   setAttributeNS: wn,
   removeAttribute: An,
   removeAttributeNS: Sn

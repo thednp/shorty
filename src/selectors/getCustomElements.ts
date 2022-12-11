@@ -1,6 +1,6 @@
-import { CustomElement } from '../interface/customElement';
 import isCustomElement from '../is/isCustomElement';
 import getElementsByTagName from './getElementsByTagName';
+import type { CustomElement } from '../interface/customElement';
 
 /**
  * Returns an `Array` of `Node` elements that are registered as

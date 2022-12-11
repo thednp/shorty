@@ -1,0 +1,1 @@
+{"version":3,"file":"transitionProperty.1c387f74.js","sources":["../../src/strings/transitionProperty.ts"],"sourcesContent":["/**\n * A global namespace for `transitionProperty` string for modern browsers.\n */\nconst transitionProperty = 'transitionProperty';\nexport default transitionProperty;\n"],"names":[],"mappings":"AAGA,MAAM,kBAAqB,GAAA;;;;"}

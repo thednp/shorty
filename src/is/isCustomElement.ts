@@ -1,5 +1,5 @@
 import isHTMLElement from './isHTMLElement';
-import { CustomElement } from '../interface/customElement';
+import type { CustomElement } from '../interface/customElement';
 
 /**
  * Checks if an object is a `CustomElement`.

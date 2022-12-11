@@ -79,10 +79,4 @@ const Data = {
   },
 };
 
-/**
- * An alias for `Data.get()`.
- */
-export const getInstance = <T>(target: HTMLElement, component: string): T | null =>
-  Data.get(target, component);
-
 export default Data;

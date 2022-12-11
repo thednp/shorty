@@ -1,4 +1,4 @@
-import { NavigatorUABrand } from '../interface/navigatorUA';
+import type { NavigatorUABrand } from '../interface/navigatorUA';
 import userAgentData from '../strings/userAgentData';
 import userAgent from '../strings/userAgent';
 

@@ -1,7 +1,7 @@
 import ObjectAssign from './ObjectAssign';
 import ObjectEntries from './ObjectEntries';
-import { CSS4Declaration } from '../interface/css4Declaration';
 import isString from '../is/isString';
+import type { CSS4Declaration } from '../interface/css4Declaration';
 
 /**
  * Shortcut for multiple uses of `HTMLElement.style.propertyName` method.

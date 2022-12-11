@@ -160,7 +160,8 @@ import documentHead from './blocks/documentHead';
 
 // misc
 import ArrayFrom from './misc/ArrayFrom';
-import Data, { getInstance } from './misc/data';
+import Data from './misc/data';
+import getInstance from './misc/getInstance';
 import createElement from './misc/createElement';
 import createElementNS from './misc/createElementNS';
 import dispatchEvent from './misc/dispatchEvent';
@@ -171,11 +172,11 @@ import Float32ArrayFrom from './misc/Float32ArrayFrom';
 import Float64ArrayFrom from './misc/Float64ArrayFrom';
 import focus from './misc/focus';
 import noop from './misc/noop';
-import hasOwn from './misc/hasOwn';
 import normalizeOptions from './misc/normalizeOptions';
 import normalizeValue from './misc/normalizeValue';
 import ObjectAssign from './misc/ObjectAssign';
 import ObjectEntries from './misc/ObjectEntries';
+import ObjectHasOwn from './misc/ObjectHasOwn';
 import ObjectKeys from './misc/ObjectKeys';
 import ObjectValues from './misc/ObjectValues';
 import createCustomEvent from './misc/createCustomEvent';
@@ -426,7 +427,6 @@ const SHORTY = {
   getElementsByClassName,
   getElementsByTagName,
   matches,
-  hasOwn,
   normalizeValue,
   normalizeOptions,
   reflow,
@@ -436,6 +436,7 @@ const SHORTY = {
   ArrayFrom,
   Float32ArrayFrom,
   Float64ArrayFrom,
+  ObjectHasOwn,
   ObjectAssign,
   ObjectEntries,
   ObjectKeys,

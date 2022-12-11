@@ -1,4 +1,4 @@
-import { NavigatorUA } from '../interface/navigatorUA';
+import type { NavigatorUA } from '../interface/navigatorUA';
 
 const uaDATA = (navigator as NavigatorUA).userAgentData;
 

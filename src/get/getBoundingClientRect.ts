@@ -1,5 +1,5 @@
 import isHTMLElement from '../is/isHTMLElement';
-import { BoundingClientRect } from '../interface/boundingClientRect';
+import type { BoundingClientRect } from '../interface/boundingClientRect';
 
 /**
  * Returns the bounding client rect of a target `HTMLElement`.

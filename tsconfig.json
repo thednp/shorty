@@ -2,7 +2,7 @@
    // https://janessagarrow.com/blog/typescript-and-esbuild/
   "compilerOptions": {
     "lib": ["DOM", "ESNext", "DOM.Iterable"],
-    "types": ["vite", "vite/client", "cypress", "@testing-library/cypress"],
+    "types": ["vite", "vite/client", "cypress"],
     // "rootDir": "./src",
     "rootDir": "./",
     "baseUrl": "./",
@@ -25,5 +25,5 @@
     "noEmit": true,
   },
   "include": ["src/*"],
-  "exclude": ["node_modules", "experiments", "coverage", "dist"],
+  "exclude": ["node_modules", "experiments", "coverage", ],
 }

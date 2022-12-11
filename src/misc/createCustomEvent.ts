@@ -1,4 +1,4 @@
-import { OriginalEvent } from '../interface/originalEvent';
+import type { OriginalEvent } from '../interface/originalEvent';
 import isObject from '../is/isObject';
 import ObjectAssign from './ObjectAssign';
 

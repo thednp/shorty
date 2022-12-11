@@ -1,0 +1,1 @@
+{"version":3,"file":"noop.mjs","sources":["../../src/misc/noop.ts"],"sourcesContent":["/** A generic function with empty body. */\nconst noop = () => {\n  // this is a noop\n};\n\nexport default noop;\n"],"names":[],"mappings":"AACA,MAAM,OAAO,MAAM;AAEnB;;;;"}

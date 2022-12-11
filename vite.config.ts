@@ -1,4 +1,4 @@
-import path from 'path';
+import {resolve} from 'path';
 import { defineConfig } from 'vite';
 import { name } from './package.json';
 
@@ -14,16 +14,17 @@ const fileName = {
   iife: `${getPackageName()}.js`,
 };
 
-module.exports = defineConfig({
+export default defineConfig({
   base: './',
   build: {
+    emptyOutDir: true,
+    outDir: 'dist',
     lib: {
-      entry: path.resolve(__dirname, 'src/index.ts'),
+      entry: resolve(__dirname, 'src/index.ts'),
       name: NAME,
       formats: ['es', 'cjs', 'iife'],
       fileName: (format) => fileName[format],
     },
     sourcemap: true,
-    minify: 'esbuild',
   },
 });
