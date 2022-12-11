@@ -1,4 +1,4 @@
-import { t as transitionProperty } from './transitionProperty.1c387f74.js';
+import { t as transitionProperty } from './transitionProperty-cab1f1bf.js';
 import getElementStyle from './getElementStyle.mjs';
 
 const transitionDelay = "transitionDelay";

@@ -1,7 +1,7 @@
 import getElementTransitionDelay from './getElementTransitionDelay.mjs';
 import getElementTransitionDuration from './getElementTransitionDuration.mjs';
 import dispatchEvent from './dispatchEvent.mjs';
-import './transitionProperty.1c387f74.js';
+import './transitionProperty-cab1f1bf.js';
 import './getElementStyle.mjs';
 
 const transitionEndEvent = "transitionend";

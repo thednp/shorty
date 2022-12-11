@@ -1,5 +1,5 @@
-import { u as userAgentData } from './userAgentData.ce4345e4.js';
-import { u as userAgent } from './userAgent.9185cc6f.js';
+import { u as userAgentData } from './userAgentData-f663509b.js';
+import { u as userAgent } from './userAgent-9f81746a.js';
 
 const mobileBrands = /iPhone|iPad|iPod|Android/i;
 let isMobileCheck = false;

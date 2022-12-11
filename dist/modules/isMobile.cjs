@@ -1,7 +1,7 @@
 'use strict';
 
-const userAgentData = require('./userAgentData.3515f3a8.cjs');
-const userAgent = require('./userAgent.e80e0b06.cjs');
+const userAgentData = require('./userAgentData-ac721cb0.cjs');
+const userAgent = require('./userAgent-a030ce52.cjs');
 
 const mobileBrands = /iPhone|iPad|iPod|Android/i;
 let isMobileCheck = false;

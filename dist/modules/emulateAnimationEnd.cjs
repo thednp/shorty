@@ -3,7 +3,7 @@
 const getElementAnimationDelay = require('./getElementAnimationDelay.cjs');
 const getElementAnimationDuration = require('./getElementAnimationDuration.cjs');
 const dispatchEvent = require('./dispatchEvent.cjs');
-require('./animationName.846ffabc.cjs');
+require('./animationName-b087a2d1.cjs');
 require('./getElementStyle.cjs');
 
 const animationEndEvent = "animationend";

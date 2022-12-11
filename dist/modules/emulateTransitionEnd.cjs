@@ -3,7 +3,7 @@
 const getElementTransitionDelay = require('./getElementTransitionDelay.cjs');
 const getElementTransitionDuration = require('./getElementTransitionDuration.cjs');
 const dispatchEvent = require('./dispatchEvent.cjs');
-require('./transitionProperty.015c02d6.cjs');
+require('./transitionProperty-0bad6417.cjs');
 require('./getElementStyle.cjs');
 
 const transitionEndEvent = "transitionend";

@@ -1,6 +1,6 @@
 'use strict';
 
-const userAgent = require('./userAgent.e80e0b06.cjs');
+const userAgent = require('./userAgent-a030ce52.cjs');
 
 const isFirefox = userAgent.userAgent ? userAgent.userAgent.includes("Firefox") : false;
 

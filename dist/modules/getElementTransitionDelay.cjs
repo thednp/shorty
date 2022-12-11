@@ -1,6 +1,6 @@
 'use strict';
 
-const transitionProperty = require('./transitionProperty.015c02d6.cjs');
+const transitionProperty = require('./transitionProperty-0bad6417.cjs');
 const getElementStyle = require('./getElementStyle.cjs');
 
 const transitionDelay = "transitionDelay";

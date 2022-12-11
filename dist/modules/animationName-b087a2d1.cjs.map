@@ -1,0 +1,1 @@
+{"version":3,"file":"animationName-b087a2d1.cjs","sources":["../../src/strings/animationName.ts"],"sourcesContent":["/**\n * A global namespace for 'animationName' string.\n */\nconst animationName = 'animationName';\nexport default animationName;\n"],"names":[],"mappings":";;AAGA,MAAM,aAAgB,GAAA;;;;"}

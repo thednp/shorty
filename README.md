@@ -219,6 +219,7 @@ if (isElementsArray(myValue)) {
 - **_normalizeOptions_** - a cool utility to normalize and crosscheck JavaScript options and their DATA API counterparts for various web components; supports namespaced options like `data-NAMESPACE-option="value"`; priority: JavaScript options > DATA API options > default options
 - **_ObjectAssign_** - a shortie for `Object.assign()` method;
 - **_ObjectEntries_** - a shortie for `Object.entries()` method;
+- **_ObjectHasOwn_** - a shortie for `Object.hasOwn()` method;
 - **_ObjectKeys_** - a shortie for `Object.keys()` method;
 - **_ObjectValues_** - a shortie for `Object.values()` method;
 - **_OriginalEvent_** - a small utility that returns a synthetic `CustomEvent` with the added `relatedTarget` and other properties;

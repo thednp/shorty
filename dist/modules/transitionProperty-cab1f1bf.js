@@ -1,4 +1,4 @@
 const transitionProperty = "transitionProperty";
 
 export { transitionProperty as t };
-//# sourceMappingURL=transitionProperty.1c387f74.js.map
+//# sourceMappingURL=transitionProperty-cab1f1bf.js.map

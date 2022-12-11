@@ -3,4 +3,4 @@
 const transitionProperty = "transitionProperty";
 
 exports.transitionProperty = transitionProperty;
-//# sourceMappingURL=transitionProperty.015c02d6.cjs.map
+//# sourceMappingURL=transitionProperty-0bad6417.cjs.map

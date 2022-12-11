@@ -1,7 +1,7 @@
 'use strict';
 
-const userAgentData = require('./userAgentData.3515f3a8.cjs');
-const userAgent = require('./userAgent.e80e0b06.cjs');
+const userAgentData = require('./userAgentData-ac721cb0.cjs');
+const userAgent = require('./userAgent-a030ce52.cjs');
 
 const appleBrands = /(iPhone|iPod|iPad)/;
 const isApple = userAgentData.userAgentData ? userAgentData.userAgentData.brands.some((x) => appleBrands.test(x.brand)) : appleBrands.test(userAgent.userAgent);

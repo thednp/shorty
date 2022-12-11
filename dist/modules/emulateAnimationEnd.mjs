@@ -1,7 +1,7 @@
 import getElementAnimationDelay from './getElementAnimationDelay.mjs';
 import getElementAnimationDuration from './getElementAnimationDuration.mjs';
 import dispatchEvent from './dispatchEvent.mjs';
-import './animationName.cd498a97.js';
+import './animationName-db8d0d3d.js';
 import './getElementStyle.mjs';
 
 const animationEndEvent = "animationend";

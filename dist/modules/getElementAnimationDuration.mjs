@@ -1,4 +1,4 @@
-import { a as animationName } from './animationName.cd498a97.js';
+import { a as animationName } from './animationName-db8d0d3d.js';
 import getElementStyle from './getElementStyle.mjs';
 
 const animationDuration = "animationDuration";

@@ -1,6 +1,6 @@
 'use strict';
 
-const animationName = require('./animationName.846ffabc.cjs');
+const animationName = require('./animationName-b087a2d1.cjs');
 const getElementStyle = require('./getElementStyle.cjs');
 
 const animationDelay = "animationDelay";
