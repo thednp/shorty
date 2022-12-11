@@ -1,7 +1,9 @@
 /// <reference types="cypress" />
 // @ts-nocheck
 
-import SHORTY from '../../src/index';
+// import SHORTY from '../../src/index';
+import * as SHORTY from '../../src/index';
+
 import CustomElem from '../fixtures/custom-elem';
 
 describe('Shorty Library Tests', () => {

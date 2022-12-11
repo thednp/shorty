@@ -1,1 +1,0 @@
-{"version":3,"file":"documentElement.mjs","sources":["../../src/blocks/documentElement.ts"],"sourcesContent":["/**\n * A global namespace for `document.documentElement` or the `<HTML>`.\n */\nconst { documentElement } = document;\nexport default documentElement;\n"],"names":[],"mappings":"AAGM,MAAA,EAAE,iBAAoB,GAAA;;;;"}

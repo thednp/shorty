@@ -243,7 +243,7 @@ import getElementsByTagName from './selectors/getElementsByTagName';
 import getElementsByClassName from './selectors/getElementsByClassName';
 import matches from './selectors/matches';
 
-const SHORTY = {
+export {
   ariaChecked,
   ariaDescription,
   ariaDescribedBy,
@@ -457,5 +457,3 @@ const SHORTY = {
   removeAttribute,
   removeAttributeNS,
 };
-
-export default SHORTY;

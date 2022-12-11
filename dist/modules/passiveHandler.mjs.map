@@ -1,1 +1,0 @@
-{"version":3,"file":"passiveHandler.mjs","sources":["../../src/misc/passiveHandler.ts"],"sourcesContent":["/**\n * A global namespace for most scroll event listeners.\n */\nconst passiveHandler: Partial<AddEventListenerOptions> = { passive: true };\n\nexport default passiveHandler;\n"],"names":[],"mappings":"AAGM,MAAA,cAAA,GAAmD,EAAE,OAAA,EAAS,IAAK;;;;"}

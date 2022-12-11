@@ -1,1 +1,0 @@
-{"version":3,"file":"documentBody.cjs","sources":["../../src/blocks/documentBody.ts"],"sourcesContent":["/**\n * A global namespace for `document.body`.\n */\nconst { body: documentBody } = document;\nexport default documentBody;\n"],"names":[],"mappings":";;AAGM,MAAA,EAAE,IAAM,EAAA,YAAA,EAAiB,GAAA;;;;"}

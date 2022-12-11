@@ -1,7 +1,8 @@
 /// <reference types="cypress" />
 // @ts-nocheck
 
-import SHORTY from '../../src/index';
+// import SHORTY from '../../src/index';
+import * as SHORTY from '../../src/index';
 
 describe('Shorty Library Tests', () => {
   before(() => {

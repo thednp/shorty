@@ -1,1 +1,0 @@
-{"version":3,"file":"documentHead.cjs","sources":["../../src/blocks/documentHead.ts"],"sourcesContent":["/**\n * A global namespace for `document.head`.\n */\nconst { head: documentHead } = document;\nexport default documentHead;\n"],"names":[],"mappings":";;AAGM,MAAA,EAAE,IAAM,EAAA,YAAA,EAAiB,GAAA;;;;"}
