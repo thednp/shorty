@@ -7,9 +7,9 @@
 [![jsDelivr hits (npm)](https://img.shields.io/jsdelivr/npm/hw/@thednp/shorty)](https://www.jsdelivr.com/package/npm/@thednp/shorty)
 [![typescript version](https://img.shields.io/badge/typescript-4.9.4-brightgreen)](https://www.typescriptlang.org/)
 [![eslint version](https://img.shields.io/badge/eslint-8.29.0-brightgreen)](https://github.com/eslint)
-[![prettier version](https://img.shields.io/badge/prettier-2.7.1-brightgreen)](https://prettier.io/)
-[![cypress version](https://img.shields.io/badge/cypress-12.0.2-brightgreen)](https://cypress.io/)
-[![vite version](https://img.shields.io/badge/vite-4.0.0-brightgreen)](https://github.com/vitejs)
+[![prettier version](https://img.shields.io/badge/prettier-2.8.3-brightgreen)](https://prettier.io/)
+[![cypress version](https://img.shields.io/badge/cypress-12.4.1-brightgreen)](https://cypress.io/)
+[![vite version](https://img.shields.io/badge/vite-4.0.4-brightgreen)](https://github.com/vitejs)
 
 
 A small TypeScript library with various tools, all ESLint valid and featuring everything useful for creating light libraries or web components. If there is anything that is consistently repeating itself, **shorty** can help you save up to 50% of the code required, with little to no performance cost.
