@@ -20,6 +20,12 @@ import abortEvent from './strings/abortEvent';
 import blurEvent from './strings/blurEvent';
 import moveEvent from './strings/moveEvent';
 import changeEvent from './strings/changeEvent';
+import dragEvent from './strings/dragEvent';
+import dragstartEvent from './strings/dragstartEvent';
+import dragenterEvent from './strings/dragenterEvent';
+import dragleaveEvent from './strings/dragleaveEvent';
+import dragoverEvent from './strings/dragoverEvent';
+import dragendEvent from './strings/dragendEvent';
 import errorEvent from './strings/errorEvent';
 import resetEvent from './strings/resetEvent';
 import resizeEvent from './strings/resizeEvent';
@@ -264,6 +270,12 @@ export {
   blurEvent,
   moveEvent,
   changeEvent,
+  dragEvent,
+  dragstartEvent,
+  dragenterEvent,
+  dragoverEvent,
+  dragleaveEvent,
+  dragendEvent,
   errorEvent,
   resetEvent,
   resizeEvent,

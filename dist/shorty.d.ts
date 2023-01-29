@@ -130,6 +130,30 @@ export declare const moveEvent = "move";
  */
 export declare const changeEvent = "change";
 /**
+ * A global namespace for `drag` event.
+ */
+export declare const dragEvent = "drag";
+/**
+ * A global namespace for `dragstart` event.
+ */
+export declare const dragstartEvent = "dragstart";
+/**
+ * A global namespace for `dragenter` event.
+ */
+export declare const dragenterEvent = "dragenter";
+/**
+ * A global namespace for `dragleave` event.
+ */
+export declare const dragleaveEvent = "dragleave";
+/**
+ * A global namespace for `dragover` event.
+ */
+export declare const dragoverEvent = "dragover";
+/**
+ * A global namespace for `dragend` event.
+ */
+export declare const dragendEvent = "dragend";
+/**
  * A global namespace for `error` event.
  */
 export declare const errorEvent = "error";

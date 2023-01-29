@@ -1,6 +1,6 @@
 {
   "name": "@thednp/shorty",
-  "version": "2.0.0alpha8",
+  "version": "2.0.0alpha9",
   "type": "module",
   "description": "TypeScript shorties for the web",
   "source": "./src/index.ts",
