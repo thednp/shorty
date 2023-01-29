@@ -5,7 +5,7 @@ import getDocument from './getDocument';
  * @param node the reference node
  * @returns the `<head>` of the node's parent document
  */
-const getDocumentHead = (node?: Node): HTMLElement & HTMLHeadElement => {
+const getDocumentHead = (node?: Node | Document | Window): HTMLElement & HTMLHeadElement => {
   return getDocument(node).head;
 };
 

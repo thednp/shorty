@@ -1052,21 +1052,21 @@ export declare const getDocument: (node?: Node | Document | Window) => Document;
  * @param node the reference node
  * @returns the parent `<body>` of the specified node
  */
-export declare const getDocumentBody: (node?: Node) => HTMLElement;
+export declare const getDocumentBody: (node?: Node | Document | Window) => HTMLElement;
 /**
  * Returns the `document.documentElement` or the `<HTML>` element.
  *
  * @param node the reference node
  * @returns the parent `<HTML>` of the node's parent document
  */
-export declare const getDocumentElement: (node?: Node) => HTMLElement;
+export declare const getDocumentElement: (node?: Node | Document | Window) => HTMLElement;
 /**
  * Returns the `document.head` or the `<head>` element.
  *
  * @param node the reference node
  * @returns the `<head>` of the node's parent document
  */
-export declare const getDocumentHead: (node?: Node) => HTMLElement & HTMLHeadElement;
+export declare const getDocumentHead: (node?: Node | Document | Window) => HTMLElement & HTMLHeadElement;
 /**
  * Utility to get the computed `animationDuration`
  * from `HTMLElement` in miliseconds.
