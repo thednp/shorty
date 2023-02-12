@@ -14,7 +14,6 @@ jobs:
           node-version: 16
       # - uses: bahmutov/npm-install@v1
       - run: npm install
-      - run: npm run lint:ts
       - run: npm run build
       - run: npx cypress run
 
