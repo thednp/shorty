@@ -54,31 +54,53 @@ const fe = "aria-checked", me = "aria-description", ge = "aria-describedby", ve 
   end: "mouseup",
   move: "mousemove",
   cancel: "mouseleave"
-}, He = { down: "mousedown", up: "mouseup" }, Pe = "onmouseleave" in document ? ["mouseenter", "mouseleave"] : ["mouseover", "mouseout"], Ue = {
+}, He = { down: "mousedown", up: "mouseup" }, Pe = "onmouseleave" in document ? ["mouseenter", "mouseleave"] : (
+  /* istanbul ignore next */
+  ["mouseover", "mouseout"]
+), Ue = {
   start: "touchstart",
   end: "touchend",
   move: "touchmove",
   cancel: "touchcancel"
 }, Fe = { in: "focusin", out: "focusout" }, We = {
   Backspace: "Backspace",
+  //  8
   Tab: "Tab",
+  //  9
   Enter: "Enter",
+  // 13
   Shift: "Shift",
+  // 16
   Control: "Control",
+  // 17
   Alt: "Alt",
+  // 18
   Pause: "Pause",
+  // 19
   CapsLock: "CapsLock",
+  // 20
   Escape: "Escape",
+  // 27
   Scape: "Space",
+  // 32
   ArrowLeft: "ArrowLeft",
+  // 37
   ArrowUp: "ArrowUp",
+  // 38
   ArrowRight: "ArrowRight",
+  // 39
   ArrowDown: "ArrowDown",
+  // 40
   Insert: "Insert",
+  // 45
   Delete: "Delete",
+  // 46
   Meta: "Meta",
+  // 91 windows key
   ContextMenu: "ContextMenu",
+  // 93
   ScrollLock: "ScrollLock"
+  // 145
 }, Re = "Alt", Qe = "ArrowDown", qe = "ArrowUp", Ge = "ArrowLeft", je = "ArrowRight", Je = "Backspace", Ke = "CapsLock", Xe = "Control", Ye = "Delete", Ze = "Enter", $e = "Escape", _e = "Insert", tn = "Meta", en = "Pause", nn = "ScrollLock", on = "Shift", sn = "Space", cn = "Tab", Wt = "animationDuration", Rt = "animationDelay", P = "animationName", T = "animationend", Qt = "transitionDuration", qt = "transitionDelay", D = "transitionend", U = "transitionProperty", rn = "addEventListener", an = "removeEventListener", un = {
   linear: "linear",
   easingSinusoidalIn: "cubic-bezier(0.47,0,0.745,0.715)",
@@ -108,7 +130,13 @@ const fe = "aria-checked", me = "aria-description", ge = "aria-describedby", ve 
 }, ln = "offsetHeight", dn = "offsetWidth", pn = "scrollHeight", fn = "scrollWidth", mn = "tabindex", Gt = navigator.userAgentData, S = Gt, { userAgent: jt } = navigator, M = jt, I = /iPhone|iPad|iPod|Android/i;
 let C = !1;
 S ? C = S.brands.some((t) => I.test(t.brand)) : C = I.test(M);
-const gn = C, z = /(iPhone|iPod|iPad)/, vn = S ? S.brands.some((t) => z.test(t.brand)) : z.test(M), En = M ? M.includes("Firefox") : !1, { head: N } = document, bn = ["webkitPerspective", "perspective"].some((t) => t in N.style), Jt = (t, e, n, o) => {
+const gn = C, z = /(iPhone|iPod|iPad)/, vn = S ? S.brands.some((t) => z.test(t.brand)) : (
+  /* istanbul ignore next */
+  z.test(M)
+), En = M ? M.includes("Firefox") : (
+  /* istanbul ignore next */
+  !1
+), { head: N } = document, bn = ["webkitPerspective", "perspective"].some((t) => t in N.style), Jt = (t, e, n, o) => {
   const s = o || !1;
   t.addEventListener(e, n, s);
 }, Kt = (t, e, n, o) => {
@@ -130,23 +158,50 @@ const gn = C, z = /(iPhone|iPod|iPad)/, vn = S ? S.brands.some((t) => z.test(t.b
   } catch {
   }
   return t;
-})(), yn = ["webkitTransform", "transform"].some((t) => t in N.style), wn = "ontouchstart" in window || "msMaxTouchPoints" in navigator, An = ["webkitAnimation", "animation"].some((t) => t in N.style), Sn = ["webkitTransition", "transition"].some((t) => t in N.style), Zt = (t, e) => t.getAttribute(e), Mn = (t, e, n) => e.getAttributeNS(t, n), Nn = (t, e) => t.hasAttribute(e), kn = (t, e, n) => e.hasAttributeNS(t, n), F = (t, e, n) => t.setAttribute(e, n), Tn = (t, e, n, o) => e.setAttributeNS(t, n, o), Dn = (t, e) => t.removeAttribute(e), Cn = (t, e, n) => e.removeAttributeNS(t, n), Ln = (t, ...e) => {
+})(), yn = ["webkitTransform", "transform"].some((t) => t in N.style), wn = "ontouchstart" in window || /* istanbul ignore next */
+"msMaxTouchPoints" in navigator, An = ["webkitAnimation", "animation"].some((t) => t in N.style), Sn = ["webkitTransition", "transition"].some((t) => t in N.style), Zt = (t, e) => t.getAttribute(e), Mn = (t, e, n) => e.getAttributeNS(t, n), Nn = (t, e) => t.hasAttribute(e), kn = (t, e, n) => e.hasAttributeNS(t, n), F = (t, e, n) => t.setAttribute(e, n), Tn = (t, e, n, o) => e.setAttributeNS(t, n, o), Dn = (t, e) => t.removeAttribute(e), Cn = (t, e, n) => e.removeAttributeNS(t, n), Ln = (t, ...e) => {
   t.classList.add(...e);
 }, On = (t, ...e) => {
   t.classList.remove(...e);
 }, In = (t, e) => t.classList.contains(e), { body: zn } = document, { documentElement: xn } = document, Vn = (t) => Array.from(t), E = (t) => t != null && typeof t == "object" || !1, i = (t) => E(t) && typeof t.nodeType == "number" && [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11].some((e) => t.nodeType === e) || !1, u = (t) => i(t) && t.nodeType === 1 || !1, y = /* @__PURE__ */ new Map(), L = {
+  /**
+   * Sets web components data.
+   *
+   * @param element target element
+   * @param component the component's name or a unique key
+   * @param instance the component instance
+   */
   set: (t, e, n) => {
     if (!u(t))
       return;
     y.has(e) || y.set(e, /* @__PURE__ */ new Map()), y.get(e).set(t, n);
   },
+  /**
+   * Returns all instances for specified component.
+   *
+   * @param component the component's name or a unique key
+   * @returns all the component instances
+   */
   getAllFor: (t) => y.get(t) || null,
+  /**
+   * Returns the instance associated with the target.
+   *
+   * @param element target element
+   * @param component the component's name or a unique key
+   * @returns the instance
+   */
   get: (t, e) => {
     if (!u(t) || !e)
       return null;
     const n = L.getAllFor(e);
     return t && n && n.get(t) || null;
   },
+  /**
+   * Removes web components data.
+   *
+   * @param element target element
+   * @param component the component's name or a unique key
+   */
   remove: (t, e) => {
     const n = L.getAllFor(e);
     !n || !u(t) || (n.delete(t), n.size === 0 && y.delete(e));
@@ -179,11 +234,23 @@ const gn = C, z = /(iPhone|iPod|iPad)/, vn = S ? S.brands.some((t) => z.test(t.b
   const n = getComputedStyle(t), o = e.replace("webkit", "Webkit").replace(/([A-Z])/g, "-$1").toLowerCase();
   return n.getPropertyValue(o);
 }, te = (t) => {
-  const e = v(t, P), n = v(t, Rt), o = n.includes("ms") ? 1 : 1e3, s = e && e !== "none" ? parseFloat(n) * o : 0;
-  return Number.isNaN(s) ? 0 : s;
+  const e = v(t, P), n = v(t, Rt), o = n.includes("ms") ? (
+    /* istanbul ignore next */
+    1
+  ) : 1e3, s = e && e !== "none" ? parseFloat(n) * o : 0;
+  return Number.isNaN(s) ? (
+    /* istanbul ignore next */
+    0
+  ) : s;
 }, ee = (t) => {
-  const e = v(t, P), n = v(t, Wt), o = n.includes("ms") ? 1 : 1e3, s = e && e !== "none" ? parseFloat(n) * o : 0;
-  return Number.isNaN(s) ? 0 : s;
+  const e = v(t, P), n = v(t, Wt), o = n.includes("ms") ? (
+    /* istanbul ignore next */
+    1
+  ) : 1e3, s = e && e !== "none" ? parseFloat(n) * o : 0;
+  return Number.isNaN(s) ? (
+    /* istanbul ignore next */
+    0
+  ) : s;
 }, Pn = (t, e) => {
   let n = 0;
   const o = new Event(T), s = ee(t), c = te(t);
@@ -197,11 +264,29 @@ const gn = C, z = /(iPhone|iPod|iPad)/, vn = S ? S.brands.some((t) => z.test(t.b
   } else
     e.apply(t, [o]);
 }, ne = (t) => {
-  const e = v(t, U), n = v(t, qt), o = n.includes("ms") ? 1 : 1e3, s = e && e !== "none" ? parseFloat(n) * o : 0;
-  return Number.isNaN(s) ? 0 : s;
+  const e = v(t, U), n = v(t, qt), o = n.includes("ms") ? (
+    /* istanbul ignore next */
+    1
+  ) : 1e3, s = e && e !== "none" ? parseFloat(n) * o : (
+    /* istanbul ignore next */
+    0
+  );
+  return Number.isNaN(s) ? (
+    /* istanbul ignore next */
+    0
+  ) : s;
 }, oe = (t) => {
-  const e = v(t, U), n = v(t, Qt), o = n.includes("ms") ? 1 : 1e3, s = e && e !== "none" ? parseFloat(n) * o : 0;
-  return Number.isNaN(s) ? 0 : s;
+  const e = v(t, U), n = v(t, Qt), o = n.includes("ms") ? (
+    /* istanbul ignore next */
+    1
+  ) : 1e3, s = e && e !== "none" ? parseFloat(n) * o : (
+    /* istanbul ignore next */
+    0
+  );
+  return Number.isNaN(s) ? (
+    /* istanbul ignore next */
+    0
+  ) : s;
 }, Un = (t, e) => {
   let n = 0;
   const o = new Event(D), s = oe(t), c = ne(t);
@@ -240,15 +325,37 @@ const gn = C, z = /(iPhone|iPod|iPad)/, vn = S ? S.brands.some((t) => z.test(t.b
     }
   });
 }, O = (t) => E(t) && t.constructor.name === "Map" || !1, ce = (t) => typeof t == "number" || !1, m = /* @__PURE__ */ new Map(), Zn = {
+  /**
+   * Sets a new timeout timer for an element, or element -> key association.
+   *
+   * @param element target element
+   * @param callback the callback
+   * @param delay the execution delay
+   * @param key a unique key
+   */
   set: (t, e, n, o) => {
-    !u(t) || (o && o.length ? (m.has(t) || m.set(t, /* @__PURE__ */ new Map()), m.get(t).set(o, setTimeout(e, n))) : m.set(t, setTimeout(e, n)));
+    u(t) && (o && o.length ? (m.has(t) || m.set(t, /* @__PURE__ */ new Map()), m.get(t).set(o, setTimeout(e, n))) : m.set(t, setTimeout(e, n)));
   },
+  /**
+   * Returns the timer associated with the target.
+   *
+   * @param element target element
+   * @param key a unique
+   * @returns the timer
+   */
   get: (t, e) => {
     if (!u(t))
       return null;
     const n = m.get(t);
-    return e && n && O(n) ? n.get(e) || null : ce(n) ? n : null;
+    return e && n && O(n) ? n.get(e) || /* istanbul ignore next */
+    null : ce(n) ? n : null;
   },
+  /**
+   * Clears the element's timer.
+   *
+   * @param element target element
+   * @param key a unique key
+   */
   clear: (t, e) => {
     if (!u(t))
       return;
@@ -260,7 +367,13 @@ const gn = C, z = /(iPhone|iPod|iPad)/, vn = S ? S.brands.some((t) => z.test(t.b
   let p = 1, r = 1;
   if (e && u(t)) {
     const { offsetWidth: f, offsetHeight: A } = t;
-    p = f > 0 ? Math.round(n) / f : 1, r = A > 0 ? Math.round(o) / A : 1;
+    p = f > 0 ? Math.round(n) / f : (
+      /* istanbul ignore next */
+      1
+    ), r = A > 0 ? Math.round(o) / A : (
+      /* istanbul ignore next */
+      1
+    );
   }
   return {
     width: n / p,
@@ -275,7 +388,10 @@ const gn = C, z = /(iPhone|iPod|iPad)/, vn = S ? S.brands.some((t) => z.test(t.b
 }, _n = (t) => d(t).body, k = (t) => d(t).documentElement, to = (t) => d(t).head, eo = (t) => {
   const e = W(t), n = e ? t.scrollX : t.scrollLeft, o = e ? t.scrollY : t.scrollTop;
   return { x: n, y: o };
-}, re = (t) => i(t) && t.constructor.name === "ShadowRoot" || !1, no = (t) => t.nodeName === "HTML" ? t : u(t) && t.assignedSlot || i(t) && t.parentNode || re(t) && t.host || k(t), ae = (t) => {
+}, re = (t) => i(t) && t.constructor.name === "ShadowRoot" || !1, no = (t) => t.nodeName === "HTML" ? t : u(t) && t.assignedSlot || // step into the shadow DOM of the parent of a slotted node
+i(t) && t.parentNode || // DOM Element detected
+re(t) && t.host || // ShadowRoot detected
+k(t), ae = (t) => {
   if (!u(t))
     return !1;
   const { width: e, height: n } = w(t), { offsetWidth: o, offsetHeight: s } = t;
@@ -326,7 +442,8 @@ const b = /* @__PURE__ */ new Map(), ie = (t, e) => {
     return !1;
   }
   return !0;
-}, go = (t) => E(t) && t.constructor.name === "WeakMap" || !1, vo = (t) => i(t) && ["SVG", "Image", "Video", "Canvas"].some((e) => t.constructor.name.includes(e)) || !1, Eo = (t) => E(t) && t.constructor.name === "NodeList" || !1, bo = (t) => k(t).dir === "rtl", ho = (t) => i(t) && t.constructor.name.includes("SVG") || !1, yo = (t) => i(t) && ["TABLE", "TD", "TH"].includes(t.nodeName) || !1, de = (t, e) => t ? t.closest(e) || de(t.getRootNode().host, e) : null, wo = (t, e) => u(t) ? t : (i(e) ? e : d()).querySelector(t), pe = (t, e) => (i(e) ? e : d()).getElementsByTagName(t), Ao = (t) => [...pe("*", t)].filter(le), So = (t, e) => d(e).getElementById(t) || null, Mo = (t, e) => (i(e) ? e : d()).querySelectorAll(t), No = (t, e) => (e && i(e) ? e : d()).getElementsByClassName(
+}, go = (t) => E(t) && t.constructor.name === "WeakMap" || !1, vo = (t) => i(t) && ["SVG", "Image", "Video", "Canvas"].some((e) => t.constructor.name.includes(e)) || !1, Eo = (t) => E(t) && t.constructor.name === "NodeList" || !1, bo = (t) => k(t).dir === "rtl", ho = (t) => i(t) && t.constructor.name.includes("SVG") || !1, yo = (t) => i(t) && ["TABLE", "TD", "TH"].includes(t.nodeName) || !1, de = (t, e) => t ? t.closest(e) || // break out of `ShadowRoot`
+de(t.getRootNode().host, e) : null, wo = (t, e) => u(t) ? t : (i(e) ? e : d()).querySelector(t), pe = (t, e) => (i(e) ? e : d()).getElementsByTagName(t), Ao = (t) => [...pe("*", t)].filter(le), So = (t, e) => d(e).getElementById(t) || null, Mo = (t, e) => (i(e) ? e : d()).querySelectorAll(t), No = (t, e) => (e && i(e) ? e : d()).getElementsByClassName(
   t
 ), ko = (t, e) => t.matches(e);
 export {
