@@ -3,5 +3,7 @@ extraction:
     index:
       exclude:
         - node_modules
+        - experiments
         - cypress
+        - coverage
         - dist

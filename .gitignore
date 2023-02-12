@@ -6,4 +6,3 @@ coverage
 cypress/videos
 cypress/screenshots
 cypress/coverage
-cypress/instrumented

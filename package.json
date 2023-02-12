@@ -1,23 +1,13 @@
 {
   "name": "@thednp/shorty",
-  "version": "2.0.0alpha9",
+  "version": "2.0.0alpha10",
   "type": "module",
   "description": "TypeScript shorties for the web",
-  "source": "./src/index.ts",
-  "main": "./dist/shorty.js",
-  "types": "./dist/shorty.d.ts",
-  "module": "./dist/shorty.mjs",
-  "exports": {
-    ".": {
-      "import": "./dist/shorty.mjs",
-      "require": "./dist/shorty.cjs",
-      "types": "./dist/shorty.d.ts"
-    }
-  },
-  "files": [
-    "dist",
-    "src"
-  ],
+  "source": "src/index.ts",
+  "main": "dist/shorty.js",
+  "module": "dist/shorty.cjs",
+  "esnext": "dist/shorty.mjs",
+  "types": "dist/shorty.d.ts",
   "scripts": {
     "pre-test": "npm run clean-coverage",
     "test": "npm run pre-test && npx cypress run",

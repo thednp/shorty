@@ -1,5 +1,4 @@
 .nyc_output
-.eslintrc
 .vscode
 .github
 .gitignore
@@ -10,4 +9,3 @@ coverage
 cypress/videos
 cypress/screenshots
 cypress/coverage
-cypress/instrumented
