@@ -1,6 +1,5 @@
 import getDocument from '../get/getDocument';
-import ObjectEntries from './ObjectEntries';
-import setAttribute from '../attr/setAttribute';
+import ObjectAssign from './ObjectAssign';
 import isString from '../is/isString';
 
 /**
@@ -8,6 +7,8 @@ import isString from '../is/isString';
  * which allows you to create a new `HTMLElement` for a given `tagName`
  * or based on an object with specific non-readonly attributes with string values:
  * `id`, `className`, `textContent`, `style`, etc.
+ * Note: some elements resulted from this function call may not be compatible with
+ * some attributes.
  *
  * @see https://developer.mozilla.org/en-US/docs/Web/API/Document/createElementNS
  *
@@ -33,13 +34,7 @@ const createElementNS = (
   const attr = { ...(param as Record<string, unknown>) };
   delete attr.tagName;
 
-  ObjectEntries(attr).forEach(([key, value]) => {
-    if (isString(key as string) && isString(value as string)) {
-      setAttribute(newElement, key as string, value as string);
-    }
-  });
-
-  return newElement;
+  return ObjectAssign(newElement, attr);
 };
 
 export default createElementNS;

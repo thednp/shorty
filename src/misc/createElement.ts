@@ -1,7 +1,6 @@
 import isString from '../is/isString';
-import setAttribute from '../attr/setAttribute';
 import getDocument from '../get/getDocument';
-import ObjectEntries from './ObjectEntries';
+import ObjectAssign from './ObjectAssign';
 
 /**
  * Shortie for `document.createElement` method
@@ -29,12 +28,7 @@ const createElement = (param?: string | Partial<HTMLElement>): HTMLElement | und
   const attr = { ...(param as Record<string, unknown>) };
   delete attr.tagName;
 
-  ObjectEntries(attr).forEach(([key, value]) => {
-    if (isString(key as string) && isString(value as string)) {
-      setAttribute(newElement, key as string, value as string);
-    }
-  });
-  return newElement;
+  return ObjectAssign(newElement, attr);
 };
 
 export default createElement;

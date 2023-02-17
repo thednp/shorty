@@ -822,6 +822,8 @@ export declare const createElement: (param?: string | Partial<HTMLElement>) => H
  * which allows you to create a new `HTMLElement` for a given `tagName`
  * or based on an object with specific non-readonly attributes with string values:
  * `id`, `className`, `textContent`, `style`, etc.
+ * Note: some elements resulted from this function call may not be compatible with
+ * some attributes.
  *
  * @see https://developer.mozilla.org/en-US/docs/Web/API/Document/createElementNS
  *
@@ -1343,7 +1345,7 @@ export declare const isWeakMap: (obj?: unknown) => obj is WeakMap<any, any>;
  * @param element the target element
  * @returns the query result
  */
-export declare const isMedia: (element?: unknown) => element is HTMLCanvasElement | HTMLImageElement | SVGElement | HTMLVideoElement;
+export declare const isMedia: (element?: unknown) => element is HTMLCanvasElement | HTMLImageElement | HTMLVideoElement | SVGElement;
 /**
  * Checks if an object is a `Node`.
  *

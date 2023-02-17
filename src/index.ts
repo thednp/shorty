@@ -249,6 +249,8 @@ import getElementsByTagName from './selectors/getElementsByTagName';
 import getElementsByClassName from './selectors/getElementsByClassName';
 import matches from './selectors/matches';
 
+import { version } from '../package.json';
+
 export {
   ariaChecked,
   ariaDescription,
@@ -468,4 +470,5 @@ export {
   setAttributeNS,
   removeAttribute,
   removeAttributeNS,
+  version,
 };

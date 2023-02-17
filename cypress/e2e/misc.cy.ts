@@ -175,6 +175,7 @@ describe('Shorty Library Tests', () => {
       ObjectAssign,
       ObjectKeys,
       ObjectValues,
+      ObjectDefineProperty,
       createElement,
       createElementNS,
       Data,
@@ -230,6 +231,10 @@ describe('Shorty Library Tests', () => {
         expect(toLowerCase('textSample'), 'toLowerCase(string)').to.equal('textsample');
         expect(toUpperCase('textSample'), 'toUpperCase(string)').to.equal('TEXTSAMPLE');
 
+        // expect(
+        //   Object.defineProperty({ c: 3}, 'a', { value: {b: 1}, writable: true }),
+        //   'ObjectDefineProperty(object1, prop, value)',
+        // ).to.deep.equal({ c: 3, a: {b: 1} });
         expect(
           ObjectAssign({ c: 3 }, { a: 1, b: 2 }),
           'ObjectAssign(object1, object2)',
@@ -270,7 +275,19 @@ describe('Shorty Library Tests', () => {
             innerText: 'This is a newly created paragraph.',
           }),
           'createElement(object)',
-        ).to.be.instanceOf(HTMLParagraphElement);
+        )
+        .to.be.instanceOf(HTMLParagraphElement)
+        .and.have.class('lead')
+        .and.contain('This is a newly created paragraph.');
+        expect(
+          createElement({
+            tagName: 'p',
+            textContent: 'This is a newly created paragraph.',
+          }),
+          'createElement(object)',
+        ).to.be.instanceOf(HTMLParagraphElement)
+        .and.contain('This is a newly created paragraph.');
+
         expect(
           createElement({
             className: 'lead',
@@ -289,24 +306,30 @@ describe('Shorty Library Tests', () => {
             tagName: 'button',
             className: 'btn',
             innerText: 'New Item',
+            textContent: 'New Item',
           }),
           'createElementNS(ns, object)',
-        ).to.be.instanceOf(HTMLButtonElement);
+        )
+        .to.be.instanceOf(HTMLButtonElement)
+        .and.have.class('btn')
+        .and.contain('New Item');
+        
         expect(
           createElementNS('http://www.w3.org/2000/svg', {
             tagName: 'path',
-            className: 'icon',
             d: 'M98,158l157,156L411,158l27,27L255,368L71,185L98,158z',
           }),
           'createElementNS(ns, object)',
-        ).to.be.instanceOf(SVGPathElement);
+        ).to.be.instanceOf(SVGPathElement)
+        .and.have.property('d').equal('M98,158l157,156L411,158l27,27L255,368L71,185L98,158z');
+
         expect(
           createElementNS('http://www.w3.org/2000/svg', {
             tagName: '',
             className: 'icon',
             d: 'M98,158l157,156L411,158l27,27L255,368L71,185L98,158z',
           }),
-          'createElementNS(ns, object)',
+          'createElementNS(ns, incompleteObject)',
         ).to.be.undefined;
 
         Data.set(el);
