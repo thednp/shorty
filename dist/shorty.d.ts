@@ -770,6 +770,7 @@ export declare const ArrayFrom: <T>(arr: ArrayLike<T> | Iterable<T>) => T[];
  * @see https://github.com/thednp/bootstrap.native/blob/master/src/components/base-component.js
  */
 export declare const Data: {
+	data: Map<string, Map<HTMLElement, any>>;
 	/**
 	 * Sets web components data.
 	 *

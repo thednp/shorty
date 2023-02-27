@@ -8,6 +8,7 @@ const componentData = new Map<string, Map<HTMLElement, any>>();
  * @see https://github.com/thednp/bootstrap.native/blob/master/src/components/base-component.js
  */
 const Data = {
+  data: componentData,
   /**
    * Sets web components data.
    *

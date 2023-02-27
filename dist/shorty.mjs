@@ -163,7 +163,8 @@ const mn = L, x = /(iPhone|iPod|iPad)/, gn = A ? A.brands.some((t) => x.test(t.b
   t.classList.add(...e);
 }, On = (t, ...e) => {
   t.classList.remove(...e);
-}, In = (t, e) => t.classList.contains(e), { body: zn } = document, { documentElement: xn } = document, Vn = (t) => Array.from(t), v = (t) => t != null && typeof t == "object" || !1, i = (t) => v(t) && typeof t.nodeType == "number" && [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11].some((e) => t.nodeType === e) || !1, u = (t) => i(t) && t.nodeType === 1 || !1, b = /* @__PURE__ */ new Map(), O = {
+}, In = (t, e) => t.classList.contains(e), { body: zn } = document, { documentElement: xn } = document, Vn = (t) => Array.from(t), v = (t) => t != null && typeof t == "object" || !1, i = (t) => v(t) && typeof t.nodeType == "number" && [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11].some((e) => t.nodeType === e) || !1, u = (t) => i(t) && t.nodeType === 1 || !1, E = /* @__PURE__ */ new Map(), O = {
+  data: E,
   /**
    * Sets web components data.
    *
@@ -174,7 +175,7 @@ const mn = L, x = /(iPhone|iPod|iPad)/, gn = A ? A.brands.some((t) => x.test(t.b
   set: (t, e, n) => {
     if (!u(t))
       return;
-    b.has(e) || b.set(e, /* @__PURE__ */ new Map()), b.get(e).set(t, n);
+    E.has(e) || E.set(e, /* @__PURE__ */ new Map()), E.get(e).set(t, n);
   },
   /**
    * Returns all instances for specified component.
@@ -182,7 +183,7 @@ const mn = L, x = /(iPhone|iPod|iPad)/, gn = A ? A.brands.some((t) => x.test(t.b
    * @param component the component's name or a unique key
    * @returns all the component instances
    */
-  getAllFor: (t) => b.get(t) || null,
+  getAllFor: (t) => E.get(t) || null,
   /**
    * Returns the instance associated with the target.
    *
@@ -204,7 +205,7 @@ const mn = L, x = /(iPhone|iPod|iPad)/, gn = A ? A.brands.some((t) => x.test(t.b
    */
   remove: (t, e) => {
     const n = O.getAllFor(e);
-    !n || !u(t) || (n.delete(t), n.size === 0 && b.delete(e));
+    !n || !u(t) || (n.delete(t), n.size === 0 && E.delete(e));
   }
 }, Bn = (t, e) => O.get(t, e), N = (t) => typeof t == "string" || !1, W = (t) => v(t) && t.constructor.name === "Window" || !1, R = (t) => i(t) && t.nodeType === 9 || !1, d = (t) => W(t) ? t.document : R(t) ? t : i(t) ? t.ownerDocument : window.document, k = (t, ...e) => Object.assign(t, ...e), Zt = (t) => {
   if (!t)
@@ -406,17 +407,20 @@ T(t), re = (t) => {
   };
 };
 let B = 0, H = 0;
-const E = /* @__PURE__ */ new Map(), ae = (t, e) => {
+const b = /* @__PURE__ */ new Map(), ae = (t, e) => {
   let n = e ? B : H;
   if (e) {
-    const o = ae(t), s = E.get(o) || /* @__PURE__ */ new Map();
-    E.has(o) || E.set(o, s), I(s) && !s.has(e) ? (s.set(e, n), B += 1) : n = s.get(e);
+    const o = ae(t), s = b.get(o) || /* @__PURE__ */ new Map();
+    b.has(o) || b.set(o, s), I(s) && !s.has(e) ? (s.set(e, n), B += 1) : n = s.get(e);
   } else {
     const o = t.id || t;
-    E.has(o) ? n = E.get(o) : (E.set(o, n), H += 1);
+    b.has(o) ? n = b.get(o) : (b.set(o, n), H += 1);
   }
   return n;
-}, so = (t) => t ? R(t) ? t.defaultView : i(t) ? t?.ownerDocument?.defaultView : t : window, ie = (t) => Array.isArray(t) || !1, co = (t) => i(t) && t.nodeName === "CANVAS" || !1, ue = (t) => u(t) && !!t.shadowRoot || !1, ro = (t) => i(t) && [1, 2, 3, 4, 5, 6, 7, 8].some((e) => t.nodeType === e) || !1, ao = (t) => {
+}, so = (t) => {
+  var e;
+  return t ? R(t) ? t.defaultView : i(t) ? (e = t == null ? void 0 : t.ownerDocument) == null ? void 0 : e.defaultView : t : window;
+}, ie = (t) => Array.isArray(t) || !1, co = (t) => i(t) && t.nodeName === "CANVAS" || !1, ue = (t) => u(t) && !!t.shadowRoot || !1, ro = (t) => i(t) && [1, 2, 3, 4, 5, 6, 7, 8].some((e) => t.nodeType === e) || !1, ao = (t) => {
   if (!i(t))
     return !1;
   const { top: e, bottom: n } = h(t), { clientHeight: o } = T(t);
@@ -438,7 +442,7 @@ const E = /* @__PURE__ */ new Map(), ae = (t, e) => {
 }, go = (t) => v(t) && t.constructor.name === "WeakMap" || !1, vo = (t) => i(t) && ["SVG", "Image", "Video", "Canvas"].some((e) => t.constructor.name.includes(e)) || !1, Eo = (t) => v(t) && t.constructor.name === "NodeList" || !1, bo = (t) => T(t).dir === "rtl", ho = (t) => i(t) && t.constructor.name.includes("SVG") || !1, yo = (t) => i(t) && ["TABLE", "TD", "TH"].includes(t.nodeName) || !1, le = (t, e) => t ? t.closest(e) || // break out of `ShadowRoot`
 le(t.getRootNode().host, e) : null, wo = (t, e) => u(t) ? t : (i(e) ? e : d()).querySelector(t), de = (t, e) => (i(e) ? e : d()).getElementsByTagName(t), Ao = (t) => [...de("*", t)].filter(ue), So = (t, e) => d(e).getElementById(t) || null, Mo = (t, e) => (i(e) ? e : d()).querySelectorAll(t), No = (t, e) => (e && i(e) ? e : d()).getElementsByClassName(
   t
-), ko = (t, e) => t.matches(e), To = "2.0.0alpha12";
+), ko = (t, e) => t.matches(e), To = "2.0.0alpha13";
 export {
   Vn as ArrayFrom,
   P as DOMContentLoadedEvent,

@@ -1,6 +1,6 @@
 {
   "name": "@thednp/shorty",
-  "version": "2.0.0alpha12",
+  "version": "2.0.0alpha13",
   "description": "TypeScript shorties for the web",
   "source": "src/index.ts",
   "main": "dist/shorty.js",
@@ -44,7 +44,7 @@
     "@types/istanbul-lib-instrument": "^1.7.4",
     "@typescript-eslint/eslint-plugin": "^5.47.1",
     "@typescript-eslint/parser": "^5.47.1",
-    "cypress": "^12.4.1",
+    "cypress": "^12.7.0",
     "dts-bundle-generator": "^7.2.0",
     "eslint": "^8.30.0",
     "eslint-plugin-jsdoc": "^39.6.4",
