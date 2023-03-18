@@ -442,7 +442,7 @@ const b = /* @__PURE__ */ new Map(), ae = (t, e) => {
 }, go = (t) => v(t) && t.constructor.name === "WeakMap" || !1, vo = (t) => i(t) && ["SVG", "Image", "Video", "Canvas"].some((e) => t.constructor.name.includes(e)) || !1, Eo = (t) => v(t) && t.constructor.name === "NodeList" || !1, bo = (t) => T(t).dir === "rtl", ho = (t) => i(t) && t.constructor.name.includes("SVG") || !1, yo = (t) => i(t) && ["TABLE", "TD", "TH"].includes(t.nodeName) || !1, le = (t, e) => t ? t.closest(e) || // break out of `ShadowRoot`
 le(t.getRootNode().host, e) : null, wo = (t, e) => u(t) ? t : (i(e) ? e : d()).querySelector(t), de = (t, e) => (i(e) ? e : d()).getElementsByTagName(t), Ao = (t) => [...de("*", t)].filter(ue), So = (t, e) => d(e).getElementById(t) || null, Mo = (t, e) => (i(e) ? e : d()).querySelectorAll(t), No = (t, e) => (e && i(e) ? e : d()).getElementsByClassName(
   t
-), ko = (t, e) => t.matches(e), To = "2.0.0alpha13";
+), ko = (t, e) => t.matches(e), To = "2.0.0alpha14";
 export {
   Vn as ArrayFrom,
   P as DOMContentLoadedEvent,
