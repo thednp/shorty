@@ -185,6 +185,7 @@ import ObjectEntries from './misc/ObjectEntries';
 import ObjectHasOwn from './misc/ObjectHasOwn';
 import ObjectKeys from './misc/ObjectKeys';
 import ObjectValues from './misc/ObjectValues';
+import ObjectFromEntries from './misc/ObjectFromEntries';
 import createCustomEvent from './misc/createCustomEvent';
 import passiveHandler from './misc/passiveHandler';
 import reflow from './misc/reflow';
@@ -455,6 +456,7 @@ export {
   ObjectEntries,
   ObjectKeys,
   ObjectValues,
+  ObjectFromEntries,
   getBoundingClientRect,
   getDocument,
   getDocumentBody,

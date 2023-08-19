@@ -966,6 +966,17 @@ export declare const ObjectKeys: <O extends Record<string, any>>(obj: O) => (key
  * @see https://github.com/devinrhode2/ObjectTyped/blob/master/src/index.ts
  */
 export declare const ObjectValues: <O extends Record<string, unknown>>(obj: O) => O[keyof O][];
+/**
+ * Shortcut for `Object.fromEntries()` static method.
+ *
+ * @param entries a target entries object
+ * @returns a new Object created from the specified entries in array format [key, value][]
+ * @see https://github.com/devinrhode2/ObjectTyped/blob/master/src/index.ts
+ */
+export declare const ObjectFromEntries: <K extends string, V>(entries: [
+	K,
+	V
+][]) => Record<K, V>;
 export declare interface OriginalEvent extends CustomEvent<any> {
 	readonly type: string;
 	relatedTarget?: EventTarget;

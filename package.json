@@ -1,6 +1,6 @@
 {
   "name": "@thednp/shorty",
-  "version": "2.0.0alpha16",
+  "version": "2.0.0alpha17",
   "description": "TypeScript shorties for the web",
   "source": "./src/index.ts",
   "main": "./dist/shorty.js",
@@ -37,7 +37,7 @@
     "javascript",
     "typescript"
   ],
-  "author": "dnp_theme",
+  "author": "thednp",
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/thednp/shorty/issues"
@@ -45,14 +45,14 @@
   "homepage": "https://github.com/thednp/shorty",
   "devDependencies": {
     "@bahmutov/cypress-esbuild-preprocessor": "^2.2.0",
-    "@cypress/code-coverage": "^3.10.8",
+    "@cypress/code-coverage": "^3.11.0",
     "@types/istanbul-lib-instrument": "^1.7.4",
-    "@typescript-eslint/eslint-plugin": "^5.61.0",
-    "@typescript-eslint/parser": "^5.61.0",
-    "cypress": "^12.16.0",
+    "@typescript-eslint/eslint-plugin": "^5.62.0",
+    "@typescript-eslint/parser": "^5.62.0",
+    "cypress": "^12.17.4",
     "dts-bundle-generator": "^8.0.1",
-    "eslint": "^8.44.0",
-    "eslint-plugin-jsdoc": "^46.4.3",
+    "eslint": "^8.47.0",
+    "eslint-plugin-jsdoc": "^46.4.6",
     "eslint-plugin-prefer-arrow": "^1.2.3",
     "eslint-plugin-prettier": "^4.2.1",
     "istanbul-lib-coverage": "^3.2.0",
@@ -61,6 +61,6 @@
     "prettier": "^2.8.8",
     "rimraf": "^5.0.1",
     "typescript": "^5.1.6",
-    "vite": "^4.3.9"
+    "vite": "^4.4.9"
   }
 }
