@@ -1,3 +1,11 @@
+import {
+  EventHandler,
+  NativeEvent,
+  NativeEventTypes,
+  PossibleEventTarget,
+  SupportedEventHandler,
+} from '../interface/event';
+
 import on from './on';
 import off from './off';
 
@@ -5,21 +13,31 @@ import off from './off';
  * Add an `eventListener` to an `EventTarget`
  * element and remove it once callback is called.
  */
-const one = (
-  element: EventTarget,
-  eventName: string,
-  listener: EventListener,
+const one = <T extends PossibleEventTarget>(
+  element: T,
+  eventName: NativeEventTypes,
+  listener: SupportedEventHandler<T>,
   options?: AddEventListenerOptions,
 ) => {
   /** Wrap the listener for easy on -> off */
-  const handlerWrapper = (e: Event): void => {
+  const handlerWrapper = (e: NativeEvent): void => {
     /* istanbul ignore else */
     if (e.target === element || e.currentTarget === element) {
-      listener.apply(element, [e]);
-      off(element, eventName, handlerWrapper, options);
+      (listener as EventHandler<typeof e>).apply(element, [e]);
+      off(
+        element,
+        eventName,
+        handlerWrapper as unknown as EventListenerObject & SupportedEventHandler<T>,
+        options,
+      );
     }
   };
-  on(element, eventName, handlerWrapper, options);
+  on(
+    element,
+    eventName,
+    handlerWrapper as unknown as EventListenerObject & SupportedEventHandler<T>,
+    options,
+  );
 };
 
 export default one;

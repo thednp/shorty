@@ -3,21 +3,32 @@ on: push
 jobs:
   test:
     runs-on: ubuntu-20.04
-    name: Test on Node 16
+    name: Test on Node 18
     steps:
       - name: Checkout
-        uses: actions/checkout@v3
+        uses: actions/checkout@v2
+
+      - uses: pnpm/action-setup@v2.2.2
 
       - name: Setup Node
         uses: actions/setup-node@v3
         with:
-          node-version: 16
-      # - uses: bahmutov/npm-install@v1
-      - run: npm install
-      - run: npm run build
-      - run: npx cypress run
+          node-version: 18
+          cache: pnpm
 
-      - name: Upload coverage report on Node 16 to coveralls.io...
-        uses: coverallsapp/github-action@master
+      - name: Install Dependencies
+        run: pnpm install --no-frozen-lockfile
+
+      - name: Install Cypress
+        run: npx cypress install
+
+      - name: Build
+        run: pnpm build # includes lint
+
+      - name: Cypress Test
+        run: pnpm test
+
+      - name: Upload coverage report on Node 18 to coveralls.io...
+        uses: coverallsapp/github-action@v1.1.2
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}

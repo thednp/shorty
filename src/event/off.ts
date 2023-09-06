@@ -1,10 +1,12 @@
+import { NativeEventTypes, PossibleEventTarget, SupportedEventHandler } from '../interface/event';
+
 /**
  * Remove eventListener from an `EventTarget` object.
  */
-const off = (
-  element: EventTarget,
-  eventName: string,
-  listener: EventListener,
+const off = <T extends PossibleEventTarget>(
+  element: T,
+  eventName: NativeEventTypes,
+  listener: EventListenerObject & SupportedEventHandler<T>,
   options?: AddEventListenerOptions,
 ) => {
   const ops = options || false;

@@ -96,6 +96,7 @@ import keyCapsLock from './strings/keyCapsLock';
 import keyControl from './strings/keyControl';
 import keyDelete from './strings/keyDelete';
 import keyEnter from './strings/keyEnter';
+import keyNumpadEnter from './strings/keyNumpadEnter';
 import keyEscape from './strings/keyEscape';
 import keyInsert from './strings/keyInsert';
 import keyMeta from './strings/keyMeta';
@@ -362,6 +363,7 @@ export {
   keyControl,
   keyDelete,
   keyEnter,
+  keyNumpadEnter,
   keyEscape,
   keyInsert,
   keyMeta,
