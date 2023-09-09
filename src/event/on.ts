@@ -1,16 +1,14 @@
-import { NativeEventTypes, PossibleEventTarget, SupportedEventHandler } from '../interface/event';
-
 /**
  * Add eventListener to an `EventTarget` object.
  */
-const on = <T extends PossibleEventTarget>(
+const on = <T extends EventTarget, L = EventListener>(
   element: T,
-  eventName: NativeEventTypes,
-  listener: EventListenerObject & SupportedEventHandler<T>,
+  eventName: string,
+  listener: L,
   options?: AddEventListenerOptions,
 ) => {
   const ops = options || false;
-  element.addEventListener(eventName, listener, ops);
+  element.addEventListener(eventName, listener as EventListenerOrEventListenerObject, ops);
 };
 
 export default on;

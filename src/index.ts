@@ -476,3 +476,5 @@ export {
   removeAttributeNS,
   version,
 };
+
+export * from './interface/event.d';

@@ -25,9 +25,9 @@ interface AbstractView {
 // Event System
 // ----------------------------------------------------------------------
 // E = EventObject, C = e.currentTarget, T = e.target
-interface BaseEvent<E = unknown, C = unknown, T = unknown> {
-  nativeEvent: Event & E;
-  currentTarget: C & EventTarget;
+interface BaseEvent<E = Event, C = unknown, T = unknown> {
+  nativeEvent: E;
+  currentTarget: C | null;
   target: T & EventTarget;
   bubbles: boolean;
   cancelable: boolean;
@@ -40,7 +40,7 @@ interface BaseEvent<E = unknown, C = unknown, T = unknown> {
   isPropagationStopped(): boolean;
   persist(): void;
   timeStamp: number;
-  type: string & NativeEventTypes;
+  type: string;
 }
 
 /**
@@ -50,10 +50,10 @@ interface BaseEvent<E = unknown, C = unknown, T = unknown> {
  * This might be a child element to the element on which the event listener is registered.
  * If you thought this should be `EventTarget & T`, see https://github.com/DefinitelyTyped/DefinitelyTyped/issues/11508#issuecomment-256045682
  */
-type NativeEvent<T = PossibleEventTarget, E = Event> = BaseEvent<E, EventTarget & T, EventTarget>;
+type NativeEvent<T = Element, E = Event> = BaseEvent<E, T, T>;
 
 interface ClipboardEvent<T = Element> extends NativeEvent<T, NativeClipboardEvent> {
-  clipboardData?: DataTransfer;
+  clipboardData: DataTransfer;
 }
 
 interface CompositionEvent<T = Element> extends NativeEvent<T, NativeCompositionEvent> {
@@ -89,7 +89,7 @@ interface ChangeEvent<T = FormControl> extends FormEvent<T> {
   target: EventTarget & T;
 }
 
-export type ModifierKey =
+type ModifierKey =
   | 'Alt'
   | 'AltGraph'
   | 'CapsLock'
@@ -193,116 +193,26 @@ interface TransitionEvent<T = Element> extends NativeEvent<T, NativeTransitionEv
 //
 // Event Handler Types
 // ----------------------------------------------------------------------
-type EventHandler<E extends NativeEvent<unknown, unknown>> = //   (this: unknown & EventTarget, event: E): void;
-  (event: E) => void;
-type NativeEventHandler<T = Element> = EventHandler<NativeEvent<T>>;
-type ClipboardEventHandler<T = Element> = EventHandler<ClipboardEvent<T>>;
-type CompositionEventHandler<T = Element> = EventHandler<CompositionEvent<T>>;
-type DragEventHandler<T = Element> = EventHandler<DragEvent<T>>;
-type FocusEventHandler<T = Element> = EventHandler<FocusEvent<T>>;
-type FormEventHandler<T = Element> = EventHandler<FormEvent<T>>;
-type ChangeEventHandler<T = Element> = EventHandler<ChangeEvent<T>>;
-type KeyboardEventHandler<T = Element> = EventHandler<KeyboardEvent<T>>;
-type MouseEventHandler<T = Element> = EventHandler<MouseEvent<T>>;
-type TouchEventHandler<T = Element> = EventHandler<TouchEvent<T>>;
-type PointerEventHandler<T = Element> = EventHandler<PointerEvent<T>>;
-type UIEventHandler<T = Element> = EventHandler<UIEvent<T>>;
-type WheelEventHandler<T = Element> = EventHandler<WheelEvent<T>>;
-type AnimationEventHandler<T = Element> = EventHandler<AnimationEvent<T>>;
-type TransitionEventHandler<T = Element> = EventHandler<TransitionEvent<T>>;
-
-type SupportedEventObject<T> =
-  | NativeEvent<T>
-  | ClipboardEvent<T>
-  | CompositionEvent<T>
-  | DragEvent<T>
-  | FocusEvent<T>
-  | FormEvent<T>
-  | ChangeEvent<T>
-  | KeyboardEvent<T>
-  | MouseEvent<T>
-  | TouchEvent<T>
-  | PointerEvent<T>
-  | UIEvent<T>
-  | WheelEvent<T>
-  | AnimationEvent<T>
-  | TransitionEvent<T>;
-
-type SupportedEventHandler<T> =
-  | NativeEventHandler<T>
-  | ClipboardEventHandler<T>
-  | CompositionEventHandler<T>
-  | DragEventHandler<T>
-  | FocusEventHandler<T>
-  | FormEventHandler<T>
-  | ChangeEventHandler<T>
-  | KeyboardEventHandler<T>
-  | MouseEventHandler<T>
-  | TouchEventHandler<T>
-  | PointerEventHandler<T>
-  | UIEventHandler<T>
-  | WheelEventHandler<T>
-  | AnimationEventHandler<T>
-  | TransitionEventHandler<T>;
-
-type NativeEventTypes =
-  | 'DOMContentLoaded'
-  | 'DOMMouseScroll'
-  | 'abort'
-  | 'beforeunload'
-  | 'blur'
-  | 'change'
-  | 'click'
-  | 'contextmenu'
-  | 'dblclick'
-  | 'error'
-  | 'focus'
-  | 'focusin'
-  | 'focusout'
-  | 'gesturechange'
-  | 'gestureend'
-  | 'gesturestart'
-  | 'hover'
-  | 'keydown'
-  | 'keypress'
-  | 'keyup'
-  | 'load'
-  | 'mousedown'
-  | 'mouseenter'
-  | 'mousein'
-  | 'mouseleave'
-  | 'mousemove'
-  | 'mouseout'
-  | 'mouseover'
-  | 'mouseup'
-  | 'mousewheel'
-  | 'move'
-  | 'orientationchange'
-  | 'pointercancel'
-  | 'pointerdown'
-  | 'pointerleave'
-  | 'pointermove'
-  | 'pointerup'
-  | 'readystatechange'
-  | 'reset'
-  | 'resize'
-  | 'scroll'
-  | 'select'
-  | 'selectend'
-  | 'selectstart'
-  | 'submit'
-  | 'touchcancel'
-  | 'touchend'
-  | 'touchmove'
-  | 'touchstart'
-  | 'unload';
+// (this: unknown & EventTarget, event: E): void;
+type EventHandler<T = Element, E = Event | NativeEvent<T>> = (event: E) => void;
+type NativeEventHandler<T = Element> = EventHandler<T, NativeEvent<T>>;
+type ClipboardEventHandler<T = Element> = EventHandler<T, ClipboardEvent<T>>;
+type CompositionEventHandler<T = Element> = EventHandler<T, CompositionEvent<T>>;
+type DragEventHandler<T = Element> = EventHandler<T, DragEvent<T>>;
+type FocusEventHandler<T = Element> = EventHandler<T, FocusEvent<T>>;
+type FormEventHandler<T = Element> = EventHandler<T, FormEvent<T>>;
+type ChangeEventHandler<T = Element> = EventHandler<T, ChangeEvent<T>>;
+type KeyboardEventHandler<T = Element> = EventHandler<T, KeyboardEvent<T>>;
+type MouseEventHandler<T = Element> = EventHandler<T, MouseEvent<T>>;
+type TouchEventHandler<T = Element> = EventHandler<T, TouchEvent<T>>;
+type PointerEventHandler<T = Element> = EventHandler<T, PointerEvent<T>>;
+type UIEventHandler<T = Element> = EventHandler<T, UIEvent<T>>;
+type WheelEventHandler<T = Element> = EventHandler<T, WheelEvent<T>>;
+type AnimationEventHandler<T = Element> = EventHandler<T, AnimationEvent<T>>;
+type TransitionEventHandler<T = Element> = EventHandler<T, TransitionEvent<T>>;
 type PossibleEventTarget = EventTarget & (Element | Document | Window);
 
 export {
-  SupportedEventObject,
-  SupportedEventHandler,
-  EventHandler,
-  NativeEventTypes,
   NativeEvent,
   ClipboardEvent,
   CompositionEvent,

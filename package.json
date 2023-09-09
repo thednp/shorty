@@ -1,6 +1,6 @@
 {
   "name": "@thednp/shorty",
-  "version": "2.0.0alpha18",
+  "version": "2.0.0alpha20",
   "description": "TypeScript shorties for the web",
   "source": "./src/index.ts",
   "main": "./dist/shorty.js",
@@ -22,7 +22,8 @@
     "format": "prettier --write \"src/**/*.ts\"",
     "lint:ts": "eslint -c .eslintrc.cjs --ext .ts src",
     "fix:ts": "eslint -c .eslintrc.cjs --ext .ts src --fix",
-    "build": "pnpm lint:ts && vite build && pnpm dts",
+    "check:ts": "tsc -noEmit",
+    "build": "pnpm check:ts && pnpm lint:ts && vite build && pnpm dts",
     "dts": "dts-bundle-generator --config ./dts.config.ts"
   },
   "publishConfig": {
@@ -52,7 +53,7 @@
     "@typescript-eslint/parser": "^5.62.0",
     "cypress": "^12.17.4",
     "dts-bundle-generator": "^8.0.1",
-    "eslint": "^8.48.0",
+    "eslint": "^8.49.0",
     "eslint-plugin-jsdoc": "^46.5.1",
     "eslint-plugin-prefer-arrow": "^1.2.3",
     "eslint-plugin-prettier": "^4.2.1",

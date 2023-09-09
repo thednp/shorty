@@ -144,19 +144,9 @@ const gn = O, x = /(iPhone|iPod|iPad)/, vn = A ? A.brands.some((t) => x.test(t.b
   t.removeEventListener(e, n, s);
 }, Kt = (t, e, n, o) => {
   const s = (r) => {
-    (r.target === t || r.currentTarget === t) && (n.apply(t, [r]), Jt(
-      t,
-      e,
-      s,
-      o
-    ));
+    (r.target === t || r.currentTarget === t) && (n.apply(t, [r]), Jt(t, e, s, o));
   };
-  Gt(
-    t,
-    e,
-    s,
-    o
-  );
+  Gt(t, e, s, o);
 }, Xt = () => {
 }, hn = (() => {
   let t = !1;
@@ -452,7 +442,7 @@ const b = /* @__PURE__ */ new Map(), ae = (t, e) => {
 }, Eo = (t) => v(t) && t.constructor.name === "WeakMap" || !1, bo = (t) => i(t) && ["SVG", "Image", "Video", "Canvas"].some((e) => t.constructor.name.includes(e)) || !1, ho = (t) => v(t) && t.constructor.name === "NodeList" || !1, yo = (t) => T(t).dir === "rtl", wo = (t) => i(t) && t.constructor.name.includes("SVG") || !1, Ao = (t) => i(t) && ["TABLE", "TD", "TH"].includes(t.nodeName) || !1, le = (t, e) => t ? t.closest(e) || // break out of `ShadowRoot`
 le(t.getRootNode().host, e) : null, So = (t, e) => u(t) ? t : (i(e) ? e : d()).querySelector(t), de = (t, e) => (i(e) ? e : d()).getElementsByTagName(t), No = (t) => [...de("*", t)].filter(ue), ko = (t, e) => d(e).getElementById(t) || null, Mo = (t, e) => (i(e) ? e : d()).querySelectorAll(t), To = (t, e) => (e && i(e) ? e : d()).getElementsByClassName(
   t
-), Do = (t, e) => t.matches(e), Co = "2.0.0alpha18";
+), Do = (t, e) => t.matches(e), Co = "2.0.0alpha20";
 export {
   Bn as ArrayFrom,
   P as DOMContentLoadedEvent,
