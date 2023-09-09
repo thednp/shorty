@@ -8,7 +8,7 @@
 [![typescript version](https://img.shields.io/badge/typescript-5.2.2-brightgreen)](https://www.typescriptlang.org/)
 [![eslint version](https://img.shields.io/badge/eslint-8.49.0-brightgreen)](https://github.com/eslint)
 [![prettier version](https://img.shields.io/badge/prettier-2.8.8-brightgreen)](https://prettier.io/)
-[![cypress version](https://img.shields.io/badge/cypress-12.17.4-brightgreen)](https://cypress.io/)
+[![cypress version](https://img.shields.io/badge/cypress-13.1.0-brightgreen)](https://cypress.io/)
 [![vite version](https://img.shields.io/badge/vite-4.4.9-brightgreen)](https://github.com/vitejs)
 
 
