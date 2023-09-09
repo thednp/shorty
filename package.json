@@ -48,7 +48,6 @@
   "devDependencies": {
     "@bahmutov/cypress-esbuild-preprocessor": "^2.2.0",
     "@cypress/code-coverage": "^3.12.0",
-    "@cypress/request": "^3.0.1",
     "@types/istanbul-lib-instrument": "^1.7.4",
     "@typescript-eslint/eslint-plugin": "^5.62.0",
     "@typescript-eslint/parser": "^5.62.0",
