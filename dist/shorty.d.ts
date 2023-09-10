@@ -822,7 +822,7 @@ export declare const getInstance: <T>(target: HTMLElement, component: string) =>
  * @param param `tagName` or object
  * @return a new `HTMLElement`
  */
-export declare const createElement: (param?: string | Partial<HTMLElement>) => HTMLElement | undefined;
+export declare const createElement: <T extends HTMLElement>(param?: string | Partial<T> | undefined) => T | undefined;
 /**
  * Shortie for `document.createElementNS` method
  * which allows you to create a new `HTMLElement` for a given `tagName`
@@ -837,7 +837,7 @@ export declare const createElement: (param?: string | Partial<HTMLElement>) => H
  * @param param `tagName` or object
  * @return a new `HTMLElement`
  */
-export declare const createElementNS: (ns: string, param?: string | Partial<HTMLElement>) => HTMLElement | undefined;
+export declare const createElementNS: <T extends HTMLElement>(ns: string, param?: string | Partial<T> | undefined) => T | undefined;
 /**
  * Shortcut for the `Element.dispatchEvent(Event)` method.
  *

@@ -13,11 +13,11 @@ import ObjectAssign from './ObjectAssign';
  * @param param `tagName` or object
  * @return a new `HTMLElement`
  */
-const createElement = (param?: string | Partial<HTMLElement>): HTMLElement | undefined => {
+const createElement = <T extends HTMLElement>(param?: string | Partial<T>): T | undefined => {
   if (!param) return undefined;
 
   if (isString(param)) {
-    return getDocument().createElement(param);
+    return getDocument().createElement(param) as T;
   }
 
   const { tagName } = param;
@@ -28,7 +28,7 @@ const createElement = (param?: string | Partial<HTMLElement>): HTMLElement | und
   const attr = { ...(param as Record<string, unknown>) };
   delete attr.tagName;
 
-  return ObjectAssign(newElement, attr);
+  return ObjectAssign(newElement, attr) as unknown as T;
 };
 
 export default createElement;

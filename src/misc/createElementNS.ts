@@ -16,14 +16,14 @@ import isString from '../is/isString';
  * @param param `tagName` or object
  * @return a new `HTMLElement`
  */
-const createElementNS = (
+const createElementNS = <T extends HTMLElement>(
   ns: string,
-  param?: string | Partial<HTMLElement>,
-): HTMLElement | undefined => {
+  param?: string | Partial<T>,
+): T | undefined => {
   if (!ns || !param) return undefined;
 
   if (isString(param)) {
-    return getDocument().createElementNS(ns, param) as HTMLElement;
+    return getDocument().createElementNS(ns, param) as T;
   }
 
   const { tagName } = param;
@@ -34,7 +34,7 @@ const createElementNS = (
   const attr = { ...(param as Record<string, unknown>) };
   delete attr.tagName;
 
-  return ObjectAssign(newElement, attr);
+  return ObjectAssign(newElement, attr) as unknown as T;
 };
 
 export default createElementNS;

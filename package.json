@@ -1,6 +1,6 @@
 {
   "name": "@thednp/shorty",
-  "version": "2.0.0alpha20",
+  "version": "2.0.0alpha21",
   "description": "TypeScript shorties for the web",
   "source": "./src/index.ts",
   "main": "./dist/shorty.js",
