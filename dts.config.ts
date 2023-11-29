@@ -1,4 +1,3 @@
-// @ts-check
 const packageJson = require("./package.json");
 
 const getPackageName = () => {
