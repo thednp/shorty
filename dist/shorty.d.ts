@@ -587,16 +587,17 @@ export declare const scrollWidth = "scrollWidth";
  * A global namespace for `touchcancel` event.
  */
 export declare const tabindex = "tabindex";
-declare interface NavigatorUABrand {
+// https://github.com/lukewarlow/user-agent-data-types/blob/master/index.d.ts
+export declare interface NavigatorUABrand {
 	readonly brand: string;
 	readonly version: string;
 }
-declare interface NavigatorUAData {
+export declare interface NavigatorUAData {
 	readonly brands: NavigatorUABrand[];
 	readonly mobile: boolean;
 	readonly platform: string;
 }
-declare interface NavigatorUA extends Navigator {
+export declare interface NavigatorUA extends Navigator {
 	readonly userAgentData: NavigatorUAData;
 }
 /**
@@ -981,7 +982,7 @@ export declare const ObjectFromEntries: <K extends string, V>(entries: [
 	K,
 	V
 ][]) => Record<K, V>;
-declare interface OriginalEvent extends CustomEvent<any> {
+export declare interface OriginalEvent extends CustomEvent<any> {
 	readonly type: string;
 	relatedTarget?: EventTarget;
 }
@@ -1004,7 +1005,7 @@ export declare const passiveHandler: Partial<AddEventListenerOptions>;
  * @return the `Element.offsetHeight` value
  */
 export declare const reflow: (element: HTMLElement) => number;
-declare interface CSS4Declaration extends Exclude<() => string | symbol, CSSStyleDeclaration> {
+export declare interface CSS4Declaration extends Exclude<() => string | symbol, CSSStyleDeclaration> {
 	[key: string]: string;
 }
 /**
@@ -1059,7 +1060,7 @@ export declare const toLowerCase: (source: string) => string;
  * @returns uppercase output string
  */
 export declare const toUpperCase: (source: string) => string;
-declare interface BoundingClientRect {
+export declare interface BoundingClientRect {
 	width: number;
 	height: number;
 	top: number;
@@ -1175,7 +1176,7 @@ export declare const getNodeScroll: (element: HTMLElement | Window) => {
  * @returns {Node} the apropriate parent node
  */
 export declare const getParentNode: (node: Node) => Node | ParentNode;
-declare interface OffsetRect {
+export declare interface OffsetRect {
 	width: number;
 	height: number;
 	x: number;
@@ -1235,7 +1236,7 @@ export declare const isCanvas: (element?: unknown) => element is HTMLCanvasEleme
  * @returns the query result
  */
 export declare const isDocument: (obj?: unknown) => obj is Document;
-declare interface CustomElement extends HTMLElement {
+export declare interface CustomElement extends HTMLElement {
 	shadowRoot: ShadowRoot;
 	connectedCallback?: () => void;
 	disconnectedCallback?: () => void;

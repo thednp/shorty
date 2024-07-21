@@ -477,6 +477,17 @@ export {
   version,
 };
 
+export * from './interface/navigatorUA.d';
+export * from './interface/offsetRect.d';
+
+export type { OriginalEvent } from './interface/originalEvent.d';
+
+export type { BoundingClientRect } from './interface/boundingClientRect.d';
+
+export type { CustomElement } from './interface/customElement.d';
+
+export type { CSS4Declaration } from './interface/css4Declaration.d';
+
 export type {
   NativeEvent,
   ClipboardEvent,
