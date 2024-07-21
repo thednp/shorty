@@ -173,8 +173,7 @@ const gn = O, x = /(iPhone|iPod|iPad)/, vn = A ? A.brands.some((t) => x.test(t.b
    * @param instance the component instance
    */
   set: (t, e, n) => {
-    if (!u(t))
-      return;
+    if (!u(t)) return;
     E.has(e) || E.set(e, /* @__PURE__ */ new Map()), E.get(e).set(t, n);
   },
   /**
@@ -192,8 +191,7 @@ const gn = O, x = /(iPhone|iPod|iPad)/, vn = A ? A.brands.some((t) => x.test(t.b
    * @returns the instance
    */
   get: (t, e) => {
-    if (!u(t) || !e)
-      return null;
+    if (!u(t) || !e) return null;
     const n = L.getAllFor(e);
     return t && n && n.get(t) || null;
   },
@@ -208,23 +206,19 @@ const gn = O, x = /(iPhone|iPod|iPad)/, vn = A ? A.brands.some((t) => x.test(t.b
     !n || !u(t) || (n.delete(t), n.size === 0 && E.delete(e));
   }
 }, Hn = (t, e) => L.get(t, e), k = (t) => typeof t == "string" || !1, W = (t) => v(t) && t.constructor.name === "Window" || !1, R = (t) => i(t) && t.nodeType === 9 || !1, d = (t) => W(t) ? t.document : R(t) ? t : i(t) ? t.ownerDocument : window.document, M = (t, ...e) => Object.assign(t, ...e), Zt = (t) => {
-  if (!t)
-    return;
+  if (!t) return;
   if (k(t))
     return d().createElement(t);
   const { tagName: e } = t, n = Zt(e);
-  if (!n)
-    return;
+  if (!n) return;
   const o = { ...t };
   return delete o.tagName, M(n, o);
 }, $t = (t, e) => {
-  if (!t || !e)
-    return;
+  if (!t || !e) return;
   if (k(e))
     return d().createElementNS(t, e);
   const { tagName: n } = e, o = $t(t, n);
-  if (!o)
-    return;
+  if (!o) return;
   const s = { ...e };
   return delete s.tagName, M(o, s);
 }, Q = (t, e) => t.dispatchEvent(e), Pn = (t, e, n) => n.indexOf(t) === e, g = (t, e) => {
@@ -341,8 +335,7 @@ const gn = O, x = /(iPhone|iPod|iPad)/, vn = A ? A.brands.some((t) => x.test(t.b
    * @returns the timer
    */
   get: (t, e) => {
-    if (!u(t))
-      return null;
+    if (!u(t)) return null;
     const n = f.get(t);
     return e && n && I(n) ? n.get(e) || /* istanbul ignore next */
     null : se(n) ? n : null;
@@ -354,8 +347,7 @@ const gn = O, x = /(iPhone|iPod|iPad)/, vn = A ? A.brands.some((t) => x.test(t.b
    * @param key a unique key
    */
   clear: (t, e) => {
-    if (!u(t))
-      return;
+    if (!u(t)) return;
     const n = f.get(t);
     e && e.length && I(n) ? (clearTimeout(n.get(e)), n.delete(e), n.size === 0 && f.delete(t)) : (clearTimeout(n), f.delete(t));
   }
@@ -389,8 +381,7 @@ const gn = O, x = /(iPhone|iPod|iPad)/, vn = A ? A.brands.some((t) => x.test(t.b
 i(t) && t.parentNode || // DOM Element detected
 ce(t) && t.host || // ShadowRoot detected
 T(t), re = (t) => {
-  if (!u(t))
-    return !1;
+  if (!u(t)) return !1;
   const { width: e, height: n } = h(t), { offsetWidth: o, offsetHeight: s } = t;
   return Math.round(e) !== o || Math.round(n) !== s;
 }, co = (t, e, n) => {
@@ -421,18 +412,15 @@ const b = /* @__PURE__ */ new Map(), ae = (t, e) => {
   var e;
   return t ? R(t) ? t.defaultView : i(t) ? (e = t == null ? void 0 : t.ownerDocument) == null ? void 0 : e.defaultView : t : window;
 }, ie = (t) => Array.isArray(t) || !1, ao = (t) => i(t) && t.nodeName === "CANVAS" || !1, ue = (t) => u(t) && !!t.shadowRoot || !1, io = (t) => i(t) && [1, 2, 3, 4, 5, 6, 7, 8].some((e) => t.nodeType === e) || !1, uo = (t) => {
-  if (!i(t))
-    return !1;
+  if (!i(t)) return !1;
   const { top: e, bottom: n } = h(t), { clientHeight: o } = T(t);
   return e <= o && n >= 0;
 }, lo = (t) => {
-  if (!i(t))
-    return !1;
+  if (!i(t)) return !1;
   const { clientWidth: e, clientHeight: n } = T(t), { top: o, left: s, bottom: r, right: a } = h(t, !0);
   return o >= 0 && s >= 0 && r <= n && a <= e;
 }, po = (t) => ie(t) && t.every(u) || !1, mo = (t) => typeof t == "function" || !1, fo = (t) => v(t) && t.constructor.name === "HTMLCollection" || !1, go = (t) => u(t) && t.tagName === "IMG" || !1, vo = (t) => {
-  if (!k(t))
-    return !1;
+  if (!k(t)) return !1;
   try {
     JSON.parse(t);
   } catch {
@@ -442,7 +430,7 @@ const b = /* @__PURE__ */ new Map(), ae = (t, e) => {
 }, Eo = (t) => v(t) && t.constructor.name === "WeakMap" || !1, bo = (t) => i(t) && ["SVG", "Image", "Video", "Canvas"].some((e) => t.constructor.name.includes(e)) || !1, ho = (t) => v(t) && t.constructor.name === "NodeList" || !1, yo = (t) => T(t).dir === "rtl", wo = (t) => i(t) && t.constructor.name.includes("SVG") || !1, Ao = (t) => i(t) && ["TABLE", "TD", "TH"].includes(t.nodeName) || !1, le = (t, e) => t ? t.closest(e) || // break out of `ShadowRoot`
 le(t.getRootNode().host, e) : null, So = (t, e) => u(t) ? t : (i(e) ? e : d()).querySelector(t), de = (t, e) => (i(e) ? e : d()).getElementsByTagName(t), No = (t) => [...de("*", t)].filter(ue), ko = (t, e) => d(e).getElementById(t) || null, Mo = (t, e) => (i(e) ? e : d()).querySelectorAll(t), To = (t, e) => (e && i(e) ? e : d()).getElementsByClassName(
   t
-), Do = (t, e) => t.matches(e), Co = "2.0.0";
+), Do = (t, e) => t.matches(e), Co = "2.0.1";
 export {
   Bn as ArrayFrom,
   P as DOMContentLoadedEvent,

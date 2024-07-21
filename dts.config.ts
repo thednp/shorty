@@ -11,6 +11,7 @@ const config = {
       outFile: `./dist/${getPackageName()}.d.ts`,
       noCheck: false,
       output: {
+        exportReferencedTypes: false,
         umdModuleName: 'SHORTY',
         noBanner: true,
       }

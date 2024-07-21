@@ -531,11 +531,11 @@ export declare const transitionProperty = "transitionProperty";
 /**
  * A global namespace for 'addEventListener' string.
  */
-export declare const addEventListener = "addEventListener";
+declare const addEventListener$1 = "addEventListener";
 /**
  * A global namespace for 'removeEventListener' string.
  */
-export declare const removeEventListener = "removeEventListener";
+declare const removeEventListener$1 = "removeEventListener";
 /**
  * A global namespace for predefined
  * CSS3 'cubic-bezier()' easing functions.
@@ -587,17 +587,16 @@ export declare const scrollWidth = "scrollWidth";
  * A global namespace for `touchcancel` event.
  */
 export declare const tabindex = "tabindex";
-// https://github.com/lukewarlow/user-agent-data-types/blob/master/index.d.ts
-export declare interface NavigatorUABrand {
+declare interface NavigatorUABrand {
 	readonly brand: string;
 	readonly version: string;
 }
-export declare interface NavigatorUAData {
+declare interface NavigatorUAData {
 	readonly brands: NavigatorUABrand[];
 	readonly mobile: boolean;
 	readonly platform: string;
 }
-export declare interface NavigatorUA extends Navigator {
+declare interface NavigatorUA extends Navigator {
 	readonly userAgentData: NavigatorUAData;
 }
 /**
@@ -790,7 +789,7 @@ export declare const Data: {
 	 * @param component the component's name or a unique key
 	 * @returns all the component instances
 	 */
-	getAllFor: <T_1>(component: string) => Map<HTMLElement, T_1> | null;
+	getAllFor: <T>(component: string) => Map<HTMLElement, T> | null;
 	/**
 	 * Returns the instance associated with the target.
 	 *
@@ -798,14 +797,14 @@ export declare const Data: {
 	 * @param component the component's name or a unique key
 	 * @returns the instance
 	 */
-	get: <T_2>(element: HTMLElement, component: string) => T_2 | null;
+	get: <T>(element: HTMLElement, component: string) => T | null;
 	/**
 	 * Removes web components data.
 	 *
 	 * @param element target element
 	 * @param component the component's name or a unique key
 	 */
-	remove: <T_3>(element: HTMLElement, component: string) => void;
+	remove: <T>(element: HTMLElement, component: string) => void;
 };
 /**
  * An alias for `Data.get()`.
@@ -822,7 +821,7 @@ export declare const getInstance: <T>(target: HTMLElement, component: string) =>
  * @param param `tagName` or object
  * @return a new `HTMLElement`
  */
-export declare const createElement: <T extends HTMLElement>(param?: string | Partial<T> | undefined) => T | undefined;
+export declare const createElement: <T extends HTMLElement>(param?: string | Partial<T>) => T | undefined;
 /**
  * Shortie for `document.createElementNS` method
  * which allows you to create a new `HTMLElement` for a given `tagName`
@@ -837,14 +836,14 @@ export declare const createElement: <T extends HTMLElement>(param?: string | Par
  * @param param `tagName` or object
  * @return a new `HTMLElement`
  */
-export declare const createElementNS: <T extends HTMLElement>(ns: string, param?: string | Partial<T> | undefined) => T | undefined;
+export declare const createElementNS: <T extends HTMLElement>(ns: string, param?: string | Partial<T>) => T | undefined;
 /**
  * Shortcut for the `Element.dispatchEvent(Event)` method.
  *
  * @param element is the target
  * @param event is the `Event` object
  */
-export declare const dispatchEvent: (element: EventTarget, event: Event) => boolean;
+declare const dispatchEvent$1: (element: EventTarget, event: Event) => boolean;
 /**
  * JavaScript `Array` distinct.
  *
@@ -897,7 +896,7 @@ export declare const Float64ArrayFrom: (arr: ArrayLike<number> | Iterable<number
  * @param element is the target
  * @param options allows to pass additional options such as `preventScroll: boolean`
  */
-export declare const focus: (element: HTMLOrSVGElement, options?: FocusOptions) => void;
+declare const focus$1: (element: HTMLOrSVGElement, options?: FocusOptions) => void;
 /** A generic function with empty body. */
 export declare const noop: () => void;
 /**
@@ -912,7 +911,7 @@ export declare const noop: () => void;
 export declare const normalizeOptions: <T extends {
 	[key: string]: any;
 }>(element: HTMLElement, defaultOps: T, inputOps: Partial<T>, ns?: string) => T;
-export type NormalValue = boolean | number | string | ((...args: any[]) => any) | null;
+type NormalValue = boolean | number | string | ((...args: any[]) => any) | null;
 /**
  * Utility to normalize component options
  *
@@ -982,7 +981,7 @@ export declare const ObjectFromEntries: <K extends string, V>(entries: [
 	K,
 	V
 ][]) => Record<K, V>;
-export declare interface OriginalEvent extends CustomEvent<any> {
+declare interface OriginalEvent extends CustomEvent<any> {
 	readonly type: string;
 	relatedTarget?: EventTarget;
 }
@@ -1005,7 +1004,7 @@ export declare const passiveHandler: Partial<AddEventListenerOptions>;
  * @return the `Element.offsetHeight` value
  */
 export declare const reflow: (element: HTMLElement) => number;
-export declare interface CSS4Declaration extends Exclude<() => string | symbol, CSSStyleDeclaration> {
+declare interface CSS4Declaration extends Exclude<() => string | symbol, CSSStyleDeclaration> {
 	[key: string]: string;
 }
 /**
@@ -1060,7 +1059,7 @@ export declare const toLowerCase: (source: string) => string;
  * @returns uppercase output string
  */
 export declare const toUpperCase: (source: string) => string;
-export declare interface BoundingClientRect {
+declare interface BoundingClientRect {
 	width: number;
 	height: number;
 	top: number;
@@ -1176,7 +1175,7 @@ export declare const getNodeScroll: (element: HTMLElement | Window) => {
  * @returns {Node} the apropriate parent node
  */
 export declare const getParentNode: (node: Node) => Node | ParentNode;
-export declare interface OffsetRect {
+declare interface OffsetRect {
 	width: number;
 	height: number;
 	x: number;
@@ -1236,7 +1235,7 @@ export declare const isCanvas: (element?: unknown) => element is HTMLCanvasEleme
  * @returns the query result
  */
 export declare const isDocument: (obj?: unknown) => obj is Document;
-export declare interface CustomElement extends HTMLElement {
+declare interface CustomElement extends HTMLElement {
 	shadowRoot: ShadowRoot;
 	connectedCallback?: () => void;
 	disconnectedCallback?: () => void;
@@ -1362,7 +1361,7 @@ export declare const isWeakMap: (obj?: unknown) => obj is WeakMap<any, any>;
  * @param element the target element
  * @returns the query result
  */
-export declare const isMedia: (element?: unknown) => element is HTMLCanvasElement | HTMLImageElement | HTMLVideoElement | SVGElement;
+export declare const isMedia: (element?: unknown) => element is SVGElement | HTMLImageElement | HTMLVideoElement | HTMLCanvasElement;
 /**
  * Checks if an object is a `Node`.
  *
@@ -1515,31 +1514,23 @@ export declare const getElementsByClassName: (selector: string, parent?: ParentN
  * @returns the query result
  */
 export declare const matches: (target: Element, selector: string) => boolean;
-/**
- * Type definitions addapted from React 18.2
- * Project: https://react.dev/
- */
-export type NativeAnimationEvent = AnimationEvent;
-export type NativeClipboardEvent = ClipboardEvent;
-export type NativeCompositionEvent = CompositionEvent;
-export type NativeDragEvent = DragEvent;
-export type NativeFocusEvent = FocusEvent;
-export type NativeKeyboardEvent = KeyboardEvent;
-export type NativeMouseEvent = MouseEvent;
-export type NativeTouchEvent = TouchEvent;
-export type NativePointerEvent = PointerEvent;
-export type NativeTransitionEvent = TransitionEvent;
-export type NativeUIEvent = UIEvent;
-export type NativeWheelEvent = WheelEvent;
-export interface AbstractView {
+type NativeAnimationEvent = AnimationEvent$1;
+type NativeClipboardEvent = ClipboardEvent$1;
+type NativeCompositionEvent = CompositionEvent$1;
+type NativeDragEvent = DragEvent$1;
+type NativeFocusEvent = FocusEvent$1;
+type NativeKeyboardEvent = KeyboardEvent$1;
+type NativeMouseEvent = MouseEvent$1;
+type NativeTouchEvent = TouchEvent$1;
+type NativePointerEvent = PointerEvent$1;
+type NativeTransitionEvent = TransitionEvent$1;
+type NativeUIEvent = UIEvent$1;
+type NativeWheelEvent = WheelEvent$1;
+interface AbstractView {
 	styleMedia: StyleMedia;
 	document: Document;
 }
-//
-// Event System
-// ----------------------------------------------------------------------
-// E = EventObject, C = e.currentTarget, T = e.target
-export interface BaseEvent<E = Event, C = unknown, T = unknown> {
+interface BaseEvent<E = Event, C = unknown, T = unknown> {
 	nativeEvent: E;
 	currentTarget: C | null;
 	target: T & EventTarget;
@@ -1564,16 +1555,16 @@ export interface BaseEvent<E = Event, C = unknown, T = unknown> {
  * If you thought this should be `EventTarget & T`, see https://github.com/DefinitelyTyped/DefinitelyTyped/issues/11508#issuecomment-256045682
  */
 export type NativeEvent<T = Element, E = Event> = BaseEvent<E, T, T>;
-export interface ClipboardEvent<T = Element> extends NativeEvent<T, NativeClipboardEvent> {
+interface ClipboardEvent$1<T = Element> extends NativeEvent<T, NativeClipboardEvent> {
 	clipboardData: DataTransfer;
 }
-export interface CompositionEvent<T = Element> extends NativeEvent<T, NativeCompositionEvent> {
+interface CompositionEvent$1<T = Element> extends NativeEvent<T, NativeCompositionEvent> {
 	data: string;
 }
-export interface DragEvent<T = Element> extends MouseEvent<T, NativeDragEvent> {
+interface DragEvent$1<T = Element> extends MouseEvent$1<T, NativeDragEvent> {
 	dataTransfer: DataTransfer;
 }
-export interface PointerEvent<T = Element> extends MouseEvent<T, NativePointerEvent> {
+interface PointerEvent$1<T = Element> extends MouseEvent$1<T, NativePointerEvent> {
 	pointerId: number;
 	pressure: number;
 	tangentialPressure: number;
@@ -1585,17 +1576,17 @@ export interface PointerEvent<T = Element> extends MouseEvent<T, NativePointerEv
 	pointerType: "mouse" | "pen" | "touch";
 	isPrimary: boolean;
 }
-export interface FocusEvent<T = Element, R = Element> extends NativeEvent<T, NativeFocusEvent> {
+interface FocusEvent$1<T = Element, R = Element> extends NativeEvent<T, NativeFocusEvent> {
 	relatedTarget: (EventTarget & R) | null;
 	target: EventTarget & T;
 }
-export type FormControl = HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement;
+type FormControl = HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement;
 export type FormEvent<T = FormControl> = NativeEvent<T>;
 export interface ChangeEvent<T = FormControl> extends FormEvent<T> {
 	target: EventTarget & T;
 }
-export type ModifierKey = "Alt" | "AltGraph" | "CapsLock" | "Control" | "Fn" | "FnLock" | "Hyper" | "Meta" | "NumLock" | "ScrollLock" | "Shift" | "Super" | "Symbol" | "SymbolLock";
-export interface KeyboardEvent<T = Element> extends UIEvent<T, NativeKeyboardEvent> {
+type ModifierKey = "Alt" | "AltGraph" | "CapsLock" | "Control" | "Fn" | "FnLock" | "Hyper" | "Meta" | "NumLock" | "ScrollLock" | "Shift" | "Super" | "Symbol" | "SymbolLock";
+interface KeyboardEvent$1<T = Element> extends UIEvent$1<T, NativeKeyboardEvent> {
 	altKey: boolean;
 	/** @deprecated */
 	charCode: number;
@@ -1619,7 +1610,7 @@ export interface KeyboardEvent<T = Element> extends UIEvent<T, NativeKeyboardEve
 	/** @deprecated */
 	which: number;
 }
-export interface MouseEvent<T = Element, E = NativeMouseEvent> extends UIEvent<T, E> {
+interface MouseEvent$1<T = Element, E = NativeMouseEvent> extends UIEvent$1<T, E> {
 	altKey: boolean;
 	button: number;
 	buttons: number;
@@ -1640,7 +1631,7 @@ export interface MouseEvent<T = Element, E = NativeMouseEvent> extends UIEvent<T
 	screenY: number;
 	shiftKey: boolean;
 }
-export interface TouchEvent<T = Element> extends UIEvent<T, NativeTouchEvent> {
+interface TouchEvent$1<T = Element> extends UIEvent$1<T, NativeTouchEvent> {
 	altKey: boolean;
 	changedTouches: TouchList;
 	ctrlKey: boolean;
@@ -1653,47 +1644,62 @@ export interface TouchEvent<T = Element> extends UIEvent<T, NativeTouchEvent> {
 	targetTouches: TouchList;
 	touches: TouchList;
 }
-export interface UIEvent<T = Element, E = NativeUIEvent> extends NativeEvent<T, E> {
+interface UIEvent$1<T = Element, E = NativeUIEvent> extends NativeEvent<T, E> {
 	detail: number;
 	view: AbstractView;
 }
-export interface WheelEvent<T = Element> extends MouseEvent<T, NativeWheelEvent> {
+interface WheelEvent$1<T = Element> extends MouseEvent$1<T, NativeWheelEvent> {
 	deltaMode: number;
 	deltaX: number;
 	deltaY: number;
 	deltaZ: number;
 }
-export interface AnimationEvent<T = Element> extends NativeEvent<T, NativeAnimationEvent> {
+interface AnimationEvent$1<T = Element> extends NativeEvent<T, NativeAnimationEvent> {
 	animationName: string;
 	elapsedTime: number;
 	pseudoElement: string;
 }
-export interface TransitionEvent<T = Element> extends NativeEvent<T, NativeTransitionEvent> {
+interface TransitionEvent$1<T = Element> extends NativeEvent<T, NativeTransitionEvent> {
 	elapsedTime: number;
 	propertyName: string;
 	pseudoElement: string;
 }
-//
-// Event Handler Types
-// ----------------------------------------------------------------------
-// (this: unknown & EventTarget, event: E): void;
-export type EventHandler<T = Element, E = Event | NativeEvent<T>> = (event: E) => void;
+type EventHandler<T = Element, E = Event | NativeEvent<T>> = (event: E) => void;
 export type NativeEventHandler<T = Element> = EventHandler<T, NativeEvent<T>>;
-export type ClipboardEventHandler<T = Element> = EventHandler<T, ClipboardEvent<T>>;
-export type CompositionEventHandler<T = Element> = EventHandler<T, CompositionEvent<T>>;
-export type DragEventHandler<T = Element> = EventHandler<T, DragEvent<T>>;
-export type FocusEventHandler<T = Element> = EventHandler<T, FocusEvent<T>>;
+export type ClipboardEventHandler<T = Element> = EventHandler<T, ClipboardEvent$1<T>>;
+export type CompositionEventHandler<T = Element> = EventHandler<T, CompositionEvent$1<T>>;
+export type DragEventHandler<T = Element> = EventHandler<T, DragEvent$1<T>>;
+export type FocusEventHandler<T = Element> = EventHandler<T, FocusEvent$1<T>>;
 export type FormEventHandler<T = Element> = EventHandler<T, FormEvent<T>>;
 export type ChangeEventHandler<T = Element> = EventHandler<T, ChangeEvent<T>>;
-export type KeyboardEventHandler<T = Element> = EventHandler<T, KeyboardEvent<T>>;
-export type MouseEventHandler<T = Element> = EventHandler<T, MouseEvent<T>>;
-export type TouchEventHandler<T = Element> = EventHandler<T, TouchEvent<T>>;
-export type PointerEventHandler<T = Element> = EventHandler<T, PointerEvent<T>>;
-export type UIEventHandler<T = Element> = EventHandler<T, UIEvent<T>>;
-export type WheelEventHandler<T = Element> = EventHandler<T, WheelEvent<T>>;
-export type AnimationEventHandler<T = Element> = EventHandler<T, AnimationEvent<T>>;
-export type TransitionEventHandler<T = Element> = EventHandler<T, TransitionEvent<T>>;
+export type KeyboardEventHandler<T = Element> = EventHandler<T, KeyboardEvent$1<T>>;
+export type MouseEventHandler<T = Element> = EventHandler<T, MouseEvent$1<T>>;
+export type TouchEventHandler<T = Element> = EventHandler<T, TouchEvent$1<T>>;
+export type PointerEventHandler<T = Element> = EventHandler<T, PointerEvent$1<T>>;
+export type UIEventHandler<T = Element> = EventHandler<T, UIEvent$1<T>>;
+export type WheelEventHandler<T = Element> = EventHandler<T, WheelEvent$1<T>>;
+export type AnimationEventHandler<T = Element> = EventHandler<T, AnimationEvent$1<T>>;
+export type TransitionEventHandler<T = Element> = EventHandler<T, TransitionEvent$1<T>>;
 export type PossibleEventTarget = EventTarget & (Element | Document | Window);
+
+export {
+	AnimationEvent$1 as AnimationEvent,
+	ClipboardEvent$1 as ClipboardEvent,
+	CompositionEvent$1 as CompositionEvent,
+	DragEvent$1 as DragEvent,
+	FocusEvent$1 as FocusEvent,
+	KeyboardEvent$1 as KeyboardEvent,
+	MouseEvent$1 as MouseEvent,
+	PointerEvent$1 as PointerEvent,
+	TouchEvent$1 as TouchEvent,
+	TransitionEvent$1 as TransitionEvent,
+	UIEvent$1 as UIEvent,
+	WheelEvent$1 as WheelEvent,
+	addEventListener$1 as addEventListener,
+	dispatchEvent$1 as dispatchEvent,
+	focus$1 as focus,
+	removeEventListener$1 as removeEventListener,
+};
 
 export as namespace SHORTY;
 
