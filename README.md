@@ -259,7 +259,7 @@ const array3 = [...array1, ...array2].filter(distinct);
 - **_matches_** - a shortie for `Element.matches()` method;
 - **_matchesLegacy_** - for legacy browsers;
 - **_querySelector_** - a simple utility to check if a given value is an _Element_ or a selector string, and if a selector string find the FIRST _Element_ and return it;
-- **_querySelectorAll_** - a simple utility to check if a certain item is an _Element_ or a selector string, and if a selector string finds all the _Elements_ and return them;
+- **_querySelectorAll_** - a simple utility to check if a certain item is an _Element_ or a selector string, and if a selector string finds ALL the _Elements_ and return them;
 
 ```js
 // EXAMPLES
