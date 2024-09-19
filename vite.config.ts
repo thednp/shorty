@@ -1,17 +1,12 @@
 import { resolve } from 'path';
 import { defineConfig } from 'vite';
-import { name } from './package.json';
-
-const getPackageName = () => {
-  return name.includes('@') ? name.split('/')[1] : name;
-};
 
 const NAME = 'SHORTY';
 
 const fileName = {
-  es: `${getPackageName()}.mjs`,
-  cjs: `${getPackageName()}.cjs`,
-  iife: `${getPackageName()}.js`,
+  es: `shorty.mjs`,
+  cjs: `shorty.cjs`,
+  iife: `shorty.js`,
 };
 
 export default defineConfig({
