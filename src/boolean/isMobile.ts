@@ -4,7 +4,7 @@ import userAgent from '../strings/userAgent';
 const mobileBrands = /iPhone|iPad|iPod|Android/i;
 let isMobileCheck = false;
 
-/* istanbul ignore else */
+/* istanbul ignore else @preserve */
 if (userAgentData) {
   isMobileCheck = userAgentData.brands.some(x => mobileBrands.test(x.brand));
 } else {

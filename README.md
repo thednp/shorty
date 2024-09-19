@@ -5,11 +5,11 @@
 [![NPM Version](https://img.shields.io/npm/v/@thednp/shorty.svg)](https://www.npmjs.com/package/@thednp/shorty)
 [![NPM Downloads](https://img.shields.io/npm/dm/@thednp/shorty.svg)](http://npm-stat.com/charts.html?package=@thednp/shorty)
 [![jsDelivr hits (npm)](https://img.shields.io/jsdelivr/npm/hw/@thednp/shorty)](https://www.jsdelivr.com/package/npm/@thednp/shorty)
-[![typescript version](https://img.shields.io/badge/typescript-5.5.3-brightgreen)](https://www.typescriptlang.org/)
-[![eslint version](https://img.shields.io/badge/eslint-8.57.0-brightgreen)](https://github.com/eslint)
+[![typescript version](https://img.shields.io/badge/typescript-5.6.2-brightgreen)](https://www.typescriptlang.org/)
+[![eslint version](https://img.shields.io/badge/eslint-8.57.1-brightgreen)](https://github.com/eslint)
 [![prettier version](https://img.shields.io/badge/prettier-2.8.8-brightgreen)](https://prettier.io/)
-[![cypress version](https://img.shields.io/badge/cypress-13.13.1-brightgreen)](https://cypress.io/)
-[![vite version](https://img.shields.io/badge/vite-5.3.4-brightgreen)](https://github.com/vitejs)
+[![vitest version](https://img.shields.io/badge/vitest-2.1.1-brightgreen)](https://vitest.dev/)
+[![vite version](https://img.shields.io/badge/vite-5.4.6-brightgreen)](https://github.com/vitejs)
 
 
 A small TypeScript library with various tools, all ESLint valid and featuring everything useful for creating light libraries or web components. If there is anything that is consistently repeating itself, **shorty** can help you save up to 50% of the code required, with little to no performance cost.

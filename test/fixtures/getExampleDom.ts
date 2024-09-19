@@ -1,36 +1,17 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>BSN Testing Page</title>
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css">
-  <style>
-    @keyframes animate-me {
-      0% { opacity: 1; }
-      50% { opacity: 0; }
-      100% { opacity: 1; }
-    }
-    @keyframes animate-test {
-      from { left: 0px; }
-      to { left: 150px; }
-    }
-    .animate-test {
-      animation-name: animate-test;
-      animation-duration: 0.3s;
-      animation-timing-function: ease-out;
-      animation-delay: 0s;
-    }
-  </style>
-</head>
-<body class="container p-5">
-  <h3>Shorty Examples</h3>
-  <div id="alertDemo" class="alert alert-warning alert-dismissible fade show" data-cy="alert" data-bs-op1="false" data-bs-op2="true" data-bs-op3="10" data-bs-title="" role="alert">
-    <button type="button" class="btn-close bg-none" data-bs-target="alertDemo" data-bs-dismiss="alert" aria-label="Close">
-      <svg viewBox="0 0 16 16" class="align-top"><path name="x" d="M4.646 4.646a0.5 0.5 0 0 1 0.708 0L8 7.293l2.646 -2.647a0.5 0.5 0 0 1 0.708 0.708L8.707 8l2.647 2.646a0.5 0.5 0 0 1 -0.708 0.708L8 8.707l-2.646 2.647A0.5 0.5 0 0 1 4.646 10.646L7.293 8L4.646 5.354a0.5 0.5 0 0 1 0 -0.708z"></path></svg>
+export const getExampleDOM = () => {
+  const div = document.createElement('div');
+  div.className = 'm-4';
+  const tempDocument = new DOMParser().parseFromString(`
+<div id="alertDemo" class="alert alert-warning alert-dismissible fade show" data-bs-op1="false" data-bs-op2="true" data-bs-op3="10" data-bs-title="" role="alert">
+    <button role="button" type="button" class="btn-close bg-none" data-bs-target="alertDemo" data-bs-dismiss="alert" aria-label="Close">
+      <svg viewBox="0 0 16 16" class="align-top">
+        <title>Delete</title>
+        <path name="x" d="M4.646 4.646a0.5 0.5 0 0 1 0.708 0L8 7.293l2.646 -2.647a0.5 0.5 0 0 1 0.708 0.708L8.707 8l2.647 2.646a0.5 0.5 0 0 1 -0.708 0.708L8 8.707l-2.646 2.647A0.5 0.5 0 0 1 4.646 10.646L7.293 8L4.646 5.354a0.5 0.5 0 0 1 0 -0.708z"></path>
+      </svg>
     </button>
     <p><b>Holy guacamole!</b> Best check yo self, you're not looking too good.</p>
     <img src="data:image/svg+xml;base64,PHN2ZyB2aWV3Qm94PSIwIDAgODAgNDMiIHdpZHRoPSI4MCIgaGVpZ2h0PSI0MyIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4NCiAgICAgICAgICAgICAgICAgIDxyZWN0IGZpbGw9IndoaXRlIiBzdHJva2U9IiNjY2MiIHN0cm9rZS13aWR0aD0iMSIgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgcng9IjUiPjwvcmVjdD4NCiAgICAgICAgICAgICAgICAgIDx0ZXh0IGRpcmVjdGlvbj0ibHRyIiBmaWxsPSIjMzMzIiB4PSIyNSIgeT0iMjUiIGZvbnQtc2l6ZT0iMTQiPklNRzwvdGV4dD4NCiAgICAgICAgICAgICAgICA8L3N2Zz4=" alt="Image">
-  </div>
+</div>
   <table class="table">
     <thead>
       <tr>
@@ -59,5 +40,9 @@
       </tr>
     </tbody>
   </table>
-</body>
-</html>
+`, 'text/html');
+  // console.log(tempDocument.body.children)
+  div.append(...tempDocument.body.children);
+
+  return div;
+};

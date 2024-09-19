@@ -19,7 +19,7 @@ const emulateAnimationEnd = (element: HTMLElement, handler: EventListener): void
   if (duration) {
     /** Wrap the handler in on -> off callback */
     const animationEndWrapper = (e: Event): void => {
-      /* istanbul ignore else */
+      /* istanbul ignore else @preserve */
       if (e.target === element) {
         handler.apply(element, [e]);
         element.removeEventListener(animationEndEvent, animationEndWrapper);
@@ -28,10 +28,11 @@ const emulateAnimationEnd = (element: HTMLElement, handler: EventListener): void
     };
     element.addEventListener(animationEndEvent, animationEndWrapper);
     setTimeout(() => {
-      /* istanbul ignore next */
+      /* istanbul ignore next @preserve */
       if (!called) dispatchEvent(element, endEvent);
     }, duration + delay + 17);
   } else {
+    /* istanbul ignore next @preserve */
     handler.apply(element, [endEvent]);
   }
 };

@@ -16,7 +16,7 @@ import isString from '../is/isString';
  * @param param `tagName` or object
  * @return a new `HTMLElement`
  */
-const createElementNS = <T extends HTMLElement>(
+const createElementNS = <T extends Element = HTMLElement>(
   ns: string,
   param?: string | Partial<T>,
 ): T | undefined => {

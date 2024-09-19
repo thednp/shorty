@@ -129,12 +129,13 @@ const pe = "aria-checked", me = "aria-description", fe = "aria-describedby", ge 
   easingBackInOut: "cubic-bezier(0.68,-0.55,0.265,1.55)"
 }, ln = "offsetHeight", dn = "offsetWidth", pn = "scrollHeight", mn = "scrollWidth", fn = "tabindex", jt = navigator.userAgentData, A = jt, { userAgent: qt } = navigator, S = qt, z = /iPhone|iPad|iPod|Android/i;
 let O = !1;
+/* istanbul ignore else @preserve */
 A ? O = A.brands.some((t) => z.test(t.brand)) : O = z.test(S);
 const gn = O, x = /(iPhone|iPod|iPad)/, vn = A ? A.brands.some((t) => x.test(t.brand)) : (
-  /* istanbul ignore next */
+  /* istanbul ignore next @preserve */
   x.test(S)
 ), En = S ? S.includes("Firefox") : (
-  /* istanbul ignore next */
+  /* istanbul ignore next @preserve */
   !1
 ), { head: N } = document, bn = ["webkitPerspective", "perspective"].some((t) => t in N.style), Gt = (t, e, n, o) => {
   const s = o || !1;
@@ -144,6 +145,7 @@ const gn = O, x = /(iPhone|iPod|iPad)/, vn = A ? A.brands.some((t) => x.test(t.b
   t.removeEventListener(e, n, s);
 }, Kt = (t, e, n, o) => {
   const s = (r) => {
+    /* istanbul ignore else @preserve */
     (r.target === t || r.currentTarget === t) && (n.apply(t, [r]), Jt(t, e, s, o));
   };
   Gt(t, e, s, o);
@@ -247,13 +249,17 @@ const gn = O, x = /(iPhone|iPod|iPad)/, vn = A ? A.brands.some((t) => x.test(t.b
   const o = new Event(D), s = te(t), r = _t(t);
   if (s) {
     const a = (l) => {
+      /* istanbul ignore else @preserve */
       l.target === t && (e.apply(t, [l]), t.removeEventListener(D, a), n = 1);
     };
     t.addEventListener(D, a), setTimeout(() => {
+      /* istanbul ignore next @preserve */
       n || Q(t, o);
     }, s + r + 17);
-  } else
+  } else {
+    /* istanbul ignore next @preserve */
     e.apply(t, [o]);
+  }
 }, ee = (t) => {
   const e = g(t, U), n = g(t, Qt), o = n.includes("ms") ? (
     /* istanbul ignore next */
@@ -283,9 +289,11 @@ const gn = O, x = /(iPhone|iPod|iPad)/, vn = A ? A.brands.some((t) => x.test(t.b
   const o = new Event(C), s = ne(t), r = ee(t);
   if (s) {
     const a = (l) => {
+      /* istanbul ignore else @preserve */
       l.target === t && (e.apply(t, [l]), t.removeEventListener(C, a), n = 1);
     };
     t.addEventListener(C, a), setTimeout(() => {
+      /* istanbul ignore next @preserve */
       n || Q(t, o);
     }, s + r + 17);
   } else
@@ -305,6 +313,7 @@ const gn = O, x = /(iPhone|iPod|iPad)/, vn = A ? A.brands.some((t) => x.test(t.b
     cancelable: !0,
     bubbles: !0
   });
+  /* istanbul ignore else @preserve */
   return v(e) && M(n, e), n;
 }, Yn = { passive: !0 }, Zn = (t) => t.offsetHeight, $n = (t, e) => {
   w(e).forEach(([n, o]) => {
@@ -386,6 +395,7 @@ T(t), re = (t) => {
   return Math.round(e) !== o || Math.round(n) !== s;
 }, co = (t, e, n) => {
   const o = u(e), s = h(t, o && re(e)), r = { x: 0, y: 0 };
+  /* istanbul ignore else @preserve */
   if (o) {
     const a = h(e, !0);
     r.x = a.x + e.clientLeft, r.y = a.y + e.clientTop;
@@ -430,7 +440,7 @@ const b = /* @__PURE__ */ new Map(), ae = (t, e) => {
 }, Eo = (t) => v(t) && t.constructor.name === "WeakMap" || !1, bo = (t) => i(t) && ["SVG", "Image", "Video", "Canvas"].some((e) => t.constructor.name.includes(e)) || !1, ho = (t) => v(t) && t.constructor.name === "NodeList" || !1, yo = (t) => T(t).dir === "rtl", wo = (t) => i(t) && t.constructor.name.includes("SVG") || !1, Ao = (t) => i(t) && ["TABLE", "TD", "TH"].includes(t.nodeName) || !1, le = (t, e) => t ? t.closest(e) || // break out of `ShadowRoot`
 le(t.getRootNode().host, e) : null, So = (t, e) => u(t) ? t : (i(e) ? e : d()).querySelector(t), de = (t, e) => (i(e) ? e : d()).getElementsByTagName(t), No = (t) => [...de("*", t)].filter(ue), ko = (t, e) => d(e).getElementById(t) || null, Mo = (t, e) => (i(e) ? e : d()).querySelectorAll(t), To = (t, e) => (e && i(e) ? e : d()).getElementsByClassName(
   t
-), Do = (t, e) => t.matches(e), Co = "2.0.3";
+), Do = (t, e) => t.matches(e), Co = "2.0.4";
 export {
   Bn as ArrayFrom,
   P as DOMContentLoadedEvent,

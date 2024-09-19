@@ -9,11 +9,14 @@
  * @param selector the selector name
  * @return the query result
  */
-const closest = (element: HTMLElement, selector: string): HTMLElement | null => {
+const closest = <T extends Element = HTMLElement>(
+  element: T,
+  selector: string,
+): HTMLElement | null => {
   return element
     ? element.closest(selector) ||
         // break out of `ShadowRoot`
-        closest((element.getRootNode() as HTMLElement & { host: HTMLElement }).host, selector)
+        closest((element.getRootNode() as ShadowRoot).host, selector)
     : null;
 };
 

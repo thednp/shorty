@@ -22,7 +22,7 @@ const getRectRelativeToOffsetParent = (
   const rect = getBoundingClientRect(element, isParentAnElement && isScaledElement(offsetParent));
   const offsets = { x: 0, y: 0 };
 
-  /* istanbul ignore next */
+  /* istanbul ignore else @preserve */
   if (isParentAnElement) {
     const offsetRect = getBoundingClientRect(offsetParent, true);
     offsets.x = offsetRect.x + offsetParent.clientLeft;

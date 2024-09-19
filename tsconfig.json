@@ -23,7 +23,12 @@
     "allowSyntheticDefaultImports": true,
     "noEmit": true,
     "checkJs": true,
-    "skipLibCheck": true // allows dts-bundle-generator to import from package.json
+    "skipLibCheck": true, // allows dts-bundle-generator to import from package.json
+    "paths": {
+      "~/*": [
+        "./src/*"
+      ],
+    }
   },
   "include": ["src/*", "src/**/*"],
   "exclude": ["node_modules", "experiments", "coverage", "dist"],

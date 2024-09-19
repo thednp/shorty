@@ -837,7 +837,7 @@ export declare const createElement: <T extends HTMLElement>(param?: string | Par
  * @param param `tagName` or object
  * @return a new `HTMLElement`
  */
-export declare const createElementNS: <T extends HTMLElement>(ns: string, param?: string | Partial<T>) => T | undefined;
+export declare const createElementNS: <T extends Element = HTMLElement>(ns: string, param?: string | Partial<T>) => T | undefined;
 /**
  * Shortcut for the `Element.dispatchEvent(Event)` method.
  *
@@ -993,7 +993,7 @@ export declare interface OriginalEvent extends CustomEvent<any> {
  * @param config Event.options | Event.properties
  * @returns a new namespaced event
  */
-export declare const createCustomEvent: <T extends OriginalEvent>(eventType: string, config?: CustomEventInit<any>) => T;
+export declare const createCustomEvent: <O extends Record<string, unknown>, T extends OriginalEvent>(eventType: string, config?: O) => T;
 /**
  * A global namespace for most scroll event listeners.
  */
@@ -1451,7 +1451,7 @@ export declare const isWindow: (obj?: unknown) => obj is Window;
  * @param selector the selector name
  * @return the query result
  */
-export declare const closest: (element: HTMLElement, selector: string) => HTMLElement | null;
+export declare const closest: <T extends Element = HTMLElement>(element: T, selector: string) => HTMLElement | null;
 /**
  * Utility to check if target is typeof `HTMLElement`, `Element`, `Node`
  * or find one that matches a selector.

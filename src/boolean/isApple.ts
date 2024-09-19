@@ -9,6 +9,6 @@ const appleBrands = /(iPhone|iPod|iPad)/;
  */
 const isApple: boolean = userAgentData
   ? userAgentData.brands.some((x: NavigatorUABrand) => appleBrands.test(x.brand))
-  : /* istanbul ignore next */ appleBrands.test(userAgent);
+  : /* istanbul ignore next @preserve */ appleBrands.test(userAgent);
 
 export default isApple;
