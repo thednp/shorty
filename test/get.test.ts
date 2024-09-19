@@ -11,7 +11,7 @@ describe('Shorty Library Tests - GET', () => {
     wrapper.innerHTML = '';
   });
 
-  it.only('Test get folder', async () => {
+  it('Test get folder', async () => {
     const container = getExampleDOM();
     wrapper.append(container);
 
