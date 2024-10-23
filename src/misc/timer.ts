@@ -23,9 +23,9 @@ const Timer = {
   set: (element: HTMLElement, callback: TimerHandler, delay: number, key?: string): void => {
     if (!isHTMLElement(element)) return;
 
-    /* istanbul ignore else */
+    // istanbul ignore else @preserve
     if (key && key.length) {
-      /* istanbul ignore else */
+      // istanbul ignore else @preserve
       if (!TimeCache.has(element)) {
         TimeCache.set(element, new Map());
       }
@@ -70,7 +70,7 @@ const Timer = {
     if (key && key.length && isMap(keyTimers as KeyMap)) {
       clearTimeout((keyTimers as KeyMap).get(key));
       (keyTimers as KeyMap).delete(key);
-      /* istanbul ignore else */
+      // istanbul ignore else @preserve
       if ((keyTimers as KeyMap).size === 0) {
         TimeCache.delete(element);
       }

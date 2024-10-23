@@ -6,13 +6,16 @@ import "./fixtures/style.css";
 describe('Shorty Library Tests - MISC', () => {
   const wrapper = document.createElement('div');
   document.body.append(wrapper);
+
   afterEach(async () => {
     wrapper.innerHTML = '';
   });
 
-  it('Test misc folder - emulateTransitionEnd - no transition', () => {
+  it('Test misc folder - emulateTransitionEnd - no transition', async () => {
+    vi.useFakeTimers();
     const container = getExampleDOM();
     wrapper.append(container);
+    await vi.waitFor(() => container.querySelector('.alert'), 200);
 
     const {
       dispatchEvent,
@@ -57,16 +60,18 @@ describe('Shorty Library Tests - MISC', () => {
       dispatchEvent(el, alertHideEvent);
       emulateTransitionEnd(el, function () {
         addClass(el, 'show');
+        vi.advanceTimersByTime(350);
       });
     });
 
     btn.click();
   });
 
-  it('Test misc folder - emulateTransitionEnd - default', () => {
+  it('Test misc folder - emulateTransitionEnd - default', async () => {
     vi.useFakeTimers();
     const container = getExampleDOM();
     wrapper.append(container);
+    await vi.waitFor(() => container.querySelector('.alert'), 200);
 
     const {
       dispatchEvent,
@@ -79,7 +84,7 @@ describe('Shorty Library Tests - MISC', () => {
       one,
       focus,
     } = SHORTY;
-
+    
     const el = querySelector('.alert', container) as HTMLElement;
     const btn = querySelector('.btn-close', el) as HTMLButtonElement;
     const alertHideEvent = createCustomEvent('hide-alert', { relatedTarget: null });
@@ -99,62 +104,105 @@ describe('Shorty Library Tests - MISC', () => {
         addClass(el, 'show');
         focus(btn, { preventScroll: false });
         console.log('transitionend triggered');
+        vi.advanceTimersByTime(350);
       });
-      vi.advanceTimersByTime(350);
     });
 
-    btn!.click();
+    btn.click();
+  });
 
+  it("Can use focus trap", async () => {
+    const container = getExampleDOM();
+    const { focus, toggleFocusTrap, focusableSelector } = SHORTY;
+    wrapper.append(container);
+    await vi.waitFor(() => container.querySelector('.alert'), 200);
+    const element = container.querySelector<HTMLElement>('.alert')!;
+    const firstFocusable = element.querySelector<SHORTY.FocusableElement>(focusableSelector)!;
+    const table = container.querySelector<HTMLElement>('table')!;
+    const doc = element.ownerDocument!;
+
+    focus(firstFocusable);
+    toggleFocusTrap(element);
+    element.dispatchEvent(new KeyboardEvent('keydown', { bubbles: true, code: 'Tab', key: 'Tab', shiftKey: true }));
+    element.dispatchEvent(new KeyboardEvent('keydown', { bubbles: true, code: 'Tab', key: 'Tab', shiftKey: true }));
+    element.dispatchEvent(new KeyboardEvent('keydown', { bubbles: true, code: 'Tab', key: 'Tab', shiftKey: true }));
+    element.dispatchEvent(new KeyboardEvent('keydown', { bubbles: true, code: 'Tab', key: 'Tab', shiftKey: true }));
+    element.dispatchEvent(new KeyboardEvent('keydown', { bubbles: true, code: 'Tab', key: 'Tab', shiftKey: true }));
+    element.dispatchEvent(new KeyboardEvent('keydown', { bubbles: true, code: 'Tab', key: 'Tab', }));
+    element.dispatchEvent(new KeyboardEvent('keydown', { bubbles: true, code: 'Tab', key: 'Tab', }));
+    element.dispatchEvent(new KeyboardEvent('keydown', { bubbles: true, code: 'Tab', key: 'Tab', }));
+    element.dispatchEvent(new KeyboardEvent('keydown', { bubbles: true, code: 'Tab', key: 'Tab', }));
+    element.dispatchEvent(new KeyboardEvent('keydown', { bubbles: true, code: 'Tab', key: 'Tab', }));
+
+    await vi.waitFor(() => {
+      expect(element).to.contain(doc.activeElement);
+    }, 50)
+    toggleFocusTrap(element);
+
+    toggleFocusTrap(table);
+    table.dispatchEvent(new KeyboardEvent('keydown', { bubbles: true, code: 'Tab', shiftKey: true }));
+    table.dispatchEvent(new KeyboardEvent('keydown', { bubbles: true, code: 'Tab' }));
+
+    await vi.waitFor(() => {
+      expect(element).to.contain(doc.activeElement);
+    }, 50)
+    toggleFocusTrap(table);
   });
 
   it('Test misc folder - emulateAnimationEnd - default', async () => {
     vi.useFakeTimers();
     const container = getExampleDOM();
     wrapper.append(container);
-
     const { emulateAnimationEnd, getElementStyle, querySelector, addClass } = SHORTY;
+    await vi.waitFor(() => container.querySelector('.alert'), 200);
 
     const el = querySelector('.alert') as HTMLElement;
 
     addClass(el, 'animate-test');
     emulateAnimationEnd(el, () => {
       console.log('animationend fired - default');
+      vi.advanceTimersByTime(350);
+    });
+    await vi.waitFor(() => {
       expect(getElementStyle(el, 'animationName'), 'animationName').to.equal('animate-test');
       expect(getElementStyle(el, 'animationDuration'), 'animationDuration').to.equal('0.3s');
       expect(getElementStyle(el, 'animationDelay'), 'animationDelay').to.equal('0s');
-    });
-    vi.advanceTimersByTime(350);
-
+    }, 351)
   });
 
-  it('Test misc folder - emulateAnimationEnd - no duration', () => {
+
+  it('Test misc folder - emulateAnimationEnd - no duration', async () => {
+    vi.useFakeTimers();
     const container = getExampleDOM();
     wrapper.append(container);
+    await vi.waitFor(() => container.querySelector('.alert'), 200);
 
     const { emulateAnimationEnd, setElementStyle, getElementStyle, querySelector, addClass } =
       SHORTY;
 
     const el = querySelector('.alert', container)!;
-    setElementStyle(el, { animationDuration: '0.1s' });
+    // setElementStyle(el, { animationDuration: '0.1s' });
+    setElementStyle(el, { animationDuration: '0s' });
 
     addClass(el, 'animate-test');
 
-
     emulateAnimationEnd(el, () => {
-      // await vi.waitUntil(() => {
       console.log('animationend fired no duration');
+      vi.advanceTimersByTime(150);
+    });
+
+    await vi.waitFor(() => {
       expect(getElementStyle(el, 'animationName'), 'animationName').to.equal('animate-test');
       expect(getElementStyle(el, 'animationDuration'), 'animationDuration').to.equal('0s');
       expect(getElementStyle(el, 'animationDelay'), 'animationDelay').to.equal('0s');
-
-      // }, { timeout: 150 })
-    });
+    }, 50)
 
   });
 
-  it('Test misc folder - everything else', () => {
+  it('Test misc folder - everything else', async () => {
     const container = getExampleDOM();
     wrapper.append(container);
+    await vi.waitFor(() => container.querySelector('.alert'), 200);
 
     const {
       ArrayFrom,

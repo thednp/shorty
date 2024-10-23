@@ -1,7 +1,4 @@
-export const getExampleDOM = () => {
-  const div = document.createElement('div');
-  div.className = 'm-4';
-  const tempDocument = new DOMParser().parseFromString(`
+const markup = `<div class="p-5">
 <div id="alertDemo" class="alert alert-warning alert-dismissible fade show" data-bs-op1="false" data-bs-op2="true" data-bs-op3="10" data-bs-title="" role="alert">
     <button role="button" type="button" class="btn-close bg-none" data-bs-target="alertDemo" data-bs-dismiss="alert" aria-label="Close">
       <svg viewBox="0 0 16 16" class="align-top">
@@ -10,6 +7,10 @@ export const getExampleDOM = () => {
       </svg>
     </button>
     <p><b>Holy guacamole!</b> Best check yo self, you're not looking too good.</p>
+    <button class="btn btn-outline-secondary">
+      ReadMore
+    </button>
+
     <img src="data:image/svg+xml;base64,PHN2ZyB2aWV3Qm94PSIwIDAgODAgNDMiIHdpZHRoPSI4MCIgaGVpZ2h0PSI0MyIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4NCiAgICAgICAgICAgICAgICAgIDxyZWN0IGZpbGw9IndoaXRlIiBzdHJva2U9IiNjY2MiIHN0cm9rZS13aWR0aD0iMSIgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgcng9IjUiPjwvcmVjdD4NCiAgICAgICAgICAgICAgICAgIDx0ZXh0IGRpcmVjdGlvbj0ibHRyIiBmaWxsPSIjMzMzIiB4PSIyNSIgeT0iMjUiIGZvbnQtc2l6ZT0iMTQiPklNRzwvdGV4dD4NCiAgICAgICAgICAgICAgICA8L3N2Zz4=" alt="Image">
 </div>
   <table class="table">
@@ -40,9 +41,12 @@ export const getExampleDOM = () => {
       </tr>
     </tbody>
   </table>
-`, 'text/html');
-  // console.log(tempDocument.body.children)
-  div.append(...tempDocument.body.children);
+</div>
+`;
 
-  return div;
+export const getExampleDOM = () => {
+  const tempDocument = new DOMParser().parseFromString(markup, 'text/html');
+  const container = tempDocument.body.querySelector('div')!;
+
+  return container;
 };

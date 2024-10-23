@@ -10,13 +10,16 @@ import isHTMLElement from '../is/isHTMLElement';
  * @param parent optional node to look into
  * @return the `HTMLElement` or `querySelector` result
  */
-const querySelector = (selector: HTMLElement | string, parent?: ParentNode): HTMLElement | null => {
+const querySelector = <T extends HTMLElement>(
+  selector: HTMLElement | string,
+  parent?: ParentNode,
+): T | null => {
   if (isHTMLElement(selector)) {
-    return selector;
+    return selector as T;
   }
   const lookUp = isNode(parent) ? parent : getDocument();
 
-  return lookUp.querySelector(selector);
+  return lookUp.querySelector<T>(selector);
 };
 
 export default querySelector;

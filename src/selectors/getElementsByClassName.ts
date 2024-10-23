@@ -9,14 +9,9 @@ import isNode from '../is/isNode';
  * @param parent optional Element to look into
  * @return the 'HTMLCollection'
  */
-const getElementsByClassName = (
-  selector: string,
-  parent?: ParentNode,
-): HTMLCollectionOf<HTMLElement> => {
+const getElementsByClassName = <T extends HTMLElement>(selector: string, parent?: ParentNode) => {
   const lookUp = parent && isNode(parent) ? parent : getDocument();
-  return (lookUp as HTMLElement | Document).getElementsByClassName(
-    selector,
-  ) as HTMLCollectionOf<HTMLElement>;
+  return (lookUp as HTMLElement | Document).getElementsByClassName(selector) as HTMLCollectionOf<T>;
 };
 
 export default getElementsByClassName;

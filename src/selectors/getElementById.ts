@@ -9,8 +9,8 @@ import getDocument from '../get/getDocument';
  * @param context an element in it's document or document
  * @returns the requested element
  */
-const getElementById = (id: string, context?: Node): HTMLElement | null => {
-  return getDocument(context).getElementById(id) || null;
+const getElementById = <T extends HTMLElement>(id: string, context?: Node) => {
+  return (getDocument(context).getElementById(id) as T) || null;
 };
 
 export default getElementById;

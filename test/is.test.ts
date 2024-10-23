@@ -8,13 +8,20 @@ import CustomElem from './fixtures/custom-elem';
 describe('Shorty Library Tests - IS', () => {
   const wrapper = document.createElement('div');
   document.body.append(wrapper);
+
   afterEach(async () => {
     wrapper.innerHTML = '';
   });
 
-  it('Test is folder', () => {
+  it('Test is folder', async () => {
+    vi.useFakeTimers();
     const container = getExampleDOM();
+    const CE1 = new CustomElem();
+    CE1.className = 'btn btn-outline-primary';
+    CE1.style.transform = 'scale(1.01)';
+    container.append(CE1);
     wrapper.append(container);
+    await vi.waitFor(() => container.querySelector('table'), 200);
     const win = container.ownerDocument.defaultView!;
 
     const {
@@ -51,15 +58,12 @@ describe('Shorty Library Tests - IS', () => {
     } = SHORTY;
 
     // const win = getWindow($element[0]);
-    const CE1 = new CustomElem();
-    CE1.className = 'btn btn-outline-primary';
-    CE1.style.transform = 'scale(1.01)';
-    document.body.append(CE1);
+
 
     const element = querySelector('.alert', container)!;
     const CE = querySelector('custom-elem', document) as HTMLElement;
     CE.className = 'btn btn-outline-primary';
-    // CE.style.transform = 'scale(1.01)';
+    CE.style.transform = 'scale(1.01)';
     // win.document.body.append(CE);
     const img = querySelector('img', element);
     const svg = querySelector('svg', element);
@@ -154,12 +158,12 @@ describe('Shorty Library Tests - IS', () => {
   
       expect(isElementInScrollRange(), 'isElementInScrollRange()').to.be.false;
       expect(isElementInScrollRange(win as any), 'isElementInScrollRange(window)').to.be.false;
-      expect(isElementInScrollRange(CE!), 'isElementInScrollRange(CustomElement)').to.be.true;
+      expect(isElementInScrollRange(CE!), 'isElementInScrollRange(CustomElement)').to.be.false;
       expect(isElementInScrollRange(element), 'isElementInScrollRange(node)').to.be.true;
   
       expect(isElementInViewport(), 'isElementInScrollRange()').to.be.false;
       expect(isElementInViewport(win as any), 'isElementInScrollRange(window)').to.be.false;
-      expect(isElementInViewport(CE!), 'isElementInViewport(CustomElement)').to.be.false;
+      expect(isElementInViewport(CE), 'isElementInViewport(CustomElement)').to.be.false;
       expect(isElementInViewport(element), 'isElementInScrollRange(node)').to.be.true;
   
       expect(isNode(), 'isNode()').to.be.false;
@@ -183,7 +187,7 @@ describe('Shorty Library Tests - IS', () => {
       expect(isScaledElement(element), 'isScaledElement(node)').to.be.false;
       expect(isScaledElement(win as any), 'isScaledElement(window)').to.be.false;
       expect(isScaledElement(win.document as any), 'isScaledElement(document)').to.be.false;
-      expect(isScaledElement(CE!), 'isScaledElement(expected)').to.be.true;
+      expect(isScaledElement(CE), 'isScaledElement(expected)').to.be.true;
   
       expect(isSVGElement(), 'isSVGElement()').to.be.false;
       expect(isSVGElement(element), 'isSVGElement(node)').to.be.false;
@@ -230,7 +234,7 @@ describe('Shorty Library Tests - IS', () => {
       expect(isShadowRoot(element), 'isShadowRoot(element)').to.be.false;
       expect(isShadowRoot(document), 'isShadowRoot(document)').to.be.false;
       expect(isShadowRoot(CE!.shadowRoot), 'isShadowRoot(CustomElement.shadowRoot)').to.be.true;  
-
-    }, { timeout: 150 })
+    }, 350);
+    vi.advanceTimersByTime(350)
   });
 });

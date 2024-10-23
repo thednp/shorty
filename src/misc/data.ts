@@ -19,7 +19,7 @@ const Data = {
   set: <T>(element: HTMLElement, component: string, instance: T): void => {
     if (!isHTMLElement(element)) return;
 
-    /* istanbul ignore else */
+    // istanbul ignore else @preserve
     if (!componentData.has(component)) {
       componentData.set(component, new Map<HTMLElement, T>());
     }
@@ -51,11 +51,9 @@ const Data = {
   get: <T>(element: HTMLElement, component: string): T | null => {
     if (!isHTMLElement(element) || !component) return null;
     const instanceMap = Data.getAllFor<T>(component);
-    // const instanceMap = componentData.get(component) as Map<HTMLElement, InstanceType<T>>;
 
     const instance = element && instanceMap && instanceMap.get(element);
 
-    // return (instance as T) || null;
     return instance || null;
   },
 
@@ -67,13 +65,12 @@ const Data = {
    */
   remove: <T>(element: HTMLElement, component: string): void => {
     const instanceMap = Data.getAllFor<T>(component);
-    // const instanceMap = componentData.get(component) as Map<HTMLElement, InstanceType<T>>;
 
     if (!instanceMap || !isHTMLElement(element)) return;
 
     instanceMap.delete(element);
 
-    /* istanbul ignore else */
+    // istanbul ignore else @preserve
     if (instanceMap.size === 0) {
       componentData.delete(component);
     }

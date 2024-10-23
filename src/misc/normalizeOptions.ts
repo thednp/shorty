@@ -29,7 +29,7 @@ const normalizeOptions = <T extends { [key: string]: any }>(
     const key: keyof T =
       ns && typeof k === 'string' && k.includes(ns)
         ? k.replace(ns, '').replace(/[A-Z]/g, (match: string) => toLowerCase(match))
-        : k;
+        : /* istanbul ignore next @preserve */ k;
 
     dataOps[key] = normalizeValue(v) as T[keyof T];
   });
@@ -39,7 +39,7 @@ const normalizeOptions = <T extends { [key: string]: any }>(
   });
 
   ObjectEntries(defaultOps).forEach(([k, v]) => {
-    /* istanbul ignore else */
+    // istanbul ignore else @preserve
     if (k in INPUT) {
       normalOps[k] = INPUT[k] as T[keyof T];
     } else if (k in dataOps) {

@@ -5,11 +5,11 @@
 [![NPM Version](https://img.shields.io/npm/v/@thednp/shorty.svg)](https://www.npmjs.com/package/@thednp/shorty)
 [![NPM Downloads](https://img.shields.io/npm/dm/@thednp/shorty.svg)](http://npm-stat.com/charts.html?package=@thednp/shorty)
 [![jsDelivr hits (npm)](https://img.shields.io/jsdelivr/npm/hw/@thednp/shorty)](https://www.jsdelivr.com/package/npm/@thednp/shorty)
-[![typescript version](https://img.shields.io/badge/typescript-5.6.2-brightgreen)](https://www.typescriptlang.org/)
+[![typescript version](https://img.shields.io/badge/typescript-5.6.3-brightgreen)](https://www.typescriptlang.org/)
 [![eslint version](https://img.shields.io/badge/eslint-8.57.1-brightgreen)](https://github.com/eslint)
 [![prettier version](https://img.shields.io/badge/prettier-2.8.8-brightgreen)](https://prettier.io/)
-[![vitest version](https://img.shields.io/badge/vitest-2.1.1-brightgreen)](https://vitest.dev/)
-[![vite version](https://img.shields.io/badge/vite-5.4.6-brightgreen)](https://github.com/vitejs)
+[![vitest version](https://img.shields.io/badge/vitest-2.1.3-brightgreen)](https://vitest.dev/)
+[![vite version](https://img.shields.io/badge/vite-5.4.10-brightgreen)](https://github.com/vitejs)
 
 
 A small TypeScript library with various tools, all ESLint valid and featuring everything useful for creating light libraries or web components. If there is anything that is consistently repeating itself, **shorty** can help you save up to 50% of the code required, with little to no performance cost.
@@ -215,6 +215,8 @@ if (isElementsArray(myValue)) {
 - **_Float32ArrayFrom_** - a shortie for `Float32Array.from()` method;
 - **_Float64ArrayFrom_** - a shortie for `Float64Array.from()` method;
 - **_focus_** - a shortie for `Element.focus()` method;
+- **_toggleFocusTrap_** - a useful utility to trap focus inside popups;
+- **_hasFocusTrap_** - check if an element has focus trap;
 - **_noop_** - is your regular `() => {}` NOOP;
 - **_normalizeOptions_** - a cool utility to normalize and crosscheck JavaScript options and their DATA API counterparts for various web components; supports namespaced options like `data-NAMESPACE-option="value"`; priority: JavaScript options > DATA API options > default options
 - **_ObjectAssign_** - a shortie for `Object.assign()` method;

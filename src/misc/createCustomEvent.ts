@@ -9,7 +9,7 @@ import ObjectAssign from './ObjectAssign';
  * @param config Event.options | Event.properties
  * @returns a new namespaced event
  */
-const createCustomEvent = <O extends Record<string, unknown>, T extends OriginalEvent>(
+const createCustomEvent = <O extends unknown & Record<string, unknown>, T extends OriginalEvent>(
   eventType: string,
   config?: O,
 ): T => {
@@ -18,7 +18,7 @@ const createCustomEvent = <O extends Record<string, unknown>, T extends Original
     bubbles: true,
   }) as T;
 
-  /* istanbul ignore else @preserve */
+  // istanbul ignore else @preserve
   if (isObject(config)) {
     ObjectAssign(OriginalCustomEvent, config);
   }

@@ -353,6 +353,7 @@ export declare const focusinEvent = "focusin";
  * A global namespace for `focusout` event.
  */
 export declare const focusoutEvent = "focusout";
+export declare const focusableSelector = "a[href], button, input, textarea, select, details, [tabindex]:not([tabindex=\"-1\"]";
 /**
  * A global namespace for `gesturechange` event.
  */
@@ -993,7 +994,7 @@ export declare interface OriginalEvent extends CustomEvent<any> {
  * @param config Event.options | Event.properties
  * @returns a new namespaced event
  */
-export declare const createCustomEvent: <O extends Record<string, unknown>, T extends OriginalEvent>(eventType: string, config?: O) => T;
+export declare const createCustomEvent: <O extends unknown & Record<string, unknown>, T extends OriginalEvent>(eventType: string, config?: O) => T;
 /**
  * A global namespace for most scroll event listeners.
  */
@@ -1060,6 +1061,17 @@ export declare const toLowerCase: (source: string) => string;
  * @returns uppercase output string
  */
 export declare const toUpperCase: (source: string) => string;
+export type FocusableElement = HTMLAnchorElement | HTMLButtonElement | HTMLInputElement | HTMLTextAreaElement | HTMLDataListElement | HTMLDetailsElement | HTMLSelectElement;
+/**
+ * Utility to check if a designated element is affected by focus trap;
+ * @param target
+ */
+export declare const hasFocusTrap: (target: HTMLElement) => boolean;
+/**
+ * Utility to toggle focus trap inside a designated target element;
+ * @param target
+ */
+export declare const toggleFocusTrap: (target: HTMLElement) => void;
 export declare interface BoundingClientRect {
 	width: number;
 	height: number;
@@ -1460,7 +1472,7 @@ export declare const closest: <T extends Element = HTMLElement>(element: T, sele
  * @param parent optional node to look into
  * @return the `HTMLElement` or `querySelector` result
  */
-export declare const querySelector: (selector: HTMLElement | string, parent?: ParentNode) => HTMLElement | null;
+export declare const querySelector: <T extends HTMLElement>(selector: HTMLElement | string, parent?: ParentNode) => T | null;
 /**
  * Returns an `Array` of `Node` elements that are registered as
  * `CustomElement`.
@@ -1480,7 +1492,7 @@ export declare const getCustomElements: (parent?: ParentNode) => CustomElement[]
  * @param context an element in it's document or document
  * @returns the requested element
  */
-export declare const getElementById: (id: string, context?: Node) => HTMLElement | null;
+export declare const getElementById: <T extends HTMLElement>(id: string, context?: Node) => T;
 /**
  * A shortcut for `(document|Element).querySelectorAll`.
  *
@@ -1488,7 +1500,7 @@ export declare const getElementById: (id: string, context?: Node) => HTMLElement
  * @param parent optional node to look into
  * @return the query result
  */
-export declare const querySelectorAll: (selector: string, parent?: ParentNode) => NodeListOf<HTMLElement>;
+export declare const querySelectorAll: <T extends HTMLElement>(selector: string, parent?: ParentNode) => NodeListOf<T>;
 /**
  * Shortcut for `HTMLElement.getElementsByTagName` method. Some `Node` elements
  * like `ShadowRoot` do not support `getElementsByTagName`.
@@ -1497,7 +1509,7 @@ export declare const querySelectorAll: (selector: string, parent?: ParentNode) =
  * @param parent optional Element to look into
  * @return the 'HTMLCollection'
  */
-export declare const getElementsByTagName: (selector: string, parent?: ParentNode) => HTMLCollectionOf<HTMLElement>;
+export declare const getElementsByTagName: <T extends HTMLElement>(selector: string, parent?: ParentNode) => HTMLCollectionOf<T>;
 /**
  * Shortcut for `HTMLElement.getElementsByClassName` method. Some `Node` elements
  * like `ShadowRoot` do not support `getElementsByClassName`.
@@ -1506,7 +1518,7 @@ export declare const getElementsByTagName: (selector: string, parent?: ParentNod
  * @param parent optional Element to look into
  * @return the 'HTMLCollection'
  */
-export declare const getElementsByClassName: (selector: string, parent?: ParentNode) => HTMLCollectionOf<HTMLElement>;
+export declare const getElementsByClassName: <T extends HTMLElement>(selector: string, parent?: ParentNode) => HTMLCollectionOf<T>;
 /**
  * Check if element matches a CSS selector.
  *

@@ -1,6 +1,6 @@
 {
   "name": "@thednp/shorty",
-  "version": "2.0.4",
+  "version": "2.0.5",
   "description": "TypeScript shorties for the web",
   "source": "./src/index.ts",
   "main": "./dist/shorty.js",
@@ -15,9 +15,9 @@
   "scripts": {
     "pre-test": "pnpm clean-coverage",
     "badges": "npx -p dependency-version-badge update-badge typescript prettier eslint vitest vite",
-    "prepublishOnly": "pnpm up && pnpm lint && pnpm format && pnpm build && pnpm badges && pnpm test",
-    "test": "pnpm pre-test && vitest --config vitest.config.ts",
-    "test-ui": "pnpm pre-test && vitest --config vitest.config-ui.ts",
+    "prepublishOnly": "pnpm up && pnpm lint && pnpm format && pnpm build && pnpm badges",
+    "test": "pnpm pre-test && vitest --config vitest.config.mts",
+    "test-ui": "pnpm pre-test && vitest --config vitest.config-ui.mts",
     "clean-coverage": "rm -rf coverage .nyc_output",
     "format": "prettier --write \"src/**/*.ts\"",
     "lint": "pnpm lint:ts && pnpm check:ts",
@@ -47,12 +47,12 @@
   },
   "homepage": "https://github.com/thednp/shorty",
   "devDependencies": {
-    "@types/node": "^20.16.5",
+    "@types/node": "^20.16.15",
     "@typescript-eslint/eslint-plugin": "^5.62.0",
     "@typescript-eslint/parser": "^5.62.0",
-    "@vitest/browser": "^2.1.1",
-    "@vitest/coverage-istanbul": "^2.1.1",
-    "@vitest/ui": "^2.1.1",
+    "@vitest/browser": "^2.1.3",
+    "@vitest/coverage-istanbul": "^2.1.3",
+    "@vitest/ui": "^2.1.3",
     "dts-bundle-generator": "^9.5.1",
     "eslint": "^8.57.1",
     "eslint-plugin-jsdoc": "^46.10.1",
@@ -61,11 +61,11 @@
     "istanbul-lib-coverage": "^3.2.2",
     "istanbul-lib-instrument": "^5.2.1",
     "nyc": "^15.1.0",
-    "playwright": "^1.47.1",
+    "playwright": "^1.48.1",
     "prettier": "^2.8.8",
-    "typescript": "^5.6.2",
-    "vite": "^5.4.6",
-    "vitest": "^2.1.1"
+    "typescript": "^5.6.3",
+    "vite": "^5.4.10",
+    "vitest": "^2.1.3"
   },
   "packageManager": "pnpm@8.6.12",
   "engines": {

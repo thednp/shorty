@@ -17,7 +17,7 @@ const supportPassive = (() => {
         return result;
       },
     });
-    /* istanbul ignore next */
+    // istanbul ignore next @preserve
     one(document, DOMContentLoadedEvent, noop, opts);
   } catch (e) {
     // throw Error('Passive events are not supported');

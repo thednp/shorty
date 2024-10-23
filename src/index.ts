@@ -77,6 +77,7 @@ import focusEvents from './strings/focusEvents';
 import focusEvent from './strings/focusEvent';
 import focusinEvent from './strings/focusinEvent';
 import focusoutEvent from './strings/focusoutEvent';
+import focusableSelector from './strings/focusableSelector';
 
 import gesturechangeEvent from './strings/gesturechangeEvent';
 import gestureendEvent from './strings/gestureendEvent';
@@ -194,6 +195,7 @@ import setElementStyle from './misc/setElementStyle';
 import Timer from './misc/timer';
 import toLowerCase from './misc/toLowerCase';
 import toUpperCase from './misc/toUpperCase';
+import { type FocusableElement, hasFocusTrap, toggleFocusTrap } from './misc/focusTrap';
 
 // get
 import getBoundingClientRect from './get/getBoundingClientRect';
@@ -397,6 +399,9 @@ export {
   createCustomEvent,
   toUpperCase,
   toLowerCase,
+  focusableSelector,
+  hasFocusTrap,
+  toggleFocusTrap,
   Timer,
   emulateAnimationEnd,
   emulateTransitionEnd,
@@ -480,6 +485,7 @@ export {
 export * from './interface/navigatorUA.d';
 export * from './interface/offsetRect.d';
 
+export type { FocusableElement };
 export type { OriginalEvent } from './interface/originalEvent.d';
 
 export type { BoundingClientRect } from './interface/boundingClientRect.d';
