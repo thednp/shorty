@@ -1,5 +1,5 @@
 /**
  * A global namespace for `scrollWidth` property.
  */
-const scrollWidth = 'scrollWidth';
+const scrollWidth = "scrollWidth";
 export default scrollWidth;

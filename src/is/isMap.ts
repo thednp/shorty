@@ -1,4 +1,4 @@
-import isObject from './isObject';
+import isObject from "./isObject";
 
 /**
  * Checks if an element is a `Map`.
@@ -6,6 +6,6 @@ import isObject from './isObject';
  * @param obj the target object
  * @returns the query result
  */
-const isMap = (obj?: unknown): obj is Map<any, any> =>
-  (isObject(obj) && obj.constructor.name === 'Map') || false;
+const isMap = (obj?: unknown): obj is Map<unknown, unknown> =>
+  (isObject(obj) && obj.constructor.name === "Map") || false;
 export default isMap;

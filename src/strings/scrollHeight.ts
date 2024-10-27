@@ -1,5 +1,5 @@
 /**
  * A global namespace for `scrollHeight` property.
  */
-const scrollHeight = 'scrollHeight';
+const scrollHeight = "scrollHeight";
 export default scrollHeight;

@@ -1,5 +1,5 @@
 /**
  * A global namespace for `blur` event.
  */
-const blurEvent = 'blur';
+const blurEvent = "blur";
 export default blurEvent;

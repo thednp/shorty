@@ -1,4 +1,4 @@
-import getDocument from './getDocument';
+import getDocument from "./getDocument";
 
 /**
  * Returns the `document.body` or the `<body>` element.

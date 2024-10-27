@@ -2,6 +2,6 @@
  * A global namespace for `Pause` key.
  * e.which = 19
  */
-const keyPause = 'Pause';
+const keyPause = "Pause";
 
 export default keyPause;

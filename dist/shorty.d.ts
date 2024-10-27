@@ -776,7 +776,7 @@ export declare const ArrayFrom: <T>(arr: ArrayLike<T> | Iterable<T>) => T[];
  * @see https://github.com/thednp/bootstrap.native/blob/master/src/components/base-component.js
  */
 export declare const Data: {
-	data: Map<string, Map<HTMLElement, any>>;
+	data: Map<string, Map<HTMLElement, unknown>>;
 	/**
 	 * Sets web components data.
 	 *
@@ -911,22 +911,23 @@ export declare const noop: () => void;
  * @return normalized component options object
  */
 export declare const normalizeOptions: <T extends {
-	[key: string]: any;
+	[key: string]: unknown;
 }>(element: HTMLElement, defaultOps: T, inputOps: Partial<T>, ns?: string) => T;
-type NormalValue = boolean | number | string | ((...args: any[]) => any) | null;
+type Fn = (...args: unknown[]) => unknown;
+type NormalValue = boolean | number | string | Fn | null;
 /**
  * Utility to normalize component options
  *
  * @param value the input value
  * @return the normalized value
  */
-export declare const normalizeValue: (value?: boolean | number | string) => NormalValue;
+export declare const normalizeValue: (value?: unknown) => NormalValue;
 declare function ObjectAssignTyped<T, U>(target: T, source: U): T & U;
 declare function ObjectAssignTyped<T, U, V>(target: T, source1: U, source2: V): T & U & V;
 declare function ObjectAssignTyped<T, U, V, W>(target: T, source1: U, source2: V, source3: W): T & U & V & W;
 declare function ObjectAssignTyped<T, U, V, W, Q>(target: T, source1: U, source2: V, source3: W, source4: Q): T & U & V & W & Q;
 declare function ObjectAssignTyped<T, U, V, W, Q, R>(target: T, source1: U, source2: V, source3: W, source4: Q, source5: R): T & U & V & W & Q & R;
-declare function ObjectAssignTyped(target: any, ...sources: any[]): any;
+declare function ObjectAssignTyped(target: unknown, ...sources: unknown[]): unknown;
 /**
  * Shortcut for `Object.assign()` static method.
  *
@@ -942,7 +943,7 @@ export declare const ObjectAssign: typeof ObjectAssignTyped;
  * @returns the entries of an object in an array format [key, value][]
  * @see https://github.com/devinrhode2/ObjectTyped/blob/master/src/index.ts
  */
-export declare const ObjectEntries: <O extends Record<string, any>>(obj: O) => [
+export declare const ObjectEntries: <O extends Record<keyof O, unknown>>(obj: O) => [
 	keyof O,
 	O[keyof O]
 ][];
@@ -963,7 +964,7 @@ export declare const ObjectHasOwn: <T extends object, K extends PropertyKey>(obj
  * @returns an array with object keys
  * @see https://github.com/devinrhode2/ObjectTyped/blob/master/src/index.ts
  */
-export declare const ObjectKeys: <O extends Record<string, any>>(obj: O) => (keyof O)[];
+export declare const ObjectKeys: <O extends Record<keyof O, unknown>>(obj: O) => (keyof O)[];
 /**
  * Shortcut for `Object.values()` static method.
  *
@@ -983,7 +984,7 @@ export declare const ObjectFromEntries: <K extends string, V>(entries: [
 	K,
 	V
 ][]) => Record<K, V>;
-export declare interface OriginalEvent extends CustomEvent<any> {
+export declare interface OriginalEvent extends CustomEvent<unknown> {
 	readonly type: string;
 	relatedTarget?: EventTarget;
 }
@@ -1231,7 +1232,7 @@ export declare const getWindow: (node?: Node) => Window;
  * @param obj array-like iterable object
  * @returns the query result
  */
-export declare const isArray: (obj?: unknown) => obj is any[];
+export declare const isArray: (obj?: unknown) => obj is unknown[];
 /**
  * Checks if an element is an `HTMLCanvasElement` or `<canvas>`.
  *
@@ -1313,7 +1314,7 @@ export declare const isElementsArray: (obj?: unknown) => obj is HTMLElement[];
  * @param fn the target object
  * @returns the query result
  */
-export declare const isFunction: (fn?: unknown) => fn is (...arg0: any[]) => any;
+export declare const isFunction: (fn?: unknown) => fn is Fn;
 /**
  * Checks if a value is an `Object`.
  *
@@ -1357,14 +1358,14 @@ export declare const isJSON: (str?: string) => boolean;
  * @param obj the target object
  * @returns the query result
  */
-export declare const isMap: (obj?: unknown) => obj is Map<any, any>;
+export declare const isMap: (obj?: unknown) => obj is Map<unknown, unknown>;
 /**
  * Checks if an element is a `WeakMap`.
  *
  * @param obj the target object
  * @returns the query result
  */
-export declare const isWeakMap: (obj?: unknown) => obj is WeakMap<any, any>;
+export declare const isWeakMap: (obj?: unknown) => obj is WeakMap<WeakKey, unknown>;
 /**
  * Checks if an element is an `<svg>` (or any type of SVG element),
  * `<img>`, `<video>` or `<canvas>`.

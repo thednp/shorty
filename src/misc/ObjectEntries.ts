@@ -5,7 +5,7 @@
  * @returns the entries of an object in an array format [key, value][]
  * @see https://github.com/devinrhode2/ObjectTyped/blob/master/src/index.ts
  */
-const ObjectEntries = <O extends Record<string, any>>(obj: O) =>
+const ObjectEntries = <O extends Record<keyof O, unknown>>(obj: O) =>
   Object.entries(obj) as [keyof O, O[keyof O]][];
 
 export default ObjectEntries;

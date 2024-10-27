@@ -13,6 +13,7 @@
  * @param arr a clone of the target array
  * @returns the query result
  */
-const distinct = <T>(value: T, index: number, arr: T[]): boolean => arr.indexOf(value) === index;
+const distinct = <T>(value: T, index: number, arr: T[]): boolean =>
+  arr.indexOf(value) === index;
 
 export default distinct;

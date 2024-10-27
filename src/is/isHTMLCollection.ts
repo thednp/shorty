@@ -1,4 +1,4 @@
-import isObject from './isObject';
+import isObject from "./isObject";
 
 /**
  * Checks if an object is an `HTMLCollection`.
@@ -7,6 +7,6 @@ import isObject from './isObject';
  * @returns the query result
  */
 const isHTMLCollection = (obj?: unknown): obj is HTMLCollection =>
-  (isObject(obj) && obj.constructor.name === 'HTMLCollection') || false;
+  (isObject(obj) && obj.constructor.name === "HTMLCollection") || false;
 
 export default isHTMLCollection;

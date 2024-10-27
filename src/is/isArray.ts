@@ -4,6 +4,7 @@
  * @param obj array-like iterable object
  * @returns the query result
  */
-const isArray = (obj?: unknown): obj is any[] => Array.isArray(obj) || false;
+const isArray = (obj?: unknown): obj is unknown[] =>
+  Array.isArray(obj) || false;
 
 export default isArray;

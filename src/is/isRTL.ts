@@ -1,4 +1,4 @@
-import getDocumentElement from '../get/getDocumentElement';
+import getDocumentElement from "../get/getDocumentElement";
 
 /**
  * Checks if a page is Right To Left.
@@ -6,6 +6,6 @@ import getDocumentElement from '../get/getDocumentElement';
  * @param node the target
  * @returns the query result
  */
-const isRTL = (node?: Node): boolean => getDocumentElement(node).dir === 'rtl';
+const isRTL = (node?: Node): boolean => getDocumentElement(node).dir === "rtl";
 
 export default isRTL;

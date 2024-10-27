@@ -1,5 +1,5 @@
-import getDocument from '../get/getDocument';
-import isNode from '../is/isNode';
+import getDocument from "../get/getDocument";
+import isNode from "../is/isNode";
 
 /**
  * Shortcut for `HTMLElement.getElementsByTagName` method. Some `Node` elements
@@ -9,9 +9,14 @@ import isNode from '../is/isNode';
  * @param parent optional Element to look into
  * @return the 'HTMLCollection'
  */
-const getElementsByTagName = <T extends HTMLElement>(selector: string, parent?: ParentNode) => {
+const getElementsByTagName = <T extends HTMLElement>(
+  selector: string,
+  parent?: ParentNode,
+) => {
   const lookUp = isNode(parent) ? parent : getDocument();
-  return (lookUp as Document).getElementsByTagName(selector) as HTMLCollectionOf<T>;
+  return (lookUp as Document).getElementsByTagName(
+    selector,
+  ) as HTMLCollectionOf<T>;
 };
 
 export default getElementsByTagName;

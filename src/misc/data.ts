@@ -1,6 +1,6 @@
-import isHTMLElement from '../is/isHTMLElement';
+import isHTMLElement from "../is/isHTMLElement";
 
-const componentData = new Map<string, Map<HTMLElement, any>>();
+const componentData = new Map<string, Map<HTMLElement, unknown>>();
 
 /**
  * An interface for web components background data.

@@ -8,7 +8,11 @@ const off = <T extends EventTarget, L = EventListener>(
   options?: AddEventListenerOptions,
 ) => {
   const ops = options || false;
-  element.removeEventListener(eventName, listener as EventListenerOrEventListenerObject, ops);
+  element.removeEventListener(
+    eventName,
+    listener as EventListenerOrEventListenerObject,
+    ops,
+  );
 };
 
 export default off;

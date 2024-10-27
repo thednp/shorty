@@ -1,6 +1,6 @@
-import isNode from '../is/isNode';
-import isWindow from '../is/isWindow';
-import isDocument from '../is/isDocument';
+import isNode from "../is/isNode";
+import isWindow from "../is/isWindow";
+import isDocument from "../is/isDocument";
 
 /**
  * Returns the `document` or the `#document` element.
@@ -18,7 +18,7 @@ const getDocument = (node?: Node | Document | Window): Document => {
   // node instanceof Node
   if (isNode(node)) return node.ownerDocument as Document;
   // node is undefined | NULL
-  return window.document;
+  return globalThis.document;
 };
 
 export default getDocument;

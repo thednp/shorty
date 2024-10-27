@@ -1,7 +1,7 @@
-import type { OffsetRect } from '../interface/offsetRect';
-import isScaledElement from '../is/isScaledElement';
-import isHTMLElement from '../is/isHTMLElement';
-import getBoundingClientRect from './getBoundingClientRect';
+import type { OffsetRect } from "../interface/offsetRect";
+import isScaledElement from "../is/isScaledElement";
+import isHTMLElement from "../is/isHTMLElement";
+import getBoundingClientRect from "./getBoundingClientRect";
 
 /**
  * Returns the rect relative to a given offset parent and its scroll position.
@@ -19,7 +19,10 @@ const getRectRelativeToOffsetParent = (
   scroll: { x: number; y: number },
 ): OffsetRect => {
   const isParentAnElement = isHTMLElement(offsetParent);
-  const rect = getBoundingClientRect(element, isParentAnElement && isScaledElement(offsetParent));
+  const rect = getBoundingClientRect(
+    element,
+    isParentAnElement && isScaledElement(offsetParent),
+  );
   const offsets = { x: 0, y: 0 };
 
   // istanbul ignore else @preserve

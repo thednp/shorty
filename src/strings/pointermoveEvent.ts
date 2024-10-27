@@ -1,5 +1,5 @@
 /**
  * A global namespace for `pointermove` event.
  */
-const pointermoveEvent = 'pointermove';
+const pointermoveEvent = "pointermove";
 export default pointermoveEvent;

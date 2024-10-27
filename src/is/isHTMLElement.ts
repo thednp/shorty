@@ -1,4 +1,4 @@
-import isNode from './isNode';
+import isNode from "./isNode";
 
 /**
  * Checks if an element is an `HTMLElement`.

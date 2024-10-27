@@ -1,4 +1,4 @@
-import isString from './isString';
+import isString from "./isString";
 
 /**
  * Checks if a string is a `JSON` string.
@@ -11,7 +11,7 @@ const isJSON = (str?: string): boolean => {
 
   try {
     JSON.parse(str);
-  } catch (e) {
+  } catch (_e) {
     return false;
   }
   return true;

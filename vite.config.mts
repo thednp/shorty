@@ -14,6 +14,7 @@ export default defineConfig({
   build: {
     emptyOutDir: true,
     outDir: 'dist',
+    target: 'ESNext',
     lib: {
       entry: resolve(__dirname, 'src/index.ts'),
       name: NAME,

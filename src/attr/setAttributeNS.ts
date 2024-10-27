@@ -6,7 +6,11 @@
  * @param att attribute name
  * @param value attribute value
  */
-const setAttributeNS = (ns: string, element: HTMLElement, att: string, value: string): void =>
-  element.setAttributeNS(ns, att, value);
+const setAttributeNS = (
+  ns: string,
+  element: HTMLElement,
+  att: string,
+  value: string,
+): void => element.setAttributeNS(ns, att, value);
 
 export default setAttributeNS;

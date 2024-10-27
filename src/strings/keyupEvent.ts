@@ -1,5 +1,5 @@
 /**
  * A global namespace for `keyup` event.
  */
-const keyupEvent = 'keyup';
+const keyupEvent = "keyup";
 export default keyupEvent;

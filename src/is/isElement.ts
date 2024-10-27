@@ -1,4 +1,4 @@
-import isNode from './isNode';
+import isNode from "./isNode";
 
 /**
  * Checks if an object is an `Element`.
@@ -22,6 +22,7 @@ import isNode from './isNode';
  * @returns the query result
  */
 const isElement = (element?: unknown): element is Element =>
-  (isNode(element) && [1, 2, 3, 4, 5, 6, 7, 8].some(x => element.nodeType === x)) || false;
+  (isNode(element) &&
+    [1, 2, 3, 4, 5, 6, 7, 8].some((x) => element.nodeType === x)) || false;
 
 export default isElement;

@@ -1,5 +1,5 @@
 /**
  * A global namespace for `select` event.
  */
-const selectEvent = 'select';
+const selectEvent = "select";
 export default selectEvent;

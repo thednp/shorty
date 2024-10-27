@@ -1,5 +1,5 @@
 /**
  * A global namespace for `move` event.
  */
-const moveEvent = 'move';
+const moveEvent = "move";
 export default moveEvent;

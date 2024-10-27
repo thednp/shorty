@@ -1,5 +1,5 @@
 /**
  * A global namespace for `touchend` event.
  */
-const touchendEvent = 'touchend';
+const touchendEvent = "touchend";
 export default touchendEvent;

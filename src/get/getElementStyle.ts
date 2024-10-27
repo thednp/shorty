@@ -14,8 +14,8 @@
 const getElementStyle = (element: HTMLElement, property: string): string => {
   const computedStyle = getComputedStyle(element);
   const prop = property
-    .replace('webkit', 'Webkit')
-    .replace(/([A-Z])/g, '-$1')
+    .replace("webkit", "Webkit")
+    .replace(/([A-Z])/g, "-$1")
     .toLowerCase();
 
   // modern browsers only

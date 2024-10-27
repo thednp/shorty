@@ -1,4 +1,4 @@
-import getDocument from '../get/getDocument';
+import getDocument from "../get/getDocument";
 
 /**
  * Returns an `HTMLElement` that matches the id in the document.

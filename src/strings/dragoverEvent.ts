@@ -1,5 +1,5 @@
 /**
  * A global namespace for `dragover` event.
  */
-const dragoverEvent = 'dragover';
+const dragoverEvent = "dragover";
 export default dragoverEvent;

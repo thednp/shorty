@@ -1,5 +1,5 @@
 /**
  * A global namespace for `gestureend` event.
  */
-const gestureendEvent = 'gestureend';
+const gestureendEvent = "gestureend";
 export default gestureendEvent;

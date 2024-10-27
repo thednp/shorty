@@ -1,6 +1,6 @@
-import type { OriginalEvent } from '../interface/originalEvent';
-import isObject from '../is/isObject';
-import ObjectAssign from './ObjectAssign';
+import type { OriginalEvent } from "../interface/originalEvent";
+import isObject from "../is/isObject";
+import ObjectAssign from "./ObjectAssign";
 
 /**
  * Returns a namespaced `CustomEvent` specific to each component.
@@ -9,7 +9,10 @@ import ObjectAssign from './ObjectAssign';
  * @param config Event.options | Event.properties
  * @returns a new namespaced event
  */
-const createCustomEvent = <O extends unknown & Record<string, unknown>, T extends OriginalEvent>(
+const createCustomEvent = <
+  O extends unknown & Record<string, unknown>,
+  T extends OriginalEvent,
+>(
   eventType: string,
   config?: O,
 ): T => {

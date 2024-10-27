@@ -1,5 +1,5 @@
-import isDocument from '../is/isDocument';
-import isNode from '../is/isNode';
+import isDocument from "../is/isDocument";
+import isNode from "../is/isNode";
 
 /**
  * Returns the `Window` object of a target node.

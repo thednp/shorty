@@ -1,4 +1,4 @@
-import isNode from './isNode';
+import isNode from "./isNode";
 
 /**
  * Check if target is a `ShadowRoot`.
@@ -7,6 +7,6 @@ import isNode from './isNode';
  * @returns the query result
  */
 const isShadowRoot = (element?: unknown): element is ShadowRoot =>
-  (isNode(element) && element.constructor.name === 'ShadowRoot') || false;
+  (isNode(element) && element.constructor.name === "ShadowRoot") || false;
 
 export default isShadowRoot;

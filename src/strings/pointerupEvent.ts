@@ -1,5 +1,5 @@
 /**
  * A global namespace for `pointerup` event.
  */
-const pointerupEvent = 'pointerup';
+const pointerupEvent = "pointerup";
 export default pointerupEvent;

@@ -1,6 +1,6 @@
-import getDocument from '../get/getDocument';
-import isNode from '../is/isNode';
-import isHTMLElement from '../is/isHTMLElement';
+import getDocument from "../get/getDocument";
+import isNode from "../is/isNode";
+import isHTMLElement from "../is/isHTMLElement";
 
 /**
  * Utility to check if target is typeof `HTMLElement`, `Element`, `Node`

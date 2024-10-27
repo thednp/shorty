@@ -1,7 +1,7 @@
-import getDocumentElement from './getDocumentElement';
-import isShadowRoot from '../is/isShadowRoot';
-import isHTMLElement from '../is/isHTMLElement';
-import isNode from '../is/isNode';
+import getDocumentElement from "./getDocumentElement";
+import isShadowRoot from "../is/isShadowRoot";
+import isHTMLElement from "../is/isHTMLElement";
+import isNode from "../is/isNode";
 
 /**
  * Returns the `parentNode` also going through `ShadowRoot`.
@@ -12,7 +12,7 @@ import isNode from '../is/isNode';
  * @returns {Node} the apropriate parent node
  */
 const getParentNode = (node: Node): Node | ParentNode => {
-  if (node.nodeName === 'HTML') {
+  if (node.nodeName === "HTML") {
     return node;
   }
 

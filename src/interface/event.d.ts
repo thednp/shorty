@@ -52,11 +52,13 @@ interface BaseEvent<E = Event, C = unknown, T = unknown> {
  */
 type NativeEvent<T = Element, E = Event> = BaseEvent<E, T, T>;
 
-interface ClipboardEvent<T = Element> extends NativeEvent<T, NativeClipboardEvent> {
+interface ClipboardEvent<T = Element>
+  extends NativeEvent<T, NativeClipboardEvent> {
   clipboardData: DataTransfer;
 }
 
-interface CompositionEvent<T = Element> extends NativeEvent<T, NativeCompositionEvent> {
+interface CompositionEvent<T = Element>
+  extends NativeEvent<T, NativeCompositionEvent> {
   data: string;
 }
 
@@ -73,11 +75,12 @@ interface PointerEvent<T = Element> extends MouseEvent<T, NativePointerEvent> {
   twist: number;
   width: number;
   height: number;
-  pointerType: 'mouse' | 'pen' | 'touch';
+  pointerType: "mouse" | "pen" | "touch";
   isPrimary: boolean;
 }
 
-interface FocusEvent<T = Element, R = Element> extends NativeEvent<T, NativeFocusEvent> {
+interface FocusEvent<T = Element, R = Element>
+  extends NativeEvent<T, NativeFocusEvent> {
   relatedTarget: (EventTarget & R) | null;
   target: EventTarget & T;
 }
@@ -90,20 +93,20 @@ interface ChangeEvent<T = FormControl> extends FormEvent<T> {
 }
 
 type ModifierKey =
-  | 'Alt'
-  | 'AltGraph'
-  | 'CapsLock'
-  | 'Control'
-  | 'Fn'
-  | 'FnLock'
-  | 'Hyper'
-  | 'Meta'
-  | 'NumLock'
-  | 'ScrollLock'
-  | 'Shift'
-  | 'Super'
-  | 'Symbol'
-  | 'SymbolLock';
+  | "Alt"
+  | "AltGraph"
+  | "CapsLock"
+  | "Control"
+  | "Fn"
+  | "FnLock"
+  | "Hyper"
+  | "Meta"
+  | "NumLock"
+  | "ScrollLock"
+  | "Shift"
+  | "Super"
+  | "Symbol"
+  | "SymbolLock";
 
 interface KeyboardEvent<T = Element> extends UIEvent<T, NativeKeyboardEvent> {
   altKey: boolean;
@@ -178,13 +181,15 @@ interface WheelEvent<T = Element> extends MouseEvent<T, NativeWheelEvent> {
   deltaZ: number;
 }
 
-interface AnimationEvent<T = Element> extends NativeEvent<T, NativeAnimationEvent> {
+interface AnimationEvent<T = Element>
+  extends NativeEvent<T, NativeAnimationEvent> {
   animationName: string;
   elapsedTime: number;
   pseudoElement: string;
 }
 
-interface TransitionEvent<T = Element> extends NativeEvent<T, NativeTransitionEvent> {
+interface TransitionEvent<T = Element>
+  extends NativeEvent<T, NativeTransitionEvent> {
   elapsedTime: number;
   propertyName: string;
   pseudoElement: string;
@@ -197,7 +202,10 @@ interface TransitionEvent<T = Element> extends NativeEvent<T, NativeTransitionEv
 type EventHandler<T = Element, E = Event | NativeEvent<T>> = (event: E) => void;
 type NativeEventHandler<T = Element> = EventHandler<T, NativeEvent<T>>;
 type ClipboardEventHandler<T = Element> = EventHandler<T, ClipboardEvent<T>>;
-type CompositionEventHandler<T = Element> = EventHandler<T, CompositionEvent<T>>;
+type CompositionEventHandler<T = Element> = EventHandler<
+  T,
+  CompositionEvent<T>
+>;
 type DragEventHandler<T = Element> = EventHandler<T, DragEvent<T>>;
 type FocusEventHandler<T = Element> = EventHandler<T, FocusEvent<T>>;
 type FormEventHandler<T = Element> = EventHandler<T, FormEvent<T>>;
@@ -213,35 +221,35 @@ type TransitionEventHandler<T = Element> = EventHandler<T, TransitionEvent<T>>;
 type PossibleEventTarget = EventTarget & (Element | Document | Window);
 
 export {
-  NativeEvent,
-  ClipboardEvent,
-  CompositionEvent,
-  DragEvent,
-  FocusEvent,
-  FormEvent,
-  ChangeEvent,
-  KeyboardEvent,
-  MouseEvent,
-  TouchEvent,
-  PointerEvent,
-  UIEvent,
-  WheelEvent,
   AnimationEvent,
-  TransitionEvent,
-  NativeEventHandler,
-  ClipboardEventHandler,
-  CompositionEventHandler,
-  DragEventHandler,
-  FocusEventHandler,
-  FormEventHandler,
-  ChangeEventHandler,
-  KeyboardEventHandler,
-  MouseEventHandler,
-  TouchEventHandler,
-  PointerEventHandler,
-  UIEventHandler,
-  WheelEventHandler,
   AnimationEventHandler,
-  TransitionEventHandler,
+  ChangeEvent,
+  ChangeEventHandler,
+  ClipboardEvent,
+  ClipboardEventHandler,
+  CompositionEvent,
+  CompositionEventHandler,
+  DragEvent,
+  DragEventHandler,
+  FocusEvent,
+  FocusEventHandler,
+  FormEvent,
+  FormEventHandler,
+  KeyboardEvent,
+  KeyboardEventHandler,
+  MouseEvent,
+  MouseEventHandler,
+  NativeEvent,
+  NativeEventHandler,
+  PointerEvent,
+  PointerEventHandler,
   PossibleEventTarget,
+  TouchEvent,
+  TouchEventHandler,
+  TransitionEvent,
+  TransitionEventHandler,
+  UIEvent,
+  UIEventHandler,
+  WheelEvent,
+  WheelEventHandler,
 };

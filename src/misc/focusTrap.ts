@@ -1,12 +1,12 @@
-import ariaHidden from '../strings/ariaHidden';
-import focusableSelector from '../strings/focusableSelector';
-import querySelectorAll from '../selectors/querySelectorAll';
-import getAttribute from '../attr/getAttribute';
-import hasAttribute from '../attr/hasAttribute';
-import off from '../event/off';
-import on from '../event/on';
-import getDocument from '../get/getDocument';
-import { KeyboardEvent } from '../interface/event';
+import ariaHidden from "../strings/ariaHidden";
+import focusableSelector from "../strings/focusableSelector";
+import querySelectorAll from "../selectors/querySelectorAll";
+import getAttribute from "../attr/getAttribute";
+import hasAttribute from "../attr/hasAttribute";
+import off from "../event/off";
+import on from "../event/on";
+import getDocument from "../get/getDocument";
+import { KeyboardEvent } from "../interface/event";
 
 const focusTrapMap = new Map<HTMLElement, boolean>();
 
@@ -25,8 +25,10 @@ function handleKeyboardNavigation<T extends HTMLElement & EventTarget>(
 ) {
   const { shiftKey, code } = event;
   const doc = getDocument(this);
-  const focusableElements = [...querySelectorAll<FocusableElement>(focusableSelector, this)].filter(
-    el => !hasAttribute(el, 'disabled') && !getAttribute(el, ariaHidden),
+  const focusableElements = [
+    ...querySelectorAll<FocusableElement>(focusableSelector, this),
+  ].filter(
+    (el) => !hasAttribute(el, "disabled") && !getAttribute(el, ariaHidden),
   );
 
   if (!focusableElements.length) return;
@@ -34,7 +36,7 @@ function handleKeyboardNavigation<T extends HTMLElement & EventTarget>(
   const lastFocusable = focusableElements[focusableElements.length - 1];
 
   // istanbul ignore else @preserve
-  if (code === 'Tab') {
+  if (code === "Tab") {
     if (shiftKey && doc.activeElement === firstFocusable) {
       lastFocusable.focus();
       event.preventDefault();
@@ -49,7 +51,8 @@ function handleKeyboardNavigation<T extends HTMLElement & EventTarget>(
  * Utility to check if a designated element is affected by focus trap;
  * @param target
  */
-export const hasFocusTrap = (target: HTMLElement) => focusTrapMap.has(target) === true;
+export const hasFocusTrap = (target: HTMLElement) =>
+  focusTrapMap.has(target) === true;
 
 /**
  * Utility to toggle focus trap inside a designated target element;
@@ -58,7 +61,7 @@ export const hasFocusTrap = (target: HTMLElement) => focusTrapMap.has(target) ==
 export const toggleFocusTrap = (target: HTMLElement) => {
   const isCurrentlyTrapped = hasFocusTrap(target);
   const action = !isCurrentlyTrapped ? on : off;
-  action(target, 'keydown', handleKeyboardNavigation);
+  action(target, "keydown", handleKeyboardNavigation);
   if (isCurrentlyTrapped) focusTrapMap.delete(target);
   else focusTrapMap.set(target, true);
 };

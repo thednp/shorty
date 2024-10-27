@@ -1,4 +1,4 @@
-import isObject from './isObject';
+import isObject from "./isObject";
 
 /**
  * Check if a target object is `Window`.
@@ -8,6 +8,6 @@ import isObject from './isObject';
  * @returns the query result
  */
 const isWindow = (obj?: unknown): obj is Window =>
-  (isObject(obj) && obj.constructor.name === 'Window') || false;
+  (isObject(obj) && obj.constructor.name === "Window") || false;
 
 export default isWindow;

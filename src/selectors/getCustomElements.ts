@@ -1,5 +1,5 @@
-import isCustomElement from '../is/isCustomElement';
-import getElementsByTagName from './getElementsByTagName';
+import isCustomElement from "../is/isCustomElement";
+import getElementsByTagName from "./getElementsByTagName";
 
 /**
  * Returns an `Array` of `Node` elements that are registered as
@@ -11,7 +11,7 @@ import getElementsByTagName from './getElementsByTagName';
  * @returns the query result
  */
 const getCustomElements = (parent?: ParentNode) => {
-  const collection = getElementsByTagName('*', parent);
+  const collection = getElementsByTagName("*", parent);
 
   return [...collection].filter(isCustomElement);
 };

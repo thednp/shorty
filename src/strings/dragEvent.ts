@@ -1,5 +1,5 @@
 /**
  * A global namespace for `drag` event.
  */
-const dragEvent = 'drag';
+const dragEvent = "drag";
 export default dragEvent;

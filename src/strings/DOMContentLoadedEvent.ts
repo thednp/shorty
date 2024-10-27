@@ -1,5 +1,5 @@
 /**
  * A global namespace for `DOMContentLoaded` event.
  */
-const DOMContentLoadedEvent = 'DOMContentLoaded';
+const DOMContentLoadedEvent = "DOMContentLoaded";
 export default DOMContentLoadedEvent;

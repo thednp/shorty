@@ -1,5 +1,5 @@
 /**
  * A global namespace for `orientationchange` event.
  */
-const orientationchangeEvent = 'orientationchange';
+const orientationchangeEvent = "orientationchange";
 export default orientationchangeEvent;

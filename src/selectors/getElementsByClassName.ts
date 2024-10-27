@@ -1,5 +1,5 @@
-import getDocument from '../get/getDocument';
-import isNode from '../is/isNode';
+import getDocument from "../get/getDocument";
+import isNode from "../is/isNode";
 
 /**
  * Shortcut for `HTMLElement.getElementsByClassName` method. Some `Node` elements
@@ -9,9 +9,14 @@ import isNode from '../is/isNode';
  * @param parent optional Element to look into
  * @return the 'HTMLCollection'
  */
-const getElementsByClassName = <T extends HTMLElement>(selector: string, parent?: ParentNode) => {
+const getElementsByClassName = <T extends HTMLElement>(
+  selector: string,
+  parent?: ParentNode,
+) => {
   const lookUp = parent && isNode(parent) ? parent : getDocument();
-  return (lookUp as HTMLElement | Document).getElementsByClassName(selector) as HTMLCollectionOf<T>;
+  return (lookUp as HTMLElement | Document).getElementsByClassName(
+    selector,
+  ) as HTMLCollectionOf<T>;
 };
 
 export default getElementsByClassName;

@@ -4,7 +4,11 @@
  * @see https://github.com/DefinitelyTyped/DefinitelyTyped/blob/master/types/object-assign/index.d.ts
  */
 declare function ObjectAssignTyped<T, U>(target: T, source: U): T & U;
-declare function ObjectAssignTyped<T, U, V>(target: T, source1: U, source2: V): T & U & V;
+declare function ObjectAssignTyped<T, U, V>(
+  target: T,
+  source1: U,
+  source2: V,
+): T & U & V;
 declare function ObjectAssignTyped<T, U, V, W>(
   target: T,
   source1: U,
@@ -26,7 +30,10 @@ declare function ObjectAssignTyped<T, U, V, W, Q, R>(
   source4: Q,
   source5: R,
 ): T & U & V & W & Q & R;
-declare function ObjectAssignTyped(target: any, ...sources: any[]): any;
+declare function ObjectAssignTyped(
+  target: unknown,
+  ...sources: unknown[]
+): unknown;
 
 /**
  * Shortcut for `Object.assign()` static method.
@@ -35,9 +42,13 @@ declare function ObjectAssignTyped(target: any, ...sources: any[]): any;
  * @param source source object(s)
  * @see https://github.com/devinrhode2/ObjectTyped/blob/master/src/index.ts
  */
-const ObjectAssign: typeof ObjectAssignTyped = <A extends Record<string, any>, B>(
+const ObjectAssign: typeof ObjectAssignTyped = <
+  A extends Record<string, unknown>,
+  B,
+>(
   obj: A,
   ...source: B[]
-): B extends Record<string, any>[] ? any : A & B => Object.assign(obj, ...source);
+): B extends Record<string, unknown>[] ? unknown : A & B =>
+  Object.assign(obj, ...source);
 
 export default ObjectAssign;

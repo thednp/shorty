@@ -1,4 +1,4 @@
-import isObject from '../is/isObject';
+import isObject from "../is/isObject";
 
 /**
  * A shortcut to `Object.hasOwn()` static method to work
@@ -12,6 +12,7 @@ import isObject from '../is/isObject';
 const ObjectHasOwn = <T extends object, K extends PropertyKey>(
   obj: T,
   prop: K,
-): obj is T & Record<K, unknown> => isObject(obj) && (Object.hasOwn(obj, prop) || prop in obj);
+): obj is T & Record<K, unknown> =>
+  isObject(obj) && (Object.hasOwn(obj, prop) || prop in obj);
 
 export default ObjectHasOwn;

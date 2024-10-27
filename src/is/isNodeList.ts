@@ -1,4 +1,4 @@
-import isObject from './isObject';
+import isObject from "./isObject";
 
 /**
  * Checks if an object is a `NodeList`.
@@ -8,6 +8,6 @@ import isObject from './isObject';
  * @returns the query result
  */
 const isNodeList = (obj?: unknown): obj is NodeList =>
-  (isObject(obj) && obj.constructor.name === 'NodeList') || false;
+  (isObject(obj) && obj.constructor.name === "NodeList") || false;
 
 export default isNodeList;

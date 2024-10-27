@@ -8,7 +8,11 @@ const on = <T extends EventTarget, L = EventListener>(
   options?: AddEventListenerOptions,
 ) => {
   const ops = options || false;
-  element.addEventListener(eventName, listener as EventListenerOrEventListenerObject, ops);
+  element.addEventListener(
+    eventName,
+    listener as EventListenerOrEventListenerObject,
+    ops,
+  );
 };
 
 export default on;

@@ -1,7 +1,7 @@
-import transitionEndEvent from '../strings/transitionEndEvent';
-import getElementTransitionDelay from '../get/getElementTransitionDelay';
-import getElementTransitionDuration from '../get/getElementTransitionDuration';
-import dispatchEvent from './dispatchEvent';
+import transitionEndEvent from "../strings/transitionEndEvent";
+import getElementTransitionDelay from "../get/getElementTransitionDelay";
+import getElementTransitionDuration from "../get/getElementTransitionDuration";
+import dispatchEvent from "./dispatchEvent";
 
 /**
  * Utility to make sure callbacks are consistently
@@ -10,7 +10,10 @@ import dispatchEvent from './dispatchEvent';
  * @param element event target
  * @param handler `transitionend` callback
  */
-const emulateTransitionEnd = (element: HTMLElement, handler: EventListener): void => {
+const emulateTransitionEnd = (
+  element: HTMLElement,
+  handler: EventListener,
+): void => {
   let called = 0;
   const endEvent = new Event(transitionEndEvent);
   const duration = getElementTransitionDuration(element);

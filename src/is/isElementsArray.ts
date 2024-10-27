@@ -1,5 +1,5 @@
-import isHTMLElement from './isHTMLElement';
-import isArray from './isArray';
+import isHTMLElement from "./isHTMLElement";
+import isArray from "./isArray";
 
 /**
  * Checks if an object is an `Array` in which all items are `Element`.

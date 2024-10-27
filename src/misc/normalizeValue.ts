@@ -1,4 +1,6 @@
-type NormalValue = boolean | number | string | ((...args: any[]) => any) | null;
+import { Fn } from "../interface/fn";
+
+type NormalValue = boolean | number | string | Fn | null;
 
 /**
  * Utility to normalize component options
@@ -6,20 +8,20 @@ type NormalValue = boolean | number | string | ((...args: any[]) => any) | null;
  * @param value the input value
  * @return the normalized value
  */
-const normalizeValue = (value?: boolean | number | string): NormalValue => {
-  if (['true', true].includes(value as boolean)) {
+const normalizeValue = (value?: unknown): NormalValue => {
+  if (["true", true].includes(value as boolean)) {
     return true;
   }
 
-  if (['false', false].includes(value as boolean)) {
+  if (["false", false].includes(value as boolean)) {
     return false;
   }
 
-  if (['null', '', null, undefined].includes(value as string | undefined)) {
+  if (["null", "", null, undefined].includes(value as string | undefined)) {
     return null;
   }
 
-  if (value !== '' && !Number.isNaN(+(value as string))) {
+  if (value !== "" && !Number.isNaN(+(value as string))) {
     return +(value as string);
   }
 

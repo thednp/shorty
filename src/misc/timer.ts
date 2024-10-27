@@ -1,6 +1,6 @@
-import isMap from '../is/isMap';
-import isHTMLElement from '../is/isHTMLElement';
-import isNumber from '../is/isNumber';
+import isMap from "../is/isMap";
+import isHTMLElement from "../is/isHTMLElement";
+import isNumber from "../is/isNumber";
 
 type KeyMap = Map<string, number>;
 type TimeMap = Map<HTMLElement, number | KeyMap>;
@@ -20,7 +20,12 @@ const Timer = {
    * @param delay the execution delay
    * @param key a unique key
    */
-  set: (element: HTMLElement, callback: TimerHandler, delay: number, key?: string): void => {
+  set: (
+    element: HTMLElement,
+    callback: TimerHandler,
+    delay: number,
+    key?: string,
+  ): void => {
     if (!isHTMLElement(element)) return;
 
     // istanbul ignore else @preserve
@@ -49,7 +54,9 @@ const Timer = {
     const keyTimers = TimeCache.get(element);
 
     if (key && keyTimers && isMap(keyTimers as KeyMap)) {
-      return (keyTimers as KeyMap).get(key) || /* istanbul ignore next */ null;
+      return (keyTimers as KeyMap).get(key) ||
+        /* istanbul ignore next @preserve */
+        null;
     } else if (isNumber(keyTimers as number)) {
       return keyTimers as number;
     }

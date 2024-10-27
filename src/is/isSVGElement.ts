@@ -1,4 +1,4 @@
-import isNode from './isNode';
+import isNode from "./isNode";
 
 /**
  * Check if an element is an `<svg>` or any other SVG element,
@@ -8,6 +8,6 @@ import isNode from './isNode';
  * @returns the query result
  */
 const isSVGElement = (element?: unknown): element is SVGElement =>
-  (isNode(element) && element.constructor.name.includes('SVG')) || false;
+  (isNode(element) && element.constructor.name.includes("SVG")) || false;
 
 export default isSVGElement;

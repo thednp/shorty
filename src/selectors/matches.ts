@@ -5,6 +5,7 @@
  * @param selector the selector to match
  * @returns the query result
  */
-const matches = (target: Element, selector: string): boolean => target.matches(selector);
+const matches = (target: Element, selector: string): boolean =>
+  target.matches(selector);
 
 export default matches;

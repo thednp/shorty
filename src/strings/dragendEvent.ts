@@ -1,5 +1,5 @@
 /**
  * A global namespace for `dragend` event.
  */
-const dragendEvent = 'dragend';
+const dragendEvent = "dragend";
 export default dragendEvent;

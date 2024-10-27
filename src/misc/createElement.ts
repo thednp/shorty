@@ -1,6 +1,6 @@
-import isString from '../is/isString';
-import getDocument from '../get/getDocument';
-import ObjectAssign from './ObjectAssign';
+import isString from "../is/isString";
+import getDocument from "../get/getDocument";
+import ObjectAssign from "./ObjectAssign";
 
 /**
  * Shortie for `document.createElement` method
@@ -13,7 +13,9 @@ import ObjectAssign from './ObjectAssign';
  * @param param `tagName` or object
  * @return a new `HTMLElement`
  */
-const createElement = <T extends HTMLElement>(param?: string | Partial<T>): T | undefined => {
+const createElement = <T extends HTMLElement>(
+  param?: string | Partial<T>,
+): T | undefined => {
   if (!param) return undefined;
 
   if (isString(param)) {

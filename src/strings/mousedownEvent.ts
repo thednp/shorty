@@ -1,5 +1,5 @@
 /**
  * A global namespace for `mousedown` event.
  */
-const mousedownEvent = 'mousedown';
+const mousedownEvent = "mousedown";
 export default mousedownEvent;

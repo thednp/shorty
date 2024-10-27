@@ -1,7 +1,7 @@
-import animationEndEvent from '../strings/animationEndEvent';
-import getElementAnimationDelay from '../get/getElementAnimationDelay';
-import getElementAnimationDuration from '../get/getElementAnimationDuration';
-import dispatchEvent from './dispatchEvent';
+import animationEndEvent from "../strings/animationEndEvent";
+import getElementAnimationDelay from "../get/getElementAnimationDelay";
+import getElementAnimationDuration from "../get/getElementAnimationDuration";
+import dispatchEvent from "./dispatchEvent";
 
 /**
  * Utility to make sure callbacks are consistently
@@ -10,7 +10,10 @@ import dispatchEvent from './dispatchEvent';
  * @param element target
  * @param handler `animationend` callback
  */
-const emulateAnimationEnd = (element: HTMLElement, handler: EventListener): void => {
+const emulateAnimationEnd = (
+  element: HTMLElement,
+  handler: EventListener,
+): void => {
   let called = 0;
   const endEvent = new Event(animationEndEvent);
   const duration = getElementAnimationDuration(element);

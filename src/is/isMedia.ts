@@ -1,4 +1,4 @@
-import isNode from './isNode';
+import isNode from "./isNode";
 
 /**
  * Checks if an element is an `<svg>` (or any type of SVG element),
@@ -12,9 +12,15 @@ import isNode from './isNode';
 
 const isMedia = (
   element?: unknown,
-): element is SVGElement | HTMLImageElement | HTMLVideoElement | HTMLCanvasElement =>
+): element is
+  | SVGElement
+  | HTMLImageElement
+  | HTMLVideoElement
+  | HTMLCanvasElement =>
   (isNode(element) &&
-    ['SVG', 'Image', 'Video', 'Canvas'].some(s => element.constructor.name.includes(s))) ||
+    ["SVG", "Image", "Video", "Canvas"].some((s) =>
+      element.constructor.name.includes(s)
+    )) ||
   false;
 
 export default isMedia;

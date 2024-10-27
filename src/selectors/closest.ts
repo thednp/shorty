@@ -15,8 +15,8 @@ const closest = <T extends Element = HTMLElement>(
 ): HTMLElement | null => {
   return element
     ? element.closest(selector) ||
-        // break out of `ShadowRoot`
-        closest((element.getRootNode() as ShadowRoot).host, selector)
+      // break out of `ShadowRoot`
+      closest((element.getRootNode() as ShadowRoot).host, selector)
     : null;
 };
 

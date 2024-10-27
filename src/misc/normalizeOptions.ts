@@ -1,7 +1,7 @@
-import getAttribute from '../attr/getAttribute';
-import normalizeValue from './normalizeValue';
-import ObjectEntries from './ObjectEntries';
-import toLowerCase from './toLowerCase';
+import getAttribute from "../attr/getAttribute";
+import normalizeValue from "./normalizeValue";
+import ObjectEntries from "./ObjectEntries";
+import toLowerCase from "./toLowerCase";
 // import { optionValues } from '../types';
 
 /**
@@ -13,23 +13,25 @@ import toLowerCase from './toLowerCase';
  * @param ns component namespace
  * @return normalized component options object
  */
-const normalizeOptions = <T extends { [key: string]: any }>(
+const normalizeOptions = <T extends { [key: string]: unknown }>(
   element: HTMLElement,
   defaultOps: T,
   inputOps: Partial<T>,
   ns?: string,
 ): T => {
-  const INPUT = { ...inputOps };
+  const INPUT = { ...inputOps } as T;
   const data = { ...element.dataset };
   const normalOps = { ...defaultOps };
   const dataOps: Partial<T> = {};
-  const title = 'title';
+  const title = "title";
 
   ObjectEntries(data).forEach(([k, v]) => {
-    const key: keyof T =
-      ns && typeof k === 'string' && k.includes(ns)
-        ? k.replace(ns, '').replace(/[A-Z]/g, (match: string) => toLowerCase(match))
-        : /* istanbul ignore next @preserve */ k;
+    const key: keyof T = ns && typeof k === "string" && k.includes(ns)
+      ? k.replace(ns, "").replace(
+        /[A-Z]/g,
+        (match: string) => toLowerCase(match),
+      )
+      : /* istanbul ignore next @preserve */ k;
 
     dataOps[key] = normalizeValue(v) as T[keyof T];
   });
@@ -45,7 +47,8 @@ const normalizeOptions = <T extends { [key: string]: any }>(
     } else if (k in dataOps) {
       normalOps[k] = dataOps[k] as T[keyof T];
     } else {
-      normalOps[k] = (k === title ? getAttribute(element, title) : v) as T[keyof T];
+      normalOps[k] =
+        (k === title ? getAttribute(element, title) : v) as T[keyof T];
     }
   });
 

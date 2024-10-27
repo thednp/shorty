@@ -1,5 +1,5 @@
 /**
  * A global namespace for 'addEventListener' string.
  */
-const addEventListener = 'addEventListener';
+const addEventListener = "addEventListener";
 export default addEventListener;

@@ -1,6 +1,6 @@
-import DOMContentLoadedEvent from '../strings/DOMContentLoadedEvent';
-import one from '../event/one';
-import noop from '../misc/noop';
+import DOMContentLoadedEvent from "../strings/DOMContentLoadedEvent";
+import one from "../event/one";
+import noop from "../misc/noop";
 
 /**
  * A global `boolean` for passive events support,
@@ -11,7 +11,7 @@ import noop from '../misc/noop';
 const supportPassive = (() => {
   let result = false;
   try {
-    const opts = Object.defineProperty({}, 'passive', {
+    const opts = Object.defineProperty({}, "passive", {
       get: () => {
         result = true;
         return result;
@@ -19,7 +19,7 @@ const supportPassive = (() => {
     });
     // istanbul ignore next @preserve
     one(document, DOMContentLoadedEvent, noop, opts);
-  } catch (e) {
+  } catch (_e) {
     // throw Error('Passive events are not supported');
   }
 
