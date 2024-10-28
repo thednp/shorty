@@ -800,7 +800,7 @@ export declare const hasFocusTrap: (target: HTMLElement) => boolean;
 /**
  * A global `boolean` getter for Apple browsers.
  */
-export declare const isApple: () => boolean;
+export declare const isApple: boolean;
 
 /**
  * Shortie for the `Array.isArray()` static method.
@@ -886,6 +886,12 @@ export declare const isElementInViewport: (element?: HTMLElement) => boolean;
 export declare const isElementsArray: (obj?: unknown) => obj is HTMLElement[];
 
 /**
+ * A global boolean for Gecko browsers. When writing this file,
+ * Gecko was not supporting `userAgentData`.
+ */
+export declare const isFirefox: boolean;
+
+/**
  * Checks if an object is a `Function`.
  *
  * @param fn the target object
@@ -945,6 +951,8 @@ export declare const isMap: (obj?: unknown) => obj is Map<unknown, unknown>;
  * @returns the query result
  */
 export declare const isMedia: (element?: unknown) => element is SVGElement | HTMLImageElement | HTMLVideoElement | HTMLCanvasElement;
+
+export declare let isMobile: boolean;
 
 /**
  * Checks if an object is a `Node`.
