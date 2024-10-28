@@ -1,4 +1,3 @@
-import { resolve } from 'path';
 import { defineConfig } from 'vite';
 import dts from "vite-plugin-dts";
 
@@ -26,18 +25,9 @@ export default defineConfig({
     })
   ],
   build: {
-    // rollupOptions: {
-    //   // preserveEntrySignatures: "strict",
-    //   output: {
-    //     compact: true,
-    //     // preserveModulesRoot: true,
-    //     // preserveModules: true,
-    //   }
-    // },
     rollupOptions: {
       preserveEntrySignatures: "strict",
       input: ["src/index.ts"],
-      // external: [...Object.keys(pkg.dependencies)],
       output: ['esm', 'iife', 'cjs'].map((fmt) => ({
         compact: true,
         dir: "dist",
@@ -52,12 +42,6 @@ export default defineConfig({
     emptyOutDir: true,
     outDir: 'dist',
     target: 'ESNext',
-    // lib: {
-    //   entry: resolve(__dirname, 'src/index.ts'),
-    //   name: NAME,
-    //   formats: ['es', 'cjs', 'iife'],
-    //   fileName: (format) => fileName[format],
-    // },
     sourcemap: true,
   },
 });
