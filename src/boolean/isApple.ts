@@ -1,4 +1,4 @@
-import type { NavigatorUA, NavigatorUABrand } from "../interface/navigatorUA";
+import type { NavigatorUA } from "../interface/navigatorUA";
 
 const appleBrands = /(iPhone|iPod|iPad)/;
 
@@ -6,7 +6,7 @@ const appleBrands = /(iPhone|iPod|iPad)/;
  * A global `boolean` getter for Apple browsers.
  */
 const isApple =
-  (navigator as NavigatorUA).userAgentData?.brands.some((x: NavigatorUABrand) =>
+  (navigator as NavigatorUA).userAgentData?.brands.some((x) =>
     appleBrands.test(x.brand)
   ) || /* istanbul ignore next @preserve */
   appleBrands.test(
