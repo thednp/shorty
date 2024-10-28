@@ -1,6 +1,4 @@
 import DOMContentLoadedEvent from "../strings/DOMContentLoadedEvent";
-import one from "../event/one";
-import noop from "../misc/noop";
 
 /**
  * A global `boolean` for passive events support,
@@ -8,22 +6,22 @@ import noop from "../misc/noop";
  *
  * @see https://github.com/WICG/EventListenerOptions/blob/gh-pages/explainer.md#feature-detection
  */
-const supportPassive = (() => {
+const supportPassive = () => {
   let result = false;
   try {
-    const opts = Object.defineProperty({}, "passive", {
+    const opts = Object.defineProperty({ once: true }, "passive", {
       get: () => {
         result = true;
         return result;
       },
     });
     // istanbul ignore next @preserve
-    one(document, DOMContentLoadedEvent, noop, opts);
+    document.addEventListener(DOMContentLoadedEvent, () => {}, opts);
   } catch (_e) {
     // throw Error('Passive events are not supported');
   }
 
   return result;
-})();
+};
 
 export default supportPassive;

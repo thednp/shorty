@@ -1827,6 +1827,39 @@ export declare const setElementStyle: (element: HTMLElement, styles: Partial<CSS
 export declare const submitEvent = "submit";
 
 /**
+ * A global `boolean` for CSS3 3D transform support.
+ */
+export declare const support3DTransform: () => boolean;
+
+/**
+ * A global `boolean` for CSS3 animation support.
+ */
+export declare const supportAnimation: () => boolean;
+
+/**
+ * A global `boolean` for passive events support,
+ * in general event options are not suited for scroll prevention.
+ *
+ * @see https://github.com/WICG/EventListenerOptions/blob/gh-pages/explainer.md#feature-detection
+ */
+export declare const supportPassive: () => boolean;
+
+/**
+ * A global `boolean` for touch events support.
+ */
+export declare const supportTouch: () => boolean;
+
+/**
+ * A global `boolean` for CSS3 transform support.
+ */
+export declare const supportTransform: () => boolean;
+
+/**
+ * A global `boolean` for CSS3 transition support.
+ */
+export declare const supportTransition: () => boolean;
+
+/**
  * A global namespace for `touchcancel` event.
  */
 export declare const tabindex = "tabindex";
