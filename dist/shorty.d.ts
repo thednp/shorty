@@ -798,11 +798,6 @@ export declare const hasClass: (element: HTMLElement, classNAME: string) => bool
 export declare const hasFocusTrap: (target: HTMLElement) => boolean;
 
 /**
- * A global `boolean` getter for Apple browsers.
- */
-export declare const isApple: () => boolean;
-
-/**
  * Shortie for the `Array.isArray()` static method.
  *
  * @param obj array-like iterable object
@@ -886,12 +881,6 @@ export declare const isElementInViewport: (element?: HTMLElement) => boolean;
 export declare const isElementsArray: (obj?: unknown) => obj is HTMLElement[];
 
 /**
- * A global boolean for Gecko browsers. When writing this file,
- * Gecko was not supporting `userAgentData`.
- */
-export declare const isFirefox: boolean;
-
-/**
  * Checks if an object is a `Function`.
  *
  * @param fn the target object
@@ -951,8 +940,6 @@ export declare const isMap: (obj?: unknown) => obj is Map<unknown, unknown>;
  * @returns the query result
  */
 export declare const isMedia: (element?: unknown) => element is SVGElement | HTMLImageElement | HTMLVideoElement | HTMLCanvasElement;
-
-export declare let isMobile: boolean;
 
 /**
  * Checks if an object is a `Node`.
@@ -1822,39 +1809,6 @@ export declare const setElementStyle: (element: HTMLElement, styles: Partial<CSS
  * A global namespace for `submit` event.
  */
 export declare const submitEvent = "submit";
-
-/**
- * A global `boolean` for CSS3 3D transform support.
- */
-export declare const support3DTransform: boolean;
-
-/**
- * A global `boolean` for CSS3 animation support.
- */
-export declare const supportAnimation: boolean;
-
-/**
- * A global `boolean` for passive events support,
- * in general event options are not suited for scroll prevention.
- *
- * @see https://github.com/WICG/EventListenerOptions/blob/gh-pages/explainer.md#feature-detection
- */
-export declare const supportPassive: boolean;
-
-/**
- * A global `boolean` for touch events support.
- */
-export declare const supportTouch: boolean;
-
-/**
- * A global `boolean` for CSS3 transform support.
- */
-export declare const supportTransform: boolean;
-
-/**
- * A global `boolean` for CSS3 transition support.
- */
-export declare const supportTransition: boolean;
 
 /**
  * A global namespace for `touchcancel` event.

@@ -130,15 +130,15 @@ import userAgentData from "./strings/userAgentData";
 import userAgent from "./strings/userAgent";
 
 // boolean
-import isMobile from "./boolean/isMobile";
-import isApple from "./boolean/isApple";
-import isFirefox from "./boolean/isFirefox";
-import support3DTransform from "./boolean/support3DTransform";
-import supportPassive from "./boolean/supportPassive";
-import supportTransform from "./boolean/supportTransform";
-import supportTouch from "./boolean/supportTouch";
-import supportAnimation from "./boolean/supportAnimation";
-import supportTransition from "./boolean/supportTransition";
+// import isMobile from "./boolean/isMobile";
+// import isApple from "./boolean/isApple";
+// import isFirefox from "./boolean/isFirefox";
+// import support3DTransform from "./boolean/support3DTransform";
+// import supportPassive from "./boolean/supportPassive";
+// import supportTransform from "./boolean/supportTransform";
+// import supportTouch from "./boolean/supportTouch";
+// import supportAnimation from "./boolean/supportAnimation";
+// import supportTransition from "./boolean/supportTransition";
 
 // attributes
 import getAttribute from "./attr/getAttribute";
@@ -408,7 +408,7 @@ export {
   hasAttributeNS,
   hasClass,
   hasFocusTrap,
-  isApple,
+  // isApple,
   isArray,
   isCanvas,
   isCustomElement,
@@ -417,7 +417,7 @@ export {
   isElementInScrollRange,
   isElementInViewport,
   isElementsArray,
-  isFirefox,
+  // isFirefox,
   isFunction,
   isHTMLCollection,
   isHTMLElement,
@@ -425,7 +425,7 @@ export {
   isJSON,
   isMap,
   isMedia,
-  isMobile,
+  // isMobile,
   isNode,
   isNodeList,
   isNumber,
@@ -536,12 +536,12 @@ export {
   setAttributeNS,
   setElementStyle,
   submitEvent,
-  support3DTransform,
-  supportAnimation,
-  supportPassive,
-  supportTouch,
-  supportTransform,
-  supportTransition,
+  // support3DTransform,
+  // supportAnimation,
+  // supportPassive,
+  // supportTouch,
+  // supportTransform,
+  // supportTransition,
   tabindex,
   Timer,
   toggleFocusTrap,
