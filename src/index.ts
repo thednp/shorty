@@ -257,8 +257,6 @@ import getElementsByTagName from "./selectors/getElementsByTagName";
 import getElementsByClassName from "./selectors/getElementsByClassName";
 import matches from "./selectors/matches";
 
-import { version } from "../package.json";
-
 import type {
   NavigatorUA,
   NavigatorUABrand,
@@ -302,6 +300,8 @@ import type {
   WheelEvent,
   WheelEventHandler,
 } from "./interface/event.d";
+
+import { version } from "../package.json";
 
 export {
   abortEvent,

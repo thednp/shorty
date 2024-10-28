@@ -15,6 +15,7 @@ export default defineConfig({
   esbuild: {
     legalComments: 'none',
     minifyIdentifiers: false,
+    treeShaking: true,
   },
   plugins: [
     dts({
