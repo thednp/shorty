@@ -14,6 +14,4 @@ if (userAgentData) {
 /**
  * A global `boolean` for mobile detection.
  */
-// const isMobile = isMobileCheck;
-
 export default isMobile;
