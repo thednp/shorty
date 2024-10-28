@@ -1,6 +1,4 @@
 import type { NavigatorUA, NavigatorUABrand } from "../interface/navigatorUA";
-// import userAgentData from "../strings/userAgentData";
-// import userAgent from "../strings/userAgent";
 
 /**
  * A global `boolean` getter for Apple browsers.

@@ -118,7 +118,6 @@ import transitionProperty from "./strings/transitionProperty";
 
 import addEventListener from "./strings/addEventListener";
 import removeEventListener from "./strings/removeEventListener";
-
 import bezierEasings from "./strings/bezierEasings";
 
 import offsetHeight from "./strings/offsetHeight";
