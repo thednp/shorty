@@ -14,17 +14,17 @@ describe('Shorty Library Tests - BOOL', () => {
       supportTouch,
       supportTransform,
       supportTransition,
-      querySelectorAll, getWindow
+      // querySelectorAll, getWindow
     } = SHORTY;
 
     expect(isApple(), 'isApple').to.be.false;
     expect(isMobile(), 'isMobile').to.be.false;
     expect(isFirefox(), 'isFirefox').to.be.false;
-    expect(support3DTransform, 'support3DTransform').to.be.true;
-    expect(supportAnimation, 'supportAnimation').to.be.true;
-    expect(supportPassive, 'supportPassive').to.be.true;
-    expect(supportTouch, 'supportTouch').to.be.false;
-    expect(supportTransform, 'supportTransform').to.be.true;
-    expect(supportTransition, 'supportTransition').to.be.true;
+    expect(support3DTransform(), 'support3DTransform').to.be.true;
+    expect(supportAnimation(), 'supportAnimation').to.be.true;
+    expect(supportPassive(), 'supportPassive').to.be.true;
+    expect(supportTouch(), 'supportTouch').to.be.false;
+    expect(supportTransform(), 'supportTransform').to.be.true;
+    expect(supportTransition(), 'supportTransition').to.be.true;
   });
 });

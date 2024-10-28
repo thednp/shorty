@@ -6,7 +6,7 @@
 [![NPM Downloads](https://img.shields.io/npm/dm/@thednp/shorty.svg)](http://npm-stat.com/charts.html?package=@thednp/shorty)
 [![jsDelivr hits (npm)](https://img.shields.io/jsdelivr/npm/hw/@thednp/shorty)](https://www.jsdelivr.com/package/npm/@thednp/shorty)
 [![typescript version](https://img.shields.io/badge/typescript-5.6.3-brightgreen)](https://www.typescriptlang.org/)
-[![vitest version](https://img.shields.io/badge/vitest-2.1.3-brightgreen)](https://vitest.dev/)
+[![vitest version](https://img.shields.io/badge/vitest-2.1.4-brightgreen)](https://vitest.dev/)
 [![vite version](https://img.shields.io/badge/vite-5.4.10-brightgreen)](https://github.com/vitejs)
 
 

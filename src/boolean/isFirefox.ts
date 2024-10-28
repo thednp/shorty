@@ -3,7 +3,7 @@
  * Gecko was not supporting `userAgentData`.
  */
 const isFirefox = () =>
-  navigator?.userAgent.includes("Firefox") ||
+  navigator?.userAgent?.includes("Firefox") ||
   /* istanbul ignore next @preserve */ false;
 
 export default isFirefox;
