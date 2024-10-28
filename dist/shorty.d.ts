@@ -952,10 +952,7 @@ export declare const isMap: (obj?: unknown) => obj is Map<unknown, unknown>;
  */
 export declare const isMedia: (element?: unknown) => element is SVGElement | HTMLImageElement | HTMLVideoElement | HTMLCanvasElement;
 
-/**
- * A global `boolean` for mobile detection.
- */
-export declare const isMobile: boolean;
+export declare let isMobile: boolean;
 
 /**
  * Checks if an object is a `Node`.
