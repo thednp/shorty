@@ -1,5 +1,6 @@
 import { resolve } from 'path';
 import { defineConfig } from 'vite';
+import dts from "vite-plugin-dts";
 
 const NAME = 'SHORTY';
 
@@ -11,7 +12,25 @@ const fileName = {
 
 export default defineConfig({
   base: './',
+  esbuild: {
+    legalComments: 'none',
+    minifyIdentifiers: false,
+  },
+  plugins: [
+    dts({
+      outDir: 'dist',
+      copyDtsFiles: true,
+      rollupTypes: true,
+    })
+  ],
   build: {
+    rollupOptions: {
+      preserveEntrySignatures: "strict",
+      output: {
+        compact: true
+      }
+    },
+    minify: 'esbuild',
     emptyOutDir: true,
     outDir: 'dist',
     target: 'ESNext',
