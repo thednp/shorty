@@ -1,7 +1,5 @@
 import type { NavigatorUA } from "../interface/navigatorUA";
 
-// const uaDATA = (navigator as NavigatorUA).userAgentData;
-
 /**
  * A global namespace for `userAgentData` object.
  */
