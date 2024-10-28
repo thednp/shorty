@@ -474,7 +474,7 @@ closest(element.getRootNode().host, selector) : null, querySelector = (selector,
   selector
 ), getCustomElements = (parent) => [...getElementsByTagName("*", parent)].filter(isCustomElement), getElementById = (id, context) => getDocument(context).getElementById(id) || null, getElementsByClassName = (selector, parent) => (parent && isNode(parent) ? parent : getDocument()).getElementsByClassName(
   selector
-), matches = (target, selector) => target.matches(selector), version = "2.0.6";
+), matches = (target, selector) => target.matches(selector), version = "2.0.7";
 export {
   ArrayFrom,
   DOMContentLoadedEvent,
