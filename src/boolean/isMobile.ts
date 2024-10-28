@@ -2,7 +2,6 @@
 // import userAgent from "../strings/userAgent";
 import type { NavigatorUA } from "../interface/navigatorUA";
 
-const mobileBrands = /iPhone|iPad|iPod|Android/i;
 // let isMobile = false;
 
 // istanbul ignore else @preserve
@@ -15,9 +14,12 @@ const mobileBrands = /iPhone|iPad|iPod|Android/i;
 /**
  * A global `boolean` for mobile detection.
  */
-const isMobile =
-  (navigator as NavigatorUA).userAgentData?.brands.some((x) =>
+const isMobile = () => {
+  const mobileBrands = /iPhone|iPad|iPod|Android/i;
+
+  return (navigator as NavigatorUA).userAgentData?.brands.some((x) =>
     mobileBrands.test(x.brand)
   ) ||
-  mobileBrands.test(navigator?.userAgent) || false;
+    mobileBrands.test(navigator?.userAgent) || false;
+};
 export default isMobile;

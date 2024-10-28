@@ -17,9 +17,9 @@ describe('Shorty Library Tests - BOOL', () => {
       // querySelectorAll, getWindow
     } = SHORTY;
 
-    expect(isApple, 'isApple').to.be.false;
-    expect(isMobile, 'isMobile').to.be.false;
-    expect(isFirefox, 'isFirefox').to.be.false;
+    expect(isApple(), 'isApple').to.be.false;
+    expect(isMobile(), 'isMobile').to.be.false;
+    expect(isFirefox(), 'isFirefox').to.be.false;
     // expect(support3DTransform, 'support3DTransform').to.be.true;
     // expect(supportAnimation, 'supportAnimation').to.be.true;
     // expect(supportPassive, 'supportPassive').to.be.true;
