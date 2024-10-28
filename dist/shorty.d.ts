@@ -798,9 +798,9 @@ export declare const hasClass: (element: HTMLElement, classNAME: string) => bool
 export declare const hasFocusTrap: (target: HTMLElement) => boolean;
 
 /**
- * A global `boolean` for Apple browsers.
+ * A global `boolean` getter for Apple browsers.
  */
-export declare const isApple: boolean;
+export declare const isApple: () => boolean;
 
 /**
  * Shortie for the `Array.isArray()` static method.
