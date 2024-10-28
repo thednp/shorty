@@ -131,7 +131,7 @@ import userAgent from "./strings/userAgent";
 
 // boolean
 // import isMobile from "./boolean/isMobile";
-// import isApple from "./boolean/isApple";
+import isApple from "./boolean/isApple";
 // import isFirefox from "./boolean/isFirefox";
 // import support3DTransform from "./boolean/support3DTransform";
 // import supportPassive from "./boolean/supportPassive";
@@ -408,7 +408,7 @@ export {
   hasAttributeNS,
   hasClass,
   hasFocusTrap,
-  // isApple,
+  isApple,
   isArray,
   isCanvas,
   isCustomElement,

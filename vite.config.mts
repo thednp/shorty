@@ -4,7 +4,6 @@ import dts from "vite-plugin-dts";
 const NAME = 'SHORTY';
 
 const fileName = {
-  // es: `shorty.mjs`,
   esm: `shorty.mjs`,
   cjs: `shorty.cjs`,
   iife: `shorty.js`,
