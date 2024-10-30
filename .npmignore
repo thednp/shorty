@@ -6,4 +6,8 @@ node_modules
 experiments
 docs
 coverage
-test/__screenshots__
+vite.config.mts
+viteest.config.mts
+viteest.config-ui.mts
+test
+src
