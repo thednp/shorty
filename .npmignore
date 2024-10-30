@@ -7,7 +7,7 @@ experiments
 docs
 coverage
 vite.config.mts
-viteest.config.mts
-viteest.config-ui.mts
+vitest.config.mts
+vitest.config-ui.mts
 test
 src

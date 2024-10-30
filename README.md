@@ -10,7 +10,7 @@
 [![vite version](https://img.shields.io/badge/vite-5.4.10-brightgreen)](https://github.com/vitejs)
 
 
-A small TypeScript library with various tools, all ESLint valid and featuring everything useful for creating light libraries or web components. If there is anything that is consistently repeating itself, **shorty** can help you save up to 50% of the code required, with little to no performance cost.
+A small TypeScript library with various tools for increasing your productivity while helping you to create lighter libraries or web components. If there is anything that is consistently repeating itself, **shorty** can help you save up to 50% of the code required, with little to no performance cost.
 
 **shorty** is featured in [ColorPicker](https://github.com/thednp/color-picker), [KUTE.js](https://github.com/thednp/kute.js), [BSN](https://github.com/thednp/bootstrap.native), [Navbar.js](https://github.com/thednp/navbar.js) and other libraries.
 
@@ -276,7 +276,7 @@ const array3 = [...array1, ...array2].filter(distinct);
 - **_querySelector_** - a simple utility to check if a given value is an _Element_ or a selector string, and if a selector string find the FIRST _Element_ and return it;
 - **_querySelectorAll_** - a simple utility to check if a certain item is an _Element_ or a selector string, and if a selector string finds ALL the _Elements_ and return them;
 
-```js
+```ts
 // EXAMPLES
 import { querySelector, querySelectorAll, documentAll, matches } from "@thednp/shorty";
 
@@ -310,7 +310,7 @@ const elements = [...documentAll].filter((x) => matches(x, ".my-class-name"));
 
 There are lots more string constants available which include native event names, browser strings, keyboard key codes or ARIA specific attribute names. Be sure to check the `src/strings` folder for a complete list.
 
-```js
+```ts
 // EXAMPLES
 import { on, off, one, mouseClickEvents, touchEvents, passiveHandler } from "@thednp/shorty";
 
@@ -328,30 +328,39 @@ one(targetElement, touchEvents.start, eventHandler, passiveHandler);
 
 Here's a simple example to showcase the benefit of using **_shorty_**.
 
-```js
+```ts
 // This is your typical day to day scripting
 const target = document.getElementById("my-element");
+const target2 = document.getElementById("my-element2");
 
 target.addEventListener("click", function (e) {
   target.classList.add("my-className");
 });
-```
 
-Now make it all shorty. You might want to import shorties directly from their location, something we like to call "tree shaking".
-
-```js
-// Example
-import on from "@thednp/shorty/src/event/on";
-import addClass from "@thednp/shorty/src/class/addClass";
-import getElementById from "@thednp/shorty/src/selectors/getElementById";
-import mouseclickEvent from "@thednp/shorty/src/strings/mouseclickEvent";
-
-const target = getElementById("my-element");
-
-on(target, mouseclickEvent, function (e) {
-  addClass(target, "my-className");
+target2.addEventListener("mouseenter", function (e) {
+  target.classList.add("my-other-className");
 });
 ```
+
+Now make it all shorty.
+
+```ts
+// Example
+import { on, addClass, getElementById, mouseClickEvent, mouseenterEvent } from "@thednp/shorty";
+
+const target = getElementById("my-element");
+const target2 = getElementById("my-element2");
+
+on(target, mouseclickEvent, (e) => {
+  addClass(target, "my-className");
+});
+
+on(target2, mouseenterEvent, (e) => {
+  addClass(target2, "my-other-className");
+});
+```
+You notice a pattern yet?
+
 
 # License
 
