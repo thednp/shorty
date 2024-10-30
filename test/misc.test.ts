@@ -227,6 +227,9 @@ describe('Shorty Library Tests - MISC', () => {
       toUpperCase,
       querySelector,
       getElementsByClassName,
+      camelCase,
+      capitalize,
+      kebabCase,
     } = SHORTY;
 
 
@@ -235,6 +238,9 @@ describe('Shorty Library Tests - MISC', () => {
 
     const defaults = { op1: true, op2: true, op3: 5, title: null };
     const jsOps = { op1: false, op2: false, op3: 8, title: 'something' };
+    expect(capitalize('miau')).to.equal('Miau');
+    expect(kebabCase('Miau Mono')).to.equal('miau-mono');
+    expect(camelCase('miau mono')).to.equal('miauMono');
     expect(ObjectHasOwn(jsOps, 'op3')).to.be.true;
     expect(ObjectHasOwn(jsOps, 'momo')).to.be.false;
     // @ts-expect-error

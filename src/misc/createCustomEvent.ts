@@ -21,7 +21,7 @@ const createCustomEvent = <
     bubbles: true,
   }) as T;
 
-  // istanbul ignore else @preserve
+  /* istanbul ignore else @preserve */
   if (isObject(config)) {
     ObjectAssign(OriginalCustomEvent, config);
   }

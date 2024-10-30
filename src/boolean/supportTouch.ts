@@ -1,5 +1,5 @@
 /**
- * A global `boolean` for touch events support.
+ * An accessor that checks for touch events support.
  */
 const supportTouch = () =>
   "ontouchstart" in window ||

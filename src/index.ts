@@ -1,3 +1,5 @@
+import { version } from "../package.json";
+
 // strings
 import ariaChecked from "./strings/ariaChecked";
 import ariaDescription from "./strings/ariaDescription";
@@ -169,6 +171,8 @@ import documentHead from "./blocks/documentHead";
 import ArrayFrom from "./misc/ArrayFrom";
 import Data from "./misc/data";
 import getInstance from "./misc/getInstance";
+import capitalize from "./misc/capitalize";
+import camelCase from "./misc/camelCase";
 import createElement from "./misc/createElement";
 import createElementNS from "./misc/createElementNS";
 import dispatchEvent from "./misc/dispatchEvent";
@@ -178,6 +182,7 @@ import emulateTransitionEnd from "./misc/emulateTransitionEnd";
 import Float32ArrayFrom from "./misc/Float32ArrayFrom";
 import Float64ArrayFrom from "./misc/Float64ArrayFrom";
 import focus from "./misc/focus";
+import kebabCase from "./misc/kebabCase";
 import noop from "./misc/noop";
 import normalizeOptions from "./misc/normalizeOptions";
 import normalizeValue from "./misc/normalizeValue";
@@ -194,11 +199,7 @@ import setElementStyle from "./misc/setElementStyle";
 import Timer from "./misc/timer";
 import toLowerCase from "./misc/toLowerCase";
 import toUpperCase from "./misc/toUpperCase";
-import {
-  type FocusableElement,
-  hasFocusTrap,
-  toggleFocusTrap,
-} from "./misc/focusTrap";
+import { hasFocusTrap, toggleFocusTrap } from "./misc/focusTrap";
 
 // get
 import getBoundingClientRect from "./get/getBoundingClientRect";
@@ -256,61 +257,15 @@ import getElementsByTagName from "./selectors/getElementsByTagName";
 import getElementsByClassName from "./selectors/getElementsByClassName";
 import matches from "./selectors/matches";
 
-import type {
-  NavigatorUA,
-  NavigatorUABrand,
-  NavigatorUAData,
-} from "./interface/navigatorUA.d";
-import type { OffsetRect } from "./interface/offsetRect.d";
-import type { OriginalEvent } from "./interface/originalEvent.d";
-import type { BoundingClientRect } from "./interface/boundingClientRect.d";
-import type { CustomElement } from "./interface/customElement.d";
-import type { CSS4Declaration } from "./interface/css4Declaration.d";
-import type {
-  AnimationEvent,
-  AnimationEventHandler,
-  ChangeEvent,
-  ChangeEventHandler,
-  ClipboardEvent,
-  ClipboardEventHandler,
-  CompositionEvent,
-  CompositionEventHandler,
-  DragEvent,
-  DragEventHandler,
-  FocusEvent,
-  FocusEventHandler,
-  FormEvent,
-  FormEventHandler,
-  KeyboardEvent,
-  KeyboardEventHandler,
-  MouseEvent,
-  MouseEventHandler,
-  NativeEvent,
-  NativeEventHandler,
-  PointerEvent,
-  PointerEventHandler,
-  PossibleEventTarget,
-  TouchEvent,
-  TouchEventHandler,
-  TransitionEvent,
-  TransitionEventHandler,
-  UIEvent,
-  UIEventHandler,
-  WheelEvent,
-  WheelEventHandler,
-} from "./interface/event.d";
-
-import { version } from "../package.json";
-
 export {
+  // strings
   abortEvent,
+  // class
   addClass,
   addEventListener,
   animationDelay,
   animationDuration,
   animationEndEvent,
-  type AnimationEvent,
-  type AnimationEventHandler,
   animationName,
   ariaChecked,
   ariaDescribedBy,
@@ -331,21 +286,14 @@ export {
   beforeunloadEvent,
   bezierEasings,
   blurEvent,
-  type BoundingClientRect,
-  type ChangeEvent,
+  camelCase,
+  capitalize,
   changeEvent,
-  type ChangeEventHandler,
-  type ClipboardEvent,
-  type ClipboardEventHandler,
   closest,
-  type CompositionEvent,
-  type CompositionEventHandler,
   contextmenuEvent,
   createCustomEvent,
   createElement,
   createElementNS,
-  type CSS4Declaration,
-  type CustomElement,
   Data,
   dispatchEvent,
   distinct,
@@ -356,9 +304,7 @@ export {
   DOMMouseScrollEvent,
   dragendEvent,
   dragenterEvent,
-  type DragEvent,
   dragEvent,
-  type DragEventHandler,
   dragleaveEvent,
   dragoverEvent,
   dragstartEvent,
@@ -368,17 +314,11 @@ export {
   Float32ArrayFrom,
   Float64ArrayFrom,
   focus,
-  // types
-  type FocusableElement,
   focusableSelector,
-  type FocusEvent,
   focusEvent,
-  type FocusEventHandler,
   focusEvents,
   focusinEvent,
   focusoutEvent,
-  type FormEvent,
-  type FormEventHandler,
   gesturechangeEvent,
   gestureendEvent,
   gesturestartEvent,
@@ -438,14 +378,13 @@ export {
   isTableElement,
   isWeakMap,
   isWindow,
+  kebabCase,
   keyAlt,
   keyArrowDown,
   keyArrowLeft,
   keyArrowRight,
   keyArrowUp,
   keyBackspace,
-  type KeyboardEvent,
-  type KeyboardEventHandler,
   keyboardEventKeys,
   keyCapsLock,
   keyControl,
@@ -471,8 +410,6 @@ export {
   mousedblclickEvent,
   mousedownEvent,
   mouseenterEvent,
-  type MouseEvent,
-  type MouseEventHandler,
   mousehoverEvent,
   mouseHoverEvents,
   mouseinEvent,
@@ -484,12 +421,7 @@ export {
   mouseupEvent,
   mousewheelEvent,
   moveEvent,
-  type NativeEvent,
-  type NativeEventHandler,
   nativeEvents,
-  type NavigatorUA,
-  type NavigatorUABrand,
-  type NavigatorUAData,
   noop,
   normalizeOptions,
   normalizeValue,
@@ -501,21 +433,16 @@ export {
   ObjectValues,
   off,
   offsetHeight,
-  type OffsetRect,
   offsetWidth,
   on,
   one,
   orientationchangeEvent,
-  type OriginalEvent,
   passiveHandler,
   pointercancelEvent,
   pointerdownEvent,
-  type PointerEvent,
-  type PointerEventHandler,
   pointerleaveEvent,
   pointermoveEvent,
   pointerupEvent,
-  type PossibleEventTarget,
   querySelector,
   querySelectorAll,
   readystatechangeEvent,
@@ -548,8 +475,6 @@ export {
   toLowerCase,
   touchcancelEvent,
   touchendEvent,
-  type TouchEvent,
-  type TouchEventHandler,
   touchEvents,
   touchmoveEvent,
   touchstartEvent,
@@ -557,15 +482,95 @@ export {
   transitionDelay,
   transitionDuration,
   transitionEndEvent,
-  type TransitionEvent,
-  type TransitionEventHandler,
   transitionProperty,
-  type UIEvent,
-  type UIEventHandler,
   unloadEvent,
   userAgent,
   userAgentData,
   version,
-  type WheelEvent,
-  type WheelEventHandler,
+  // types
+  // type AnimationEvent,
+  // type AnimationEventHandler,
+  // type BoundingClientRect,
+  // type ChangeEvent,
+  // type ChangeEventHandler,
+  // type ClipboardEvent,
+  // type ClipboardEventHandler,
+  // type CompositionEvent,
+  // type CompositionEventHandler,
+  // type CSS4Declaration,
+  // type CustomElement,
+  // type DragEvent,
+  // type DragEventHandler,
+  // type FocusableElement,
+  // type FocusEvent,
+  // type FocusEventHandler,
+  // type FormEvent,
+  // type FormEventHandler,
+  // type KeyboardEvent,
+  // type KeyboardEventHandler,
+  // type MouseEvent,
+  // type MouseEventHandler,
+  // type NativeEvent,
+  // type NativeEventHandler,
+  // type NavigatorUA,
+  // type NavigatorUABrand,
+  // type NavigatorUAData,
+  // type OffsetRect,
+  // type OriginalEvent,
+  // type PointerEvent,
+  // type PointerEventHandler,
+  // type PossibleEventTarget,
+  // type TouchEvent,
+  // type TouchEventHandler,
+  // type TransitionEvent,
+  // type TransitionEventHandler,
+  // type UIEvent,
+  // type UIEventHandler,
+  // type WheelEvent,
+  // type WheelEventHandler,
 };
+
+export type { FocusableElement } from "./misc/focusTrap";
+export type {
+  NavigatorUA,
+  NavigatorUABrand,
+  NavigatorUAData,
+} from "./interface/navigatorUA.d";
+export type { OffsetRect } from "./interface/offsetRect.d";
+export type { OriginalEvent } from "./interface/originalEvent.d";
+export type { BoundingClientRect } from "./interface/boundingClientRect.d";
+export type { CustomElement } from "./interface/customElement.d";
+export type { CSS4Declaration } from "./interface/css4Declaration.d";
+export type {
+  AnimationEvent,
+  AnimationEventHandler,
+  ChangeEvent,
+  ChangeEventHandler,
+  ClipboardEvent,
+  ClipboardEventHandler,
+  CompositionEvent,
+  CompositionEventHandler,
+  DragEvent,
+  DragEventHandler,
+  FocusEvent,
+  FocusEventHandler,
+  FormEvent,
+  FormEventHandler,
+  KeyboardEvent,
+  KeyboardEventHandler,
+  MouseEvent,
+  MouseEventHandler,
+  NativeEvent,
+  NativeEventHandler,
+  PointerEvent,
+  PointerEventHandler,
+  PossibleEventTarget,
+  TouchEvent,
+  TouchEventHandler,
+  TransitionEvent,
+  TransitionEventHandler,
+  UIEvent,
+  UIEventHandler,
+  WheelEvent,
+  WheelEventHandler,
+} from "./interface/event.d";

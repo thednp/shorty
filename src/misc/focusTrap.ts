@@ -35,7 +35,7 @@ function handleKeyboardNavigation<T extends HTMLElement & EventTarget>(
   const firstFocusable = focusableElements[0];
   const lastFocusable = focusableElements[focusableElements.length - 1];
 
-  // istanbul ignore else @preserve
+  /* istanbul ignore else @preserve */
   if (code === "Tab") {
     if (shiftKey && doc.activeElement === firstFocusable) {
       lastFocusable.focus();

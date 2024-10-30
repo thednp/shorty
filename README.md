@@ -19,10 +19,22 @@ A small TypeScript library with various tools, all ESLint valid and featuring ev
 - While the library comes with a working build in the `dist` folder, that is mainly for build consistency testing. You can make use of "tree shaking" to import one or anything your code needs.
 - On that note, all shorties are organized in folders inside the `src` root folder, the structure is key to understanding the purpose of each type of shortie, whether we have `boolean` for various basic browser detection or browser feature support, `attr` for all things _Element_ attributes or `strings` for most common and most used _Element.prototype_ methods.
 
-# npm
+# Install
 
+```bash
+pnpm install -D @thednp/shorty
 ```
-npm install @thednp/shorty
+
+```bash
+yarn add -D @thednp/shorty
+```
+
+```bash
+npm install -D @thednp/shorty
+```
+
+```bash
+deno install -D npm:@thednp/shorty@latest
 ```
 
 # TypeScript / ES6+ Base usage
@@ -32,7 +44,7 @@ npm install @thednp/shorty
 import { supportTransform } from "@thednp/shorty";
 
 // use the tool in your ES6/ES7 sources
-if (supportTransform) {
+if (supportTransform()) {
   // have modern browsers do something about that
 }
 ```
@@ -84,7 +96,7 @@ const currentAttrValue = getAttribute(myTarget, "attribute-name");
 import { support3DTransform } from "@thednp/shorty";
 
 // filter myAction to supported browsers
-if (support3DTransform) {
+if (support3DTransform()) {
   // do something with modern browsers
 }
 ```
@@ -204,6 +216,8 @@ if (isElementsArray(myValue)) {
 
 - **_ArrayFrom_** - a shortie for `Array.from()` method;
 - **_Data_** - a small utility to store web components data that makes use of the native `Map`;
+- **_capitalize_** - capitalize first character in a string;
+- **_camelCase_** - transform a string to camel case;
 - **_dispatchEvent_** - a shortie for `Element.dispatchEvent()` method;
 - **_distinct_** - a shortie you can use to filter duplicate values in an `Array`;
 - **_emulateAnimationEnd_** - utility to execute a callback function when `animationend` event is triggered, or execute the callback right after for legacy browsers;
@@ -215,6 +229,7 @@ if (isElementsArray(myValue)) {
 - **_focus_** - a shortie for `Element.focus()` method;
 - **_toggleFocusTrap_** - a useful utility to trap focus inside popups;
 - **_hasFocusTrap_** - check if an element has focus trap;
+- **_kebabCase_** - transform a string to kebab case;
 - **_noop_** - is your regular `() => {}` NOOP;
 - **_normalizeOptions_** - a cool utility to normalize and crosscheck JavaScript options and their DATA API counterparts for various web components; supports namespaced options like `data-NAMESPACE-option="value"`; priority: JavaScript options > DATA API options > default options
 - **_ObjectAssign_** - a shortie for `Object.assign()` method;

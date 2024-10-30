@@ -1,7 +1,7 @@
 import type { NavigatorUA } from "../interface/navigatorUA";
 
 /**
- * A global `boolean` for mobile detection.
+ * An accessor that checks for mobile detection.
  */
 const isMobile = () => {
   const mobileBrands = /iPhone|iPad|iPod|Android/i;

@@ -2,8 +2,8 @@
  * A global namespace for keyboard event keys.
  */
 const keyboardEventKeys = {
-  Backspace: "Backspace", //  8
-  Tab: "Tab", //  9
+  Backspace: "Backspace", // 8
+  Tab: "Tab", // 9
   Enter: "Enter", // 13
   Shift: "Shift", // 16
   Control: "Control", // 17

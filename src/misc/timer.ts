@@ -28,16 +28,21 @@ const Timer = {
   ): void => {
     if (!isHTMLElement(element)) return;
 
-    // istanbul ignore else @preserve
+    // @legal test  comment
+    // @license test  comment
+    /* @legal comment */
+    /* @license comment */
+    /* test @legal comment */
+    /* test @license comment */
+
+    /* istanbul ignore else @preserve */
     if (key && key.length) {
-      // istanbul ignore else @preserve
+      /* istanbul ignore else @preserve */
       if (!TimeCache.has(element)) {
         TimeCache.set(element, new Map());
       }
-      // eslint-disable-next-line @typescript-eslint/no-implied-eval
       (TimeCache.get(element) as KeyMap).set(key, setTimeout(callback, delay));
     } else {
-      // eslint-disable-next-line @typescript-eslint/no-implied-eval
       TimeCache.set(element, setTimeout(callback, delay));
     }
   },
@@ -77,7 +82,7 @@ const Timer = {
     if (key && key.length && isMap(keyTimers as KeyMap)) {
       clearTimeout((keyTimers as KeyMap).get(key));
       (keyTimers as KeyMap).delete(key);
-      // istanbul ignore else @preserve
+      /* istanbul ignore else @preserve */
       if ((keyTimers as KeyMap).size === 0) {
         TimeCache.delete(element);
       }

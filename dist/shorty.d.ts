@@ -210,6 +210,18 @@ export declare interface BoundingClientRect {
     y: number;
 }
 
+/**
+ * Transform a string to camel case.
+ * @param input source string
+ */
+export declare const camelCase: (input: string) => string;
+
+/**
+ * Capitalize first character in a string.
+ * @param input source string
+ */
+export declare const capitalize: (input: string) => string;
+
 export declare interface ChangeEvent<T = FormControl> extends FormEvent<T> {
     target: EventTarget & T;
 }
@@ -798,7 +810,7 @@ export declare const hasClass: (element: HTMLElement, classNAME: string) => bool
 export declare const hasFocusTrap: (target: HTMLElement) => boolean;
 
 /**
- * A global `boolean` getter for Apple browsers.
+ * An accessor that checks for Apple browsers.
  */
 export declare const isApple: () => boolean;
 
@@ -886,7 +898,7 @@ export declare const isElementInViewport: (element?: HTMLElement) => boolean;
 export declare const isElementsArray: (obj?: unknown) => obj is HTMLElement[];
 
 /**
- * A global boolean for Gecko browsers. When writing this file,
+ * An accessor that checks for Gecko browsers. When writing this file,
  * Gecko was not supporting `userAgentData`.
  */
 export declare const isFirefox: () => boolean;
@@ -953,7 +965,7 @@ export declare const isMap: (obj?: unknown) => obj is Map<unknown, unknown>;
 export declare const isMedia: (element?: unknown) => element is SVGElement | HTMLImageElement | HTMLVideoElement | HTMLCanvasElement;
 
 /**
- * A global `boolean` for mobile detection.
+ * An accessor that checks for mobile detection.
  */
 export declare const isMobile: () => boolean;
 
@@ -1059,6 +1071,12 @@ export declare const isWeakMap: (obj?: unknown) => obj is WeakMap<WeakKey, unkno
  * @returns the query result
  */
 export declare const isWindow: (obj?: unknown) => obj is Window;
+
+/**
+ * Transform a string to kebab case.
+ * @param input source string
+ */
+export declare const kebabCase: (input: string) => string;
 
 /**
  * A global namespace for `Alt` key.
@@ -1827,17 +1845,17 @@ export declare const setElementStyle: (element: HTMLElement, styles: Partial<CSS
 export declare const submitEvent = "submit";
 
 /**
- * A global `boolean` for CSS3 3D transform support.
+ * An accessor that checks for CSS3 3D transform support.
  */
 export declare const support3DTransform: () => boolean;
 
 /**
- * A global `boolean` for CSS3 animation support.
+ * An accessor that checks for CSS3 animation support.
  */
 export declare const supportAnimation: () => boolean;
 
 /**
- * A global `boolean` for passive events support,
+ * An accessor that checks for passive events support,
  * in general event options are not suited for scroll prevention.
  *
  * @see https://github.com/WICG/EventListenerOptions/blob/gh-pages/explainer.md#feature-detection
@@ -1845,17 +1863,17 @@ export declare const supportAnimation: () => boolean;
 export declare const supportPassive: () => boolean;
 
 /**
- * A global `boolean` for touch events support.
+ * An accessor that checks for touch events support.
  */
 export declare const supportTouch: () => boolean;
 
 /**
- * A global `boolean` for CSS3 transform support.
+ * An accessor that checks for CSS3 transform support.
  */
 export declare const supportTransform: () => boolean;
 
 /**
- * A global `boolean` for CSS3 transition support.
+ * An accessor that checks for CSS3 transition support.
  */
 export declare const supportTransition: () => boolean;
 

@@ -14,7 +14,7 @@ const one = <T extends EventTarget, L = EventListener>(
 ) => {
   /** Wrap the listener for easy on -> off */
   const handlerWrapper: NativeEventHandler<T> = (e) => {
-    // istanbul ignore else @preserve
+    /* istanbul ignore else @preserve */
     if (e.target === element || e.currentTarget === element) {
       (listener as NativeEventHandler<T>).apply(element, [e]);
       off(element, eventName, handlerWrapper, options);

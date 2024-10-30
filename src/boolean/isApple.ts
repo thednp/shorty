@@ -1,7 +1,7 @@
 import type { NavigatorUA } from "../interface/navigatorUA";
 
 /**
- * A global `boolean` getter for Apple browsers.
+ * An accessor that checks for Apple browsers.
  */
 const isApple = () => {
   const appleBrands = /(iPhone|iPod|iPad)/;

@@ -41,7 +41,7 @@ const normalizeOptions = <T extends { [key: string]: unknown }>(
   });
 
   ObjectEntries(defaultOps).forEach(([k, v]) => {
-    // istanbul ignore else @preserve
+    /* istanbul ignore else @preserve */
     if (k in INPUT) {
       normalOps[k] = INPUT[k] as T[keyof T];
     } else if (k in dataOps) {

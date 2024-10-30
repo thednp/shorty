@@ -1,6 +1,7 @@
 import { resolve } from 'path';
 import { defineConfig } from 'vite';
 import dts from "vite-plugin-dts";
+import stripComments from "vite-plugin-strip-comments";
 
 const NAME = 'SHORTY';
 
@@ -14,22 +15,16 @@ export default defineConfig({
   base: './',
   esbuild: {
     legalComments: 'none',
-    minifyIdentifiers: false,
   },
   plugins: [
     dts({
       outDir: 'dist',
       copyDtsFiles: true,
       rollupTypes: true,
-    })
+    }),
+    stripComments({ type: 'none' }),
   ],
   build: {
-    rollupOptions: {
-      preserveEntrySignatures: "strict",
-      output: {
-        compact: true
-      }
-    },
     minify: 'esbuild',
     emptyOutDir: true,
     outDir: 'dist',

@@ -19,7 +19,7 @@ const Data = {
   set: <T>(element: HTMLElement, component: string, instance: T): void => {
     if (!isHTMLElement(element)) return;
 
-    // istanbul ignore else @preserve
+    /* istanbul ignore else @preserve */
     if (!componentData.has(component)) {
       componentData.set(component, new Map<HTMLElement, T>());
     }
@@ -70,7 +70,7 @@ const Data = {
 
     instanceMap.delete(element);
 
-    // istanbul ignore else @preserve
+    /* istanbul ignore else @preserve */
     if (instanceMap.size === 0) {
       componentData.delete(component);
     }

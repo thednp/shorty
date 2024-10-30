@@ -13,13 +13,15 @@ const getElementTransitionDuration = (element: HTMLElement): number => {
   const propertyValue = getElementStyle(element, transitionProperty);
   const durationValue = getElementStyle(element, transitionDuration);
   const durationScale = durationValue.includes("ms")
-    ? /* istanbul ignore next */ 1
+    ? /* istanbul ignore next @preserve */ 1
     : 1000;
   const duration = propertyValue && propertyValue !== "none"
     ? parseFloat(durationValue) * durationScale
-    : /* istanbul ignore next */ 0;
+    : /* istanbul ignore next @preserve */ 0;
 
-  return !Number.isNaN(duration) ? duration : /* istanbul ignore next */ 0;
+  return !Number.isNaN(duration)
+    ? duration
+    : /* istanbul ignore next @preserve */ 0;
 };
 
 export default getElementTransitionDuration;
