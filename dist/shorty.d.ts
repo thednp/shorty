@@ -660,7 +660,7 @@ export declare const getElementAnimationDuration: (element: HTMLElement | SVGEle
  * @param context an element in it's document or document
  * @returns the requested element
  */
-export declare const getElementById: <T extends HTMLElement | SVGElement>(id: string, context?: Node) => T;
+export declare const getElementById: <T extends HTMLElement>(id: string, context?: Node) => T;
 
 /**
  * Shortcut for `HTMLElement.getElementsByClassName` method. Some `Node` elements
@@ -863,21 +863,6 @@ export declare const isDocument: (obj?: unknown) => obj is Document;
 /**
  * Checks if an object is an `Element`.
  *
- * @see https://dom.spec.whatwg.org/#node
- *
- * ```
- * ELEMENT_NODE = 1;
- * ATTRIBUTE_NODE = 2;
- * TEXT_NODE = 3;
- * CDATA_SECTION_NODE = 4;
- * ENTITY_REFERENCE_NODE = 5; // legacy
- * ENTITY_NODE = 6; // legacy
- * PROCESSING_INSTRUCTION_NODE = 7;
- * COMMENT_NODE = 8;
- * DOCUMENT_NODE = 9;
- * DOCUMENT_TYPE_NODE = 10;
- * DOCUMENT_FRAGMENT_NODE = 11;
- * ```
  * @param element the target object
  * @returns the query result
  */
@@ -985,6 +970,20 @@ export declare const isMobile: () => boolean;
  * Checks if an object is a `Node`.
  *
  * @param node the target object
+ * @see https://dom.spec.whatwg.org/#node
+ *
+ * ```
+ * ELEMENT_NODE = 1;
+ * ATTRIBUTE_NODE = 2;
+ * TEXT_NODE = 3;
+ * CDATA_SECTION_NODE = 4;
+ * ENTITY_REFERENCE_NODE = 5; // legacy
+ * ENTITY_NODE = 6; // legacy
+ * PROCESSING_INSTRUCTION_NODE = 7;
+ * COMMENT_NODE = 8;
+ * DOCUMENT_NODE = 9;
+ * DOCUMENT_TYPE_NODE = 10;
+ * DOCUMENT_FRAGMENT_NODE = 11;
  * @returns the query result
  */
 export declare const isNode: (node?: unknown) => node is Node;

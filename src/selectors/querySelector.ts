@@ -1,6 +1,6 @@
 import getDocument from "../get/getDocument";
 import isNode from "../is/isNode";
-import isHTMLElement from "../is/isHTMLElement";
+import isElement from "../is/isElement";
 
 /**
  * Utility to check if target is typeof `HTMLElement`, `Element`, `Node`
@@ -14,7 +14,7 @@ const querySelector = <T extends Element = HTMLElement | SVGElement>(
   selector: T | string,
   parent?: ParentNode,
 ): T | null => {
-  if (isHTMLElement(selector)) {
+  if (isElement(selector)) {
     return selector as T;
   }
   const lookUp = isNode(parent) ? parent : getDocument();

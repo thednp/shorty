@@ -79,7 +79,7 @@ const Ce = "2.0.8", Te = "aria-checked", Me = "aria-description", De = "aria-des
   Meta: "Meta",
   ContextMenu: "ContextMenu",
   ScrollLock: "ScrollLock"
-}, en = "Alt", nn = "ArrowDown", on = "ArrowUp", sn = "ArrowLeft", rn = "ArrowRight", cn = "Backspace", an = "CapsLock", un = "Control", ln = "Delete", dn = "Enter", fn = "NumpadEnter", pn = "Escape", gn = "Insert", mn = "Meta", vn = "Pause", bn = "ScrollLock", En = "Shift", hn = "Space", yn = "Tab", Gt = "animationDuration", Zt = "animationDelay", H = "animationName", C = "animationend", _t = "transitionDuration", $t = "transitionDelay", T = "transitionend", U = "transitionProperty", wn = "addEventListener", An = "removeEventListener", Sn = {
+}, en = "Alt", nn = "ArrowDown", on = "ArrowUp", sn = "ArrowLeft", rn = "ArrowRight", cn = "Backspace", an = "CapsLock", un = "Control", ln = "Delete", dn = "Enter", fn = "NumpadEnter", pn = "Escape", gn = "Insert", mn = "Meta", vn = "Pause", bn = "ScrollLock", En = "Shift", hn = "Space", yn = "Tab", Gt = "animationDuration", Zt = "animationDelay", H = "animationName", T = "animationend", _t = "transitionDuration", $t = "transitionDelay", M = "transitionend", U = "transitionProperty", wn = "addEventListener", An = "removeEventListener", Sn = {
   linear: "linear",
   easingSinusoidalIn: "cubic-bezier(0.47,0,0.745,0.715)",
   easingSinusoidalOut: "cubic-bezier(0.39,0.575,0.565,1)",
@@ -153,7 +153,7 @@ const Ce = "2.0.8", Te = "aria-checked", Me = "aria-description", De = "aria-des
   t.classList.remove(...e);
 }, Zn = (t, e) => t.classList.contains(e), { body: _n } = document, { documentElement: $n } = document, { head: Jn } = document, Xn = (t) => Array.from(t), v = (t) => t != null && typeof t == "object" || !1, i = (t) => v(t) && typeof t.nodeType == "number" && [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11].some(
   (e) => t.nodeType === e
-) || !1, z = (t) => i(t) && t.nodeType === 1 || !1, u = (t) => z(t) && "offsetWidth" in t || !1, b = /* @__PURE__ */ new Map(), D = {
+) || !1, k = (t) => i(t) && t.nodeType === 1 || !1, u = (t) => k(t) && "offsetWidth" in t || !1, b = /* @__PURE__ */ new Map(), L = {
   data: b,
   /**
    * Sets web components data.
@@ -182,7 +182,7 @@ const Ce = "2.0.8", Te = "aria-checked", Me = "aria-description", De = "aria-des
    */
   get: (t, e) => {
     if (!u(t) || !e) return null;
-    const n = D.getAllFor(e);
+    const n = L.getAllFor(e);
     return t && n && n.get(t) || null;
   },
   /**
@@ -192,28 +192,28 @@ const Ce = "2.0.8", Te = "aria-checked", Me = "aria-description", De = "aria-des
    * @param component the component's name or a unique key
    */
   remove: (t, e) => {
-    const n = D.getAllFor(e);
+    const n = L.getAllFor(e);
     !n || !u(t) || (n.delete(t), n.size === 0 && b.delete(e));
   }
-}, Yn = (t, e) => D.get(t, e), to = (t) => t?.charAt(0).toUpperCase() + t?.slice(1), eo = (t) => t?.trim().replace(
+}, Yn = (t, e) => L.get(t, e), to = (t) => t?.charAt(0).toUpperCase() + t?.slice(1), eo = (t) => t?.trim().replace(
   /(?:^\w|[A-Z]|\b\w)/g,
   (e, n) => n === 0 ? e.toLowerCase() : e.toUpperCase()
-).replace(/\s+/g, ""), k = (t) => typeof t == "string" || !1, j = (t) => v(t) && t.constructor.name === "Window" || !1, K = (t) => i(t) && t.nodeType === 9 || !1, d = (t) => j(t) ? t.document : K(t) ? t : i(t) ? t.ownerDocument : globalThis.document, N = (t, ...e) => Object.assign(t, ...e), ne = (t) => {
+).replace(/\s+/g, ""), N = (t) => typeof t == "string" || !1, j = (t) => v(t) && t.constructor.name === "Window" || !1, K = (t) => i(t) && t.nodeType === 9 || !1, d = (t) => j(t) ? t.document : K(t) ? t : i(t) ? t.ownerDocument : globalThis.document, C = (t, ...e) => Object.assign(t, ...e), ne = (t) => {
   if (!t) return;
-  if (k(t))
+  if (N(t))
     return d().createElement(t);
   const { tagName: e } = t, n = ne(e);
   if (!n) return;
   const o = { ...t };
-  return delete o.tagName, N(n, o);
+  return delete o.tagName, C(n, o);
 }, oe = (t, e) => {
   if (!t || !e) return;
-  if (k(e))
+  if (N(e))
     return d().createElementNS(t, e);
   const { tagName: n } = e, o = oe(t, n);
   if (!o) return;
   const s = { ...e };
-  return delete s.tagName, N(o, s);
+  return delete s.tagName, C(o, s);
 }, q = (t, e) => t.dispatchEvent(e), no = (t, e, n) => n.indexOf(t) === e, f = (t, e) => {
   const n = getComputedStyle(t), o = e.replace("webkit", "Webkit").replace(/([A-Z])/g, "-$1").toLowerCase();
   return n.getPropertyValue(o);
@@ -225,12 +225,12 @@ const Ce = "2.0.8", Te = "aria-checked", Me = "aria-description", De = "aria-des
   return Number.isNaN(s) ? 0 : s;
 }, oo = (t, e) => {
   let n = 0;
-  const o = new Event(C), s = re(t), r = se(t);
+  const o = new Event(T), s = re(t), r = se(t);
   if (s) {
     const a = (l) => {
-      l.target === t && (e.apply(t, [l]), t.removeEventListener(C, a), n = 1);
+      l.target === t && (e.apply(t, [l]), t.removeEventListener(T, a), n = 1);
     };
-    t.addEventListener(C, a), setTimeout(() => {
+    t.addEventListener(T, a), setTimeout(() => {
       n || q(t, o);
     }, s + r + 17);
   } else
@@ -243,12 +243,12 @@ const Ce = "2.0.8", Te = "aria-checked", Me = "aria-description", De = "aria-des
   return Number.isNaN(s) ? 0 : s;
 }, so = (t, e) => {
   let n = 0;
-  const o = new Event(T), s = ae(t), r = ce(t);
+  const o = new Event(M), s = ae(t), r = ce(t);
   if (s) {
     const a = (l) => {
-      l.target === t && (e.apply(t, [l]), t.removeEventListener(T, a), n = 1);
+      l.target === t && (e.apply(t, [l]), t.removeEventListener(M, a), n = 1);
     };
-    t.addEventListener(T, a), setTimeout(() => {
+    t.addEventListener(M, a), setTimeout(() => {
       n || q(t, o);
     }, s + r + 17);
   } else
@@ -271,17 +271,17 @@ const Ce = "2.0.8", Te = "aria-checked", Me = "aria-description", De = "aria-des
     cancelable: !0,
     bubbles: !0
   });
-  return v(e) && N(n, e), n;
+  return v(e) && C(n, e), n;
 }, vo = { passive: !0 }, bo = (t) => t.offsetHeight, Eo = (t, e) => {
   A(e).forEach(([n, o]) => {
-    if (o && k(n) && n.includes("--"))
+    if (o && N(n) && n.includes("--"))
       t.style.setProperty(n, o);
     else {
       const s = {};
-      s[n] = o, N(t.style, s);
+      s[n] = o, C(t.style, s);
     }
   });
-}, L = (t) => v(t) && t.constructor.name === "Map" || !1, ue = (t) => typeof t == "number" || !1, m = /* @__PURE__ */ new Map(), ho = {
+}, O = (t) => v(t) && t.constructor.name === "Map" || !1, ue = (t) => typeof t == "number" || !1, m = /* @__PURE__ */ new Map(), ho = {
   /**
    * Sets a new timeout timer for an element, or element -> key association.
    *
@@ -303,7 +303,7 @@ const Ce = "2.0.8", Te = "aria-checked", Me = "aria-description", De = "aria-des
   get: (t, e) => {
     if (!u(t)) return null;
     const n = m.get(t);
-    return e && n && L(n) ? n.get(e) || null : ue(n) ? n : null;
+    return e && n && O(n) ? n.get(e) || null : ue(n) ? n : null;
   },
   /**
    * Clears the element's timer.
@@ -314,9 +314,9 @@ const Ce = "2.0.8", Te = "aria-checked", Me = "aria-description", De = "aria-des
   clear: (t, e) => {
     if (!u(t)) return;
     const n = m.get(t);
-    e && e.length && L(n) ? (clearTimeout(n.get(e)), n.delete(e), n.size === 0 && m.delete(t)) : (clearTimeout(n), m.delete(t));
+    e && e.length && O(n) ? (clearTimeout(n.get(e)), n.delete(e), n.size === 0 && m.delete(t)) : (clearTimeout(n), m.delete(t));
   }
-}, yo = (t) => t.toUpperCase(), le = (t, e) => (i(e) ? e : d()).querySelectorAll(t), O = /* @__PURE__ */ new Map();
+}, yo = (t) => t.toUpperCase(), le = (t, e) => (i(e) ? e : d()).querySelectorAll(t), x = /* @__PURE__ */ new Map();
 function de(t) {
   const { shiftKey: e, code: n } = t, o = d(this), s = [
     ...le(qt, this)
@@ -327,9 +327,9 @@ function de(t) {
   const r = s[0], a = s[s.length - 1];
   n === "Tab" && (e && o.activeElement === r ? (a.focus(), t.preventDefault()) : !e && o.activeElement === a && (r.focus(), t.preventDefault()));
 }
-const fe = (t) => O.has(t) === !0, wo = (t) => {
+const fe = (t) => x.has(t) === !0, wo = (t) => {
   const e = fe(t);
-  (e ? R : W)(t, "keydown", de), e ? O.delete(t) : O.set(t, !0);
+  (e ? R : W)(t, "keydown", de), e ? x.delete(t) : x.set(t, !0);
 }, h = (t, e) => {
   const { width: n, height: o, top: s, right: r, bottom: a, left: l } = t.getBoundingClientRect();
   let p = 1, c = 1;
@@ -350,14 +350,14 @@ const fe = (t) => O.has(t) === !0, wo = (t) => {
 }, Ao = (t) => d(t).body, y = (t) => d(t).documentElement, So = (t) => d(t).head, pe = (t) => i(t) ? (t.nodeName || "").toLowerCase() : "#document", ko = (t) => {
   const e = j(t), n = e ? t.scrollX : t.scrollLeft, o = e ? t.scrollY : t.scrollTop;
   return { x: n, y: o };
-}, ge = (t) => i(t) && t.constructor.name === "ShadowRoot" || !1, S = (t) => t.nodeName === "HTML" ? t : u(t) && t.assignedSlot || i(t) && t.parentNode || ge(t) && t.host || y(t), me = (t) => t ? K(t) ? t.defaultView : i(t) ? t?.ownerDocument?.defaultView : t : window, ve = (t) => i(t) && ["TABLE", "TD", "TH"].includes(t.nodeName) || !1, be = (t, e) => t.matches(e), M = (t) => f(t, "position") === "static", Ee = (t) => f(t, "position") === "fixed", G = (t) => [":popover-open", ":modal"].some((e) => {
+}, ge = (t) => i(t) && t.constructor.name === "ShadowRoot" || !1, S = (t) => t.nodeName === "HTML" ? t : u(t) && t.assignedSlot || i(t) && t.parentNode || ge(t) && t.host || y(t), me = (t) => t ? K(t) ? t.defaultView : i(t) ? t?.ownerDocument?.defaultView : t : window, ve = (t) => i(t) && ["TABLE", "TD", "TH"].includes(t.nodeName) || !1, be = (t, e) => t.matches(e), D = (t) => f(t, "position") === "static", Ee = (t) => f(t, "position") === "fixed", G = (t) => [":popover-open", ":modal"].some((e) => {
   try {
     return be(t, e);
   } catch {
     return !1;
   }
 }), Z = (t) => {
-  const e = Xt(), n = z(t) ? getComputedStyle(t) : t;
+  const e = Xt(), n = k(t) ? getComputedStyle(t) : t;
   return n.transform !== "none" || n.perspective !== "none" || (n.containerType ? n.containerType !== "normal" : !1) || !e && (n.backdropFilter ? n.backdropFilter !== "none" : !1) || !e && (n.filter ? n.filter !== "none" : !1) || ["transform", "perspective", "filter"].some(
     (o) => (n.willChange || "").includes(o)
   ) || ["paint", "layout", "strict", "content"].some(
@@ -365,7 +365,7 @@ const fe = (t) => O.has(t) === !0, wo = (t) => {
   );
 }, he = (t) => {
   let e = S(t);
-  for (; u(e) && !x(e); ) {
+  for (; u(e) && !z(e); ) {
     if (Z(e))
       return e;
     if (G(e))
@@ -373,7 +373,7 @@ const fe = (t) => O.has(t) === !0, wo = (t) => {
     e = S(e);
   }
   return null;
-}, x = (t) => ["html", "body", "#document"].includes(pe(t)), P = (t) => {
+}, z = (t) => ["html", "body", "#document"].includes(pe(t)), P = (t) => {
   if (!u(t) || Ee(t))
     return null;
   let e = t.offsetParent;
@@ -384,17 +384,17 @@ const fe = (t) => O.has(t) === !0, wo = (t) => {
     return e;
   if (!u(t)) {
     let o = S(t);
-    for (; o && !x(o); ) {
-      if (z(o) && !M(o))
+    for (; o && !z(o); ) {
+      if (k(o) && !D(o))
         return o;
       o = S(o);
     }
     return e;
   }
   let n = P(t);
-  for (; n && ve(n) && M(n); )
+  for (; n && ve(n) && D(n); )
     n = P(n);
-  return n && x(n) && M(n) && !Z(n) ? e : n || he(t) || e;
+  return n && z(n) && D(n) && !Z(n) ? e : n || he(t) || e;
 }, ye = (t) => {
   if (!u(t)) return !1;
   const { width: e, height: n } = h(t), { offsetWidth: o, offsetHeight: s } = t;
@@ -420,7 +420,7 @@ const E = /* @__PURE__ */ new Map(), we = (t, e) => {
   let n = e ? F : B;
   if (e) {
     const o = we(t), s = E.get(o) || /* @__PURE__ */ new Map();
-    E.has(o) || E.set(o, s), L(s) && !s.has(e) ? (s.set(e, n), F += 1) : n = s.get(e);
+    E.has(o) || E.set(o, s), O(s) && !s.has(e) ? (s.set(e, n), F += 1) : n = s.get(e);
   } else {
     const o = t.id || t;
     E.has(o) ? n = E.get(o) : (E.set(o, n), B += 1);
@@ -435,7 +435,7 @@ const E = /* @__PURE__ */ new Map(), we = (t, e) => {
   const { clientWidth: e, clientHeight: n } = y(t), { top: o, left: s, bottom: r, right: a } = h(t, !0);
   return o >= 0 && s >= 0 && r <= n && a <= e;
 }, Lo = (t) => Ae(t) && t.every(u) || !1, Oo = (t) => typeof t == "function" || !1, xo = (t) => v(t) && t.constructor.name === "HTMLCollection" || !1, zo = (t) => u(t) && t.tagName === "IMG" || !1, Io = (t) => {
-  if (!k(t)) return !1;
+  if (!N(t)) return !1;
   try {
     JSON.parse(t);
   } catch {
@@ -444,7 +444,7 @@ const E = /* @__PURE__ */ new Map(), we = (t, e) => {
   return !0;
 }, Po = (t) => v(t) && t.constructor.name === "WeakMap" || !1, Fo = (t) => i(t) && ["SVG", "Image", "Video", "Canvas"].some(
   (e) => t.constructor.name.includes(e)
-) || !1, Bo = (t) => v(t) && t.constructor.name === "NodeList" || !1, Vo = (t) => y(t).dir === "rtl", Ho = (t) => i(t) && t.constructor.name.includes("SVG") || !1, ke = (t, e) => t ? t.closest(e) || ke(t.getRootNode().host, e) : null, Uo = (t, e) => u(t) ? t : (i(e) ? e : d()).querySelector(t), Ne = (t, e) => (i(e) ? e : d()).getElementsByTagName(
+) || !1, Bo = (t) => v(t) && t.constructor.name === "NodeList" || !1, Vo = (t) => y(t).dir === "rtl", Ho = (t) => i(t) && t.constructor.name.includes("SVG") || !1, ke = (t, e) => t ? t.closest(e) || ke(t.getRootNode().host, e) : null, Uo = (t, e) => k(t) ? t : (i(e) ? e : d()).querySelector(t), Ne = (t, e) => (i(e) ? e : d()).getElementsByTagName(
   t
 ), Wo = (t) => [...Ne("*", t)].filter(Se), Ro = (t, e) => d(e).getElementById(t) || null, Qo = (t, e) => (e && i(e) ? e : d()).getElementsByClassName(
   t
@@ -453,10 +453,10 @@ export {
   Xn as ArrayFrom,
   V as DOMContentLoadedEvent,
   nt as DOMMouseScrollEvent,
-  D as Data,
+  L as Data,
   ro as Float32ArrayFrom,
   co as Float64ArrayFrom,
-  N as ObjectAssign,
+  C as ObjectAssign,
   A as ObjectEntries,
   go as ObjectFromEntries,
   lo as ObjectHasOwn,
@@ -468,7 +468,7 @@ export {
   wn as addEventListener,
   Zt as animationDelay,
   Gt as animationDuration,
-  C as animationEndEvent,
+  T as animationEndEvent,
   H as animationName,
   Te as ariaChecked,
   De as ariaDescribedBy,
@@ -552,7 +552,7 @@ export {
   To as isCanvas,
   Se as isCustomElement,
   K as isDocument,
-  z as isElement,
+  k as isElement,
   Mo as isElementInScrollRange,
   Do as isElementInViewport,
   Lo as isElementsArray,
@@ -562,7 +562,7 @@ export {
   u as isHTMLElement,
   zo as isHTMLImageElement,
   Io as isJSON,
-  L as isMap,
+  O as isMap,
   Fo as isMedia,
   On as isMobile,
   i as isNode,
@@ -573,7 +573,7 @@ export {
   Ho as isSVGElement,
   ye as isScaledElement,
   ge as isShadowRoot,
-  k as isString,
+  N as isString,
   ve as isTableElement,
   Po as isWeakMap,
   Xt as isWebKit,
@@ -674,7 +674,7 @@ export {
   Wt as touchstartEvent,
   $t as transitionDelay,
   _t as transitionDuration,
-  T as transitionEndEvent,
+  M as transitionEndEvent,
   U as transitionProperty,
   Kt as unloadEvent,
   Ln as userAgent,
