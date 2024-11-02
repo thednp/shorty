@@ -1,4 +1,4 @@
-import { expect, it, describe, afterEach } from 'vitest';
+import { expect, it, describe, afterEach, vi } from 'vitest';
 import { getExampleDOM } from './fixtures/getExampleDom';
 import * as SHORTY from '../src/index';
 import CustomElem from './fixtures/custom-elem';
@@ -14,6 +14,7 @@ describe('Shorty Library Tests - GET', () => {
   it('Test get folder', async () => {
     const container = getExampleDOM();
     wrapper.append(container);
+    // await vi.waitFor(() => container.querySelector('#elem-inside-dialog'), 50);
 
     const {
       getBoundingClientRect,
@@ -28,14 +29,27 @@ describe('Shorty Library Tests - GET', () => {
       getElementStyle,
       getNodeScroll,
       getParentNode,
+      getNodeName,
+      getOffsetParent,
       getRectRelativeToOffsetParent,
       getUID,
       getWindow,
       ObjectValues,
       querySelector
     } = SHORTY;
-    const element = querySelector('.alert', container);
-    // console.log(element)
+    const comment = container.childNodes[0];
+    const button = querySelector<HTMLButtonElement>('button', container)!;
+    const element = querySelector<HTMLElement>('.alert', container)!;
+    const dialog = querySelector<HTMLDialogElement>('dialog', container)!;
+    const svg = querySelector<SVGSVGElement>('svg', container)!;
+    const path = querySelector<SVGPathElement>('path', container)!;
+    const elemInsideDialog = querySelector<HTMLElement>('#elem-inside-dialog', container)!;
+    const elemInsideAbsolute = querySelector<HTMLElement>('#elem-inside-absolute', container)!;
+    const elemInsideRelative = querySelector<HTMLElement>('#elem-inside-relative', container)!;
+    const elemInsideStatic = querySelector<HTMLElement>('#elem-inside-static', container)!;
+    const elemInsideFixed = querySelector<HTMLElement>('#elem-inside-fixed', container)!;
+    const elemInsideTable = querySelector<HTMLElement>('#elem-inside-table', container)!;
+    // console.log(comment);
 
     if (!element) return;
 
@@ -130,6 +144,151 @@ describe('Shorty Library Tests - GET', () => {
       'getParentNode(CustomElement.shadowRoot)',
     ).to.be.instanceOf(CustomElem);
 
+    expect(
+      getNodeName(CE),
+      'getNodeName(CustomElement)',
+    ).to.equal('custom-elem');
+
+    expect(
+      getOffsetParent(CE),
+      'getOffsetParent(CustomElement)',
+    ).to.be.instanceOf(Window);
+
+    expect(
+      // @ts-expect-error
+      getOffsetParent(CE.shadowRoot),
+      'getOffsetParent(CustomElement)',
+    ).to.be.instanceOf(Window);
+
+    expect(
+      getOffsetParent(element),
+      'getOffsetParent(CustomElement.shadowRoow)',
+    ).to.be.instanceOf(Window);
+
+    expect(
+      getOffsetParent(elemInsideAbsolute),
+      'getOffsetParent(HTMLElement)',
+    ).to.not.be.instanceOf(Window);
+
+    expect(
+      getOffsetParent(elemInsideAbsolute.parentElement!),
+      'getOffsetParent(HTMLElement)',
+    ).to.be.instanceOf(Window);
+
+    expect(
+      getOffsetParent(elemInsideRelative.parentElement!),
+      'getOffsetParent(HTMLElement)',
+    ).to.be.instanceOf(Window);
+
+    expect(
+      getOffsetParent(elemInsideFixed.parentElement!),
+      'getOffsetParent(HTMLElement)',
+    ).to.be.instanceOf(Window);
+
+    expect(
+      getOffsetParent(elemInsideStatic.parentElement!),
+      'getOffsetParent(HTMLElement)',
+    ).to.be.instanceOf(Window);
+
+    expect(
+      getOffsetParent(elemInsideRelative),
+      'getOffsetParent(HTMLElement)',
+    ).to.be.instanceOf(HTMLElement);
+
+    expect(
+      getOffsetParent(elemInsideStatic),
+      'getOffsetParent(HTMLElement)',
+    ).to.be.instanceOf(Window);
+
+    expect(
+      getOffsetParent(elemInsideFixed),
+      'getOffsetParent(HTMLElement)',
+    ).to.be.instanceOf(HTMLElement);
+
+    expect(
+      getOffsetParent(elemInsideTable),
+      'getOffsetParent(HTMLElement)',
+    ).to.be.instanceOf(Window);
+
+    expect(
+      // @ts-expect-error
+      getOffsetParent(null),
+      'getOffsetParent(HTMLElement)',
+    ).to.be.instanceOf(Window);
+
+    expect(
+      // @ts-expect-error
+      getOffsetParent(win),
+      'getOffsetParent(HTMLElement)',
+    ).to.be.instanceOf(Window);
+
+    expect(
+      // @ts-expect-error
+      getOffsetParent(win.document),
+      'getOffsetParent(HTMLElement)',
+    ).to.be.instanceOf(Window);
+
+    expect(
+      getOffsetParent(win.document.head),
+      'getOffsetParent(HTMLElement)',
+    ).to.be.instanceOf(Window);
+
+    expect(
+      getOffsetParent(win.document.head.children[0]),
+      'getOffsetParent(HTMLElement)',
+    ).to.be.instanceOf(Window);
+  
+    expect(
+      getOffsetParent(path),
+      'getOffsetParent(HTMLElement)',
+    ).to.be.instanceOf(HTMLButtonElement);
+  
+    expect(
+      getOffsetParent(svg),
+      'getOffsetParent(HTMLElement)',
+    ).to.be.instanceOf(HTMLButtonElement);
+  
+    expect(
+      // @ts-expect-error
+      getOffsetParent(comment),
+      'getOffsetParent(CommentNode)',
+    ).to.be.instanceOf(Window);
+
+    expect(
+      // @ts-expect-error
+      getOffsetParent(button.childNodes[1]),
+      'getOffsetParent(TextNode)',
+    ).to.be.instanceOf(HTMLButtonElement);
+
+    expect(
+      getOffsetParent(getDocumentElement(button)),
+      'getOffsetParent(HTML)',
+    ).to.be.instanceOf(Window);
+
+    expect(
+      getOffsetParent(getDocumentHead(button).children[0]),
+      'getOffsetParent(HEAD)',
+    ).to.be.instanceOf(Window);
+
+    expect(
+      getOffsetParent(getDocumentHead(button)),
+      'getOffsetParent(HEAD)',
+    ).to.be.instanceOf(Window);
+
+    dialog.showModal();
+    await vi.waitFor(() => {
+      expect(
+        getOffsetParent(dialog),
+        'getOffsetParent(HTMLElement)',
+      ).to.be.instanceOf(Window);
+
+      expect(
+        getOffsetParent(elemInsideDialog),
+        'getOffsetParent(CustomElement.shadowRoow)',
+      ).to.be.instanceOf(HTMLDialogElement);
+      dialog.close();
+    }, 50);
+    
     ({ x, y, width, height } = getRectRelativeToOffsetParent(
       element,
       getDocumentElement(win),

@@ -10,7 +10,7 @@ import type { CSS4Declaration } from "../interface/css4Declaration";
  * @param styles attribute value
  */
 const setElementStyle = (
-  element: HTMLElement,
+  element: HTMLElement | SVGElement,
   styles: Partial<CSS4Declaration>,
 ): void => {
   ObjectEntries(styles).forEach(([key, value]) => {

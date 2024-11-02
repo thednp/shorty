@@ -16,10 +16,11 @@ export default defineConfig({
       include: ["src/**/*.{ts,tsx}"],
     },
     browser: {
-      // provider: 'webdriverio', // or 'preview'
+      provider: 'preview', // 'webdriverio' | 'preview'
       enabled: true,
       headless: false,
-      name: 'chrome', // browser name is required
+      // name: 'chrome', // browser name is required
+      name: 'chromium', // browser name is required
       // enableUI: true
     },
   },

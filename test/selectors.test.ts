@@ -26,15 +26,15 @@ describe('Shorty Library Tests', () => {
       querySelectorAll,
     } = SHORTY;
 
-    const el = querySelector('.alert', container);
+    const el = querySelector<HTMLElement>('.alert', container)!;
     if (!el) return;
     const win = window;
 
     const CE = new CustomElem();
     win.document.body.append(CE);
 
-    expect(querySelectorAll('div'), 'querySelectorAll(div)').to.have.length(3);
-    expect(querySelectorAll('div', win.document), 'querySelectorAll(div, parent)').to.have.length(3);
+    expect(querySelectorAll('div'), 'querySelectorAll(div)').to.have.length(7);
+    expect(querySelectorAll('div', win.document), 'querySelectorAll(div, parent)').to.have.length(7);
 
     // @ts-expect-error
     expect(querySelector(), 'querySelector()').to.be.null;

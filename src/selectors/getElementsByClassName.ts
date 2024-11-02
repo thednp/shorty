@@ -9,7 +9,7 @@ import isNode from "../is/isNode";
  * @param parent optional Element to look into
  * @return the 'HTMLCollection'
  */
-const getElementsByClassName = <T extends HTMLElement>(
+const getElementsByClassName = <T extends Element = HTMLElement | SVGElement>(
   selector: string,
   parent?: ParentNode,
 ) => {

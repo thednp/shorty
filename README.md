@@ -81,15 +81,16 @@ const currentAttrValue = getAttribute(myTarget, "attribute-name");
 
 # boolean
 
-- **_isApple_** - checks and preserves a `boolean` value for the client browser is either Apple **Safari** browser or not;
-- **_isFirefox_** - checks and preserves a `boolean` value for the client browser is either **Firefox** or not;
-- **_isMobile_** - checks and preserves a `boolean` value for the client browser is either a Mobile device or not;
-- **_support3DTransform_** - checks and preserves a `boolean` value for the client browser capability for webKit `perspective`;
-- **_supportTouch_** - checks and preserves a `boolean` value for the client browser capability for `touch` events;
-- **_supportPassive_** - checks and preserves a `boolean` value for the client browser capability for `passive` event option;
-- **_supportTransform_** - checks and preserves a `boolean` value for the client browser capability for webKit `transform`;
-- **_supportAnimation_** - checks and preserves a `boolean` value for the client browser capability for webKit keyframe `animation`;
-- **_supportTransition_** - checks and preserves a `boolean` value for the client browser capability for webKit `transition`;
+- **_isApple_** - checks and returns a `boolean` value for the client browser is either Apple **Safari** browser or not;
+- **_isFirefox_** - checks and returns a `boolean` value for the client browser is either **Firefox** or not;
+- **_isMobile_** - checks and returns a `boolean` value for the client browser is either a Mobile device or not;
+- **_isWebKit_** - checks and returns a `boolean` value for the client browser is a WebKit browser or not;
+- **_support3DTransform_** - checks and returns a `boolean` value for the client browser capability for webKit `perspective`;
+- **_supportTouch_** - checks and returns a `boolean` value for the client browser capability for `touch` events;
+- **_supportPassive_** - checks and returns a `boolean` value for the client browser capability for `passive` event option;
+- **_supportTransform_** - checks and returns a `boolean` value for the client browser capability for webKit `transform`;
+- **_supportAnimation_** - checks and returns a `boolean` value for the client browser capability for webKit keyframe `animation`;
+- **_supportTransition_** - checks and returns a `boolean` value for the client browser capability for webKit `transition`;
 
 ```js
 // EXAMPLES
@@ -157,8 +158,10 @@ For a more advanced method to handle event listeners, I recommend using the [eve
 - **_getElementTransitionDelay_** - returns the `transitionDelay` property of a `transition` property;
 - **_getElementTransitionDuration_** - returns the `transitionDuration` property of a `transition` property;
 - **_getElementStyle_** - returns the _Element_ computed style for a given property;
+- **_getNodeName_** - returns the name of the target element;
 - **_getNodeScroll_** - returns the _Element_ / _Window_ current `{ x, y }` scroll position;
 - **_getParentNode_** - returns parent of a given _Element_;
+- **_getOffsetParent_** - returns the `offsetParent` that's the best for calculating position for a given target;
 - **_getRectRelativeToOffsetParent_** - returns the bounding client rectangle of a given _Element_ relative to a given `offsetParent`;
 - **_getUID_** - a nice utility that creates a unique ID for a given _Element_ and returns it;
 - **_getWindow_** - returns the containing `Window` for a given _Element_ or just any _Window_;

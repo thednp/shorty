@@ -9,7 +9,7 @@
  * @param selector the selector name
  * @return the query result
  */
-const closest = <T extends Element = HTMLElement>(
+const closest = <T extends Element = HTMLElement | SVGElement>(
   element: T,
   selector: string,
 ): HTMLElement | null => {

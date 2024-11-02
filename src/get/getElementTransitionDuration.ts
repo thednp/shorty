@@ -9,7 +9,7 @@ import getElementStyle from "./getElementStyle";
  * @param element target
  * @return the `transitionDuration` value in miliseconds
  */
-const getElementTransitionDuration = (element: HTMLElement): number => {
+const getElementTransitionDuration = (element: HTMLElement | SVGElement) => {
   const propertyValue = getElementStyle(element, transitionProperty);
   const durationValue = getElementStyle(element, transitionDuration);
   const durationScale = durationValue.includes("ms")

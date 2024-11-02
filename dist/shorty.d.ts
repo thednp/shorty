@@ -252,7 +252,7 @@ export declare type ClipboardEventHandler<T = Element> = EventHandler<T, Clipboa
  * @param selector the selector name
  * @return the query result
  */
-export declare const closest: <T extends Element = HTMLElement>(element: T, selector: string) => HTMLElement | null;
+export declare const closest: <T extends Element = HTMLElement | SVGElement>(element: T, selector: string) => HTMLElement | null;
 
 declare interface CompositionEvent_2<T = Element>
 extends NativeEvent<T, NativeCompositionEvent> {
@@ -456,7 +456,7 @@ export declare const dragstartEvent = "dragstart";
  * @param element target
  * @param handler `animationend` callback
  */
-export declare const emulateAnimationEnd: (element: HTMLElement, handler: EventListener) => void;
+export declare const emulateAnimationEnd: (element: HTMLElement | SVGElement, handler: EventListener) => void;
 
 /**
  * Utility to make sure callbacks are consistently
@@ -465,7 +465,7 @@ export declare const emulateAnimationEnd: (element: HTMLElement, handler: EventL
  * @param element event target
  * @param handler `transitionend` callback
  */
-export declare const emulateTransitionEnd: (element: HTMLElement, handler: EventListener) => void;
+export declare const emulateTransitionEnd: (element: HTMLElement | SVGElement, handler: EventListener) => void;
 
 /**
  * A global namespace for `error` event.
@@ -586,7 +586,7 @@ export declare const getAttributeNS: (ns: string, element: HTMLElement, att: str
  * @param includeScale when *true*, the target scale is also computed
  * @returns the bounding client rect object
  */
-export declare const getBoundingClientRect: (element: HTMLElement, includeScale?: boolean) => BoundingClientRect;
+export declare const getBoundingClientRect: (element: Element | HTMLElement, includeScale?: boolean) => BoundingClientRect;
 
 /**
  * Returns an `Array` of `Node` elements that are registered as
@@ -640,7 +640,7 @@ export declare const getDocumentHead: (node?: Node | Document | Window) => HTMLE
  * @param element target
  * @return the `animationDelay` value in miliseconds
  */
-export declare const getElementAnimationDelay: (element: HTMLElement) => number;
+export declare const getElementAnimationDelay: (element: HTMLElement | SVGElement) => number;
 
 /**
  * Utility to get the computed `animationDuration`
@@ -649,7 +649,7 @@ export declare const getElementAnimationDelay: (element: HTMLElement) => number;
  * @param element target
  * @return the `animationDuration` value in miliseconds
  */
-export declare const getElementAnimationDuration: (element: HTMLElement) => number;
+export declare const getElementAnimationDuration: (element: HTMLElement | SVGElement) => number;
 
 /**
  * Returns an `HTMLElement` that matches the id in the document.
@@ -660,7 +660,7 @@ export declare const getElementAnimationDuration: (element: HTMLElement) => numb
  * @param context an element in it's document or document
  * @returns the requested element
  */
-export declare const getElementById: <T extends HTMLElement>(id: string, context?: Node) => T;
+export declare const getElementById: <T extends HTMLElement | SVGElement>(id: string, context?: Node) => T;
 
 /**
  * Shortcut for `HTMLElement.getElementsByClassName` method. Some `Node` elements
@@ -670,7 +670,7 @@ export declare const getElementById: <T extends HTMLElement>(id: string, context
  * @param parent optional Element to look into
  * @return the 'HTMLCollection'
  */
-export declare const getElementsByClassName: <T extends HTMLElement>(selector: string, parent?: ParentNode) => HTMLCollectionOf<T>;
+export declare const getElementsByClassName: <T extends Element = HTMLElement | SVGElement>(selector: string, parent?: ParentNode) => HTMLCollectionOf<T>;
 
 /**
  * Shortcut for `HTMLElement.getElementsByTagName` method. Some `Node` elements
@@ -680,7 +680,7 @@ export declare const getElementsByClassName: <T extends HTMLElement>(selector: s
  * @param parent optional Element to look into
  * @return the 'HTMLCollection'
  */
-export declare const getElementsByTagName: <T extends HTMLElement>(selector: string, parent?: ParentNode) => HTMLCollectionOf<T>;
+export declare const getElementsByTagName: <T extends Element = HTMLElement | SVGElement>(selector: string, parent?: ParentNode) => HTMLCollectionOf<T>;
 
 /**
  * Shortcut for `window.getComputedStyle(element).propertyName`
@@ -693,7 +693,7 @@ export declare const getElementsByTagName: <T extends HTMLElement>(selector: str
  * @param property the css property
  * @return the css property value
  */
-export declare const getElementStyle: (element: HTMLElement, property: string) => string;
+export declare const getElementStyle: (element: HTMLElement | SVGElement, property: string) => string;
 
 /**
  * Utility to get the computed `transitionDelay`
@@ -702,7 +702,7 @@ export declare const getElementStyle: (element: HTMLElement, property: string) =
  * @param element target
  * @return the `transitionDelay` value in miliseconds
  */
-export declare const getElementTransitionDelay: (element: HTMLElement) => number;
+export declare const getElementTransitionDelay: (element: HTMLElement | SVGElement) => number;
 
 /**
  * Utility to get the computed `transitionDuration`
@@ -711,12 +711,14 @@ export declare const getElementTransitionDelay: (element: HTMLElement) => number
  * @param element target
  * @return the `transitionDuration` value in miliseconds
  */
-export declare const getElementTransitionDuration: (element: HTMLElement) => number;
+export declare const getElementTransitionDuration: (element: HTMLElement | SVGElement) => number;
 
 /**
  * An alias for `Data.get()`.
  */
 export declare const getInstance: <T>(target: HTMLElement, component: string) => T | null;
+
+export declare const getNodeName: (node: Node | Window) => string;
 
 /**
  * Returns an `{x,y}` object with the target
@@ -733,14 +735,24 @@ export declare const getNodeScroll: (element: HTMLElement | Window) => {
 };
 
 /**
+ * Returns the `offsetParent` for a given target.
+ *
+ * @see https://github.com/floating-ui/floating-ui
+ *
+ * @param element the target node
+ * @returns the offset parent node
+ */
+export declare const getOffsetParent: (element: Element) => Element | Window;
+
+/**
  * Returns the `parentNode` also going through `ShadowRoot`.
  *
  * @see https://github.com/floating-ui/floating-ui
  *
- * @param {Node} node the target node
- * @returns {Node} the apropriate parent node
+ * @param node the target node
+ * @returns the apropriate parent node
  */
-export declare const getParentNode: (node: Node) => Node | ParentNode;
+export declare const getParentNode: (node: Node) => ParentNode;
 
 /**
  * Returns the rect relative to a given offset parent and its scroll position.
@@ -1062,6 +1074,8 @@ export declare const isTableElement: (element?: unknown) => element is HTMLTable
  * @returns the query result
  */
 export declare const isWeakMap: (obj?: unknown) => obj is WeakMap<WeakKey, unknown>;
+
+export declare const isWebKit: () => boolean;
 
 /**
  * Check if a target object is `Window`.
@@ -1717,7 +1731,7 @@ export declare type PossibleEventTarget = EventTarget & (Element | Document | Wi
  * @param parent optional node to look into
  * @return the `HTMLElement` or `querySelector` result
  */
-export declare const querySelector: <T extends HTMLElement>(selector: HTMLElement | string, parent?: ParentNode) => T | null;
+export declare const querySelector: <T extends Element = HTMLElement | SVGElement>(selector: T | string, parent?: ParentNode) => T | null;
 
 /**
  * A shortcut for `(document|Element).querySelectorAll`.
@@ -1726,7 +1740,7 @@ export declare const querySelector: <T extends HTMLElement>(selector: HTMLElemen
  * @param parent optional node to look into
  * @return the query result
  */
-export declare const querySelectorAll: <T extends HTMLElement>(selector: string, parent?: ParentNode) => NodeListOf<T>;
+export declare const querySelectorAll: <T extends Element = HTMLElement | SVGElement>(selector: string, parent?: ParentNode) => NodeListOf<T>;
 
 /**
  * A global namespace for `readystatechange` event.
@@ -1837,7 +1851,7 @@ export declare const setAttributeNS: (ns: string, element: HTMLElement, att: str
  * @param element target element
  * @param styles attribute value
  */
-export declare const setElementStyle: (element: HTMLElement, styles: Partial<CSS4Declaration>) => void;
+export declare const setElementStyle: (element: HTMLElement | SVGElement, styles: Partial<CSS4Declaration>) => void;
 
 /**
  * A global namespace for `submit` event.

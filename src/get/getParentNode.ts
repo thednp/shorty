@@ -8,12 +8,12 @@ import isNode from "../is/isNode";
  *
  * @see https://github.com/floating-ui/floating-ui
  *
- * @param {Node} node the target node
- * @returns {Node} the apropriate parent node
+ * @param node the target node
+ * @returns the apropriate parent node
  */
-const getParentNode = (node: Node): Node | ParentNode => {
+const getParentNode = (node: Node) => {
   if (node.nodeName === "HTML") {
-    return node;
+    return node as HTMLElement;
   }
 
   // this is a quicker (but less type safe) way to save quite some bytes from the bundle

@@ -9,7 +9,9 @@ import getElementStyle from "./getElementStyle";
  * @param element target
  * @return the `animationDelay` value in miliseconds
  */
-const getElementAnimationDelay = (element: HTMLElement): number => {
+const getElementAnimationDelay = (
+  element: HTMLElement | SVGElement,
+): number => {
   const propertyValue = getElementStyle(element, animationName);
   const durationValue = getElementStyle(element, animationDelay);
   const durationScale = durationValue.includes("ms")

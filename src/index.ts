@@ -135,6 +135,7 @@ import userAgent from "./strings/userAgent";
 import isMobile from "./boolean/isMobile";
 import isApple from "./boolean/isApple";
 import isFirefox from "./boolean/isFirefox";
+import isWebKit from "./boolean/isWebKit";
 import support3DTransform from "./boolean/support3DTransform";
 import supportPassive from "./boolean/supportPassive";
 import supportTransform from "./boolean/supportTransform";
@@ -212,7 +213,9 @@ import getElementAnimationDelay from "./get/getElementAnimationDelay";
 import getElementStyle from "./get/getElementStyle";
 import getElementTransitionDuration from "./get/getElementTransitionDuration";
 import getElementTransitionDelay from "./get/getElementTransitionDelay";
+import getNodeName from "./get/getNodeName";
 import getNodeScroll from "./get/getNodeScroll";
+import getOffsetParent from "./get/getOffsetParent";
 import getParentNode from "./get/getParentNode";
 import getRectRelativeToOffsetParent from "./get/getRectRelativeToOffsetParent";
 import getUID from "./get/getUID";
@@ -339,7 +342,9 @@ export {
   getElementTransitionDelay,
   getElementTransitionDuration,
   getInstance,
+  getNodeName,
   getNodeScroll,
+  getOffsetParent,
   getParentNode,
   getRectRelativeToOffsetParent,
   getUID,
@@ -377,6 +382,7 @@ export {
   isSVGElement,
   isTableElement,
   isWeakMap,
+  isWebKit,
   isWindow,
   kebabCase,
   keyAlt,

@@ -8,7 +8,7 @@ import isNode from "../is/isNode";
  * @param parent optional node to look into
  * @return the query result
  */
-const querySelectorAll = <T extends HTMLElement>(
+const querySelectorAll = <T extends Element = HTMLElement | SVGElement>(
   selector: string,
   parent?: ParentNode,
 ): NodeListOf<T> => {

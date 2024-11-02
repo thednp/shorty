@@ -11,7 +11,7 @@ import dispatchEvent from "./dispatchEvent";
  * @param handler `transitionend` callback
  */
 const emulateTransitionEnd = (
-  element: HTMLElement,
+  element: HTMLElement | SVGElement,
   handler: EventListener,
 ): void => {
   let called = 0;

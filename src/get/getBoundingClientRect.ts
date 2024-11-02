@@ -11,7 +11,7 @@ import type { BoundingClientRect } from "../interface/boundingClientRect";
  * @returns the bounding client rect object
  */
 const getBoundingClientRect = (
-  element: HTMLElement,
+  element: Element | HTMLElement,
   includeScale?: boolean,
 ): BoundingClientRect => {
   const { width, height, top, right, bottom, left } = element

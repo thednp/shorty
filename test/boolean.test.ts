@@ -8,6 +8,7 @@ describe('Shorty Library Tests - BOOL', () => {
       isApple,
       isMobile,
       isFirefox,
+      isWebKit,
       support3DTransform,
       supportAnimation,
       supportPassive,
@@ -26,5 +27,6 @@ describe('Shorty Library Tests - BOOL', () => {
     expect(supportTouch(), 'supportTouch').to.be.false;
     expect(supportTransform(), 'supportTransform').to.be.true;
     expect(supportTransition(), 'supportTransition').to.be.true;
+    expect(isWebKit(), 'isWebKit').to.be.false;
   });
 });

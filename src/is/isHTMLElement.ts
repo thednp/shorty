@@ -1,4 +1,4 @@
-import isNode from "./isNode";
+import isElement from "./isElement";
 
 /**
  * Checks if an element is an `HTMLElement`.
@@ -9,5 +9,5 @@ import isNode from "./isNode";
  * @returns the query result
  */
 const isHTMLElement = (element?: unknown): element is HTMLElement =>
-  (isNode(element) && element.nodeType === 1) || false;
+  (isElement(element) && "offsetWidth" in element) || false;
 export default isHTMLElement;

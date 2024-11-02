@@ -22,7 +22,6 @@ import isNode from "./isNode";
  * @returns the query result
  */
 const isElement = (element?: unknown): element is Element =>
-  (isNode(element) &&
-    [1, 2, 3, 4, 5, 6, 7, 8].some((x) => element.nodeType === x)) || false;
+  (isNode(element) && element.nodeType === 1) || false;
 
 export default isElement;

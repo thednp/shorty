@@ -11,7 +11,10 @@
  * @param property the css property
  * @return the css property value
  */
-const getElementStyle = (element: HTMLElement, property: string): string => {
+const getElementStyle = (
+  element: HTMLElement | SVGElement,
+  property: string,
+): string => {
   const computedStyle = getComputedStyle(element);
   const prop = property
     .replace("webkit", "Webkit")

@@ -10,8 +10,8 @@ import isHTMLElement from "../is/isHTMLElement";
  * @param parent optional node to look into
  * @return the `HTMLElement` or `querySelector` result
  */
-const querySelector = <T extends HTMLElement>(
-  selector: HTMLElement | string,
+const querySelector = <T extends Element = HTMLElement | SVGElement>(
+  selector: T | string,
   parent?: ParentNode,
 ): T | null => {
   if (isHTMLElement(selector)) {
@@ -19,7 +19,7 @@ const querySelector = <T extends HTMLElement>(
   }
   const lookUp = isNode(parent) ? parent : getDocument();
 
-  return lookUp.querySelector<T>(selector);
+  return lookUp.querySelector<T>(selector as string);
 };
 
 export default querySelector;
