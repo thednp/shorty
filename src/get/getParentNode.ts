@@ -1,6 +1,6 @@
 import getDocumentElement from "./getDocumentElement";
 import isShadowRoot from "../is/isShadowRoot";
-import isHTMLElement from "../is/isHTMLElement";
+import isElement from "../is/isElement";
 import isNode from "../is/isNode";
 
 /**
@@ -18,7 +18,7 @@ const getParentNode = (node: Node) => {
 
   // this is a quicker (but less type safe) way to save quite some bytes from the bundle
   return (
-    (isHTMLElement(node) && node.assignedSlot) || // step into the shadow DOM of the parent of a slotted node
+    (isElement(node) && node.assignedSlot) || // step into the shadow DOM of the parent of a slotted node
     (isNode(node) && node.parentNode) || // DOM Element detected
     (isShadowRoot(node) && node.host) || // ShadowRoot detected
     getDocumentElement(node) // fallback to <HTML>

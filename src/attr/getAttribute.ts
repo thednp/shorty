@@ -1,11 +1,11 @@
 /**
- * Shortcut for `HTMLElement.getAttribute()` method.
+ * Shortcut for `Element.getAttribute()` method.
  *
  * @param element target element
  * @param att attribute name
  * @returns attribute value
  */
-const getAttribute = (element: HTMLElement, att: string): string | null =>
+const getAttribute = (element: Element, att: string): string | null =>
   element.getAttribute(att);
 
 export default getAttribute;

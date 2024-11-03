@@ -8,7 +8,7 @@ import on from "../event/on";
 import getDocument from "../get/getDocument";
 import { KeyboardEvent } from "../interface/event";
 
-const focusTrapMap = new Map<HTMLElement, boolean>();
+const focusTrapMap = new Map<Element, boolean>();
 
 export type FocusableElement =
   | HTMLAnchorElement
@@ -19,7 +19,7 @@ export type FocusableElement =
   | HTMLDetailsElement
   | HTMLSelectElement;
 
-function handleKeyboardNavigation<T extends HTMLElement & EventTarget>(
+function handleKeyboardNavigation<T extends Element & EventTarget>(
   this: T,
   event: KeyboardEvent<T>,
 ) {
@@ -51,14 +51,14 @@ function handleKeyboardNavigation<T extends HTMLElement & EventTarget>(
  * Utility to check if a designated element is affected by focus trap;
  * @param target
  */
-export const hasFocusTrap = (target: HTMLElement) =>
+export const hasFocusTrap = (target: Element) =>
   focusTrapMap.has(target) === true;
 
 /**
  * Utility to toggle focus trap inside a designated target element;
  * @param target
  */
-export const toggleFocusTrap = (target: HTMLElement) => {
+export const toggleFocusTrap = (target: Element) => {
   const isCurrentlyTrapped = hasFocusTrap(target);
   const action = !isCurrentlyTrapped ? on : off;
   action(target, "keydown", handleKeyboardNavigation);

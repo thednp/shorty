@@ -1,5 +1,5 @@
 /**
- * Shortie for `HTMLElement.focus()` method.
+ * Shortie for `HTMLOrSVGElement.focus()` method.
  *
  * @param element is the target
  * @param options allows to pass additional options such as `preventScroll: boolean`

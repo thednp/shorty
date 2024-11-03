@@ -1,5 +1,5 @@
 /**
- * Shortcut for `SVGElement.setAttributeNS()` method.
+ * Shortcut for `Element.setAttributeNS()` method.
  *
  * @param ns attribute namespace
  * @param element target element
@@ -8,7 +8,7 @@
  */
 const setAttributeNS = (
   ns: string,
-  element: HTMLElement,
+  element: Element,
   att: string,
   value: string,
 ): void => element.setAttributeNS(ns, att, value);

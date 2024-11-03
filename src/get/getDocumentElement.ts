@@ -6,7 +6,7 @@ import getDocument from "./getDocument";
  * @param node the reference node
  * @returns the parent `<HTML>` of the node's parent document
  */
-const getDocumentElement = (node?: Node | Document | Window): HTMLElement => {
+const getDocumentElement = (node?: Node | Document | Window) => {
   return getDocument(node).documentElement;
 };
 

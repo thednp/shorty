@@ -4,7 +4,7 @@ import getElementStyle from "./getElementStyle";
 
 /**
  * Utility to get the computed `animationDuration`
- * from `HTMLElement` in miliseconds.
+ * from `Element` in miliseconds.
  *
  * @param element target
  * @return the `animationDuration` value in miliseconds

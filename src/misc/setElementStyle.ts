@@ -15,6 +15,7 @@ const setElementStyle = (
 ): void => {
   ObjectEntries(styles).forEach(([key, value]) => {
     if (value && isString(key as string) && (key as string).includes("--")) {
+      // typescript allows getting the style of Element but not set?
       (element as HTMLElement).style.setProperty(key as string, value);
     } else {
       const propObject: Partial<CSS4Declaration> = {};

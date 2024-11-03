@@ -2,7 +2,7 @@ import isWindow from "../is/isWindow";
 
 /**
  * Returns an `{x,y}` object with the target
- * `HTMLElement` / `Node` scroll position.
+ * `Element` / `Node` scroll position.
  *
  * @see https://github.com/floating-ui/floating-ui
  *
@@ -10,7 +10,7 @@ import isWindow from "../is/isWindow";
  * @returns the scroll tuple
  */
 const getNodeScroll = (
-  element: HTMLElement | Window,
+  element: Element | Window,
 ): { x: number; y: number } => {
   const isWin = isWindow(element);
   const x = isWin ? element.scrollX : element.scrollLeft;

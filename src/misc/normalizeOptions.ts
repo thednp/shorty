@@ -14,7 +14,7 @@ import toLowerCase from "./toLowerCase";
  * @return normalized component options object
  */
 const normalizeOptions = <T extends { [key: string]: unknown }>(
-  element: HTMLElement,
+  element: Element & HTMLOrSVGElement,
   defaultOps: T,
   inputOps: Partial<T>,
   ns?: string,

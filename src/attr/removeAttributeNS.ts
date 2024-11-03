@@ -1,5 +1,5 @@
 /**
- * Shortcut for `HTMLElement.removeAttributeNS()` method.
+ * Shortcut for `Element.removeAttributeNS()` method.
  *
  * @param ns attribute namespace
  * @param  element target element
@@ -7,7 +7,7 @@
  */
 const removeAttributeNS = (
   ns: string,
-  element: HTMLElement,
+  element: Element,
   att: string,
 ): void => element.removeAttributeNS(ns, att);
 

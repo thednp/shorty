@@ -4,7 +4,7 @@
  * Shortcut for `window.getComputedStyle(element).propertyName`
  * static method.
  *
- * * If `element` parameter is not an `HTMLElement`, `getComputedStyle`
+ * * If `element` parameter is not an `Element`, `getComputedStyle`
  * throws a `ReferenceError`.
  *
  * @param element target

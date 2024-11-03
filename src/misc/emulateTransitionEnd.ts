@@ -7,11 +7,11 @@ import dispatchEvent from "./dispatchEvent";
  * Utility to make sure callbacks are consistently
  * called when transition ends.
  *
- * @param element event target
+ * @param element element target
  * @param handler `transitionend` callback
  */
 const emulateTransitionEnd = (
-  element: HTMLElement | SVGElement,
+  element: Element,
   handler: EventListener,
 ): void => {
   let called = 0;

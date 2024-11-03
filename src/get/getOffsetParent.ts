@@ -79,9 +79,9 @@ const isLastTraversableNode = (node: Node): boolean => {
   return ["html", "body", "#document"].includes(getNodeName(node));
 };
 
-const getTrueOffsetParent = (element: HTMLElement) => {
+const getTrueOffsetParent = (element: Element) => {
   if (
-    !isElement(element) ||
+    !isHTMLElement(element) ||
     isFixedPositioned(element)
   ) {
     return null;

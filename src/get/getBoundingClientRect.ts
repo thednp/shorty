@@ -2,7 +2,7 @@ import isHTMLElement from "../is/isHTMLElement";
 import type { BoundingClientRect } from "../interface/boundingClientRect";
 
 /**
- * Returns the bounding client rect of a target `HTMLElement`.
+ * Returns the bounding client rect of a target `Element`.
  *
  * @see https://github.com/floating-ui/floating-ui
  *
@@ -11,7 +11,7 @@ import type { BoundingClientRect } from "../interface/boundingClientRect";
  * @returns the bounding client rect object
  */
 const getBoundingClientRect = (
-  element: Element | HTMLElement,
+  element: Element,
   includeScale?: boolean,
 ): BoundingClientRect => {
   const { width, height, top, right, bottom, left } = element

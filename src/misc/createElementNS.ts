@@ -4,7 +4,7 @@ import isString from "../is/isString";
 
 /**
  * Shortie for `document.createElementNS` method
- * which allows you to create a new `HTMLElement` for a given `tagName`
+ * which allows you to create a new `Element` for a given `tagName`
  * or based on an object with specific non-readonly attributes with string values:
  * `id`, `className`, `textContent`, `style`, etc.
  * Note: some elements resulted from this function call may not be compatible with
@@ -12,11 +12,11 @@ import isString from "../is/isString";
  *
  * @see https://developer.mozilla.org/en-US/docs/Web/API/Document/createElementNS
  *
- * @param ns `namespaceURI` to associate with the new `HTMLElement`
+ * @param ns `namespaceURI` to associate with the new `Element`
  * @param param `tagName` or object
- * @return a new `HTMLElement`
+ * @return a new `Element`
  */
-const createElementNS = <T extends Element = HTMLElement>(
+const createElementNS = <T extends Element>(
   ns: string,
   param?: string | Partial<T>,
 ): T | undefined => {

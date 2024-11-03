@@ -1,10 +1,10 @@
 /**
- * Check class in `HTMLElement.classList`.
+ * Check class in `Element.classList`.
  *
  * @param element target
  * @param classNAME to check
  */
-const hasClass = (element: HTMLElement, classNAME: string): boolean => {
+const hasClass = (element: Element, classNAME: string): boolean => {
   return element.classList.contains(classNAME);
 };
 

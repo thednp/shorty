@@ -1,5 +1,5 @@
 /**
- * Shortcut for `HTMLElement.hasAttributeNS()` method.
+ * Shortcut for `Element.hasAttributeNS()` method.
  *
  * @param ns attribute namespace
  * @param element target element
@@ -8,7 +8,7 @@
  */
 const hasAttributeNS = (
   ns: string,
-  element: HTMLElement,
+  element: Element,
   att: string,
 ): boolean => element.hasAttributeNS(ns, att);
 

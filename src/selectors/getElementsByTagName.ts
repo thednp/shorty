@@ -2,7 +2,7 @@ import getDocument from "../get/getDocument";
 import isNode from "../is/isNode";
 
 /**
- * Shortcut for `HTMLElement.getElementsByTagName` method. Some `Node` elements
+ * Shortcut for `Element.getElementsByTagName` method. Some `Node` elements
  * like `ShadowRoot` do not support `getElementsByTagName`.
  *
  * @param selector the tag name

@@ -4,7 +4,7 @@ let elementUID = 0;
 let elementMapUID = 0;
 
 type KeyIdMap = Map<string | number, number>;
-type IDMap = Map<number | string | HTMLElement, number | KeyIdMap>;
+type IDMap = Map<number | string | Element, number | KeyIdMap>;
 
 const elementIDMap: IDMap = new Map();
 
@@ -15,7 +15,7 @@ const elementIDMap: IDMap = new Map();
  * @param key optional identifier key
  * @returns an existing or new unique ID
  */
-const getUID = (element: HTMLElement, key?: string): number => {
+const getUID = (element: Element, key?: string): number => {
   let result = key ? elementUID : elementMapUID;
 
   if (key) {

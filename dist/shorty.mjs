@@ -350,7 +350,7 @@ const fe = (t) => x.has(t) === !0, wo = (t) => {
 }, Ao = (t) => d(t).body, w = (t) => d(t).documentElement, So = (t) => d(t).head, pe = (t) => i(t) ? (t.nodeName || "").toLowerCase() : "#document", ko = (t) => {
   const e = j(t), n = e ? t.scrollX : t.scrollLeft, o = e ? t.scrollY : t.scrollTop;
   return { x: n, y: o };
-}, ge = (t) => i(t) && t.constructor.name === "ShadowRoot" || !1, k = (t) => t.nodeName === "HTML" ? t : b(t) && t.assignedSlot || i(t) && t.parentNode || ge(t) && t.host || w(t), me = (t) => t ? K(t) ? t.defaultView : i(t) ? t?.ownerDocument?.defaultView : t : window, ve = (t) => i(t) && ["TABLE", "TD", "TH"].includes(t.nodeName) || !1, be = (t, e) => t.matches(e), D = (t) => f(t, "position") === "static", Ee = (t) => f(t, "position") === "fixed", G = (t) => [":popover-open", ":modal"].some((e) => {
+}, ge = (t) => i(t) && t.constructor.name === "ShadowRoot" || !1, k = (t) => t.nodeName === "HTML" ? t : l(t) && t.assignedSlot || i(t) && t.parentNode || ge(t) && t.host || w(t), me = (t) => t ? K(t) ? t.defaultView : i(t) ? t?.ownerDocument?.defaultView : t : window, ve = (t) => i(t) && ["TABLE", "TD", "TH"].includes(t.nodeName) || !1, be = (t, e) => t.matches(e), D = (t) => f(t, "position") === "static", Ee = (t) => f(t, "position") === "fixed", G = (t) => [":popover-open", ":modal"].some((e) => {
   try {
     return be(t, e);
   } catch {
@@ -374,7 +374,7 @@ const fe = (t) => x.has(t) === !0, wo = (t) => {
   }
   return null;
 }, z = (t) => ["html", "body", "#document"].includes(pe(t)), P = (t) => {
-  if (!l(t) || Ee(t))
+  if (!b(t) || Ee(t))
     return null;
   let e = t.offsetParent;
   return w(t) === e && (e = e.ownerDocument.body), e;
@@ -431,10 +431,10 @@ const h = /* @__PURE__ */ new Map(), we = (t, e) => {
   const { top: e, bottom: n } = y(t), { clientHeight: o } = w(t);
   return e <= o && n >= 0;
 }, Do = (t) => {
-  if (!i(t)) return !1;
+  if (!l(t)) return !1;
   const { clientWidth: e, clientHeight: n } = w(t), { top: o, left: s, bottom: r, right: a } = y(t, !0);
   return o >= 0 && s >= 0 && r <= n && a <= e;
-}, Lo = (t) => Ae(t) && t.every(b) || !1, Oo = (t) => typeof t == "function" || !1, xo = (t) => v(t) && t.constructor.name === "HTMLCollection" || !1, zo = (t) => b(t) && t.tagName === "IMG" || !1, Io = (t) => {
+}, Lo = (t) => Ae(t) && t.every(l) || !1, Oo = (t) => typeof t == "function" || !1, xo = (t) => v(t) && t.constructor.name === "HTMLCollection" || !1, zo = (t) => b(t) && t.tagName === "IMG" || !1, Io = (t) => {
   if (!N(t)) return !1;
   try {
     JSON.parse(t);

@@ -2,7 +2,7 @@ import getDocument from "../get/getDocument";
 import isNode from "../is/isNode";
 
 /**
- * Shortcut for `HTMLElement.getElementsByClassName` method. Some `Node` elements
+ * Shortcut for `Element.getElementsByClassName` method. Some `Node` elements
  * like `ShadowRoot` do not support `getElementsByClassName`.
  *
  * @param selector the class name
@@ -14,7 +14,7 @@ const getElementsByClassName = <T extends Element>(
   parent?: ParentNode,
 ) => {
   const lookUp = parent && isNode(parent) ? parent : getDocument();
-  return (lookUp as HTMLElement | Document).getElementsByClassName(
+  return (lookUp as Element | Document).getElementsByClassName(
     selector,
   ) as HTMLCollectionOf<T>;
 };

@@ -1,4 +1,4 @@
-import isHTMLElement from "./isHTMLElement";
+import isElement from "./isElement";
 import isArray from "./isArray";
 
 /**
@@ -7,7 +7,7 @@ import isArray from "./isArray";
  * @param obj the target object
  * @returns the query result
  */
-const isElementsArray = (obj?: unknown): obj is HTMLElement[] =>
-  (isArray(obj) && obj.every(isHTMLElement)) || false;
+const isElementsArray = (obj?: unknown): obj is Element[] =>
+  (isArray(obj) && obj.every(isElement)) || false;
 
 export default isElementsArray;

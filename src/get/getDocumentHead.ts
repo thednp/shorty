@@ -7,7 +7,7 @@ import getDocument from "./getDocument";
  */
 const getDocumentHead = (
   node?: Node | Document | Window,
-): HTMLElement & HTMLHeadElement => {
+) => {
   return getDocument(node).head;
 };
 

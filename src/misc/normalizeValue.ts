@@ -25,7 +25,7 @@ const normalizeValue = (value?: unknown): NormalValue => {
     return +(value as string);
   }
 
-  // string / function / HTMLElement / object / undefined
+  // string / function / Element / object / undefined
   return value as NormalValue;
 };
 

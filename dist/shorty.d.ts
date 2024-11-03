@@ -11,12 +11,12 @@ declare interface AbstractView {
 }
 
 /**
- * Add one or more CSS classes to `HTMLElement.classList`.
+ * Add one or more CSS classes to `Element.classList`.
  *
  * @param element target
  * @param classNAME to add
  */
-export declare const addClass: (element: HTMLElement, ...classNAME: string[]) => void;
+export declare const addClass: (element: Element, ...classNAME: string[]) => void;
 
 /**
  * A global namespace for 'addEventListener' string.
@@ -294,7 +294,7 @@ export declare const createElement: <T extends HTMLElement>(param?: string | Par
 
 /**
  * Shortie for `document.createElementNS` method
- * which allows you to create a new `HTMLElement` for a given `tagName`
+ * which allows you to create a new `Element` for a given `tagName`
  * or based on an object with specific non-readonly attributes with string values:
  * `id`, `className`, `textContent`, `style`, etc.
  * Note: some elements resulted from this function call may not be compatible with
@@ -302,11 +302,11 @@ export declare const createElement: <T extends HTMLElement>(param?: string | Par
  *
  * @see https://developer.mozilla.org/en-US/docs/Web/API/Document/createElementNS
  *
- * @param ns `namespaceURI` to associate with the new `HTMLElement`
+ * @param ns `namespaceURI` to associate with the new `Element`
  * @param param `tagName` or object
- * @return a new `HTMLElement`
+ * @return a new `Element`
  */
-export declare const createElementNS: <T extends Element = HTMLElement>(ns: string, param?: string | Partial<T>) => T | undefined;
+export declare const createElementNS: <T extends Element>(ns: string, param?: string | Partial<T>) => T | undefined;
 
 export declare interface CSS4Declaration
 extends Exclude<() => string | symbol, CSSStyleDeclaration> {
@@ -462,10 +462,10 @@ export declare const emulateAnimationEnd: (element: Element, handler: EventListe
  * Utility to make sure callbacks are consistently
  * called when transition ends.
  *
- * @param element event target
+ * @param element element target
  * @param handler `transitionend` callback
  */
-export declare const emulateTransitionEnd: (element: HTMLElement | SVGElement, handler: EventListener) => void;
+export declare const emulateTransitionEnd: (element: Element, handler: EventListener) => void;
 
 /**
  * A global namespace for `error` event.
@@ -493,7 +493,7 @@ export declare const Float64ArrayFrom: (arr: ArrayLike<number> | Iterable<number
 declare type Fn = (...args: unknown[]) => unknown;
 
 /**
- * Shortie for `HTMLElement.focus()` method.
+ * Shortie for `HTMLOrSVGElement.focus()` method.
  *
  * @param element is the target
  * @param options allows to pass additional options such as `preventScroll: boolean`
@@ -559,26 +559,26 @@ export declare const gestureendEvent = "gestureend";
 export declare const gesturestartEvent = "gesturestart";
 
 /**
- * Shortcut for `HTMLElement.getAttribute()` method.
+ * Shortcut for `Element.getAttribute()` method.
  *
  * @param element target element
  * @param att attribute name
  * @returns attribute value
  */
-export declare const getAttribute: (element: HTMLElement, att: string) => string | null;
+export declare const getAttribute: (element: Element, att: string) => string | null;
 
 /**
- * Shortcut for `HTMLElement.getAttributeNS()` method.
+ * Shortcut for `Element.getAttributeNS()` method.
  *
  * @param ns attribute namespace
  * @param element target element
  * @param att attribute name
  * @returns attribute value
  */
-export declare const getAttributeNS: (ns: string, element: HTMLElement, att: string) => string | null;
+export declare const getAttributeNS: (ns: string, element: Element, att: string) => string | null;
 
 /**
- * Returns the bounding client rect of a target `HTMLElement`.
+ * Returns the bounding client rect of a target `Element`.
  *
  * @see https://github.com/floating-ui/floating-ui
  *
@@ -586,7 +586,7 @@ export declare const getAttributeNS: (ns: string, element: HTMLElement, att: str
  * @param includeScale when *true*, the target scale is also computed
  * @returns the bounding client rect object
  */
-export declare const getBoundingClientRect: (element: Element | HTMLElement, includeScale?: boolean) => BoundingClientRect;
+export declare const getBoundingClientRect: (element: Element, includeScale?: boolean) => BoundingClientRect;
 
 /**
  * Returns an `Array` of `Node` elements that are registered as
@@ -631,7 +631,7 @@ export declare const getDocumentElement: (node?: Node | Document | Window) => HT
  * @param node the reference node
  * @returns the `<head>` of the node's parent document
  */
-export declare const getDocumentHead: (node?: Node | Document | Window) => HTMLElement & HTMLHeadElement;
+export declare const getDocumentHead: (node?: Node | Document | Window) => HTMLHeadElement;
 
 /**
  * Utility to get the computed `animationDelay`
@@ -644,7 +644,7 @@ export declare const getElementAnimationDelay: (element: Element) => number;
 
 /**
  * Utility to get the computed `animationDuration`
- * from `HTMLElement` in miliseconds.
+ * from `Element` in miliseconds.
  *
  * @param element target
  * @return the `animationDuration` value in miliseconds
@@ -663,7 +663,7 @@ export declare const getElementAnimationDuration: (element: Element) => number;
 export declare const getElementById: (id: string, context?: Node) => HTMLElement | null;
 
 /**
- * Shortcut for `HTMLElement.getElementsByClassName` method. Some `Node` elements
+ * Shortcut for `Element.getElementsByClassName` method. Some `Node` elements
  * like `ShadowRoot` do not support `getElementsByClassName`.
  *
  * @param selector the class name
@@ -673,7 +673,7 @@ export declare const getElementById: (id: string, context?: Node) => HTMLElement
 export declare const getElementsByClassName: <T extends Element>(selector: string, parent?: ParentNode) => HTMLCollectionOf<T>;
 
 /**
- * Shortcut for `HTMLElement.getElementsByTagName` method. Some `Node` elements
+ * Shortcut for `Element.getElementsByTagName` method. Some `Node` elements
  * like `ShadowRoot` do not support `getElementsByTagName`.
  *
  * @param selector the tag name
@@ -686,7 +686,7 @@ export declare const getElementsByTagName: <T extends Element>(selector: string,
  * Shortcut for `window.getComputedStyle(element).propertyName`
  * static method.
  *
- * * If `element` parameter is not an `HTMLElement`, `getComputedStyle`
+ * * If `element` parameter is not an `Element`, `getComputedStyle`
  * throws a `ReferenceError`.
  *
  * @param element target
@@ -722,14 +722,14 @@ export declare const getNodeName: (node: Node | Window) => string;
 
 /**
  * Returns an `{x,y}` object with the target
- * `HTMLElement` / `Node` scroll position.
+ * `Element` / `Node` scroll position.
  *
  * @see https://github.com/floating-ui/floating-ui
  *
  * @param element target node / element
  * @returns the scroll tuple
  */
-export declare const getNodeScroll: (element: HTMLElement | Window) => {
+export declare const getNodeScroll: (element: Element | Window) => {
     x: number;
     y: number;
 };
@@ -764,7 +764,7 @@ export declare const getParentNode: (node: Node) => ParentNode;
  * @param scroll the offsetParent scroll position
  * @returns a DOMRect like object
  */
-export declare const getRectRelativeToOffsetParent: (element: HTMLElement, offsetParent: HTMLElement, scroll: {
+export declare const getRectRelativeToOffsetParent: (element: Element, offsetParent: Element, scroll: {
     x: number;
     y: number;
 }) => OffsetRect;
@@ -776,7 +776,7 @@ export declare const getRectRelativeToOffsetParent: (element: HTMLElement, offse
  * @param key optional identifier key
  * @returns an existing or new unique ID
  */
-export declare const getUID: (element: HTMLElement, key?: string) => number;
+export declare const getUID: (element: Element, key?: string) => number;
 
 /**
  * Returns the `Window` object of a target node.
@@ -789,37 +789,37 @@ export declare const getUID: (element: HTMLElement, key?: string) => number;
 export declare const getWindow: (node?: Node) => Window;
 
 /**
- * Shortcut for `HTMLElement.hasAttribute()` method.
+ * Shortcut for `Element.hasAttribute()` method.
  *
  * @param element target element
  * @param att attribute name
  * @returns the query result
  */
-export declare const hasAttribute: (element: HTMLElement, att: string) => boolean;
+export declare const hasAttribute: (element: Element, att: string) => boolean;
 
 /**
- * Shortcut for `HTMLElement.hasAttributeNS()` method.
+ * Shortcut for `Element.hasAttributeNS()` method.
  *
  * @param ns attribute namespace
  * @param element target element
  * @param att attribute name
  * @returns the query result
  */
-export declare const hasAttributeNS: (ns: string, element: HTMLElement, att: string) => boolean;
+export declare const hasAttributeNS: (ns: string, element: Element, att: string) => boolean;
 
 /**
- * Check class in `HTMLElement.classList`.
+ * Check class in `Element.classList`.
  *
  * @param element target
  * @param classNAME to check
  */
-export declare const hasClass: (element: HTMLElement, classNAME: string) => boolean;
+export declare const hasClass: (element: Element, classNAME: string) => boolean;
 
 /**
  * Utility to check if a designated element is affected by focus trap;
  * @param target
  */
-export declare const hasFocusTrap: (target: HTMLElement) => boolean;
+export declare const hasFocusTrap: (target: Element) => boolean;
 
 /**
  * An accessor that checks for Apple browsers.
@@ -878,13 +878,13 @@ export declare const isElement: (element?: unknown) => element is Element;
 export declare const isElementInScrollRange: (element?: Element) => boolean;
 
 /**
- * Utility to determine if an `HTMLElement`
+ * Utility to determine if an `Element`
  * is fully visible in the viewport.
  *
  * @param element target
  * @return the query result
  */
-export declare const isElementInViewport: (element?: HTMLElement) => boolean;
+export declare const isElementInViewport: (element?: Element) => boolean;
 
 /**
  * Checks if an object is an `Array` in which all items are `Element`.
@@ -892,7 +892,7 @@ export declare const isElementInViewport: (element?: HTMLElement) => boolean;
  * @param obj the target object
  * @returns the query result
  */
-export declare const isElementsArray: (obj?: unknown) => obj is HTMLElement[];
+export declare const isElementsArray: (obj?: unknown) => obj is Element[];
 
 /**
  * An accessor that checks for Gecko browsers. When writing this file,
@@ -1022,14 +1022,14 @@ export declare const isObject: (obj?: unknown) => obj is object;
 export declare const isRTL: (node?: Node) => boolean;
 
 /**
- * Checks if a target `HTMLElement` is affected by scale.
+ * Checks if a target `Element` is affected by scale.
  *
  * @see https://github.com/floating-ui/floating-ui
  *
  * @param element target
  * @returns the query result
  */
-export declare const isScaledElement: (element?: HTMLElement) => boolean;
+export declare const isScaledElement: (element?: Element) => boolean;
 
 /**
  * Check if target is a `ShadowRoot`.
@@ -1546,7 +1546,7 @@ export declare const noop: () => void;
  */
 export declare const normalizeOptions: <T extends {
     [key: string]: unknown;
-}>(element: HTMLElement, defaultOps: T, inputOps: Partial<T>, ns?: string) => T;
+}>(element: Element & HTMLOrSVGElement, defaultOps: T, inputOps: Partial<T>, ns?: string) => T;
 
 /**
  * Utility to normalize component options
@@ -1723,12 +1723,12 @@ export declare const pointerupEvent = "pointerup";
 export declare type PossibleEventTarget = EventTarget & (Element | Document | Window);
 
 /**
- * Utility to check if target is typeof `HTMLElement`, `Element`, `Node`
+ * Utility to check if target is typeof `Element`, `Node`
  * or find one that matches a selector.
  *
  * @param selector the input selector or target element
  * @param parent optional node to look into
- * @return the `HTMLElement` or `querySelector` result
+ * @return the `Element` or null
  */
 export declare const querySelector: <T extends Element>(selector: T | string, parent?: ParentNode) => T | null;
 
@@ -1755,29 +1755,29 @@ export declare const readystatechangeEvent = "readystatechange";
 export declare const reflow: (element: HTMLElement) => number;
 
 /**
- * Shortcut for `HTMLElement.removeAttribute()` method.
+ * Shortcut for `Element.removeAttribute()` method.
  *
  * @param element target element
  * @param att attribute name
  */
-export declare const removeAttribute: (element: HTMLElement, att: string) => void;
+export declare const removeAttribute: (element: Element, att: string) => void;
 
 /**
- * Shortcut for `HTMLElement.removeAttributeNS()` method.
+ * Shortcut for `Element.removeAttributeNS()` method.
  *
  * @param ns attribute namespace
  * @param  element target element
  * @param att attribute name
  */
-export declare const removeAttributeNS: (ns: string, element: HTMLElement, att: string) => void;
+export declare const removeAttributeNS: (ns: string, element: Element, att: string) => void;
 
 /**
- * Remove one or more classes from `HTMLElement.classList`.
+ * Remove one or more classes from `Element.classList`.
  *
  * @param element target
  * @param classNAME to remove
  */
-export declare const removeClass: (element: HTMLElement, ...classNAME: string[]) => void;
+export declare const removeClass: (element: Element, ...classNAME: string[]) => void;
 
 /**
  * A global namespace for 'removeEventListener' string.
@@ -1826,23 +1826,23 @@ export declare const selectEvent = "select";
 export declare const selectstartEvent = "selectstart";
 
 /**
- * Shortcut for `HTMLElement.setAttribute()` method.
+ * Shortcut for `Element.setAttribute()` method.
  *
  * @param element target element
  * @param att attribute name
  * @param value attribute value
  */
-export declare const setAttribute: (element: HTMLElement, att: string, value: string) => void;
+export declare const setAttribute: (element: Element, att: string, value: string) => void;
 
 /**
- * Shortcut for `SVGElement.setAttributeNS()` method.
+ * Shortcut for `Element.setAttributeNS()` method.
  *
  * @param ns attribute namespace
  * @param element target element
  * @param att attribute name
  * @param value attribute value
  */
-export declare const setAttributeNS: (ns: string, element: HTMLElement, att: string, value: string) => void;
+export declare const setAttributeNS: (ns: string, element: Element, att: string, value: string) => void;
 
 /**
  * Shortcut for multiple uses of `HTMLElement.style.propertyName` method.
@@ -1931,7 +1931,7 @@ export declare const Timer: {
  * Utility to toggle focus trap inside a designated target element;
  * @param target
  */
-export declare const toggleFocusTrap: (target: HTMLElement) => void;
+export declare const toggleFocusTrap: (target: Element) => void;
 
 /**
  * Shortcut for `String.toLowerCase()`.
