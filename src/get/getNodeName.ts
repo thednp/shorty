@@ -1,4 +1,5 @@
 import isNode from "../is/isNode";
+
 const getNodeName = (node: Node | Window) => {
   /* istanbul ignore else @preserve */
   if (isNode(node)) {

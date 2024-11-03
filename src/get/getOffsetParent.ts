@@ -11,11 +11,11 @@ import getNodeName from "./getNodeName";
 import isNode from "../is/isNode";
 
 const isStaticPositioned = (element: Element) => {
-  return getElementStyle(element as HTMLElement, "position") === "static";
+  return getElementStyle(element, "position") === "static";
 };
 
 const isFixedPositioned = (element: Element) => {
-  return getElementStyle(element as HTMLElement, "position") === "fixed";
+  return getElementStyle(element, "position") === "fixed";
 };
 
 const isTopLayer = (element: Element) => {
@@ -62,7 +62,7 @@ const isContainingBlock = (
 const getContainingBlock = (element: Element) => {
   let currentNode: Node | null = getParentNode(element);
   /* istanbul ignore next @preserve */
-  while (isHTMLElement(currentNode) && !isLastTraversableNode(currentNode)) {
+  while (isElement(currentNode) && !isLastTraversableNode(currentNode)) {
     if (isContainingBlock(currentNode)) {
       return currentNode;
     } else if (isTopLayer(currentNode)) {
@@ -81,7 +81,7 @@ const isLastTraversableNode = (node: Node): boolean => {
 
 const getTrueOffsetParent = (element: HTMLElement) => {
   if (
-    !isHTMLElement(element) ||
+    !isElement(element) ||
     isFixedPositioned(element)
   ) {
     return null;

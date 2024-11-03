@@ -11,7 +11,7 @@ import dispatchEvent from "./dispatchEvent";
  * @param handler `animationend` callback
  */
 const emulateAnimationEnd = (
-  element: HTMLElement | SVGElement,
+  element: Element,
   handler: EventListener,
 ): void => {
   let called = 0;

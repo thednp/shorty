@@ -248,11 +248,11 @@ export declare type ClipboardEventHandler<T = Element> = EventHandler<T, Clipboa
  *
  * @see https://stackoverflow.com/q/54520554/803358
  *
- * @param element Element to look into
- * @param selector the selector name
+ * @param element target Element to check
+ * @param selector the selector string
  * @return the query result
  */
-export declare const closest: <T extends Element = HTMLElement | SVGElement>(element: T, selector: string) => HTMLElement | null;
+export declare const closest: <T extends Element>(element: T, selector: string) => T | null;
 
 declare interface CompositionEvent_2<T = Element>
 extends NativeEvent<T, NativeCompositionEvent> {
@@ -328,7 +328,7 @@ export declare interface CustomElement extends HTMLElement {
  * @see https://github.com/thednp/bootstrap.native/blob/master/src/components/base-component.js
  */
 export declare const Data: {
-    data: Map<string, Map<HTMLElement, unknown>>;
+    data: Map<string, Map<Element, unknown>>;
     /**
      * Sets web components data.
      *
@@ -336,14 +336,14 @@ export declare const Data: {
      * @param component the component's name or a unique key
      * @param instance the component instance
      */
-    set: <T>(element: HTMLElement, component: string, instance: T) => void;
+    set: <T>(element: Element, component: string, instance: T) => void;
     /**
      * Returns all instances for specified component.
      *
      * @param component the component's name or a unique key
      * @returns all the component instances
      */
-    getAllFor: <T>(component: string) => Map<HTMLElement, T> | null;
+    getAllFor: <T>(component: string) => Map<Element, T> | null;
     /**
      * Returns the instance associated with the target.
      *
@@ -351,14 +351,14 @@ export declare const Data: {
      * @param component the component's name or a unique key
      * @returns the instance
      */
-    get: <T>(element: HTMLElement, component: string) => T | null;
+    get: <T>(element: Element, component: string) => T | null;
     /**
      * Removes web components data.
      *
      * @param element target element
      * @param component the component's name or a unique key
      */
-    remove: <T>(element: HTMLElement, component: string) => void;
+    remove: <T>(element: Element, component: string) => void;
 };
 
 /**
@@ -456,7 +456,7 @@ export declare const dragstartEvent = "dragstart";
  * @param element target
  * @param handler `animationend` callback
  */
-export declare const emulateAnimationEnd: (element: HTMLElement | SVGElement, handler: EventListener) => void;
+export declare const emulateAnimationEnd: (element: Element, handler: EventListener) => void;
 
 /**
  * Utility to make sure callbacks are consistently
@@ -640,7 +640,7 @@ export declare const getDocumentHead: (node?: Node | Document | Window) => HTMLE
  * @param element target
  * @return the `animationDelay` value in miliseconds
  */
-export declare const getElementAnimationDelay: (element: HTMLElement | SVGElement) => number;
+export declare const getElementAnimationDelay: (element: Element) => number;
 
 /**
  * Utility to get the computed `animationDuration`
@@ -649,7 +649,7 @@ export declare const getElementAnimationDelay: (element: HTMLElement | SVGElemen
  * @param element target
  * @return the `animationDuration` value in miliseconds
  */
-export declare const getElementAnimationDuration: (element: HTMLElement | SVGElement) => number;
+export declare const getElementAnimationDuration: (element: Element) => number;
 
 /**
  * Returns an `HTMLElement` that matches the id in the document.
@@ -660,7 +660,7 @@ export declare const getElementAnimationDuration: (element: HTMLElement | SVGEle
  * @param context an element in it's document or document
  * @returns the requested element
  */
-export declare const getElementById: <T extends HTMLElement>(id: string, context?: Node) => T;
+export declare const getElementById: (id: string, context?: Node) => HTMLElement | null;
 
 /**
  * Shortcut for `HTMLElement.getElementsByClassName` method. Some `Node` elements
@@ -670,7 +670,7 @@ export declare const getElementById: <T extends HTMLElement>(id: string, context
  * @param parent optional Element to look into
  * @return the 'HTMLCollection'
  */
-export declare const getElementsByClassName: <T extends Element = HTMLElement | SVGElement>(selector: string, parent?: ParentNode) => HTMLCollectionOf<T>;
+export declare const getElementsByClassName: <T extends Element>(selector: string, parent?: ParentNode) => HTMLCollectionOf<T>;
 
 /**
  * Shortcut for `HTMLElement.getElementsByTagName` method. Some `Node` elements
@@ -680,7 +680,7 @@ export declare const getElementsByClassName: <T extends Element = HTMLElement | 
  * @param parent optional Element to look into
  * @return the 'HTMLCollection'
  */
-export declare const getElementsByTagName: <T extends Element = HTMLElement | SVGElement>(selector: string, parent?: ParentNode) => HTMLCollectionOf<T>;
+export declare const getElementsByTagName: <T extends Element>(selector: string, parent?: ParentNode) => HTMLCollectionOf<T>;
 
 /**
  * Shortcut for `window.getComputedStyle(element).propertyName`
@@ -693,7 +693,7 @@ export declare const getElementsByTagName: <T extends Element = HTMLElement | SV
  * @param property the css property
  * @return the css property value
  */
-export declare const getElementStyle: (element: HTMLElement | SVGElement, property: string) => string;
+export declare const getElementStyle: (element: Element, property: string) => string;
 
 /**
  * Utility to get the computed `transitionDelay`
@@ -702,7 +702,7 @@ export declare const getElementStyle: (element: HTMLElement | SVGElement, proper
  * @param element target
  * @return the `transitionDelay` value in miliseconds
  */
-export declare const getElementTransitionDelay: (element: HTMLElement | SVGElement) => number;
+export declare const getElementTransitionDelay: (element: Element) => number;
 
 /**
  * Utility to get the computed `transitionDuration`
@@ -711,12 +711,12 @@ export declare const getElementTransitionDelay: (element: HTMLElement | SVGEleme
  * @param element target
  * @return the `transitionDuration` value in miliseconds
  */
-export declare const getElementTransitionDuration: (element: HTMLElement | SVGElement) => number;
+export declare const getElementTransitionDuration: (element: Element) => number;
 
 /**
  * An alias for `Data.get()`.
  */
-export declare const getInstance: <T>(target: HTMLElement, component: string) => T | null;
+export declare const getInstance: <T>(target: Element, component: string) => T | null;
 
 export declare const getNodeName: (node: Node | Window) => string;
 
@@ -869,13 +869,13 @@ export declare const isDocument: (obj?: unknown) => obj is Document;
 export declare const isElement: (element?: unknown) => element is Element;
 
 /**
- * Utility to determine if an `HTMLElement`
+ * Utility to determine if an `Element`
  * is partially visible in viewport.
  *
  * @param element target
  * @return the query result
  */
-export declare const isElementInScrollRange: (element?: HTMLElement) => boolean;
+export declare const isElementInScrollRange: (element?: Element) => boolean;
 
 /**
  * Utility to determine if an `HTMLElement`
@@ -1730,7 +1730,7 @@ export declare type PossibleEventTarget = EventTarget & (Element | Document | Wi
  * @param parent optional node to look into
  * @return the `HTMLElement` or `querySelector` result
  */
-export declare const querySelector: <T extends Element = HTMLElement | SVGElement>(selector: T | string, parent?: ParentNode) => T | null;
+export declare const querySelector: <T extends Element>(selector: T | string, parent?: ParentNode) => T | null;
 
 /**
  * A shortcut for `(document|Element).querySelectorAll`.
@@ -1739,7 +1739,7 @@ export declare const querySelector: <T extends Element = HTMLElement | SVGElemen
  * @param parent optional node to look into
  * @return the query result
  */
-export declare const querySelectorAll: <T extends Element = HTMLElement | SVGElement>(selector: string, parent?: ParentNode) => NodeListOf<T>;
+export declare const querySelectorAll: <T extends Element>(selector: string, parent?: ParentNode) => NodeListOf<T>;
 
 /**
  * A global namespace for `readystatechange` event.
@@ -1850,7 +1850,7 @@ export declare const setAttributeNS: (ns: string, element: HTMLElement, att: str
  * @param element target element
  * @param styles attribute value
  */
-export declare const setElementStyle: (element: HTMLElement | SVGElement, styles: Partial<CSS4Declaration>) => void;
+export declare const setElementStyle: (element: Element, styles: Partial<CSS4Declaration>) => void;
 
 /**
  * A global namespace for `submit` event.
@@ -1909,7 +1909,7 @@ export declare const Timer: {
      * @param delay the execution delay
      * @param key a unique key
      */
-    set: (element: HTMLElement, callback: TimerHandler, delay: number, key?: string) => void;
+    set: (element: Element, callback: TimerHandler, delay: number, key?: string) => void;
     /**
      * Returns the timer associated with the target.
      *
@@ -1917,14 +1917,14 @@ export declare const Timer: {
      * @param key a unique
      * @returns the timer
      */
-    get: (element: HTMLElement, key?: string) => number | null;
+    get: (element: Element, key?: string) => number | null;
     /**
      * Clears the element's timer.
      *
      * @param element target element
      * @param key a unique key
      */
-    clear: (element: HTMLElement, key?: string) => void;
+    clear: (element: Element, key?: string) => void;
 };
 
 /**

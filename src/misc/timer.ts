@@ -1,9 +1,9 @@
 import isMap from "../is/isMap";
-import isHTMLElement from "../is/isHTMLElement";
+import isElement from "../is/isElement";
 import isNumber from "../is/isNumber";
 
 type KeyMap = Map<string, number>;
-type TimeMap = Map<HTMLElement, number | KeyMap>;
+type TimeMap = Map<Element, number | KeyMap>;
 
 const TimeCache: TimeMap = new Map() as TimeMap;
 /**
@@ -21,12 +21,12 @@ const Timer = {
    * @param key a unique key
    */
   set: (
-    element: HTMLElement,
+    element: Element,
     callback: TimerHandler,
     delay: number,
     key?: string,
   ): void => {
-    if (!isHTMLElement(element)) return;
+    if (!isElement(element)) return;
 
     // @legal test  comment
     // @license test  comment
@@ -54,8 +54,8 @@ const Timer = {
    * @param key a unique
    * @returns the timer
    */
-  get: (element: HTMLElement, key?: string): number | null => {
-    if (!isHTMLElement(element)) return null;
+  get: (element: Element, key?: string): number | null => {
+    if (!isElement(element)) return null;
     const keyTimers = TimeCache.get(element);
 
     if (key && keyTimers && isMap(keyTimers as KeyMap)) {
@@ -74,8 +74,8 @@ const Timer = {
    * @param element target element
    * @param key a unique key
    */
-  clear: (element: HTMLElement, key?: string): void => {
-    if (!isHTMLElement(element)) return;
+  clear: (element: Element, key?: string): void => {
+    if (!isElement(element)) return;
 
     const keyTimers = TimeCache.get(element);
 

@@ -9,7 +9,7 @@ import getElementStyle from "./getElementStyle";
  * @param element target
  * @return the `transitionDelay` value in miliseconds
  */
-const getElementTransitionDelay = (element: HTMLElement | SVGElement) => {
+const getElementTransitionDelay = (element: Element) => {
   const propertyValue = getElementStyle(element, transitionProperty);
   const delayValue = getElementStyle(element, transitionDelay);
   const delayScale = delayValue.includes("ms")

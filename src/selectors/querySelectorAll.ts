@@ -8,12 +8,12 @@ import isNode from "../is/isNode";
  * @param parent optional node to look into
  * @return the query result
  */
-const querySelectorAll = <T extends Element = HTMLElement | SVGElement>(
+const querySelectorAll = <T extends Element>(
   selector: string,
   parent?: ParentNode,
-): NodeListOf<T> => {
+) => {
   const lookUp = isNode(parent) ? parent : getDocument();
-  return lookUp.querySelectorAll(selector);
+  return lookUp.querySelectorAll<T>(selector);
 };
 
 export default querySelectorAll;

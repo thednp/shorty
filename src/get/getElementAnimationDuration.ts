@@ -10,7 +10,7 @@ import getElementStyle from "./getElementStyle";
  * @return the `animationDuration` value in miliseconds
  */
 const getElementAnimationDuration = (
-  element: HTMLElement | SVGElement,
+  element: Element,
 ): number => {
   const propertyValue = getElementStyle(element, animationName);
   const durationValue = getElementStyle(element, animationDuration);

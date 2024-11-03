@@ -10,16 +10,16 @@ import type { CSS4Declaration } from "../interface/css4Declaration";
  * @param styles attribute value
  */
 const setElementStyle = (
-  element: HTMLElement | SVGElement,
+  element: Element,
   styles: Partial<CSS4Declaration>,
 ): void => {
   ObjectEntries(styles).forEach(([key, value]) => {
     if (value && isString(key as string) && (key as string).includes("--")) {
-      element.style.setProperty(key as string, value);
+      (element as HTMLElement).style.setProperty(key as string, value);
     } else {
       const propObject: Partial<CSS4Declaration> = {};
       propObject[key] = value;
-      ObjectAssign(element.style, propObject);
+      ObjectAssign((element as HTMLElement).style, propObject);
     }
   });
 };

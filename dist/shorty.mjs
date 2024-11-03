@@ -153,8 +153,8 @@ const Ce = "2.0.8", Te = "aria-checked", Me = "aria-description", De = "aria-des
   t.classList.remove(...e);
 }, Zn = (t, e) => t.classList.contains(e), { body: _n } = document, { documentElement: $n } = document, { head: Jn } = document, Xn = (t) => Array.from(t), v = (t) => t != null && typeof t == "object" || !1, i = (t) => v(t) && typeof t.nodeType == "number" && [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11].some(
   (e) => t.nodeType === e
-) || !1, k = (t) => i(t) && t.nodeType === 1 || !1, u = (t) => k(t) && "offsetWidth" in t || !1, b = /* @__PURE__ */ new Map(), L = {
-  data: b,
+) || !1, l = (t) => i(t) && t.nodeType === 1 || !1, E = /* @__PURE__ */ new Map(), L = {
+  data: E,
   /**
    * Sets web components data.
    *
@@ -163,8 +163,8 @@ const Ce = "2.0.8", Te = "aria-checked", Me = "aria-description", De = "aria-des
    * @param instance the component instance
    */
   set: (t, e, n) => {
-    if (!u(t)) return;
-    b.has(e) || b.set(e, /* @__PURE__ */ new Map()), b.get(e).set(t, n);
+    if (!l(t)) return;
+    E.has(e) || E.set(e, /* @__PURE__ */ new Map()), E.get(e).set(t, n);
   },
   /**
    * Returns all instances for specified component.
@@ -172,7 +172,7 @@ const Ce = "2.0.8", Te = "aria-checked", Me = "aria-description", De = "aria-des
    * @param component the component's name or a unique key
    * @returns all the component instances
    */
-  getAllFor: (t) => b.get(t) || null,
+  getAllFor: (t) => E.get(t) || null,
   /**
    * Returns the instance associated with the target.
    *
@@ -181,7 +181,7 @@ const Ce = "2.0.8", Te = "aria-checked", Me = "aria-description", De = "aria-des
    * @returns the instance
    */
   get: (t, e) => {
-    if (!u(t) || !e) return null;
+    if (!l(t) || !e) return null;
     const n = L.getAllFor(e);
     return t && n && n.get(t) || null;
   },
@@ -193,7 +193,7 @@ const Ce = "2.0.8", Te = "aria-checked", Me = "aria-description", De = "aria-des
    */
   remove: (t, e) => {
     const n = L.getAllFor(e);
-    !n || !u(t) || (n.delete(t), n.size === 0 && b.delete(e));
+    !n || !l(t) || (n.delete(t), n.size === 0 && E.delete(e));
   }
 }, Yn = (t, e) => L.get(t, e), to = (t) => t?.charAt(0).toUpperCase() + t?.slice(1), eo = (t) => t?.trim().replace(
   /(?:^\w|[A-Z]|\b\w)/g,
@@ -227,8 +227,8 @@ const Ce = "2.0.8", Te = "aria-checked", Me = "aria-description", De = "aria-des
   let n = 0;
   const o = new Event(T), s = re(t), r = se(t);
   if (s) {
-    const a = (l) => {
-      l.target === t && (e.apply(t, [l]), t.removeEventListener(T, a), n = 1);
+    const a = (u) => {
+      u.target === t && (e.apply(t, [u]), t.removeEventListener(T, a), n = 1);
     };
     t.addEventListener(T, a), setTimeout(() => {
       n || q(t, o);
@@ -245,26 +245,26 @@ const Ce = "2.0.8", Te = "aria-checked", Me = "aria-description", De = "aria-des
   let n = 0;
   const o = new Event(M), s = ae(t), r = ce(t);
   if (s) {
-    const a = (l) => {
-      l.target === t && (e.apply(t, [l]), t.removeEventListener(M, a), n = 1);
+    const a = (u) => {
+      u.target === t && (e.apply(t, [u]), t.removeEventListener(M, a), n = 1);
     };
     t.addEventListener(M, a), setTimeout(() => {
       n || q(t, o);
     }, s + r + 17);
   } else
     e.apply(t, [o]);
-}, ro = (t) => Float32Array.from(Array.from(t)), co = (t) => Float64Array.from(Array.from(t)), ao = (t, e) => t.focus(e), io = (t) => t?.trim().replace(/([a-z])([A-Z])/g, "$1-$2").replace(/\s+/g, "-").toLowerCase(), I = (t) => ["true", !0].includes(t) ? !0 : ["false", !1].includes(t) ? !1 : ["null", "", null, void 0].includes(t) ? null : t !== "" && !Number.isNaN(+t) ? +t : t, A = (t) => Object.entries(t), ie = (t) => t.toLowerCase(), uo = (t, e, n, o) => {
-  const s = { ...n }, r = { ...t.dataset }, a = { ...e }, l = {}, p = "title";
-  return A(r).forEach(([c, g]) => {
-    const w = o && typeof c == "string" && c.includes(o) ? c.replace(o, "").replace(
+}, ro = (t) => Float32Array.from(Array.from(t)), co = (t) => Float64Array.from(Array.from(t)), ao = (t, e) => t.focus(e), io = (t) => t?.trim().replace(/([a-z])([A-Z])/g, "$1-$2").replace(/\s+/g, "-").toLowerCase(), I = (t) => ["true", !0].includes(t) ? !0 : ["false", !1].includes(t) ? !1 : ["null", "", null, void 0].includes(t) ? null : t !== "" && !Number.isNaN(+t) ? +t : t, S = (t) => Object.entries(t), ie = (t) => t.toLowerCase(), uo = (t, e, n, o) => {
+  const s = { ...n }, r = { ...t.dataset }, a = { ...e }, u = {}, p = "title";
+  return S(r).forEach(([c, g]) => {
+    const A = o && typeof c == "string" && c.includes(o) ? c.replace(o, "").replace(
       /[A-Z]/g,
       (_) => ie(_)
     ) : c;
-    l[w] = I(g);
-  }), A(s).forEach(([c, g]) => {
+    u[A] = I(g);
+  }), S(s).forEach(([c, g]) => {
     s[c] = I(g);
-  }), A(e).forEach(([c, g]) => {
-    c in s ? a[c] = s[c] : c in l ? a[c] = l[c] : a[c] = c === p ? Q(t, p) : g;
+  }), S(e).forEach(([c, g]) => {
+    c in s ? a[c] = s[c] : c in u ? a[c] = u[c] : a[c] = c === p ? Q(t, p) : g;
   }), a;
 }, lo = (t, e) => v(t) && (Object.hasOwn(t, e) || e in t), fo = (t) => Object.keys(t), po = (t) => Object.values(t), go = (t) => Object.fromEntries(t), mo = (t, e) => {
   const n = new CustomEvent(t, {
@@ -273,7 +273,7 @@ const Ce = "2.0.8", Te = "aria-checked", Me = "aria-description", De = "aria-des
   });
   return v(e) && C(n, e), n;
 }, vo = { passive: !0 }, bo = (t) => t.offsetHeight, Eo = (t, e) => {
-  A(e).forEach(([n, o]) => {
+  S(e).forEach(([n, o]) => {
     if (o && N(n) && n.includes("--"))
       t.style.setProperty(n, o);
     else {
@@ -291,7 +291,7 @@ const Ce = "2.0.8", Te = "aria-checked", Me = "aria-description", De = "aria-des
    * @param key a unique key
    */
   set: (t, e, n, o) => {
-    u(t) && (o && o.length ? (m.has(t) || m.set(t, /* @__PURE__ */ new Map()), m.get(t).set(o, setTimeout(e, n))) : m.set(t, setTimeout(e, n)));
+    l(t) && (o && o.length ? (m.has(t) || m.set(t, /* @__PURE__ */ new Map()), m.get(t).set(o, setTimeout(e, n))) : m.set(t, setTimeout(e, n)));
   },
   /**
    * Returns the timer associated with the target.
@@ -301,7 +301,7 @@ const Ce = "2.0.8", Te = "aria-checked", Me = "aria-description", De = "aria-des
    * @returns the timer
    */
   get: (t, e) => {
-    if (!u(t)) return null;
+    if (!l(t)) return null;
     const n = m.get(t);
     return e && n && O(n) ? n.get(e) || null : ue(n) ? n : null;
   },
@@ -312,7 +312,7 @@ const Ce = "2.0.8", Te = "aria-checked", Me = "aria-description", De = "aria-des
    * @param key a unique key
    */
   clear: (t, e) => {
-    if (!u(t)) return;
+    if (!l(t)) return;
     const n = m.get(t);
     e && e.length && O(n) ? (clearTimeout(n.get(e)), n.delete(e), n.size === 0 && m.delete(t)) : (clearTimeout(n), m.delete(t));
   }
@@ -321,7 +321,7 @@ function de(t) {
   const { shiftKey: e, code: n } = t, o = d(this), s = [
     ...le(qt, this)
   ].filter(
-    (l) => !ee(l, "disabled") && !Q(l, $)
+    (u) => !ee(u, "disabled") && !Q(u, $)
   );
   if (!s.length) return;
   const r = s[0], a = s[s.length - 1];
@@ -330,12 +330,12 @@ function de(t) {
 const fe = (t) => x.has(t) === !0, wo = (t) => {
   const e = fe(t);
   (e ? R : W)(t, "keydown", de), e ? x.delete(t) : x.set(t, !0);
-}, h = (t, e) => {
-  const { width: n, height: o, top: s, right: r, bottom: a, left: l } = t.getBoundingClientRect();
+}, b = (t) => l(t) && "offsetWidth" in t || !1, y = (t, e) => {
+  const { width: n, height: o, top: s, right: r, bottom: a, left: u } = t.getBoundingClientRect();
   let p = 1, c = 1;
-  if (e && u(t)) {
-    const { offsetWidth: g, offsetHeight: w } = t;
-    p = g > 0 ? Math.round(n) / g : 1, c = w > 0 ? Math.round(o) / w : 1;
+  if (e && b(t)) {
+    const { offsetWidth: g, offsetHeight: A } = t;
+    p = g > 0 ? Math.round(n) / g : 1, c = A > 0 ? Math.round(o) / A : 1;
   }
   return {
     width: n / p,
@@ -343,51 +343,51 @@ const fe = (t) => x.has(t) === !0, wo = (t) => {
     top: s / c,
     right: r / p,
     bottom: a / c,
-    left: l / p,
-    x: l / p,
+    left: u / p,
+    x: u / p,
     y: s / c
   };
-}, Ao = (t) => d(t).body, y = (t) => d(t).documentElement, So = (t) => d(t).head, pe = (t) => i(t) ? (t.nodeName || "").toLowerCase() : "#document", ko = (t) => {
+}, Ao = (t) => d(t).body, w = (t) => d(t).documentElement, So = (t) => d(t).head, pe = (t) => i(t) ? (t.nodeName || "").toLowerCase() : "#document", ko = (t) => {
   const e = j(t), n = e ? t.scrollX : t.scrollLeft, o = e ? t.scrollY : t.scrollTop;
   return { x: n, y: o };
-}, ge = (t) => i(t) && t.constructor.name === "ShadowRoot" || !1, S = (t) => t.nodeName === "HTML" ? t : u(t) && t.assignedSlot || i(t) && t.parentNode || ge(t) && t.host || y(t), me = (t) => t ? K(t) ? t.defaultView : i(t) ? t?.ownerDocument?.defaultView : t : window, ve = (t) => i(t) && ["TABLE", "TD", "TH"].includes(t.nodeName) || !1, be = (t, e) => t.matches(e), D = (t) => f(t, "position") === "static", Ee = (t) => f(t, "position") === "fixed", G = (t) => [":popover-open", ":modal"].some((e) => {
+}, ge = (t) => i(t) && t.constructor.name === "ShadowRoot" || !1, k = (t) => t.nodeName === "HTML" ? t : b(t) && t.assignedSlot || i(t) && t.parentNode || ge(t) && t.host || w(t), me = (t) => t ? K(t) ? t.defaultView : i(t) ? t?.ownerDocument?.defaultView : t : window, ve = (t) => i(t) && ["TABLE", "TD", "TH"].includes(t.nodeName) || !1, be = (t, e) => t.matches(e), D = (t) => f(t, "position") === "static", Ee = (t) => f(t, "position") === "fixed", G = (t) => [":popover-open", ":modal"].some((e) => {
   try {
     return be(t, e);
   } catch {
     return !1;
   }
 }), Z = (t) => {
-  const e = Xt(), n = k(t) ? getComputedStyle(t) : t;
+  const e = Xt(), n = l(t) ? getComputedStyle(t) : t;
   return n.transform !== "none" || n.perspective !== "none" || (n.containerType ? n.containerType !== "normal" : !1) || !e && (n.backdropFilter ? n.backdropFilter !== "none" : !1) || !e && (n.filter ? n.filter !== "none" : !1) || ["transform", "perspective", "filter"].some(
     (o) => (n.willChange || "").includes(o)
   ) || ["paint", "layout", "strict", "content"].some(
     (o) => (n.contain || "").includes(o)
   );
 }, he = (t) => {
-  let e = S(t);
-  for (; u(e) && !z(e); ) {
+  let e = k(t);
+  for (; l(e) && !z(e); ) {
     if (Z(e))
       return e;
     if (G(e))
       return null;
-    e = S(e);
+    e = k(e);
   }
   return null;
 }, z = (t) => ["html", "body", "#document"].includes(pe(t)), P = (t) => {
-  if (!u(t) || Ee(t))
+  if (!l(t) || Ee(t))
     return null;
   let e = t.offsetParent;
-  return y(t) === e && (e = e.ownerDocument.body), e;
+  return w(t) === e && (e = e.ownerDocument.body), e;
 }, No = (t) => {
   const e = me(t);
   if (!i(t) || G(t))
     return e;
-  if (!u(t)) {
-    let o = S(t);
+  if (!b(t)) {
+    let o = k(t);
     for (; o && !z(o); ) {
-      if (k(o) && !D(o))
+      if (l(o) && !D(o))
         return o;
-      o = S(o);
+      o = k(o);
     }
     return e;
   }
@@ -396,16 +396,16 @@ const fe = (t) => x.has(t) === !0, wo = (t) => {
     n = P(n);
   return n && z(n) && D(n) && !Z(n) ? e : n || he(t) || e;
 }, ye = (t) => {
-  if (!u(t)) return !1;
-  const { width: e, height: n } = h(t), { offsetWidth: o, offsetHeight: s } = t;
+  if (!b(t)) return !1;
+  const { width: e, height: n } = y(t), { offsetWidth: o, offsetHeight: s } = t;
   return Math.round(e) !== o || Math.round(n) !== s;
 }, Co = (t, e, n) => {
-  const o = u(e), s = h(
+  const o = b(e), s = y(
     t,
     o && ye(e)
   ), r = { x: 0, y: 0 };
   if (o) {
-    const a = h(e, !0);
+    const a = y(e, !0);
     r.x = a.x + e.clientLeft, r.y = a.y + e.clientTop;
   }
   return {
@@ -416,25 +416,25 @@ const fe = (t) => x.has(t) === !0, wo = (t) => {
   };
 };
 let F = 0, B = 0;
-const E = /* @__PURE__ */ new Map(), we = (t, e) => {
+const h = /* @__PURE__ */ new Map(), we = (t, e) => {
   let n = e ? F : B;
   if (e) {
-    const o = we(t), s = E.get(o) || /* @__PURE__ */ new Map();
-    E.has(o) || E.set(o, s), O(s) && !s.has(e) ? (s.set(e, n), F += 1) : n = s.get(e);
+    const o = we(t), s = h.get(o) || /* @__PURE__ */ new Map();
+    h.has(o) || h.set(o, s), O(s) && !s.has(e) ? (s.set(e, n), F += 1) : n = s.get(e);
   } else {
     const o = t.id || t;
-    E.has(o) ? n = E.get(o) : (E.set(o, n), B += 1);
+    h.has(o) ? n = h.get(o) : (h.set(o, n), B += 1);
   }
   return n;
-}, Ae = (t) => Array.isArray(t) || !1, To = (t) => i(t) && t.nodeName === "CANVAS" || !1, Se = (t) => u(t) && !!t.shadowRoot || !1, Mo = (t) => {
+}, Ae = (t) => Array.isArray(t) || !1, To = (t) => i(t) && t.nodeName === "CANVAS" || !1, Se = (t) => b(t) && !!t.shadowRoot || !1, Mo = (t) => {
   if (!i(t)) return !1;
-  const { top: e, bottom: n } = h(t), { clientHeight: o } = y(t);
+  const { top: e, bottom: n } = y(t), { clientHeight: o } = w(t);
   return e <= o && n >= 0;
 }, Do = (t) => {
   if (!i(t)) return !1;
-  const { clientWidth: e, clientHeight: n } = y(t), { top: o, left: s, bottom: r, right: a } = h(t, !0);
+  const { clientWidth: e, clientHeight: n } = w(t), { top: o, left: s, bottom: r, right: a } = y(t, !0);
   return o >= 0 && s >= 0 && r <= n && a <= e;
-}, Lo = (t) => Ae(t) && t.every(u) || !1, Oo = (t) => typeof t == "function" || !1, xo = (t) => v(t) && t.constructor.name === "HTMLCollection" || !1, zo = (t) => u(t) && t.tagName === "IMG" || !1, Io = (t) => {
+}, Lo = (t) => Ae(t) && t.every(b) || !1, Oo = (t) => typeof t == "function" || !1, xo = (t) => v(t) && t.constructor.name === "HTMLCollection" || !1, zo = (t) => b(t) && t.tagName === "IMG" || !1, Io = (t) => {
   if (!N(t)) return !1;
   try {
     JSON.parse(t);
@@ -444,9 +444,9 @@ const E = /* @__PURE__ */ new Map(), we = (t, e) => {
   return !0;
 }, Po = (t) => v(t) && t.constructor.name === "WeakMap" || !1, Fo = (t) => i(t) && ["SVG", "Image", "Video", "Canvas"].some(
   (e) => t.constructor.name.includes(e)
-) || !1, Bo = (t) => v(t) && t.constructor.name === "NodeList" || !1, Vo = (t) => y(t).dir === "rtl", Ho = (t) => i(t) && t.constructor.name.includes("SVG") || !1, ke = (t, e) => t ? t.closest(e) || ke(t.getRootNode().host, e) : null, Uo = (t, e) => k(t) ? t : (i(e) ? e : d()).querySelector(t), Ne = (t, e) => (i(e) ? e : d()).getElementsByTagName(
+) || !1, Bo = (t) => v(t) && t.constructor.name === "NodeList" || !1, Vo = (t) => w(t).dir === "rtl", Ho = (t) => i(t) && t.constructor.name.includes("SVG") || !1, ke = (t, e) => !t || !e ? null : t.closest(e) || ke(t.getRootNode().host, e) || null, Uo = (t, e) => l(t) ? t : (l(e) ? e : d()).querySelector(t), Ne = (t, e) => (i(e) ? e : d()).getElementsByTagName(
   t
-), Wo = (t) => [...Ne("*", t)].filter(Se), Ro = (t, e) => d(e).getElementById(t) || null, Qo = (t, e) => (e && i(e) ? e : d()).getElementsByClassName(
+), Wo = (t) => [...Ne("*", t)].filter(Se), Ro = (t, e) => d(e).getElementById(t), Qo = (t, e) => (e && i(e) ? e : d()).getElementsByClassName(
   t
 );
 export {
@@ -457,7 +457,7 @@ export {
   ro as Float32ArrayFrom,
   co as Float64ArrayFrom,
   C as ObjectAssign,
-  A as ObjectEntries,
+  S as ObjectEntries,
   go as ObjectFromEntries,
   lo as ObjectHasOwn,
   fo as ObjectKeys,
@@ -521,11 +521,11 @@ export {
   ut as gesturestartEvent,
   Q as getAttribute,
   Un as getAttributeNS,
-  h as getBoundingClientRect,
+  y as getBoundingClientRect,
   Wo as getCustomElements,
   d as getDocument,
   Ao as getDocumentBody,
-  y as getDocumentElement,
+  w as getDocumentElement,
   So as getDocumentHead,
   se as getElementAnimationDelay,
   re as getElementAnimationDuration,
@@ -539,7 +539,7 @@ export {
   pe as getNodeName,
   ko as getNodeScroll,
   No as getOffsetParent,
-  S as getParentNode,
+  k as getParentNode,
   Co as getRectRelativeToOffsetParent,
   we as getUID,
   me as getWindow,
@@ -552,14 +552,14 @@ export {
   To as isCanvas,
   Se as isCustomElement,
   K as isDocument,
-  k as isElement,
+  l as isElement,
   Mo as isElementInScrollRange,
   Do as isElementInViewport,
   Lo as isElementsArray,
   zn as isFirefox,
   Oo as isFunction,
   xo as isHTMLCollection,
-  u as isHTMLElement,
+  b as isHTMLElement,
   zo as isHTMLImageElement,
   Io as isJSON,
   O as isMap,

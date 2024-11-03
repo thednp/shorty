@@ -1,6 +1,6 @@
-import isHTMLElement from "../is/isHTMLElement";
+import isElement from "../is/isElement";
 
-const componentData = new Map<string, Map<HTMLElement, unknown>>();
+const componentData = new Map<string, Map<Element, unknown>>();
 
 /**
  * An interface for web components background data.
@@ -16,15 +16,15 @@ const Data = {
    * @param component the component's name or a unique key
    * @param instance the component instance
    */
-  set: <T>(element: HTMLElement, component: string, instance: T): void => {
-    if (!isHTMLElement(element)) return;
+  set: <T>(element: Element, component: string, instance: T): void => {
+    if (!isElement(element)) return;
 
     /* istanbul ignore else @preserve */
     if (!componentData.has(component)) {
-      componentData.set(component, new Map<HTMLElement, T>());
+      componentData.set(component, new Map<Element, T>());
     }
 
-    const instanceMap = componentData.get(component) as Map<HTMLElement, T>;
+    const instanceMap = componentData.get(component) as Map<Element, T>;
     // not undefined, but defined right above
     instanceMap.set(element, instance);
   },
@@ -35,8 +35,8 @@ const Data = {
    * @param component the component's name or a unique key
    * @returns all the component instances
    */
-  getAllFor: <T>(component: string): Map<HTMLElement, T> | null => {
-    const instanceMap = componentData.get(component) as Map<HTMLElement, T>;
+  getAllFor: <T>(component: string): Map<Element, T> | null => {
+    const instanceMap = componentData.get(component) as Map<Element, T>;
 
     return instanceMap || null;
   },
@@ -48,8 +48,8 @@ const Data = {
    * @param component the component's name or a unique key
    * @returns the instance
    */
-  get: <T>(element: HTMLElement, component: string): T | null => {
-    if (!isHTMLElement(element) || !component) return null;
+  get: <T>(element: Element, component: string): T | null => {
+    if (!isElement(element) || !component) return null;
     const instanceMap = Data.getAllFor<T>(component);
 
     const instance = element && instanceMap && instanceMap.get(element);
@@ -63,10 +63,10 @@ const Data = {
    * @param element target element
    * @param component the component's name or a unique key
    */
-  remove: <T>(element: HTMLElement, component: string): void => {
+  remove: <T>(element: Element, component: string): void => {
     const instanceMap = Data.getAllFor<T>(component);
 
-    if (!instanceMap || !isHTMLElement(element)) return;
+    if (!instanceMap || !isElement(element)) return;
 
     instanceMap.delete(element);
 

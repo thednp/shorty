@@ -1,5 +1,4 @@
 import getDocument from "../get/getDocument";
-import isNode from "../is/isNode";
 import isElement from "../is/isElement";
 
 /**
@@ -10,14 +9,14 @@ import isElement from "../is/isElement";
  * @param parent optional node to look into
  * @return the `HTMLElement` or `querySelector` result
  */
-const querySelector = <T extends Element = HTMLElement | SVGElement>(
+const querySelector = <T extends Element>(
   selector: T | string,
   parent?: ParentNode,
-): T | null => {
+) => {
   if (isElement(selector)) {
     return selector as T;
   }
-  const lookUp = isNode(parent) ? parent : getDocument();
+  const lookUp = isElement(parent) ? parent : getDocument();
 
   return lookUp.querySelector<T>(selector as string);
 };

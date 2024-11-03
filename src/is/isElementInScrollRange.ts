@@ -3,13 +3,13 @@ import getDocumentElement from "../get/getDocumentElement";
 import isNode from "./isNode";
 
 /**
- * Utility to determine if an `HTMLElement`
+ * Utility to determine if an `Element`
  * is partially visible in viewport.
  *
  * @param element target
  * @return the query result
  */
-const isElementInScrollRange = (element?: HTMLElement): boolean => {
+const isElementInScrollRange = (element?: Element): boolean => {
   if (!isNode(element)) return false;
 
   const { top, bottom } = getBoundingClientRect(element);

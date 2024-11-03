@@ -5,19 +5,19 @@
  *
  * @see https://stackoverflow.com/q/54520554/803358
  *
- * @param element Element to look into
- * @param selector the selector name
+ * @param element target Element to check
+ * @param selector the selector string
  * @return the query result
  */
-const closest = <T extends Element = HTMLElement | SVGElement>(
+const closest = <T extends Element>(
   element: T,
   selector: string,
-): HTMLElement | null => {
-  return element
-    ? element.closest(selector) ||
-      // break out of `ShadowRoot`
-      closest((element.getRootNode() as ShadowRoot).host, selector)
-    : null;
+): T | null => {
+  if (!element || !selector) return null;
+
+  return element.closest<T>(selector) ||
+    // break out of `ShadowRoot`
+    closest((element.getRootNode() as ShadowRoot).host as T, selector) || null;
 };
 
 export default closest;

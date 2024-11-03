@@ -12,7 +12,7 @@
  * @return the css property value
  */
 const getElementStyle = (
-  element: HTMLElement | SVGElement,
+  element: Element,
   property: string,
 ): string => {
   const computedStyle = getComputedStyle(element);
