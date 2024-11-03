@@ -1,8 +1,8 @@
+import isElement from "../is/isElement";
 import getAttribute from "../attr/getAttribute";
 import normalizeValue from "./normalizeValue";
 import ObjectEntries from "./ObjectEntries";
 import toLowerCase from "./toLowerCase";
-// import { optionValues } from '../types';
 
 /**
  * Utility to normalize component options.
@@ -14,13 +14,16 @@ import toLowerCase from "./toLowerCase";
  * @return normalized component options object
  */
 const normalizeOptions = <T extends { [key: string]: unknown }>(
-  element: Element & HTMLOrSVGElement,
+  element: Element,
   defaultOps: T,
   inputOps: Partial<T>,
   ns?: string,
 ): T => {
+  if (!isElement(element)) return defaultOps;
+
   const INPUT = { ...inputOps } as T;
-  const data = { ...element.dataset };
+  // typescript is not sure if Element.dataset is supported
+  const data = { ...(element as HTMLElement).dataset };
   const normalOps = { ...defaultOps };
   const dataOps: Partial<T> = {};
   const title = "title";

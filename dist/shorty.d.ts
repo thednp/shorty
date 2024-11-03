@@ -1546,7 +1546,7 @@ export declare const noop: () => void;
  */
 export declare const normalizeOptions: <T extends {
     [key: string]: unknown;
-}>(element: Element & HTMLOrSVGElement, defaultOps: T, inputOps: Partial<T>, ns?: string) => T;
+}>(element: Element, defaultOps: T, inputOps: Partial<T>, ns?: string) => T;
 
 /**
  * Utility to normalize component options

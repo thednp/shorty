@@ -151,9 +151,9 @@ const Ce = "2.0.8", Te = "aria-checked", Me = "aria-description", De = "aria-des
   t.classList.add(...e);
 }, Gn = (t, ...e) => {
   t.classList.remove(...e);
-}, Zn = (t, e) => t.classList.contains(e), { body: _n } = document, { documentElement: $n } = document, { head: Jn } = document, Xn = (t) => Array.from(t), v = (t) => t != null && typeof t == "object" || !1, i = (t) => v(t) && typeof t.nodeType == "number" && [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11].some(
+}, Zn = (t, e) => t.classList.contains(e), { body: _n } = document, { documentElement: $n } = document, { head: Jn } = document, Xn = (t) => Array.from(t), v = (t) => t != null && typeof t == "object" || !1, u = (t) => v(t) && typeof t.nodeType == "number" && [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11].some(
   (e) => t.nodeType === e
-) || !1, l = (t) => i(t) && t.nodeType === 1 || !1, E = /* @__PURE__ */ new Map(), L = {
+) || !1, i = (t) => u(t) && t.nodeType === 1 || !1, E = /* @__PURE__ */ new Map(), L = {
   data: E,
   /**
    * Sets web components data.
@@ -163,7 +163,7 @@ const Ce = "2.0.8", Te = "aria-checked", Me = "aria-description", De = "aria-des
    * @param instance the component instance
    */
   set: (t, e, n) => {
-    if (!l(t)) return;
+    if (!i(t)) return;
     E.has(e) || E.set(e, /* @__PURE__ */ new Map()), E.get(e).set(t, n);
   },
   /**
@@ -181,7 +181,7 @@ const Ce = "2.0.8", Te = "aria-checked", Me = "aria-description", De = "aria-des
    * @returns the instance
    */
   get: (t, e) => {
-    if (!l(t) || !e) return null;
+    if (!i(t) || !e) return null;
     const n = L.getAllFor(e);
     return t && n && n.get(t) || null;
   },
@@ -193,12 +193,12 @@ const Ce = "2.0.8", Te = "aria-checked", Me = "aria-description", De = "aria-des
    */
   remove: (t, e) => {
     const n = L.getAllFor(e);
-    !n || !l(t) || (n.delete(t), n.size === 0 && E.delete(e));
+    !n || !i(t) || (n.delete(t), n.size === 0 && E.delete(e));
   }
 }, Yn = (t, e) => L.get(t, e), to = (t) => t?.charAt(0).toUpperCase() + t?.slice(1), eo = (t) => t?.trim().replace(
   /(?:^\w|[A-Z]|\b\w)/g,
   (e, n) => n === 0 ? e.toLowerCase() : e.toUpperCase()
-).replace(/\s+/g, ""), N = (t) => typeof t == "string" || !1, j = (t) => v(t) && t.constructor.name === "Window" || !1, K = (t) => i(t) && t.nodeType === 9 || !1, d = (t) => j(t) ? t.document : K(t) ? t : i(t) ? t.ownerDocument : globalThis.document, C = (t, ...e) => Object.assign(t, ...e), ne = (t) => {
+).replace(/\s+/g, ""), N = (t) => typeof t == "string" || !1, j = (t) => v(t) && t.constructor.name === "Window" || !1, K = (t) => u(t) && t.nodeType === 9 || !1, d = (t) => j(t) ? t.document : K(t) ? t : u(t) ? t.ownerDocument : globalThis.document, C = (t, ...e) => Object.assign(t, ...e), ne = (t) => {
   if (!t) return;
   if (N(t))
     return d().createElement(t);
@@ -227,8 +227,8 @@ const Ce = "2.0.8", Te = "aria-checked", Me = "aria-description", De = "aria-des
   let n = 0;
   const o = new Event(T), s = re(t), r = se(t);
   if (s) {
-    const a = (u) => {
-      u.target === t && (e.apply(t, [u]), t.removeEventListener(T, a), n = 1);
+    const a = (l) => {
+      l.target === t && (e.apply(t, [l]), t.removeEventListener(T, a), n = 1);
     };
     t.addEventListener(T, a), setTimeout(() => {
       n || q(t, o);
@@ -245,8 +245,8 @@ const Ce = "2.0.8", Te = "aria-checked", Me = "aria-description", De = "aria-des
   let n = 0;
   const o = new Event(M), s = ae(t), r = ce(t);
   if (s) {
-    const a = (u) => {
-      u.target === t && (e.apply(t, [u]), t.removeEventListener(M, a), n = 1);
+    const a = (l) => {
+      l.target === t && (e.apply(t, [l]), t.removeEventListener(M, a), n = 1);
     };
     t.addEventListener(M, a), setTimeout(() => {
       n || q(t, o);
@@ -254,17 +254,18 @@ const Ce = "2.0.8", Te = "aria-checked", Me = "aria-description", De = "aria-des
   } else
     e.apply(t, [o]);
 }, ro = (t) => Float32Array.from(Array.from(t)), co = (t) => Float64Array.from(Array.from(t)), ao = (t, e) => t.focus(e), io = (t) => t?.trim().replace(/([a-z])([A-Z])/g, "$1-$2").replace(/\s+/g, "-").toLowerCase(), I = (t) => ["true", !0].includes(t) ? !0 : ["false", !1].includes(t) ? !1 : ["null", "", null, void 0].includes(t) ? null : t !== "" && !Number.isNaN(+t) ? +t : t, S = (t) => Object.entries(t), ie = (t) => t.toLowerCase(), uo = (t, e, n, o) => {
-  const s = { ...n }, r = { ...t.dataset }, a = { ...e }, u = {}, p = "title";
+  if (!i(t)) return e;
+  const s = { ...n }, r = { ...t.dataset }, a = { ...e }, l = {}, p = "title";
   return S(r).forEach(([c, g]) => {
     const A = o && typeof c == "string" && c.includes(o) ? c.replace(o, "").replace(
       /[A-Z]/g,
       (_) => ie(_)
     ) : c;
-    u[A] = I(g);
+    l[A] = I(g);
   }), S(s).forEach(([c, g]) => {
     s[c] = I(g);
   }), S(e).forEach(([c, g]) => {
-    c in s ? a[c] = s[c] : c in u ? a[c] = u[c] : a[c] = c === p ? Q(t, p) : g;
+    c in s ? a[c] = s[c] : c in l ? a[c] = l[c] : a[c] = c === p ? Q(t, p) : g;
   }), a;
 }, lo = (t, e) => v(t) && (Object.hasOwn(t, e) || e in t), fo = (t) => Object.keys(t), po = (t) => Object.values(t), go = (t) => Object.fromEntries(t), mo = (t, e) => {
   const n = new CustomEvent(t, {
@@ -291,7 +292,7 @@ const Ce = "2.0.8", Te = "aria-checked", Me = "aria-description", De = "aria-des
    * @param key a unique key
    */
   set: (t, e, n, o) => {
-    l(t) && (o && o.length ? (m.has(t) || m.set(t, /* @__PURE__ */ new Map()), m.get(t).set(o, setTimeout(e, n))) : m.set(t, setTimeout(e, n)));
+    i(t) && (o && o.length ? (m.has(t) || m.set(t, /* @__PURE__ */ new Map()), m.get(t).set(o, setTimeout(e, n))) : m.set(t, setTimeout(e, n)));
   },
   /**
    * Returns the timer associated with the target.
@@ -301,7 +302,7 @@ const Ce = "2.0.8", Te = "aria-checked", Me = "aria-description", De = "aria-des
    * @returns the timer
    */
   get: (t, e) => {
-    if (!l(t)) return null;
+    if (!i(t)) return null;
     const n = m.get(t);
     return e && n && O(n) ? n.get(e) || null : ue(n) ? n : null;
   },
@@ -312,16 +313,16 @@ const Ce = "2.0.8", Te = "aria-checked", Me = "aria-description", De = "aria-des
    * @param key a unique key
    */
   clear: (t, e) => {
-    if (!l(t)) return;
+    if (!i(t)) return;
     const n = m.get(t);
     e && e.length && O(n) ? (clearTimeout(n.get(e)), n.delete(e), n.size === 0 && m.delete(t)) : (clearTimeout(n), m.delete(t));
   }
-}, yo = (t) => t.toUpperCase(), le = (t, e) => (i(e) ? e : d()).querySelectorAll(t), x = /* @__PURE__ */ new Map();
+}, yo = (t) => t.toUpperCase(), le = (t, e) => (u(e) ? e : d()).querySelectorAll(t), x = /* @__PURE__ */ new Map();
 function de(t) {
   const { shiftKey: e, code: n } = t, o = d(this), s = [
     ...le(qt, this)
   ].filter(
-    (u) => !ee(u, "disabled") && !Q(u, $)
+    (l) => !ee(l, "disabled") && !Q(l, $)
   );
   if (!s.length) return;
   const r = s[0], a = s[s.length - 1];
@@ -330,8 +331,8 @@ function de(t) {
 const fe = (t) => x.has(t) === !0, wo = (t) => {
   const e = fe(t);
   (e ? R : W)(t, "keydown", de), e ? x.delete(t) : x.set(t, !0);
-}, b = (t) => l(t) && "offsetWidth" in t || !1, y = (t, e) => {
-  const { width: n, height: o, top: s, right: r, bottom: a, left: u } = t.getBoundingClientRect();
+}, b = (t) => i(t) && "offsetWidth" in t || !1, y = (t, e) => {
+  const { width: n, height: o, top: s, right: r, bottom: a, left: l } = t.getBoundingClientRect();
   let p = 1, c = 1;
   if (e && b(t)) {
     const { offsetWidth: g, offsetHeight: A } = t;
@@ -343,21 +344,21 @@ const fe = (t) => x.has(t) === !0, wo = (t) => {
     top: s / c,
     right: r / p,
     bottom: a / c,
-    left: u / p,
-    x: u / p,
+    left: l / p,
+    x: l / p,
     y: s / c
   };
-}, Ao = (t) => d(t).body, w = (t) => d(t).documentElement, So = (t) => d(t).head, pe = (t) => i(t) ? (t.nodeName || "").toLowerCase() : "#document", ko = (t) => {
+}, Ao = (t) => d(t).body, w = (t) => d(t).documentElement, So = (t) => d(t).head, pe = (t) => u(t) ? (t.nodeName || "").toLowerCase() : "#document", ko = (t) => {
   const e = j(t), n = e ? t.scrollX : t.scrollLeft, o = e ? t.scrollY : t.scrollTop;
   return { x: n, y: o };
-}, ge = (t) => i(t) && t.constructor.name === "ShadowRoot" || !1, k = (t) => t.nodeName === "HTML" ? t : l(t) && t.assignedSlot || i(t) && t.parentNode || ge(t) && t.host || w(t), me = (t) => t ? K(t) ? t.defaultView : i(t) ? t?.ownerDocument?.defaultView : t : window, ve = (t) => i(t) && ["TABLE", "TD", "TH"].includes(t.nodeName) || !1, be = (t, e) => t.matches(e), D = (t) => f(t, "position") === "static", Ee = (t) => f(t, "position") === "fixed", G = (t) => [":popover-open", ":modal"].some((e) => {
+}, ge = (t) => u(t) && t.constructor.name === "ShadowRoot" || !1, k = (t) => t.nodeName === "HTML" ? t : i(t) && t.assignedSlot || u(t) && t.parentNode || ge(t) && t.host || w(t), me = (t) => t ? K(t) ? t.defaultView : u(t) ? t?.ownerDocument?.defaultView : t : window, ve = (t) => u(t) && ["TABLE", "TD", "TH"].includes(t.nodeName) || !1, be = (t, e) => t.matches(e), D = (t) => f(t, "position") === "static", Ee = (t) => f(t, "position") === "fixed", G = (t) => [":popover-open", ":modal"].some((e) => {
   try {
     return be(t, e);
   } catch {
     return !1;
   }
 }), Z = (t) => {
-  const e = Xt(), n = l(t) ? getComputedStyle(t) : t;
+  const e = Xt(), n = i(t) ? getComputedStyle(t) : t;
   return n.transform !== "none" || n.perspective !== "none" || (n.containerType ? n.containerType !== "normal" : !1) || !e && (n.backdropFilter ? n.backdropFilter !== "none" : !1) || !e && (n.filter ? n.filter !== "none" : !1) || ["transform", "perspective", "filter"].some(
     (o) => (n.willChange || "").includes(o)
   ) || ["paint", "layout", "strict", "content"].some(
@@ -365,7 +366,7 @@ const fe = (t) => x.has(t) === !0, wo = (t) => {
   );
 }, he = (t) => {
   let e = k(t);
-  for (; l(e) && !z(e); ) {
+  for (; i(e) && !z(e); ) {
     if (Z(e))
       return e;
     if (G(e))
@@ -380,12 +381,12 @@ const fe = (t) => x.has(t) === !0, wo = (t) => {
   return w(t) === e && (e = e.ownerDocument.body), e;
 }, No = (t) => {
   const e = me(t);
-  if (!i(t) || G(t))
+  if (!u(t) || G(t))
     return e;
   if (!b(t)) {
     let o = k(t);
     for (; o && !z(o); ) {
-      if (l(o) && !D(o))
+      if (i(o) && !D(o))
         return o;
       o = k(o);
     }
@@ -426,15 +427,15 @@ const h = /* @__PURE__ */ new Map(), we = (t, e) => {
     h.has(o) ? n = h.get(o) : (h.set(o, n), B += 1);
   }
   return n;
-}, Ae = (t) => Array.isArray(t) || !1, To = (t) => i(t) && t.nodeName === "CANVAS" || !1, Se = (t) => b(t) && !!t.shadowRoot || !1, Mo = (t) => {
-  if (!i(t)) return !1;
+}, Ae = (t) => Array.isArray(t) || !1, To = (t) => u(t) && t.nodeName === "CANVAS" || !1, Se = (t) => b(t) && !!t.shadowRoot || !1, Mo = (t) => {
+  if (!u(t)) return !1;
   const { top: e, bottom: n } = y(t), { clientHeight: o } = w(t);
   return e <= o && n >= 0;
 }, Do = (t) => {
-  if (!l(t)) return !1;
+  if (!i(t)) return !1;
   const { clientWidth: e, clientHeight: n } = w(t), { top: o, left: s, bottom: r, right: a } = y(t, !0);
   return o >= 0 && s >= 0 && r <= n && a <= e;
-}, Lo = (t) => Ae(t) && t.every(l) || !1, Oo = (t) => typeof t == "function" || !1, xo = (t) => v(t) && t.constructor.name === "HTMLCollection" || !1, zo = (t) => b(t) && t.tagName === "IMG" || !1, Io = (t) => {
+}, Lo = (t) => Ae(t) && t.every(i) || !1, Oo = (t) => typeof t == "function" || !1, xo = (t) => v(t) && t.constructor.name === "HTMLCollection" || !1, zo = (t) => b(t) && t.tagName === "IMG" || !1, Io = (t) => {
   if (!N(t)) return !1;
   try {
     JSON.parse(t);
@@ -442,11 +443,11 @@ const h = /* @__PURE__ */ new Map(), we = (t, e) => {
     return !1;
   }
   return !0;
-}, Po = (t) => v(t) && t.constructor.name === "WeakMap" || !1, Fo = (t) => i(t) && ["SVG", "Image", "Video", "Canvas"].some(
+}, Po = (t) => v(t) && t.constructor.name === "WeakMap" || !1, Fo = (t) => u(t) && ["SVG", "Image", "Video", "Canvas"].some(
   (e) => t.constructor.name.includes(e)
-) || !1, Bo = (t) => v(t) && t.constructor.name === "NodeList" || !1, Vo = (t) => w(t).dir === "rtl", Ho = (t) => i(t) && t.constructor.name.includes("SVG") || !1, ke = (t, e) => !t || !e ? null : t.closest(e) || ke(t.getRootNode().host, e) || null, Uo = (t, e) => l(t) ? t : (l(e) ? e : d()).querySelector(t), Ne = (t, e) => (i(e) ? e : d()).getElementsByTagName(
+) || !1, Bo = (t) => v(t) && t.constructor.name === "NodeList" || !1, Vo = (t) => w(t).dir === "rtl", Ho = (t) => u(t) && t.constructor.name.includes("SVG") || !1, ke = (t, e) => !t || !e ? null : t.closest(e) || ke(t.getRootNode().host, e) || null, Uo = (t, e) => i(t) ? t : (i(e) ? e : d()).querySelector(t), Ne = (t, e) => (u(e) ? e : d()).getElementsByTagName(
   t
-), Wo = (t) => [...Ne("*", t)].filter(Se), Ro = (t, e) => d(e).getElementById(t), Qo = (t, e) => (e && i(e) ? e : d()).getElementsByClassName(
+), Wo = (t) => [...Ne("*", t)].filter(Se), Ro = (t, e) => d(e).getElementById(t), Qo = (t, e) => (e && u(e) ? e : d()).getElementsByClassName(
   t
 );
 export {
@@ -552,7 +553,7 @@ export {
   To as isCanvas,
   Se as isCustomElement,
   K as isDocument,
-  l as isElement,
+  i as isElement,
   Mo as isElementInScrollRange,
   Do as isElementInViewport,
   Lo as isElementsArray,
@@ -565,7 +566,7 @@ export {
   O as isMap,
   Fo as isMedia,
   On as isMobile,
-  i as isNode,
+  u as isNode,
   Bo as isNodeList,
   ue as isNumber,
   v as isObject,
