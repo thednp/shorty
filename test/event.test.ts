@@ -19,8 +19,8 @@ describe('Shorty Library Tests - EVENT', () => {
     const container = getExampleDOM();
     wrapper.append(container);
 
-    const el = querySelector('.alert', container);
-    const btn = querySelector('button', container);
+    const el = querySelector<HTMLElement>('.alert', container);
+    const btn = querySelector<HTMLElement>('button', container);
 
     if (!el || !btn) return;
 

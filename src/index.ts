@@ -219,6 +219,7 @@ import getOffsetParent from "./get/getOffsetParent";
 import getParentNode from "./get/getParentNode";
 import getRectRelativeToOffsetParent from "./get/getRectRelativeToOffsetParent";
 import getUID from "./get/getUID";
+import getSVGOffset from "./get/getSVGOffset";
 import getWindow from "./get/getWindow";
 
 // is
@@ -347,6 +348,7 @@ export {
   getOffsetParent,
   getParentNode,
   getRectRelativeToOffsetParent,
+  getSVGOffset,
   getUID,
   getWindow,
   hasAttribute,

@@ -163,6 +163,7 @@ For a more advanced method to handle event listeners, I recommend using the [eve
 - **_getParentNode_** - returns parent of a given _Element_;
 - **_getOffsetParent_** - returns the `offsetParent` that's the best for calculating position for a given target;
 - **_getRectRelativeToOffsetParent_** - returns the bounding client rectangle of a given _Element_ relative to a given `offsetParent`;
+- **_getSVGOffset_** - returns an `{ offsetTop, offsetLeft, offsetWidth, offsetHeight }` object for a _SVGElement_ relative to the closest `HTMLElement`;
 - **_getUID_** - a nice utility that creates a unique ID for a given _Element_ and returns it;
 - **_getWindow_** - returns the containing `Window` for a given _Element_ or just any _Window_;
 
