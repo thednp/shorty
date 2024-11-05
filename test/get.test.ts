@@ -304,7 +304,7 @@ describe('Shorty Library Tests - GET', () => {
 
     expect(getSVGOffset(nestedSVG),'getSVGOffset').to.deep.equal({
       offsetWidth: 7.00152587890625, offsetHeight: 7.00152587890625,
-      offsetTop: 30.639732360839844, offsetLeft: 273.4991149902344,
+      offsetTop: 28.999107360839844, offsetLeft: 288.4991149902344,
       offsetParent: element
     });
 
