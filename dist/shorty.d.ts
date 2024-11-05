@@ -764,7 +764,7 @@ export declare const getParentNode: (node: Node) => ParentNode;
  * @param scroll the offsetParent scroll position
  * @returns a DOMRect like object
  */
-export declare const getRectRelativeToOffsetParent: (element: Element, offsetParent: Element, scroll: {
+export declare const getRectRelativeToOffsetParent: (element: Element, offsetParent: Element | Window, scroll: {
     x: number;
     y: number;
 }) => OffsetRect;
