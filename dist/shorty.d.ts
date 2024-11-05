@@ -39,7 +39,7 @@ export declare const animationDuration = "animationDuration";
  */
 export declare const animationEndEvent = "animationend";
 
-declare interface AnimationEvent_2<T = Element>
+declare interface AnimationEvent_2<T extends EventTarget = HTMLElement>
 extends NativeEvent<T, NativeAnimationEvent> {
     animationName: string;
     elapsedTime: number;
@@ -47,7 +47,10 @@ extends NativeEvent<T, NativeAnimationEvent> {
 }
 export { AnimationEvent_2 as AnimationEvent }
 
-export declare type AnimationEventHandler<T = Element> = EventHandler<T, AnimationEvent_2<T>>;
+export declare type AnimationEventHandler<T extends EventTarget = HTMLElement> = EventHandler<
+T,
+AnimationEvent_2<T>
+>;
 
 /**
  * A global namespace for 'animationName' string.
@@ -222,7 +225,8 @@ export declare const camelCase: (input: string) => string;
  */
 export declare const capitalize: (input: string) => string;
 
-export declare interface ChangeEvent<T = FormControl> extends FormEvent<T> {
+export declare interface ChangeEvent<T extends EventTarget = FormControl>
+extends FormEvent<T> {
     target: EventTarget & T;
 }
 
@@ -231,15 +235,21 @@ export declare interface ChangeEvent<T = FormControl> extends FormEvent<T> {
  */
 export declare const changeEvent = "change";
 
-export declare type ChangeEventHandler<T = Element> = EventHandler<T, ChangeEvent<T>>;
+export declare type ChangeEventHandler<T extends EventTarget = HTMLElement> = EventHandler<
+T,
+ChangeEvent<T>
+>;
 
-declare interface ClipboardEvent_2<T = Element>
+declare interface ClipboardEvent_2<T extends EventTarget = HTMLElement>
 extends NativeEvent<T, NativeClipboardEvent> {
     clipboardData: DataTransfer;
 }
 export { ClipboardEvent_2 as ClipboardEvent }
 
-export declare type ClipboardEventHandler<T = Element> = EventHandler<T, ClipboardEvent_2<T>>;
+export declare type ClipboardEventHandler<T extends EventTarget = HTMLElement> = EventHandler<
+T,
+ClipboardEvent_2<T>
+>;
 
 /**
  * Shortcut for `HTMLElement.closest` method which also works
@@ -254,13 +264,14 @@ export declare type ClipboardEventHandler<T = Element> = EventHandler<T, Clipboa
  */
 export declare const closest: <T extends Element>(element: T, selector: string) => T | null;
 
-declare interface CompositionEvent_2<T = Element>
+declare interface CompositionEvent_2<T extends EventTarget = HTMLElement>
 extends NativeEvent<T, NativeCompositionEvent> {
     data: string;
 }
 export { CompositionEvent_2 as CompositionEvent }
 
-export declare type CompositionEventHandler<T = Element> = EventHandler<
+export declare type CompositionEventHandler<T extends EventTarget = HTMLElement> =
+EventHandler<
 T,
 CompositionEvent_2<T>
 >;
@@ -427,12 +438,16 @@ export declare const dragenterEvent = "dragenter";
  */
 export declare const dragEvent = "drag";
 
-declare interface DragEvent_2<T = Element> extends MouseEvent_2<T, NativeDragEvent> {
+declare interface DragEvent_2<T extends EventTarget = HTMLElement>
+extends MouseEvent_2<T, NativeDragEvent> {
     dataTransfer: DataTransfer;
 }
 export { DragEvent_2 as DragEvent }
 
-export declare type DragEventHandler<T = Element> = EventHandler<T, DragEvent_2<T>>;
+export declare type DragEventHandler<T extends EventTarget = HTMLElement> = EventHandler<
+T,
+DragEvent_2<T>
+>;
 
 /**
  * A global namespace for `dragleave` event.
@@ -472,7 +487,10 @@ export declare const emulateTransitionEnd: (element: Element, handler: EventList
  */
 export declare const errorEvent = "error";
 
-declare type EventHandler<T = Element, E = Event | NativeEvent<T>> = (event: E) => void;
+declare type EventHandler<
+T extends EventTarget = HTMLElement,
+E = Event | NativeEvent<T>,
+> = (event: E) => void;
 
 /**
  * Shortcut for `Float32Array.from()` static method.
@@ -510,14 +528,19 @@ export declare const focusableSelector = "a[href], button, input, textarea, sele
  */
 export declare const focusEvent = "focus";
 
-declare interface FocusEvent_2<T = Element, R = Element>
-extends NativeEvent<T, NativeFocusEvent> {
+declare interface FocusEvent_2<
+T extends EventTarget = HTMLElement,
+R extends Element = HTMLElement,
+> extends NativeEvent<T, NativeFocusEvent> {
     relatedTarget: (EventTarget & R) | null;
     target: EventTarget & T;
 }
 export { FocusEvent_2 as FocusEvent }
 
-export declare type FocusEventHandler<T = Element> = EventHandler<T, FocusEvent_2<T>>;
+export declare type FocusEventHandler<T extends EventTarget = HTMLElement> = EventHandler<
+T,
+FocusEvent_2<T>
+>;
 
 /**
  * A global namespace for focus event names.
@@ -541,7 +564,10 @@ declare type FormControl = HTMLInputElement | HTMLSelectElement | HTMLTextAreaEl
 
 export declare type FormEvent<T = FormControl> = NativeEvent<T>;
 
-export declare type FormEventHandler<T = Element> = EventHandler<T, FormEvent<T>>;
+export declare type FormEventHandler<T extends EventTarget = HTMLElement> = EventHandler<
+T,
+FormEvent<T>
+>;
 
 /**
  * A global namespace for `gesturechange` event.
@@ -1140,7 +1166,8 @@ export declare const keyArrowUp = "ArrowUp";
  */
 export declare const keyBackspace = "Backspace";
 
-declare interface KeyboardEvent_2<T = Element> extends UIEvent_2<T, NativeKeyboardEvent> {
+declare interface KeyboardEvent_2<T extends EventTarget = HTMLElement>
+extends UIEvent_2<T, NativeKeyboardEvent> {
     altKey: boolean;
     /** @deprecated */
     charCode: number;
@@ -1166,7 +1193,10 @@ declare interface KeyboardEvent_2<T = Element> extends UIEvent_2<T, NativeKeyboa
 }
 export { KeyboardEvent_2 as KeyboardEvent }
 
-export declare type KeyboardEventHandler<T = Element> = EventHandler<T, KeyboardEvent_2<T>>;
+export declare type KeyboardEventHandler<T extends EventTarget = HTMLElement> = EventHandler<
+T,
+KeyboardEvent_2<T>
+>;
 
 /**
  * A global namespace for keyboard event keys.
@@ -1349,7 +1379,8 @@ export declare const mousedownEvent = "mousedown";
  */
 export declare const mouseenterEvent = "mouseenter";
 
-declare interface MouseEvent_2<T = Element, E = NativeMouseEvent> extends UIEvent_2<T, E> {
+declare interface MouseEvent_2<T extends EventTarget = HTMLElement, E = NativeMouseEvent>
+extends UIEvent_2<T, E> {
     altKey: boolean;
     button: number;
     buttons: number;
@@ -1372,7 +1403,10 @@ declare interface MouseEvent_2<T = Element, E = NativeMouseEvent> extends UIEven
 }
 export { MouseEvent_2 as MouseEvent }
 
-export declare type MouseEventHandler<T = Element> = EventHandler<T, MouseEvent_2<T>>;
+export declare type MouseEventHandler<T extends EventTarget = HTMLElement> = EventHandler<
+T,
+MouseEvent_2<T>
+>;
 
 /**
  * A global namespace for `hover` event.
@@ -1454,9 +1488,16 @@ declare type NativeDragEvent = DragEvent_2;
  * This might be a child element to the element on which the event listener is registered.
  * If you thought this should be `EventTarget & T`, see https://github.com/DefinitelyTyped/DefinitelyTyped/issues/11508#issuecomment-256045682
  */
-export declare type NativeEvent<T = Element, E = Event> = BaseEvent<E, T, T>;
+export declare type NativeEvent<T extends EventTarget = HTMLElement, E = Event> = BaseEvent<
+E,
+T,
+T
+>;
 
-export declare type NativeEventHandler<T = Element> = EventHandler<T, NativeEvent<T>>;
+export declare type NativeEventHandler<T extends EventTarget = HTMLElement> = EventHandler<
+T,
+NativeEvent<T>
+>;
 
 /**
  * A global namespace for all browser native events.
@@ -1702,7 +1743,8 @@ export declare const pointercancelEvent = "pointercancel";
  */
 export declare const pointerdownEvent = "pointerdown";
 
-declare interface PointerEvent_2<T = Element> extends MouseEvent_2<T, NativePointerEvent> {
+declare interface PointerEvent_2<T extends EventTarget = HTMLElement>
+extends MouseEvent_2<T, NativePointerEvent> {
     pointerId: number;
     pressure: number;
     tangentialPressure: number;
@@ -1716,7 +1758,10 @@ declare interface PointerEvent_2<T = Element> extends MouseEvent_2<T, NativePoin
 }
 export { PointerEvent_2 as PointerEvent }
 
-export declare type PointerEventHandler<T = Element> = EventHandler<T, PointerEvent_2<T>>;
+export declare type PointerEventHandler<T extends EventTarget = HTMLElement> = EventHandler<
+T,
+PointerEvent_2<T>
+>;
 
 /**
  * A global namespace for `pointerleave` event.
@@ -1964,7 +2009,8 @@ export declare const touchcancelEvent = "touchcancel";
  */
 export declare const touchendEvent = "touchend";
 
-declare interface TouchEvent_2<T = Element> extends UIEvent_2<T, NativeTouchEvent> {
+declare interface TouchEvent_2<T extends EventTarget = HTMLElement>
+extends UIEvent_2<T, NativeTouchEvent> {
     altKey: boolean;
     changedTouches: TouchList;
     ctrlKey: boolean;
@@ -1979,7 +2025,10 @@ declare interface TouchEvent_2<T = Element> extends UIEvent_2<T, NativeTouchEven
 }
 export { TouchEvent_2 as TouchEvent }
 
-export declare type TouchEventHandler<T = Element> = EventHandler<T, TouchEvent_2<T>>;
+export declare type TouchEventHandler<T extends EventTarget = HTMLElement> = EventHandler<
+T,
+TouchEvent_2<T>
+>;
 
 /**
  * A global namespace for touch events.
@@ -2024,7 +2073,7 @@ export declare const transitionDuration = "transitionDuration";
  */
 export declare const transitionEndEvent = "transitionend";
 
-declare interface TransitionEvent_2<T = Element>
+declare interface TransitionEvent_2<T extends EventTarget = HTMLElement>
 extends NativeEvent<T, NativeTransitionEvent> {
     elapsedTime: number;
     propertyName: string;
@@ -2032,20 +2081,27 @@ extends NativeEvent<T, NativeTransitionEvent> {
 }
 export { TransitionEvent_2 as TransitionEvent }
 
-export declare type TransitionEventHandler<T = Element> = EventHandler<T, TransitionEvent_2<T>>;
+export declare type TransitionEventHandler<T extends EventTarget = HTMLElement> = EventHandler<
+T,
+TransitionEvent_2<T>
+>;
 
 /**
  * A global namespace for `transitionProperty` string for modern browsers.
  */
 export declare const transitionProperty = "transitionProperty";
 
-declare interface UIEvent_2<T = Element, E = NativeUIEvent> extends NativeEvent<T, E> {
+declare interface UIEvent_2<T extends EventTarget = HTMLElement, E = NativeUIEvent>
+extends NativeEvent<T, E> {
     detail: number;
     view: AbstractView;
 }
 export { UIEvent_2 as UIEvent }
 
-export declare type UIEventHandler<T = Element> = EventHandler<T, UIEvent_2<T>>;
+export declare type UIEventHandler<T extends EventTarget = HTMLElement> = EventHandler<
+T,
+UIEvent_2<T>
+>;
 
 /**
  * A global namespace for `unload` event.
@@ -2064,7 +2120,8 @@ export declare const userAgentData: NavigatorUA["userAgentData"];
 
 export { version }
 
-declare interface WheelEvent_2<T = Element> extends MouseEvent_2<T, NativeWheelEvent> {
+declare interface WheelEvent_2<T extends EventTarget = HTMLElement>
+extends MouseEvent_2<T, NativeWheelEvent> {
     deltaMode: number;
     deltaX: number;
     deltaY: number;
@@ -2072,6 +2129,9 @@ declare interface WheelEvent_2<T = Element> extends MouseEvent_2<T, NativeWheelE
 }
 export { WheelEvent_2 as WheelEvent }
 
-export declare type WheelEventHandler<T = Element> = EventHandler<T, WheelEvent_2<T>>;
+export declare type WheelEventHandler<T extends EventTarget = HTMLElement> = EventHandler<
+T,
+WheelEvent_2<T>
+>;
 
 export { }

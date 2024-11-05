@@ -50,23 +50,29 @@ interface BaseEvent<E = Event, C = unknown, T = unknown> {
  * This might be a child element to the element on which the event listener is registered.
  * If you thought this should be `EventTarget & T`, see https://github.com/DefinitelyTyped/DefinitelyTyped/issues/11508#issuecomment-256045682
  */
-type NativeEvent<T = Element, E = Event> = BaseEvent<E, T, T>;
+type NativeEvent<T extends EventTarget = HTMLElement, E = Event> = BaseEvent<
+  E,
+  T,
+  T
+>;
 
-interface ClipboardEvent<T = Element>
+interface ClipboardEvent<T extends EventTarget = HTMLElement>
   extends NativeEvent<T, NativeClipboardEvent> {
   clipboardData: DataTransfer;
 }
 
-interface CompositionEvent<T = Element>
+interface CompositionEvent<T extends EventTarget = HTMLElement>
   extends NativeEvent<T, NativeCompositionEvent> {
   data: string;
 }
 
-interface DragEvent<T = Element> extends MouseEvent<T, NativeDragEvent> {
+interface DragEvent<T extends EventTarget = HTMLElement>
+  extends MouseEvent<T, NativeDragEvent> {
   dataTransfer: DataTransfer;
 }
 
-interface PointerEvent<T = Element> extends MouseEvent<T, NativePointerEvent> {
+interface PointerEvent<T extends EventTarget = HTMLElement>
+  extends MouseEvent<T, NativePointerEvent> {
   pointerId: number;
   pressure: number;
   tangentialPressure: number;
@@ -79,8 +85,10 @@ interface PointerEvent<T = Element> extends MouseEvent<T, NativePointerEvent> {
   isPrimary: boolean;
 }
 
-interface FocusEvent<T = Element, R = Element>
-  extends NativeEvent<T, NativeFocusEvent> {
+interface FocusEvent<
+  T extends EventTarget = HTMLElement,
+  R extends Element = HTMLElement,
+> extends NativeEvent<T, NativeFocusEvent> {
   relatedTarget: (EventTarget & R) | null;
   target: EventTarget & T;
 }
@@ -88,7 +96,8 @@ interface FocusEvent<T = Element, R = Element>
 type FormControl = HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement;
 type FormEvent<T = FormControl> = NativeEvent<T>;
 
-interface ChangeEvent<T = FormControl> extends FormEvent<T> {
+interface ChangeEvent<T extends EventTarget = FormControl>
+  extends FormEvent<T> {
   target: EventTarget & T;
 }
 
@@ -108,7 +117,8 @@ type ModifierKey =
   | "Symbol"
   | "SymbolLock";
 
-interface KeyboardEvent<T = Element> extends UIEvent<T, NativeKeyboardEvent> {
+interface KeyboardEvent<T extends EventTarget = HTMLElement>
+  extends UIEvent<T, NativeKeyboardEvent> {
   altKey: boolean;
   /** @deprecated */
   charCode: number;
@@ -133,7 +143,8 @@ interface KeyboardEvent<T = Element> extends UIEvent<T, NativeKeyboardEvent> {
   which: number;
 }
 
-interface MouseEvent<T = Element, E = NativeMouseEvent> extends UIEvent<T, E> {
+interface MouseEvent<T extends EventTarget = HTMLElement, E = NativeMouseEvent>
+  extends UIEvent<T, E> {
   altKey: boolean;
   button: number;
   buttons: number;
@@ -155,7 +166,8 @@ interface MouseEvent<T = Element, E = NativeMouseEvent> extends UIEvent<T, E> {
   shiftKey: boolean;
 }
 
-interface TouchEvent<T = Element> extends UIEvent<T, NativeTouchEvent> {
+interface TouchEvent<T extends EventTarget = HTMLElement>
+  extends UIEvent<T, NativeTouchEvent> {
   altKey: boolean;
   changedTouches: TouchList;
   ctrlKey: boolean;
@@ -169,26 +181,28 @@ interface TouchEvent<T = Element> extends UIEvent<T, NativeTouchEvent> {
   touches: TouchList;
 }
 
-interface UIEvent<T = Element, E = NativeUIEvent> extends NativeEvent<T, E> {
+interface UIEvent<T extends EventTarget = HTMLElement, E = NativeUIEvent>
+  extends NativeEvent<T, E> {
   detail: number;
   view: AbstractView;
 }
 
-interface WheelEvent<T = Element> extends MouseEvent<T, NativeWheelEvent> {
+interface WheelEvent<T extends EventTarget = HTMLElement>
+  extends MouseEvent<T, NativeWheelEvent> {
   deltaMode: number;
   deltaX: number;
   deltaY: number;
   deltaZ: number;
 }
 
-interface AnimationEvent<T = Element>
+interface AnimationEvent<T extends EventTarget = HTMLElement>
   extends NativeEvent<T, NativeAnimationEvent> {
   animationName: string;
   elapsedTime: number;
   pseudoElement: string;
 }
 
-interface TransitionEvent<T = Element>
+interface TransitionEvent<T extends EventTarget = HTMLElement>
   extends NativeEvent<T, NativeTransitionEvent> {
   elapsedTime: number;
   propertyName: string;
@@ -199,25 +213,71 @@ interface TransitionEvent<T = Element>
 // Event Handler Types
 // ----------------------------------------------------------------------
 // (this: unknown & EventTarget, event: E): void;
-type EventHandler<T = Element, E = Event | NativeEvent<T>> = (event: E) => void;
-type NativeEventHandler<T = Element> = EventHandler<T, NativeEvent<T>>;
-type ClipboardEventHandler<T = Element> = EventHandler<T, ClipboardEvent<T>>;
-type CompositionEventHandler<T = Element> = EventHandler<
+type EventHandler<
+  T extends EventTarget = HTMLElement,
+  E = Event | NativeEvent<T>,
+> = (event: E) => void;
+type NativeEventHandler<T extends EventTarget = HTMLElement> = EventHandler<
   T,
-  CompositionEvent<T>
+  NativeEvent<T>
 >;
-type DragEventHandler<T = Element> = EventHandler<T, DragEvent<T>>;
-type FocusEventHandler<T = Element> = EventHandler<T, FocusEvent<T>>;
-type FormEventHandler<T = Element> = EventHandler<T, FormEvent<T>>;
-type ChangeEventHandler<T = Element> = EventHandler<T, ChangeEvent<T>>;
-type KeyboardEventHandler<T = Element> = EventHandler<T, KeyboardEvent<T>>;
-type MouseEventHandler<T = Element> = EventHandler<T, MouseEvent<T>>;
-type TouchEventHandler<T = Element> = EventHandler<T, TouchEvent<T>>;
-type PointerEventHandler<T = Element> = EventHandler<T, PointerEvent<T>>;
-type UIEventHandler<T = Element> = EventHandler<T, UIEvent<T>>;
-type WheelEventHandler<T = Element> = EventHandler<T, WheelEvent<T>>;
-type AnimationEventHandler<T = Element> = EventHandler<T, AnimationEvent<T>>;
-type TransitionEventHandler<T = Element> = EventHandler<T, TransitionEvent<T>>;
+type ClipboardEventHandler<T extends EventTarget = HTMLElement> = EventHandler<
+  T,
+  ClipboardEvent<T>
+>;
+type CompositionEventHandler<T extends EventTarget = HTMLElement> =
+  EventHandler<
+    T,
+    CompositionEvent<T>
+  >;
+type DragEventHandler<T extends EventTarget = HTMLElement> = EventHandler<
+  T,
+  DragEvent<T>
+>;
+type FocusEventHandler<T extends EventTarget = HTMLElement> = EventHandler<
+  T,
+  FocusEvent<T>
+>;
+type FormEventHandler<T extends EventTarget = HTMLElement> = EventHandler<
+  T,
+  FormEvent<T>
+>;
+type ChangeEventHandler<T extends EventTarget = HTMLElement> = EventHandler<
+  T,
+  ChangeEvent<T>
+>;
+type KeyboardEventHandler<T extends EventTarget = HTMLElement> = EventHandler<
+  T,
+  KeyboardEvent<T>
+>;
+type MouseEventHandler<T extends EventTarget = HTMLElement> = EventHandler<
+  T,
+  MouseEvent<T>
+>;
+type TouchEventHandler<T extends EventTarget = HTMLElement> = EventHandler<
+  T,
+  TouchEvent<T>
+>;
+type PointerEventHandler<T extends EventTarget = HTMLElement> = EventHandler<
+  T,
+  PointerEvent<T>
+>;
+type UIEventHandler<T extends EventTarget = HTMLElement> = EventHandler<
+  T,
+  UIEvent<T>
+>;
+type WheelEventHandler<T extends EventTarget = HTMLElement> = EventHandler<
+  T,
+  WheelEvent<T>
+>;
+type AnimationEventHandler<T extends EventTarget = HTMLElement> = EventHandler<
+  T,
+  AnimationEvent<T>
+>;
+type TransitionEventHandler<T extends EventTarget = HTMLElement> = EventHandler<
+  T,
+  TransitionEvent<T>
+>;
 type PossibleEventTarget = EventTarget & (Element | Document | Window);
 
 export {
