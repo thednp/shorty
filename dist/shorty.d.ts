@@ -1725,7 +1725,7 @@ export declare const orientationchangeEvent = "orientationchange";
 
 export declare interface OriginalEvent extends CustomEvent<unknown> {
     readonly type: string;
-    relatedTarget?: EventTarget;
+    relatedTarget?: EventTarget & HTMLElement;
 }
 
 /**
