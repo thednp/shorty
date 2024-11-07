@@ -1,5 +1,10 @@
 import isNode from "../is/isNode";
 
+/**
+ * Returns the value of `node.nodeName` for the given node.
+ * @param node target node
+ * @returns the node name
+ */
 const getNodeName = (node: Node | Window) => {
   /* istanbul ignore else @preserve */
   if (isNode(node)) {

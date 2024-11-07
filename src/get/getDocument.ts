@@ -11,12 +11,12 @@ import isDocument from "../is/isDocument";
  * @returns the parent document of the given node
  */
 const getDocument = (node?: Node | Document | Window): Document => {
-  // node instanceof Window
-  if (isWindow(node)) return node.document;
   // node instanceof Document
   if (isDocument(node)) return node;
   // node instanceof Node
   if (isNode(node)) return node.ownerDocument as Document;
+  // node instanceof Window
+  if (isWindow(node)) return node.document;
   // node is undefined | NULL
   return globalThis.document;
 };

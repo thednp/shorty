@@ -715,11 +715,12 @@ export declare const getElementsByTagName: <T extends Element>(selector: string,
  * * If `element` parameter is not an `Element`, `getComputedStyle`
  * throws a `ReferenceError`.
  *
- * @param element target
+ * @param element target `Element`
  * @param property the css property
+ * @param pseudoElt pseudo-elements
  * @return the css property value
  */
-export declare const getElementStyle: (element: Element, property: string) => string;
+export declare const getElementStyle: (element: Element, property: string, pseudoElt?: string | null) => string;
 
 /**
  * Utility to get the computed `transitionDelay`
@@ -744,10 +745,15 @@ export declare const getElementTransitionDuration: (element: Element) => number;
  */
 export declare const getInstance: <T>(target: Element, component: string) => T | null;
 
+/**
+ * Returns the value of `node.nodeName` for the given node.
+ * @param node target node
+ * @returns the node name
+ */
 export declare const getNodeName: (node: Node | Window) => string;
 
 /**
- * Returns an `{x,y}` object with the target
+ * Returns an `{x, y}` object with the target
  * `Element` / `Node` scroll position.
  *
  * @see https://github.com/floating-ui/floating-ui
@@ -796,7 +802,8 @@ export declare const getRectRelativeToOffsetParent: (element: Element, offsetPar
 }) => OffsetRect;
 
 /**
- * Get offset properties for `SVGElement` relative to first parentElement.
+ * Returns offset properties for `SVGElement` relative to first
+ * parent `HTMLElement`.
  *
  * @param target the `<svg>` target element
  */

@@ -2,7 +2,8 @@ import isHTMLElement from "../is/isHTMLElement";
 import getParentNode from "./getParentNode";
 
 /**
- * Get offset properties for `SVGElement` relative to first parentElement.
+ * Returns offset properties for `SVGElement` relative to first
+ * parent `HTMLElement`.
  *
  * @param target the `<svg>` target element
  */

@@ -1,7 +1,7 @@
 import isWindow from "../is/isWindow";
 
 /**
- * Returns an `{x,y}` object with the target
+ * Returns an `{x, y}` object with the target
  * `Element` / `Node` scroll position.
  *
  * @see https://github.com/floating-ui/floating-ui

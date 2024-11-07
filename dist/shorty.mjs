@@ -198,7 +198,7 @@ const Ce = "2.0.8", Le = "aria-checked", Me = "aria-description", De = "aria-des
 }, to = (t, e) => O.get(t, e), eo = (t) => t?.charAt(0).toUpperCase() + t?.slice(1), no = (t) => t?.trim().replace(
   /(?:^\w|[A-Z]|\b\w)/g,
   (e, n) => n === 0 ? e.toLowerCase() : e.toUpperCase()
-).replace(/\s+/g, ""), k = (t) => typeof t == "string" || !1, G = (t) => b(t) && t.constructor.name === "Window" || !1, K = (t) => l(t) && t.nodeType === 9 || !1, d = (t) => G(t) ? t.document : K(t) ? t : l(t) ? t.ownerDocument : globalThis.document, N = (t, ...e) => Object.assign(t, ...e), oe = (t) => {
+).replace(/\s+/g, ""), k = (t) => typeof t == "string" || !1, G = (t) => b(t) && t.constructor.name === "Window" || !1, K = (t) => l(t) && t.nodeType === 9 || !1, d = (t) => K(t) ? t : l(t) ? t.ownerDocument : G(t) ? t.document : globalThis.document, N = (t, ...e) => Object.assign(t, ...e), oe = (t) => {
   if (!t) return;
   if (k(t))
     return d().createElement(t);
@@ -214,9 +214,9 @@ const Ce = "2.0.8", Le = "aria-checked", Me = "aria-description", De = "aria-des
   if (!o) return;
   const s = { ...e };
   return delete s.tagName, N(o, s);
-}, q = (t, e) => t.dispatchEvent(e), oo = (t, e, n) => n.indexOf(t) === e, g = (t, e) => {
-  const n = getComputedStyle(t), o = e.replace("webkit", "Webkit").replace(/([A-Z])/g, "-$1").toLowerCase();
-  return n.getPropertyValue(o);
+}, q = (t, e) => t.dispatchEvent(e), oo = (t, e, n) => n.indexOf(t) === e, g = (t, e, n) => {
+  const o = getComputedStyle(t, n), s = e.replace("webkit", "Webkit").replace(/([A-Z])/g, "-$1").toLowerCase();
+  return o.getPropertyValue(s);
 }, re = (t) => {
   const e = g(t, U), n = g(t, Yt), o = n.includes("ms") ? 1 : 1e3, s = e && e !== "none" ? parseFloat(n) * o : 0;
   return Number.isNaN(s) ? 0 : s;
