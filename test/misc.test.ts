@@ -235,6 +235,10 @@ describe('Shorty Library Tests - MISC', () => {
 
     const el = querySelector('.alert', container)!;
     const table = querySelector('.table', container)!;
+    const specialEl = container.ownerDocument.createElement('div');
+    specialEl.setAttribute('data-bs-root-margin', '0x 0px 50%');
+    specialEl.setAttribute('data-bs-threshold', '0.01 0.5 1');
+    const specialDefaults = { rootMargin: '0px 0px 0px', threshold: '0.1 0.5 1'};
 
     const defaults = { op1: true, op2: true, op3: 5, title: null };
     const jsOps = { op1: false, op2: false, op3: 8, title: 'something' };
@@ -257,6 +261,11 @@ describe('Shorty Library Tests - MISC', () => {
       op2: false,
       op3: 8,
       title: 'something',
+    });
+    console.log(normalizeOptions(specialEl, specialDefaults, {}, 'bs'))
+    expect(normalizeOptions(specialEl, specialDefaults, {}, 'bs'), 'normalizeOptions(special)').to.deep.equal({
+      threshold: '0.01 0.5 1',
+      rootMargin: '0x 0px 50%',
     });
     expect(noop()).to.be.undefined;
 

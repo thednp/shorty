@@ -2,7 +2,7 @@ import isElement from "../is/isElement";
 import getAttribute from "../attr/getAttribute";
 import normalizeValue from "./normalizeValue";
 import ObjectEntries from "./ObjectEntries";
-import toLowerCase from "./toLowerCase";
+import camelCase from "./camelCase";
 
 /**
  * Utility to normalize component options.
@@ -19,6 +19,7 @@ const normalizeOptions = <T extends { [key: string]: unknown }>(
   inputOps: Partial<T>,
   ns?: string,
 ): T => {
+  /* istanbul ignore next @preserve */
   if (!isElement(element)) return defaultOps;
 
   const INPUT = { ...inputOps } as T;
@@ -30,11 +31,8 @@ const normalizeOptions = <T extends { [key: string]: unknown }>(
 
   ObjectEntries(data).forEach(([k, v]) => {
     const key: keyof T = ns && typeof k === "string" && k.includes(ns)
-      ? k.replace(ns, "").replace(
-        /[A-Z]/g,
-        (match: string) => toLowerCase(match),
-      )
-      : /* istanbul ignore next @preserve */ k;
+      ? camelCase(k.replace(ns, ""))
+      : /* istanbul ignore next @preserve */ camelCase(k as string);
 
     dataOps[key] = normalizeValue(v) as T[keyof T];
   });
