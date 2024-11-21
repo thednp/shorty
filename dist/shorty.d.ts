@@ -802,20 +802,6 @@ export declare const getRectRelativeToOffsetParent: (element: Element, offsetPar
 }) => OffsetRect;
 
 /**
- * Returns offset properties for `SVGElement` relative to first
- * parent `HTMLElement`.
- *
- * @param target the `<svg>` target element
- */
-export declare const getSVGOffset: (target: SVGElement) => {
-    offsetTop: number;
-    offsetLeft: number;
-    offsetWidth: number;
-    offsetHeight: number;
-    offsetParent: Element | null;
-};
-
-/**
  * Returns a unique identifier for popover, tooltip, scrollspy.
  *
  * @param element target element

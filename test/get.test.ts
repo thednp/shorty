@@ -36,7 +36,6 @@ describe('Shorty Library Tests - GET', () => {
       getWindow,
       ObjectValues,
       querySelector,
-      getSVGOffset,
     } = SHORTY;
     const comment = container.childNodes[0];
     const button = querySelector<HTMLButtonElement>('button', container)!;
@@ -301,12 +300,6 @@ describe('Shorty Library Tests - GET', () => {
       [x, y, width, height].map(Math.round),
       'getRectRelativeToOffsetParent',
     ).to.not.deep.equal([0, 0, 0, 0]);
-
-    expect(getSVGOffset(nestedSVG),'getSVGOffset').to.deep.equal({
-      offsetWidth: 7.00152587890625, offsetHeight: 7.00152587890625,
-      offsetTop: 28.999107360839844, offsetLeft: 288.4991149902344,
-      offsetParent: element
-    });
 
     expect(getUID(element), 'getUID()').to.eq(0);
     expect(getUID(element, 'Alert'), 'getUID(key) - set & returns').to.eq(0);
