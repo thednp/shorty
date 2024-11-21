@@ -155,42 +155,16 @@ const Ce = "2.0.8", Le = "aria-checked", Me = "aria-description", De = "aria-des
   (e) => t.nodeType === e
 ) || !1, u = (t) => l(t) && t.nodeType === 1 || !1, h = /* @__PURE__ */ new Map(), D = {
   data: h,
-  /**
-   * Sets web components data.
-   *
-   * @param element target element
-   * @param component the component's name or a unique key
-   * @param instance the component instance
-   */
   set: (t, e, n) => {
     if (!u(t)) return;
     h.has(e) || h.set(e, /* @__PURE__ */ new Map()), h.get(e).set(t, n);
   },
-  /**
-   * Returns all instances for specified component.
-   *
-   * @param component the component's name or a unique key
-   * @returns all the component instances
-   */
   getAllFor: (t) => h.get(t) || null,
-  /**
-   * Returns the instance associated with the target.
-   *
-   * @param element target element
-   * @param component the component's name or a unique key
-   * @returns the instance
-   */
   get: (t, e) => {
     if (!u(t) || !e) return null;
     const n = D.getAllFor(e);
     return t && n && n.get(t) || null;
   },
-  /**
-   * Removes web components data.
-   *
-   * @param element target element
-   * @param component the component's name or a unique key
-   */
   remove: (t, e) => {
     const n = D.getAllFor(e);
     !n || !u(t) || (n.delete(t), n.size === 0 && h.delete(e));
@@ -280,35 +254,14 @@ const Ce = "2.0.8", Le = "aria-checked", Me = "aria-description", De = "aria-des
     }
   });
 }, O = (t) => b(t) && t.constructor.name === "Map" || !1, le = (t) => typeof t == "number" || !1, v = /* @__PURE__ */ new Map(), ho = {
-  /**
-   * Sets a new timeout timer for an element, or element -> key association.
-   *
-   * @param element target element
-   * @param callback the callback
-   * @param delay the execution delay
-   * @param key a unique key
-   */
   set: (t, e, n, o) => {
     u(t) && (o && o.length ? (v.has(t) || v.set(t, /* @__PURE__ */ new Map()), v.get(t).set(o, setTimeout(e, n))) : v.set(t, setTimeout(e, n)));
   },
-  /**
-   * Returns the timer associated with the target.
-   *
-   * @param element target element
-   * @param key a unique
-   * @returns the timer
-   */
   get: (t, e) => {
     if (!u(t)) return null;
     const n = v.get(t);
     return e && n && O(n) ? n.get(e) || null : le(n) ? n : null;
   },
-  /**
-   * Clears the element's timer.
-   *
-   * @param element target element
-   * @param key a unique key
-   */
   clear: (t, e) => {
     if (!u(t)) return;
     const n = v.get(t);

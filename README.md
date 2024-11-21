@@ -6,8 +6,8 @@
 [![NPM Downloads](https://img.shields.io/npm/dm/@thednp/shorty.svg)](http://npm-stat.com/charts.html?package=@thednp/shorty)
 [![jsDelivr hits (npm)](https://img.shields.io/jsdelivr/npm/hw/@thednp/shorty)](https://www.jsdelivr.com/package/npm/@thednp/shorty)
 [![typescript version](https://img.shields.io/badge/typescript-5.6.3-brightgreen)](https://www.typescriptlang.org/)
-[![vitest version](https://img.shields.io/badge/vitest-2.1.4-brightgreen)](https://vitest.dev/)
-[![vite version](https://img.shields.io/badge/vite-5.4.10-brightgreen)](https://github.com/vitejs)
+[![vitest version](https://img.shields.io/badge/vitest-2.1.5-brightgreen)](https://vitest.dev/)
+[![vite version](https://img.shields.io/badge/vite-5.4.11-brightgreen)](https://github.com/vitejs)
 
 
 A small TypeScript library with various tools for increasing your productivity while helping you to create lighter libraries or web components. If there is anything that is consistently repeating itself, **shorty** can help you save up to 50% of the code required, with little to no performance cost.

@@ -22,7 +22,7 @@ export default defineConfig({
       copyDtsFiles: true,
       rollupTypes: true,
     }),
-    stripComments({ type: 'none' }),
+    stripComments({ type: 'none', enforce: 'post' }),
   ],
   build: {
     minify: 'esbuild',

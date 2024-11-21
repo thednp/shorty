@@ -94,7 +94,7 @@ interface FocusEvent<
 }
 
 type FormControl = HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement;
-type FormEvent<T = FormControl> = NativeEvent<T>;
+type FormEvent<T extends EventTarget = FormControl> = NativeEvent<T>;
 
 interface ChangeEvent<T extends EventTarget = FormControl>
   extends FormEvent<T> {

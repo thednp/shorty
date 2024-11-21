@@ -562,7 +562,7 @@ export declare const focusoutEvent = "focusout";
 
 declare type FormControl = HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement;
 
-export declare type FormEvent<T = FormControl> = NativeEvent<T>;
+export declare type FormEvent<T extends EventTarget = FormControl> = NativeEvent<T>;
 
 export declare type FormEventHandler<T extends EventTarget = HTMLElement> = EventHandler<
 T,
