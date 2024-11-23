@@ -34,7 +34,7 @@ npm install -D @thednp/shorty
 ```
 
 ```bash
-deno install -D npm:@thednp/shorty@latest
+deno add -D npm:@thednp/shorty@latest
 ```
 
 # TypeScript / ES6+ Base usage
