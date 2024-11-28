@@ -19,7 +19,7 @@ export type FocusableElement =
   | HTMLDetailsElement
   | HTMLSelectElement;
 
-function handleKeyboardNavigation<T extends Element & EventTarget>(
+export function handleKeyboardNavigation<T extends Element & EventTarget>(
   this: T,
   event: KeyboardEvent<T>,
 ) {
@@ -55,13 +55,30 @@ export const hasFocusTrap = (target: Element) =>
   focusTrapMap.has(target) === true;
 
 /**
+ * Utility to add focus trap inside a designated target element;
+ * @param target
+ */
+export const addFocusTrap = (target: Element) => {
+  if (hasFocusTrap(target)) return;
+  on(target, "keydown", handleKeyboardNavigation);
+  focusTrapMap.set(target, true);
+};
+
+/**
+ * Utility to remove focus trap inside a designated target element;
+ * @param target
+ */
+export const removeFocusTrap = (target: Element) => {
+  if (!hasFocusTrap(target)) return;
+  off(target, "keydown", handleKeyboardNavigation);
+  focusTrapMap.delete(target);
+};
+
+/**
  * Utility to toggle focus trap inside a designated target element;
  * @param target
  */
 export const toggleFocusTrap = (target: Element) => {
-  const isCurrentlyTrapped = hasFocusTrap(target);
-  const action = !isCurrentlyTrapped ? on : off;
-  action(target, "keydown", handleKeyboardNavigation);
-  if (isCurrentlyTrapped) focusTrapMap.delete(target);
-  else focusTrapMap.set(target, true);
+  if (hasFocusTrap(target)) removeFocusTrap(target);
+  else addFocusTrap(target);
 };

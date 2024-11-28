@@ -200,7 +200,13 @@ import setElementStyle from "./misc/setElementStyle";
 import Timer from "./misc/timer";
 import toLowerCase from "./misc/toLowerCase";
 import toUpperCase from "./misc/toUpperCase";
-import { hasFocusTrap, toggleFocusTrap } from "./misc/focusTrap";
+import {
+  addFocusTrap,
+  handleKeyboardNavigation,
+  hasFocusTrap,
+  removeFocusTrap,
+  toggleFocusTrap,
+} from "./misc/focusTrap";
 
 // get
 import getBoundingClientRect from "./get/getBoundingClientRect";
@@ -266,6 +272,7 @@ export {
   // class
   addClass,
   addEventListener,
+  addFocusTrap,
   animationDelay,
   animationDuration,
   animationEndEvent,
@@ -349,6 +356,7 @@ export {
   getRectRelativeToOffsetParent,
   getUID,
   getWindow,
+  handleKeyboardNavigation,
   hasAttribute,
   hasAttributeNS,
   hasClass,
@@ -457,6 +465,7 @@ export {
   removeAttributeNS,
   removeClass,
   removeEventListener,
+  removeFocusTrap,
   resetEvent,
   resizeEvent,
   scrollEvent,

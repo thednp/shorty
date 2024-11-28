@@ -113,7 +113,7 @@ describe('Shorty Library Tests - MISC', () => {
 
   it("Can use focus trap", async () => {
     const container = getExampleDOM();
-    const { focus, toggleFocusTrap, focusableSelector } = SHORTY;
+    const { focus, addFocusTrap, removeFocusTrap, toggleFocusTrap, focusableSelector } = SHORTY;
     wrapper.append(container);
     await vi.waitFor(() => container.querySelector('.alert'), 200);
     const element = container.querySelector<HTMLElement>('.alert')!;
@@ -123,6 +123,7 @@ describe('Shorty Library Tests - MISC', () => {
 
     focus(firstFocusable);
     toggleFocusTrap(element);
+    addFocusTrap(element);
     element.dispatchEvent(new KeyboardEvent('keydown', { bubbles: true, code: 'Tab', key: 'Tab', shiftKey: true }));
     element.dispatchEvent(new KeyboardEvent('keydown', { bubbles: true, code: 'Tab', key: 'Tab', shiftKey: true }));
     element.dispatchEvent(new KeyboardEvent('keydown', { bubbles: true, code: 'Tab', key: 'Tab', shiftKey: true }));
@@ -138,6 +139,7 @@ describe('Shorty Library Tests - MISC', () => {
       expect(element).to.contain(doc.activeElement);
     }, 50)
     toggleFocusTrap(element);
+    removeFocusTrap(element);
 
     toggleFocusTrap(table);
     table.dispatchEvent(new KeyboardEvent('keydown', { bubbles: true, code: 'Tab', shiftKey: true }));

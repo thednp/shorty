@@ -25,6 +25,12 @@ declare const addEventListener_2 = "addEventListener";
 export { addEventListener_2 as addEventListener }
 
 /**
+ * Utility to add focus trap inside a designated target element;
+ * @param target
+ */
+export declare const addFocusTrap: (target: Element) => void;
+
+/**
  * A global namespace for 'animationDelay' string.
  */
 export declare const animationDelay = "animationDelay";
@@ -819,6 +825,8 @@ export declare const getUID: (element: Element, key?: string) => number;
  * @returns the `Window` object
  */
 export declare const getWindow: (node?: Node) => Window;
+
+export declare function handleKeyboardNavigation<T extends Element & EventTarget>(this: T, event: KeyboardEvent_2<T>): void;
 
 /**
  * Shortcut for `Element.hasAttribute()` method.
@@ -1835,6 +1843,12 @@ export declare const removeClass: (element: Element, ...classNAME: string[]) => 
  */
 declare const removeEventListener_2 = "removeEventListener";
 export { removeEventListener_2 as removeEventListener }
+
+/**
+ * Utility to remove focus trap inside a designated target element;
+ * @param target
+ */
+export declare const removeFocusTrap: (target: Element) => void;
 
 /**
  * A global namespace for `reset` event.
