@@ -1,3 +1,4 @@
+import { CustomElement as CustomElement_2 } from '..';
 import { version } from '../package.json';
 
 /**
@@ -629,7 +630,7 @@ export declare const getBoundingClientRect: (element: Element, includeScale?: bo
  * @param parent parent to look into
  * @returns the query result
  */
-export declare const getCustomElements: (parent?: ParentNode) => CustomElement[];
+export declare const getCustomElements: (parent?: ParentNode) => CustomElement_2[];
 
 /**
  * Returns the `document` or the `#document` element.
