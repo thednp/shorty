@@ -1,6 +1,6 @@
-import type { OriginalEvent } from "../interface/originalEvent";
-import isObject from "../is/isObject";
-import ObjectAssign from "./ObjectAssign";
+import type { OriginalEvent } from "../interface/originalEvent.d.ts";
+import isObject from "../is/isObject.ts";
+import ObjectAssign from "./ObjectAssign.ts";
 
 /**
  * Returns a namespaced `CustomEvent` specific to each component.

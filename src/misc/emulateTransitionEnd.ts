@@ -1,7 +1,7 @@
-import transitionEndEvent from "../strings/transitionEndEvent";
-import getElementTransitionDelay from "../get/getElementTransitionDelay";
-import getElementTransitionDuration from "../get/getElementTransitionDuration";
-import dispatchEvent from "./dispatchEvent";
+import transitionEndEvent from "../strings/transitionEndEvent.ts";
+import getElementTransitionDelay from "../get/getElementTransitionDelay.ts";
+import getElementTransitionDuration from "../get/getElementTransitionDuration.ts";
+import dispatchEvent from "./dispatchEvent.ts";
 
 /**
  * Utility to make sure callbacks are consistently

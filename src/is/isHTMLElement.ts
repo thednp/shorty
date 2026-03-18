@@ -1,4 +1,4 @@
-import isElement from "./isElement";
+import isElement from "./isElement.ts";
 
 /**
  * Checks if an element is an `HTMLElement`.

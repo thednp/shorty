@@ -1,4 +1,4 @@
-import isObject from "./isObject";
+import isObject from "./isObject.ts";
 
 /**
  * Check if a target object is `Window`.

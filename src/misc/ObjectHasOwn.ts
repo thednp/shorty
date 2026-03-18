@@ -1,4 +1,4 @@
-import isObject from "../is/isObject";
+import isObject from "../is/isObject.ts";
 
 /**
  * A shortcut to `Object.hasOwn()` static method to work

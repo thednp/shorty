@@ -1,6 +1,6 @@
-import on from "./on";
-import off from "./off";
-import { NativeEventHandler } from "../interface/event";
+import on from "./on.ts";
+import off from "./off.ts";
+import { NativeEventHandler } from "../interface/event.d.ts";
 
 /**
  * Add an `eventListener` to an `EventTarget`

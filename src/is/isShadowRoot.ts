@@ -1,4 +1,4 @@
-import isNode from "./isNode";
+import isNode from "./isNode.ts";
 
 /**
  * Check if target is a `ShadowRoot`.

@@ -1,5 +1,5 @@
-import getDocument from "../get/getDocument";
-import isNode from "../is/isNode";
+import getDocument from "../get/getDocument.ts";
+import isNode from "../is/isNode.ts";
 
 /**
  * Shortcut for `Element.getElementsByClassName` method. Some `Node` elements

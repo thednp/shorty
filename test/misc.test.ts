@@ -104,8 +104,8 @@ describe('Shorty Library Tests - MISC', () => {
         addClass(el, 'show');
         focus(btn, { preventScroll: false });
         console.log('transitionend triggered');
-        vi.advanceTimersByTime(350);
       });
+      vi.advanceTimersByTime(350);
     });
 
     btn.click();
@@ -155,23 +155,24 @@ describe('Shorty Library Tests - MISC', () => {
     vi.useFakeTimers();
     const container = getExampleDOM();
     wrapper.append(container);
-    const { emulateAnimationEnd, getElementStyle, querySelector, addClass } = SHORTY;
+    const { emulateAnimationEnd, getElementStyle, querySelector, addClass, setElementStyle } = SHORTY;
     await vi.waitFor(() => container.querySelector('.alert'), 200);
 
     const el = querySelector('.alert') as HTMLElement;
+    // setElementStyle(el, { animationDuration: '0.1s' });
 
     addClass(el, 'animate-test');
     emulateAnimationEnd(el, () => {
       console.log('animationend fired - default');
-      vi.advanceTimersByTime(350);
     });
+    vi.advanceTimersByTime(351);
+
     await vi.waitFor(() => {
       expect(getElementStyle(el, 'animationName'), 'animationName').to.equal('animate-test');
       expect(getElementStyle(el, 'animationDuration'), 'animationDuration').to.equal('0.3s');
       expect(getElementStyle(el, 'animationDelay'), 'animationDelay').to.equal('0s');
-    }, 351)
+    }, 352)
   });
-
 
   it('Test misc folder - emulateAnimationEnd - no duration', async () => {
     vi.useFakeTimers();
@@ -190,14 +191,14 @@ describe('Shorty Library Tests - MISC', () => {
 
     emulateAnimationEnd(el, () => {
       console.log('animationend fired no duration');
-      vi.advanceTimersByTime(150);
     });
+    vi.advanceTimersByTime(15);
 
     await vi.waitFor(() => {
       expect(getElementStyle(el, 'animationName'), 'animationName').to.equal('animate-test');
       expect(getElementStyle(el, 'animationDuration'), 'animationDuration').to.equal('0s');
       expect(getElementStyle(el, 'animationDelay'), 'animationDelay').to.equal('0s');
-    }, 50)
+    }, 16)
 
   });
 
@@ -233,7 +234,6 @@ describe('Shorty Library Tests - MISC', () => {
       capitalize,
       kebabCase,
     } = SHORTY;
-
 
     const el = querySelector('.alert', container)!;
     const table = querySelector('.table', container)!;

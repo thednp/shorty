@@ -1,4 +1,5 @@
 import { defineConfig } from "vitest/config";
+import { playwright } from "@vitest/browser-playwright";
 
 export default defineConfig({
   optimizeDeps: {
@@ -16,14 +17,11 @@ export default defineConfig({
       include: ["src/**/*.{ts,tsx}"],
     },
     browser: {
-      provider: 'playwright', // or 'webdriverio'
       enabled: true,
+      provider: playwright({}),
+      instances: [{ browser: "chromium" }],
+      ui: false,
       headless: true,
-      instances: [
-        {          
-          browser: 'chromium', // browser name is required
-        }
-      ]
     },
   },
 });

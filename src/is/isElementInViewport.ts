@@ -1,6 +1,6 @@
-import getBoundingClientRect from "../get/getBoundingClientRect";
-import getDocumentElement from "../get/getDocumentElement";
-import isElement from "./isElement";
+import getBoundingClientRect from "../get/getBoundingClientRect.ts";
+import getDocumentElement from "../get/getDocumentElement.ts";
+import isElement from "./isElement.ts";
 
 /**
  * Utility to determine if an `Element`

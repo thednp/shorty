@@ -1,5 +1,5 @@
-import getDocument from "../get/getDocument";
-import isElement from "../is/isElement";
+import getDocument from "../get/getDocument.ts";
+import isElement from "../is/isElement.ts";
 
 /**
  * Utility to check if target is typeof `Element`, `Node`

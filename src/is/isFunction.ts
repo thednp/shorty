@@ -1,4 +1,4 @@
-import { Fn } from "../interface/fn";
+import { Fn } from "../interface/fn.ts";
 
 /**
  * Checks if an object is a `Function`.

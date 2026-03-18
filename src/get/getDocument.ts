@@ -1,6 +1,6 @@
-import isNode from "../is/isNode";
-import isWindow from "../is/isWindow";
-import isDocument from "../is/isDocument";
+import isNode from "../is/isNode.ts";
+import isWindow from "../is/isWindow.ts";
+import isDocument from "../is/isDocument.ts";
 
 /**
  * Returns the `document` or the `#document` element.

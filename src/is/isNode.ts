@@ -1,4 +1,4 @@
-import isObject from "./isObject";
+import isObject from "./isObject.ts";
 
 type NodeObject = object & { nodeType: number };
 

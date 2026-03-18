@@ -1,4 +1,4 @@
-import getDocument from "./getDocument";
+import getDocument from "./getDocument.ts";
 
 /**
  * Returns the `document.documentElement` or the `<HTML>` element.

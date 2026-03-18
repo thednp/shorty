@@ -1,4 +1,4 @@
-import { Fn } from "../interface/fn";
+import { Fn } from "../interface/fn.ts";
 
 type NormalValue = boolean | number | string | Fn | null;
 

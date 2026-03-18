@@ -1,4 +1,4 @@
-import type { NavigatorUA } from "../interface/navigatorUA";
+import type { NavigatorUA } from "../interface/navigatorUA.d.ts";
 
 /**
  * An accessor that checks for mobile detection.

@@ -1,270 +1,270 @@
 import { version } from "../package.json";
 
 // strings
-import ariaChecked from "./strings/ariaChecked";
-import ariaDescription from "./strings/ariaDescription";
-import ariaDescribedBy from "./strings/ariaDescribedBy";
-import ariaExpanded from "./strings/ariaExpanded";
-import ariaHasPopup from "./strings/ariaHasPopup";
-import ariaHidden from "./strings/ariaHidden";
-import ariaLabel from "./strings/ariaLabel";
-import ariaLabelledBy from "./strings/ariaLabelledBy";
-import ariaModal from "./strings/ariaModal";
-import ariaPressed from "./strings/ariaPressed";
-import ariaSelected from "./strings/ariaSelected";
-import ariaValueMin from "./strings/ariaValueMin";
-import ariaValueMax from "./strings/ariaValueMax";
-import ariaValueNow from "./strings/ariaValueNow";
-import ariaValueText from "./strings/ariaValueText";
+import ariaChecked from "./strings/ariaChecked.ts";
+import ariaDescription from "./strings/ariaDescription.ts";
+import ariaDescribedBy from "./strings/ariaDescribedBy.ts";
+import ariaExpanded from "./strings/ariaExpanded.ts";
+import ariaHasPopup from "./strings/ariaHasPopup.ts";
+import ariaHidden from "./strings/ariaHidden.ts";
+import ariaLabel from "./strings/ariaLabel.ts";
+import ariaLabelledBy from "./strings/ariaLabelledBy.ts";
+import ariaModal from "./strings/ariaModal.ts";
+import ariaPressed from "./strings/ariaPressed.ts";
+import ariaSelected from "./strings/ariaSelected.ts";
+import ariaValueMin from "./strings/ariaValueMin.ts";
+import ariaValueMax from "./strings/ariaValueMax.ts";
+import ariaValueNow from "./strings/ariaValueNow.ts";
+import ariaValueText from "./strings/ariaValueText.ts";
 
-import nativeEvents from "./strings/nativeEvents";
-import abortEvent from "./strings/abortEvent";
-import blurEvent from "./strings/blurEvent";
-import moveEvent from "./strings/moveEvent";
-import changeEvent from "./strings/changeEvent";
-import dragEvent from "./strings/dragEvent";
-import dragstartEvent from "./strings/dragstartEvent";
-import dragenterEvent from "./strings/dragenterEvent";
-import dragleaveEvent from "./strings/dragleaveEvent";
-import dragoverEvent from "./strings/dragoverEvent";
-import dragendEvent from "./strings/dragendEvent";
-import errorEvent from "./strings/errorEvent";
-import resetEvent from "./strings/resetEvent";
-import resizeEvent from "./strings/resizeEvent";
-import scrollEvent from "./strings/scrollEvent";
-import submitEvent from "./strings/submitEvent";
-import loadEvent from "./strings/loadEvent";
-import loadstartEvent from "./strings/loadstartEvent";
-import unloadEvent from "./strings/unloadEvent";
-import readystatechangeEvent from "./strings/readystatechangeEvent";
-import beforeunloadEvent from "./strings/beforeunloadEvent";
-import orientationchangeEvent from "./strings/orientationchangeEvent";
-import contextmenuEvent from "./strings/contextmenuEvent";
-import DOMContentLoadedEvent from "./strings/DOMContentLoadedEvent";
-import DOMMouseScrollEvent from "./strings/DOMMouseScrollEvent";
+import nativeEvents from "./strings/nativeEvents.ts";
+import abortEvent from "./strings/abortEvent.ts";
+import blurEvent from "./strings/blurEvent.ts";
+import moveEvent from "./strings/moveEvent.ts";
+import changeEvent from "./strings/changeEvent.ts";
+import dragEvent from "./strings/dragEvent.ts";
+import dragstartEvent from "./strings/dragstartEvent.ts";
+import dragenterEvent from "./strings/dragenterEvent.ts";
+import dragleaveEvent from "./strings/dragleaveEvent.ts";
+import dragoverEvent from "./strings/dragoverEvent.ts";
+import dragendEvent from "./strings/dragendEvent.ts";
+import errorEvent from "./strings/errorEvent.ts";
+import resetEvent from "./strings/resetEvent.ts";
+import resizeEvent from "./strings/resizeEvent.ts";
+import scrollEvent from "./strings/scrollEvent.ts";
+import submitEvent from "./strings/submitEvent.ts";
+import loadEvent from "./strings/loadEvent.ts";
+import loadstartEvent from "./strings/loadstartEvent.ts";
+import unloadEvent from "./strings/unloadEvent.ts";
+import readystatechangeEvent from "./strings/readystatechangeEvent.ts";
+import beforeunloadEvent from "./strings/beforeunloadEvent.ts";
+import orientationchangeEvent from "./strings/orientationchangeEvent.ts";
+import contextmenuEvent from "./strings/contextmenuEvent.ts";
+import DOMContentLoadedEvent from "./strings/DOMContentLoadedEvent.ts";
+import DOMMouseScrollEvent from "./strings/DOMMouseScrollEvent.ts";
 
-import selectEvent from "./strings/selectEvent";
-import selectendEvent from "./strings/selectendEvent";
-import selectstartEvent from "./strings/selectstartEvent";
+import selectEvent from "./strings/selectEvent.ts";
+import selectendEvent from "./strings/selectendEvent.ts";
+import selectstartEvent from "./strings/selectstartEvent.ts";
 
-import mouseSwipeEvents from "./strings/mouseSwipeEvents";
-import mouseClickEvents from "./strings/mouseClickEvents";
-import mouseclickEvent from "./strings/mouseclickEvent";
-import mousedblclickEvent from "./strings/mousedblclickEvent";
-import mousedownEvent from "./strings/mousedownEvent";
-import mouseupEvent from "./strings/mouseupEvent";
-import mousehoverEvent from "./strings/mousehoverEvent";
-import mouseHoverEvents from "./strings/mouseHoverEvents";
-import mouseenterEvent from "./strings/mouseenterEvent";
-import mouseleaveEvent from "./strings/mouseleaveEvent";
-import mouseinEvent from "./strings/mouseinEvent";
-import mouseoutEvent from "./strings/mouseoutEvent";
-import mouseoverEvent from "./strings/mouseoverEvent";
-import mousemoveEvent from "./strings/mousemoveEvent";
-import mousewheelEvent from "./strings/mousewheelEvent";
+import mouseSwipeEvents from "./strings/mouseSwipeEvents.ts";
+import mouseClickEvents from "./strings/mouseClickEvents.ts";
+import mouseclickEvent from "./strings/mouseclickEvent.ts";
+import mousedblclickEvent from "./strings/mousedblclickEvent.ts";
+import mousedownEvent from "./strings/mousedownEvent.ts";
+import mouseupEvent from "./strings/mouseupEvent.ts";
+import mousehoverEvent from "./strings/mousehoverEvent.ts";
+import mouseHoverEvents from "./strings/mouseHoverEvents.ts";
+import mouseenterEvent from "./strings/mouseenterEvent.ts";
+import mouseleaveEvent from "./strings/mouseleaveEvent.ts";
+import mouseinEvent from "./strings/mouseinEvent.ts";
+import mouseoutEvent from "./strings/mouseoutEvent.ts";
+import mouseoverEvent from "./strings/mouseoverEvent.ts";
+import mousemoveEvent from "./strings/mousemoveEvent.ts";
+import mousewheelEvent from "./strings/mousewheelEvent.ts";
 
-import touchEvents from "./strings/touchEvents";
-import touchstartEvent from "./strings/touchstartEvent";
-import touchmoveEvent from "./strings/touchmoveEvent";
-import touchcancelEvent from "./strings/touchcancelEvent";
-import touchendEvent from "./strings/touchendEvent";
+import touchEvents from "./strings/touchEvents.ts";
+import touchstartEvent from "./strings/touchstartEvent.ts";
+import touchmoveEvent from "./strings/touchmoveEvent.ts";
+import touchcancelEvent from "./strings/touchcancelEvent.ts";
+import touchendEvent from "./strings/touchendEvent.ts";
 
-import pointercancelEvent from "./strings/pointercancelEvent";
-import pointerdownEvent from "./strings/pointerdownEvent";
-import pointerleaveEvent from "./strings/pointerleaveEvent";
-import pointermoveEvent from "./strings/pointermoveEvent";
-import pointerupEvent from "./strings/pointerupEvent";
+import pointercancelEvent from "./strings/pointercancelEvent.ts";
+import pointerdownEvent from "./strings/pointerdownEvent.ts";
+import pointerleaveEvent from "./strings/pointerleaveEvent.ts";
+import pointermoveEvent from "./strings/pointermoveEvent.ts";
+import pointerupEvent from "./strings/pointerupEvent.ts";
 
-import focusEvents from "./strings/focusEvents";
-import focusEvent from "./strings/focusEvent";
-import focusinEvent from "./strings/focusinEvent";
-import focusoutEvent from "./strings/focusoutEvent";
-import focusableSelector from "./strings/focusableSelector";
+import focusEvents from "./strings/focusEvents.ts";
+import focusEvent from "./strings/focusEvent.ts";
+import focusinEvent from "./strings/focusinEvent.ts";
+import focusoutEvent from "./strings/focusoutEvent.ts";
+import focusableSelector from "./strings/focusableSelector.ts";
 
-import gesturechangeEvent from "./strings/gesturechangeEvent";
-import gestureendEvent from "./strings/gestureendEvent";
-import gesturestartEvent from "./strings/gesturestartEvent";
+import gesturechangeEvent from "./strings/gesturechangeEvent.ts";
+import gestureendEvent from "./strings/gestureendEvent.ts";
+import gesturestartEvent from "./strings/gesturestartEvent.ts";
 
-import keyboardEventKeys from "./strings/keyboardEventKeys";
-import keydownEvent from "./strings/keydownEvent";
-import keyupEvent from "./strings/keyupEvent";
-import keypressEvent from "./strings/keypressEvent";
-import keyAlt from "./strings/keyAlt";
-import keyArrowDown from "./strings/keyArrowDown";
-import keyArrowUp from "./strings/keyArrowUp";
-import keyArrowLeft from "./strings/keyArrowLeft";
-import keyArrowRight from "./strings/keyArrowRight";
-import keyBackspace from "./strings/keyBackspace";
-import keyCapsLock from "./strings/keyCapsLock";
-import keyControl from "./strings/keyControl";
-import keyDelete from "./strings/keyDelete";
-import keyEnter from "./strings/keyEnter";
-import keyNumpadEnter from "./strings/keyNumpadEnter";
-import keyEscape from "./strings/keyEscape";
-import keyInsert from "./strings/keyInsert";
-import keyMeta from "./strings/keyMeta";
-import keyPause from "./strings/keyPause";
-import keyScrollLock from "./strings/keyScrollLock";
-import keyShift from "./strings/keyShift";
-import keySpace from "./strings/keySpace";
-import keyTab from "./strings/keyTab";
+import keyboardEventKeys from "./strings/keyboardEventKeys.ts";
+import keydownEvent from "./strings/keydownEvent.ts";
+import keyupEvent from "./strings/keyupEvent.ts";
+import keypressEvent from "./strings/keypressEvent.ts";
+import keyAlt from "./strings/keyAlt.ts";
+import keyArrowDown from "./strings/keyArrowDown.ts";
+import keyArrowUp from "./strings/keyArrowUp.ts";
+import keyArrowLeft from "./strings/keyArrowLeft.ts";
+import keyArrowRight from "./strings/keyArrowRight.ts";
+import keyBackspace from "./strings/keyBackspace.ts";
+import keyCapsLock from "./strings/keyCapsLock.ts";
+import keyControl from "./strings/keyControl.ts";
+import keyDelete from "./strings/keyDelete.ts";
+import keyEnter from "./strings/keyEnter.ts";
+import keyNumpadEnter from "./strings/keyNumpadEnter.ts";
+import keyEscape from "./strings/keyEscape.ts";
+import keyInsert from "./strings/keyInsert.ts";
+import keyMeta from "./strings/keyMeta.ts";
+import keyPause from "./strings/keyPause.ts";
+import keyScrollLock from "./strings/keyScrollLock.ts";
+import keyShift from "./strings/keyShift.ts";
+import keySpace from "./strings/keySpace.ts";
+import keyTab from "./strings/keyTab.ts";
 
-import animationDuration from "./strings/animationDuration";
-import animationDelay from "./strings/animationDelay";
-import animationName from "./strings/animationName";
-import animationEndEvent from "./strings/animationEndEvent";
-import transitionDuration from "./strings/transitionDuration";
-import transitionDelay from "./strings/transitionDelay";
-import transitionEndEvent from "./strings/transitionEndEvent";
-import transitionProperty from "./strings/transitionProperty";
+import animationDuration from "./strings/animationDuration.ts";
+import animationDelay from "./strings/animationDelay.ts";
+import animationName from "./strings/animationName.ts";
+import animationEndEvent from "./strings/animationEndEvent.ts";
+import transitionDuration from "./strings/transitionDuration.ts";
+import transitionDelay from "./strings/transitionDelay.ts";
+import transitionEndEvent from "./strings/transitionEndEvent.ts";
+import transitionProperty from "./strings/transitionProperty.ts";
 
-import addEventListener from "./strings/addEventListener";
-import removeEventListener from "./strings/removeEventListener";
-import bezierEasings from "./strings/bezierEasings";
+import addEventListener from "./strings/addEventListener.ts";
+import removeEventListener from "./strings/removeEventListener.ts";
+import bezierEasings from "./strings/bezierEasings.ts";
 
-import offsetHeight from "./strings/offsetHeight";
-import offsetWidth from "./strings/offsetWidth";
-import scrollHeight from "./strings/scrollHeight";
-import scrollWidth from "./strings/scrollWidth";
-import tabindex from "./strings/tabindex";
+import offsetHeight from "./strings/offsetHeight.ts";
+import offsetWidth from "./strings/offsetWidth.ts";
+import scrollHeight from "./strings/scrollHeight.ts";
+import scrollWidth from "./strings/scrollWidth.ts";
+import tabindex from "./strings/tabindex.ts";
 
-import userAgentData from "./strings/userAgentData";
-import userAgent from "./strings/userAgent";
+import userAgentData from "./strings/userAgentData.ts";
+import userAgent from "./strings/userAgent.ts";
 
 // boolean
-import isMobile from "./boolean/isMobile";
-import isApple from "./boolean/isApple";
-import isFirefox from "./boolean/isFirefox";
-import isWebKit from "./boolean/isWebKit";
-import support3DTransform from "./boolean/support3DTransform";
-import supportPassive from "./boolean/supportPassive";
-import supportTransform from "./boolean/supportTransform";
-import supportTouch from "./boolean/supportTouch";
-import supportAnimation from "./boolean/supportAnimation";
-import supportTransition from "./boolean/supportTransition";
+import isMobile from "./boolean/isMobile.ts";
+import isApple from "./boolean/isApple.ts";
+import isFirefox from "./boolean/isFirefox.ts";
+import isWebKit from "./boolean/isWebKit.ts";
+import support3DTransform from "./boolean/support3DTransform.ts";
+import supportPassive from "./boolean/supportPassive.ts";
+import supportTransform from "./boolean/supportTransform.ts";
+import supportTouch from "./boolean/supportTouch.ts";
+import supportAnimation from "./boolean/supportAnimation.ts";
+import supportTransition from "./boolean/supportTransition.ts";
 
 // attributes
-import getAttribute from "./attr/getAttribute";
-import getAttributeNS from "./attr/getAttributeNS";
-import hasAttribute from "./attr/hasAttribute";
-import hasAttributeNS from "./attr/hasAttributeNS";
-import setAttribute from "./attr/setAttribute";
-import setAttributeNS from "./attr/setAttributeNS";
-import removeAttribute from "./attr/removeAttribute";
-import removeAttributeNS from "./attr/removeAttributeNS";
+import getAttribute from "./attr/getAttribute.ts";
+import getAttributeNS from "./attr/getAttributeNS.ts";
+import hasAttribute from "./attr/hasAttribute.ts";
+import hasAttributeNS from "./attr/hasAttributeNS.ts";
+import setAttribute from "./attr/setAttribute.ts";
+import setAttributeNS from "./attr/setAttributeNS.ts";
+import removeAttribute from "./attr/removeAttribute.ts";
+import removeAttributeNS from "./attr/removeAttributeNS.ts";
 
 // class
-import addClass from "./class/addClass";
-import removeClass from "./class/removeClass";
-import hasClass from "./class/hasClass";
+import addClass from "./class/addClass.ts";
+import removeClass from "./class/removeClass.ts";
+import hasClass from "./class/hasClass.ts";
 
 // event
-import on from "./event/on";
-import off from "./event/off";
-import one from "./event/one";
+import on from "./event/on.ts";
+import off from "./event/off.ts";
+import one from "./event/one.ts";
 
 // blocks
-import documentBody from "./blocks/documentBody";
-import documentElement from "./blocks/documentElement";
-import documentHead from "./blocks/documentHead";
+import documentBody from "./blocks/documentBody.ts";
+import documentElement from "./blocks/documentElement.ts";
+import documentHead from "./blocks/documentHead.ts";
 
 // misc
-import ArrayFrom from "./misc/ArrayFrom";
-import Data from "./misc/data";
-import getInstance from "./misc/getInstance";
-import capitalize from "./misc/capitalize";
-import camelCase from "./misc/camelCase";
-import createElement from "./misc/createElement";
-import createElementNS from "./misc/createElementNS";
-import dispatchEvent from "./misc/dispatchEvent";
-import distinct from "./misc/distinct";
-import emulateAnimationEnd from "./misc/emulateAnimationEnd";
-import emulateTransitionEnd from "./misc/emulateTransitionEnd";
-import Float32ArrayFrom from "./misc/Float32ArrayFrom";
-import Float64ArrayFrom from "./misc/Float64ArrayFrom";
-import focus from "./misc/focus";
-import kebabCase from "./misc/kebabCase";
-import noop from "./misc/noop";
-import normalizeOptions from "./misc/normalizeOptions";
-import normalizeValue from "./misc/normalizeValue";
-import ObjectAssign from "./misc/ObjectAssign";
-import ObjectEntries from "./misc/ObjectEntries";
-import ObjectHasOwn from "./misc/ObjectHasOwn";
-import ObjectKeys from "./misc/ObjectKeys";
-import ObjectValues from "./misc/ObjectValues";
-import ObjectFromEntries from "./misc/ObjectFromEntries";
-import createCustomEvent from "./misc/createCustomEvent";
-import passiveHandler from "./misc/passiveHandler";
-import reflow from "./misc/reflow";
-import setElementStyle from "./misc/setElementStyle";
-import Timer from "./misc/timer";
-import toLowerCase from "./misc/toLowerCase";
-import toUpperCase from "./misc/toUpperCase";
+import ArrayFrom from "./misc/ArrayFrom.ts";
+import Data from "./misc/data.ts";
+import getInstance from "./misc/getInstance.ts";
+import capitalize from "./misc/capitalize.ts";
+import camelCase from "./misc/camelCase.ts";
+import createElement from "./misc/createElement.ts";
+import createElementNS from "./misc/createElementNS.ts";
+import dispatchEvent from "./misc/dispatchEvent.ts";
+import distinct from "./misc/distinct.ts";
+import emulateAnimationEnd from "./misc/emulateAnimationEnd.ts";
+import emulateTransitionEnd from "./misc/emulateTransitionEnd.ts";
+import Float32ArrayFrom from "./misc/Float32ArrayFrom.ts";
+import Float64ArrayFrom from "./misc/Float64ArrayFrom.ts";
+import focus from "./misc/focus.ts";
+import kebabCase from "./misc/kebabCase.ts";
+import noop from "./misc/noop.ts";
+import normalizeOptions from "./misc/normalizeOptions.ts";
+import normalizeValue from "./misc/normalizeValue.ts";
+import ObjectAssign from "./misc/ObjectAssign.ts";
+import ObjectEntries from "./misc/ObjectEntries.ts";
+import ObjectHasOwn from "./misc/ObjectHasOwn.ts";
+import ObjectKeys from "./misc/ObjectKeys.ts";
+import ObjectValues from "./misc/ObjectValues.ts";
+import ObjectFromEntries from "./misc/ObjectFromEntries.ts";
+import createCustomEvent from "./misc/createCustomEvent.ts";
+import passiveHandler from "./misc/passiveHandler.ts";
+import reflow from "./misc/reflow.ts";
+import setElementStyle from "./misc/setElementStyle.ts";
+import Timer from "./misc/timer.ts";
+import toLowerCase from "./misc/toLowerCase.ts";
+import toUpperCase from "./misc/toUpperCase.ts";
 import {
   addFocusTrap,
   handleKeyboardNavigation,
   hasFocusTrap,
   removeFocusTrap,
   toggleFocusTrap,
-} from "./misc/focusTrap";
+} from "./misc/focusTrap.ts";
 
 // get
-import getBoundingClientRect from "./get/getBoundingClientRect";
-import getDocument from "./get/getDocument";
-import getDocumentBody from "./get/getDocumentBody";
-import getDocumentElement from "./get/getDocumentElement";
-import getDocumentHead from "./get/getDocumentHead";
-import getElementAnimationDuration from "./get/getElementAnimationDuration";
-import getElementAnimationDelay from "./get/getElementAnimationDelay";
-import getElementStyle from "./get/getElementStyle";
-import getElementTransitionDuration from "./get/getElementTransitionDuration";
-import getElementTransitionDelay from "./get/getElementTransitionDelay";
-import getNodeName from "./get/getNodeName";
-import getNodeScroll from "./get/getNodeScroll";
-import getOffsetParent from "./get/getOffsetParent";
-import getParentNode from "./get/getParentNode";
-import getRectRelativeToOffsetParent from "./get/getRectRelativeToOffsetParent";
-import getUID from "./get/getUID";
-import getWindow from "./get/getWindow";
+import getBoundingClientRect from "./get/getBoundingClientRect.ts";
+import getDocument from "./get/getDocument.ts";
+import getDocumentBody from "./get/getDocumentBody.ts";
+import getDocumentElement from "./get/getDocumentElement.ts";
+import getDocumentHead from "./get/getDocumentHead.ts";
+import getElementAnimationDuration from "./get/getElementAnimationDuration.ts";
+import getElementAnimationDelay from "./get/getElementAnimationDelay.ts";
+import getElementStyle from "./get/getElementStyle.ts";
+import getElementTransitionDuration from "./get/getElementTransitionDuration.ts";
+import getElementTransitionDelay from "./get/getElementTransitionDelay.ts";
+import getNodeName from "./get/getNodeName.ts";
+import getNodeScroll from "./get/getNodeScroll.ts";
+import getOffsetParent from "./get/getOffsetParent.ts";
+import getParentNode from "./get/getParentNode.ts";
+import getRectRelativeToOffsetParent from "./get/getRectRelativeToOffsetParent.ts";
+import getUID from "./get/getUID.ts";
+import getWindow from "./get/getWindow.ts";
 
 // is
-import isArray from "./is/isArray";
-import isCanvas from "./is/isCanvas";
-import isDocument from "./is/isDocument";
-import isCustomElement from "./is/isCustomElement";
-import isElement from "./is/isElement";
-import isElementInScrollRange from "./is/isElementInScrollRange";
-import isElementInViewport from "./is/isElementInViewport";
-import isElementsArray from "./is/isElementsArray";
-import isFunction from "./is/isFunction";
-import isObject from "./is/isObject";
-import isHTMLCollection from "./is/isHTMLCollection";
-import isHTMLElement from "./is/isHTMLElement";
-import isHTMLImageElement from "./is/isHTMLImageElement";
-import isJSON from "./is/isJSON";
-import isMap from "./is/isMap";
-import isWeakMap from "./is/isWeakMap";
-import isMedia from "./is/isMedia";
-import isNode from "./is/isNode";
-import isNodeList from "./is/isNodeList";
-import isNumber from "./is/isNumber";
-import isRTL from "./is/isRTL";
-import isScaledElement from "./is/isScaledElement";
-import isShadowRoot from "./is/isShadowRoot";
-import isString from "./is/isString";
-import isSVGElement from "./is/isSVGElement";
-import isTableElement from "./is/isTableElement";
-import isWindow from "./is/isWindow";
+import isArray from "./is/isArray.ts";
+import isCanvas from "./is/isCanvas.ts";
+import isDocument from "./is/isDocument.ts";
+import isCustomElement from "./is/isCustomElement.ts";
+import isElement from "./is/isElement.ts";
+import isElementInScrollRange from "./is/isElementInScrollRange.ts";
+import isElementInViewport from "./is/isElementInViewport.ts";
+import isElementsArray from "./is/isElementsArray.ts";
+import isFunction from "./is/isFunction.ts";
+import isObject from "./is/isObject.ts";
+import isHTMLCollection from "./is/isHTMLCollection.ts";
+import isHTMLElement from "./is/isHTMLElement.ts";
+import isHTMLImageElement from "./is/isHTMLImageElement.ts";
+import isJSON from "./is/isJSON.ts";
+import isMap from "./is/isMap.ts";
+import isWeakMap from "./is/isWeakMap.ts";
+import isMedia from "./is/isMedia.ts";
+import isNode from "./is/isNode.ts";
+import isNodeList from "./is/isNodeList.ts";
+import isNumber from "./is/isNumber.ts";
+import isRTL from "./is/isRTL.ts";
+import isScaledElement from "./is/isScaledElement.ts";
+import isShadowRoot from "./is/isShadowRoot.ts";
+import isString from "./is/isString.ts";
+import isSVGElement from "./is/isSVGElement.ts";
+import isTableElement from "./is/isTableElement.ts";
+import isWindow from "./is/isWindow.ts";
 
 // selectors
-import closest from "./selectors/closest";
-import querySelector from "./selectors/querySelector";
-import getCustomElements from "./selectors/getCustomElements";
-import getElementById from "./selectors/getElementById";
-import querySelectorAll from "./selectors/querySelectorAll";
-import getElementsByTagName from "./selectors/getElementsByTagName";
-import getElementsByClassName from "./selectors/getElementsByClassName";
-import matches from "./selectors/matches";
+import closest from "./selectors/closest.ts";
+import querySelector from "./selectors/querySelector.ts";
+import getCustomElements from "./selectors/getCustomElements.ts";
+import getElementById from "./selectors/getElementById.ts";
+import querySelectorAll from "./selectors/querySelectorAll.ts";
+import getElementsByTagName from "./selectors/getElementsByTagName.ts";
+import getElementsByClassName from "./selectors/getElementsByClassName.ts";
+import matches from "./selectors/matches.ts";
 
 export {
   // strings
@@ -545,17 +545,17 @@ export {
   // type WheelEventHandler,
 };
 
-export type { FocusableElement } from "./misc/focusTrap";
+export type { FocusableElement } from "./misc/focusTrap.ts";
 export type {
   NavigatorUA,
   NavigatorUABrand,
   NavigatorUAData,
-} from "./interface/navigatorUA.d";
-export type { OffsetRect } from "./interface/offsetRect.d";
-export type { OriginalEvent } from "./interface/originalEvent.d";
-export type { BoundingClientRect } from "./interface/boundingClientRect.d";
-export type { CustomElement } from "./interface/customElement.d";
-export type { CSS4Declaration } from "./interface/css4Declaration.d";
+} from "./interface/navigatorUA.d.ts";
+export type { OffsetRect } from "./interface/offsetRect.d.ts";
+export type { OriginalEvent } from "./interface/originalEvent.d.ts";
+export type { BoundingClientRect } from "./interface/boundingClientRect.d.ts";
+export type { CustomElement } from "./interface/customElement.d.ts";
+export type { CSS4Declaration } from "./interface/css4Declaration.d.ts";
 export type {
   AnimationEvent,
   AnimationEventHandler,
@@ -588,4 +588,4 @@ export type {
   UIEventHandler,
   WheelEvent,
   WheelEventHandler,
-} from "./interface/event.d";
+} from "./interface/event.d.ts";

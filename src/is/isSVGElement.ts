@@ -1,4 +1,4 @@
-import isNode from "./isNode";
+import isNode from "./isNode.ts";
 
 /**
  * Check if an element is an `<svg>` or any other SVG element,

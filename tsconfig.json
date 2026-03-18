@@ -22,6 +22,7 @@
     "noImplicitReturns": true,
     "removeComments": false,
     "allowSyntheticDefaultImports": true,
+    "allowImportingTsExtensions": true,
     "noEmit": true,
     "checkJs": true,
     "skipLibCheck": true, // allows dts-bundle-generator to import from package.json

@@ -1,6 +1,6 @@
-import transitionDuration from "../strings/transitionDuration";
-import transitionProperty from "../strings/transitionProperty";
-import getElementStyle from "./getElementStyle";
+import transitionDuration from "../strings/transitionDuration.ts";
+import transitionProperty from "../strings/transitionProperty.ts";
+import getElementStyle from "./getElementStyle.ts";
 
 /**
  * Utility to get the computed `transitionDuration`
@@ -12,16 +12,15 @@ import getElementStyle from "./getElementStyle";
 const getElementTransitionDuration = (element: Element) => {
   const propertyValue = getElementStyle(element, transitionProperty);
   const durationValue = getElementStyle(element, transitionDuration);
-  const durationScale = durationValue.includes("ms")
-    ? /* istanbul ignore next @preserve */ 1
-    : 1000;
+  /* istanbul ignore next @preserve */
+  const durationScale = durationValue.includes("ms") ? 1 : 1000;
+  /* istanbul ignore next @preserve */
   const duration = propertyValue && propertyValue !== "none"
     ? parseFloat(durationValue) * durationScale
-    : /* istanbul ignore next @preserve */ 0;
+    : 0;
 
-  return !Number.isNaN(duration)
-    ? duration
-    : /* istanbul ignore next @preserve */ 0;
+  /* istanbul ignore next @preserve */
+  return !Number.isNaN(duration) ? duration : 0;
 };
 
 export default getElementTransitionDuration;

@@ -1,5 +1,5 @@
-import getDocument from "../get/getDocument";
-import isNode from "../is/isNode";
+import getDocument from "../get/getDocument.ts";
+import isNode from "../is/isNode.ts";
 
 /**
  * A shortcut for `(document|Element).querySelectorAll`.

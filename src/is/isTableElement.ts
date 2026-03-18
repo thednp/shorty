@@ -1,4 +1,4 @@
-import isNode from "./isNode";
+import isNode from "./isNode.ts";
 
 /**
  * Check if a target element is a `<table>`, `<td>` or `<th>`.

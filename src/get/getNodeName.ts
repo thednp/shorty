@@ -1,4 +1,4 @@
-import isNode from "../is/isNode";
+import isNode from "../is/isNode.ts";
 
 /**
  * Returns the value of `node.nodeName` for the given node.
@@ -8,8 +8,8 @@ import isNode from "../is/isNode";
 const getNodeName = (node: Node | Window) => {
   /* istanbul ignore else @preserve */
   if (isNode(node)) {
-    return (node.nodeName || /* istanbul ignore next @preserve */ "")
-      .toLowerCase();
+    /* istanbul ignore next @preserve */
+    return (node.nodeName || "").toLowerCase();
   }
   /* istanbul ignore next @preserve */
   return "#document";

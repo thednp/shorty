@@ -1,4 +1,4 @@
-import isHTMLElement from "./isHTMLElement";
+import isHTMLElement from "./isHTMLElement.ts";
 
 /**
  * Check if a target element is an `<img>`.

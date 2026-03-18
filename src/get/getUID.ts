@@ -1,4 +1,4 @@
-import isMap from "../is/isMap";
+import isMap from "../is/isMap.ts";
 
 let elementUID = 0;
 let elementMapUID = 0;

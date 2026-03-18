@@ -1,5 +1,5 @@
-import isHTMLElement from "../is/isHTMLElement";
-import type { BoundingClientRect } from "../interface/boundingClientRect";
+import isHTMLElement from "../is/isHTMLElement.ts";
+import type { BoundingClientRect } from "../interface/boundingClientRect.d.ts";
 
 /**
  * Returns the bounding client rect of a target `Element`.
@@ -21,12 +21,10 @@ const getBoundingClientRect = (
 
   if (includeScale && isHTMLElement(element)) {
     const { offsetWidth, offsetHeight } = element;
-    scaleX = offsetWidth > 0
-      ? Math.round(width) / offsetWidth
-      : /* istanbul ignore next @preserve */ 1;
-    scaleY = offsetHeight > 0
-      ? Math.round(height) / offsetHeight
-      : /* istanbul ignore next @preserve */ 1;
+    /* istanbul ignore next @preserve */
+    scaleX = offsetWidth > 0 ? Math.round(width) / offsetWidth : 1;
+    /* istanbul ignore next @preserve */
+    scaleY = offsetHeight > 0 ? Math.round(height) / offsetHeight : 1;
   }
 
   return {

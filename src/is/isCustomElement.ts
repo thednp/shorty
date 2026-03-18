@@ -1,5 +1,5 @@
-import isHTMLElement from "./isHTMLElement";
-import type { CustomElement } from "../interface/customElement";
+import isHTMLElement from "./isHTMLElement.ts";
+import type { CustomElement } from "../interface/customElement.d.ts";
 
 /**
  * Checks if an object is a `CustomElement`.

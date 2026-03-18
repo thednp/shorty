@@ -1,5 +1,5 @@
-import isCustomElement from "../is/isCustomElement";
-import getElementsByTagName from "./getElementsByTagName";
+import isCustomElement from "../is/isCustomElement.ts";
+import getElementsByTagName from "./getElementsByTagName.ts";
 
 /**
  * Returns an `Array` of `Node` elements that are registered as

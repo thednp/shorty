@@ -1,12 +1,12 @@
-import ariaHidden from "../strings/ariaHidden";
-import focusableSelector from "../strings/focusableSelector";
-import querySelectorAll from "../selectors/querySelectorAll";
-import getAttribute from "../attr/getAttribute";
-import hasAttribute from "../attr/hasAttribute";
-import off from "../event/off";
-import on from "../event/on";
-import getDocument from "../get/getDocument";
-import { KeyboardEvent } from "../interface/event";
+import ariaHidden from "../strings/ariaHidden.ts";
+import focusableSelector from "../strings/focusableSelector.ts";
+import querySelectorAll from "../selectors/querySelectorAll.ts";
+import getAttribute from "../attr/getAttribute.ts";
+import hasAttribute from "../attr/hasAttribute.ts";
+import off from "../event/off.ts";
+import on from "../event/on.ts";
+import getDocument from "../get/getDocument.ts";
+import { KeyboardEvent } from "../interface/event.d.ts";
 
 const focusTrapMap = new Map<Element, boolean>();
 

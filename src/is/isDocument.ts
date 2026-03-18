@@ -1,4 +1,4 @@
-import isNode from "./isNode";
+import isNode from "./isNode.ts";
 
 /**
  * Checks if an object is a `Document`.

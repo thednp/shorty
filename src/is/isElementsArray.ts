@@ -1,5 +1,5 @@
-import isElement from "./isElement";
-import isArray from "./isArray";
+import isElement from "./isElement.ts";
+import isArray from "./isArray.ts";
 
 /**
  * Checks if an object is an `Array` in which all items are `Element`.

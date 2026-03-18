@@ -1,6 +1,6 @@
-import isString from "../is/isString";
-import getDocument from "../get/getDocument";
-import ObjectAssign from "./ObjectAssign";
+import isString from "../is/isString.ts";
+import getDocument from "../get/getDocument.ts";
+import ObjectAssign from "./ObjectAssign.ts";
 
 /**
  * Shortie for `document.createElement` method

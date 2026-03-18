@@ -1,7 +1,7 @@
-import type { OffsetRect } from "../interface/offsetRect";
-import isScaledElement from "../is/isScaledElement";
-import isHTMLElement from "../is/isHTMLElement";
-import getBoundingClientRect from "./getBoundingClientRect";
+import type { OffsetRect } from "../interface/offsetRect.d.ts";
+import isScaledElement from "../is/isScaledElement.ts";
+import isHTMLElement from "../is/isHTMLElement.ts";
+import getBoundingClientRect from "./getBoundingClientRect.ts";
 
 /**
  * Returns the rect relative to a given offset parent and its scroll position.

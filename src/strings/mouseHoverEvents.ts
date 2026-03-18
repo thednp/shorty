@@ -1,7 +1,8 @@
 /**
  * A global namespace for mouse hover events.
  */
+// istanbul ignore next @preserve
 const mouseHoverEvents = "onmouseleave" in document
   ? ["mouseenter", "mouseleave"]
-  : /* istanbul ignore next @preserve */ ["mouseover", "mouseout"];
+  : ["mouseover", "mouseout"];
 export default mouseHoverEvents;

@@ -1,4 +1,4 @@
-import isString from "./isString";
+import isString from "./isString.ts";
 
 /**
  * Checks if a string is a `JSON` string.

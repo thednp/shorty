@@ -1,6 +1,6 @@
-import isMap from "../is/isMap";
-import isElement from "../is/isElement";
-import isNumber from "../is/isNumber";
+import isMap from "../is/isMap.ts";
+import isElement from "../is/isElement.ts";
+import isNumber from "../is/isNumber.ts";
 
 type KeyMap = Map<string, number>;
 type TimeMap = Map<Element, number | KeyMap>;
@@ -59,9 +59,8 @@ const Timer = {
     const keyTimers = TimeCache.get(element);
 
     if (key && keyTimers && isMap(keyTimers as KeyMap)) {
-      return (keyTimers as KeyMap).get(key) ||
-        /* istanbul ignore next @preserve */
-        null;
+      /* istanbul ignore next @preserve */
+      return (keyTimers as KeyMap).get(key) || null;
     } else if (isNumber(keyTimers as number)) {
       return keyTimers as number;
     }

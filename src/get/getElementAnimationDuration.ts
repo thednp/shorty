@@ -1,6 +1,6 @@
-import animationDuration from "../strings/animationDuration";
-import animationName from "../strings/animationName";
-import getElementStyle from "./getElementStyle";
+import animationDuration from "../strings/animationDuration.ts";
+import animationName from "../strings/animationName.ts";
+import getElementStyle from "./getElementStyle.ts";
 
 /**
  * Utility to get the computed `animationDuration`
@@ -14,16 +14,14 @@ const getElementAnimationDuration = (
 ): number => {
   const propertyValue = getElementStyle(element, animationName);
   const durationValue = getElementStyle(element, animationDuration);
-  const durationScale = durationValue.includes("ms")
-    ? /* istanbul ignore next @preserve */ 1
-    : 1000;
+  /* istanbul ignore next @preserve */
+  const durationScale = durationValue.includes("ms") ? 1 : 1000;
   const duration = propertyValue && propertyValue !== "none"
     ? parseFloat(durationValue) * durationScale
     : 0;
 
-  return !Number.isNaN(duration)
-    ? duration
-    : /* istanbul ignore next @preserve */ 0;
+  /* istanbul ignore next @preserve */
+  return !Number.isNaN(duration) ? duration : 0;
 };
 
 export default getElementAnimationDuration;

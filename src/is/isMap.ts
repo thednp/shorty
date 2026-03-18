@@ -1,4 +1,4 @@
-import isObject from "./isObject";
+import isObject from "./isObject.ts";
 
 /**
  * Checks if an element is a `Map`.

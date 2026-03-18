@@ -1,4 +1,4 @@
-import isElement from "../is/isElement";
+import isElement from "../is/isElement.ts";
 
 const componentData = new Map<string, Map<Element, unknown>>();
 

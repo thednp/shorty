@@ -1,7 +1,7 @@
-import getDocumentElement from "./getDocumentElement";
-import isShadowRoot from "../is/isShadowRoot";
-import isElement from "../is/isElement";
-import isNode from "../is/isNode";
+import getDocumentElement from "./getDocumentElement.ts";
+import isShadowRoot from "../is/isShadowRoot.ts";
+import isElement from "../is/isElement.ts";
+import isNode from "../is/isNode.ts";
 
 /**
  * Returns the `parentNode` also going through `ShadowRoot`.

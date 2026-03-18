@@ -1,8 +1,8 @@
-import isElement from "../is/isElement";
-import getAttribute from "../attr/getAttribute";
-import normalizeValue from "./normalizeValue";
-import ObjectEntries from "./ObjectEntries";
-import camelCase from "./camelCase";
+import isElement from "../is/isElement.ts";
+import getAttribute from "../attr/getAttribute.ts";
+import normalizeValue from "./normalizeValue.ts";
+import ObjectEntries from "./ObjectEntries.ts";
+import camelCase from "./camelCase.ts";
 
 /**
  * Utility to normalize component options.
@@ -30,9 +30,10 @@ const normalizeOptions = <T extends { [key: string]: unknown }>(
   const title = "title";
 
   ObjectEntries(data).forEach(([k, v]) => {
+    /* istanbul ignore next @preserve */
     const key: keyof T = ns && typeof k === "string" && k.includes(ns)
       ? camelCase(k.replace(ns, ""))
-      : /* istanbul ignore next @preserve */ camelCase(k as string);
+      : camelCase(k as string);
 
     dataOps[key] = normalizeValue(v) as T[keyof T];
   });

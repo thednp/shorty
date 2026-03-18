@@ -1,14 +1,14 @@
-import isElement from "../is/isElement";
-import isHTMLElement from "../is/isHTMLElement";
-import getElementStyle from "./getElementStyle";
-import getParentNode from "./getParentNode";
-import getWindow from "./getWindow";
-import getDocumentElement from "./getDocumentElement";
-import isTableElement from "../is/isTableElement";
-import isWebKit from "../boolean/isWebKit";
-import matches from "../selectors/matches";
-import getNodeName from "./getNodeName";
-import isNode from "../is/isNode";
+import isElement from "../is/isElement.ts";
+import isHTMLElement from "../is/isHTMLElement.ts";
+import getElementStyle from "./getElementStyle.ts";
+import getParentNode from "./getParentNode.ts";
+import getWindow from "./getWindow.ts";
+import getDocumentElement from "./getDocumentElement.ts";
+import isTableElement from "../is/isTableElement.ts";
+import isWebKit from "../boolean/isWebKit.ts";
+import matches from "../selectors/matches.ts";
+import getNodeName from "./getNodeName.ts";
+import isNode from "../is/isNode.ts";
 
 const isStaticPositioned = (element: Element) => {
   return getElementStyle(element, "position") === "static";
@@ -32,29 +32,30 @@ const isContainingBlock = (
   elementOrCss: Element | CSSStyleDeclaration,
 ) => {
   const webkit = isWebKit();
+  /* istanbul ignore next @preserve */
   const css = isElement(elementOrCss)
     ? getComputedStyle(elementOrCss)
-    : /* istanbul ignore next */ elementOrCss;
+    : elementOrCss;
 
+  /* istanbul ignore next @preserve */
   return (
     css.transform !== "none" ||
     css.perspective !== "none" ||
-    (css.containerType
-      ? css.containerType !== "normal"
-      : /* istanbul ignore next */ false) ||
+    /* istanbul ignore next @preserve */
+    (css.containerType ? css.containerType !== "normal" : false) ||
+    /* istanbul ignore next @preserve */
     (!webkit &&
-      (css.backdropFilter
-        ? css.backdropFilter !== "none"
-        : /* istanbul ignore next */ false)) ||
+      (css.backdropFilter ? css.backdropFilter !== "none" : false)) ||
+    /* istanbul ignore next @preserve */
     (!webkit &&
-      (css.filter
-        ? css.filter !== "none"
-        : /* istanbul ignore next */ false)) ||
+      (css.filter ? css.filter !== "none" : false)) ||
+    /* istanbul ignore next @preserve */
     ["transform", "perspective", "filter"].some((value) =>
-      (css.willChange || /* istanbul ignore next */ "").includes(value)
+      (css.willChange || "").includes(value)
     ) ||
+    /* istanbul ignore next */
     ["paint", "layout", "strict", "content"].some((value) =>
-      (css.contain || /* istanbul ignore next */ "").includes(value)
+      (css.contain || "").includes(value)
     )
   );
 };

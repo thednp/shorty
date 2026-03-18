@@ -1,6 +1,6 @@
-import animationDelay from "../strings/animationDelay";
-import animationName from "../strings/animationName";
-import getElementStyle from "./getElementStyle";
+import animationDelay from "../strings/animationDelay.ts";
+import animationName from "../strings/animationName.ts";
+import getElementStyle from "./getElementStyle.ts";
 
 /**
  * Utility to get the computed `animationDelay`
@@ -14,16 +14,13 @@ const getElementAnimationDelay = (
 ): number => {
   const propertyValue = getElementStyle(element, animationName);
   const durationValue = getElementStyle(element, animationDelay);
-  const durationScale = durationValue.includes("ms")
-    ? /* istanbul ignore next @preserve */ 1
-    : 1000;
+  /* istanbul ignore next @preserve */
+  const durationScale = durationValue.includes("ms") ? 1 : 1000;
   const duration = propertyValue && propertyValue !== "none"
     ? parseFloat(durationValue) * durationScale
     : 0;
-
-  return !Number.isNaN(duration)
-    ? duration
-    : /* istanbul ignore next @preserve */ 0;
+  /* istanbul ignore next @preserve */
+  return !Number.isNaN(duration) ? duration : 0;
 };
 
 export default getElementAnimationDelay;

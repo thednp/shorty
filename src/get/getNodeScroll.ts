@@ -1,4 +1,4 @@
-import isWindow from "../is/isWindow";
+import isWindow from "../is/isWindow.ts";
 
 /**
  * Returns an `{x, y}` object with the target

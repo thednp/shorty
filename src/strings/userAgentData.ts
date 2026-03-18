@@ -1,4 +1,4 @@
-import type { NavigatorUA } from "../interface/navigatorUA";
+import type { NavigatorUA } from "../interface/navigatorUA.d.ts";
 
 /**
  * A global namespace for `userAgentData` object.

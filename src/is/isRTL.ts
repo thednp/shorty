@@ -1,4 +1,4 @@
-import getDocumentElement from "../get/getDocumentElement";
+import getDocumentElement from "../get/getDocumentElement.ts";
 
 /**
  * Checks if a page is Right To Left.

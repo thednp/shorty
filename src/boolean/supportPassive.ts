@@ -1,6 +1,6 @@
-import noop from "../misc/noop";
-import one from "../event/one";
-import DOMContentLoadedEvent from "../strings/DOMContentLoadedEvent";
+import noop from "../misc/noop.ts";
+import one from "../event/one.ts";
+import DOMContentLoadedEvent from "../strings/DOMContentLoadedEvent.ts";
 
 /**
  * An accessor that checks for passive events support,
