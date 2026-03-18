@@ -1,13 +1,13 @@
 /*!
-* @thednp/shorty ESM v2.0.12 (https://github.com/thednp/shorty)
+* @thednp/shorty ESM v2.0.13 (https://github.com/thednp/shorty)
 * Copyright 2026 © thednp
 * Licensed under MIT (https://github.com/thednp/shorty/blob/master/LICENSE)
 */
 "use strict";
 
-import "./chunk-rglEepuH.mjs";
+import "./chunk-CP6mxX4N.js";
 //#region package.json
-var version = "2.0.12";
+var version = "2.0.13";
 //#endregion
 //#region src/strings/ariaChecked.ts
 /**
@@ -2379,4 +2379,4 @@ const getElementsByClassName = (selector, parent) => {
 //#endregion
 export { ArrayFrom, DOMContentLoadedEvent, DOMMouseScrollEvent, Data, Float32ArrayFrom, Float64ArrayFrom, ObjectAssign, ObjectEntries, ObjectFromEntries, ObjectHasOwn, ObjectKeys, ObjectValues, Timer, abortEvent, addClass, addEventListener, addFocusTrap, animationDelay, animationDuration, animationEndEvent, animationName, ariaChecked, ariaDescribedBy, ariaDescription, ariaExpanded, ariaHasPopup, ariaHidden, ariaLabel, ariaLabelledBy, ariaModal, ariaPressed, ariaSelected, ariaValueMax, ariaValueMin, ariaValueNow, ariaValueText, beforeunloadEvent, bezierEasings, blurEvent, camelCase, capitalize, changeEvent, closest, contextmenuEvent, createCustomEvent, createElement, createElementNS, dispatchEvent, distinct, documentBody, documentElement, documentHead, dragEvent, dragendEvent, dragenterEvent, dragleaveEvent, dragoverEvent, dragstartEvent, emulateAnimationEnd, emulateTransitionEnd, errorEvent, focus, focusEvent, focusEvents, focusableSelector, focusinEvent, focusoutEvent, gesturechangeEvent, gestureendEvent, gesturestartEvent, getAttribute, getAttributeNS, getBoundingClientRect, getCustomElements, getDocument, getDocumentBody, getDocumentElement, getDocumentHead, getElementAnimationDelay, getElementAnimationDuration, getElementById, getElementStyle, getElementTransitionDelay, getElementTransitionDuration, getElementsByClassName, getElementsByTagName, getInstance, getNodeName, getNodeScroll, getOffsetParent, getParentNode, getRectRelativeToOffsetParent, getUID, getWindow, handleKeyboardNavigation, hasAttribute, hasAttributeNS, hasClass, hasFocusTrap, isApple, isArray, isCanvas, isCustomElement, isDocument, isElement, isElementInScrollRange, isElementInViewport, isElementsArray, isFirefox, isFunction, isHTMLCollection, isHTMLElement, isHTMLImageElement, isJSON, isMap, isMedia, isMobile, isNode, isNodeList, isNumber, isObject, isRTL, isSVGElement, isScaledElement, isShadowRoot, isString, isTableElement, isWeakMap, isWebKit, isWindow, kebabCase, keyAlt, keyArrowDown, keyArrowLeft, keyArrowRight, keyArrowUp, keyBackspace, keyCapsLock, keyControl, keyDelete, keyEnter, keyEscape, keyInsert, keyMeta, keyNumpadEnter, keyPause, keyScrollLock, keyShift, keySpace, keyTab, keyboardEventKeys, keydownEvent, keypressEvent, keyupEvent, loadEvent, loadstartEvent, matches, mouseClickEvents, mouseHoverEvents, mouseSwipeEvents, mouseclickEvent, mousedblclickEvent, mousedownEvent, mouseenterEvent, mousehoverEvent, mouseinEvent, mouseleaveEvent, mousemoveEvent, mouseoutEvent, mouseoverEvent, mouseupEvent, mousewheelEvent, moveEvent, nativeEvents, noop, normalizeOptions, normalizeValue, off, offsetHeight, offsetWidth, on, one, orientationchangeEvent, passiveHandler, pointercancelEvent, pointerdownEvent, pointerleaveEvent, pointermoveEvent, pointerupEvent, querySelector, querySelectorAll, readystatechangeEvent, reflow, removeAttribute, removeAttributeNS, removeClass, removeEventListener, removeFocusTrap, resetEvent, resizeEvent, scrollEvent, scrollHeight, scrollWidth, selectEvent, selectendEvent, selectstartEvent, setAttribute, setAttributeNS, setElementStyle, submitEvent, support3DTransform, supportAnimation, supportPassive, supportTouch, supportTransform, supportTransition, tabindex, toLowerCase, toUpperCase, toggleFocusTrap, touchEvents, touchcancelEvent, touchendEvent, touchmoveEvent, touchstartEvent, transitionDelay, transitionDuration, transitionEndEvent, transitionProperty, unloadEvent, userAgent, userAgentData, version };
 
-//# sourceMappingURL=index.mjs.map
+//# sourceMappingURL=index.js.map
