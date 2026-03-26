@@ -2,11 +2,6 @@ import { defineConfig } from "vitest/config";
 import { playwright } from "@vitest/browser-playwright";
 
 export default defineConfig({
-  optimizeDeps: {
-    include: [
-      "@vitest/coverage-istanbul"
-    ]
-  },
   test: {
     css: true,
     globals: true,
