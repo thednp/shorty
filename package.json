@@ -1,6 +1,6 @@
 {
   "name": "@thednp/shorty",
-  "version": "2.0.13",
+  "version": "2.0.14",
   "description": "TypeScript shorties for the web",
   "author": "thednp",
   "homepage": "https://github.com/thednp/shorty",
@@ -52,19 +52,19 @@
   },
   "devDependencies": {
     "@types/node": "^25.5.0",
-    "@vitest/browser": "^4.1.0",
-    "@vitest/browser-playwright": "^4.1.0",
-    "@vitest/coverage-istanbul": "^4.1.0",
-    "@vitest/ui": "^4.1.0",
+    "@vitest/browser": "^4.1.1",
+    "@vitest/browser-playwright": "^4.1.1",
+    "@vitest/coverage-istanbul": "^4.1.1",
+    "@vitest/ui": "^4.1.1",
     "playwright": "^1.58.2",
-    "tsdown": "^0.21.4",
-    "typescript": "^5.9.3",
-    "vite": "^8.0.0",
+    "tsdown": "^0.21.5",
+    "typescript": "^6.0.2",
+    "vite": "^8.0.3",
     "vite-plugin-dts": "^4.5.4",
-    "vite-plugin-strip-comments": "^0.0.9",
-    "vitest": "^4.1.0"
+    "vite-plugin-strip-comments": "^0.0.10",
+    "vitest": "^4.1.1"
   },
-  "packageManager": "pnpm@8.6.12",
+  "packageManager": "pnpm@10.33.0",
   "engines": {
     "node": ">=16",
     "pnpm": ">=8.6.0"

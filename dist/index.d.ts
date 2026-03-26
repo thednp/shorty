@@ -1,10 +1,8 @@
 /*!
-* @thednp/shorty ESM v2.0.13 (https://github.com/thednp/shorty)
+* @thednp/shorty ESM v2.0.14 (https://github.com/thednp/shorty)
 * Copyright 2026 © thednp
 * Licensed under MIT (https://github.com/thednp/shorty/blob/master/LICENSE)
 */
-"use strict";
-
 //#region package.json.d.ts
 declare let version: string;
 //#endregion
@@ -1797,7 +1795,7 @@ declare const getNodeScroll: (element: Element | Window) => {
  * @param element the target node
  * @returns the offset parent node
  */
-declare const getOffsetParent: (element: Element) => Window | Element;
+declare const getOffsetParent: (element: Element) => Element | Window;
 //#endregion
 //#region src/get/getParentNode.d.ts
 /**

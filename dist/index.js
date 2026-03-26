@@ -1,13 +1,10 @@
 /*!
-* @thednp/shorty ESM v2.0.13 (https://github.com/thednp/shorty)
+* @thednp/shorty ESM v2.0.14 (https://github.com/thednp/shorty)
 * Copyright 2026 © thednp
 * Licensed under MIT (https://github.com/thednp/shorty/blob/master/LICENSE)
 */
-"use strict";
-
-import "./chunk-CP6mxX4N.js";
 //#region package.json
-var version = "2.0.13";
+var version = "2.0.14";
 //#endregion
 //#region src/strings/ariaChecked.ts
 /**

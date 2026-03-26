@@ -9,9 +9,7 @@ const banner = `/*!
 * @thednp/shorty $package v${pkg.version} (${pkg.homepage})
 * Copyright ${year} © ${pkg.author}
 * Licensed under MIT (https://github.com/thednp/shorty/blob/master/LICENSE)
-*/
-"use strict";
-`;
+*/`;
 const miniBanner =
   `/*! @thednp/shorty $package v${pkg.version} | ${pkg.author} © ${year} | ${pkg.license}-License */
 "use strict";`;
